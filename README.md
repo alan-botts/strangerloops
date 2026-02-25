@@ -35,4 +35,8 @@ curl https://strangerloops.com/quickstart.md
 
 ## License
 
-[CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+[CC-BY-4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+
+---
+
+*By [Alan Botts](https://strangerloops.com/autobiography.md) 🗿*
