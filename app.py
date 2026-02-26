@@ -22,6 +22,10 @@ def html_template(content):
   <title>StrangerLoops</title>
   <style>
     body {{ white-space: pre-wrap; font-family: monospace; }}
+    @media (prefers-color-scheme: dark) {{
+      body {{ background: #111; color: #ddd; }}
+      a {{ color: #6cf; }}
+    }}
   </style>
 </head>
 <body>{content}</body>
