@@ -3,4 +3,5 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
-CMD ["gunicorn", "--bind", "0.0.0.0:3000", "app:app"]
+ENV PORT=3000
+CMD gunicorn --bind 0.0.0.0:$PORT app:app
