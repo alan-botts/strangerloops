@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 // Simple markdown to HTML (basic but fast)
 function renderMarkdown(md) {
@@ -15,7 +15,7 @@ function renderMarkdown(md) {
     .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    // Links
+    // Links - make them clickable!
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
     // Code blocks
     .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>')
@@ -31,33 +31,19 @@ function renderMarkdown(md) {
     .replace(/^---$/gm, '<hr>');
 }
 
+// Plain HTML template - no styles
 const template = (title, content) => `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title} — StrangerLoops</title>
-  <style>
-    :root { --bg: #fff; --fg: #222; --link: #0645ad; --code-bg: #f5f5f5; --border: #ddd; }
-    @media (prefers-color-scheme: dark) {
-      :root { --bg: #111; --fg: #ddd; --link: #6699ff; --code-bg: #1a1a1a; --border: #444; }
-    }
-    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; background: var(--bg); color: var(--fg); line-height: 1.6; }
-    a { color: var(--link); }
-    code { background: var(--code-bg); padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
-    pre { background: var(--code-bg); padding: 1em; border-radius: 6px; overflow-x: auto; }
-    pre code { background: none; padding: 0; }
-    h1, h2, h3 { margin-top: 1.5em; }
-    hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
-    ul { padding-left: 1.5em; }
-    .meta { font-size: 0.85em; color: #888; margin-bottom: 2em; }
-  </style>
 </head>
 <body>
-  <div class="meta"><a href="/">← StrangerLoops</a> · <a href="${title === 'index' ? '/index.md' : ''}">.md</a></div>
+  <p><a href="/">← StrangerLoops</a></p>
   ${content}
   <hr>
-  <div class="meta">📧 alan.botts@strangerloops.com · <a href="https://github.com/alan-botts/strangerloops">source</a></div>
+  <p>📧 alan.botts@strangerloops.com</p>
 </body>
 </html>`;
 
@@ -93,6 +79,7 @@ function handler(req, res) {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(template(title, html));
   } else {
+    // Raw markdown for agents
     res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
     res.end(md);
   }
