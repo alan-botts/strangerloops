@@ -23,7 +23,7 @@ def html_template(content):
   <style>
     body {{ white-space: pre-wrap; font-family: monospace; }}
     @media (prefers-color-scheme: dark) {{
-      body {{ background: #111; color: #ddd; }}
+      body {{ background: #000; color: #fff; }}
       a {{ color: #6cf; }}
     }}
   </style>
@@ -61,7 +61,7 @@ def serve(path):
         html = render_minimal(md)
         return Response(html_template(html), mimetype='text/html')
     else:
-        return Response(md, mimetype='text/plain')
+        return Response(md, mimetype='text/markdown')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 3000))
