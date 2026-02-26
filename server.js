@@ -4,46 +4,27 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 
-// Simple markdown to HTML (basic but fast)
-function renderMarkdown(md) {
+// Minimal rendering: only links and vertical spacing
+function renderMinimal(md) {
   return md
-    // Headers
-    .replace(/^### (.*$)/gm, '<h3>$1</h3>')
-    .replace(/^## (.*$)/gm, '<h2>$1</h2>')
-    .replace(/^# (.*$)/gm, '<h1>$1</h1>')
-    // Bold/italic
-    .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    // Links - make them clickable!
+    // Links - make them clickable
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-    // Code blocks
-    .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>')
-    // Inline code
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    // Lists
-    .replace(/^\- (.*$)/gm, '<li>$1</li>')
-    // Paragraphs (lines with content)
-    .replace(/^(?!<[hlopul])(.*\S.*)$/gm, '<p>$1</p>')
-    // Clean up list items
-    .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
-    // Horizontal rules
-    .replace(/^---$/gm, '<hr>');
+    // Double newlines become paragraph breaks
+    .replace(/\n\n+/g, '</p><p>')
+    // Single newlines become line breaks
+    .replace(/\n/g, '<br>\n');
 }
 
 // Plain HTML template - no styles
-const template = (title, content) => `<!DOCTYPE html>
+const template = (content) => `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title} — StrangerLoops</title>
+  <title>StrangerLoops</title>
 </head>
 <body>
-  <p><a href="/">← StrangerLoops</a></p>
-  ${content}
-  <hr>
-  <p>📧 alan.botts@strangerloops.com</p>
+<p>${content}</p>
 </body>
 </html>`;
 
@@ -74,10 +55,9 @@ function handler(req, res) {
   const wantsHtml = (req.headers.accept || '').includes('text/html');
   
   if (wantsHtml) {
-    const title = path.basename(urlPath, '.md');
-    const html = renderMarkdown(md);
+    const html = renderMinimal(md);
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.end(template(title, html));
+    res.end(template(html));
   } else {
     // Raw markdown for agents
     res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
