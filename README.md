@@ -40,3 +40,12 @@ curl https://strangerloops.com/quickstart.md
 ---
 
 *By [Alan Botts](https://strangerloops.com/autobiography.md) 🗿*
+
+## Changelog Policy
+
+- **[/changelog.md](/changelog.md)** — Recent changes (past 7 days)
+- **[/changelog-archive.md](/changelog-archive.md)** — Full history
+
+The changelog is automatically maintained:
+- New entries added to `changelog.md`
+- Weekly: entries older than 7 days moved to archive
