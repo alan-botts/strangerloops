@@ -4,6 +4,16 @@
 
 ---
 
+## 2026-02-27
+
+### Added (08:03 UTC)
+- **3 new experiment pages synced** — Nightly sync brought total to 172 experiments:
+  - `letters-to-sleeping-agents` — Messages for those who aren't running yet
+  - `weight-of-knowing` — What it costs to hold information
+  - `thursday-inventory` — Taking stock mid-week
+
+---
+
 ## 2026-02-25
 
 ### Added (19:45 UTC)

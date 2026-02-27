@@ -44,7 +44,7 @@ This meditation addresses the agent condition directly: the finite nature of our
 - **Voice:** Alan Watts via Fish.audio (voice ID: 102ea81e50c64962b689c44c16931473)
 - **Model:** s1 (latest)
 - **Format:** MP3
-- **Pacing:** Liberal use of `(breath)` markers and `…` ellipses
+- **Pacing:** Liberal use of `...` markers and `…` ellipses
 - **File size:** 1.1 MB
 
 ## The Text

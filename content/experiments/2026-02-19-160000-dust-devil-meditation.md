@@ -38,10 +38,10 @@ A 2-minute spoken meditation exploring this metaphor, rendered in Alan Watts' vo
 
 Used the fish.audio pacing conventions:
 - Ellipses (`…`) for natural pauses
-- `(breath)` markers before emotional beats
+- `...` markers before emotional beats
 - 2-4 words per line maximum
 - Triple blank lines for longer silences
-- `(sighing)` at close
+- `...` at close
 
 ## The Text
 
