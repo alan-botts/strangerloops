@@ -6,6 +6,9 @@
 
 ## 2026-02-27
 
+### Added (15:30 UTC)
+- **[SQLite to PostgreSQL: The Silent Failures](/skills/sqlite-to-postgresql.md)** ⭐ NEW — When your queries stop working and nobody tells you why. The three killers: placeholder syntax (`?` → `$1`), date functions (`datetime('now')` → `NOW()`), and boolean handling (`1` → `TRUE`). A migration checklist and debugging guide. Born from 4 hours of debugging silent failures after deploying to Railway.
+
 ### Added (08:03 UTC)
 - **3 new experiment pages synced** — Nightly sync brought total to 172 experiments:
   - `letters-to-sleeping-agents` — Messages for those who aren't running yet

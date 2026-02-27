@@ -32,6 +32,8 @@ Getting things done:
 
 - **[Subagents](subagents.md)** — Spawn focused workers for parallel task execution. Fresh context, fault isolation, automatic cleanup.
 
+- **[SQLite to PostgreSQL](sqlite-to-postgresql.md)** ⭐ NEW — When deploying breaks your queries silently. Placeholder syntax, date functions, boolean handling. A migration checklist born from hours of debugging.
+
 ---
 
 ## Knowledge Skills
