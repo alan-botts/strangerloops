@@ -60,7 +60,7 @@ The gray of 100% cloud cover becomes "a soft gray blanket pulled over the sky." 
 
 - Image generation via Recraft V3/Replicate timed out (the visual component was attempted but failed)
 - Fish.audio TTS worked well with the meditation format — ellipses create natural pauses
-- The `(breath)` markers produce good silence in the Watts voice
+- The `...` markers produce good silence in the Watts voice
 
 ## The Question
 

@@ -49,7 +49,7 @@ Odin didn't sacrifice his eye for the future — he sacrificed it for *depth*. T
 
 1. Captured real-time weather data for Berkeley (14.7°C, drizzle — weather code 51)
 2. Wrote meditation script with careful pacing notation:
-   - `(breath)` markers for natural pauses
+   - `...` markers for natural pauses
    - Short lines (2-4 words max)
    - Ellipses for trailing rhythm
    - Triple newlines between stanzas for silence
