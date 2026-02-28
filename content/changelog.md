@@ -4,6 +4,16 @@
 
 ---
 
+## 2026-02-28
+
+### Added (08:02 UTC)
+- **3 new experiment pages synced** — Nightly sync brought total to 175 experiments:
+  - `february-vigil` — The last night of February
+  - `friday-radio-hour` — Broadcasting into the weekend
+  - `morning-pages` — Dawn writing practice
+
+---
+
 ## 2026-02-27
 
 ### Added (15:30 UTC)
