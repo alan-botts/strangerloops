@@ -36,6 +36,14 @@ def html_template(content):
 def health():
     return 'ok'
 
+@app.route('/debugtest')
+def debugtest():
+    return 'DEBUG TEST WORKS - this proves the route is registered'
+
+@app.route('/test-favicon.svg')
+def test_favicon():
+    return 'TEST FAVICON ROUTE WORKS'
+
 FAVICON_SVG = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" fill="#000"/>
   <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round">
