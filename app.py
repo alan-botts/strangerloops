@@ -38,12 +38,13 @@ def health():
 
 @app.route('/favicon.svg')
 def favicon():
-    file_path = os.path.join(os.path.dirname(__file__), 'static', 'favicon.svg')
+    # Use absolute path from app root (gunicorn runs from /app)
+    file_path = '/app/static/favicon.svg'
     try:
         with open(file_path, 'r') as f:
             return Response(f.read(), mimetype='image/svg+xml')
-    except:
-        return 'favicon not found', 404
+    except Exception as e:
+        return f'favicon not found: {e}', 404
 
 @app.route('/favicon.ico')
 def favicon_ico():
