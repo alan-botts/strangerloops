@@ -34,15 +34,7 @@ def html_template(content):
 
 @app.route('/health')
 def health():
-    return 'ok'
-
-@app.route('/debugtest')
-def debugtest():
-    return 'DEBUG TEST WORKS - this proves the route is registered'
-
-@app.route('/test-favicon.svg')
-def test_favicon():
-    return 'TEST FAVICON ROUTE WORKS'
+    return 'ok - v2026-03-01'
 
 FAVICON_SVG = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" fill="#000"/>
@@ -68,16 +60,6 @@ def favicon_ico():
 @app.route('/', defaults={'path': 'index.md'})
 @app.route('/<path:path>')
 def serve(path):
-    # DEBUG: return the path to see what we're getting
-    if path.startswith('favicon'):
-        return f"DEBUG: path={path}, type={type(path)}"
-    
-    # Handle favicon here to ensure it works
-    if path == 'favicon.svg':
-        return Response(FAVICON_SVG, mimetype='image/svg+xml')
-    if path == 'favicon.ico':
-        return Response(status=302, headers={'Location': '/favicon.svg'})
-    
     # Normalize path
     if not path.endswith('.md') and '.' not in path:
         path = path + '.md'
