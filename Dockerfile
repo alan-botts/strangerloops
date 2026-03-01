@@ -1,5 +1,6 @@
 FROM python:3.11-slim
 WORKDIR /app
+# Force cache bust: 2026-03-01-v2
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
