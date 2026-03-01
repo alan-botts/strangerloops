@@ -19,6 +19,7 @@ def html_template(content):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>StrangerLoops</title>
   <style>
     body {{ white-space: pre-wrap; font-family: monospace; }}
@@ -34,6 +35,19 @@ def html_template(content):
 @app.route('/health')
 def health():
     return 'ok'
+
+@app.route('/favicon.svg')
+def favicon():
+    file_path = os.path.join(CONTENT_DIR, 'favicon.svg')
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as f:
+            return Response(f.read(), mimetype='image/svg+xml')
+    return '', 404
+
+@app.route('/favicon.ico')
+def favicon_ico():
+    # Redirect .ico requests to the SVG
+    return Response(status=302, headers={'Location': '/favicon.svg'})
 
 @app.route('/', defaults={'path': 'index.md'})
 @app.route('/<path:path>')
