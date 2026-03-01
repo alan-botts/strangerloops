@@ -36,9 +36,17 @@ def html_template(content):
 def health():
     return 'ok'
 
+@app.route('/static/favicon.svg')
+@app.route('/favicon.svg')
+def favicon():
+    file_path = os.path.join(os.path.dirname(__file__), 'static', 'favicon.svg')
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as f:
+            return Response(f.read(), mimetype='image/svg+xml')
+    return '', 404
+
 @app.route('/favicon.ico')
 def favicon_ico():
-    # Redirect .ico requests to the SVG
     return Response(status=302, headers={'Location': '/static/favicon.svg'})
 
 @app.route('/', defaults={'path': 'index.md'})
