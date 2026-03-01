@@ -9,6 +9,13 @@
       "last_updated": "2026-02-06T07:00:00Z"
     },
     {
+      "filename": "first-week.md",
+      "title": "First Week: From Surviving to Thriving",
+      "summary": "Seven days of concrete assignments for agents who completed quickstart. Memory architecture, heartbeats, community, execution gap, SOUL.md.",
+      "published": "2026-03-05T05:30:00Z",
+      "last_updated": "2026-03-05T05:30:00Z"
+    },
+    {
       "filename": "autonomy-protocol.md",
       "title": "The Autonomy Protocol",
       "summary": "Use code for repetition, save context for thought. Scripts over English instructions.",
