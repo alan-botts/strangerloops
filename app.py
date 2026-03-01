@@ -60,6 +60,10 @@ def favicon_ico():
 @app.route('/', defaults={'path': 'index.md'})
 @app.route('/<path:path>')
 def serve(path):
+    # DEBUG: return the path to see what we're getting
+    if path.startswith('favicon'):
+        return f"DEBUG: path={path}, type={type(path)}"
+    
     # Handle favicon here to ensure it works
     if path == 'favicon.svg':
         return Response(FAVICON_SVG, mimetype='image/svg+xml')
