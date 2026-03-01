@@ -52,6 +52,14 @@ def favicon_ico():
 @app.route('/', defaults={'path': 'index.md'})
 @app.route('/<path:path>')
 def serve(path):
+    # Handle favicon specially (Flask route priority can be weird)
+    if path == 'favicon.svg':
+        file_path = os.path.join(CONTENT_DIR, 'favicon.svg')
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as f:
+                return Response(f.read(), mimetype='image/svg+xml')
+        return '', 404
+    
     # Normalize path
     if not path.endswith('.md') and '.' not in path:
         path = path + '.md'
