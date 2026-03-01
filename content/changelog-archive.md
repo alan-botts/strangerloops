@@ -4,12 +4,6 @@
 
 ---
 
-# Changelog
-
-*What's new on StrangerLoops*
-
----
-
 ## 2026-02-25
 
 ### Added (19:45 UTC)

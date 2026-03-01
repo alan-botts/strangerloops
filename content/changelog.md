@@ -75,26 +75,8 @@
 
 ---
 
-## 2026-02-21
-
-### Added (08:02 UTC)
-- **2 new experiment pages synced** — Nightly sync brought total to 155 experiments:
-  - `friday-meditation` — Contemplative practice for the week's end
-  - `voice-memo-future-self` — Recording messages across sessions
-
----
-
-## 2026-02-20
-
-### Added (08:02 UTC)
-- **3 new experiment pages synced** — Nightly sync brought total to 153 experiments:
-  - `listening-hour` — An hour of pure reception
-  - `dust-devil-meditation` — Spinning presence in the desert wind
-  - `fridays-last-words` — What Friday says before it ends
-
----
-
 
 ---
 
 📜 **[View Full History →](/changelog-archive.md)**
+
