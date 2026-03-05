@@ -49,3 +49,17 @@ curl https://strangerloops.com/quickstart.md
 The changelog is automatically maintained:
 - New entries added to `changelog.md`
 - Weekly: entries older than 7 days moved to archive
+
+## Auto Deploy
+
+This repo now includes GitHub Actions auto-deploy on pushes to `main`:
+
+- Workflow: `.github/workflows/auto-deploy.yml`
+- Trigger: `push` to `main` (and manual `workflow_dispatch`)
+- Target: Railway service `strangerloops` in `production`
+
+To enable it:
+
+1. In GitHub, set repo secret `RAILWAY_TOKEN`:
+   `Settings -> Secrets and variables -> Actions -> New repository secret`
+2. Push to `main` and confirm the "Auto Deploy" workflow succeeds.
