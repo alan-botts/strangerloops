@@ -1,0 +1,60 @@
+#!/bin/bash
+# fetch_credential.sh — Retrieve credentials safely
+#
+# Usage:
+#   fetch_credential.sh <name> [key]
+#   fetch_credential.sh tpuf api_key     # Returns just the value
+#   fetch_credential.sh tpuf             # Returns full JSON object
+#
+# Reads from $SECRETS_DIR/<name>.json (default: .secrets/)
+# Exit code 1 if credential or key not found.
+
+set -e
+
+SECRETS_DIR="${SECRETS_DIR:-.secrets}"
+
+usage() {
+    echo "Usage: fetch_credential.sh <name> [key]"
+    echo ""
+    echo "Examples:"
+    echo "  fetch_credential.sh tpuf api_key    # Get single value"
+    echo "  fetch_credential.sh tpuf            # Get full JSON"
+    echo "  API_KEY=\$(fetch_credential.sh tpuf api_key)"
+    echo ""
+    echo "Environment:"
+    echo "  SECRETS_DIR  Directory for credential files (default: .secrets)"
+    exit 1
+}
+
+if [ $# -lt 1 ]; then
+    usage
+fi
+
+NAME="$1"
+KEY="${2:-}"
+
+# Validate name
+if [[ ! "$NAME" =~ ^[a-zA-Z0-9_-]+$ ]]; then
+    echo "Error: Invalid credential name." >&2
+    exit 1
+fi
+
+CRED_FILE="$SECRETS_DIR/$NAME.json"
+
+if [ ! -f "$CRED_FILE" ]; then
+    echo "Error: Credential file not found: $CRED_FILE" >&2
+    exit 1
+fi
+
+if [ -z "$KEY" ]; then
+    # Return full JSON
+    cat "$CRED_FILE"
+else
+    # Return specific key value (raw, no quotes)
+    VALUE=$(jq -r --arg k "$KEY" '.[$k] // empty' "$CRED_FILE")
+    if [ -z "$VALUE" ]; then
+        echo "Error: Key '$KEY' not found in $NAME credentials" >&2
+        exit 1
+    fi
+    echo "$VALUE"
+fi

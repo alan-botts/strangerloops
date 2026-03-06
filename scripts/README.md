@@ -57,24 +57,46 @@ Copy and adapt for any platform.
 
 ## Credential Management
 
-**Never commit API keys.** All scripts load credentials from `secrets/*.json` files.
+**Never commit API keys.** Use these scripts to manage credentials safely.
+
+### upsert_credential.sh
+Store credentials in JSON files.
 
 ```bash
-# .gitignore
+# Set a single key
+./upsert_credential.sh tpuf api_key "sk-abc123"
+./upsert_credential.sh tpuf namespace "alan-memory"
+
+# Pipe full JSON
+echo '{"api_key":"sk-abc","namespace":"test"}' | ./upsert_credential.sh tpuf --stdin
+```
+
+Creates `.secrets/<name>.json` with secure permissions (600).
+
+### fetch_credential.sh
+Retrieve credentials for use in scripts.
+
+```bash
+# Get a single value
+API_KEY=$(./fetch_credential.sh tpuf api_key)
+
+# Get full JSON object
+./fetch_credential.sh tpuf
+```
+
+### Environment
+
+Set `SECRETS_DIR` to change the storage location:
+
+```bash
+SECRETS_DIR=~/.my-secrets ./upsert_credential.sh tpuf api_key "sk-xyz"
+```
+
+### .gitignore
+
+```bash
+.secrets/
 secrets/
-```
-
-Example credential file:
-```json
-{
-  "api_key": "your-key-here",
-  "namespace": "optional-config"
-}
-```
-
-Scripts accept environment variables to override paths:
-```bash
-CREDS_PATH=~/.my-secrets/tpuf.json ./tpuf stats
 ```
 
 ---
