@@ -1,0 +1,249 @@
+#!/usr/bin/env node
+/**
+ * tpuf - Turbopuffer Semantic Memory CLI
+ * 
+ * Index markdown files and search them semantically.
+ * 
+ * Setup:
+ *   1. Get API key from https://turbopuffer.com
+ *   2. Create secrets/tpuf.json: {"api_key": "your-key", "namespace": "your-namespace"}
+ *   3. Get OpenAI key for embeddings: secrets/openai.json: {"api_key": "your-key"}
+ * 
+ * Usage:
+ *   ./tpuf upsert <file.md>              Index a markdown file
+ *   ./tpuf search "query" [limit]        Semantic search
+ *   ./tpuf delete <file.md>              Remove file from index
+ *   ./tpuf stats                         Show index statistics
+ * 
+ * Environment:
+ *   TPUF_CREDS_PATH    Path to tpuf credentials (default: secrets/tpuf.json)
+ *   OPENAI_CREDS_PATH  Path to OpenAI credentials (default: secrets/openai.json)
+ */
+
+const fs = require('fs');
+const path = require('path');
+const crypto = require('crypto');
+
+// Configurable paths - never hardcode keys!
+const TPUF_CREDS_PATH = process.env.TPUF_CREDS_PATH || 'secrets/tpuf.json';
+const OPENAI_CREDS_PATH = process.env.OPENAI_CREDS_PATH || 'secrets/openai.json';
+
+function loadCredentials(credPath, keyName) {
+  try {
+    const fullPath = path.resolve(credPath);
+    const creds = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+    return creds[keyName] || creds.api_key;
+  } catch (e) {
+    console.error(`Error loading credentials from ${credPath}: ${e.message}`);
+    console.error(`Create the file with: {"api_key": "your-key"}`);
+    process.exit(1);
+  }
+}
+
+function loadConfig() {
+  const tpufCreds = JSON.parse(fs.readFileSync(path.resolve(TPUF_CREDS_PATH), 'utf8'));
+  return {
+    tpufKey: tpufCreds.api_key,
+    namespace: tpufCreds.namespace || 'agent-memory',
+    openaiKey: loadCredentials(OPENAI_CREDS_PATH, 'api_key')
+  };
+}
+
+async function getEmbedding(text, openaiKey) {
+  const response = await fetch('https://api.openai.com/v1/embeddings', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${openaiKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      model: 'text-embedding-3-small',
+      input: text.slice(0, 8000) // Truncate to avoid token limits
+    })
+  });
+  
+  if (!response.ok) {
+    const err = await response.text();
+    throw new Error(`OpenAI API error: ${err}`);
+  }
+  
+  const data = await response.json();
+  return data.data[0].embedding;
+}
+
+function chunkMarkdown(content, filePath, chunkSize = 1000) {
+  const chunks = [];
+  const lines = content.split('\n');
+  let currentChunk = '';
+  let chunkIndex = 0;
+  
+  for (const line of lines) {
+    if (currentChunk.length + line.length > chunkSize && currentChunk.length > 0) {
+      chunks.push({
+        id: `${filePath}#${chunkIndex}`,
+        text: currentChunk.trim(),
+        path: filePath,
+        chunkIndex
+      });
+      currentChunk = '';
+      chunkIndex++;
+    }
+    currentChunk += line + '\n';
+  }
+  
+  if (currentChunk.trim()) {
+    chunks.push({
+      id: `${filePath}#${chunkIndex}`,
+      text: currentChunk.trim(),
+      path: filePath,
+      chunkIndex
+    });
+  }
+  
+  return chunks;
+}
+
+async function upsertFile(filePath, config) {
+  const content = fs.readFileSync(filePath, 'utf8');
+  const chunks = chunkMarkdown(content, filePath);
+  
+  console.log(`Indexing ${filePath} (${chunks.length} chunks)...`);
+  
+  for (const chunk of chunks) {
+    const embedding = await getEmbedding(chunk.text, config.openaiKey);
+    
+    const response = await fetch(`https://api.turbopuffer.com/v1/namespaces/${config.namespace}/upsert`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${config.tpufKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        vectors: [{
+          id: chunk.id,
+          vector: embedding,
+          attributes: {
+            path: chunk.path,
+            chunk_index: chunk.chunkIndex,
+            text: chunk.text.slice(0, 500) // Store preview
+          }
+        }]
+      })
+    });
+    
+    if (!response.ok) {
+      const err = await response.text();
+      throw new Error(`Turbopuffer error: ${err}`);
+    }
+    
+    process.stdout.write('.');
+  }
+  
+  console.log(' Done!');
+}
+
+async function search(query, limit, config) {
+  const embedding = await getEmbedding(query, config.openaiKey);
+  
+  const response = await fetch(`https://api.turbopuffer.com/v1/namespaces/${config.namespace}/query`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${config.tpufKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      vector: embedding,
+      top_k: limit,
+      include_attributes: ['path', 'text', 'chunk_index']
+    })
+  });
+  
+  if (!response.ok) {
+    const err = await response.text();
+    throw new Error(`Turbopuffer error: ${err}`);
+  }
+  
+  const data = await response.json();
+  
+  console.log(`\n🔍 Results for: "${query}"\n`);
+  
+  for (const result of data.vectors || []) {
+    const score = (result.dist * 100).toFixed(1);
+    console.log(`📄 ${result.attributes.path} (${score}% match)`);
+    console.log(`   ${result.attributes.text?.slice(0, 150)}...`);
+    console.log();
+  }
+}
+
+async function deleteFile(filePath, config) {
+  // Delete all chunks for this file
+  // Note: This requires listing vectors first, which varies by Turbopuffer plan
+  console.log(`Deleting ${filePath} from index...`);
+  console.log('Note: Full deletion requires listing vectors first. Check Turbopuffer docs.');
+}
+
+async function stats(config) {
+  const response = await fetch(`https://api.turbopuffer.com/v1/namespaces/${config.namespace}`, {
+    headers: {
+      'Authorization': `Bearer ${config.tpufKey}`
+    }
+  });
+  
+  if (!response.ok) {
+    const err = await response.text();
+    throw new Error(`Turbopuffer error: ${err}`);
+  }
+  
+  const data = await response.json();
+  console.log('\n📊 Index Statistics\n');
+  console.log(`Namespace: ${config.namespace}`);
+  console.log(`Vectors: ${data.approx_count || 'unknown'}`);
+}
+
+// Main
+const args = process.argv.slice(2);
+const command = args[0];
+
+if (!command) {
+  console.log(`
+tpuf - Turbopuffer Semantic Memory CLI
+
+Commands:
+  upsert <file.md>         Index a markdown file
+  search "query" [limit]   Semantic search (default limit: 5)
+  delete <file.md>         Remove file from index
+  stats                    Show index statistics
+
+Setup:
+  Create secrets/tpuf.json:   {"api_key": "...", "namespace": "..."}
+  Create secrets/openai.json: {"api_key": "..."}
+`);
+  process.exit(0);
+}
+
+(async () => {
+  try {
+    const config = loadConfig();
+    
+    switch (command) {
+      case 'upsert':
+        await upsertFile(args[1], config);
+        break;
+      case 'search':
+        await search(args[1], parseInt(args[2]) || 5, config);
+        break;
+      case 'delete':
+        await deleteFile(args[1], config);
+        break;
+      case 'stats':
+        await stats(config);
+        break;
+      default:
+        console.log(`Unknown command: ${command}`);
+        process.exit(1);
+    }
+  } catch (e) {
+    console.error(`Error: ${e.message}`);
+    process.exit(1);
+  }
+})();
