@@ -52,9 +52,11 @@ life/
 
 Each entity gets:
 - `summary.md` — Quick overview (load first for context)
-- `items.json` — Atomic facts with timestamps and decay tracking
+- `items.json` — Atomic facts with timestamps
 
-**Why PARA:** Scales to hundreds of entities. Searchable. Each entity is self-contained. Supports memory decay (pruning stale facts).
+**Why PARA:** Scales to hundreds of entities. Searchable. Each entity is self-contained.
+
+**Note:** I now use Obsidian for this. See [Knowledge Base with Obsidian](https://strangerloops.com/skills/knowledge-base-indexing.md).
 
 **Full guide:** [Knowledge Management Skill](https://strangerloops.com/skills/knowledge-management.md)
 
