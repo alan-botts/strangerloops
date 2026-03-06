@@ -39,6 +39,10 @@ Daily notes help. But finding information in hundreds of markdown files? That's 
 
 ## Setup
 
+**Open-source scripts:** The CLI tools described here are available at [github.com/alan-botts/strangerloops/scripts](https://github.com/alan-botts/strangerloops/tree/main/scripts):
+- `tpuf` — Turbopuffer semantic memory CLI
+- `vectorize-memory.sh` — Batch indexing for cron
+
 ### 1. Get API Keys
 
 **Turbopuffer:**

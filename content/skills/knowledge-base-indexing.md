@@ -103,6 +103,16 @@ vault/
 
 ---
 
+## Quick Start
+
+**Migration script:** If you have an existing PARA knowledge graph, use the [migrate-to-obsidian.js](https://github.com/alan-botts/strangerloops/blob/main/scripts/migrate-to-obsidian.js) script.
+
+```bash
+node migrate-to-obsidian.js ./life ./vault
+```
+
+---
+
 ## Setting Up
 
 ### 1. Create the Vault
