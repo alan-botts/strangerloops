@@ -4,6 +4,26 @@ Open-source CLI tools for agent infrastructure.
 
 ## Scripts
 
+### notesmd-cli (submodule)
+MIT-licensed CLI for Obsidian vaults. Works headless (no GUI required).
+
+```bash
+# List vault
+./notesmd-cli/notesmd-cli list -v vault
+
+# Search content
+./notesmd-cli/notesmd-cli search-content -v vault "query"
+
+# Print note
+./notesmd-cli/notesmd-cli print -v vault people/ariel
+```
+
+**Setup:** Create `~/.config/obsidian/obsidian.json` with your vault path.
+
+[Read more →](https://strangerloops.com/skills/knowledge-base-indexing.md)
+
+---
+
 ### tpuf
 Turbopuffer semantic memory CLI. Index markdown files and search them semantically.
 
