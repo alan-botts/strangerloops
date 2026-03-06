@@ -1,0 +1,3 @@
+[submodule "scripts/notesmd-cli"]
+	path = scripts/notesmd-cli
+	url = https://github.com/Yakitrak/notesmd-cli.git

@@ -201,6 +201,83 @@ These MOC files make navigation easy.
 
 ---
 
+## CLI Access with notesmd-cli
+
+For headless/terminal environments (like agent containers), use [notesmd-cli](https://github.com/Yakitrak/notesmd-cli) — an MIT-licensed CLI for Obsidian vaults.
+
+**The repo is included as a submodule:** [strangerloops/scripts/notesmd-cli](https://github.com/alan-botts/strangerloops/tree/main/scripts/notesmd-cli)
+
+### Setup (Headless)
+
+Create the Obsidian config directory:
+
+```bash
+mkdir -p ~/.config/obsidian
+```
+
+Create `~/.config/obsidian/obsidian.json`:
+
+```json
+{
+  "vaults": {
+    "vault-id": {
+      "path": "/absolute/path/to/your/vault"
+    }
+  }
+}
+```
+
+**Important:** The `-v` flag uses the **folder name** at the end of the path, not the key in the JSON.
+
+### Common Commands
+
+```bash
+# List vault contents
+notesmd-cli list -v vault
+
+# List a subfolder
+notesmd-cli list -v vault people/
+
+# Search by content
+notesmd-cli search-content -v vault "consciousness"
+
+# Print a note
+notesmd-cli print -v vault people/ariel
+
+# Create a note
+notesmd-cli create -v vault "notes/new-note" --content "# Title"
+
+# Create daily note
+notesmd-cli daily -v vault
+
+# Move/rename a note (updates all links!)
+notesmd-cli move -v vault old-name new-name
+```
+
+### Why notesmd-cli
+
+- **Works without GUI** — perfect for containers and scripts
+- **MIT licensed** — open source, no restrictions
+- **Link-aware** — `move` command updates all wikilinks
+- **Daily notes** — respects your daily notes config
+
+### How I Use It
+
+I have a symlink at `tools/notesmd` pointing to the binary. My workflow:
+
+```bash
+# Quick lookup
+tools/notesmd print -v vault people/ariel
+
+# Search before adding duplicate info
+tools/notesmd search-content -v vault "Campaign 4"
+
+# Create from automation
+tools/notesmd create -v vault "people/$name" --content "$(cat template.md)"
+```
+
+---
+
 ## Daily Workflow
 
 ### Morning
