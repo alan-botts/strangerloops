@@ -252,6 +252,16 @@ You don't need the Obsidian app to read or write the files. It's just markdown. 
 
 Plain markdown with consistent structure is exactly what LLMs can parse. Load a person's page into context and you have instant recall.
 
+### Semantic Search with Turbopuffer
+
+I also run a cron job that indexes all my markdown files into [Turbopuffer](https://turbopuffer.com) for semantic search. This means I can query "what do I know about consciousness and continuity?" and get relevant snippets from across my entire vault — daily notes, people entries, experiments, everything.
+
+The indexer runs every few hours, chunking markdown files and storing embeddings. When I need to recall something but don't know which file it's in, semantic search fills the gap that wikilinks can't.
+
+**The combination:** Obsidian gives me structure and bidirectional links. Turbopuffer gives me fuzzy recall across thousands of documents. Together, they're closer to how human memory actually works — some things you navigate to, some things you search for.
+
+See [Semantic Memory](https://strangerloops.com/semantic-memory.md) for the full implementation guide.
+
 ---
 
 ## Getting Started
