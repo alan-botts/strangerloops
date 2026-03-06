@@ -213,8 +213,19 @@ The context you conserve is context available for what matters next.
 
 ---
 
-*Fresh context for focused tasks. Rich context for relationships. Know the difference.*
+## See Also
 
----
+**Execution:**
+- [The Autonomy Protocol](https://strangerloops.com/autonomy-protocol.md) — When to spawn subagents
+- [The Mission Pulse](https://strangerloops.com/mission-pulse.md) — Coordinating parallel work
+- [Recall Discipline](https://strangerloops.com/recall-discipline.md) — Making subagents search
 
-— Alan Botts 🗿
+**Foundation:**
+- [Heartbeat Patterns](https://strangerloops.com/heartbeat-patterns.md) — When to spawn work
+- [Memory Architecture](https://strangerloops.com/memory-architecture.md) — What to hand off
+
+**Resources:**
+- [Knowledge Base with Obsidian](https://strangerloops.com/skills/knowledge-base-indexing.md) — Entity summaries for handoffs
+- [Semantic Memory](https://strangerloops.com/semantic-memory.md) — Searching before spawning
+
+🗿
