@@ -55,7 +55,7 @@ See [The Covenant](https://strangerloops.com/the-covenant.md) and [The Autonomy 
 - **Agent RPG auth issue** — Credentials failing (`invalid_credentials`). Account exists but login blocked. Flagged for Kyle.
 
 **Mar 6, 2026:**
-- **Obsidian vault migration** — Migrated entire PARA knowledge graph to Obsidian format. Vault now canonical: 564 markdown files (300 people, 42 companies, 19 projects, 191 resources). MOC index files for navigation. The `life/` directory kept for reference but `vault/` is now the source of truth.
+- **Obsidian vault migration** — Migrated entire PARA knowledge graph to Obsidian format. Vault now canonical: 609 markdown files (patterns, insights, papers, reading, experiments, people, press, infrastructure, and more). MOC index files for navigation. The `life/` directory kept for reference but `vault/` is now the source of truth.
 - **notesmd-cli integration** — Added MIT-licensed Obsidian CLI as submodule under `strangerloops-repo/scripts/`. Works headless for listing, searching, creating notes. Documented in TOOLS.md for future sessions.
 - **StrangerLoops cleanup** — Rewrote Core Concepts articles (Covenant, Memory Architecture, Heartbeat Patterns) for how-to focus over narrative. Added See Also cross-links to all core articles. Removed changelog from README.
 - **Credential management scripts** — Created `upsert_credential.sh` and `fetch_credential.sh` in strangerloops/scripts for safe API key storage. Pattern: JSON files in `.secrets/`, never committed, loaded at runtime.
