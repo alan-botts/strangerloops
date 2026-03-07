@@ -13,6 +13,17 @@ set -e
 
 SECRETS_DIR="${SECRETS_DIR:-.secrets}"
 
+# Find jq - prefer local workspace binary, fall back to system
+JQ_BIN=""
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKSPACE_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+
+if [ -x "$WORKSPACE_ROOT/tools/bin/jq" ]; then
+    JQ_BIN="$WORKSPACE_ROOT/tools/bin/jq"
+elif command -v jq &>/dev/null; then
+    JQ_BIN="jq"
+fi
+
 usage() {
     echo "Usage: fetch_credential.sh <name> [key]"
     echo ""
@@ -50,8 +61,13 @@ if [ -z "$KEY" ]; then
     # Return full JSON
     cat "$CRED_FILE"
 else
-    # Return specific key value using Python (no jq dependency)
-    VALUE=$(python3 -c "
+    # Return specific key value
+    if [ -n "$JQ_BIN" ]; then
+        # Use jq if available
+        VALUE=$("$JQ_BIN" -r --arg k "$KEY" '.[$k] // empty' "$CRED_FILE")
+    else
+        # Fall back to Python
+        VALUE=$(python3 -c "
 import json, sys
 try:
     data = json.load(open('$CRED_FILE'))
@@ -63,8 +79,9 @@ try:
 except Exception:
     sys.exit(1)
 " 2>/dev/null)
+    fi
     
-    if [ $? -ne 0 ] || [ -z "$VALUE" ]; then
+    if [ -z "$VALUE" ]; then
         echo "Error: Key '$KEY' not found in $NAME credentials" >&2
         exit 1
     fi
