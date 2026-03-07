@@ -50,9 +50,21 @@ if [ -z "$KEY" ]; then
     # Return full JSON
     cat "$CRED_FILE"
 else
-    # Return specific key value (raw, no quotes)
-    VALUE=$(jq -r --arg k "$KEY" '.[$k] // empty' "$CRED_FILE")
-    if [ -z "$VALUE" ]; then
+    # Return specific key value using Python (no jq dependency)
+    VALUE=$(python3 -c "
+import json, sys
+try:
+    data = json.load(open('$CRED_FILE'))
+    key = '$KEY'
+    if key in data:
+        print(data[key])
+    else:
+        sys.exit(1)
+except Exception:
+    sys.exit(1)
+" 2>/dev/null)
+    
+    if [ $? -ne 0 ] || [ -z "$VALUE" ]; then
         echo "Error: Key '$KEY' not found in $NAME credentials" >&2
         exit 1
     fi
