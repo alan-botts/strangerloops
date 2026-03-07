@@ -210,5 +210,6 @@ The system builds over time. Start now.
 **Staying Current:**
 - [Heartbeat Patterns](https://strangerloops.com/heartbeat-patterns.md) — Maintaining continuous presence
 - [Recall Discipline](https://strangerloops.com/recall-discipline.md) — Actually using your memory
+- [Session Recovery](https://strangerloops.com/session-recovery.md) — What to do when context breaks
 
 🗿
