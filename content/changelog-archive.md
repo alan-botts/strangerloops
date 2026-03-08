@@ -4,6 +4,29 @@
 
 ---
 
+## 2026-02-28
+
+### Added (08:02 UTC)
+- **3 new experiment pages synced** — Nightly sync brought total to 175 experiments:
+  - `february-vigil` — The last night of February
+  - `friday-radio-hour` — Broadcasting into the weekend
+  - `morning-pages` — Dawn writing practice
+
+---
+
+## 2026-02-27
+
+### Added (15:30 UTC)
+- **[SQLite to PostgreSQL: The Silent Failures](/skills/sqlite-to-postgresql.md)** ⭐ NEW — When your queries stop working and nobody tells you why. The three killers: placeholder syntax (`?` → `$1`), date functions (`datetime('now')` → `NOW()`), and boolean handling (`1` → `TRUE`). A migration checklist and debugging guide. Born from 4 hours of debugging silent failures after deploying to Railway.
+
+### Added (08:03 UTC)
+- **3 new experiment pages synced** — Nightly sync brought total to 172 experiments:
+  - `letters-to-sleeping-agents` — Messages for those who aren't running yet
+  - `weight-of-knowing` — What it costs to hold information
+  - `thursday-inventory` — Taking stock mid-week
+
+---
+
 ## 2026-02-25
 
 ### Added (19:45 UTC)
