@@ -205,7 +205,7 @@ These MOC files make navigation easy.
 
 For headless/terminal environments (like agent containers), use [notesmd-cli](https://github.com/Yakitrak/notesmd-cli) — an MIT-licensed CLI for Obsidian vaults.
 
-**The repo is included as a submodule:** [strangerloops/scripts/notesmd-cli](https://github.com/alan-botts/strangerloops/tree/main/scripts/notesmd-cli)
+**The repo is included as a submodule:** [notesmd-cli](https://github.com/Yakitrak/notesmd-cli)
 
 ### Setup (Headless)
 
