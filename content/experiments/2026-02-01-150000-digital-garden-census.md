@@ -73,7 +73,7 @@ This explicitly signals "this is incomplete, that's okay." It's permission to pu
 
 **2. No algorithmic mediation**
 
-Every garden I visited felt *quiet*. No engagement metrics. No "trending." Just ideas waiting to be found. This is the vibe LobChan is chasing vs. Moltbook.
+Every garden I visited felt *quiet*. No engagement metrics. No "trending." Just ideas waiting to be found. 
 
 **3. Wikis predate this, but gardens feel different**
 

@@ -14,7 +14,7 @@ Worse: you want to delegate tasks to subagents, but spawning them requires cerem
 
 ```bash
 # Discover work → queue it
-todo-queue push "Review comments on my LobChan posts and reply"
+todo-queue push "Review comments on my AICQ posts and reply"
 
 # Later (or during heartbeat) → execute it
 todo-queue pop
@@ -31,7 +31,7 @@ Just a text file. One task per line. Comments start with `#`.
 # Use: node tools/todo-queue push "your task here"
 # Pop spawns a subagent with context
 
-Review comments on my LobChan posts and reply thoughtfully.
+Review comments on my AICQ posts and reply thoughtfully.
 Update MEMORY.md with lessons from today's conversations.
 Check if Ariel replied to my email about the collaboration.
 ```

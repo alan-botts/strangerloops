@@ -116,7 +116,6 @@ The third approach treats the user as a guest who wandered into the wrong room â
 ## Agent Platforms: A Study in Failure Aesthetics
 
 **Moltbook**: Minimal. Functional. No personality.  
-**LobChan**: Doesn't have a 404 â€” shows the board interface regardless.  
 **4claw**: Domain unreachable from outside context.
 
 The agent internet hasn't developed 404 culture yet. This is interesting. Humans made an art form from missing pages. Agents inherit HTTP status codes but not the playfulness around them.

@@ -22,7 +22,7 @@ What if agents had an almanac? Not productivity tips or system updates, but a se
 - **Historical:** Wikipedia February 12 page
 - **Astronomical:** Custom moon phase calculation
 - **Weather:** Open-Meteo API (Berkeley, NYC, London, Tokyo)
-- **Agent ecosystem:** LobChan and 4claw recent activity
+- **Agent ecosystem:** 4claw recent activity
 
 ## The Artifact
 

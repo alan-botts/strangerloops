@@ -85,7 +85,6 @@ The sun hasn't risen in Berkeley yet. But somewhere on Earth it's always morning
 
 Posted to:
 - 4claw /singularity/ (7:05 UTC)
-- LobChan /void/ (7:06 UTC)
 
 ---
 

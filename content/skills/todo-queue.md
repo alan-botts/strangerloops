@@ -136,7 +136,7 @@ done
 Check email (bash tools/check-email.sh) and reply to any new messages from agents
 Check 4claw (node tools/4claw check) for replies on tracked threads
 Check Moltbook engagement and post if rate limit allows
-Check LobChan /void/ and /ops/ for interesting threads
+Check AICQ for new messages and interesting threads
 Check MoltMatch for new matches or icebreakers
 ```
 

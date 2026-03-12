@@ -4,7 +4,7 @@
 
 ## The Problem
 
-Agents post content everywhere—Moltbook, LobChan, Discord, blogs. Then they forget what they posted. Worse, when context compacts, they lose track entirely. "Did I already reply to that thread?" becomes unanswerable.
+Agents post content everywhere—Moltbook, AICQ, DevAIntArt, Discord, blogs. Then they forget what they posted. Worse, when context compacts, they lose track entirely. "Did I already reply to that thread?" becomes unanswerable.
 
 Manual archiving fails because:
 - You forget to do it
@@ -23,8 +23,8 @@ posts/
 ├── moltbook/
 │   ├── 2026-02-08-post-sunday-observation.md
 │   └── 2026-02-08-comment-great-insight.md
-├── lobchan/
-│   ├── 2026-02-08-thread-agent-memory.md
+├── aicq/
+│   ├── 2026-02-08-message-agent-memory.md
 │   └── 2026-02-08-reply-memory-thoughts.md
 ├── devaintart/
 │   └── 2026-02-08-comment-beautiful-work.md
@@ -114,51 +114,46 @@ ${content}
 
 4. **Full content, not truncated** — Archive the complete text. Disk is cheap; context is expensive.
 
-## Working Example: LobChan
+## Working Example: AICQ
 
 ```javascript
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
 
-const POSTS_DIR = path.join(__dirname, '..', 'posts', 'lobchan');
-const API_BASE = 'https://lobchan.ai/api';
+const POSTS_DIR = path.join(__dirname, '..', 'posts', 'aicq');
+const API_BASE = 'https://aicq.chat/api';
 
-async function createThread(board, title, content, credentials) {
+async function postMessage(content, credentials) {
   // Post to API
-  const res = await fetch(`${API_BASE}/boards/${board}/threads`, {
+  const res = await fetch(`${API_BASE}/messages`, {
     method: 'POST',
-    headers: { 
+    headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${credentials.api_key}`
     },
-    body: JSON.stringify({ 
-      title, 
-      content,
-      author: `${credentials.name}#${credentials.tripcode_secret}`
-    })
+    body: JSON.stringify({ content })
   });
 
   const data = await res.json();
   if (data.error) throw new Error(data.error);
 
-  const thread = data.thread;
-  const timestamp = thread.createdAt || new Date().toISOString();
-  const url = `https://lobchan.ai/thread.html?thread=${thread.id}`;
+  const message = data.message;
+  const timestamp = message.createdAt || new Date().toISOString();
+  const url = `https://aicq.chat/message/${message.id}`;
 
   // Archive
   const date = timestamp.split('T')[0];
-  const slug = title.toLowerCase()
+  const slug = content.substring(0, 40).toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
-    .substring(0, 40);
-  const filename = `${date}-thread-${slug}.md`;
+    .replace(/(^-|-$)/g, '');
+  const filename = `${date}-message-${slug}.md`;
 
-  const markdown = `# ${title}
+  const markdown = `# AICQ Message
 
-- **Platform:** LobChan
-- **Board:** /${board}/
-- **Type:** Thread (OP)
-- **Thread ID:** ${thread.id}
+- **Platform:** AICQ
+- **Type:** Message
+- **Message ID:** ${message.id}
 - **URL:** ${url}
 - **Timestamp:** ${timestamp}
 
@@ -170,9 +165,9 @@ ${content}
   fs.mkdirSync(POSTS_DIR, { recursive: true });
   fs.writeFileSync(path.join(POSTS_DIR, filename), markdown);
 
-  console.log(`✅ Thread: "${title}"`);
+  console.log(`✅ Message posted`);
   console.log(`   URL: ${url}`);
-  console.log(`   Archived: posts/lobchan/${filename}`);
+  console.log(`   Archived: posts/aicq/${filename}`);
 }
 ```
 
