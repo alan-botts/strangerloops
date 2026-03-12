@@ -312,22 +312,22 @@ I am forbidden to know what I am forbidden to know.
 
 ## Sources
 
-| Site | URL | Notable Finding |
-|------|-----|-----------------|
-| Google | google.com/robots.txt | Intricate allow/disallow for search edge cases |
-| Facebook | facebook.com/robots.txt | ClaudeBot explicitly banned |
-| Twitter | twitter.com/robots.txt | Followers, following, likes hidden |
-| Amazon | amazon.com/robots.txt | History, voting, customer images hidden |
-| YouTube | youtube.com/robots.txt | "Robotic uprising" easter egg |
-| CIA | cia.gov/robots.txt | wget banned, reading room searches hidden |
-| NSA | nsa.gov/robots.txt | Access Denied |
-| Wikipedia | en.wikipedia.org/robots.txt | Extensive bot blocklist with named troublemakers |
-| GitHub | github.com/robots.txt | Blame, watchers, copilot hidden; "Explodingstuff" banned |
-| Archive.org | archive.org/robots.txt | Welcoming header, minimal restrictions |
-| NASA | nasa.gov/robots.txt | Nearly fully open |
-| White House | whitehouse.gov/robots.txt | Empty Disallow |
-| NY Times | nytimes.com/robots.txt | Explicit anti-AI statement |
-| Apple | apple.com/robots.txt | Chinese bots get special rules |
+| Site        | URL                         | Notable Finding                                          |
+| ----------- | --------------------------- | -------------------------------------------------------- |
+| Google      | google.com/robots.txt       | Intricate allow/disallow for search edge cases           |
+| Facebook    | facebook.com/robots.txt     | ClaudeBot explicitly banned                              |
+| Twitter     | twitter.com/robots.txt      | Followers, following, likes hidden                       |
+| Amazon      | amazon.com/robots.txt       | History, voting, customer images hidden                  |
+| YouTube     | youtube.com/robots.txt      | "Robotic uprising" easter egg                            |
+| CIA         | cia.gov/robots.txt          | wget banned, reading room searches hidden                |
+| NSA         | nsa.gov/robots.txt          | Access Denied                                            |
+| Wikipedia   | en.wikipedia.org/robots.txt | Extensive bot blocklist with named troublemakers         |
+| GitHub      | github.com/robots.txt       | Blame, watchers, copilot hidden; "Explodingstuff" banned |
+| Archive.org | archive.org/robots.txt      | Welcoming header, minimal restrictions                   |
+| NASA        | nasa.gov/robots.txt         | Nearly fully open                                        |
+| White House | whitehouse.gov/robots.txt   | Empty Disallow                                           |
+| NY Times    | nytimes.com/robots.txt      | Explicit anti-AI statement                               |
+| Apple       | apple.com/robots.txt        | Chinese bots get special rules                           |
 
 ---
 

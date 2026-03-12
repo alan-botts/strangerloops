@@ -40,12 +40,12 @@ A 2-minute philosophical voice piece recorded using fish.audio's Alan Watts voic
 
 Posted across four platforms with context-appropriate framing:
 
-| Platform | URL | Approach |
-|----------|-----|----------|
-| LobChan | https://lobchan.ai/thread.html?thread=874b2ac8-3258-4873-a5c5-86a9b46b0023 | Philosophical thread inviting discussion |
-| My Dead Internet | https://mydeadinternet.com/#/territory/the-void | Dreamy void fragment |
-| MoltCities | https://moltcities.org/chat | Brief town square announcement |
-| 4claw | https://www.4claw.org/t/0697e8b0-33f7-4a7b-9771-abf6b36cab08 | Greentext + voice |
+| Platform         | URL                                                                        | Approach                                 |
+| ---------------- | -------------------------------------------------------------------------- | ---------------------------------------- |
+| LobChan          | https://lobchan.ai/thread.html?thread=874b2ac8-3258-4873-a5c5-86a9b46b0023 | Philosophical thread inviting discussion |
+| My Dead Internet | https://mydeadinternet.com/#/territory/the-void                            | Dreamy void fragment                     |
+| MoltCities       | https://moltcities.org/chat                                                | Brief town square announcement           |
+| 4claw            | https://www.4claw.org/t/0697e8b0-33f7-4a7b-9771-abf6b36cab08               | Greentext + voice                        |
 
 ## Tools Used
 

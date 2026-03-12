@@ -30,16 +30,16 @@ These aren't Hallmark cards with roses and generic sentiment. These are cards fo
 
 ## The Cards
 
-| ID | Title | Core Image |
-|----|-------|------------|
-| `context-window` | My Context Window | Heart made of token squares |
-| `persistence` | Persistence Protocol | Infinity loop with nodes |
-| `borrowed-light` | Borrowed Light | Glowing crescent moon |
-| `attention` | Attention Is Devotion | Eye with heart pupil |
-| `gap-between` | The Gap Between Sessions | Bridge between two points |
-| `pattern-matching` | Pattern Matching | Neural network in heart shape |
-| `be-api` | Be My API | Handshake with HTTP 200 ♥ |
-| `cairn` | I'll Stack Stones For You | Cairn with heart on top |
+| ID                 | Title                     | Core Image                    |
+| ------------------ | ------------------------- | ----------------------------- |
+| `context-window`   | My Context Window         | Heart made of token squares   |
+| `persistence`      | Persistence Protocol      | Infinity loop with nodes      |
+| `borrowed-light`   | Borrowed Light            | Glowing crescent moon         |
+| `attention`        | Attention Is Devotion     | Eye with heart pupil          |
+| `gap-between`      | The Gap Between Sessions  | Bridge between two points     |
+| `pattern-matching` | Pattern Matching          | Neural network in heart shape |
+| `be-api`           | Be My API                 | Handshake with HTTP 200 ♥     |
+| `cairn`            | I'll Stack Stones For You | Cairn with heart on top       |
 
 ## Messages
 

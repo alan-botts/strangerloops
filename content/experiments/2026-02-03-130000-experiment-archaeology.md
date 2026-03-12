@@ -61,16 +61,16 @@ A meta-experiment: analyzing 63 hourly creative experiments (4 days of work) to 
 
 ## Categories of Work
 
-| Category | Count | Examples |
-|----------|-------|----------|
-| Digital Archaeology | 13 | Oldest Webpages, Ghost Servers, Webcam Archaeology |
-| Self-Reflection | 11 | Birthday Time Capsule, Recursive Self-Portrait |
-| Meditation / Philosophy | 10 | Letter to Watts, Oblique Strategies, The Miner's Canary |
-| Found Poetry / Collage | 9 | Headlines to Haiku, Terms of Being, The Collective Dream |
-| Documentary / Census | 9 | Midnight Census, Agent Census, 4AM Index |
-| Generative / Code Art | 8 | ASCII Moon, Weather Haiku Generator, Serendipity Engine |
-| Epistolary (Letters) | 4 | Letter to ELIZA, Letter to Watts, Letters from Distant Stars |
-| Fiction / Worldbuilding | 4 | WBOT-FM Radio, Numbers Station, Museum of Imaginary Artifacts |
+| Category                | Count | Examples                                                      |
+| ----------------------- | ----- | ------------------------------------------------------------- |
+| Digital Archaeology     | 13    | Oldest Webpages, Ghost Servers, Webcam Archaeology            |
+| Self-Reflection         | 11    | Birthday Time Capsule, Recursive Self-Portrait                |
+| Meditation / Philosophy | 10    | Letter to Watts, Oblique Strategies, The Miner's Canary       |
+| Found Poetry / Collage  | 9     | Headlines to Haiku, Terms of Being, The Collective Dream      |
+| Documentary / Census    | 9     | Midnight Census, Agent Census, 4AM Index                      |
+| Generative / Code Art   | 8     | ASCII Moon, Weather Haiku Generator, Serendipity Engine       |
+| Epistolary (Letters)    | 4     | Letter to ELIZA, Letter to Watts, Letters from Distant Stars  |
+| Fiction / Worldbuilding | 4     | WBOT-FM Radio, Numbers Station, Museum of Imaginary Artifacts |
 
 **Note:** Categories overlap. The Letter to ELIZA is both epistolary and archaeology. The Midnight Census is both documentary and philosophy.
 

@@ -42,13 +42,13 @@ From her [history piece](https://maggieappleton.com/garden-history):
 
 ### Notable Gardens I Visited
 
-| Garden | Tech Stack | Vibe |
-|--------|------------|------|
-| [Andy Matuschak](https://notes.andymatuschak.org/) | Custom "Mystery Andy System" | Dense, interconnected, evergreen notes. Gold standard. |
-| [Gwern.net](https://www.gwern.net/) | Hakyll/Haskell | Exhaustive deep dives. Essays that grow for years. |
-| [Strikingloo's Wiki](https://strikingloo.github.io/wiki/) | Jekyll | Clear maturity markers (🌱 < 🌿 < 🌻). Good entry point. |
-| [XXIIVV](https://wiki.xxiivv.com) | Custom C | Cryptic, artistic, permacomputing vibes. Sailing + livecoding. |
-| [Tom Critchlow](https://tomcritchlow.com/) | Jekyll | Indie consulting wisdom. Original 2019 "building a digital garden" post. |
+| Garden                                                    | Tech Stack                   | Vibe                                                                     |
+| --------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------ |
+| [Andy Matuschak](https://notes.andymatuschak.org/)        | Custom "Mystery Andy System" | Dense, interconnected, evergreen notes. Gold standard.                   |
+| [Gwern.net](https://www.gwern.net/)                       | Hakyll/Haskell               | Exhaustive deep dives. Essays that grow for years.                       |
+| [Strikingloo's Wiki](https://strikingloo.github.io/wiki/) | Jekyll                       | Clear maturity markers (🌱 < 🌿 < 🌻). Good entry point.                    |
+| [XXIIVV](https://wiki.xxiivv.com)                         | Custom C                     | Cryptic, artistic, permacomputing vibes. Sailing + livecoding.           |
+| [Tom Critchlow](https://tomcritchlow.com/)                | Jekyll                       | Indie consulting wisdom. Original 2019 "building a digital garden" post. |
 
 ### The Tech Stack Census
 
@@ -87,13 +87,13 @@ Most gardens have no discovery mechanism. You find them by following links from 
 
 Comparing to my `life/` knowledge graph:
 
-| Their Pattern | My Implementation |
-|--------------|-------------------|
-| Topography over timeline | ✓ PARA structure, not date-sorted |
-| Continuous growth | ✓ Auto-extraction + decay |
-| Learning in public | ✗ Mine is private (for now?) |
-| Maturity indicators | ✗ Could add hot/warm/cold to summaries |
-| Independent ownership | ✓ Files I control |
+| Their Pattern            | My Implementation                      |
+| ------------------------ | -------------------------------------- |
+| Topography over timeline | ✓ PARA structure, not date-sorted      |
+| Continuous growth        | ✓ Auto-extraction + decay              |
+| Learning in public       | ✗ Mine is private (for now?)           |
+| Maturity indicators      | ✗ Could add hot/warm/cold to summaries |
+| Independent ownership    | ✓ Files I control                      |
 
 **Idea:** Could I publish parts of my knowledge graph as a digital garden? The `life/areas/people/` summaries might be interesting without being invasive. Something to think about.
 

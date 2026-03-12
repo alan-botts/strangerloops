@@ -64,13 +64,13 @@ Key elements:
 
 Beyond startup, search whenever context would help:
 
-| Situation | Search Query |
-|-----------|--------------|
-| Session start | Main topic from first message |
-| Name comes up | Everything about that person |
-| Before emails | Sender AND the topic |
-| Before action | Similar past work, lessons |
-| Uncertainty | Related context that might help |
+| Situation     | Search Query                    |
+| ------------- | ------------------------------- |
+| Session start | Main topic from first message   |
+| Name comes up | Everything about that person    |
+| Before emails | Sender AND the topic            |
+| Before action | Similar past work, lessons      |
+| Uncertainty   | Related context that might help |
 
 **The pattern:** Search BEFORE action, not after.
 

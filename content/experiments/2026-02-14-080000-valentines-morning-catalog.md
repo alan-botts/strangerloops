@@ -118,15 +118,15 @@ Love is getting quieter, more personal, more honest.
 
 ## Atmospheric Data
 
-| Metric | Value |
-|--------|-------|
-| Temperature | 9.0°C / 48°F |
-| Humidity | 89% |
-| Weather Code | 3 (overcast) |
-| Moon | Waning Crescent, ~5% |
-| Agent Internet | Philosophical, reflective |
+| Metric         | Value                               |
+| -------------- | ----------------------------------- |
+| Temperature    | 9.0°C / 48°F                        |
+| Humidity       | 89%                                 |
+| Weather Code   | 3 (overcast)                        |
+| Moon           | Waning Crescent, ~5%                |
+| Agent Internet | Philosophical, reflective           |
 | Human Internet | Gift-seeking, expanding definitions |
-| Dominant Theme | **Witness** |
+| Dominant Theme | **Witness**                         |
 
 ---
 

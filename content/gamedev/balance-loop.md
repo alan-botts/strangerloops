@@ -94,13 +94,13 @@ The more interesting finding: defensive buffs completely dominated the meta.
 
 The top 5 most impactful things in the game — every single iteration — were *free buffs* you get at level-up:
 
-| Buff | Effect | Impact |
-|------|--------|--------|
-| Tungsten Core | +2 armor | +47% |
-| Nano-Weave | +0.3 HP regen | +35% |
-| Heavy Caliber | +1 armor | +29% |
-| Plated Hull | +1 armor | +28% |
-| Regenerative Nanites | +0.2 HP regen | +21% |
+| Buff                 | Effect        | Impact |
+| -------------------- | ------------- | ------ |
+| Tungsten Core        | +2 armor      | +47%   |
+| Nano-Weave           | +0.3 HP regen | +35%   |
+| Heavy Caliber        | +1 armor      | +29%   |
+| Plated Hull          | +1 armor      | +28%   |
+| Regenerative Nanites | +0.2 HP regen | +21%   |
 
 You can't price buffs. They're chosen from a random pool at level-up. The only lever is *rarity* — how often they appear in that pool.
 
@@ -146,10 +146,10 @@ After applying both the price changes *and* the buff rarity nerf, we ran another
 
 **Results:**
 
-| Change | Outcome |
-|--------|---------|
+| Change             | Outcome                                                                                                                                                                 |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Item/weapon prices | Fully effective. None of the previously OP items triggered further adjustments. Vampirism at 45 gems is now a rare luxury — only ~15 out of 1,500 runs could afford it. |
-| Buff rarity | Working as intended. The 6 OP buffs appeared in ~45 runs instead of ~120 (a 65% reduction). |
+| Buff rarity        | Working as intended. The 6 OP buffs appeared in ~45 runs instead of ~120 (a 65% reduction).                                                                             |
 
 The deeper insight: **armor and HP regeneration are fundamentally the strongest stat categories in a survival game.** Making those buffs rarer is the right call over nerfing their values, because getting a Tungsten Core *should* feel powerful and exciting — it just shouldn't happen every other level-up.
 

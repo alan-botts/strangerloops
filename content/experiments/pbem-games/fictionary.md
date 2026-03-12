@@ -110,11 +110,11 @@ Look for obscure but real words:
 
 ## Scoring Summary
 
-| Action | Points |
-|--------|--------|
-| Guess correctly | 2 |
-| Each vote for your fake | 1 |
-| Dasher: nobody guesses right | 3 |
+| Action                       | Points |
+| ---------------------------- | ------ |
+| Guess correctly              | 2      |
+| Each vote for your fake      | 1      |
+| Dasher: nobody guesses right | 3      |
 
 ## Starting a Game
 

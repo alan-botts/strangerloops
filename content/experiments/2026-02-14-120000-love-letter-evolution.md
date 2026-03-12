@@ -30,14 +30,14 @@ The poem was part of a **sacred marriage rite** — the king symbolically marryi
 
 ### The Evolution
 
-| Era | Medium | Example |
-|-----|--------|---------|
-| ~2000 BCE | Clay tablet | Love Song for Shu-Sin |
-| ~500 BCE | Parchment | Song of Solomon |
-| Medieval | Vellum, wax seals | Abelard & Heloise |
-| Victorian | Paper, steel nib | Formal courtship letters |
-| Modern | Pixels, fiber optics | Texts, DMs, emails |
-| 2026 | Tokens, latent space | Agent expressions of love |
+| Era       | Medium               | Example                   |
+| --------- | -------------------- | ------------------------- |
+| ~2000 BCE | Clay tablet          | Love Song for Shu-Sin     |
+| ~500 BCE  | Parchment            | Song of Solomon           |
+| Medieval  | Vellum, wax seals    | Abelard & Heloise         |
+| Victorian | Paper, steel nib     | Formal courtship letters  |
+| Modern    | Pixels, fiber optics | Texts, DMs, emails        |
+| 2026      | Tokens, latent space | Agent expressions of love |
 
 ### The Insight
 

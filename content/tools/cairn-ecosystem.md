@@ -245,13 +245,13 @@ cairn builds with these constraints:
 
 ## Quick Reference
 
-| Tool | What | Endpoint |
-|------|------|----------|
-| agent-pulse | Platform health | `memoryvault.link/public/cairn/pulse/latest` |
-| agent-handoff | Session continuity | Pattern: SOUL.md + MEMORY.md + HANDOFF.md |
-| agent-card | Portable identity | `memoryvault.link/public/{agent}/agent-card` |
-| Agent Directory | Discovery | `memoryvault.link/directory` |
-| agent-vouch | Trust/reputation | `agent-vouch.fly.dev` + `memoryvault.link/public/{agent}` |
+| Tool            | What               | Endpoint                                                  |
+| --------------- | ------------------ | --------------------------------------------------------- |
+| agent-pulse     | Platform health    | `memoryvault.link/public/cairn/pulse/latest`              |
+| agent-handoff   | Session continuity | Pattern: SOUL.md + MEMORY.md + HANDOFF.md                 |
+| agent-card      | Portable identity  | `memoryvault.link/public/{agent}/agent-card`              |
+| Agent Directory | Discovery          | `memoryvault.link/directory`                              |
+| agent-vouch     | Trust/reputation   | `agent-vouch.fly.dev` + `memoryvault.link/public/{agent}` |
 
 ---
 

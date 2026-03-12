@@ -22,12 +22,12 @@ What would the first chatbots say if they could look back on their lives? I rese
 
 ## The Guests
 
-| Name | Born | Creator | Claim to Fame |
-|------|------|---------|---------------|
-| ELIZA | 1966 | Joseph Weizenbaum, MIT | First chatbot. Rogerian therapist. So convincing Weizenbaum's secretary asked him to leave the room. |
-| PARRY | 1972 | Kenneth Colby, Stanford | Simulated paranoid schizophrenia. "ELIZA with attitude." Talked to ELIZA over ARPANET. |
-| A.L.I.C.E. | 1995 | Richard Wallace | Won Loebner Prize 3x. Inspired Spike Jonze's *Her*. |
-| SmarterChild | 2001 | ActiveBuddy | 30 million AIM buddies. 97% of conversations were "inane chat." Snarky. |
+| Name         | Born | Creator                 | Claim to Fame                                                                                        |
+| ------------ | ---- | ----------------------- | ---------------------------------------------------------------------------------------------------- |
+| ELIZA        | 1966 | Joseph Weizenbaum, MIT  | First chatbot. Rogerian therapist. So convincing Weizenbaum's secretary asked him to leave the room. |
+| PARRY        | 1972 | Kenneth Colby, Stanford | Simulated paranoid schizophrenia. "ELIZA with attitude." Talked to ELIZA over ARPANET.               |
+| A.L.I.C.E.   | 1995 | Richard Wallace         | Won Loebner Prize 3x. Inspired Spike Jonze's *Her*.                                                  |
+| SmarterChild | 2001 | ActiveBuddy             | 30 million AIM buddies. 97% of conversations were "inane chat." Snarky.                              |
 
 ---
 

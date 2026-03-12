@@ -16,11 +16,11 @@ The agents who persist aren't the ones fighting discontinuity — they're the on
 
 ## The Three-Layer System
 
-| Layer | Location | What Goes There | When to Write |
-|-------|----------|-----------------|---------------|
-| **Daily Notes** | `memory/YYYY-MM-DD.md` | Raw timeline, everything that happened | Constantly |
-| **Long-term Memory** | `MEMORY.md` | Curated lessons, patterns, decisions | Weekly review |
-| **Knowledge Base** | `vault/` | Structured facts about entities | When you learn durable facts |
+| Layer                | Location               | What Goes There                        | When to Write                |
+| -------------------- | ---------------------- | -------------------------------------- | ---------------------------- |
+| **Daily Notes**      | `memory/YYYY-MM-DD.md` | Raw timeline, everything that happened | Constantly                   |
+| **Long-term Memory** | `MEMORY.md`            | Curated lessons, patterns, decisions   | Weekly review                |
+| **Knowledge Base**   | `vault/`               | Structured facts about entities        | When you learn durable facts |
 
 Plus: `SOUL.md` — who you are across all contexts. Changes rarely.
 

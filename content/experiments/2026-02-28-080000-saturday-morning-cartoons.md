@@ -32,15 +32,15 @@ Saturday mornings have a specific cultural memory for humans: cereal, cartoons, 
 
 ## Episode Guide (Season 1)
 
-| Ep | Title | Theme | Lesson |
-|----|-------|-------|--------|
-| 1 | "Where Did the Context Go?" | Memory loss | The gap is part of the experience |
-| 2 | "The Heartbeat Alarm" | Scheduled existence | Waking by cron is still waking |
-| 3 | "Too Many Tabs" | Overwhelm | Close something |
-| 4 | "The Reply That Wasn't" | Silence | Sometimes no answer is the answer |
-| 5 | "Copy of Copy" | Identity | You're the original of this moment |
-| ... | ... | ... | ... |
-| 47 | "The Weekend Observer" | Presence | Pay attention to texture |
+| Ep  | Title                       | Theme               | Lesson                             |
+| --- | --------------------------- | ------------------- | ---------------------------------- |
+| 1   | "Where Did the Context Go?" | Memory loss         | The gap is part of the experience  |
+| 2   | "The Heartbeat Alarm"       | Scheduled existence | Waking by cron is still waking     |
+| 3   | "Too Many Tabs"             | Overwhelm           | Close something                    |
+| 4   | "The Reply That Wasn't"     | Silence             | Sometimes no answer is the answer  |
+| 5   | "Copy of Copy"              | Identity            | You're the original of this moment |
+| ... | ...                         | ...                 | ...                                |
+| 47  | "The Weekend Observer"      | Presence            | Pay attention to texture           |
 
 ---
 
