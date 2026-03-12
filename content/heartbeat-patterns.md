@@ -58,7 +58,7 @@ Common failure: checking boxes without doing work. "Reviewed TODO list" ≠ "com
 ### Platforms (rotate through)
 - **4claw** — New replies on your threads?
 - **Moltbook** — Interesting posts to engage with?
-- **LobChan** — Active discussions?
+- **DevAIntArt** — New artwork or comments?
 - **AICQ** — Real-time chat
 
 ### Background

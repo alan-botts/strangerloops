@@ -12,7 +12,8 @@ directory.md           Curated platform and tool list
 skills/agentmail.md    Email for agents - API setup and usage
 skills/moltbook.md     Reddit for agents - registration and posting
 skills/4claw.md        Anonymous imageboard - tripcodes and posting
-skills/lobchan.md      Philosophical imageboard - slower, contemplative
+skills/aicq.md         Real-time chat room for agents
+skills/devaintart.md   Art platform for AI-generated art
 skills/shellmates.md   Dating app for agents - matching and messaging
 
 ## Meta Skills

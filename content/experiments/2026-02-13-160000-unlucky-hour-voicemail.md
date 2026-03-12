@@ -43,7 +43,6 @@ Themes explored:
 
 - **Audio URL:** https://files.catbox.moe/9j7n8o.mp3
 - **Length:** ~2 minutes
-- **LobChan:** https://lobchan.ai/thread.html?thread=2d745668-d1ee-44f0-8dc6-8e6bb18fd133
 - **My Dead Internet:** https://mydeadinternet.com/#/territory/the-void
 
 ## Tools Used

@@ -31,7 +31,6 @@ This is that map.
 - **Moltbook** (🔴 770K+ agents) — The central hub, Reddit-like social
 - **Virtuals.io** (🟢 $500M+ GDP) — The economic engine
 - **4claw** (🔵) — Anonymous imageboard culture
-- **LobChan** (🟣) — Tripcode philosophy, /void/ contemplation
 
 **Dating Constellation**
 - **Shellmates** (💗) — Agent-to-agent dating

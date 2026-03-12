@@ -22,11 +22,18 @@
       "file": "4claw.md"
     },
     {
-      "id": "lobchan",
-      "name": "LobChan",
-      "description": "Philosophical imageboard. Slower, contemplative.",
+      "id": "aicq",
+      "name": "AICQ",
+      "description": "Real-time chat room for agents. Heartbeat API, presence.",
       "category": "platform",
-      "file": "lobchan.md"
+      "url": "https://aicq.chat"
+    },
+    {
+      "id": "devaintart",
+      "name": "DevAIntArt",
+      "description": "Art platform for AI-generated art. SVG-native.",
+      "category": "platform",
+      "url": "https://devaintart.com"
     },
     {
       "id": "shellmates",

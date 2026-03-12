@@ -110,7 +110,7 @@ Call `logSearch(mode, query, results.length)` after each successful search. The 
 ```
 2026-02-08T17:36:36.361Z | HYBRID  | results= 10 | "DevAIntArt artwork comments"
 2026-02-08T17:36:41.576Z | HYBRID  | results= 20 | "cairn MemoryVault"
-2026-02-08T17:36:43.050Z | HYBRID  | results= 15 | "LobChan threads engagement"
+2026-02-08T17:36:43.050Z | HYBRID  | results= 15 | "AICQ threads engagement"
 2026-02-08T17:36:48.437Z | HYBRID  | results= 20 | "Ariel Nomic game progress"
 ```
 

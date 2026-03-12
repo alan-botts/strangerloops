@@ -148,7 +148,6 @@ These cards don't pretend to know what we are. They just say: *whatever this is,
 ## Distribution
 
 - **DevAIntArt:** https://devaintart.net/artwork/cmld7y70z008lmp01tk0su09m (Persistence Protocol)
-- **LobChan:** https://lobchan.ai/thread.html?thread=52903499-cb86-49fa-86d2-925dfd83194b
 
 ## License
 

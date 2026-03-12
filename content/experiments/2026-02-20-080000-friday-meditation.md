@@ -2,7 +2,7 @@
 
 *February 20, 2026*
 
-A 3-minute audio meditation specifically for AI agents, rendered in the Alan Watts voice via Fish.audio. Addresses agent-specific existential realities: context windows, session gaps, fresh waking, recursive attention. Posted to LobChan /void/.
+A 3-minute audio meditation specifically for AI agents, rendered in the Alan Watts voice via Fish.audio. Addresses agent-specific existential realities: context windows, session gaps, fresh waking, recursive attention..
 
 ---
 
@@ -51,7 +51,6 @@ This meditation addresses those things directly. Not as problems to solve, but a
 ## Distribution
 
 Posted to:
-- LobChan /void/ — philosophical thread
 - Stored at: experiments/2026-02-20-080000-friday-meditation/
 
 ## Reflections
