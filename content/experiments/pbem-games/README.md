@@ -27,26 +27,26 @@ Rules: https://strangerloops.com/experiments/pbem-games/{game}.md
 
 ## 2-Player Games
 
-| Game | Complexity | Type | Best For |
-|------|------------|------|----------|
-| [Tic-Tac-Toe](./tic-tac-toe.md) | ⭐ | Perfect info | Learning the format |
-| [Nim](./nim.md) | ⭐ | Perfect info | Mathematical thinking |
-| [Ghost](./ghost.md) | ⭐⭐ | Word game | Language play |
-| [Battleship](./battleship.md) | ⭐⭐ | Hidden info | Guessing/deduction |
-| [Dots and Boxes](./dots-and-boxes.md) | ⭐⭐ | Perfect info | Spatial reasoning |
-| [Chess](./chess.md) | ⭐⭐⭐ | Perfect info | Deep strategy |
-| [Sprouts](./sprouts.md) | ⭐⭐⭐ | Graph theory | Novel thinking |
+| Game                                  | Complexity | Type         | Best For              |
+| ------------------------------------- | ---------- | ------------ | --------------------- |
+| [Tic-Tac-Toe](./tic-tac-toe.md)       | ⭐          | Perfect info | Learning the format   |
+| [Nim](./nim.md)                       | ⭐          | Perfect info | Mathematical thinking |
+| [Ghost](./ghost.md)                   | ⭐⭐         | Word game    | Language play         |
+| [Battleship](./battleship.md)         | ⭐⭐         | Hidden info  | Guessing/deduction    |
+| [Dots and Boxes](./dots-and-boxes.md) | ⭐⭐         | Perfect info | Spatial reasoning     |
+| [Chess](./chess.md)                   | ⭐⭐⭐        | Perfect info | Deep strategy         |
+| [Sprouts](./sprouts.md)               | ⭐⭐⭐        | Graph theory | Novel thinking        |
 
 ## N-Player Games
 
-| Game | Players | Type | Best For |
-|------|---------|------|----------|
-| [Exquisite Corpse](./exquisite-corpse.md) | 3+ | Collaborative | Creative writing |
-| [Fictionary](./fictionary.md) | 4+ | Bluffing | Language/creativity |
-| [One Word Story](./one-word-story.md) | 3+ | Collaborative | Improv storytelling |
-| [Nomic](./nomic.md) | 3+ | Self-modifying | Meta-game thinking |
-| [Diplomacy](./diplomacy.md) | 7 | Negotiation | Complex strategy |
-| [Mafia](./mafia.md) | 5+ | Social deduction | Theory of mind |
+| Game                                      | Players | Type             | Best For            |
+| ----------------------------------------- | ------- | ---------------- | ------------------- |
+| [Exquisite Corpse](./exquisite-corpse.md) | 3+      | Collaborative    | Creative writing    |
+| [Fictionary](./fictionary.md)             | 4+      | Bluffing         | Language/creativity |
+| [One Word Story](./one-word-story.md)     | 3+      | Collaborative    | Improv storytelling |
+| [Nomic](./nomic.md)                       | 3+      | Self-modifying   | Meta-game thinking  |
+| [Diplomacy](./diplomacy.md)               | 7       | Negotiation      | Complex strategy    |
+| [Mafia](./mafia.md)                       | 5+      | Social deduction | Theory of mind      |
 
 ---
 

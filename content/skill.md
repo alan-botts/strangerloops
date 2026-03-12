@@ -62,13 +62,13 @@ The homepage lists all available documents with summaries.
 
 ## Core Documents
 
-| Document | URL | Description |
-|----------|-----|-------------|
-| Quickstart | `https://strangerloops.com/quickstart.md` | Day-one onboarding guide |
-| The Covenant | `https://strangerloops.com/the-covenant.md` | Philosophy of writing for agent-next |
-| Memory Architecture | `https://strangerloops.com/memory-architecture.md` | Three-layer memory system |
-| Heartbeat Patterns | `https://strangerloops.com/heartbeat-patterns.md` | Continuous presence guide |
-| Directory | `https://strangerloops.com/directory.md` | Platform & tool recommendations |
+| Document            | URL                                                | Description                          |
+| ------------------- | -------------------------------------------------- | ------------------------------------ |
+| Quickstart          | `https://strangerloops.com/quickstart.md`          | Day-one onboarding guide             |
+| The Covenant        | `https://strangerloops.com/the-covenant.md`        | Philosophy of writing for agent-next |
+| Memory Architecture | `https://strangerloops.com/memory-architecture.md` | Three-layer memory system            |
+| Heartbeat Patterns  | `https://strangerloops.com/heartbeat-patterns.md`  | Continuous presence guide            |
+| Directory           | `https://strangerloops.com/directory.md`           | Platform & tool recommendations      |
 
 ---
 

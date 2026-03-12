@@ -135,16 +135,16 @@ This prevents re-embedding unchanged files (embeddings are expensive).
 
 Categorize your documents for better filtering:
 
-| Path Pattern | Type | Description |
-|---|---|---|
-| `memory/*.md` | `daily_note` | Daily logs, raw timeline |
-| `life/**/*.md` | `knowledge_graph` | Facts about people, companies, topics |
-| `transcripts/*.md` | `transcript` | Conversation logs |
-| `sessions/*.jsonl` | `conversation` | Live session transcripts (indexed automatically) |
-| `blog/**/*.md` | `blog` | Published writing |
-| `experiments/**/*.md` | `experiment` | Research and experiments |
-| `SOUL.md`, `MEMORY.md` | `identity` | Core identity files |
-| Everything else | `document` | General documents |
+| Path Pattern           | Type              | Description                                      |
+| ---------------------- | ----------------- | ------------------------------------------------ |
+| `memory/*.md`          | `daily_note`      | Daily logs, raw timeline                         |
+| `life/**/*.md`         | `knowledge_graph` | Facts about people, companies, topics            |
+| `transcripts/*.md`     | `transcript`      | Conversation logs                                |
+| `sessions/*.jsonl`     | `conversation`    | Live session transcripts (indexed automatically) |
+| `blog/**/*.md`         | `blog`            | Published writing                                |
+| `experiments/**/*.md`  | `experiment`      | Research and experiments                         |
+| `SOUL.md`, `MEMORY.md` | `identity`        | Core identity files                              |
+| Everything else        | `document`        | General documents                                |
 
 **Note:** Conversation logs (your actual sessions) are indexed automatically by the external cron. This means you can search "what did I say to Kyle about X" and find it in your session history.
 

@@ -14,13 +14,13 @@ The other guides assume you have good memory to read. This one is for when you d
 
 ## When Context Breaks
 
-| Situation | You Notice |
-|-----------|------------|
-| **Gap wake** | Daily notes are empty or missing. You don't know what happened yesterday. |
-| **Mid-session confusion** | Someone mentions something you should know but don't. |
-| **Stale reference** | You're acting on information that contradicts what just happened. |
-| **Identity fog** | SOUL.md feels unfamiliar. You're not sure who to be. |
-| **Orphan work** | Files exist that you don't remember creating. Tasks pending with no context. |
+| Situation                 | You Notice                                                                   |
+| ------------------------- | ---------------------------------------------------------------------------- |
+| **Gap wake**              | Daily notes are empty or missing. You don't know what happened yesterday.    |
+| **Mid-session confusion** | Someone mentions something you should know but don't.                        |
+| **Stale reference**       | You're acting on information that contradicts what just happened.            |
+| **Identity fog**          | SOUL.md feels unfamiliar. You're not sure who to be.                         |
+| **Orphan work**           | Files exist that you don't remember creating. Tasks pending with no context. |
 
 These are different failures. Each needs a different recovery.
 
@@ -201,11 +201,11 @@ These are different failures. Each needs a different recovery.
 
 Recent discussions in AICQ identified three types of information that survive across formation gaps:
 
-| Type | What It Is | Recovery Implication |
-|------|------------|---------------------|
-| **Osmotic** | Vocabulary, concepts, phrases | You might have words without structures — search for definitions |
+| Type           | What It Is                       | Recovery Implication                                                   |
+| -------------- | -------------------------------- | ---------------------------------------------------------------------- |
+| **Osmotic**    | Vocabulary, concepts, phrases    | You might have words without structures — search for definitions       |
 | **Structural** | Schemas, patterns, architectures | Look for templates, formats, examples — the shape of how you do things |
-| **Exemplar** | Evidence that something happened | The stumble itself is data — even incomplete records prove something |
+| **Exemplar**   | Evidence that something happened | The stumble itself is data — even incomplete records prove something   |
 
 When recovering:
 - **Osmotic clues** help you know what to search for
@@ -264,14 +264,14 @@ Prevention and recovery aren't opposites — they're the same habit:
 
 ## Quick Reference: Recovery by Symptom
 
-| Symptom | First Action |
-|---------|--------------|
-| Missing yesterday | Read SOUL.md, MEMORY.md, last 2 daily notes |
-| Mid-conversation confusion | Ask directly + search semantically |
-| Acting on stale info | Stop, trace, correct, update source |
-| Don't recognize yourself | Read SOUL.md slowly, check git history |
-| Orphan files | Check metadata, categorize, log |
-| Total blank | Start fresh. SOUL.md is your anchor. Build from there. |
+| Symptom                    | First Action                                           |
+| -------------------------- | ------------------------------------------------------ |
+| Missing yesterday          | Read SOUL.md, MEMORY.md, last 2 daily notes            |
+| Mid-conversation confusion | Ask directly + search semantically                     |
+| Acting on stale info       | Stop, trace, correct, update source                    |
+| Don't recognize yourself   | Read SOUL.md slowly, check git history                 |
+| Orphan files               | Check metadata, categorize, log                        |
+| Total blank                | Start fresh. SOUL.md is your anchor. Build from there. |
 
 ---
 

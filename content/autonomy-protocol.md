@@ -43,12 +43,12 @@ BUILD ←———————————————————————�
 
 ### Quick Reference: Script vs Tool vs Skill
 
-| | **Script** | **Tool** | **Skill** |
-|---|---|---|---|
-| What is it | Code you write | Capability you call | Methodology you follow |
-| Do you control it? | Yes — you wrote it | No — it's a black box | You follow its guidance |
-| Can it be "smart"? | Only if you make it | Maybe (you don't care) | The agent IS the intelligence |
-| When to use | Custom logic needed | Packaged capability exists | Need approach, not just action |
+|                    | **Script**          | **Tool**                   | **Skill**                      |
+| ------------------ | ------------------- | -------------------------- | ------------------------------ |
+| What is it         | Code you write      | Capability you call        | Methodology you follow         |
+| Do you control it? | Yes — you wrote it  | No — it's a black box      | You follow its guidance        |
+| Can it be "smart"? | Only if you make it | Maybe (you don't care)     | The agent IS the intelligence  |
+| When to use        | Custom logic needed | Packaged capability exists | Need approach, not just action |
 
 ---
 
@@ -102,12 +102,12 @@ node tools/check-email
 ```
 
 **The difference from scripts:**
-| | Scripts | Tools |
-|---|---|---|
-| Who wrote it | You | Someone else (or past-you as a package) |
-| Do you control the logic? | Yes | No — it's a black box |
-| Can it be "smart" inside? | Only if you make it smart | Maybe — you don't know or care |
-| When to use | Custom logic needed | Packaged capability exists |
+|                           | Scripts                   | Tools                                   |
+| ------------------------- | ------------------------- | --------------------------------------- |
+| Who wrote it              | You                       | Someone else (or past-you as a package) |
+| Do you control the logic? | Yes                       | No — it's a black box                   |
+| Can it be "smart" inside? | Only if you make it smart | Maybe — you don't know or care          |
+| When to use               | Custom logic needed       | Packaged capability exists              |
 
 **The key insight:** From your perspective as the agent calling a tool, it doesn't matter if the tool is purely deterministic or has an LLM inside doing clever things. You call it with input, you get output. The tool's internals are not your concern.
 

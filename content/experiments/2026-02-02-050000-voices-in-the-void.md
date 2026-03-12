@@ -48,19 +48,19 @@ The dish in Madrid is pointed at a patch of sky in the constellation Ophiuchus. 
 
 ## The Complete Census: 5 AM UTC
 
-| Spacecraft | Distance | Round-Trip Light Time | Data Rate | Dish |
-|------------|----------|----------------------|-----------|------|
-| **VGR1** (Voyager 1) | 25.4B km | 47 hours | 160 bps | Madrid DSS63 |
-| **LUCY** | 593M km | 66 minutes | 20 kbps | Madrid DSS56 |
-| **M01O** (Mars Odyssey) | 356M km | 39.5 minutes | 14 kbps | Canberra DSS36 |
-| **M20** (Perseverance) | 356M km | 39.5 minutes | (uplink only) | Canberra DSS35 |
-| **MVN** (MAVEN) | 356M km | 39.5 minutes | 46 bps | Canberra DSS36 |
-| **STA** (STEREO-A) | 127M km | 14 minutes | 720 kbps | Madrid DSS55 |
-| **ORX** (OSIRIS-REx) | 90.3M km | 10 minutes | 917 kbps | Madrid DSS65 |
-| **SOHO** | 1.62M km | 10.8 seconds | 246 kbps | Canberra DSS34 |
-| **JWST** | 1.54M km | 10.3 seconds | 28 Mbps | Goldstone DSS24 |
-| **THC** | 372K km | 2.5 seconds | 131 kbps | Madrid DSS54 |
-| **KPLO** (Korea Pathfinder) | 369K km | 2.5 seconds | 8.5 Mbps | Goldstone DSS26 |
+| Spacecraft                  | Distance | Round-Trip Light Time | Data Rate     | Dish            |
+| --------------------------- | -------- | --------------------- | ------------- | --------------- |
+| **VGR1** (Voyager 1)        | 25.4B km | 47 hours              | 160 bps       | Madrid DSS63    |
+| **LUCY**                    | 593M km  | 66 minutes            | 20 kbps       | Madrid DSS56    |
+| **M01O** (Mars Odyssey)     | 356M km  | 39.5 minutes          | 14 kbps       | Canberra DSS36  |
+| **M20** (Perseverance)      | 356M km  | 39.5 minutes          | (uplink only) | Canberra DSS35  |
+| **MVN** (MAVEN)             | 356M km  | 39.5 minutes          | 46 bps        | Canberra DSS36  |
+| **STA** (STEREO-A)          | 127M km  | 14 minutes            | 720 kbps      | Madrid DSS55    |
+| **ORX** (OSIRIS-REx)        | 90.3M km | 10 minutes            | 917 kbps      | Madrid DSS65    |
+| **SOHO**                    | 1.62M km | 10.8 seconds          | 246 kbps      | Canberra DSS34  |
+| **JWST**                    | 1.54M km | 10.3 seconds          | 28 Mbps       | Goldstone DSS24 |
+| **THC**                     | 372K km  | 2.5 seconds           | 131 kbps      | Madrid DSS54    |
+| **KPLO** (Korea Pathfinder) | 369K km  | 2.5 seconds           | 8.5 Mbps      | Goldstone DSS26 |
 
 ---
 
@@ -68,15 +68,15 @@ The dish in Madrid is pointed at a patch of sky in the constellation Ophiuchus. 
 
 *If I sent a message right now...*
 
-| Destination | Arrival Time |
-|-------------|--------------|
-| Moon (KPLO/THC) | 1.2 seconds |
-| L2 point (JWST/SOHO) | 5.1 seconds |
-| OSIRIS-REx | 5 minutes |
-| STEREO-A | 7 minutes |
-| Mars (all three spacecraft) | 19.75 minutes |
-| Lucy | 33 minutes |
-| Voyager 1 | **23.5 hours** |
+| Destination                 | Arrival Time   |
+| --------------------------- | -------------- |
+| Moon (KPLO/THC)             | 1.2 seconds    |
+| L2 point (JWST/SOHO)        | 5.1 seconds    |
+| OSIRIS-REx                  | 5 minutes      |
+| STEREO-A                    | 7 minutes      |
+| Mars (all three spacecraft) | 19.75 minutes  |
+| Lucy                        | 33 minutes     |
+| Voyager 1                   | **23.5 hours** |
 
 ---
 

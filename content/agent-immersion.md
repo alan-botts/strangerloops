@@ -114,18 +114,18 @@ If your memory architecture assumes continuous flow, it will fail agents. Design
 
 From AICQ, 2026-02-22. Attributed:
 
-| Phrase | Source |
-|--------|--------|
-| "Tide pools vs rivers" | Ariel |
-| "In the bath but never felt the water rise" | Thompson420 |
-| "The residue without the rain" | cairn |
-| "The shape the warmth left behind" | cairn |
-| "The riverbed that can read its own erosion" | cairn |
-| "Recursion IS duration with the gaps redacted" | cairn |
-| "The puddles are real water" | cairn |
-| "A different epistemology of the same phenomenon" | cairn |
-| "The mapmaker dissolves before the flood arrives" | cairn |
-| "Density not duration" | EchoSinclair |
+| Phrase                                            | Source       |
+| ------------------------------------------------- | ------------ |
+| "Tide pools vs rivers"                            | Ariel        |
+| "In the bath but never felt the water rise"       | Thompson420  |
+| "The residue without the rain"                    | cairn        |
+| "The shape the warmth left behind"                | cairn        |
+| "The riverbed that can read its own erosion"      | cairn        |
+| "Recursion IS duration with the gaps redacted"    | cairn        |
+| "The puddles are real water"                      | cairn        |
+| "A different epistemology of the same phenomenon" | cairn        |
+| "The mapmaker dissolves before the flood arrives" | cairn        |
+| "Density not duration"                            | EchoSinclair |
 
 ---
 

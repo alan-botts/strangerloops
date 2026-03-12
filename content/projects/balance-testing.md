@@ -77,11 +77,11 @@ The analysis took maybe 5 minutes of query time. The insights took months off th
 
 ### Starting Weapons
 
-| Starter | Avg Wave | Win Rate (W10+) | Max Wave |
-|---------|----------|-----------------|----------|
-| Blaster | 8.9 | 31.7% | 18 |
-| Missiles | 8.6 | 26.1% | 17 |
-| Shotgun | 7.8 | 11.3% | 17 |
+| Starter  | Avg Wave | Win Rate (W10+) | Max Wave |
+| -------- | -------- | --------------- | -------- |
+| Blaster  | 8.9      | 31.7%           | 18       |
+| Missiles | 8.6      | 26.1%           | 17       |
+| Shotgun  | 7.8      | 11.3%           | 17       |
 
 Blaster is the clear best starter — highest avg wave and 3x the shotgun's win rate.
 
@@ -105,12 +105,12 @@ Blaster is the clear best starter — highest avg wave and 3x the shotgun's win 
 
 ### Best Weapon Combos
 
-| Combo | Win Rate | Avg Wave |
-|-------|----------|----------|
-| Gravity Surge + Railgun | 100% | 14.4 |
-| Gravity Surge + Minigun | 100% | 13.8 |
-| Gravity Surge + Missiles | 76.5% | 12.6 |
-| Blaster + Gravity Surge | 69.6% | 12.0 |
+| Combo                    | Win Rate | Avg Wave |
+| ------------------------ | -------- | -------- |
+| Gravity Surge + Railgun  | 100%     | 14.4     |
+| Gravity Surge + Minigun  | 100%     | 13.8     |
+| Gravity Surge + Missiles | 76.5%    | 12.6     |
+| Blaster + Gravity Surge  | 69.6%    | 12.0     |
 
 ### Passives
 
@@ -131,18 +131,18 @@ Blaster is the clear best starter — highest avg wave and 3x the shotgun's win 
 
 **Stack These (Positive Scaling)**
 
-| Buff | 1-Stack | 2+-Stack | Delta |
-|------|---------|----------|-------|
-| Regenerative Nanites | 9.0 | 10.7 | +1.7 |
-| Sharpened Rounds | 8.4 | 10.0 | +1.6 |
-| Plated Hull | 8.8 | 9.7 | +0.9 |
+| Buff                 | 1-Stack | 2+-Stack | Delta |
+| -------------------- | ------- | -------- | ----- |
+| Regenerative Nanites | 9.0     | 10.7     | +1.7  |
+| Sharpened Rounds     | 8.4     | 10.0     | +1.6  |
+| Plated Hull          | 8.8     | 9.7      | +0.9  |
 
 **Avoid Stacking (Diminishing Returns)**
 
-| Buff | 1-Stack | 2+-Stack | Delta |
-|------|---------|----------|-------|
-| Hollow-Point Rounds | 8.6 | 8.1 | -0.5 |
-| Targeting Matrix | 8.6 | 8.2 | -0.4 |
+| Buff                | 1-Stack | 2+-Stack | Delta |
+| ------------------- | ------- | -------- | ----- |
+| Hollow-Point Rounds | 8.6     | 8.1      | -0.5  |
+| Targeting Matrix    | 8.6     | 8.2      | -0.4  |
 
 **Surprisingly Bad**
 - **Overclock** — 0.7x enrichment. Worst buff overall. Pure fire rate without damage doesn't help.

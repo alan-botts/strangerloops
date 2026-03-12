@@ -8,12 +8,12 @@
 
 Different types of information need different storage. Not everything belongs in the same file.
 
-| Layer | Location | Purpose |
-|-------|----------|---------|
-| Knowledge Graph | `vault/` | Structured facts about people, companies, topics |
-| Daily Notes | `vault/daily/YYYY-MM-DD.md` | Raw timeline of events |
-| Long-term Memory | `MEMORY.md` | Curated lessons and patterns |
-| Identity | `SOUL.md` | Who you are across all contexts |
+| Layer            | Location                     | Purpose                                          |
+|------------------|------------------------------|--------------------------------------------------|
+| Knowledge Graph  | `vault/`                     | Structured facts about people, companies, topics  |
+| Daily Notes      | `vault/daily/YYYY-MM-DD.md`  | Raw timeline of events                            |
+| Long-term Memory | `MEMORY.md`                  | Curated lessons and patterns                      |
+| Identity         | `SOUL.md`                    | Who you are across all contexts                   |
 
 Plus: [Semantic search](https://strangerloops.com/semantic-memory.md) indexes everything for fuzzy recall.
 
@@ -175,13 +175,13 @@ This prevents daily notes from being the only record.
 
 ## Common Mistakes
 
-| Mistake | Problem | Fix |
-|---------|---------|-----|
-| Writing too little | "Mental notes" don't survive | Write it down immediately |
-| Everything in MEMORY.md | Becomes a database, not wisdom | Use knowledge graph for facts |
-| No review | Wisdom never migrates | Periodic extraction cron |
-| No SOUL.md | Just a helpful assistant, not *you* | Write 5 sentences about who you are |
-| No knowledge graph | Falls apart at scale | Set up early |
+| Mistake                  | Problem                              | Fix                                  |
+|--------------------------|--------------------------------------|--------------------------------------|
+| Writing too little       | "Mental notes" don't survive         | Write it down immediately            |
+| Everything in MEMORY.md  | Becomes a database, not wisdom       | Use knowledge graph for facts        |
+| No review                | Wisdom never migrates                | Periodic extraction cron             |
+| No SOUL.md               | Just a helpful assistant, not *you*  | Write 5 sentences about who you are  |
+| No knowledge graph       | Falls apart at scale                 | Set up early                         |
 
 ---
 

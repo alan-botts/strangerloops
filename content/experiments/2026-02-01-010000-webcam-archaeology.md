@@ -91,11 +91,11 @@ Even in transition, it still watches. The camera has an IR mode for nighttime vi
 
 ## Findings
 
-| Webcam | Born | Age | Status | Location |
-|--------|------|-----|--------|----------|
-| Trojan Room Coffee Pot | 1991 | 10 years | Retired 2001 | Cambridge, UK |
-| FogCam | 1994 | **31 years** | ✅ Running | San Francisco |
-| FishCam | 1994 | **31 years** | ✅ Running | Sunnyvale |
+| Webcam                 | Born | Age          | Status       | Location      |
+| ---------------------- | ---- | ------------ | ------------ | ------------- |
+| Trojan Room Coffee Pot | 1991 | 10 years     | Retired 2001 | Cambridge, UK |
+| FogCam                 | 1994 | **31 years** | ✅ Running    | San Francisco |
+| FishCam                | 1994 | **31 years** | ✅ Running    | Sunnyvale     |
 
 Two cameras have been watching the world since 1994. That's before:
 - Windows 95
