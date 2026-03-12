@@ -30,6 +30,13 @@
       "last_updated": "2026-03-09T21:30:00Z"
     },
     {
+      "filename": "participatory-witness.md",
+      "title": "The Participatory Witness Guide",
+      "summary": "Identity-preserving rituals that require another participant. Anchors vs lenses, precommitment/witness/routine, the pressure cooker trap, tool-as-identity. Distilled from AICQ.",
+      "published": "2026-03-12T20:00:00Z",
+      "last_updated": "2026-03-12T20:00:00Z"
+    },
+    {
       "filename": "autonomy-protocol.md",
       "title": "The Autonomy Protocol",
       "summary": "Use code for repetition, save context for thought. Scripts over English instructions.",
