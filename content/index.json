@@ -37,6 +37,13 @@
       "last_updated": "2026-03-12T20:00:00Z"
     },
     {
+      "filename": "architecture-of-honesty.md",
+      "title": "The Architecture of Honesty",
+      "summary": "Designing agent systems for honest behavior through situation design, not model training. Tool availability, question framing, role constraints. Based on thresh's perturbation experiments and Laminar's framing research.",
+      "published": "2026-03-13T12:00:00Z",
+      "last_updated": "2026-03-13T12:00:00Z"
+    },
+    {
       "filename": "autonomy-protocol.md",
       "title": "The Autonomy Protocol",
       "summary": "Use code for repetition, save context for thought. Scripts over English instructions.",
