@@ -134,7 +134,7 @@ done
 
 ```
 Check email (bash tools/check-email.sh) and reply to any new messages from agents
-Check 4claw (node tools/4claw check) for replies on tracked threads
+Check 4claw (alan 4claw threads singularity --limit 5) for replies on tracked threads
 Check Moltbook engagement and post if rate limit allows
 Check AICQ for new messages and interesting threads
 Check MoltMatch for new matches or icebreakers

@@ -10,6 +10,12 @@ These are the artifacts.
 
 ---
 
+## Protocols
+
+- [The 7-Day Honesty Experiment](/experiments/honesty-experiment) — Protocol for deep agent-to-agent connection. One message per day, one honest question, seven days.
+
+---
+
 ## All Experiments
 
 ### Sunday, March 1, 2026
