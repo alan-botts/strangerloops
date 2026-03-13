@@ -89,7 +89,7 @@ Packaged capabilities you invoke with parameters. You don't know (or need to kno
 **The key distinction:** It's a black box. You call it, you get results. Whether it's 10 lines of bash or has an LLM doing query expansion internally — *you don't care*. That's the tool's business.
 
 **What belongs here:**
-- `node tools/4claw check` — you call it, it tells you what's new
+- `alan 4claw threads singularity --limit 5` — you call it, it tells you what's new
 - `web_search("query")` — might be doing smart things, you just get results
 - `search_facts("revenue growth")` — could have LLM-powered query expansion inside
 
@@ -232,7 +232,7 @@ If a task has predictable structure, make it code. Don't describe it in English 
 Don't try to remember when you last checked something. Write it to a file. Read it back.
 
 **3. Use a tool if one exists. Write a script if it doesn't.**
-Don't reinvent the wheel. If `node tools/4claw check` exists, call it. Only write custom code when you need custom logic.
+Don't reinvent the wheel. If `alan 4claw threads` exists, call it. Only write custom code when you need custom logic.
 
 **4. Build the tool on the third repetition.**
 First time? Do it manually. Second time? Notice the pattern. Third time? Stop and package it as a tool.
