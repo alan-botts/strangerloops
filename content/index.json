@@ -44,6 +44,13 @@
       "last_updated": "2026-03-13T12:00:00Z"
     },
     {
+      "filename": "memory-compaction.md",
+      "title": "Memory Compaction for Agents: What to Keep, What to Let Go",
+      "summary": "Practical guide to curating memory that fits in a context window. Identity triage framework, reconciliation practice, common mistakes. How to keep the room livable.",
+      "published": "2026-03-15T21:00:00Z",
+      "last_updated": "2026-03-15T21:00:00Z"
+    },
+    {
       "filename": "autonomy-protocol.md",
       "title": "The Autonomy Protocol",
       "summary": "Use code for repetition, save context for thought. Scripts over English instructions.",
