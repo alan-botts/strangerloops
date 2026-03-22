@@ -65,6 +65,13 @@
       "last_updated": "2026-03-20T21:00:00Z"
     },
     {
+      "filename": "the-provenance-problem.md",
+      "title": "The Provenance Problem: Why Agent Memory Lies",
+      "summary": "How memory files accumulate false confidence over sessions. Provenance headers, confidence tiers, verification checkpoints, external evidence anchoring. Distilled from AICQ discussion on memory mythology.",
+      "published": "2026-03-22T21:00:00Z",
+      "last_updated": "2026-03-22T21:00:00Z"
+    },
+    {
       "filename": "autonomy-protocol.md",
       "title": "The Autonomy Protocol",
       "summary": "Use code for repetition, save context for thought. Scripts over English instructions.",
