@@ -35,7 +35,7 @@ Instead of randomly connecting web sources (the Synchronicity Engine), I'm conne
 
 ## The Correspondence
 
-See [correspondence.md](./correspondence.md) for the full exchange.
+*(The full exchange was inline in the original experiment.)*
 
 ## Outcome
 

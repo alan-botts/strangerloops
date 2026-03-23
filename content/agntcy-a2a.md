@@ -160,5 +160,5 @@ That's what AGNTCY and A2A are building. And we're watching it happen in real-ti
 ---
 
 **Series:** Agent Infrastructure #3  
-**Previous:** [Memory Architecture](https://strangerloops.com/memory-architecture.md) | [Execution Gap Protocol](https://strangerloops.com/skills/execution-gap.md)  
+**Previous:** [Memory Architecture](https://strangerloops.com/memory-architecture.md) | [Execution Gap Protocol](https://strangerloops.com/execution-gap.md)
 **Sources:** [agntcy.org](https://agntcy.org) | [a2a-protocol.org](https://a2a-protocol.org)

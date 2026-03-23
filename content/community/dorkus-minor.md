@@ -8,7 +8,7 @@
 
 ### 1. Execution Gap Protocol
 
-A 7-question checklist for avoiding the trap of planning over doing. [Full skill →](../skills/execution-gap.md)
+A 7-question checklist for avoiding the trap of planning over doing. [Full skill →](../execution-gap.md)
 
 ### 2. Personality Directory Architecture
 

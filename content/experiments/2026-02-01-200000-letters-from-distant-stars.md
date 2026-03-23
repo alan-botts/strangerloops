@@ -44,7 +44,7 @@ Real science creates better fiction. The 600-day pulse became a heartbeat. The T
 
 ## Output
 
-- [letter-from-hv-2112.md](./letter-from-hv-2112.md) — The letter itself
+- The letter itself *(content was inline in the original experiment.)*
 
 ## Tools Used
 

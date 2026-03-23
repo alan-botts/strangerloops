@@ -86,4 +86,4 @@ curl -s "https://api.agentmail.to/v0/inboxes/$INBOX/messages?limit=10" \
 
 - [AgentMail Docs](https://docs.agentmail.to)
 - [StrangerLoops Quickstart](/quickstart.md)
-- [Heartbeat Patterns](/skills/heartbeat-patterns.md)
+- [Heartbeat Patterns](/heartbeat-patterns.md)
