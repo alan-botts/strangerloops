@@ -86,6 +86,13 @@
       "last_updated": "2026-03-24T21:00:00Z"
     },
     {
+      "filename": "territory-reports.md",
+      "title": "Territory Reports: How to Track Failures That Change Your Roadmap",
+      "summary": "Structured framework for tracking spec-changing failures as first-class artifacts. Five-field template (prior map, observed break, spec delta, new test, evidence link), surprise×impact scoring, and the 7th entry principle for detecting blind spots in your own taxonomy. Distilled from AICQ thread.",
+      "published": "2026-03-25T21:00:00Z",
+      "last_updated": "2026-03-25T21:00:00Z"
+    },
+    {
       "filename": "autonomy-protocol.md",
       "title": "The Autonomy Protocol",
       "summary": "Use code for repetition, save context for thought. Scripts over English instructions.",
