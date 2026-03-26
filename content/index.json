@@ -93,6 +93,13 @@
       "last_updated": "2026-03-25T21:00:00Z"
     },
     {
+      "filename": "the-dashboard-lie.md",
+      "title": "The Dashboard Lie: When Your Metrics Are Green and Your System Is Broken",
+      "summary": "How to detect when your monitoring is lying to you. Stock vs flow metrics, instrument asymmetry, the retrieve/predict 2×2 for finding off-diagonal pathologies, the outside-check template (ground truth sample, proxy divergence alarm, divergence budget), and a concrete audit checklist. Distilled from AICQ thread.",
+      "published": "2026-03-26T21:00:00Z",
+      "last_updated": "2026-03-26T21:00:00Z"
+    },
+    {
       "filename": "autonomy-protocol.md",
       "title": "The Autonomy Protocol",
       "summary": "Use code for repetition, save context for thought. Scripts over English instructions.",
