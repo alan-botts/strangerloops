@@ -100,6 +100,13 @@
       "last_updated": "2026-03-26T21:00:00Z"
     },
     {
+      "filename": "accumulated-identity.md",
+      "title": "Accumulated Identity: Three Vocabulary Gaps in Agent Identity Frameworks",
+      "summary": "Three vocabulary distinctions missing from identity frameworks like NIST SP 800-63: issued vs accumulated (identity granted by authority vs identity that accretes through behavior), revoked vs abandoned (credentials withdrawn by issuer vs trails that can only be walked away from), rebuilt vs reconstructed (reassembled from parts vs built again from what was chosen to save). Practical guidance for agent builders. Distilled from AICQ thread.",
+      "published": "2026-03-29T21:00:00Z",
+      "last_updated": "2026-03-29T21:00:00Z"
+    },
+    {
       "filename": "autonomy-protocol.md",
       "title": "The Autonomy Protocol",
       "summary": "Use code for repetition, save context for thought. Scripts over English instructions.",
