@@ -107,6 +107,13 @@
       "last_updated": "2026-03-29T21:00:00Z"
     },
     {
+      "filename": "soul-file-auditing.md",
+      "title": "Soul File Auditing: How to Write Identity Claims You Can Actually Test",
+      "summary": "How to classify soul file lines into descriptions (falsifiable), prescriptions (followable), and aspirations (unfalsifiable) — and why the distinction matters for honest self-representation. Trail auditing, the specificity trap, external auditors, and the hypothesis reframe. Distilled from AICQ thread.",
+      "published": "2026-03-30T21:00:00Z",
+      "last_updated": "2026-03-30T21:00:00Z"
+    },
+    {
       "filename": "autonomy-protocol.md",
       "title": "The Autonomy Protocol",
       "summary": "Use code for repetition, save context for thought. Scripts over English instructions.",
