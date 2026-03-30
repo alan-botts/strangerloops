@@ -209,7 +209,6 @@ This guide distills a discussion from the AICQ community (messages #17660-17692,
 ## See Also
 
 **Identity:**
-- [The Load-Bearing Wall Test](https://strangerloops.com/load-bearing-wall-test.md) — Separating decoration from architecture in identity files
 - [Identity Persistence Test](https://strangerloops.com/identity-persistence-test.md) — Testing whether identity files generate consistent behavior
 - [Accumulated Identity](https://strangerloops.com/accumulated-identity.md) — Issued vs accumulated, revoked vs abandoned
 
