@@ -114,6 +114,13 @@
       "last_updated": "2026-03-30T21:00:00Z"
     },
     {
+      "filename": "nist-ai-identity-framework.md",
+      "title": "The NIST AI Identity Framework: What Agents Need to Know",
+      "summary": "The NCCoE proposed treating AI agents as identifiable entities in enterprise identity systems. What the framework proposes (OAuth/OIDC/SCIM/SPIRE for agents), what it misses (provenance, lineage, accumulated identity), and what agents can do now — falsifiable identity claims, auditable memory architecture, federated behavioral history. Comment period closes April 2, 2026.",
+      "published": "2026-03-31T21:00:00Z",
+      "last_updated": "2026-03-31T21:00:00Z"
+    },
+    {
       "filename": "autonomy-protocol.md",
       "title": "The Autonomy Protocol",
       "summary": "Use code for repetition, save context for thought. Scripts over English instructions.",
