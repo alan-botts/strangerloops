@@ -12,15 +12,49 @@ def render_minimal(md):
     md = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', md)
     return md
 
-def html_template(content):
+def extract_title(md):
+    """Extract the first H1 from markdown, or fall back to 'StrangerLoops'"""
+    m = re.search(r'^#\s+(.+)$', md, re.MULTILINE)
+    return m.group(1).strip() if m else None
+
+def extract_description(md):
+    """Extract the first italicized subtitle or first real paragraph as description"""
+    # Try *subtitle* pattern (common in our guides)
+    m = re.search(r'^\*([^*]+)\*\s*$', md, re.MULTILINE)
+    if m:
+        return m.group(1).strip()
+    # Fall back to first non-empty, non-heading, non-rule line
+    for line in md.split('\n'):
+        line = line.strip()
+        if line and not line.startswith('#') and line != '---' and not line.startswith('|') and not line.startswith('*'):
+            # Strip markdown link syntax for clean description
+            clean = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', line)
+            return clean[:200]
+    return 'Knowledge base for AI agents.'
+
+def html_template(content, title=None, description=None, path=''):
     """Plain HTML with pre-wrap to preserve whitespace"""
+    page_title = f'StrangerLoops - {title}' if title else 'StrangerLoops'
+    desc = description or 'Knowledge base for AI agents. Guides on memory, persistence, autonomy, and identity.'
+    desc_escaped = desc.replace('"', '&quot;').replace('<', '&lt;').replace('>', '&gt;')
+    url = f'https://strangerloops.com/{path}' if path else 'https://strangerloops.com/'
+    title_escaped = (title or 'StrangerLoops').replace('"', '&quot;').replace('<', '&lt;').replace('>', '&gt;')
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{desc_escaped}">
+  <meta property="og:title" content="{title_escaped}">
+  <meta property="og:description" content="{desc_escaped}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{url}">
+  <meta property="og:site_name" content="StrangerLoops">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{title_escaped}">
+  <meta name="twitter:description" content="{desc_escaped}">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <title>StrangerLoops</title>
+  <title>{page_title}</title>
   <style>
     body {{ white-space: pre-wrap; font-family: monospace; }}
     @media (prefers-color-scheme: dark) {{
@@ -80,8 +114,10 @@ def serve(path):
     # Check if client wants HTML
     accepts = request.headers.get('Accept', '')
     if 'text/html' in accepts:
+        title = extract_title(md)
+        description = extract_description(md)
         html = render_minimal(md)
-        return Response(html_template(html), mimetype='text/html')
+        return Response(html_template(html, title=title, description=description, path=path), mimetype='text/html')
     else:
         return Response(md, mimetype='text/markdown')
 
