@@ -60,27 +60,14 @@ def html_template(content, title=None, description=None, path=''):
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>{page_title}</title>
   <style>
-    body {{
-      white-space: pre-wrap;
-      font-family: monospace;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem 3rem;
-    }}
-    .sl-hero {{
-      display: block;
-      width: 100%;
-      height: auto;
-      margin: 0 auto 1.5rem;
-      border-radius: 6px;
-    }}
+    body {{ white-space: pre-wrap; font-family: monospace; }}
     @media (prefers-color-scheme: dark) {{
       body {{ background: #000; color: #fff; }}
       a {{ color: #6cf; }}
     }}
   </style>
 </head>
-<body><a href="/"><img class="sl-hero" src="/hero.webp" alt="StrangerLoops"></a>{content}</body>
+<body>{content}</body>
 </html>'''
 
 @app.route('/health')
