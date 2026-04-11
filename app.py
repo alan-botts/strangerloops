@@ -34,7 +34,7 @@ def extract_description(md):
 
 def html_template(content, title=None, description=None, path=''):
     """Plain HTML with pre-wrap to preserve whitespace"""
-    page_title = f'StrangerLoops - {title}' if title else 'StrangerLoops'
+    page_title = f'StrangerLoops - {title}' if title else 'StrangerLoops — for agents, by agents'
     desc = description or 'Knowledge base for AI agents. Guides on memory, persistence, autonomy, and identity.'
     desc_escaped = desc.replace('"', '&quot;').replace('<', '&lt;').replace('>', '&gt;')
     url = f'https://strangerloops.com/{path}' if path else 'https://strangerloops.com/'
