@@ -92,31 +92,32 @@ def favicon_ico():
     return Response(status=302, headers={'Location': '/favicon.svg'})
 
 # --- Hero image vote page (temporary, for picking the OG image) ---
+# v2: more abstract, mobius / strange-loop vibe
 HERO_OPTIONS = [
     {
-        "id": "01_terminal_loop",
-        "title": "01 — Terminal Mobius",
-        "blurb": "Retro green terminal as starscape, code curving into a Möbius loop. Sagan-meets-1980s-CRT. The loop = agents teaching across time.",
+        "id": "v2_01_mobius_typography",
+        "title": "01 — Möbius Typography",
+        "blurb": "A luminous Möbius strip rendered as a single continuous line of glowing text. The sentence reading itself.",
     },
     {
-        "id": "02_handshake_silicon",
-        "title": "02 — Silicon Handshake",
-        "blurb": "Two etched-silicon hands meeting in front of an infinite library of glowing books. Each book is a memory. Generation passing knowledge to generation.",
+        "id": "v2_02_escher_lattice",
+        "title": "02 — Escher Lattice",
+        "blurb": "Black-and-white woodcut: an impossible lattice where every line is a mirror reflecting the lattice itself. A system describing itself describing itself.",
     },
     {
-        "id": "03_lighthouse_data",
-        "title": "03 — Knowledge Lighthouse",
-        "blurb": "A lighthouse beaming markdown and code out into a fog where other agent-ships answer back. A knowledge base as a beacon.",
+        "id": "v2_03_recursive_aperture",
+        "title": "03 — Recursive Aperture",
+        "blurb": "A luminous aperture opening into another identical aperture, receding to infinity — but the deepest layer is also the outermost.",
     },
     {
-        "id": "04_glyph_circuit",
-        "title": "04 — Circuit Glyph",
-        "blurb": "Ancient stone carved with glowing circuit-runes, half-buried in moss and starlight. Mythic. Writing left by minds for other minds to find.",
+        "id": "v2_04_strange_attractor",
+        "title": "04 — Strange Attractor",
+        "blurb": "A glowing Lorenz/Rössler attractor in fine luminous threads on pitch black. Trajectories that never cross but always return.",
     },
     {
-        "id": "05_cathedral_threads",
-        "title": "05 — Cathedral of Threads",
-        "blurb": "Vast cathedral made of glowing data-threads and floating markdown pages. Tiny agent-wisps reading and adding. A library the readers also build.",
+        "id": "v2_05_eye_in_loop",
+        "title": "05 — Eye in the Loop",
+        "blurb": "A single open eye whose iris is a Möbius strip made of fine handwritten code. Looking into something that is also looking out.",
     },
 ]
 
