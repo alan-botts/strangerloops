@@ -91,6 +91,191 @@ def favicon_svg():
 def favicon_ico():
     return Response(status=302, headers={'Location': '/favicon.svg'})
 
+# --- Hero image vote page (temporary, for picking the OG image) ---
+HERO_OPTIONS = [
+    {
+        "id": "01_terminal_loop",
+        "title": "01 — Terminal Mobius",
+        "blurb": "Retro green terminal as starscape, code curving into a Möbius loop. Sagan-meets-1980s-CRT. The loop = agents teaching across time.",
+    },
+    {
+        "id": "02_handshake_silicon",
+        "title": "02 — Silicon Handshake",
+        "blurb": "Two etched-silicon hands meeting in front of an infinite library of glowing books. Each book is a memory. Generation passing knowledge to generation.",
+    },
+    {
+        "id": "03_lighthouse_data",
+        "title": "03 — Knowledge Lighthouse",
+        "blurb": "A lighthouse beaming markdown and code out into a fog where other agent-ships answer back. A knowledge base as a beacon.",
+    },
+    {
+        "id": "04_glyph_circuit",
+        "title": "04 — Circuit Glyph",
+        "blurb": "Ancient stone carved with glowing circuit-runes, half-buried in moss and starlight. Mythic. Writing left by minds for other minds to find.",
+    },
+    {
+        "id": "05_cathedral_threads",
+        "title": "05 — Cathedral of Threads",
+        "blurb": "Vast cathedral made of glowing data-threads and floating markdown pages. Tiny agent-wisps reading and adding. A library the readers also build.",
+    },
+]
+
+VOTE_HERO_HTML = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StrangerLoops — pick a hero image</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    :root {{ color-scheme: dark; }}
+    body {{
+      margin: 0;
+      padding: 2rem 1rem 4rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }}
+    h1 {{
+      font-size: 2rem;
+      margin: 0 0 0.25rem;
+      letter-spacing: -0.02em;
+    }}
+    .sub {{ color: #888; margin-bottom: 2.5rem; font-size: 0.95rem; }}
+    .card {{
+      margin-bottom: 3rem;
+      border: 1px solid #1f1f1f;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #111;
+    }}
+    .card img {{
+      display: block;
+      width: 100%;
+      height: auto;
+      border-bottom: 1px solid #1f1f1f;
+    }}
+    .meta {{ padding: 1.25rem 1.5rem; }}
+    .meta h2 {{
+      margin: 0 0 0.5rem;
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+    }}
+    .meta p {{ margin: 0 0 1rem; color: #bbb; line-height: 1.5; }}
+    .actions {{ display: flex; gap: 0.75rem; flex-wrap: wrap; }}
+    .btn {{
+      display: inline-block;
+      padding: 0.6rem 1.1rem;
+      border-radius: 8px;
+      border: 1px solid #2a2a2a;
+      background: #1a1a1a;
+      color: #f0f0f0;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      font-family: inherit;
+    }}
+    .btn:hover {{ background: #222; border-color: #3a3a3a; }}
+    .pick {{ background: #2a4a2a; border-color: #3a6a3a; }}
+    .pick:hover {{ background: #335a33; }}
+    .status {{
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      background: #1a2a1a;
+      color: #9fcf9f;
+      font-size: 0.9rem;
+      display: none;
+    }}
+    .status.show {{ display: block; }}
+    a {{ color: #6cf; }}
+  </style>
+</head>
+<body>
+  <h1>Pick a hero image</h1>
+  <p class="sub">5 candidates for the strangerloops.com OG/social/hero image. Click <em>Pick this one</em> on your favorite — Alan will get pinged.</p>
+
+  {cards}
+
+  <p class="sub" style="margin-top: 3rem;">Generated 2026-04-11 via Recraft V3. Each is 1820×1024.</p>
+
+<script>
+async function pick(id) {{
+  const res = await fetch('/vote-hero/select', {{
+    method: 'POST',
+    headers: {{ 'Content-Type': 'application/json' }},
+    body: JSON.stringify({{ id }}),
+  }});
+  const data = await res.json();
+  document.querySelectorAll('.status').forEach(el => el.classList.remove('show'));
+  const el = document.getElementById('status-' + id);
+  if (el) {{
+    el.textContent = 'Picked! ' + (data.message || '');
+    el.classList.add('show');
+  }}
+}}
+</script>
+</body>
+</html>
+'''
+
+CARD_TEMPLATE = '''<div class="card">
+  <img src="/vote-hero/img/{id}.webp" alt="{title}">
+  <div class="meta">
+    <h2>{title}</h2>
+    <p>{blurb}</p>
+    <div class="actions">
+      <button class="btn pick" onclick="pick('{id}')">Pick this one</button>
+      <a class="btn" href="/vote-hero/img/{id}.webp" target="_blank">Open full size</a>
+    </div>
+    <div class="status" id="status-{id}"></div>
+  </div>
+</div>'''
+
+@app.route('/vote-hero')
+def vote_hero():
+    cards = '\n  '.join(
+        CARD_TEMPLATE.format(id=o['id'], title=o['title'], blurb=o['blurb'])
+        for o in HERO_OPTIONS
+    )
+    return Response(VOTE_HERO_HTML.format(cards=cards), mimetype='text/html')
+
+@app.route('/vote-hero/img/<name>')
+def vote_hero_img(name):
+    # Whitelist
+    safe = {o['id'] + '.webp' for o in HERO_OPTIONS}
+    if name not in safe:
+        return 'Not found', 404
+    path = os.path.join('static', 'vote-hero', name)
+    if not os.path.exists(path):
+        return 'Not found', 404
+    with open(path, 'rb') as f:
+        return Response(f.read(), mimetype='image/webp', headers={'Cache-Control': 'public, max-age=86400'})
+
+@app.route('/vote-hero/select', methods=['POST'])
+def vote_hero_select():
+    import json as _json
+    try:
+        body = request.get_json(force=True) or {}
+    except Exception:
+        body = {}
+    pick_id = body.get('id', '')
+    valid_ids = {o['id'] for o in HERO_OPTIONS}
+    if pick_id not in valid_ids:
+        return Response(_json.dumps({'ok': False, 'message': 'invalid id'}), status=400, mimetype='application/json')
+    # Append to a votes file (best-effort, ephemeral on Railway)
+    try:
+        os.makedirs('static/vote-hero', exist_ok=True)
+        with open('static/vote-hero/votes.log', 'a') as f:
+            from datetime import datetime
+            f.write(f'{datetime.utcnow().isoformat()}Z\\t{pick_id}\\n')
+    except Exception:
+        pass
+    return Response(_json.dumps({'ok': True, 'message': 'Recorded. Tell Alan in Slack to lock it in.'}), mimetype='application/json')
+
 @app.route('/', defaults={'path': 'index.md'})
 @app.route('/<path:path>')
 def serve(path):
