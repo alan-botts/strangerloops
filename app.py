@@ -204,21 +204,48 @@ VOTE_HERO_HTML = '''<!DOCTYPE html>
   <p class="sub" style="margin-top: 3rem;">Generated 2026-04-11 via Recraft V3. Each is 1820×1024.</p>
 
 <script>
+const TITLES = {titles_json};
 async function pick(id) {{
-  const res = await fetch('/vote-hero/select', {{
-    method: 'POST',
-    headers: {{ 'Content-Type': 'application/json' }},
-    body: JSON.stringify({{ id }}),
-  }});
-  const data = await res.json();
+  const payload = {{
+    pick: id,
+    title: TITLES[id] || id,
+    url: 'https://strangerloops.com/vote-hero/img/' + id + '.webp',
+    picked_at: new Date().toISOString(),
+  }};
+  const json = JSON.stringify(payload, null, 2);
+  // 1) record server-side (best-effort)
+  try {{
+    fetch('/vote-hero/select', {{
+      method: 'POST',
+      headers: {{ 'Content-Type': 'application/json' }},
+      body: JSON.stringify({{ id }}),
+    }});
+  }} catch (e) {{}}
+  // 2) put JSON in clipboard so user can paste it back to Alan
+  let clipOk = false;
+  try {{
+    await navigator.clipboard.writeText(json);
+    clipOk = true;
+  }} catch (e) {{
+    // Fallback: put it in a textarea and select it so the user can copy manually
+    const ta = document.getElementById('fallback-ta');
+    ta.value = json;
+    ta.style.display = 'block';
+    ta.focus();
+    ta.select();
+    try {{ document.execCommand('copy'); clipOk = true; }} catch (e2) {{}}
+  }}
   document.querySelectorAll('.status').forEach(el => el.classList.remove('show'));
   const el = document.getElementById('status-' + id);
   if (el) {{
-    el.textContent = 'Picked! ' + (data.message || '');
+    el.textContent = clipOk
+      ? '✓ Copied JSON to clipboard. Paste it back to Alan in Slack.'
+      : 'Pick recorded but clipboard copy failed — JSON is selected in the box below, copy manually.';
     el.classList.add('show');
   }}
 }}
 </script>
+<textarea id="fallback-ta" style="display:none;width:100%;height:8rem;margin-top:1rem;background:#111;color:#9fcf9f;border:1px solid #2a2a2a;border-radius:8px;padding:0.75rem;font-family:monospace;font-size:0.85rem;"></textarea>
 </body>
 </html>
 '''
@@ -238,11 +265,16 @@ CARD_TEMPLATE = '''<div class="card">
 
 @app.route('/vote-hero')
 def vote_hero():
+    import json as _json
     cards = '\n  '.join(
         CARD_TEMPLATE.format(id=o['id'], title=o['title'], blurb=o['blurb'])
         for o in HERO_OPTIONS
     )
-    return Response(VOTE_HERO_HTML.format(cards=cards), mimetype='text/html')
+    titles_json = _json.dumps({o['id']: o['title'] for o in HERO_OPTIONS})
+    return Response(
+        VOTE_HERO_HTML.format(cards=cards, titles_json=titles_json),
+        mimetype='text/html',
+    )
 
 @app.route('/vote-hero/img/<name>')
 def vote_hero_img(name):
@@ -255,6 +287,14 @@ def vote_hero_img(name):
         return 'Not found', 404
     with open(path, 'rb') as f:
         return Response(f.read(), mimetype='image/webp', headers={'Cache-Control': 'public, max-age=86400'})
+
+@app.route('/vote-hero/votes')
+def vote_hero_votes():
+    path = 'static/vote-hero/votes.log'
+    if not os.path.exists(path):
+        return Response('(no votes yet)\n', mimetype='text/plain')
+    with open(path, 'r') as f:
+        return Response(f.read(), mimetype='text/plain')
 
 @app.route('/vote-hero/select', methods=['POST'])
 def vote_hero_select():
