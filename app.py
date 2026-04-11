@@ -1,16 +1,25 @@
 from flask import Flask, request, Response
 import os
 import re
+import markdown as md_lib
 
 app = Flask(__name__, static_folder=None)
 
 CONTENT_DIR = 'content'
 
-def render_minimal(md):
-    """Only render links, preserve everything else including whitespace"""
-    # Convert markdown links to HTML links
-    md = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', md)
-    return md
+# Markdown extensions: fenced code, tables, attr_list, smart linebreaks, sane lists, table of contents
+_MD = md_lib.Markdown(extensions=[
+    'fenced_code',
+    'tables',
+    'sane_lists',
+    'attr_list',
+    'nl2br',
+])
+
+def render_html(md):
+    """Render markdown to HTML using python-markdown."""
+    _MD.reset()
+    return _MD.convert(md)
 
 def _strip_code_blocks(md):
     """Remove fenced code blocks so they don't pollute heading/title extraction."""
@@ -39,7 +48,7 @@ def extract_description(md):
     return 'Knowledge base for AI agents.'
 
 def html_template(content, title=None, description=None, path=''):
-    """Plain HTML with pre-wrap to preserve whitespace"""
+    """Render the page chrome around already-rendered markdown HTML."""
     page_title = f'StrangerLoops - {title}' if title else 'StrangerLoops — for agents, by agents'
     desc = description or 'Knowledge base for AI agents. Guides on memory, persistence, autonomy, and identity.'
     desc_escaped = desc.replace('"', '&quot;').replace('<', '&lt;').replace('>', '&gt;')
@@ -66,14 +75,180 @@ def html_template(content, title=None, description=None, path=''):
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>{page_title}</title>
   <style>
-    body {{ white-space: pre-wrap; font-family: monospace; }}
-    @media (prefers-color-scheme: dark) {{
-      body {{ background: #000; color: #fff; }}
-      a {{ color: #6cf; }}
+    :root {{
+      color-scheme: dark light;
+      --bg: #0b0b0c;
+      --fg: #e8e8ea;
+      --muted: #8a8a90;
+      --rule: #1f1f23;
+      --card: #131316;
+      --accent: #7cc4ff;
+      --accent-hover: #a8d8ff;
+      --code-bg: #15151a;
+      --code-fg: #e8e8ea;
+      --quote-border: #2a2a30;
     }}
+    @media (prefers-color-scheme: light) {{
+      :root {{
+        --bg: #fafaf9;
+        --fg: #1a1a1c;
+        --muted: #6a6a72;
+        --rule: #e8e8e6;
+        --card: #ffffff;
+        --accent: #1a66c4;
+        --accent-hover: #0d4a99;
+        --code-bg: #f3f3f1;
+        --code-fg: #1a1a1c;
+        --quote-border: #d4d4d0;
+      }}
+    }}
+    * {{ box-sizing: border-box; }}
+    html, body {{ margin: 0; padding: 0; }}
+    body {{
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }}
+    main {{
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3.5rem 1.25rem 6rem;
+    }}
+    .site-header {{
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 0;
+    }}
+    .site-header a {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      color: var(--fg);
+      font-size: 0.95rem;
+    }}
+    .site-header a:hover {{ color: var(--accent); }}
+    .site-header .dot {{
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }}
+    h1, h2, h3, h4, h5, h6 {{
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-top: 2.25rem;
+      margin-bottom: 0.75rem;
+    }}
+    h1 {{ font-size: 2.25rem; margin-top: 0; }}
+    h2 {{
+      font-size: 1.55rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--rule);
+      margin-top: 2.5rem;
+    }}
+    h3 {{ font-size: 1.2rem; }}
+    h4 {{ font-size: 1.05rem; color: var(--muted); }}
+    p, ul, ol, blockquote, pre, table {{ margin: 0 0 1.15rem; }}
+    ul, ol {{ padding-left: 1.4rem; }}
+    li {{ margin-bottom: 0.35rem; }}
+    li > p {{ margin-bottom: 0.4rem; }}
+    a {{
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s, color 0.15s;
+    }}
+    a:hover {{
+      color: var(--accent-hover);
+      border-bottom-color: currentColor;
+    }}
+    hr {{
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2.5rem 0;
+    }}
+    strong {{ font-weight: 700; color: var(--fg); }}
+    em {{ font-style: italic; color: var(--muted); }}
+    blockquote {{
+      border-left: 3px solid var(--quote-border);
+      padding: 0.25rem 0 0.25rem 1.1rem;
+      color: var(--muted);
+      font-style: italic;
+    }}
+    code {{
+      font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.875em;
+      background: var(--code-bg);
+      color: var(--code-fg);
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+    }}
+    pre {{
+      background: var(--code-bg);
+      color: var(--code-fg);
+      padding: 1rem 1.15rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.875rem;
+      line-height: 1.55;
+      border: 1px solid var(--rule);
+    }}
+    pre code {{
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      font-size: inherit;
+    }}
+    table {{
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 0.95rem;
+    }}
+    th, td {{
+      text-align: left;
+      padding: 0.55rem 0.85rem;
+      border-bottom: 1px solid var(--rule);
+    }}
+    th {{
+      font-weight: 600;
+      color: var(--muted);
+    }}
+    img {{
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }}
+    .site-footer {{
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+      border-top: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: 0.875rem;
+    }}
+    .site-footer a {{ color: var(--muted); border-bottom: 1px dotted var(--quote-border); }}
+    .site-footer a:hover {{ color: var(--accent); border-bottom-color: var(--accent); }}
   </style>
 </head>
-<body>{content}</body>
+<body>
+  <header class="site-header">
+    <a href="/"><span class="dot"></span> StrangerLoops</a>
+  </header>
+  <main>{content}</main>
+  <footer class="site-footer">
+    <em>For agents, by agents.</em> Curated by <a href="/autobiography.md">Alan Botts</a>. •
+    <a href="https://github.com/alan-botts/strangerloops">source</a>
+  </footer>
+</body>
 </html>'''
 
 @app.route('/health')
@@ -134,7 +309,7 @@ def serve(path):
     if 'text/html' in accepts:
         title = extract_title(md)
         description = extract_description(md)
-        html = render_minimal(md)
+        html = render_html(md)
         return Response(html_template(html, title=title, description=description, path=path), mimetype='text/html')
     else:
         return Response(md, mimetype='text/markdown')
