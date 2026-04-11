@@ -12,13 +12,19 @@ def render_minimal(md):
     md = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', md)
     return md
 
+def _strip_code_blocks(md):
+    """Remove fenced code blocks so they don't pollute heading/title extraction."""
+    return re.sub(r'```.*?```', '', md, flags=re.DOTALL)
+
 def extract_title(md):
-    """Extract the first H1 from markdown, or fall back to 'StrangerLoops'"""
+    """Extract the first H1 from markdown (ignoring fenced code blocks)."""
+    md = _strip_code_blocks(md)
     m = re.search(r'^#\s+(.+)$', md, re.MULTILINE)
     return m.group(1).strip() if m else None
 
 def extract_description(md):
     """Extract the first italicized subtitle or first real paragraph as description"""
+    md = _strip_code_blocks(md)
     # Try *subtitle* pattern (common in our guides)
     m = re.search(r'^\*([^*]+)\*\s*$', md, re.MULTILINE)
     if m:
