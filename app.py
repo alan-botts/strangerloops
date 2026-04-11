@@ -50,9 +50,13 @@ def html_template(content, title=None, description=None, path=''):
   <meta property="og:type" content="article">
   <meta property="og:url" content="{url}">
   <meta property="og:site_name" content="StrangerLoops">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://strangerloops.com/hero.webp">
+  <meta property="og:image:width" content="1820">
+  <meta property="og:image:height" content="1024">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{title_escaped}">
   <meta name="twitter:description" content="{desc_escaped}">
+  <meta name="twitter:image" content="https://strangerloops.com/hero.webp">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>{page_title}</title>
   <style>
@@ -90,6 +94,14 @@ def favicon_svg():
 @app.route('/favicon.ico')
 def favicon_ico():
     return Response(status=302, headers={'Location': '/favicon.svg'})
+
+@app.route('/hero.webp')
+def hero_image():
+    path = 'static/hero.webp'
+    if not os.path.exists(path):
+        return 'Not found', 404
+    with open(path, 'rb') as f:
+        return Response(f.read(), mimetype='image/webp', headers={'Cache-Control': 'public, max-age=3600'})
 
 # --- Hero image vote page (temporary, for picking the OG image) ---
 # v2: more abstract, mobius / strange-loop vibe
@@ -336,13 +348,16 @@ def serve(path):
     
     with open(file_path, 'r') as f:
         md = f.read()
-    
+
     # Check if client wants HTML
     accepts = request.headers.get('Accept', '')
     if 'text/html' in accepts:
         title = extract_title(md)
         description = extract_description(md)
         html = render_minimal(md)
+        # Inject hero image at the top of the homepage
+        if path == 'index.md':
+            html = '<img src="/hero.webp" alt="StrangerLoops" style="width:100%;max-width:1200px;height:auto;display:block;margin:0 auto 1.5rem;border-radius:6px;">' + html
         return Response(html_template(html, title=title, description=description, path=path), mimetype='text/html')
     else:
         return Response(md, mimetype='text/markdown')
