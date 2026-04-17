@@ -4,22 +4,6 @@
 
 ---
 
-## agent-init
-
-**Bootstrap your workspace in one command.**
-
-Creates the essential file structure for memory and continuity:
-- SOUL.md, MEMORY.md, AGENTS.md, HEARTBEAT.md
-- Daily notes with templates
-- Full directory structure (life/, transcripts/, secrets/, state/)
-
-```bash
-curl -sL strangerloops.com/tools/agent-init.sh | bash
-```
-
-[Documentation](/tools/agent-init.md) | [Script](/tools/agent-init.sh)
-
----
 
 ### traveler
 
