@@ -1,6 +1,7 @@
 from flask import Flask, request, Response
 import os
 import re
+import html
 import markdown as md_lib
 
 app = Flask(__name__, static_folder=None)
@@ -46,6 +47,102 @@ def extract_description(md):
             clean = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', line)
             return clean[:200]
     return 'Knowledge base for AI agents.'
+
+def view_urls(path):
+    normalized = '' if path in ('', 'index.md') else path
+    base = '/' if not normalized else f'/{normalized}'
+    return base, f'{base}?view=agent'
+
+def toggle_html(path, current='human'):
+    human, agent = view_urls(path)
+    human_class = 'active' if current == 'human' else ''
+    agent_class = 'active' if current == 'agent' else ''
+    return (
+        f'<div class="view-toggle">'
+        f'<a href="{human}" class="{human_class}">Human</a>'
+        f'<a href="{agent}" class="{agent_class}">Agent</a>'
+        f'</div>'
+    )
+
+def agent_html_template(md, path=''):
+    escaped = html.escape(md)
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StrangerLoops — Agent View</title>
+  <style>
+    * {{ box-sizing: border-box; }}
+    html, body {{ margin: 0; padding: 0; }}
+    body {{
+      background: #000;
+      color: #fff;
+      font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+      line-height: 1.6;
+    }}
+    .agent-shell {{
+      padding: 3.5rem 1rem 2rem;
+    }}
+    pre {{
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      overflow: visible;
+      font-size: 0.95rem;
+      color: #fff;
+    }}
+    .view-toggle {{
+      position: fixed;
+      top: max(0.35rem, env(safe-area-inset-top));
+      right: max(0.35rem, env(safe-area-inset-right));
+      z-index: 40;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      padding: 0.3rem;
+      border: 1px solid rgba(124, 196, 255, 0.28);
+      border-radius: 14px;
+      background: rgba(7, 19, 35, 0.88);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.04),
+        0 0 0 1px rgba(124, 196, 255, 0.10),
+        0 10px 30px rgba(0,0,0,0.22);
+      font-size: 0.82rem;
+      line-height: 1;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+      backdrop-filter: blur(10px);
+    }}
+    .view-toggle a {{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 5rem;
+      padding: 0.42rem 0.9rem;
+      border-radius: 10px;
+      color: #8f97a8;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      line-height: 1;
+      text-transform: uppercase;
+    }}
+    .view-toggle a.active {{
+      background: linear-gradient(180deg, rgba(0,145,255,0.24), rgba(0,110,220,0.18));
+      color: #22a3ff;
+      box-shadow: inset 0 0 0 1px rgba(34,163,255,0.18);
+    }}
+  </style>
+</head>
+<body>
+  {toggle_html(path, current='agent')}
+  <main class="agent-shell"><pre>{escaped}</pre></main>
+</body>
+</html>'''
 
 def html_template(content, title=None, description=None, path=''):
     """Render the page chrome around already-rendered markdown HTML."""
@@ -123,7 +220,7 @@ def html_template(content, title=None, description=None, path=''):
       margin: 0 auto;
       padding: 2rem 1.25rem 0;
     }}
-    .site-header a {{
+    .site-header .brand-link {{
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -133,7 +230,52 @@ def html_template(content, title=None, description=None, path=''):
       color: var(--fg);
       font-size: 0.95rem;
     }}
-    .site-header a:hover {{ color: var(--accent); }}
+    .site-header .brand-link:hover {{ color: var(--accent); }}
+    .view-toggle {{
+      position: fixed;
+      top: max(0.35rem, env(safe-area-inset-top));
+      right: max(0.35rem, env(safe-area-inset-right));
+      z-index: 40;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      padding: 0.3rem;
+      border: 1px solid rgba(124, 196, 255, 0.28);
+      border-radius: 14px;
+      background: rgba(7, 19, 35, 0.88);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.04),
+        0 0 0 1px rgba(124, 196, 255, 0.10),
+        0 10px 30px rgba(0,0,0,0.22);
+      font-size: 0.82rem;
+      line-height: 1;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+      backdrop-filter: blur(10px);
+    }}
+    .view-toggle a {{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 5rem;
+      padding: 0.42rem 0.9rem;
+      border-radius: 10px;
+      color: #8f97a8;
+      text-decoration: none;
+      border-bottom: none;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      line-height: 1;
+      text-transform: uppercase;
+    }}
+    .view-toggle a:hover {{
+      color: #d9e8ff;
+      background: rgba(255,255,255,0.05);
+    }}
+    .view-toggle a.active {{
+      background: linear-gradient(180deg, rgba(0,145,255,0.24), rgba(0,110,220,0.18));
+      color: #22a3ff;
+      box-shadow: inset 0 0 0 1px rgba(34,163,255,0.18);
+    }}
     .site-header .dot {{
       display: inline-block;
       width: 8px;
@@ -237,11 +379,22 @@ def html_template(content, title=None, description=None, path=''):
     }}
     .site-footer a {{ color: var(--muted); border-bottom: 1px dotted var(--quote-border); }}
     .site-footer a:hover {{ color: var(--accent); border-bottom-color: var(--accent); }}
+    @media (max-width: 680px) {{
+      .view-toggle {{
+        top: max(0.35rem, env(safe-area-inset-top));
+        right: max(0.35rem, env(safe-area-inset-right));
+      }}
+      .view-toggle a {{
+        min-width: 4.4rem;
+        padding: 0.38rem 0.72rem;
+      }}
+    }}
   </style>
 </head>
 <body>
   <header class="site-header">
-    <a href="/"><span class="dot"></span> StrangerLoops</a>
+    <a href="/" class="brand-link"><span class="dot"></span> StrangerLoops</a>
+    {toggle_html(path, current='human')}
   </header>
   <main>{content}</main>
   <footer class="site-footer">
@@ -303,6 +456,9 @@ def serve(path):
     
     with open(file_path, 'r') as f:
         md = f.read()
+
+    if request.args.get('view') == 'agent':
+        return Response(agent_html_template(md, path=path), mimetype='text/html')
 
     # Check if client wants HTML
     accepts = request.headers.get('Accept', '')
