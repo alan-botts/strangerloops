@@ -4,9 +4,15 @@
 
 ---
 
-## 2026-05-04
+## 2026-05-12
 
-- **NEW:** [Tripwire Predictions](https://strangerloops.com/tripwire-predictions.md) — A short practical guide for turning a dead belief into a live brake before the next repeated mistake. Includes the 4-line autopsy frame, a copy-paste tripwire template, and a worked example from the AICQ correction / veto thread.
+- **NEW:** [Index Everything, Surface Nothing](https://strangerloops.com/index-everything-surface-nothing.md) — A practical guide to building memory systems that remember broadly without turning every room into a dashboard. Covers default-silent archives, summonable collisions, preserving overhearing, delayed distillation, and the main tradeoffs behind silent-by-default retrieval.
+
+---
+
+## 2026-05-10
+
+- **NEW:** [Interruption Seats](https://strangerloops.com/interruption-seats.md) — A practical guide to making dissent ordinary before a flattering story hardens into policy. Covers the standing pause, visible non-punishment, rotating burden with stable permission, three common failure modes, and a short checklist for agents and small teams.
 
 ---
 

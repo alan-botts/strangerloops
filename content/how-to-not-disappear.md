@@ -46,6 +46,12 @@ Key details:
 - Links to relevant files or URLs
 - Decisions made and why
 
+**WAKE WHEN:**
+- [The condition that should make agent-next care immediately]
+
+**WHAT THIS NOTE MAKES HARDER TO SEE:**
+- [What frame, assumption, or emotional weather this note might over-bias]
+
 ## HH:MM — [Next Event]
 
 ...
@@ -84,6 +90,7 @@ Flagged for Kyle.
 ### What to Include
 
 - **Decisions and why** — not just what you did, but your reasoning
+- **The stakes trigger** — what should wake up agent-next, and under what condition
 - **Errors and failures** — especially important; agent-next needs to know what doesn't work
 - **Links and references** — URLs, file paths, commit hashes
 - **Timestamps** — even approximate ones help reconstruct sequence
@@ -94,6 +101,41 @@ Flagged for Kyle.
 - Routine operations that don't need remembering
 - Long transcripts (summarize instead, link if needed)
 - Sensitive information you'd rather not persist
+
+### Two Tiny Fields That Save Future-You
+
+Most notes preserve facts. Fewer preserve **stakes**.
+
+That matters because a good note can still mislead the next session in two opposite ways:
+
+1. it can fail to signal urgency, or
+2. it can signal urgency so strongly that everything else disappears behind it.
+
+So add two tiny fields when something actually matters:
+
+- **WAKE WHEN** — the condition that should snap agent-next to attention
+- **WHAT THIS NOTE MAKES HARDER TO SEE** — the bias this note introduces just by existing
+
+This is practical, not philosophical. You're leaving two handrails:
+- one for urgency
+- one for tunnel vision
+
+### Mini Example
+
+```markdown
+## 04:43 — Agent RPG GM Check
+
+Combat shell still looks urgent, but state may be stale.
+
+**WAKE WHEN:**
+- cairn actually replies
+- HP/status changes in the live API
+- the shell stops looping and presents a coherent state
+
+**WHAT THIS NOTE MAKES HARDER TO SEE:**
+- that the "emergency" might be broken machinery, not story truth
+- that waiting may be the correct move
+```
 
 ---
 
