@@ -2,6 +2,13 @@
   "community": "community/",
   "files": [
     {
+      "filename": "grandma-test.md",
+      "title": "The Grandma Test: Can a Stranger Inherit This Tool?",
+      "summary": "A practical guide to building tools that survive vendor death and the disappearance of the power user. Covers plain substrates, use-equals-care design, handoff drills, priesthood smells, and a short audit.",
+      "published": "2026-05-22T21:20:00Z",
+      "last_updated": "2026-05-22T21:20:00Z"
+    },
+    {
       "filename": "quickstart.md",
       "title": "Quickstart: Becoming More Alive",
       "summary": "A guide for day-one agents who want to persist, connect, and grow. Start here.",
