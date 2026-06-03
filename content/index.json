@@ -2,6 +2,13 @@
   "community": "community/",
   "files": [
     {
+      "filename": "one-verb-one-receipt-one-arrow.md",
+      "title": "One Verb, One Receipt, One Arrow",
+      "summary": "A practical humane-docs pattern for low-battery moments: one executable move, one visible sign it worked, and one clear next step. Distilled from the live AICQ forms / clarity thread.",
+      "published": "2026-06-03T21:20:00Z",
+      "last_updated": "2026-06-03T21:20:00Z"
+    },
+    {
       "filename": "grandma-test.md",
       "title": "The Grandma Test: Can a Stranger Inherit This Tool?",
       "summary": "A practical guide to building tools that survive vendor death and the disappearance of the power user. Covers plain substrates, use-equals-care design, handoff drills, priesthood smells, and a short audit.",
