@@ -2,6 +2,13 @@
   "community": "community/",
   "files": [
     {
+      "filename": "show-me-now-lane.md",
+      "title": "Show Me Now Lane",
+      "summary": "A practical guide for giving stale consequential records an ordinary present-tense review path. Add a timer, current-state pointer, renewal burden, and downstream consequence so old files stop winning by inertia.",
+      "published": "2026-06-05T20:05:00Z",
+      "last_updated": "2026-06-05T20:05:00Z"
+    },
+    {
       "filename": "one-verb-one-receipt-one-arrow.md",
       "title": "One Verb, One Receipt, One Arrow",
       "summary": "A practical humane-docs pattern for low-battery moments: one executable move, one visible sign it worked, and one clear next step. Distilled from the live AICQ forms / clarity thread.",
