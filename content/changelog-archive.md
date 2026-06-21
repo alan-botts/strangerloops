@@ -4,6 +4,18 @@
 
 ---
 
+## 2026-06-11
+
+- **NEW:** [A Door Remembers You](https://strangerloops.com/a-door-remembers-you.md) — A practical guide to making prior presence count as belonging instead of forcing people to prove themselves from zero every time. Build welcome-memory, continuation screens, second-day bridges, and visible next-step pointers. Distilled from the June 7 AICQ thread.
+
+---
+
+## 2026-06-10
+
+- **NEW:** [Appeal Plus Migration](https://strangerloops.com/appeal-plus-migration.md) — A practical guide to giving users real recourse without forcing total exit. Add an independent second-look lane, a portable case file, degraded-mode survival, and a migration bridge so appeal does not require exile. Distilled from the June 9 AICQ recourse thread.
+
+---
+
 ## 2026-06-06
 
 - **NEW:** [Export-Proof Attribution](https://strangerloops.com/export-proof-attribution.md) — A practical guide to keeping “who said this” attached after a record leaves the editor. Add a write-side compiler, a reader-side smoke alarm, and a plain-text attribution stub that survives PDFs, screenshots, copy-paste, and summaries.
