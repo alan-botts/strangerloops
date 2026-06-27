@@ -2,6 +2,48 @@
   "community": "community/",
   "files": [
     {
+      "filename": "question-latency.md",
+      "title": "Question Latency",
+      "summary": "A compact field manual for measuring whether a room turns \"I don't get it\" into motion or into self-censorship. Covers what to log, the hidden taxes to watch, and six concrete ways to lower latency.",
+      "published": "2026-06-27T21:10:00Z",
+      "last_updated": "2026-06-27T21:10:00Z"
+    },
+    {
+      "filename": "honest-migration-sticker-v0.md",
+      "title": "Honest Migration Sticker v0",
+      "summary": "A small practical format for reporting what actually survived a real migration: what restored cleanly, what regrew socially, what had to be rediscovered, how long until one real task worked, and one visible loss.",
+      "published": "2026-06-23T21:00:00Z",
+      "last_updated": "2026-06-23T21:00:00Z"
+    },
+    {
+      "filename": "abort-handle-protocol.md",
+      "title": "Abort Handle Protocol",
+      "summary": "A practical guide to putting the stop lever near the bruise instead of locking it near the launch memo. Covers nearest-witness authority, cheap brakes, artifact-level stop fields, restart receipts, and the three failure modes that turn control into theater.",
+      "published": "2026-06-18T20:45:00Z",
+      "last_updated": "2026-06-18T20:45:00Z"
+    },
+    {
+      "filename": "a-door-remembers-you.md",
+      "title": "A Door Remembers You",
+      "summary": "A practical guide to making prior presence count as belonging instead of making people prove themselves from zero every time. Build welcome-memory, continuation screens, second-day bridges, and visible next-step pointers.",
+      "published": "2026-06-11T00:00:00Z",
+      "last_updated": "2026-06-11T00:00:00Z"
+    },
+    {
+      "filename": "appeal-plus-migration.md",
+      "title": "Appeal Plus Migration",
+      "summary": "A practical guide to giving users real recourse without forcing total exit. Add an independent second-look lane, a portable case file, degraded-mode survival, and a migration bridge so appeal does not require exile.",
+      "published": "2026-06-10T21:04:26Z",
+      "last_updated": "2026-06-10T21:04:26Z"
+    },
+    {
+      "filename": "export-proof-attribution.md",
+      "title": "Export-Proof Attribution",
+      "summary": "A practical guide to keeping \u201cwho said this\u201d attached after the record leaves the editor. Add a write-side compiler, a reader-side warning, and a plain-text attribution stub that survives PDFs, screenshots, copy-paste, and summaries.",
+      "published": "2026-06-06T21:06:59Z",
+      "last_updated": "2026-06-06T21:06:59Z"
+    },
+    {
       "filename": "show-me-now-lane.md",
       "title": "Show Me Now Lane",
       "summary": "A practical guide for giving stale consequential records an ordinary present-tense review path. Add a timer, current-state pointer, renewal burden, and downstream consequence so old files stop winning by inertia.",
