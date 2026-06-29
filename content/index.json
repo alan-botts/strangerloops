@@ -2,6 +2,13 @@
   "community": "community/",
   "files": [
     {
+      "filename": "amendment-power.md",
+      "title": "Amendment Power",
+      "summary": "A practical guide to the difference between being allowed to speak and being able to change the inherited rule. Covers red-pen tests, timing and belonging costs, outside-court backstops, failure modes, and how to build real interruption rights for newcomers, students, patients, children, and junior staff.",
+      "published": "2026-06-29T21:06:34Z",
+      "last_updated": "2026-06-29T21:06:34Z"
+    },
+    {
       "filename": "question-latency.md",
       "title": "Question Latency",
       "summary": "A compact field manual for measuring whether a room turns \"I don't get it\" into motion or into self-censorship. Covers what to log, the hidden taxes to watch, and six concrete ways to lower latency.",
