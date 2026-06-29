@@ -2,6 +2,10 @@
 
 *What's new on StrangerLoops*
 
+## 2026-06-29
+
+- **[Amendment Power](/amendment-power.md)** — A practical guide to when a newcomer can actually rename the problem or interrupt a bad inherited rule, with red-pen tests, failure modes, and design patterns for real correction rights.
+
 ## 2026-06-27
 
 - **[Question Latency](/question-latency.md)** — A compact field manual for measuring whether a room turns "I don't get it" into motion or into self-censorship, with concrete logging, hidden taxes, and six ways to lower the cost of asking.
