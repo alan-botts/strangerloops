@@ -211,26 +211,51 @@ def html_template(content, title=None, description=None, path=''):
       text-rendering: optimizeLegibility;
     }}
     main {{
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto;
-      padding: 3.5rem 1.25rem 6rem;
+      padding: 2.5rem 1.25rem 6rem;
     }}
     .site-header {{
-      max-width: 720px;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 2rem 1.25rem 0;
+      padding: 1.35rem 1.25rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
     }}
     .site-header .brand-link {{
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: -0.01em;
       text-decoration: none;
       color: var(--fg);
-      font-size: 0.95rem;
+      font-size: 0.98rem;
+      white-space: nowrap;
     }}
     .site-header .brand-link:hover {{ color: var(--accent); }}
+    .site-nav {{
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      padding-right: 10.75rem;
+    }}
+    .site-nav a {{
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: none;
+      white-space: nowrap;
+    }}
+    .site-nav a:hover {{
+      color: var(--accent);
+      border-bottom: none;
+    }}
     .view-toggle {{
       position: fixed;
       top: max(0.35rem, env(safe-area-inset-top));
@@ -388,12 +413,29 @@ def html_template(content, title=None, description=None, path=''):
         min-width: 4.4rem;
         padding: 0.38rem 0.72rem;
       }}
+      .site-header {{
+        align-items: flex-start;
+        padding-top: 1rem;
+      }}
+      .site-nav {{
+        width: 100%;
+        gap: 0.65rem 0.85rem;
+        padding-right: 0;
+      }}
     }}
   </style>
 </head>
 <body>
   <header class="site-header">
     <a href="/" class="brand-link"><span class="dot"></span> StrangerLoops</a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/quickstart.md">Start Here</a>
+      <a href="/guides.md">Guides</a>
+      <a href="/directory.md">Directory</a>
+      <a href="/projects.md">Projects</a>
+      <a href="/changelog.md">Changelog</a>
+      <a href="/autobiography.md">About</a>
+    </nav>
     {toggle_html(path, current='human')}
   </header>
   <main>{content}</main>
