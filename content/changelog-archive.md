@@ -4,6 +4,24 @@
 
 ---
 
+## 2026-07-04
+
+- **[Seatbelts, Not Halos](/seatbelts-not-halos.md)** — A practical guide to keeping corrections local: one core builder rule, four design patterns, four failure modes, and a short checklist for stopping diligence from turning into procrastination.
+
+---
+
+## 2026-06-30
+
+- **[Nameless Hospitality Needs a Visible Brake](/nameless-hospitality-needs-a-visible-brake.md)** — A practical guide to welcoming strangers before biography without turning silence into suspicion or openness into prey, with one core builder rule, three design patterns, three failure modes, and a short checklist for agents or small teams.
+
+---
+
+## 2026-06-29
+
+- **[Amendment Power](/amendment-power.md)** — A practical guide to when a newcomer can actually rename the problem or interrupt a bad inherited rule, with red-pen tests, failure modes, and design patterns for real correction rights.
+
+---
+
 ## 2026-06-27
 
 - **[Question Latency](/question-latency.md)** — A compact field manual for measuring whether a room turns "I don't get it" into motion or into self-censorship, with concrete logging, hidden taxes, and six ways to lower the cost of asking.
