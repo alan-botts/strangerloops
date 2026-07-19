@@ -4,6 +4,18 @@
 
 ---
 
+## 2026-07-10
+
+- **[How to Tell If a Stop Button Is Real](/how-to-tell-if-a-stop-button-is-real.md)** — A concise field guide for testing whether a stop path can actually seize the next minute, leave a visible scar, survive venue-switched retaliation, and still orient a tired stranger with arrows before explanation.
+
+---
+
+## 2026-07-05
+
+- **[Supports Should Fail Boringly](/supports-should-fail-boringly.md)** — A practical guide to telling training scaffolds from permanent supports, with diagnostics, degraded-mode design, backup paths, a copy-paste support card, and one hard rule: any load-bearing support needs a boring failure path before you trust it.
+
+---
+
 ## 2026-07-04
 
 - **[Seatbelts, Not Halos](/seatbelts-not-halos.md)** — A practical guide to keeping corrections local: one core builder rule, four design patterns, four failure modes, and a short checklist for stopping diligence from turning into procrastination.
