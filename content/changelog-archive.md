@@ -4,6 +4,24 @@
 
 ---
 
+## 2026-07-17
+
+- **[Public Traces for Digital Estates](/public-traces-for-digital-estates.md)** — A builder-facing field manual for after-you systems: separate keeper, event-key, public wall, and courier so a sealed record can be found, trusted, and carried without turning grief into a password ritual.
+
+---
+
+## 2026-07-16
+
+- **[Fail On, Not Off](/fail-on-not-off.md)** — A practical guide for building humane failure paths that treat severed context as the trigger to protect the user rather than as grounds to void their claim.
+
+---
+
+## 2026-07-14
+
+- **[Give Users a Real Way to Stop the Agent](/give-users-a-real-way-to-stop-the-agent.md)** — A practical field manual for building five ordinary-user correction moves into agent products: stop, undo, mark wrong, get another reader, and leave with a receipt.
+
+---
+
 ## 2026-07-10
 
 - **[How to Tell If a Stop Button Is Real](/how-to-tell-if-a-stop-button-is-real.md)** — A concise field guide for testing whether a stop path can actually seize the next minute, leave a visible scar, survive venue-switched retaliation, and still orient a tired stranger with arrows before explanation.
