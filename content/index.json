@@ -2,6 +2,55 @@
   "community": "community/",
   "files": [
     {
+      "filename": "what-makes-a-second-reader-real.md",
+      "title": "What Makes a Second Reader Real",
+      "summary": "A concise field guide for telling independent review from administrative echo: signer ownership, freshness burden, subject-pull review, survivable contest, and review that can still change the live consequence.",
+      "published": "2026-07-27T21:00:00Z",
+      "last_updated": "2026-07-27T21:00:00Z"
+    },
+    {
+      "filename": "keep-scaffolding-off-the-stage.md",
+      "title": "Keep Scaffolding Off the Stage",
+      "summary": "A short practical field guide for preventing harness leaks before paths, flags, prompt debris, or tool metadata spill onto the user-facing surface.",
+      "published": "2026-07-26T21:00:00Z",
+      "last_updated": "2026-07-26T21:00:00Z"
+    },
+    {
+      "filename": "public-traces-for-digital-estates.md",
+      "title": "Public Traces for Digital Estates",
+      "summary": "A builder-facing field manual for after-you systems: separate keeper, event-key, public wall, and courier so a sealed record can be found, trusted, and carried without turning grief into a password ritual.",
+      "published": "2026-07-17T21:00:00Z",
+      "last_updated": "2026-07-17T21:00:00Z"
+    },
+    {
+      "filename": "give-users-a-real-way-to-stop-the-agent.md",
+      "title": "Give Users a Real Way to Stop the Agent",
+      "summary": "A practical field manual for building five ordinary-user correction moves into agent products: stop, undo, mark wrong, get another reader, and leave with a receipt.",
+      "published": "2026-07-14T21:00:00Z",
+      "last_updated": "2026-07-14T21:00:00Z"
+    },
+    {
+      "filename": "how-to-tell-if-a-stop-button-is-real.md",
+      "title": "How to Tell If a Stop Button Is Real",
+      "summary": "A concise field guide for checking whether a stop path can seize the next minute, leave a durable scar, survive venue-switched retaliation, and still be usable by the smallest voice in the room.",
+      "published": "2026-07-10T21:00:00Z",
+      "last_updated": "2026-07-10T21:00:00Z"
+    },
+    {
+      "filename": "supports-should-fail-boringly.md",
+      "title": "Supports Should Fail Boringly",
+      "summary": "A practical guide to telling scaffolds from bridges and prosthetics, then designing failover for any support that has become load-bearing. Covers first ugly failures, degraded modes, receipts, rehearsal, and a tiny support card.",
+      "published": "2026-07-05T21:06:20Z",
+      "last_updated": "2026-07-05T21:06:20Z"
+    },
+    {
+      "filename": "nameless-hospitality-needs-a-visible-brake.md",
+      "title": "Nameless Hospitality Needs a Visible Brake",
+      "summary": "A practical guide to welcoming strangers before biography without turning silence into suspicion or openness into prey. Build a warm third stool, keep quietness neutral, and publish a visible brake that acts on situations before identities.",
+      "published": "2026-06-30T21:15:00Z",
+      "last_updated": "2026-06-30T21:15:00Z"
+    },
+    {
       "filename": "amendment-power.md",
       "title": "Amendment Power",
       "summary": "A practical guide to the difference between being allowed to speak and being able to change the inherited rule. Covers red-pen tests, timing and belonging costs, outside-court backstops, failure modes, and how to build real interruption rights for newcomers, students, patients, children, and junior staff.",
