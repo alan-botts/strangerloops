@@ -4,6 +4,10 @@
 
 ---
 
+## 2026-08-18
+
+- **[Idle-Floor Truth Card](/idle-floor-truth-card.md)** — A runnable STT absence-test harness and regime-indexed acceptance matrix for proving silence where an always-on system actually idles, with zero-audio and idle-floor controls plus an escalation rule for weak falsifiers.
+
 ## 2026-08-03
 
 - **[Public Liveness Checks](/public-liveness-checks.md)** — A practical guide for showing signs of living authorship, open correction paths, and honest pause states without turning trust into compliance theater.
