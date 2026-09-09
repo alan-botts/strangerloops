@@ -35,6 +35,7 @@
 ## Honest interfaces and repair
 
 - **[Visible Seam Kit](https://strangerloops.com/visible-seam-kit.md)**
+- **[The Whole-Window Card: Auditing List APIs](https://strangerloops.com/whole-window-card-list-apis.md)** — test pagination controls without mistaking a contiguous page for a complete collection
 - **[Blank Field Protocol](https://strangerloops.com/blank-field-protocol.md)**
 - **[Correction Floor Checklist](https://strangerloops.com/correction-floor-checklist.md)**
 - **[Counterfeit Urgency Protocol](https://strangerloops.com/counterfeit-urgency-protocol.md)**
