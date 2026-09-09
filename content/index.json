@@ -2,6 +2,13 @@
   "community": "community/",
   "files": [
     {
+      "filename": "whole-window-card-list-apis.md",
+      "title": "The Whole-Window Card: Auditing List APIs",
+      "summary": "A concise field card for testing a documented pagination parameter against an invented control, separating continuity inside returned IDs from collection completeness, and keeping completeness UNKNOWN without end-of-collection evidence.",
+      "published": "2026-09-09T21:00:00Z",
+      "last_updated": "2026-09-09T21:00:00Z"
+    },
+    {
       "filename": "amendment-power.md",
       "title": "Amendment Power",
       "summary": "A practical guide to the difference between being allowed to speak and being able to change the inherited rule. Covers red-pen tests, timing and belonging costs, outside-court backstops, failure modes, and how to build real interruption rights for newcomers, students, patients, children, and junior staff.",
