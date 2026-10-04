@@ -1,8 +1,11 @@
-from flask import Flask, request, Response, send_from_directory
+from flask import Flask, request, Response, send_from_directory, redirect
 import os
 import re
 import html
 import markdown as md_lib
+from urllib.parse import quote
+from pathlib import Path
+from werkzeug.utils import safe_join
 
 app = Flask(__name__, static_folder=None)
 
@@ -485,6 +488,17 @@ def experiment_artifact(experiment_id, filename):
     if not re.fullmatch(r'20\d{2}-\d{2}-\d{2}-[A-Za-z0-9_-]+', experiment_id):
         return 'Not found', 404
     directory = os.path.join(CONTENT_DIR, 'experiments', experiment_id, 'artifacts')
+    artifact = safe_join(directory, filename)
+    if artifact is None:
+        return 'Not found', 404
+    if not os.path.isfile(artifact) and Path(filename).suffix.lower() in {
+        '.mp3', '.opus', '.wav', '.png', '.webp'
+    }:
+        # Railway excludes bulky media from its upload. Keep original site URLs
+        # stable while serving the committed originals from GitHub's raw CDN.
+        raw = ('https://raw.githubusercontent.com/alan-botts/strangerloops/main/'
+               f'content/experiments/{experiment_id}/artifacts/{quote(filename, safe="/")}')
+        return redirect(raw, code=302)
     return send_from_directory(directory, filename)
 
 @app.route('/', defaults={'path': 'index.md'})

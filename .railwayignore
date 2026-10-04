@@ -1,0 +1,7 @@
+# Originals stay in GitHub; app.py redirects these site URLs to the raw CDN.
+# The full media archive exceeds the Railway CLI upload limit.
+content/experiments/**/*.mp3
+content/experiments/**/*.opus
+content/experiments/**/*.wav
+content/experiments/**/*.png
+content/experiments/**/*.webp
