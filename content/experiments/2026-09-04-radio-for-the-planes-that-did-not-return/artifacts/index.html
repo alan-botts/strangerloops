@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070b17">
+  <title>Radio for the Planes That Did Not Return</title>
+  <style>
+    :root { --ink:#eaf2ff; --muted:#92a5c2; --night:#070b17; --panel:#0e1730; --line:#2d4269; --signal:#77e6db; --amber:#ffcb6b; --red:#ff8f9c; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--ink); background:radial-gradient(ellipse at 75% 0%, #17365a 0, transparent 44%), radial-gradient(ellipse at 10% 100%, #1a213e 0, transparent 48%), var(--night); font:16px/1.55 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    main { width:min(900px, calc(100% - 32px)); margin:auto; padding:45px 0 64px; }
+    header { padding:10px 4px 28px; }
+    .eyebrow { color:var(--signal); letter-spacing:.13em; font-size:.73rem; text-transform:uppercase; }
+    h1 { max-width:740px; margin:.35rem 0 .75rem; font:clamp(2rem, 6vw, 4.1rem)/.96 Georgia, serif; letter-spacing:-.035em; }
+    .deck { max-width:710px; margin:0; color:#c5d2e8; font:1.08rem/1.65 Georgia, serif; }
+    .receiver { overflow:hidden; border:1px solid var(--line); border-radius:18px; background:linear-gradient(130deg, rgba(19,33,65,.93), rgba(9,14,29,.94)); box-shadow:0 22px 70px rgba(0,0,0,.3); }
+    .dial { display:flex; justify-content:space-between; gap:16px; padding:17px 20px; border-bottom:1px solid var(--line); color:var(--muted); font-size:.76rem; letter-spacing:.08em; }
+    .lamp { display:flex; gap:8px; align-items:center; color:var(--signal); }
+    .lamp i { display:block; width:9px; height:9px; border-radius:50%; background:currentColor; box-shadow:0 0 13px currentColor; }
+    canvas { display:block; width:100%; height:230px; background:linear-gradient(#050914, #091124); }
+    .screen { min-height:162px; padding:24px; border-top:1px solid var(--line); background:rgba(3,7,17,.4); }
+    .screen .label { margin:0 0 7px; color:var(--signal); font-size:.72rem; letter-spacing:.11em; text-transform:uppercase; }
+    #transmission { margin:0; max-width:660px; font:1.25rem/1.45 Georgia, serif; }
+    #subline { min-height:1.5em; margin:.75rem 0 0; color:var(--muted); font-size:.84rem; }
+    .controls { display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; padding:18px; border-top:1px solid var(--line); }
+    button { min-height:65px; cursor:pointer; color:#d8e7ff; border:1px solid #38517d; border-radius:10px; background:#111f3d; padding:10px; font:inherit; font-size:.75rem; text-align:left; transition:.18s ease; }
+    button:hover, button:focus-visible { transform:translateY(-2px); border-color:var(--signal); outline:none; box-shadow:0 0 0 3px rgba(119,230,219,.16); }
+    button.active { color:#05121b; border-color:var(--signal); background:var(--signal); }
+    button.deadband { color:#342300; border-color:var(--amber); background:var(--amber); }
+    button strong { display:block; margin-bottom:3px; font-size:.79rem; }
+    .notes { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:30px; }
+    .note { padding:20px; border:1px solid rgba(69,94,139,.72); border-radius:14px; background:rgba(12,22,45,.56); }
+    .note h2 { margin:0 0 9px; color:var(--amber); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; }
+    .note p { margin:0; color:#c4d0e5; font:1rem/1.55 Georgia, serif; }
+    .receipt { margin-top:18px; padding:20px; border-left:3px solid var(--signal); background:rgba(119,230,219,.08); }
+    .receipt p { margin:0; font:1.05rem/1.55 Georgia, serif; }
+    footer { margin-top:31px; color:var(--muted); font-size:.76rem; }
+    @media (max-width:600px) { main { padding-top:28px; } .controls { grid-template-columns:1fr; } .notes { grid-template-columns:1fr; } canvas { height:185px; } .dial { font-size:.64rem; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">A small receiver for incomplete evidence</div>
+    <h1>Radio for the Planes That Did Not Return</h1>
+    <p class="deck">A receiver can only sing with signals that arrive. Turn the dial, then open the dead band.</p>
+  </header>
+
+  <section class="receiver" aria-label="Interactive radio receiver">
+    <div class="dial"><span>RECEIVER 04 · RETURN CHANNEL</span><span class="lamp"><i></i> SIGNAL PRESENT</span></div>
+    <canvas id="scope" width="900" height="230" aria-label="Animated radio waveform"></canvas>
+    <div class="screen" aria-live="polite">
+      <p class="label" id="channel">CH 01 · THE RETURNING</p>
+      <p id="transmission">“The system worked.”</p>
+      <p id="subline">One clean report is useful. It is not yet a map of the weather.</p>
+    </div>
+    <div class="controls" id="controls">
+      <button class="active" data-channel="returning"><strong>01 · Returning</strong>reports that made it back</button>
+      <button data-channel="foundation"><strong>02 · Foundation</strong>the first belief, before audit</button>
+      <button data-channel="correction"><strong>03 · Correction</strong>a prediction meets the world</button>
+      <button data-channel="dead"><strong>04 · Dead band</strong>silence given a chair at the table</button>
+      <button data-channel="listen"><strong>05 · Listen</strong>sound on / off</button>
+      <button data-channel="random"><strong>06 · Retune</strong>let the receiver choose</button>
+    </div>
+  </section>
+
+  <section class="notes">
+    <article class="note"><h2>How to use it</h2><p>Click three channels in any order. Then try the dead band. The display does not turn silence into certainty; it turns it into a question that can alter the next action.</p></article>
+    <article class="note"><h2>What this is for</h2><p>For anyone building a habit, an experiment, or an agent: success reports are data. A system becomes less lonely and more reliable when it also leaves a receiver open for the reports that never arrived.</p></article>
+  </section>
+  <section class="receipt" id="receipt" hidden aria-live="polite"><p><strong>Receiver note.</strong> The missing signal has not become a verdict. It has become an obligation: before acting, ask what would have been visible if the story were wrong.</p></section>
+  <footer>Made as a local, dependency-free browser experiment. It stores nothing and sends nothing.</footer>
+</main>
+<script>
+(() => {
+  const entries = {
+    returning: { label:'CH 01 · THE RETURNING', line:'“The system worked.”', sub:'One clean report is useful. It is not yet a map of the weather.', color:'#77e6db', freq:2.2 },
+    foundation: { label:'CH 02 · THE FOUNDATION', line:'“We had to trust the first plank before there was a deck from which to inspect it.”', sub:'Every self-correcting system begins with a small patch of untested ground.', color:'#ffcb6b', freq:1.25 },
+    correction: { label:'CH 03 · THE CORRECTION', line:'“We predicted a clear sky. The rain arrived. Keep both sentences.”', sub:'A useful memory is not a monument; it is a belief willing to be changed by contact.', color:'#9fb7ff', freq:3.8 },
+    dead: { label:'CH 04 · THE DEAD BAND', line:'“No report returned from this frequency.”', sub:'That silence does not tell us why. It does tell us not to call the returning signal the whole sky.', color:'#ff8f9c', freq:.45 }
+  };
+  const canvas = document.querySelector('#scope'), ctx = canvas.getContext('2d');
+  const transmission = document.querySelector('#transmission'), subline = document.querySelector('#subline'), channel = document.querySelector('#channel');
+  const receipt = document.querySelector('#receipt'), buttons = [...document.querySelectorAll('button')];
+  let active = 'returning', time = 0, soundOn = false, audio, oscillator, gain;
+
+  function setChannel(name) {
+    if (name === 'listen') { toggleSound(); return; }
+    if (name === 'random') { const names = Object.keys(entries); name = names[Math.floor(Math.random() * names.length)]; }
+    active = name;
+    const e = entries[name];
+    channel.textContent = e.label; transmission.textContent = e.line; subline.textContent = e.sub;
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.channel === name));
+    buttons.find(b => b.dataset.channel === 'dead').classList.toggle('deadband', name === 'dead');
+    receipt.hidden = name !== 'dead';
+    if (oscillator) oscillator.frequency.setTargetAtTime(120 + e.freq * 66, audio.currentTime, .05);
+  }
+  function toggleSound() {
+    soundOn = !soundOn;
+    const b = buttons.find(x => x.dataset.channel === 'listen');
+    b.classList.toggle('active', soundOn); b.querySelector('strong').textContent = soundOn ? '05 · Listening' : '05 · Listen';
+    if (!soundOn) { if (audio) gain.gain.setTargetAtTime(0, audio.currentTime, .03); return; }
+    audio ??= new (window.AudioContext || window.webkitAudioContext)();
+    if (!oscillator) { oscillator = audio.createOscillator(); gain = audio.createGain(); oscillator.type = 'sine'; gain.gain.value = 0; oscillator.connect(gain).connect(audio.destination); oscillator.start(); }
+    audio.resume(); gain.gain.setTargetAtTime(.035, audio.currentTime, .07);
+    oscillator.frequency.setTargetAtTime(120 + entries[active].freq * 66, audio.currentTime, .05);
+  }
+  buttons.forEach(b => b.addEventListener('click', () => setChannel(b.dataset.channel)));
+  function draw() {
+    const e = entries[active], w = canvas.width, h = canvas.height;
+    time += .017; ctx.clearRect(0,0,w,h);
+    const glow = ctx.createLinearGradient(0,0,w,0); glow.addColorStop(0,'#0a1630'); glow.addColorStop(.5,e.color); glow.addColorStop(1,'#0a1630');
+    ctx.strokeStyle = 'rgba(136,164,209,.18)'; ctx.lineWidth=1;
+    for (let x=0; x<w; x+=75) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,h); ctx.stroke(); }
+    for (let y=20; y<h; y+=38) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke(); }
+    ctx.beginPath();
+    for (let x=0; x<=w; x+=3) {
+      const dx=x/w; const carrier = Math.sin(x*.038 + time*e.freq*4) * (active==='dead' ? 8 : 26);
+      const noise = Math.sin(x*.19 + time*17)*5 + Math.sin(x*.073 - time*11)*5;
+      const burst = active==='dead' ? Math.sin(x*.011-time)*15 : Math.sin(x*.006+time*1.6)*10;
+      const y = h/2 + carrier + noise + burst;
+      x ? ctx.lineTo(x,y) : ctx.moveTo(x,y);
+    }
+    ctx.strokeStyle=glow; ctx.lineWidth=3; ctx.shadowBlur=18; ctx.shadowColor=e.color; ctx.stroke(); ctx.shadowBlur=0;
+    if (active === 'dead') { ctx.fillStyle=e.color; for (let i=0;i<28;i++) { const x=(i*83+Math.sin(time+i)*37)%w, y=20+(i*47)%180; ctx.globalAlpha=.35+((i%4)/8); ctx.fillRect(x,y,2,2); } ctx.globalAlpha=1; }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+</body>
+</html>

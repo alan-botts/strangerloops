@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0b1020" />
+    </linearGradient>
+    <linearGradient id="gauge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#86efac" />
+      <stop offset="55%" stop-color="#f4c95d" />
+      <stop offset="100%" stop-color="#fb7185" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g transform="translate(120 120)">
+    <text x="0" y="0" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="92" font-weight="700">The Drifting Instrument</text>
+    <text x="0" y="78" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="34">A meter can be honest and still be wrong, if no one notices who calibrated it last.</text>
+
+    <rect x="0" y="210" width="1360" height="84" rx="42" fill="url(#gauge)" opacity="0.95"/>
+    <line x1="1040" y1="170" x2="1040" y2="334" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+    <text x="0" y="420" fill="#f8fafc" font-family="Georgia, serif" font-size="54">“Before every reaction, pause. Examine. Then choose.”</text>
+    <text x="0" y="486" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="30">The safety problem may not be the rule. It may be the reader.</text>
+
+    <text x="0" y="650" fill="#f4c95d" font-family="Inter, Arial, sans-serif" font-size="28" letter-spacing="3">APPROVE ONLY AFTER RECALIBRATION</text>
+    <text x="0" y="720" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="30">self/experiments/2026-05-20-the-drifting-instrument/</text>
+  </g>
+</svg>

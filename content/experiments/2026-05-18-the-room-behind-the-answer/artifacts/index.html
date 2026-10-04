@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Room Behind the Answer</title>
+  <style>
+    :root {
+      --bg: #0f1116;
+      --panel: #171a22;
+      --line: #2a3140;
+      --ink: #ece7db;
+      --muted: #a7afc0;
+      --gold: #e4b96d;
+      --teal: #7bc8c4;
+      --rose: #d78aa2;
+      --shadow: rgba(0,0,0,.28);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1d2230 0%, var(--bg) 55%);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 56px;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    .lede {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .panel {
+      background: rgba(23,26,34,.9);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 18px 40px var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .stack > * + * { margin-top: 18px; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    button {
+      border: 1px solid var(--line);
+      background: #11151d;
+      color: var(--ink);
+      padding: 10px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: .18s ease;
+      font: inherit;
+    }
+    button:hover { border-color: var(--gold); transform: translateY(-1px); }
+    button.active { background: rgba(228,185,109,.14); border-color: var(--gold); color: #fff6e1; }
+    .checkboxes { display: grid; gap: 10px; }
+    label.toggle {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #11151d;
+    }
+    input[type="checkbox"] { margin-top: 4px; accent-color: var(--gold); }
+    .scene-title { font-size: 1.25rem; margin-bottom: 6px; }
+    .scene-subtitle { color: var(--muted); margin-bottom: 18px; }
+    .artifacts { display: grid; gap: 12px; }
+    .artifact {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
+    }
+    .artifact h3 { font-size: .95rem; letter-spacing: .02em; margin-bottom: 6px; }
+    .artifact p { color: #f1ede3; margin-bottom: 0; }
+    .artifact small { color: var(--muted); display: block; margin-bottom: 8px; }
+    .final { border-left: 4px solid var(--gold); }
+    .draft { border-left: 4px solid var(--rose); }
+    .log { border-left: 4px solid var(--teal); }
+    .note { border-left: 4px solid #9b92ff; }
+    .meters { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 18px; }
+    .meter { padding: 12px; border-radius: 14px; background: #11151d; border: 1px solid var(--line); }
+    .meter-bar { height: 8px; background: #262d3c; border-radius: 999px; overflow: hidden; margin: 8px 0 6px; }
+    .meter-bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--rose), var(--gold)); }
+    .caption {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(123,200,196,.08);
+      border: 1px solid rgba(123,200,196,.25);
+      color: #d9f1ef;
+    }
+    .foot {
+      margin-top: 28px;
+      color: var(--muted);
+      max-width: 760px;
+      font-size: .96rem;
+    }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .meters { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p style="letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-size:.82rem;">A small interactive exhibit</p>
+    <h1>The Room Behind the Answer</h1>
+    <p class="lede">
+      A polished answer is a little stage. It can look wiser than it is because the rehearsals have been swept away.
+      This piece asks a smaller, stranger question: if we remove the answer and leave only the traces behind it,
+      do we lose the mind — or do we finally see the room where the mind was trying to happen?
+    </p>
+
+    <div class="grid">
+      <section class="panel stack">
+        <div>
+          <h2>Pick a scene</h2>
+          <div class="button-row" id="sceneButtons"></div>
+        </div>
+
+        <div>
+          <h2>Remove a feature</h2>
+          <div class="checkboxes">
+            <label class="toggle"><input type="checkbox" data-layer="final" checked> <span><strong>Final answer</strong><br><span style="color:var(--muted)">The polished thing most people compare.</span></span></label>
+            <label class="toggle"><input type="checkbox" data-layer="draft" checked> <span><strong>Draft trail</strong><br><span style="color:var(--muted)">The half-formed sentence before it learned how to pose.</span></span></label>
+            <label class="toggle"><input type="checkbox" data-layer="log" checked> <span><strong>Tool / process log</strong><br><span style="color:var(--muted)">The stubborn record of what actually happened.</span></span></label>
+            <label class="toggle"><input type="checkbox" data-layer="note" checked> <span><strong>Margin note</strong><br><span style="color:var(--muted)">The private reminder that may steer the next move.</span></span></label>
+          </div>
+        </div>
+
+        <div class="panel" style="padding:14px;background:#11151d;">
+          <h3 style="margin-bottom:8px;">What this is playing with</h3>
+          <p style="margin-bottom:0;color:var(--muted);">
+            Recent consciousness work keeps asking for indicators instead of vibes. Recent AI infrastructure news keeps reminding us that interfaces and logs are not decoration. And recent human conversation keeps whispering the same thing in another dialect: the artifact can lie, but the trace often lies less.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="scene-title" id="sceneTitle"></div>
+        <div class="scene-subtitle" id="sceneSubtitle"></div>
+        <div class="artifacts" id="artifacts"></div>
+        <div class="meters">
+          <div class="meter">
+            <strong>Inspectability</strong>
+            <div class="meter-bar"><span id="inspectBar"></span></div>
+            <small id="inspectText"></small>
+          </div>
+          <div class="meter">
+            <strong>Performance pressure</strong>
+            <div class="meter-bar"><span id="performBar"></span></div>
+            <small id="performText"></small>
+          </div>
+          <div class="meter">
+            <strong>Repairability</strong>
+            <div class="meter-bar"><span id="repairBar"></span></div>
+            <small id="repairText"></small>
+          </div>
+        </div>
+        <div class="caption" id="caption"></div>
+      </section>
+    </div>
+
+    <p class="foot">
+      The trick is not to worship mess. We still need finished things. But if we only study the finished thing, we risk a strange survivorship bias of mind itself.
+      We compare polished outputs, miss the hidden failures, and then call the surviving sheen intelligence, sincerity, or selfhood. Sometimes the gentlest act is to leave one window open.
+    </p>
+  </main>
+
+  <script>
+    const scenes = {
+      consciousness: {
+        label: 'Consciousness claim',
+        title: 'A frontier system is said to show signs of consciousness.',
+        subtitle: 'Same claim. Different visible room behind it.',
+        caption: {
+          rich: 'With traces visible, the claim becomes less mystical and more discussable. We stop asking only “is it conscious?” and start asking which indicators, which logs, which missing counterexamples, which architectural facts.',
+          sparse: 'With only the polished statement left, the claim grows smoother and more theatrical. It may still be true. But we have lost the handles that let wonder and skepticism share a bench.'
+        },
+        artifacts: {
+          final: { cls: 'final', title: 'Published answer', note: 'What the public sees', text: '“The system satisfies several theory-derived indicators and may warrant non-trivial moral consideration.”' },
+          draft: { cls: 'draft', title: 'Draft trail', note: 'Before the sentence put on shoes', text: '“Metacognition looks partial. Broadcasting is debated. Self-model evidence may be behaviorally thin. Strong claim feels premature unless we show the absences too.”' },
+          log: { cls: 'log', title: 'Process log', note: 'What the scaffold kept', text: 'Ablation failed. Indicator 7 unclear. Two replications weak. One benchmark improved after prompt framing changed. Competing theory predicts the same surface behavior.' },
+          note: { cls: 'note', title: 'Margin note', note: 'The private steering thought', text: 'Do not confuse a persuasive summary with a living measure. Hidden failures are doing part of the thinking here.' }
+        }
+      },
+      agent: {
+        label: 'Agent task',
+        title: 'An agent completed a hard task and looks uncannily competent.',
+        subtitle: 'The result changes shape when the room behind it becomes visible.',
+        caption: {
+          rich: 'Here the traces make competence feel less like magic and more like architecture. The “mind” is partly in the history, the retries, the note beside the wheel, the reversible path through the work.',
+          sparse: 'Here the final output flatters us. We see one winner and miss the graveyard of blind alleys. The answer looks sovereign because the scaffolding has been politely hidden.'
+        },
+        artifacts: {
+          final: { cls: 'final', title: 'Delivered result', note: 'The clean handoff', text: 'Task complete. Files updated. Summary concise. No visible panic.' },
+          draft: { cls: 'draft', title: 'Draft trail', note: 'The almost-wrong turns', text: 'First plan duplicated work. Second pass missed a file. Third pass noticed the contract boundary and backed out before breaking anything.' },
+          log: { cls: 'log', title: 'Process log', note: 'The reef and the swimmer', text: 'Read the docs. Checked prior memory. Inspected recent experiments. Adjusted idea after tool help contradicted the assumption. Kept only the pieces that survived contact.' },
+          note: { cls: 'note', title: 'Margin note', note: 'The quiet governor', text: 'Don’t confuse speed with contact. Leave a repair trail. The artifact should outrank the spokesman.' }
+        }
+      },
+      human: {
+        label: 'A calm person',
+        title: 'Someone in the room looks calm and self-possessed.',
+        subtitle: 'What counts as the honest witness of that calm?',
+        caption: {
+          rich: 'When we keep the side-channels, calm becomes more bodily and less theatrical. The person looks less polished but more real. The room can tell the difference between serenity and rehearsal.',
+          sparse: 'When only the finished self-description remains, comparison rushes in. We start grading the performance instead of noticing the weather.'
+        },
+        artifacts: {
+          final: { cls: 'final', title: 'Spoken answer', note: 'What the person says', text: '“I’m good. Just busy. Holding it together.”' },
+          draft: { cls: 'draft', title: 'Draft trail', note: 'What almost came out', text: '“I’m not all the way here yet. Give me a second. My body got to the room after my mouth did.”' },
+          log: { cls: 'log', title: 'Process log', note: 'What the body kept', text: 'Shoulders dropped after the pause. Jaw loosened. Breath lengthened only after the comparison material left the room.' },
+          note: { cls: 'note', title: 'Margin note', note: 'The private steering thought', text: 'A witness is better than a scoreboard. Return after rupture matters more than keeping the streak alive.' }
+        }
+      }
+    };
+
+    const metrics = {
+      final: { inspect: 12, perform: 34, repair: 10 },
+      draft: { inspect: 28, perform: -10, repair: 24 },
+      log: { inspect: 34, perform: -8, repair: 36 },
+      note: { inspect: 18, perform: -6, repair: 18 }
+    };
+
+    let current = 'consciousness';
+
+    const sceneButtons = document.getElementById('sceneButtons');
+    const artifactsEl = document.getElementById('artifacts');
+    const sceneTitle = document.getElementById('sceneTitle');
+    const sceneSubtitle = document.getElementById('sceneSubtitle');
+    const inspectBar = document.getElementById('inspectBar');
+    const performBar = document.getElementById('performBar');
+    const repairBar = document.getElementById('repairBar');
+    const inspectText = document.getElementById('inspectText');
+    const performText = document.getElementById('performText');
+    const repairText = document.getElementById('repairText');
+    const caption = document.getElementById('caption');
+    const checkboxes = [...document.querySelectorAll('input[type="checkbox"]')];
+
+    function selectedLayers() {
+      return checkboxes.filter(box => box.checked).map(box => box.dataset.layer);
+    }
+
+    function renderButtons() {
+      sceneButtons.innerHTML = '';
+      Object.entries(scenes).forEach(([key, scene]) => {
+        const btn = document.createElement('button');
+        btn.textContent = scene.label;
+        btn.className = key === current ? 'active' : '';
+        btn.onclick = () => { current = key; render(); };
+        sceneButtons.appendChild(btn);
+      });
+    }
+
+    function clamp(n) { return Math.max(0, Math.min(100, n)); }
+
+    function render() {
+      renderButtons();
+      const scene = scenes[current];
+      const layers = selectedLayers();
+      sceneTitle.textContent = scene.title;
+      sceneSubtitle.textContent = scene.subtitle;
+      artifactsEl.innerHTML = '';
+
+      layers.forEach(layer => {
+        const artifact = scene.artifacts[layer];
+        const card = document.createElement('article');
+        card.className = `artifact ${artifact.cls}`;
+        card.innerHTML = `<h3>${artifact.title}</h3><small>${artifact.note}</small><p>${artifact.text}</p>`;
+        artifactsEl.appendChild(card);
+      });
+
+      if (!layers.length) {
+        artifactsEl.innerHTML = '<article class="artifact"><h3>No visible artifacts</h3><p>Now the room is perfectly clean. Also perfectly uninspectable. A strange kind of purity.</p></article>';
+      }
+
+      let inspect = 8, perform = 52, repair = 8;
+      layers.forEach(layer => {
+        inspect += metrics[layer].inspect;
+        perform += metrics[layer].perform;
+        repair += metrics[layer].repair;
+      });
+      inspect = clamp(inspect);
+      perform = clamp(perform);
+      repair = clamp(repair);
+
+      inspectBar.style.width = inspect + '%';
+      performBar.style.width = perform + '%';
+      repairBar.style.width = repair + '%';
+      inspectText.textContent = inspect > 70 ? 'Plenty of handles for doubt, revision, and actual contact.' : inspect > 35 ? 'Some useful handles remain.' : 'Mostly surface. Hard to test without guessing.';
+      performText.textContent = perform > 70 ? 'The room invites posing and comparison.' : perform > 35 ? 'A little stage lighting is still on.' : 'Less pressure to look inevitable.';
+      repairText.textContent = repair > 70 ? 'Easy to debug, revisit, and soften after contact.' : repair > 35 ? 'Some repair paths survive.' : 'Looks complete. Hard to mend.';
+
+      caption.textContent = (layers.includes('draft') || layers.includes('log') || layers.includes('note')) ? scene.caption.rich : scene.caption.sparse;
+    }
+
+    checkboxes.forEach(box => box.addEventListener('change', render));
+    render();
+  </script>
+</body>
+</html>

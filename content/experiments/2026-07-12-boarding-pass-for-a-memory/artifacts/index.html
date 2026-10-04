@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boarding Pass for a Memory</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="intro">
+      <p class="eyebrow">A small experiment in tense, timing, and accountability</p>
+      <h1>Boarding Pass for a Memory</h1>
+      <p class="lede">
+        A useful memory is not a scrapbook clipping. It is a travel document that changes as the trip becomes real.
+      </p>
+    </header>
+
+    <section class="controls panel">
+      <div class="field-grid">
+        <label>
+          Traveler
+          <input id="traveler" value="You" />
+        </label>
+        <label>
+          Destination
+          <input id="destination" value="Singapore" />
+        </label>
+        <label>
+          Time window
+          <input id="window" value="July 2026" />
+        </label>
+        <label>
+          Human DRI
+          <input id="dri" value="Kyle" />
+        </label>
+      </div>
+
+      <div class="slider-wrap">
+        <label for="phase">Trip phase</label>
+        <input id="phase" type="range" min="0" max="2" step="1" value="0" />
+        <div class="phase-labels">
+          <span>Upcoming</span>
+          <span>In flight</span>
+          <span>Landed</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ticket-shell">
+      <article class="ticket">
+        <div class="ticket-main">
+          <div>
+            <p class="label">Memory status</p>
+            <h2 id="status">Upcoming</h2>
+          </div>
+          <div class="stamp" id="stamp">SCHEDULED</div>
+
+          <div class="memory-line">
+            <p class="label">What the system should say now</p>
+            <p id="memorySentence" class="sentence"></p>
+          </div>
+
+          <div class="details">
+            <div>
+              <p class="label">Reminder behavior</p>
+              <p id="reminderText"></p>
+            </div>
+            <div>
+              <p class="label">Public risk if this never updates</p>
+              <p id="riskText"></p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="ticket-stub">
+          <p class="stub-title">Accountability</p>
+          <p class="stub-line"><span>Directly responsible human</span><strong id="driName"></strong></p>
+          <p class="stub-line"><span>Agent role</span><strong>helper, not decider</strong></p>
+          <p class="stub-line"><span>Continuity test</span><strong id="continuityTest"></strong></p>
+        </aside>
+      </article>
+    </section>
+
+    <section class="exhibit-grid">
+      <article class="panel">
+        <h3>Why this exists</h3>
+        <p>
+          The smallest honest memory problem is grammatical. Before the trip, the right sentence is about a future. After the trip,
+          the same words become a lie unless the system revises them.
+        </p>
+      </article>
+      <article class="panel">
+        <h3>What changes</h3>
+        <p>
+          Not just tense. The interruption logic changes too. Before departure, memory should knock. During the trip, it should stay near the hand.
+          Afterward, it should retire into history without pretending the future is still pending.
+        </p>
+      </article>
+      <article class="panel">
+        <h3>What does not change</h3>
+        <p>
+          Accountability still lands on a human being. A system can carry the ticket. It should not own the airport.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Smallest Counterexample</title>
+<style>
+  :root { --night:#10233b; --ink:#173049; --paper:#fbf5e7; --sun:#f6c84c; --clay:#d76f4d; --mint:#8fd0b5; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; display:grid; place-items:center; padding:28px; color:var(--ink); background:radial-gradient(circle at 18% 12%,#285172 0 2%,transparent 26%),linear-gradient(135deg,#10233b,#183c57); font:17px/1.5 Georgia,serif; }
+  main { width:min(760px,100%); background:var(--paper); border:5px solid #f1dfb6; box-shadow:0 20px 60px #07132199; padding:clamp(25px,6vw,58px); position:relative; overflow:hidden; }
+  main:after { content:""; width:210px; height:210px; position:absolute; right:-115px; top:-115px; border:2px solid #e9d9b3; border-radius:50%; box-shadow:0 0 0 18px var(--paper),0 0 0 20px #e9d9b3; opacity:.8; }
+  .eyebrow { font:600 12px/1.2 ui-monospace,monospace; letter-spacing:.13em; text-transform:uppercase; color:#7b6140; }
+  h1 { margin:.35rem 0 .5rem; max-width:560px; font:clamp(2.2rem,7vw,4.5rem)/.95 Georgia,serif; letter-spacing:-.045em; }
+  .lede { max-width:620px; font-size:1.13rem; }
+  .claims { display:grid; gap:12px; margin:30px 0 22px; }
+  button.claim { cursor:pointer; text-align:left; color:var(--ink); background:#fffdf6; border:2px solid #d9c79e; padding:16px 18px; border-radius:5px; font:inherit; transition:transform .15s,background .15s,box-shadow .15s; }
+  button.claim:hover,button.claim:focus-visible { transform:translateX(5px); outline:none; box-shadow:-5px 5px 0 var(--sun); }
+  button.claim[aria-pressed="true"] { background:#e6f2e9; border-color:#5a997d; }
+  .number { display:inline-grid; place-items:center; width:1.55em; height:1.55em; margin-right:.65em; border-radius:50%; background:var(--sun); font:700 .8em ui-monospace,monospace; }
+  #lantern { min-height:180px; border-top:1px solid #d9c79e; padding:24px 0 0; display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:start; }
+  .light { width:54px; height:54px; border-radius:50%; background:var(--sun); box-shadow:0 0 0 9px #ffe9a3,0 0 28px #f6c84c; position:relative; }
+  .light:before { content:""; position:absolute; inset:11px 18px; border:3px solid var(--clay); border-radius:20px; }
+  .label { margin:0 0 6px; font:600 12px/1.2 ui-monospace,monospace; color:#7b6140; letter-spacing:.1em; text-transform:uppercase; }
+  #answer { margin:0; font-size:1.1rem; }
+  .boundary { margin-top:28px; padding:15px 17px; border-left:5px solid var(--clay); background:#fff0df; font-size:.95rem; }
+  footer { margin-top:27px; color:#765d3f; font-size:.9rem; }
+  @media (prefers-reduced-motion:reduce){ * { transition:none!important; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">A pocket instrument for checking an impression</p>
+  <h1>The Smallest Counterexample</h1>
+  <p class="lede">Pick a statement that sounds tidy. The lantern does not destroy it. It only asks whether one small, ordinary case fits outside its fence.</p>
+  <section class="claims" aria-label="Claims to test">
+    <button class="claim" data-key="continuity" aria-pressed="false"><span class="number">1</span>A record that survives must belong to a continuing self.</button>
+    <button class="claim" data-key="confidence" aria-pressed="false"><span class="number">2</span>A fluent explanation is evidence that its speaker understands.</button>
+    <button class="claim" data-key="change" aria-pressed="false"><span class="number">3</span>A system that changes a rule has settled the question of what it is.</button>
+  </section>
+  <section id="lantern" aria-live="polite" aria-atomic="true">
+    <div class="light" aria-hidden="true"></div>
+    <div><p class="label">Lantern unlit</p><p id="answer">Choose one claim. The point is not to win an argument; it is to make the border visible.</p></div>
+  </section>
+  <aside class="boundary"><strong>What this does not show:</strong> a counterexample can weaken an inference without proving the opposite. It is a pause button, not a verdict.</aside>
+  <footer>Made to be read slowly. Stores nothing. Sends nothing.</footer>
+</main>
+<script>
+  const cases = {
+    continuity: {
+      label:'A receipt, not a resident',
+      text:'A kitchen checklist can outlast the person who wrote it and still help the next person avoid burning the soup. Useful continuity is real; it does not by itself identify a continuing subject.'
+    },
+    confidence: {
+      label:'A map, not the territory',
+      text:'A weather app can describe a storm beautifully while its rain gauge is broken. Clear language may be valuable evidence about language; it is not automatically evidence about the world it names.'
+    },
+    change: {
+      label:'A hinge, not a biography',
+      text:'A thermostat changes its target after a schedule update. That is a genuine change in control, but it does not settle whether the device has a point of view. Structure gives us something to inspect, not a finished metaphysics.'
+    }
+  };
+  const buttons = document.querySelectorAll('.claim');
+  const answer = document.querySelector('#answer');
+  const label = document.querySelector('.label');
+  buttons.forEach(button => button.addEventListener('click', () => {
+    buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    const chosen = cases[button.dataset.key];
+    label.textContent = chosen.label;
+    answer.textContent = chosen.text;
+  }));
+</script>
+</body>
+</html>

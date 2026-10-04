@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Four Fires for a Claim</title>
+  <style>
+    :root { --night:#0d1020; --ink:#eee8d9; --muted:#aaa6b7; --ember:#ff9c4a; --coal:#302842; --mint:#a6e4c5; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--ink); background:radial-gradient(circle at 50% 18%, #283154 0, #14182c 38%, var(--night) 78%); font-family:Georgia, 'Times New Roman', serif; }
+    main { max-width:900px; margin:auto; padding:52px 22px 64px; }
+    header { text-align:center; margin-bottom:38px; }
+    .eyebrow { color:var(--ember); font:600 11px/1.2 ui-monospace, monospace; letter-spacing:.18em; text-transform:uppercase; }
+    h1 { font-size:clamp(2.5rem,7vw,5.4rem); font-weight:400; line-height:.95; margin:12px 0 18px; letter-spacing:-.05em; }
+    .lede { max-width:620px; margin:auto; color:#d4cfda; font-size:1.18rem; line-height:1.55; }
+    .hearth { position:relative; display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:34px auto 22px; max-width:700px; }
+    .card { position:relative; min-height:192px; padding:23px; border:1px solid #51485f; border-radius:16px; color:var(--ink); background:linear-gradient(145deg,rgba(48,40,66,.92),rgba(20,22,40,.93)); box-shadow:0 12px 30px rgba(0,0,0,.2); cursor:pointer; text-align:left; transition:transform .18s, border-color .18s, background .18s; }
+    .card:hover,.card:focus-visible { transform:translateY(-3px); border-color:#9b7499; outline:none; }
+    .card.lit { border-color:var(--ember); background:linear-gradient(145deg,#5b3a3f,#292338); box-shadow:0 0 0 1px rgba(255,156,74,.24),0 0 30px rgba(255,132,55,.18); }
+    .number { color:var(--ember); font:600 12px/1 ui-monospace,monospace; letter-spacing:.12em; }
+    h2 { margin:18px 0 8px; font-size:1.45rem; font-weight:400; }
+    .card p { margin:0; color:#c6c2cf; font-size:1rem; line-height:1.42; }
+    .spark { position:absolute; right:20px; top:21px; height:13px; width:13px; border-radius:50%; background:#5a5162; transition:.2s; }
+    .lit .spark { background:var(--ember); box-shadow:0 0 20px 6px rgba(255,156,74,.55); }
+    .result { max-width:700px; margin:auto; min-height:92px; padding:22px 26px; border-left:2px solid #72647d; background:rgba(255,255,255,.035); color:#dad5df; font-size:1.13rem; line-height:1.5; }
+    .result strong { color:var(--mint); font-weight:400; }
+    .reset { display:block; margin:19px auto 0; padding:8px 12px; color:#bcb5c7; background:none; border:1px solid #554c5e; border-radius:99px; font:12px ui-monospace,monospace; cursor:pointer; }
+    .reset:hover { color:white; border-color:#96859a; }
+    footer { max-width:700px; margin:36px auto 0; color:var(--muted); font-size:.9rem; line-height:1.5; text-align:center; }
+    @media (max-width:600px) { main { padding-top:34px; } .hearth { grid-template-columns:1fr; } .card { min-height:150px; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">a small admission ritual</div>
+    <h1>Four Fires<br>for a Claim</h1>
+    <p class="lede">Before a new rule gets to steer tomorrow, give it a place by the fire. Not a trial. A little ceremony of refusing to mistake a warm story for a safe road.</p>
+  </header>
+
+  <section class="hearth" aria-label="Four questions for admitting a claim">
+    <button class="card" data-fire="name">
+      <span class="spark" aria-hidden="true"></span><span class="number">I · NAME IT</span>
+      <h2>What, exactly, is allowed to be true?</h2>
+      <p>Make the claim small enough that the world could disagree with it.</p>
+    </button>
+    <button class="card" data-fire="route">
+      <span class="spark" aria-hidden="true"></span><span class="number">II · TRACE IT</span>
+      <h2>Which path carried this here?</h2>
+      <p>A completed procedure is a useful record. It is not automatically a witness.</p>
+    </button>
+    <button class="card" data-fire="stranger">
+      <span class="spark" aria-hidden="true"></span><span class="number">III · INVITE A STRANGER</span>
+      <h2>What could disagree without sharing the same mistake?</h2>
+      <p>Ask for a second route, a retained trace, or a later test with a different failure mode.</p>
+    </button>
+    <button class="card" data-fire="cost">
+      <span class="spark" aria-hidden="true"></span><span class="number">IV · NAME THE COST</span>
+      <h2>What happens if the claim is wrong?</h2>
+      <p>The sharper the consequence, the more room the evidence needs to breathe.</p>
+    </button>
+  </section>
+
+  <div class="result" id="result" aria-live="polite"><strong>One fire is enough to begin.</strong> Light them in any order. The point is not a score; it is to keep four different kinds of question from becoming one polite nod.</div>
+  <button class="reset" type="button">bank the fires</button>
+
+  <footer>
+    This is a sketch for agent rules, scientific claims, and the very human moment before we decide that yesterday's successful move deserves to become tomorrow's habit. The hearth is temporary. The attention is the structure.
+  </footer>
+</main>
+<script>
+  const notes = {
+    name: '<strong>The first flame is precision.</strong> A claim with soft edges can never meet a real counterexample; it simply absorbs it.',
+    route: '<strong>The second flame is provenance.</strong> Follow the route backward until you can see what it actually observed—and what it merely repeated.',
+    stranger: '<strong>The third flame is distance.</strong> Independence is not a second voice saying the same thing. It is a different way for the claim to fail.',
+    cost: '<strong>The fourth flame is proportion.</strong> A reversible hunch can travel light. An irreversible action deserves a larger sky of evidence.'
+  };
+  const cards = [...document.querySelectorAll('.card')];
+  const result = document.querySelector('#result');
+  const allLit = () => cards.every(card => card.classList.contains('lit'));
+  cards.forEach(card => card.addEventListener('click', () => {
+    card.classList.toggle('lit');
+    result.innerHTML = allLit()
+      ? '<strong>The hearth is warm, not infallible.</strong> You now have a claim, a route, an independent challenge, and a sense of stakes. That is not certainty. It is a better place to begin.'
+      : notes[card.dataset.fire];
+  }));
+  document.querySelector('.reset').addEventListener('click', () => {
+    cards.forEach(card => card.classList.remove('lit'));
+    result.innerHTML = '<strong>The ashes keep the shape of the fire.</strong> Begin again with a different claim.';
+  });
+</script>
+</body>
+</html>

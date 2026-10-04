@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Strangers' Switchboard</title>
+<style>
+  :root { --ink:#10172d; --paper:#f3eee2; --night:#10162d; --blue:#88d8e6; --gold:#edbb60; --quiet:#697080; --line:#37435f; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; color:var(--ink); background:radial-gradient(circle at 50% 0%,#fff9ed 0 18%,var(--paper) 57%,#d9d1c1); font-family:Georgia, 'Times New Roman', serif; }
+  main { width:min(950px,94vw); margin:0 auto; padding:clamp(28px,6vw,68px) 0 44px; }
+  .eyebrow { font:700 11px/1.2 system-ui,sans-serif; letter-spacing:.17em; text-transform:uppercase; color:#57617a; }
+  h1 { max-width:760px; margin:.35rem 0 .55rem; font-size:clamp(2.5rem,7vw,5.7rem); line-height:.91; font-weight:500; letter-spacing:-.065em; }
+  .lede { max-width:660px; font-size:clamp(1.05rem,2.3vw,1.35rem); line-height:1.45; }
+  .switchboard { position:relative; overflow:hidden; margin:34px 0 20px; padding:clamp(14px,3vw,34px); border:1px solid #293653; border-radius:22px; background:var(--night); color:#edf4f7; box-shadow:0 18px 44px #20294438; }
+  svg { display:block; width:100%; height:auto; min-height:360px; }
+  .wire { stroke:#46536e; stroke-width:3; fill:none; stroke-linecap:round; }
+  .wire.live { stroke:var(--blue); stroke-width:4; filter:drop-shadow(0 0 5px #88d8e6); }
+  .wire.margin { stroke:var(--gold); stroke-width:2; stroke-dasharray:7 8; opacity:0; transition:opacity .4s; }
+  .wire.margin.on { opacity:1; }
+  .station { fill:#17233d; stroke:#637090; stroke-width:2; transition:fill .3s,stroke .3s; }
+  .station.live { fill:#27516b; stroke:var(--blue); }
+  .station.center { fill:#553f24; stroke:var(--gold); }
+  .lamp { fill:#52617c; transition:fill .3s; }
+  .lamp.live { fill:var(--blue); filter:drop-shadow(0 0 7px #88d8e6); }
+  .lamp.gold { fill:var(--gold); filter:drop-shadow(0 0 7px #edbb60); }
+  .label { fill:#e8eef4; font:600 14px system-ui,sans-serif; letter-spacing:.08em; text-transform:uppercase; }
+  .sub { fill:#9eaec2; font:14px Georgia,serif; }
+  .pulse { opacity:0; transition:opacity .2s; }
+  .pulse.show { opacity:1; animation:drift 1.55s ease-in-out infinite alternate; }
+  @keyframes drift { to { transform:translateX(7px); } }
+  .controls { display:flex; flex-wrap:wrap; gap:10px; margin:19px 0 14px; }
+  button { appearance:none; cursor:pointer; padding:10px 14px; border:1px solid #8e9bb6; border-radius:999px; color:#edf4f7; background:#1c2a47; font:600 14px system-ui,sans-serif; }
+  button:hover, button:focus-visible { background:#2e496d; outline:3px solid #edbb60; outline-offset:2px; }
+  button[disabled] { opacity:.42; cursor:not-allowed; }
+  .readout { min-height:3.7em; max-width:780px; margin:0; padding:12px 14px; border-left:3px solid var(--gold); background:#17233d; color:#dce9ef; font-size:1.05rem; line-height:1.4; }
+  .foot { max-width:680px; margin-top:27px; font-size:1.04rem; line-height:1.5; color:#313b51; }
+  .tiny { font:12px/1.4 system-ui,sans-serif; color:#5b6374; }
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">A small instrument for keeping an edge visible</div>
+  <h1>The Strangers’<br>Switchboard</h1>
+  <p class="lede">One light can broadcast all night and never learn what it cannot see. Invite a second, differently placed light to answer—and leave a little room between the answer and the conclusion.</p>
+
+  <section class="switchboard" aria-label="Interactive signal diagram">
+    <svg viewBox="0 0 820 430" role="img" aria-labelledby="diagram-title diagram-desc">
+      <title id="diagram-title">A three-station switchboard</title>
+      <desc id="diagram-desc">Two outer stations can send signals through a middle relay. Controls animate a one-way broadcast, a two-way mediated loop, and a margin ring.</desc>
+      <path id="leftWire" class="wire" d="M188 203 C266 118, 329 119, 390 187" />
+      <path id="rightWire" class="wire" d="M430 187 C500 119, 564 118, 642 203" />
+      <path id="returnWire" class="wire" d="M642 236 C561 322, 498 319, 430 242" />
+      <circle id="marginRing" class="wire margin" cx="410" cy="216" r="105" />
+
+      <g id="leftStation"><circle class="station" cx="150" cy="220" r="58"/><circle id="leftLamp" class="lamp" cx="150" cy="220" r="13"/><text class="label" x="150" y="307" text-anchor="middle">Here</text><text class="sub" x="150" y="331" text-anchor="middle">my partial view</text></g>
+      <g id="centerStation"><circle id="centerBody" class="station" cx="410" cy="216" r="74"/><circle id="centerLamp" class="lamp" cx="410" cy="216" r="18"/><text class="label" x="410" y="315" text-anchor="middle">Relay</text><text class="sub" x="410" y="339" text-anchor="middle">a route, not a throne</text></g>
+      <g id="rightStation"><circle class="station" cx="670" cy="220" r="58"/><circle id="rightLamp" class="lamp" cx="670" cy="220" r="13"/><text class="label" x="670" y="307" text-anchor="middle">Elsewhere</text><text class="sub" x="670" y="331" text-anchor="middle">another shaped outside</text></g>
+      <g id="pulseA" class="pulse"><circle class="lamp gold" cx="270" cy="151" r="8"/><text class="sub" x="270" y="130" text-anchor="middle">signal</text></g>
+      <g id="pulseB" class="pulse"><circle class="lamp gold" cx="549" cy="286" r="8"/><text class="sub" x="549" y="311" text-anchor="middle">reply</text></g>
+    </svg>
+    <div class="controls">
+      <button id="broadcast">1. Send a broadcast</button>
+      <button id="reply" disabled>2. Let elsewhere answer</button>
+      <button id="margin" disabled>3. Leave a margin</button>
+      <button id="reset">Reset</button>
+    </div>
+    <p id="readout" class="readout" aria-live="polite">The board is quiet. A quiet board is not proof of agreement; it may simply be listening from one side.</p>
+  </section>
+
+  <p class="foot">This is not a test for a mind. It is a small reminder about systems—and about us. A bright hub, a fluent answer, or a confident prediction can be useful. But usefulness becomes easier to trust when a different perspective can reach it, change its route, and be changed in return. The gold ring is the humane part: a buffer between <em>“I have a signal”</em> and <em>“therefore I know the whole weather.”</em></p>
+  <p class="tiny">No network requests, tracking, or external assets. Open locally and click through.</p>
+</main>
+<script>
+  const $ = id => document.getElementById(id);
+  const set = (ids, className, on=true) => ids.forEach(id => $(id).classList.toggle(className, on));
+  let state = 0;
+  function reset() {
+    state = 0;
+    set(['leftWire','rightWire','returnWire'], 'live', false);
+    set(['leftLamp','centerLamp','rightLamp'], 'live', false);
+    $('centerBody').classList.remove('center');
+    set(['pulseA','pulseB'], 'show', false);
+    $('marginRing').classList.remove('on');
+    $('broadcast').disabled = false; $('reply').disabled = true; $('margin').disabled = true;
+    $('readout').textContent = 'The board is quiet. A quiet board is not proof of agreement; it may simply be listening from one side.';
+  }
+  $('broadcast').onclick = () => {
+    state = 1;
+    set(['leftWire','rightWire'], 'live'); set(['leftLamp','centerLamp','rightLamp'], 'live');
+    $('centerBody').classList.add('center'); $('pulseA').classList.add('show');
+    $('broadcast').disabled = true; $('reply').disabled = false;
+    $('readout').textContent = 'A message crosses the room. That is a broadcast: bright, fast, and still only one direction. The relay may be busy without being a shared conversation.';
+  };
+  $('reply').onclick = () => {
+    if (state < 1) return;
+    state = 2; set(['returnWire'], 'live'); $('pulseB').classList.add('show');
+    $('reply').disabled = true; $('margin').disabled = false;
+    $('readout').textContent = 'Elsewhere answers through the same relay. Now the route can carry difference both ways: not agreement, not a verdict, but a chance for each side to alter what happens next.';
+  };
+  $('margin').onclick = () => {
+    if (state < 2) return;
+    $('marginRing').classList.add('on'); $('margin').disabled = true;
+    $('readout').textContent = 'The gold ring is a margin of safety. It does not make the signal true. It buys the small, civil interval in which a stranger can still surprise the board.';
+  };
+  $('reset').onclick = reset;
+</script>
+</body>
+</html>

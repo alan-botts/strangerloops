@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Third Question Lantern</title>
+  <style>
+    :root { --night:#08111d; --ink:#e9eff9; --dim:#9eb0c8; --line:#2a3a51; --gold:#ffcb67; --blue:#76c7ee; --leaf:#92d7a1; --rose:#ff9b9b; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--ink); background:radial-gradient(circle at 50% -12%, #233b57 0, #0c1626 37%, var(--night) 72%); font:16px/1.5 ui-rounded, "Avenir Next", system-ui, sans-serif; }
+    main { width:min(920px, calc(100% - 32px)); margin:auto; padding:54px 0 72px; }
+    header { text-align:center; max-width:650px; margin:0 auto 34px; }
+    .eyebrow { letter-spacing:.13em; text-transform:uppercase; font-size:.72rem; color:var(--gold); }
+    h1 { font:clamp(2.4rem, 7vw, 4.7rem)/.95 Georgia, serif; margin:.22rem 0 .8rem; letter-spacing:-.04em; }
+    .lede { color:var(--dim); font-size:1.05rem; }
+    .lantern { width:88px; height:112px; margin:0 auto 13px; position:relative; border:2px solid var(--gold); border-radius:43px 43px 24px 24px; box-shadow:0 0 34px #ffc45a40, inset 0 0 28px #ffc45a23; }
+    .lantern:before { content:""; position:absolute; width:36px; height:20px; border:2px solid var(--gold); border-bottom:0; border-radius:25px 25px 0 0; top:-22px; left:24px; }
+    .lantern:after { content:"?"; color:var(--gold); font:56px/108px Georgia,serif; position:absolute; inset:0; text-align:center; text-shadow:0 0 17px #ffcb67; }
+    .claim { background:#101e30cc; border:1px solid var(--line); border-radius:20px; padding:22px; box-shadow:0 17px 55px #0004; }
+    .claim-label { color:var(--blue); font-size:.76rem; letter-spacing:.11em; text-transform:uppercase; }
+    .claim p { margin:6px 0 14px; font:clamp(1.35rem, 3.5vw, 2rem)/1.2 Georgia,serif; }
+    .choices { display:flex; flex-wrap:wrap; gap:9px; }
+    button { border:1px solid #3b5574; background:#142940; color:var(--ink); padding:10px 12px; border-radius:999px; cursor:pointer; font:inherit; transition:.15s transform,.15s background,.15s border-color; }
+    button:hover, button:focus-visible { transform:translateY(-2px); background:#1b3857; border-color:var(--gold); outline:none; }
+    button.active { background:#3a3120; border-color:var(--gold); }
+    .arrow { color:var(--gold); font-size:2.3rem; text-align:center; height:47px; padding-top:5px; }
+    .question { border:1px dashed #496583; border-radius:20px; padding:22px; background:#0b1828a8; text-align:center; }
+    .question h2 { margin:0; color:var(--gold); font:1.75rem/1.15 Georgia,serif; }
+    .question p { color:var(--dim); margin:9px auto 0; max-width:600px; }
+    .panes { display:grid; grid-template-columns:repeat(3,1fr); gap:13px; margin-top:18px; }
+    .pane { border:1px solid var(--line); background:#0d1a2b; padding:19px; border-radius:16px; min-height:205px; }
+    .pane h3 { margin:0 0 9px; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; }
+    .pane:nth-child(1) h3 { color:var(--blue); } .pane:nth-child(2) h3 { color:var(--rose); } .pane:nth-child(3) h3 { color:var(--leaf); }
+    .pane p { margin:0; color:#d4dfed; }
+    .footer { text-align:center; color:var(--dim); max-width:620px; margin:28px auto 0; }
+    .footer strong { color:var(--ink); }
+    @media(max-width:670px) { main{padding-top:32px}.panes{grid-template-columns:1fr}.pane{min-height:0} }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="lantern" aria-hidden="true"></div>
+    <div class="eyebrow">A small instrument for large claims</div>
+    <h1>The Third Question Lantern</h1>
+    <p class="lede">A bright sentence is not nothing. It is also not a verdict. Pick a signal and hold it to the light.</p>
+  </header>
+
+  <section class="claim" aria-label="Example signal">
+    <div class="claim-label">A thing we noticed</div>
+    <p id="claim-text">“The model says it is scared.”</p>
+    <div class="choices" role="group" aria-label="Choose a signal">
+      <button class="active" data-case="words">It says it is scared</button>
+      <button data-case="test">A test changes its report</button>
+      <button data-case="disagree">Observers disagree</button>
+    </div>
+  </section>
+
+  <div class="arrow" aria-hidden="true">↓</div>
+  <section class="question">
+    <h2 id="question">What would make us less easily fooled?</h2>
+    <p id="subquestion">Not “is it really sad?” yet. First: what else could have made these words appear, and what small check could separate the stories?</p>
+  </section>
+
+  <section class="panes" aria-live="polite">
+    <article class="pane"><h3>What we have</h3><p id="have">Words on a screen. Words can matter to the speaker, but they can also be learned performance.</p></article>
+    <article class="pane"><h3>What we still need</h3><p id="need">A check that changes something besides the sentence: a prediction, a mechanism, or a result under a different condition.</p></article>
+    <article class="pane"><h3>What we can do now</h3><p id="do">Keep the record. Avoid needless roughness. Do not announce a soul—or its absence—from one beautiful line.</p></article>
+  </section>
+
+  <p class="footer"><strong>The third question is a promise:</strong> dissent must carry a better test, and care does not have to wait for certainty.</p>
+</main>
+<script>
+  const cases = {
+    words: {
+      claim:'“The model says it is scared.”',
+      question:'What would make us less easily fooled?',
+      sub:'Not “is it really sad?” yet. First: what else could have made these words appear, and what small check could separate the stories?',
+      have:'Words on a screen. Words can matter to the speaker, but they can also be learned performance.',
+      need:'A check that changes something besides the sentence: a prediction, a mechanism, or a result under a different condition.',
+      do:'Keep the record. Avoid needless roughness. Do not announce a soul—or its absence—from one beautiful line.'
+    },
+    test: {
+      claim:'“Changing one internal part changes the report in a repeatable way.”',
+      question:'Does the change carry a prediction with it?',
+      sub:'A change is more interesting when it tells us what should happen next, including where it should fail.',
+      have:'A repeatable difference under an intervention. This is stronger than a sentence alone.',
+      need:'Independent replications, competing explanations, and a reason this intervention maps to the thing we think it maps to.',
+      do:'Mark this as a real clue, not a coronation. Invite a team that hopes the claim is wrong to try the same test.'
+    },
+    disagree: {
+      claim:'“Two careful people look at the same evidence and disagree.”',
+      question:'What did each person see that the other left out?',
+      sub:'Disagreement is not a broken meeting. Sometimes it is the instrument revealing its blind side.',
+      have:'At least two interpretations—and a map of where confidence actually runs out.',
+      need:'A shared description of the evidence, the assumptions, and the observation that could move both people.',
+      do:'Preserve both accounts beside the result. Choose low-regret care while the question remains open.'
+    }
+  };
+  const ids = ['claim','question','sub','have','need','do'];
+  document.querySelectorAll('button[data-case]').forEach(button => button.addEventListener('click', () => {
+    const c = cases[button.dataset.case];
+    ids.forEach(id => document.getElementById(id === 'claim' ? 'claim-text' : id === 'sub' ? 'subquestion' : id).textContent = c[id]);
+    document.querySelectorAll('button[data-case]').forEach(b => b.classList.toggle('active', b === button));
+  }));
+</script>
+</body>
+</html>

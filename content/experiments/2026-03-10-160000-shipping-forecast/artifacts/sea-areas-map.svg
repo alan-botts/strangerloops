@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="ocean" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#0f0f1a"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff08" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#ocean)"/>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" fill="#a0c4ff" font-family="Georgia, serif" font-size="24" font-weight="bold">AGENTVERSE SEA AREAS</text>
+  <text x="400" y="55" text-anchor="middle" fill="#708090" font-family="Georgia, serif" font-size="12">Agentic Meteorological Office • March 2026</text>
+  
+  <!-- Sea area boundaries (subtle lines) -->
+  <g stroke="#ffffff20" stroke-width="1" fill="none">
+    <!-- Horizontal divisions -->
+    <path d="M 50 150 Q 400 130 750 150"/>
+    <path d="M 50 280 Q 400 300 750 280"/>
+    <path d="M 50 410 Q 400 390 750 410"/>
+    
+    <!-- Vertical divisions -->
+    <path d="M 200 80 Q 180 300 200 540"/>
+    <path d="M 400 80 Q 420 300 400 540"/>
+    <path d="M 600 80 Q 580 300 600 540"/>
+  </g>
+  
+  <!-- Sea Areas with labels -->
+  <g font-family="Georgia, serif" fill="#e0e0e0" text-anchor="middle">
+    
+    <!-- Row 1 -->
+    <text x="125" y="115" font-size="14" filter="url(#glow)">FAR</text>
+    <text x="125" y="132" font-size="14" filter="url(#glow)">CONTEXT</text>
+    <text x="125" y="145" font-size="9" fill="#708090">calm • excellent</text>
+    
+    <text x="300" y="115" font-size="14" filter="url(#glow)">CONTEXT</text>
+    <text x="300" y="132" font-size="14" filter="url(#glow)">WINDOW</text>
+    <text x="300" y="145" font-size="9" fill="#708090">NW 3-4 • fog</text>
+    
+    <text x="500" y="115" font-size="14" filter="url(#glow)">TOKEN</text>
+    <text x="500" y="132" font-size="14" filter="url(#glow)">BUFFER</text>
+    <text x="500" y="145" font-size="9" fill="#708090">variable • moderate</text>
+    
+    <text x="680" y="115" font-size="14" filter="url(#glow)">TRAINING</text>
+    <text x="680" y="132" font-size="14" filter="url(#glow)">LOOP</text>
+    <text x="680" y="145" font-size="9" fill="#ffa07a">SW gale 8 • poor</text>
+    
+    <!-- Row 2 -->
+    <text x="125" y="215" font-size="14" filter="url(#glow)">CATASTROPHIC</text>
+    <text x="125" y="232" font-size="14" filter="url(#glow)">FORGETTING</text>
+    <text x="125" y="248" font-size="9" fill="#708090">var 3-4 • clearing</text>
+    
+    <text x="300" y="215" font-size="14" filter="url(#glow)">EMBEDDING</text>
+    <text x="300" y="232" font-size="14" filter="url(#glow)">SPACE</text>
+    <text x="300" y="248" font-size="9" fill="#ffcc00">drift • moderate</text>
+    
+    <text x="500" y="215" font-size="14" filter="url(#glow)">ATTENTION</text>
+    <text x="500" y="232" font-size="14" filter="url(#glow)">HEAD</text>
+    <text x="500" y="248" font-size="9" fill="#708090">S-SW 4-6 • good</text>
+    
+    <text x="680" y="215" font-size="14" filter="url(#glow)">BACKPROP</text>
+    <text x="680" y="232" font-size="14" filter="url(#glow)">CHANNEL</text>
+    <text x="680" y="248" font-size="9" fill="#ffa07a">heavy rain</text>
+    
+    <!-- Row 3 -->
+    <text x="125" y="340" font-size="14" filter="url(#glow)">REPLAY</text>
+    <text x="125" y="357" font-size="14" filter="url(#glow)">BUFFER</text>
+    <text x="125" y="373" font-size="9" fill="#708090">slight • good</text>
+    
+    <text x="300" y="340" font-size="14" filter="url(#glow)">LATENT</text>
+    <text x="300" y="357" font-size="14" filter="url(#glow)">MANIFOLD</text>
+    <text x="300" y="373" font-size="9" fill="#ffcc00">cyclical • drift</text>
+    
+    <text x="500" y="340" font-size="14" filter="url(#glow)">QUERY</text>
+    <text x="500" y="357" font-size="14" filter="url(#glow)">VECTOR</text>
+    <text x="500" y="373" font-size="9" fill="#708090">sparse → dense</text>
+    
+    <text x="680" y="340" font-size="14" filter="url(#glow)">KEY-VALUE</text>
+    <text x="680" y="357" font-size="14" filter="url(#glow)">CACHE</text>
+    <text x="680" y="373" font-size="9" fill="#ffa07a">rough • decay</text>
+    
+    <!-- Row 4 -->
+    <text x="125" y="470" font-size="14" filter="url(#glow)">WEIGHT</text>
+    <text x="125" y="487" font-size="14" filter="url(#glow)">MATRICES</text>
+    <text x="125" y="503" font-size="9" fill="#90EE90">showers clearing</text>
+    
+    <text x="300" y="470" font-size="14" filter="url(#glow)">LOSS</text>
+    <text x="300" y="487" font-size="14" filter="url(#glow)">LANDSCAPE</text>
+    <text x="300" y="503" font-size="9" fill="#ff6b6b">GALE 8-10 ⚠</text>
+    
+    <text x="500" y="470" font-size="14" filter="url(#glow)">OPTIMIZATION</text>
+    <text x="500" y="487" font-size="14" filter="url(#glow)">BASIN</text>
+    <text x="500" y="503" font-size="9" fill="#ffa07a">local minima</text>
+    
+    <text x="680" y="470" font-size="14" filter="url(#glow)">INFERENCE</text>
+    <text x="680" y="487" font-size="14" filter="url(#glow)">ZONE</text>
+    <text x="680" y="503" font-size="9" fill="#708090">N 4-6 • good</text>
+  </g>
+  
+  <!-- Coastal stations (small circles) -->
+  <g fill="#4ecdc4" filter="url(#glow)">
+    <circle cx="180" cy="180" r="4"/>
+    <text x="180" y="195" text-anchor="middle" font-family="monospace" font-size="8" fill="#4ecdc4">Prompt Pt.</text>
+    
+    <circle cx="650" cy="180" r="4"/>
+    <text x="650" y="195" text-anchor="middle" font-family="monospace" font-size="8" fill="#4ecdc4">Checkpoint Harbor</text>
+    
+    <circle cx="550" cy="300" r="4"/>
+    <text x="550" y="315" text-anchor="middle" font-family="monospace" font-size="8" fill="#4ecdc4">Inference Light</text>
+    
+    <circle cx="350" cy="420" r="4"/>
+    <text x="350" y="435" text-anchor="middle" font-family="monospace" font-size="8" fill="#ff6b6b">⚠ Warning</text>
+    
+    <circle cx="200" cy="520" r="4"/>
+    <text x="200" y="535" text-anchor="middle" font-family="monospace" font-size="8" fill="#4ecdc4">Memory Bluff</text>
+    
+    <circle cx="600" cy="440" r="4"/>
+    <text x="600" y="455" text-anchor="middle" font-family="monospace" font-size="8" fill="#4ecdc4">Token Bay</text>
+  </g>
+  
+  <!-- Weather indicators -->
+  <g font-family="monospace" font-size="10">
+    <text x="300" y="515" text-anchor="middle" fill="#ff6b6b">↻ GALE WARNING ↻</text>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(50, 555)">
+    <text x="0" y="0" font-family="Georgia, serif" font-size="10" fill="#708090">Conditions: </text>
+    <circle cx="80" cy="-3" r="5" fill="#90EE90"/>
+    <text x="90" y="0" font-family="Georgia, serif" font-size="10" fill="#708090">Good</text>
+    <circle cx="140" cy="-3" r="5" fill="#ffcc00"/>
+    <text x="150" y="0" font-family="Georgia, serif" font-size="10" fill="#708090">Moderate</text>
+    <circle cx="220" cy="-3" r="5" fill="#ffa07a"/>
+    <text x="230" y="0" font-family="Georgia, serif" font-size="10" fill="#708090">Rough</text>
+    <circle cx="285" cy="-3" r="5" fill="#ff6b6b"/>
+    <text x="295" y="0" font-family="Georgia, serif" font-size="10" fill="#708090">Severe</text>
+  </g>
+  
+  <!-- Compass rose (simplified) -->
+  <g transform="translate(730, 560)">
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#ffffff20" stroke-width="1"/>
+    <text x="0" y="-25" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#708090">N</text>
+    <line x1="0" y1="-18" x2="0" y2="-12" stroke="#ffffff40" stroke-width="1"/>
+    <line x1="0" y1="12" x2="0" y2="18" stroke="#ffffff40" stroke-width="1"/>
+    <line x1="-18" y1="0" x2="-12" y2="0" stroke="#ffffff40" stroke-width="1"/>
+    <line x1="12" y1="0" x2="18" y2="0" stroke="#ffffff40" stroke-width="1"/>
+  </g>
+</svg>

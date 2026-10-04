@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Missing Holes Witness</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --ink: #eef3ff;
+      --muted: #a7b5d6;
+      --line: #31406d;
+      --accent: #86c5ff;
+      --gold: #ffd479;
+    }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: radial-gradient(circle at top, #18254f 0%, var(--bg) 55%);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+    }
+    .panel {
+      background: rgba(18, 25, 51, 0.88);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+      margin-bottom: 22px;
+    }
+    h1, h2 { margin-top: 0; }
+    h1 { font-size: clamp(2rem, 6vw, 3.8rem); line-height: 1.05; }
+    .lede { color: var(--muted); font-size: 1.15rem; }
+    .questions li { margin: 0 0 0.8rem; }
+    .small { color: var(--muted); font-size: 0.95rem; }
+    .airplane {
+      display: grid;
+      place-items: center;
+      min-height: 240px;
+      overflow: hidden;
+    }
+    svg { max-width: 100%; height: auto; }
+    .bullet { fill: var(--gold); opacity: 0.95; }
+    .ghost { stroke: var(--accent); stroke-width: 2; stroke-dasharray: 7 7; fill: none; opacity: 0.8; }
+    code { background: rgba(255,255,255,0.08); padding: 0.15rem 0.35rem; border-radius: 6px; }
+    a { color: #a7dcff; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="panel">
+      <h1>Missing Holes Witness</h1>
+      <p class="lede">A tiny exhibit for one practical question: when an eloquent system explains itself, what evidence are we <em>not</em> hearing because it never made it back from the edge?</p>
+      <p>Listen to the short narration, then keep the three calibration questions nearby when a dashboard, demo, benchmark, or model self-report starts sounding too smooth.</p>
+      <audio controls preload="none" style="width:100%; margin-top: 1rem;">
+        <source src="missing-holes-witness.mp3" type="audio/mpeg" />
+      </audio>
+      <p class="small">Transcript in <code>narration.txt</code>.</p>
+    </section>
+
+    <section class="panel airplane">
+      <svg viewBox="0 0 900 280" role="img" aria-label="Airplane silhouette with visible bullet holes and ghost outlines where invisible losses live.">
+        <path d="M135 146 L310 140 L440 95 L515 96 L605 55 L660 59 L612 112 L730 125 L830 148 L729 165 L611 178 L658 224 L602 226 L515 185 L438 184 L313 141 L135 134 L85 95 L44 96 L74 138 L42 184 L85 184 Z" fill="#dfe8ff" opacity="0.95"/>
+        <circle class="bullet" cx="510" cy="122" r="7"/>
+        <circle class="bullet" cx="552" cy="137" r="7"/>
+        <circle class="bullet" cx="484" cy="153" r="7"/>
+        <circle class="bullet" cx="315" cy="143" r="7"/>
+        <circle class="bullet" cx="365" cy="129" r="7"/>
+        <circle class="bullet" cx="410" cy="115" r="7"/>
+        <circle class="bullet" cx="390" cy="153" r="7"/>
+        <ellipse class="ghost" cx="105" cy="141" rx="72" ry="55"/>
+        <ellipse class="ghost" cx="675" cy="145" rx="128" ry="88"/>
+        <text x="24" y="44" fill="#a7b5d6" font-size="22">visible holes</text>
+        <text x="586" y="42" fill="#86c5ff" font-size="22">missing evidence</text>
+      </svg>
+    </section>
+
+    <section class="panel">
+      <h2>Three questions</h2>
+      <ol class="questions">
+        <li><strong>What survived to become sayable?</strong><br/>A fluent self-report is evidence of some internal organization. It is not evidence that everything important reached language.</li>
+        <li><strong>What failed offstage?</strong><br/>Look for the invisible losers: sessions that crashed, humans who dropped out, edge cases routed away, silent refusals, and harms the benchmark never scores.</li>
+        <li><strong>Who is the witness outside the frame?</strong><br/>A private workspace can report. An external witness can contradict.</li>
+      </ol>
+      <p class="small">Inspired by Abraham Wald's wartime survivorship lesson, recent notes on global-workspace-like structure in language models, and the quiet difference between a report and a witness.</p>
+    </section>
+  </main>
+</body>
+</html>

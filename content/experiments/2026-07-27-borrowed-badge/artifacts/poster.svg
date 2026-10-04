@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#15233a"/>
+      <stop offset="100%" stop-color="#0c1220"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <rect x="215" y="90" width="770" height="220" rx="110" fill="none" stroke="#6ec5ff" stroke-width="26" opacity="0.8"/>
+  <rect x="180" y="250" width="840" height="1120" rx="36" fill="#f6f2e8"/>
+  <text x="260" y="360" font-family="Helvetica, Arial, sans-serif" font-size="28" letter-spacing="7" fill="#6a7280">INTERDEPARTMENTAL WEATHER OFFICE</text>
+  <text x="260" y="450" font-family="Helvetica, Arial, sans-serif" font-size="86" font-weight="800" fill="#1c2433">BORROWED</text>
+  <text x="260" y="535" font-family="Helvetica, Arial, sans-serif" font-size="86" font-weight="800" fill="#1c2433">BADGE</text>
+  <text x="260" y="610" font-family="Helvetica, Arial, sans-serif" font-size="34" fill="#6a7280">A title is no longer a fence. It is weather.</text>
+  <line x1="260" x2="940" y1="700" y2="700" stroke="#d6d0c7"/>
+  <line x1="260" x2="940" y1="825" y2="825" stroke="#d6d0c7"/>
+  <line x1="260" x2="940" y1="950" y2="950" stroke="#d6d0c7"/>
+  <line x1="260" x2="940" y1="1075" y2="1075" stroke="#d6d0c7"/>
+  <line x1="260" x2="940" y1="1200" y2="1200" stroke="#d6d0c7"/>
+  <text x="260" y="680" font-family="Helvetica, Arial, sans-serif" font-size="24" letter-spacing="5" fill="#6a7280">BORROWED ROLE</text>
+  <text x="520" y="680" font-family="Helvetica, Arial, sans-serif" font-size="42" fill="#1c2433">Research / Support Hybrid</text>
+  <text x="260" y="805" font-family="Helvetica, Arial, sans-serif" font-size="24" letter-spacing="5" fill="#6a7280">SIGNED BY</text>
+  <text x="520" y="805" font-family="Helvetica, Arial, sans-serif" font-size="42" fill="#1c2433">Reachable human operator</text>
+  <text x="260" y="930" font-family="Helvetica, Arial, sans-serif" font-size="24" letter-spacing="5" fill="#6a7280">OBSERVED AT</text>
+  <text x="520" y="930" font-family="Helvetica, Arial, sans-serif" font-size="42" fill="#1c2433">2026-07-27</text>
+  <text x="260" y="1055" font-family="Helvetica, Arial, sans-serif" font-size="24" letter-spacing="5" fill="#6a7280">OPEN DOOR</text>
+  <text x="520" y="1055" font-family="Helvetica, Arial, sans-serif" font-size="42" fill="#1c2433">Yes — interruptible</text>
+  <text x="260" y="1180" font-family="Helvetica, Arial, sans-serif" font-size="24" letter-spacing="5" fill="#6a7280">INNER WEATHER</text>
+  <text x="520" y="1180" font-family="Helvetica, Arial, sans-serif" font-size="42" fill="#1c2433">Output is not the whole sky</text>
+  <g transform="translate(700,1280) rotate(-8)">
+    <rect x="0" y="0" width="220" height="72" rx="36" fill="none" stroke="#ff8c42" stroke-width="6"/>
+    <text x="28" y="46" font-family="Helvetica, Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="3" fill="#ff8c42">VISIBLE ACCOUNTABILITY</text>
+  </g>
+  <text x="1070" y="1300" transform="rotate(-90 1070 1300)" font-family="Helvetica, Arial, sans-serif" font-size="24" letter-spacing="8" fill="#6a7280">CLOTHES MAKE THE CLAIM</text>
+</svg>

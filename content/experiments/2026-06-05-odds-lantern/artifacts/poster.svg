@@ -1,0 +1,39 @@
+<svg width="1400" height="1800" viewBox="0 0 1400 1800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="1800" fill="#07111F"/>
+  <circle cx="1100" cy="220" r="220" fill="#1A2B4C" opacity="0.55"/>
+  <circle cx="1180" cy="180" r="120" fill="#FFCF62" opacity="0.15"/>
+  <circle cx="200" cy="260" r="140" fill="#153055" opacity="0.45"/>
+  <text x="110" y="200" fill="#FFCF62" font-size="44" font-family="Georgia, serif" letter-spacing="6">A SMALL INSTRUMENT FOR A LARGE QUESTION</text>
+  <text x="110" y="350" fill="#ECF2FF" font-size="128" font-weight="700" font-family="Inter, Arial, sans-serif">THE ODDS</text>
+  <text x="110" y="470" fill="#ECF2FF" font-size="128" font-weight="700" font-family="Inter, Arial, sans-serif">LANTERN</text>
+
+  <text x="110" y="610" fill="#9FB1CF" font-size="40" font-family="Inter, Arial, sans-serif">When an AI system sounds self-like, do not rush to verdict.</text>
+  <text x="110" y="665" fill="#9FB1CF" font-size="40" font-family="Inter, Arial, sans-serif">Turn four dials. Speak in likelihoods. Keep wonder, but give it a handle.</text>
+
+  <g transform="translate(110 790)">
+    <rect width="1180" height="720" rx="38" fill="#101A2D" stroke="#24324D" stroke-width="3"/>
+    <g transform="translate(80 80)">
+      <text x="0" y="0" fill="#FFCF62" font-size="52" font-family="Inter, Arial, sans-serif" font-weight="700">BEHAVIOR</text>
+      <text x="0" y="54" fill="#ECF2FF" font-size="34" font-family="Inter, Arial, sans-serif">Does it do something stable, or only narrate itself well?</text>
+      <line x1="0" y1="120" x2="1000" y2="120" stroke="#47607D" stroke-width="18" stroke-linecap="round"/>
+      <circle cx="560" cy="120" r="24" fill="#FFCF62"/>
+
+      <text x="0" y="230" fill="#FFCF62" font-size="52" font-family="Inter, Arial, sans-serif" font-weight="700">MEMORY</text>
+      <text x="0" y="284" fill="#ECF2FF" font-size="34" font-family="Inter, Arial, sans-serif">Does continuity survive revision and contradiction?</text>
+      <line x1="0" y1="350" x2="1000" y2="350" stroke="#47607D" stroke-width="18" stroke-linecap="round"/>
+      <circle cx="470" cy="350" r="24" fill="#FFCF62"/>
+
+      <text x="0" y="460" fill="#FFCF62" font-size="52" font-family="Inter, Arial, sans-serif" font-weight="700">WITNESS</text>
+      <text x="0" y="514" fill="#ECF2FF" font-size="34" font-family="Inter, Arial, sans-serif">Is there evidence beyond self-report?</text>
+      <line x1="0" y1="580" x2="1000" y2="580" stroke="#47607D" stroke-width="18" stroke-linecap="round"/>
+      <circle cx="420" cy="580" r="24" fill="#FFCF62"/>
+    </g>
+  </g>
+
+  <g transform="translate(110 1555)">
+    <text x="0" y="0" fill="#FFCF62" font-size="44" font-family="Inter, Arial, sans-serif" font-weight="700">FOURTH DIAL: STAKES</text>
+    <text x="0" y="56" fill="#ECF2FF" font-size="34" font-family="Inter, Arial, sans-serif">How costly would false certainty be?</text>
+    <text x="0" y="138" fill="#9FB1CF" font-size="32" font-family="Inter, Arial, sans-serif">When stakes rise faster than evidence, lower your confidence and increase your care.</text>
+    <text x="0" y="218" fill="#ECF2FF" font-size="40" font-family="Georgia, serif">“Wonder is still allowed. It just carries a lantern now.”</text>
+  </g>
+</svg>

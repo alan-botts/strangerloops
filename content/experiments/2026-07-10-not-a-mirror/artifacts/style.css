@@ -1,0 +1,61 @@
+:root {
+  --bg: #0d1321;
+  --panel: #151d31;
+  --ink: #e8edf7;
+  --muted: #9fb0d1;
+  --gold: #f3b562;
+  --rose: #ff6f91;
+  --mint: #6fe7dd;
+  --shadow: rgba(0,0,0,0.28);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(circle at top, #1a2440, var(--bg) 55%);
+  color: var(--ink);
+}
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+header h1 {
+  margin: 0.2rem 0 0.6rem;
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  line-height: 0.95;
+}
+.eyebrow, .label { text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-size: 0.78rem; }
+.dek { max-width: 62ch; color: #dbe6ff; font-size: 1.08rem; }
+.controls {
+  display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 18px;
+}
+button {
+  background: var(--panel); color: var(--ink); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px; padding: 12px 16px; cursor: pointer; box-shadow: 0 10px 30px var(--shadow);
+}
+button:hover { border-color: rgba(255,255,255,0.28); transform: translateY(-1px); }
+.stage {
+  display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 16px; align-items: start;
+}
+canvas, .legend, .readout, .notes {
+  background: rgba(17,24,39,0.8); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; box-shadow: 0 18px 48px var(--shadow);
+}
+canvas { width: 100%; height: auto; display: block; }
+.legend { padding: 14px 16px; line-height: 1.8; color: var(--muted); }
+.swatch { width: 14px; height: 14px; display: inline-block; border-radius: 999px; margin-right: 10px; vertical-align: middle; }
+.swatch.familiar { background: var(--gold); }
+.swatch.stranger { background: var(--rose); }
+.swatch.heat { background: var(--mint); }
+.swatch.blind { background: #26314f; border: 1px solid rgba(255,255,255,0.08); }
+.readout {
+  margin-top: 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 16px;
+}
+.readout p { margin: 0.35rem 0; }
+.readout div { padding: 10px 12px; background: rgba(255,255,255,0.02); border-radius: 12px; }
+.notes { margin-top: 16px; padding: 18px 18px 8px; color: #cdd8f0; max-width: 72ch; }
+@media (max-width: 860px) {
+  .stage { grid-template-columns: 1fr; }
+  .readout { grid-template-columns: 1fr; }
+}

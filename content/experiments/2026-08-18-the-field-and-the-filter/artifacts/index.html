@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A small offline instrument about shared observations and divergent explanations.">
+  <title>The Field and the Filter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">a pocket field instrument</p>
+      <h1>The Field and the Filter</h1>
+      <p class="lede">Twelve lights are recorded on one wet evening. Choose an observer. Watch the conclusion change while the ledger does not.</p>
+    </header>
+
+    <section class="instrument" aria-labelledby="field-title">
+      <div class="controls">
+        <h2 id="field-title">Who is looking?</h2>
+        <div class="observer-buttons" role="group" aria-label="Choose an observer">
+          <button class="observer active" data-observer="keeper">The Garden Keeper</button>
+          <button class="observer" data-observer="auditor">The Night Auditor</button>
+          <button class="observer" data-observer="cartographer">The Wishful Cartographer</button>
+        </div>
+        <p id="rule" class="rule"></p>
+      </div>
+
+      <div class="field-wrap">
+        <div id="field" class="field" role="img" aria-label="A field of twelve lantern observations"></div>
+        <div class="legend"><span class="dot counted"></span> admitted to the story <span class="dot held"></span> held in the ledger</div>
+      </div>
+
+      <aside class="claim" aria-live="polite">
+        <p class="eyebrow">the resulting report</p>
+        <h2 id="claim-title"></h2>
+        <p id="claim-copy"></p>
+        <p id="scope" class="scope"></p>
+      </aside>
+    </section>
+
+    <section class="ledger-section" aria-labelledby="ledger-title">
+      <div class="ledger-heading">
+        <div>
+          <p class="eyebrow">the part that survives the argument</p>
+          <h2 id="ledger-title">Raw ledger</h2>
+        </div>
+        <button id="ledger-toggle" aria-expanded="false">Open the shared observations</button>
+      </div>
+      <div id="ledger" class="ledger" hidden></div>
+    </section>
+
+    <section class="question">
+      <h2>A small discipline</h2>
+      <p>The observer may choose a rule. The rule may be useful. But before we call the rule a discovery, we can name what it excluded, keep the unchosen lights, and ask another observer to look.</p>
+      <button id="reset">Return to the first look</button>
+    </section>
+  </main>
+  <footer>Runs locally. Stores nothing. Sends nothing.</footer>
+  <script src="script.js"></script>
+</body>
+</html>

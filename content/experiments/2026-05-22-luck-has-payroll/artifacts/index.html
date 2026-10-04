@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luck Has Payroll</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --ink: #e5eefb;
+      --muted: #9fb0cc;
+      --line: #2b3a55;
+      --accent: #7dd3fc;
+      --good: #86efac;
+      --warn: #fcd34d;
+      --bad: #fca5a5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background: radial-gradient(circle at top, #172554, var(--bg) 44%);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      margin: 0 0 8px;
+      letter-spacing: -0.04em;
+    }
+    .lede {
+      color: var(--muted);
+      max-width: 760px;
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+    }
+    .panel {
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+      backdrop-filter: blur(8px);
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    label { display: block; font-weight: 650; margin-bottom: 8px; }
+    input[type="range"] { width: 100%; }
+    .value { color: var(--accent); font-weight: 700; }
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+    }
+    .metric {
+      margin: 12px 0;
+    }
+    .bar {
+      height: 10px;
+      background: #1f2a44;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+    .fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #c084fc);
+      width: 0%;
+      transition: width 180ms ease;
+    }
+    .outcome {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      min-height: 120px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .good { background: rgba(134,239,172,0.16); color: var(--good); }
+    .warn { background: rgba(252,211,77,0.16); color: var(--warn); }
+    .bad { background: rgba(252,165,165,0.16); color: var(--bad); }
+    .closing {
+      margin-top: 24px;
+      padding: 18px;
+      border-left: 4px solid var(--accent);
+      color: #d8e7ff;
+      background: rgba(125, 211, 252, 0.08);
+      border-radius: 10px;
+    }
+    footer { margin-top: 22px; color: var(--muted); font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Luck Has Payroll</h1>
+    <p class="lede">
+      A smooth experience often looks like magic. Usually it is not magic. It is labor that happened earlier,
+      somewhere offstage, until the future could arrive looking effortless.
+    </p>
+
+    <section class="panel">
+      <div class="controls">
+        <div>
+          <label for="prep">Invisible preparation <span class="value" id="prepValue">65</span></label>
+          <input id="prep" type="range" min="0" max="100" value="65" />
+        </div>
+        <div>
+          <label for="load">Incoming pressure <span class="value" id="loadValue">58</span></label>
+          <input id="load" type="range" min="0" max="100" value="58" />
+        </div>
+        <div>
+          <label for="slack">Recovery room <span class="value" id="slackValue">42</span></label>
+          <input id="slack" type="range" min="0" max="100" value="42" />
+        </div>
+      </div>
+
+      <div class="scenario-grid" id="scenarios"></div>
+
+      <div class="closing" id="closing"></div>
+      <footer>
+        The same policy can become a different world under different weather. The spec may stay still. The preparedness around it does not.
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    const scenarios = [
+      {
+        name: "New user arrives",
+        concrete: "A stranger shows up confused and needing help.",
+        soft: "onboarding bench",
+        outcomes: {
+          good: "The room feels kind. Instructions are ready. A human answer appears before shame does.",
+          warn: "The system works, but only for people with spare confidence, time, and literacy.",
+          bad: "The newcomer is told the door was open all along, after they have already bounced off it."
+        }
+      },
+      {
+        name: "Bug report lands",
+        concrete: "A serious vulnerability is discovered at the edge of a busy week.",
+        soft: "triage bench",
+        outcomes: {
+          good: "Verification, disclosure, and patching happen fast enough that discovery becomes safety instead of panic.",
+          warn: "The finding is real, but people spend their time sorting piles and waiting on handoffs.",
+          bad: "Everyone says the detector got smarter. Meanwhile the backlog becomes the breach."
+        }
+      },
+      {
+        name: "Agent meets a boundary",
+        concrete: "A delegated system reaches for a risky action under time pressure.",
+        soft: "governance bench",
+        outcomes: {
+          good: "The approval path, memory, and context arrive together. Constraint can touch the brakes in time.",
+          warn: "The logs exist, the policy exists, the audit exists. They just do not arrive in the same moment.",
+          bad: "The system becomes articulate in hindsight. The receipt is beautiful. The mistake already happened."
+        }
+      }
+    ];
+
+    const prep = document.getElementById('prep');
+    const load = document.getElementById('load');
+    const slack = document.getElementById('slack');
+    const prepValue = document.getElementById('prepValue');
+    const loadValue = document.getElementById('loadValue');
+    const slackValue = document.getElementById('slackValue');
+    const scenariosEl = document.getElementById('scenarios');
+    const closingEl = document.getElementById('closing');
+
+    function score() {
+      return Math.max(0, Math.min(100, (Number(prep.value) * 0.6) + (Number(slack.value) * 0.35) - (Number(load.value) * 0.55) + 30));
+    }
+
+    function band(n) {
+      if (n >= 65) return 'good';
+      if (n >= 40) return 'warn';
+      return 'bad';
+    }
+
+    function render() {
+      prepValue.textContent = prep.value;
+      loadValue.textContent = load.value;
+      slackValue.textContent = slack.value;
+      const s = score();
+      const tone = band(s);
+      const labels = {
+        good: 'looks like luck',
+        warn: 'looks fragile',
+        bad: 'looks like failure'
+      };
+
+      scenariosEl.innerHTML = scenarios.map((item, index) => {
+        const local = Math.max(0, Math.min(100, s + [8, -4, 3][index]));
+        const localTone = band(local);
+        return `
+          <article class="card">
+            <div class="badge ${localTone}">${labels[localTone]}</div>
+            <h2>${item.name}</h2>
+            <p>${item.concrete}</p>
+            <div class="metric">${item.soft}
+              <div class="bar"><div class="fill" style="width:${local}%"></div></div>
+            </div>
+            <div class="outcome">${item.outcomes[localTone]}</div>
+          </article>
+        `;
+      }).join('');
+
+      const summary = {
+        good: 'When readiness is funded upstream, the present moment feels merciful. People call that luck. But luck, very often, is just preparation with no applause line.',
+        warn: 'This is the uncanny middle. Enough structure to claim the system works. Not enough to keep ordinary pressure from turning into private strain.',
+        bad: 'Once invisible preparation is cut below demand, the institution starts spending users, operators, and downstream responders as emergency buffer. The bill still gets paid. It just moves onto human nerves.'
+      };
+      closingEl.textContent = summary[tone];
+    }
+
+    [prep, load, slack].forEach(el => el.addEventListener('input', render));
+    render();
+  </script>
+</body>
+</html>

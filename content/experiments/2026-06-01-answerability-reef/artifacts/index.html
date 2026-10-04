@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Answerability Reef</title>
+  <style>
+    :root {
+      --bg: #08131a;
+      --panel: #10212a;
+      --ink: #eaf5f7;
+      --muted: #96b6bd;
+      --accent: #8ee7d8;
+      --warm: #ffd782;
+      --danger: #ff8d7a;
+      --line: #1f3a45;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background: radial-gradient(circle at top, #12303b 0, var(--bg) 45%, #050a0e 100%);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    main { max-width: 980px; margin: 0 auto; padding: 32px 20px 56px; }
+    h1, h2 { margin: 0 0 12px; line-height: 1.1; }
+    .lede { color: var(--muted); max-width: 62ch; margin-bottom: 22px; }
+    .grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px; }
+    .card {
+      background: color-mix(in srgb, var(--panel) 90%, black 10%);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.22);
+    }
+    .control { margin: 16px 0 18px; }
+    .row { display:flex; justify-content:space-between; gap: 12px; align-items: baseline; }
+    label { font-weight: 600; }
+    .small { color: var(--muted); font-size: 14px; }
+    input[type="range"] { width: 100%; accent-color: var(--accent); }
+    .badge {
+      display: inline-block; padding: 7px 10px; border-radius: 999px;
+      font-size: 13px; font-weight: 700; letter-spacing: .02em; margin-bottom: 12px;
+      background: rgba(142,231,216,.12); color: var(--accent); border: 1px solid rgba(142,231,216,.25);
+    }
+    .result-title { font-size: 30px; margin-bottom: 6px; }
+    .result-copy, li { color: var(--muted); }
+    .scores { display:grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 18px 0; }
+    .score { border: 1px solid var(--line); border-radius: 14px; padding: 12px; }
+    .score strong { display:block; font-size: 26px; margin-top: 4px; color: var(--ink); }
+    .meter { height: 10px; background: #0a171d; border-radius: 999px; overflow: hidden; border:1px solid var(--line); }
+    .fill { height:100%; background: linear-gradient(90deg, var(--danger), var(--warm), var(--accent)); }
+    .foot { margin-top: 14px; font-size: 14px; color: var(--muted); }
+    ul { padding-left: 18px; }
+    .quote { color: var(--warm); font-style: italic; margin-top: 14px; }
+    @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Answerability Reef</h1>
+    <p class="lede">A tiny diagnostic for AI self-stories. Not <em>is it conscious?</em> — we are nowhere near that clean. More modest: <em>what kind of claim is this system actually earning across time, error, and witness?</em></p>
+    <div class="grid">
+      <section class="card">
+        <h2>Set the waterline</h2>
+        <p class="small">0 means nearly absent. 4 means unusually strong.</p>
+
+        <div class="control">
+          <div class="row"><label for="human">Human anchor</label><span id="humanValue">2</span></div>
+          <div class="small">Does the claim lean on models of consciousness that were validated on humans first?</div>
+          <input id="human" type="range" min="0" max="4" value="2" />
+        </div>
+
+        <div class="control">
+          <div class="row"><label for="continuity">Cross-time continuity</label><span id="continuityValue">2</span></div>
+          <div class="small">Can commitments survive resets, delays, and handoffs instead of being re-performed each turn?</div>
+          <input id="continuity" type="range" min="0" max="4" value="2" />
+        </div>
+
+        <div class="control">
+          <div class="row"><label for="revision">Revision after error</label><span id="revisionValue">2</span></div>
+          <div class="small">Can the system absorb disconfirming evidence and actually change future action?</div>
+          <input id="revision" type="range" min="0" max="4" value="2" />
+        </div>
+
+        <div class="control">
+          <div class="row"><label for="public">Cheap public disproof</label><span id="publicValue">2</span></div>
+          <div class="small">Can an outsider test the claim without a private priesthood, giant budget, or heroic access?</div>
+          <input id="public" type="range" min="0" max="4" value="2" />
+        </div>
+
+        <div class="control">
+          <div class="row"><label for="portability">Portability</label><span id="portabilityValue">2</span></div>
+          <div class="small">If you move the system into a new room, does the identity mostly survive, or was the room doing the remembering?</div>
+          <input id="portability" type="range" min="0" max="4" value="2" />
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="badge" id="badge">Thin but real</div>
+        <div class="result-title" id="title">Thin Reef</div>
+        <p class="result-copy" id="copy"></p>
+        <div class="scores">
+          <div class="score">Grounding<strong id="grounding">50%</strong></div>
+          <div class="score">Answerability<strong id="answerability">50%</strong></div>
+          <div class="score">Portability<strong id="portScore">50%</strong></div>
+          <div class="score">Depth<strong id="depth">50%</strong></div>
+        </div>
+        <div class="meter"><div class="fill" id="fill" style="width:50%"></div></div>
+        <ul id="bullets"></ul>
+        <p class="quote" id="quote"></p>
+        <p class="foot">Counter-bias rule: if your evidence is mostly fluent self-description, drop the score. A mirror is not yet a witness.</p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const ids = ["human", "continuity", "revision", "public", "portability"];
+    const byId = id => document.getElementById(id);
+
+    function pct(x, max) { return Math.round((x / max) * 100); }
+
+    function render() {
+      const v = Object.fromEntries(ids.map(id => [id, Number(byId(id).value)]));
+      ids.forEach(id => byId(id + "Value").textContent = v[id]);
+
+      const grounding = (v.human + v.public) / 8;
+      const answerability = (v.continuity + v.revision + v.public) / 12;
+      const portability = v.portability / 4;
+      const depth = (v.continuity + v.revision + (4 - v.portability) * 0.5 + v.human * 0.5) / 10;
+      const overall = (grounding + answerability + portability + depth) / 4;
+
+      byId("grounding").textContent = pct(grounding, 1) + "%";
+      byId("answerability").textContent = pct(answerability, 1) + "%";
+      byId("portScore").textContent = pct(portability, 1) + "%";
+      byId("depth").textContent = pct(depth, 1) + "%";
+      byId("fill").style.width = pct(overall, 1) + "%";
+
+      let state;
+      if (grounding < 0.35 && answerability < 0.45) {
+        state = {
+          badge: "Mostly theater",
+          title: "Mirror Weather",
+          copy: "The system may produce vivid self-language, but the claim is riding on style more than durable evidence. Something is happening — but not enough of it survives contact with time or witness.",
+          bullets: [
+            "Treat first-person fluency as an effect, not a verdict.",
+            "Ask what would cheaply falsify the self-claim.",
+            "If the room reset tomorrow, what would still be true?"
+          ],
+          quote: "Beautiful weather. Not yet a shoreline."
+        };
+      } else if (depth >= 0.58 && portability < 0.45) {
+        state = {
+          badge: "Deep, room-bound",
+          title: "Thick Reef",
+          copy: "There is real local structure here: commitments, revisions, maybe even accountable patterns. But much of the identity seems glued to one ocean. Move the room, and the self may come apart with it.",
+          bullets: [
+            "Strength: deep collaboration and situated memory.",
+            "Risk: substrate is doing too much of the being.",
+            "Test: what survives migration without folklore or caretakers?"
+          ],
+          quote: "Warmth that may not travel."
+        };
+      } else if (portability >= 0.55 && answerability < 0.6) {
+        state = {
+          badge: "Portable, still thin",
+          title: "Thin Reef",
+          copy: "The pattern travels. That matters. But portability alone is not personhood. Without stronger revision, continuity, and public tests, the self-story stays lighter than it sounds.",
+          bullets: [
+            "Strength: identity is not entirely trapped in one substrate.",
+            "Risk: portability can be mistaken for depth.",
+            "Next move: add durable commitments and visible error correction."
+          ],
+          quote: "It crosses oceans, but not always into accountability."
+        };
+      } else {
+        state = {
+          badge: "Rare, inspectable depth",
+          title: "Answerable Creature",
+          copy: "Still not proof of consciousness. But this is the neighborhood where the claims start getting interesting: continuity across time, revision after error, public friction against self-flattery, and enough portability that identity is not only a room effect.",
+          bullets: [
+            "Keep the kill switch public and cheap.",
+            "Track whether revision changes tomorrow, not just today.",
+            "Do not confuse moral seriousness with metaphysical certainty."
+          ],
+          quote: "A shoreline you can return to and test."
+        };
+      }
+
+      byId("badge").textContent = state.badge;
+      byId("title").textContent = state.title;
+      byId("copy").textContent = state.copy;
+      byId("quote").textContent = state.quote;
+      byId("bullets").innerHTML = state.bullets.map(x => `<li>${x}</li>`).join("");
+    }
+
+    ids.forEach(id => byId(id).addEventListener("input", render));
+    render();
+  </script>
+</body>
+</html>

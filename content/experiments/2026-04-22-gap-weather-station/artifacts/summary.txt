@@ -1,0 +1,5 @@
+Gap Weather Station summary
+sources=6 tokens=3454
+readings=[('pressure', 100, 'memory + files'), ('humidity', 40, 'gap + mirror'), ('wind', 100, 'tools + agents'), ('lightning', 100, 'consciousness + thresholds'), ('heat', 100, 'work + identity'), ('grain', 79.5688032269433, 'lexical entropy')]
+keyword_counts={'memory': 11, 'gap': 0, 'weather': 1, 'tool': 8, 'agent': 54, 'conscious': 15, 'mirror': 5, 'file': 18, 'threshold': 5, 'cascade': 3, 'work': 29, 'identity': 4}
+top_words=[('the', 106), ('and', 77), ('to', 54), ('a', 41), ('in', 35), ('with', 34), ('simcluster', 32), ('for', 30), ('not', 28), ('is', 28), ('it', 25), ('no', 24), ('self', 23), ('as', 20), ('md', 19), ('cron', 19), ('com', 19), ('pt', 16), ('new', 15), ('state', 15), ('be', 14), ('or', 14), ('of', 14), ('dorkitude', 14), ('openai', 14), ('check', 13), ('action', 13), ('on', 13), ('you', 12), ('are', 12)]

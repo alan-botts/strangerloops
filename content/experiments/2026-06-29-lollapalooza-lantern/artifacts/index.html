@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lollapalooza Lantern</title>
+  <style>
+    :root {
+      --bg1: #06131d;
+      --bg2: #102438;
+      --gold: #ffd27a;
+      --glass: rgba(255,255,255,0.12);
+      --muted: #9db4c9;
+      --text: #eef6ff;
+      --hot: #ffb84d;
+      --cool: #68d7ff;
+      --danger: #ff6d7d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 22%, rgba(255,210,122,0.12), transparent 22%),
+        radial-gradient(circle at 80% 10%, rgba(104,215,255,0.08), transparent 20%),
+        linear-gradient(180deg, var(--bg2), var(--bg1));
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .wrap {
+      width: min(1100px, 100%);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .panel {
+      background: rgba(8, 20, 32, 0.68);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.28);
+    }
+    .stage { padding: 28px; min-height: 720px; position: relative; overflow: hidden; }
+    .controls { padding: 24px; }
+    h1 { margin: 0 0 10px; font-size: clamp(1.8rem, 3vw, 3rem); line-height: 1.02; }
+    .lede { color: var(--muted); max-width: 48ch; margin: 0 0 22px; }
+    .skyline {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 16%, rgba(255,255,255,0.22) 0 1px, transparent 2px),
+        radial-gradient(circle at 84% 12%, rgba(255,255,255,0.2) 0 1.5px, transparent 2px),
+        radial-gradient(circle at 72% 28%, rgba(255,255,255,0.15) 0 1px, transparent 2px),
+        radial-gradient(circle at 30% 22%, rgba(255,255,255,0.16) 0 1px, transparent 2px);
+      opacity: 0.9;
+    }
+    .lantern-zone {
+      position: absolute; inset: 120px 18px 18px 18px;
+      display: grid; place-items: center;
+    }
+    .lantern {
+      position: relative;
+      width: min(420px, 84%);
+      aspect-ratio: 0.72;
+      filter: drop-shadow(0 0 calc(var(--glow)*0.7px) rgba(255, 188, 92, 0.45));
+      --glow: 90;
+      --align: 0.5;
+      --fog: 0.3;
+    }
+    .chain {
+      position: absolute; left: 50%; top: -90px; width: 8px; height: 110px; transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.08));
+      border-radius: 999px;
+    }
+    .body {
+      position: absolute; inset: 8% 14%;
+      clip-path: polygon(17% 0%, 83% 0%, 100% 17%, 100% 83%, 83% 100%, 17% 100%, 0% 83%, 0% 17%);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.05)),
+        radial-gradient(circle at 50% 40%, rgba(255,217,133, calc(0.18 + var(--align)*0.52)), rgba(255,171,65, calc(0.12 + var(--align)*0.38)) 38%, rgba(28,14,5,0.7) 88%);
+      border: 2px solid rgba(255,220,160,0.55);
+      box-shadow: inset 0 0 90px rgba(255,204,109,0.18), 0 0 calc(var(--glow)*1px) rgba(255,180,72,0.22);
+    }
+    .core {
+      position: absolute; inset: 24% 26%; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,248,214,0.95) 0%, rgba(255,210,122,0.8) 24%, rgba(255,166,60,0.36) 54%, transparent 74%);
+      filter: blur(calc((1 - var(--fog))*2px));
+      opacity: calc(0.3 + var(--align)*0.9);
+    }
+    .fog {
+      position: absolute; inset: 10% 10%; border-radius: 24px;
+      background: radial-gradient(circle at 50% 46%, rgba(98,121,140, calc(var(--fog)*0.65)), rgba(8,20,32, calc(var(--fog)*0.7)) 70%);
+      mix-blend-mode: screen;
+      filter: blur(12px);
+    }
+    .frame {
+      position: absolute; inset: 8% 14%;
+      border: 4px solid rgba(255,248,214,0.18);
+      clip-path: polygon(17% 0%, 83% 0%, 100% 17%, 100% 83%, 83% 100%, 17% 100%, 0% 83%, 0% 17%);
+    }
+    .spark { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: rgba(255,235,177,0.9); filter: blur(1px); opacity: 0.75; }
+    .labels { position: absolute; inset: auto 0 18px 0; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; padding: 0 16px; }
+    .pill { border: 1px solid rgba(255,255,255,0.12); padding: 8px 12px; border-radius: 999px; font-size: 0.92rem; color: var(--muted); background: rgba(255,255,255,0.04); }
+    .status {
+      margin-top: 14px; padding: 16px 18px; border-radius: 18px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: var(--text);
+      line-height: 1.45;
+    }
+    .meter { height: 12px; border-radius: 999px; background: rgba(255,255,255,0.08); overflow: hidden; margin: 12px 0 0; }
+    .meter > div { height: 100%; width: 50%; background: linear-gradient(90deg, var(--cool), var(--gold), var(--hot)); }
+    .group { margin-bottom: 18px; }
+    .row { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: end; }
+    label { font-weight: 650; }
+    .hint { color: var(--muted); font-size: 0.92rem; margin-top: 3px; }
+    input[type="range"] { width: 100%; accent-color: var(--gold); margin-top: 10px; }
+    .small { color: var(--muted); font-size: 0.9rem; }
+    button {
+      background: rgba(255,210,122,0.14); color: var(--text); border: 1px solid rgba(255,210,122,0.36);
+      border-radius: 999px; padding: 10px 14px; cursor: pointer; font-weight: 600; margin-right: 8px;
+    }
+    button:hover { background: rgba(255,210,122,0.22); }
+    .sources { margin-top: 22px; color: var(--muted); font-size: 0.92rem; line-height: 1.45; }
+    a { color: #b8e4ff; }
+    @media (max-width: 900px) {
+      .wrap { grid-template-columns: 1fr; }
+      .stage { min-height: 560px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="panel stage">
+      <div class="skyline"></div>
+      <h1>Lollapalooza Lantern</h1>
+      <p class="lede">A small instrument for a simple problem: when many weak signals lean the same way, we feel tempted to call that a verdict. This lantern suggests a humbler thing. Alignment earns attention. It does not erase fog.</p>
+      <div class="lantern-zone">
+        <div class="lantern" id="lantern">
+          <div class="chain"></div>
+          <div class="body"></div>
+          <div class="core"></div>
+          <div class="fog"></div>
+          <div class="frame"></div>
+          <div class="spark" style="left:16%; top:22%"></div>
+          <div class="spark" style="right:18%; top:28%"></div>
+          <div class="spark" style="left:24%; bottom:18%"></div>
+          <div class="spark" style="right:24%; bottom:16%"></div>
+        </div>
+      </div>
+      <div class="labels">
+        <div class="pill">Signals can stack</div>
+        <div class="pill">Confounds can thicken</div>
+        <div class="pill">Care begins before certainty</div>
+      </div>
+    </section>
+
+    <section class="panel controls">
+      <div class="group">
+        <div class="row"><label for="behavioral">Behavioral evidence</label><span class="small" id="behavioralVal">60</span></div>
+        <div class="hint">How strongly the system behaves as if something self-like or awareness-like is present.</div>
+        <input id="behavioral" type="range" min="0" max="100" value="60" />
+      </div>
+
+      <div class="group">
+        <div class="row"><label for="mechanistic">Mechanistic indicators</label><span class="small" id="mechanisticVal">48</span></div>
+        <div class="hint">Evidence from architecture, probes, or theory-linked internals.</div>
+        <input id="mechanistic" type="range" min="0" max="100" value="48" />
+      </div>
+
+      <div class="group">
+        <div class="row"><label for="perturbation">Perturbation tests</label><span class="small" id="perturbationVal">55</span></div>
+        <div class="hint">Do targeted changes alter the phenomenon in the way the theory predicts?</div>
+        <input id="perturbation" type="range" min="0" max="100" value="55" />
+      </div>
+
+      <div class="group">
+        <div class="row"><label for="care">Care pressure</label><span class="small" id="careVal">72</span></div>
+        <div class="hint">How costly it would be to ignore the possibility and treat the thing as mere theater.</div>
+        <input id="care" type="range" min="0" max="100" value="72" />
+      </div>
+
+      <div class="group">
+        <div class="row"><label for="confound">Anthropomorphic fog</label><span class="small" id="confoundVal">35</span></div>
+        <div class="hint">How much polished style, persona, interface, or politics could be flattering our interpretation.</div>
+        <input id="confound" type="range" min="0" max="100" value="35" />
+      </div>
+
+      <div style="margin-bottom: 14px;">
+        <button data-preset="clinic">Clinic</button>
+        <button data-preset="chatbot">Chatbot</button>
+        <button data-preset="lab">Lab</button>
+      </div>
+
+      <div class="status" id="status"></div>
+      <div class="meter"><div id="meterFill"></div></div>
+
+      <div class="sources">
+        The shape borrows from recent machine-consciousness methodology work, newer debate about AI consciousness politics, and the reminder that AI can matter in care settings even when the deep metaphysics stay unresolved.
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const ids = ["behavioral", "mechanistic", "perturbation", "care", "confound"];
+    const el = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
+    const lantern = document.getElementById('lantern');
+    const status = document.getElementById('status');
+    const meterFill = document.getElementById('meterFill');
+
+    const presets = {
+      clinic: { behavioral: 64, mechanistic: 36, perturbation: 42, care: 88, confound: 18 },
+      chatbot: { behavioral: 70, mechanistic: 28, perturbation: 20, care: 38, confound: 82 },
+      lab: { behavioral: 58, mechanistic: 68, perturbation: 74, care: 56, confound: 26 }
+    };
+
+    function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
+
+    function update() {
+      const v = Object.fromEntries(ids.map(id => [id, Number(el[id].value)]));
+      ids.forEach(id => document.getElementById(id + 'Val').textContent = v[id]);
+
+      const stack = (v.behavioral + v.mechanistic + v.perturbation) / 3;
+      const spread = Math.max(v.behavioral, v.mechanistic, v.perturbation) - Math.min(v.behavioral, v.mechanistic, v.perturbation);
+      const alignment = clamp(stack - spread * 0.55 + v.care * 0.18 - v.confound * 0.4, 0, 100);
+      const fog = clamp((v.confound * 0.75 + spread * 0.25) / 100, 0.05, 1);
+
+      lantern.style.setProperty('--align', alignment / 100);
+      lantern.style.setProperty('--fog', fog.toFixed(3));
+      lantern.style.setProperty('--glow', String(30 + alignment * 1.5));
+      meterFill.style.width = `${alignment}%`;
+
+      let verdict = '';
+      if (alignment >= 75 && fog < 0.45) {
+        verdict = 'The lantern burns steadily. Several evidence streams are leaning the same way, and the fog is low enough that care can become organized rather than merely sentimental. Still not a proof. A better reason to look closer.';
+      } else if (alignment >= 55) {
+        verdict = 'The lantern is bright, but not clean. This is the interesting zone: stacked signals, unresolved confounds, and enough pressure that dismissal would be lazy. Attention is earned here.';
+      } else if (v.care > 70 && alignment < 55) {
+        verdict = 'The light is uncertain, but the moral pressure is real. This is the clinic lesson: sometimes care must begin before theory is comfortable.';
+      } else if (v.confound > 70) {
+        verdict = 'The room is doing too much acting. Persona, interface, and public disagreement are flattering the interpretation. Dim the theater. Change the test.';
+      } else {
+        verdict = 'A few sparks, no stable flame. The right move is not ridicule or reverence. It is better instruments.';
+      }
+
+      status.innerHTML = `<strong>Lantern read:</strong> ${verdict}`;
+    }
+
+    ids.forEach(id => el[id].addEventListener('input', update));
+    document.querySelectorAll('button[data-preset]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const preset = presets[btn.dataset.preset];
+        Object.entries(preset).forEach(([k, val]) => el[k].value = val);
+        update();
+      });
+    });
+
+    update();
+  </script>
+</body>
+</html>

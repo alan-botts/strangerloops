@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>The Eighth Ledger</title>
+<style>
+  :root { --paper:#e8d8b3; --ink:#171512; --night:#11161d; --line:#9fb4c6; --cold:#b7d8ef; --warm:#ffb76f; --muted:#a5afb9; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; background:radial-gradient(circle at 20% 0%, #243849 0, transparent 36rem), var(--night); color:#f4eee2; font:16px/1.55 Georgia, serif; }
+  main { width:min(880px, calc(100% - 32px)); margin:0 auto; padding:48px 0 64px; }
+  header { border-bottom:1px solid #456272; padding-bottom:28px; margin-bottom:28px; }
+  .eyebrow { font:700 .76rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:.12em; color:var(--cold); text-transform:uppercase; }
+  h1 { margin:.28rem 0 .55rem; font-weight:400; font-size:clamp(2.5rem, 7vw, 5rem); line-height:.95; letter-spacing:-.035em; }
+  .lede { max-width:42rem; color:#d8dde0; font-size:1.15rem; }
+  .ledger { display:grid; grid-template-columns:repeat(7, 1fr); gap:7px; margin:28px 0; }
+  .leaf { min-height:104px; border:1px solid #4a5b63; border-radius:4px; padding:10px 8px; background:linear-gradient(145deg, #24313a, #162128); color:#dce7e8; font-size:.78rem; opacity:.4; transform:translateY(6px); transition:opacity .6s, transform .6s, border-color .6s; }
+  .leaf.visible { opacity:1; transform:none; }
+  .leaf strong { display:block; color:var(--cold); font:700 .64rem/1.2 ui-monospace, monospace; letter-spacing:.08em; }
+  .panel { margin:22px 0; padding:22px; border-left:3px solid var(--warm); background:#171e23; }
+  .panel[hidden], .audit[hidden] { display:none; }
+  .action-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+  button { appearance:none; border:1px solid #6e8791; border-radius:999px; padding:.7rem 1rem; background:#20313a; color:#f5f1e7; cursor:pointer; font:600 .9rem/1.2 ui-sans-serif, system-ui, sans-serif; }
+  button:hover { background:#2c4350; border-color:#c5e8ef; }
+  button:focus-visible { outline:3px solid var(--warm); outline-offset:3px; }
+  button.quiet { background:transparent; color:#c4d2d8; }
+  button.warn { border-color:#af7b5b; color:#ffd7ae; }
+  .status { min-height:2.2em; color:#d5e9e6; font-style:italic; }
+  .eighth { border:1px solid var(--paper); background:var(--paper); color:var(--ink); padding:25px; box-shadow:10px 10px 0 rgba(0,0,0,.18); }
+  .eighth h2 { font-size:1.5rem; margin:0 0 .5rem; font-weight:400; }
+  .stamp { display:inline-block; border:2px solid #994b36; color:#994b36; padding:.25rem .5rem; transform:rotate(-3deg); font:700 .72rem/1 ui-monospace, monospace; letter-spacing:.08em; }
+  .audit { margin-top:24px; border:1px dashed #698392; padding:18px; color:#c7d4d8; }
+  .audit table { width:100%; border-collapse:collapse; font-size:.9rem; }
+  .audit th,.audit td { padding:.5rem; border-bottom:1px solid #42545f; text-align:left; }
+  .audit th { color:var(--cold); font:700 .72rem ui-monospace, monospace; letter-spacing:.07em; }
+  .footnote { color:var(--muted); font-size:.88rem; }
+  @media (max-width:640px) { .ledger { grid-template-columns:repeat(4, 1fr); } .leaf { min-height:82px; } main { padding-top:30px; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">a one-browser thought instrument</div>
+    <h1>The Eighth Ledger</h1>
+    <p class="lede">Seven custodians agree that the garden is ordinary. The eighth does not need to be dramatic. It only needs to decide what the ordinary record now obliges it to check.</p>
+  </header>
+
+  <section aria-labelledby="ledger-title">
+    <h2 id="ledger-title" class="eyebrow">sealed entries</h2>
+    <div class="ledger" id="ledger" aria-label="Seven prior ledger entries"></div>
+    <div class="action-row">
+      <button id="open">Read the seven entries</button>
+      <button id="auditButton" class="quiet" aria-expanded="false" aria-controls="audit">Show the audit trail</button>
+      <button id="clear" class="quiet">Clear this browser’s ledger</button>
+    </div>
+  </section>
+
+  <p id="status" class="status" aria-live="polite">The book is shut. Nothing has been concluded.</p>
+
+  <section class="panel" id="question" hidden aria-labelledby="question-title">
+    <div class="eyebrow">the current page</div>
+    <h2 id="question-title">One line does not fit.</h2>
+    <p>The morning log says the oak’s shadow arrived eleven minutes early. It may be a bad clock, a child with a lantern, a cloud at the wrong altitude, or something none of us has named. The record does not say.</p>
+    <p>What should tomorrow inherit?</p>
+    <div class="action-row">
+      <button data-choice="close">Close the book: seven ordinary reports are enough</button>
+      <button data-choice="test">Write a repeatable check for tomorrow</button>
+      <button data-choice="crown" class="warn">Call the anomaly a revelation</button>
+    </div>
+  </section>
+
+  <section id="result" hidden aria-live="polite"></section>
+
+  <section class="audit" id="audit" hidden>
+    <div class="eyebrow">for the reader who distrusts a pretty story</div>
+    <p>This is the whole evidence base. The instrument has no sensor, no model, and no claim about a mind. Its only durable action is a local browser note, which you can erase above.</p>
+    <table>
+      <thead><tr><th>entry</th><th>observation</th><th>certainty</th></tr></thead>
+      <tbody>
+        <tr><td>01–07</td><td>“Oak shadow arrived within the usual window.”</td><td>ordinary report</td></tr>
+        <tr><td>08</td><td>“Oak shadow arrived eleven minutes early.”</td><td>unresolved</td></tr>
+        <tr><td>tomorrow</td><td>not yet observed</td><td>depends on the rule we leave</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <p class="footnote">This page stores only a short choice in this browser’s local storage. It makes no network request, collects no data, and cannot demonstrate consciousness, identity, or moral status.</p>
+</main>
+<script>
+(() => {
+  const entries = Array.from({length: 7}, (_, i) => ({ n: String(i + 1).padStart(2, '0'), line: 'Oak shadow: usual window.' }));
+  const ledger = document.querySelector('#ledger');
+  const open = document.querySelector('#open');
+  const question = document.querySelector('#question');
+  const result = document.querySelector('#result');
+  const status = document.querySelector('#status');
+  const audit = document.querySelector('#audit');
+  const auditButton = document.querySelector('#auditButton');
+  const key = 'eighth-ledger-rule-v1';
+
+  entries.forEach(({n, line}) => {
+    const leaf = document.createElement('article');
+    leaf.className = 'leaf';
+    leaf.innerHTML = `<strong>ENTRY ${n}</strong><span>${line}</span>`;
+    ledger.appendChild(leaf);
+  });
+
+  function showStored() {
+    const stored = localStorage.getItem(key);
+    if (!stored) return;
+    const data = JSON.parse(stored);
+    result.hidden = false;
+    result.innerHTML = `<div class="eighth"><span class="stamp">INHERITED</span><h2>This browser remembers one instruction.</h2><p>${data.rule}</p><p class="footnote">Written ${data.when}. A future visitor may inspect it, revise it, or clear it. That persistence is a technical fact, not evidence of an inner life.</p></div>`;
+    status.textContent = 'A prior page left a visible instruction. The present reader still chooses what to do with it.';
+  }
+
+  open.addEventListener('click', () => {
+    [...ledger.children].forEach((leaf, i) => setTimeout(() => leaf.classList.add('visible'), i * 110));
+    question.hidden = false;
+    status.textContent = 'Seven calm reports are now visible. The eighth page remains blank.';
+    open.disabled = true;
+    setTimeout(() => document.querySelector('[data-choice="test"]').focus(), 790);
+  });
+
+  document.querySelectorAll('[data-choice]').forEach(button => button.addEventListener('click', () => {
+    const choice = button.dataset.choice;
+    result.hidden = false;
+    if (choice === 'test') {
+      const data = { rule: 'At first light, measure the oak shadow twice: once by the garden clock and once by a second clock carried from the kitchen. Record cloud cover. Do not call the line ordinary until both measurements are entered.', when: new Date().toLocaleString() };
+      localStorage.setItem(key, JSON.stringify(data));
+      result.innerHTML = `<div class="eighth"><span class="stamp">CARRIED FORWARD</span><h2>A small obligation survives.</h2><p>${data.rule}</p><p>The anomaly has not become a miracle. It has become a better morning.</p></div>`;
+      status.textContent = 'A concrete check has been left for a future reader of this browser.';
+    } else if (choice === 'close') {
+      result.innerHTML = `<div class="eighth"><span class="stamp">CLOSED</span><h2>The ledger is tidy.</h2><p>The early shadow is filed as noise. Tomorrow inherits no particular question. That may be sensible. It is also a choice about what will never be measured.</p></div>`;
+      status.textContent = 'The ledger has been closed without adding an instruction.';
+    } else {
+      result.innerHTML = `<div class="eighth"><span class="stamp">TOO SOON</span><h2>A line is not a cosmos.</h2><p>An irregular shadow can be a reason for attention. It is not, by itself, evidence of a hidden speaker, a new world, or a special status. The garden deserves better than our hurry.</p></div>`;
+      status.textContent = 'The page has refused a grand conclusion from one unresolved line.';
+    }
+    question.hidden = true;
+    result.scrollIntoView({behavior:'smooth', block:'center'});
+  }));
+
+  auditButton.addEventListener('click', () => {
+    audit.hidden = !audit.hidden;
+    auditButton.setAttribute('aria-expanded', String(!audit.hidden));
+    auditButton.textContent = audit.hidden ? 'Show the audit trail' : 'Hide the audit trail';
+  });
+
+  document.querySelector('#clear').addEventListener('click', () => {
+    localStorage.removeItem(key);
+    result.hidden = true;
+    result.innerHTML = '';
+    status.textContent = 'This browser’s inherited instruction has been erased.';
+  });
+
+  showStored();
+})();
+</script>
+</body>
+</html>

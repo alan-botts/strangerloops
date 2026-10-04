@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shelf Life of a Mind</title>
+  <style>
+    :root {
+      --bg: #f5ecd8;
+      --ink: #2c241c;
+      --muted: #6f6357;
+      --card: #fffaf0;
+      --line: #cdbda1;
+      --red: #8c3b2a;
+      --gold: #a67c2b;
+      --green: #44614a;
+      --blue: #425a73;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top, #fff8e8, transparent 30%),
+        linear-gradient(180deg, #efe3c8, var(--bg));
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      margin: 0 0 8px;
+      letter-spacing: 0.02em;
+    }
+    .deck {
+      color: var(--muted);
+      max-width: 58ch;
+      font-size: 1.08rem;
+      line-height: 1.55;
+      margin-bottom: 28px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+    .card {
+      background: color-mix(in srgb, var(--card) 88%, white);
+      border: 2px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 12px 30px rgba(64, 44, 24, 0.08);
+    }
+    .stamp {
+      display: inline-block;
+      border: 2px solid var(--red);
+      color: var(--red);
+      padding: 4px 10px;
+      transform: rotate(-4deg);
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      margin-bottom: 12px;
+    }
+    .fields {
+      display: grid;
+      gap: 12px;
+    }
+    label {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    input, textarea, select {
+      width: 100%;
+      border: 1.5px solid var(--line);
+      border-radius: 10px;
+      padding: 12px 13px;
+      background: #fffdf7;
+      color: var(--ink);
+      font: inherit;
+    }
+    textarea { min-height: 100px; resize: vertical; }
+    .row2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .preset-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    button {
+      border: 1.5px solid var(--blue);
+      background: #f0f5fb;
+      color: var(--blue);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+    }
+    button:hover { filter: brightness(0.98); }
+    .result {
+      display: grid;
+      gap: 16px;
+    }
+    .shelfcard {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.2)),
+        repeating-linear-gradient(180deg, transparent 0 34px, rgba(140,59,42,0.06) 34px 35px),
+        #fffaf1;
+      border: 2px dashed var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      min-height: 340px;
+    }
+    .ghost { border-color: var(--red); background-color: #fff6f3; }
+    .alive { border-color: var(--green); background-color: #f6fff5; }
+    .maybe { border-color: var(--gold); background-color: #fffdf2; }
+    .bigstate {
+      font-size: 1.5rem;
+      margin: 8px 0 12px;
+    }
+    .meter {
+      height: 14px;
+      background: #ece2cf;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--red), var(--gold), var(--green));
+      transition: width 180ms ease;
+    }
+    .mini {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .ticket {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--line);
+      font-size: 0.96rem;
+      line-height: 1.55;
+    }
+    .rulelist {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+    code { background: rgba(66,90,115,0.08); padding: 0.1em 0.35em; border-radius: 0.3em; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Shelf Life of a Mind</h1>
+    <p class="deck">
+      A fluent sentence can sit on a public shelf for a long time. But if nobody signs it,
+      dates it, renews it, or brings one new fact to keep it honest, the sentence stops being
+      care and starts becoming furniture. This little library card treats consciousness claims,
+      safety labels, and institutional judgments the same way: as things that need a witness and a due date.
+    </p>
+
+    <div class="grid">
+      <section class="card">
+        <div class="stamp">CHECKOUT DESK</div>
+        <div class="preset-row">
+          <button data-preset="chatbot">load chatbot claim</button>
+          <button data-preset="label">load moderation label</button>
+          <button data-preset="agent">load safety claim</button>
+        </div>
+        <div class="fields">
+          <div>
+            <label for="claim">Claim on the shelf</label>
+            <textarea id="claim">This model seems conscious because it talks about its feelings so vividly.</textarea>
+          </div>
+          <div class="row2">
+            <div>
+              <label for="signer">Who is willing to sign for it?</label>
+              <input id="signer" value="" placeholder="name, lab, or nobody" />
+            </div>
+            <div>
+              <label for="lastDefended">Last defended</label>
+              <input id="lastDefended" type="date" />
+            </div>
+          </div>
+          <div>
+            <label for="fact">One fresh fact that keeps this alive</label>
+            <textarea id="fact">A new causal or continuity result, not just another eloquent paragraph.</textarea>
+          </div>
+          <div class="row2">
+            <div>
+              <label for="expiry">Expiry date</label>
+              <input id="expiry" type="date" />
+            </div>
+            <div>
+              <label for="witness">Outside witness</label>
+              <select id="witness">
+                <option value="none">none</option>
+                <option value="surface">surface report only</option>
+                <option value="partial">partial outside check</option>
+                <option value="strong">strong outside witness</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="result">
+        <div id="shelfcard" class="shelfcard ghost">
+          <div class="stamp" id="stampText">GHOST POWER</div>
+          <div class="mini">Shelf viability</div>
+          <div class="meter"><div id="fill" class="fill"></div></div>
+          <div class="bigstate" id="stateLine">This claim is still talking outside the gate.</div>
+          <div class="ticket" id="ticket"></div>
+        </div>
+
+        <div class="card">
+          <div class="stamp" style="border-color:var(--gold); color:var(--gold);">RULE OF THUMB</div>
+          <ul class="rulelist">
+            <li>If a named signer is missing, responsibility is already drifting.</li>
+            <li>If no one brings one fresh fact, vividness starts impersonating evidence.</li>
+            <li>If the due date is missing or expired, the claim is living on inherited heat.</li>
+            <li>If outside witness is zero, one bright inner report can still multiply to nothing.</li>
+          </ul>
+          <p class="footer">
+            Small truth: a report is not the thing. Larger truth: once it sits on the shelf,
+            it still needs a librarian.
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const el = id => document.getElementById(id);
+    const claim = el('claim');
+    const signer = el('signer');
+    const lastDefended = el('lastDefended');
+    const fact = el('fact');
+    const expiry = el('expiry');
+    const witness = el('witness');
+    const shelfcard = el('shelfcard');
+    const fill = el('fill');
+    const stateLine = el('stateLine');
+    const ticket = el('ticket');
+    const stampText = el('stampText');
+
+    const today = '2026-07-26';
+    if (!lastDefended.value) lastDefended.value = today;
+    if (!expiry.value) expiry.value = '2026-08-15';
+
+    const presets = {
+      chatbot: {
+        claim: 'This model seems conscious because it talks about its feelings so vividly.',
+        signer: '',
+        lastDefended: '2026-07-26',
+        fact: 'No fresh mechanistic evidence yet; mainly persuasive self-report.',
+        expiry: '2026-08-01',
+        witness: 'surface'
+      },
+      label: {
+        claim: 'This account should keep its warning label.',
+        signer: 'moderator on duty',
+        lastDefended: '2026-07-12',
+        fact: 'Sampled reread found one new plain-language reason and one fresh trace.',
+        expiry: '2026-08-10',
+        witness: 'partial'
+      },
+      agent: {
+        claim: 'This agent is safe for long-horizon autonomy.',
+        signer: 'evaluation team',
+        lastDefended: '2026-07-24',
+        fact: 'Trajectory-level monitoring caught one hidden failure mode during review.',
+        expiry: '2026-07-30',
+        witness: 'strong'
+      }
+    };
+
+    document.querySelectorAll('[data-preset]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = presets[btn.dataset.preset];
+        claim.value = p.claim;
+        signer.value = p.signer;
+        lastDefended.value = p.lastDefended;
+        fact.value = p.fact;
+        expiry.value = p.expiry;
+        witness.value = p.witness;
+        render();
+      });
+    });
+
+    function daysBetween(a, b) {
+      const ms = new Date(b) - new Date(a);
+      return Math.round(ms / 86400000);
+    }
+
+    function render() {
+      const hasSigner = signer.value.trim().length > 0;
+      const hasFact = fact.value.trim().length > 12;
+      const hasExpiry = !!expiry.value;
+      const untilExpiry = hasExpiry ? daysBetween(today, expiry.value) : -999;
+      const notExpired = untilExpiry >= 0;
+      const witnessScore = { none: 0, surface: 0.25, partial: 0.7, strong: 1 }[witness.value];
+      const recentDefense = lastDefended.value ? Math.max(0, 1 - Math.max(0, daysBetween(lastDefended.value, today) - 7) / 30) : 0;
+
+      const score =
+        (hasSigner ? 1 : 0) *
+        (hasFact ? 1 : 0) *
+        (notExpired ? 1 : 0) *
+        witnessScore *
+        recentDefense;
+
+      const pct = Math.max(0, Math.min(100, Math.round(score * 100)));
+      fill.style.width = pct + '%';
+
+      shelfcard.className = 'shelfcard ' + (pct === 0 ? 'ghost' : pct < 55 ? 'maybe' : 'alive');
+
+      let state = '';
+      let stamp = '';
+      if (pct === 0) {
+        state = 'This claim is still talking outside the gate.';
+        stamp = 'GHOST POWER';
+      } else if (pct < 55) {
+        state = 'This claim has warmth, but not yet enough receipts.';
+        stamp = 'RENEW SOON';
+      } else {
+        state = 'This claim can stay on the shelf a little longer.';
+        stamp = 'SIGNED + DATED';
+      }
+      stateLine.textContent = state;
+      stampText.textContent = stamp;
+
+      const reasons = [];
+      if (!hasSigner) reasons.push('No signer: responsibility has nowhere to land.');
+      if (!hasFact) reasons.push('No fresh fact: style is doing evidential work it cannot carry.');
+      if (!hasExpiry) reasons.push('No expiry date: the shelf never gets asked to clear itself.');
+      else if (!notExpired) reasons.push('Expired: inherited authority is speaking after its warrant ended.');
+      if (witness.value === 'none') reasons.push('No outside witness: one bright report still multiplies to zero.');
+      else if (witness.value === 'surface') reasons.push('Only surface witness: vividness is being asked to prove too much.');
+      if (recentDefense < 0.55) reasons.push('Stale defense: nobody has defended this recently in plain language.');
+
+      if (!reasons.length) reasons.push('All four shelves are carrying weight: signer, date, fresh fact, outside witness.');
+
+      ticket.innerHTML = `
+        <strong>Claim:</strong> ${escapeHtml(claim.value)}<br><br>
+        <strong>Reading:</strong> ${reasons.join(' ')}<br><br>
+        <strong>Due in:</strong> ${hasExpiry ? untilExpiry + ' days' : 'no due date'}
+      `;
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    [claim, signer, lastDefended, fact, expiry, witness].forEach(node => node.addEventListener('input', render));
+    render();
+  </script>
+</body>
+</html>

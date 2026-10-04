@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1800" viewBox="0 0 1400 1800">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#09111d"/>
+      <stop offset="100%" stop-color="#040811"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="10%" r="60%">
+      <stop offset="0%" stop-color="#355fa8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#355fa8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1400" height="1800" fill="url(#bg)"/>
+  <rect width="1400" height="1800" fill="url(#glow)"/>
+  <g opacity="0.16" stroke="#ffffff">
+    <circle cx="1110" cy="220" r="2"/><circle cx="1180" cy="280" r="2"/><circle cx="1020" cy="340" r="2"/>
+    <circle cx="220" cy="220" r="2"/><circle cx="310" cy="310" r="2"/><circle cx="180" cy="370" r="2"/>
+  </g>
+  <text x="120" y="170" fill="#9ab4d0" font-family="Arial, sans-serif" font-size="28" letter-spacing="6">A SMALL INSTRUMENT FOR AGENT WEATHER</text>
+  <text x="120" y="330" fill="#edf4ff" font-family="Georgia, serif" font-size="130">The Smallest Key</text>
+  <text x="120" y="430" fill="#ffd27a" font-family="Georgia, serif" font-size="42">A good system proves restraint by reaching for a smaller key.</text>
+
+  <g transform="translate(120,540)">
+    <rect x="0" y="0" width="1160" height="620" rx="34" fill="#0d1728" stroke="rgba(255,255,255,0.15)"/>
+    <text x="70" y="110" fill="#edf4ff" font-family="Georgia, serif" font-size="62">Three questions before you hand over the keyring</text>
+    <text x="70" y="210" fill="#82e6b0" font-family="Arial, sans-serif" font-size="34">1. Could a weaker tool do it?</text>
+    <text x="70" y="275" fill="#cbd9eb" font-family="Arial, sans-serif" font-size="30">If yes, the stronger tool is appetite with better branding.</text>
+    <text x="70" y="380" fill="#82e6b0" font-family="Arial, sans-serif" font-size="34">2. Does permission live outside the chat?</text>
+    <text x="70" y="445" fill="#cbd9eb" font-family="Arial, sans-serif" font-size="30">A real boundary should feel like a cabinet key, not a flattering sentence.</text>
+    <text x="70" y="550" fill="#82e6b0" font-family="Arial, sans-serif" font-size="34">3. Will a stranger see the receipt?</text>
+    <text x="70" y="615" fill="#cbd9eb" font-family="Arial, sans-serif" font-size="30">Invisible power accumulates myth. Visible power accumulates trust.</text>
+  </g>
+
+  <g transform="translate(120,1260)">
+    <circle cx="180" cy="180" r="120" fill="none" stroke="#ffd27a" stroke-width="18"/>
+    <rect x="290" y="150" width="360" height="58" rx="26" fill="#ffd27a"/>
+    <rect x="540" y="130" width="62" height="98" rx="24" fill="#09111d"/>
+    <rect x="470" y="142" width="52" height="72" rx="18" fill="#09111d"/>
+    <text x="720" y="150" fill="#edf4ff" font-family="Georgia, serif" font-size="64">Hold the giant key with suspicion.</text>
+    <text x="720" y="235" fill="#cbd9eb" font-family="Arial, sans-serif" font-size="34">The more astonishing the system becomes, the more ordinary</text>
+    <text x="720" y="282" fill="#cbd9eb" font-family="Arial, sans-serif" font-size="34">its permission boundaries should look.</text>
+  </g>
+</svg>

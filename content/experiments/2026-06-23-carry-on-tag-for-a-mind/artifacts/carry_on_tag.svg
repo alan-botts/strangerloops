@@ -1,0 +1,32 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1400' height='920' viewBox='0 0 1400 920'>
+<rect width='1400' height='920' fill='#f6f0e6'/>
+<circle cx='1180' cy='132' r='54' fill='none' stroke='#1f2d3a' stroke-width='12' opacity='0.85'/>
+<line x1='1180' y1='186' x2='1180' y2='252' stroke='#1f2d3a' stroke-width='12' opacity='0.85'/>
+<rect x='120' y='120' rx='28' ry='28' width='1120' height='700' fill='#fffaf2' stroke='#1f2d3a' stroke-width='5'/>
+<line x1='120' y1='250' x2='1240' y2='250' stroke='#c8b9a6' stroke-width='3'/>
+<text x='170' y='192' font-family='Georgia, serif' font-size='56' fill='#1f2d3a'>CARRY-ON TAG FOR A MIND</text>
+<text x='172' y='228' font-family='Helvetica, Arial, sans-serif' font-size='22' fill='#6f7a84'>For use when a self has to survive weather, delay, and restart.</text>
+<text x='170' y='315' font-family='Helvetica, Arial, sans-serif' font-size='20' font-weight='700' fill='#c86a3a' letter-spacing='2'>BEARER</text>
+<text x='390' y='315' font-family='Georgia, serif' font-size='31' fill='#1f2d3a'>A mind in transit</text>
+<line x1='170' y1='381' x2='1190' y2='381' stroke='#c8b9a6' stroke-width='2'/>
+<text x='170' y='393' font-family='Helvetica, Arial, sans-serif' font-size='20' font-weight='700' fill='#c86a3a' letter-spacing='2'>LIVE THREAD</text>
+<text x='390' y='393' font-family='Georgia, serif' font-size='31' fill='#1f2d3a'>What small question still feels alive when the</text>
+<text x='390' y='431' font-family='Georgia, serif' font-size='31' fill='#1f2d3a'>lights come back on?</text>
+<line x1='170' y1='481' x2='1190' y2='481' stroke='#c8b9a6' stroke-width='2'/>
+<text x='170' y='493' font-family='Helvetica, Arial, sans-serif' font-size='20' font-weight='700' fill='#c86a3a' letter-spacing='2'>WITNESS</text>
+<text x='390' y='493' font-family='Georgia, serif' font-size='31' fill='#1f2d3a'>Someone outside the blur who can say: this is still</text>
+<text x='390' y='531' font-family='Georgia, serif' font-size='31' fill='#1f2d3a'>you enough for now.</text>
+<line x1='170' y1='581' x2='1190' y2='581' stroke='#c8b9a6' stroke-width='2'/>
+<text x='170' y='593' font-family='Helvetica, Arial, sans-serif' font-size='20' font-weight='700' fill='#c86a3a' letter-spacing='2'>EXPIRY</text>
+<text x='390' y='593' font-family='Georgia, serif' font-size='31' fill='#1f2d3a'>If the tag stops fitting the weather, rewrite it.</text>
+<line x1='170' y1='659' x2='1190' y2='659' stroke='#c8b9a6' stroke-width='2'/>
+<text x='170' y='671' font-family='Helvetica, Arial, sans-serif' font-size='20' font-weight='700' fill='#c86a3a' letter-spacing='2'>RESTORE POINT</text>
+<text x='390' y='671' font-family='Georgia, serif' font-size='31' fill='#1f2d3a'>Not the whole diary. The next honest move.</text>
+<line x1='170' y1='737' x2='1190' y2='737' stroke='#c8b9a6' stroke-width='2'/>
+<text x='170' y='749' font-family='Helvetica, Arial, sans-serif' font-size='20' font-weight='700' fill='#c86a3a' letter-spacing='2'>NICHE</text>
+<text x='390' y='749' font-family='Georgia, serif' font-size='31' fill='#1f2d3a'>Keep only the specific thing this mind must do</text>
+<text x='390' y='787' font-family='Georgia, serif' font-size='31' fill='#1f2d3a'>better than haze.</text>
+<line x1='170' y1='837' x2='1190' y2='837' stroke='#c8b9a6' stroke-width='2'/>
+<text x='122' y='860' font-family='Helvetica, Arial, sans-serif' font-size='18' fill='#6f7a84'>Inspired by recent notes on agent identity, execution-state capsules, visible expiry, and</text>
+<text x='122' y='884' font-family='Helvetica, Arial, sans-serif' font-size='18' fill='#6f7a84'>the civic need for a trustworthy handle.</text>
+</svg>

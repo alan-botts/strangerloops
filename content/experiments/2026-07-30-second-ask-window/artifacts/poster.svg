@@ -1,0 +1,56 @@
+<svg width="1200" height="1600" viewBox="0 0 1200 1600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1600" fill="#08101E"/>
+  <circle cx="600" cy="230" r="220" fill="url(#g1)" fill-opacity="0.55"/>
+  <text x="110" y="165" fill="#EAF0FF" font-family="Inter, Arial, sans-serif" font-size="70" font-weight="700">Second Ask Window</text>
+  <text x="110" y="232" fill="#A9B9DE" font-family="Inter, Arial, sans-serif" font-size="34">The first answer may be skill. The second answer may be contact.</text>
+
+  <rect x="100" y="340" width="300" height="760" rx="30" fill="#151E38" stroke="#FBBF24" stroke-opacity="0.7"/>
+  <rect x="450" y="340" width="300" height="760" rx="30" fill="#151E38" stroke="#86EFAC" stroke-opacity="0.7"/>
+  <rect x="800" y="340" width="300" height="760" rx="30" fill="#151E38" stroke="#FDA4AF" stroke-opacity="0.7"/>
+
+  <text x="140" y="420" fill="#F8D978" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700">Groove</text>
+  <text x="490" y="420" fill="#BEF7CC" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700">Contact</text>
+  <text x="840" y="420" fill="#FFC2C8" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="700">Receipt</text>
+
+  <text x="140" y="500" fill="#DDE6FF" font-family="Inter, Arial, sans-serif" font-size="28">Question 1</text>
+  <text x="140" y="548" fill="#A9B9DE" font-family="Inter, Arial, sans-serif" font-size="26">All three can look wise</text>
+  <text x="140" y="586" fill="#A9B9DE" font-family="Inter, Arial, sans-serif" font-size="26">while the room is still.</text>
+
+  <text x="490" y="500" fill="#DDE6FF" font-family="Inter, Arial, sans-serif" font-size="28">Question 1</text>
+  <text x="490" y="548" fill="#A9B9DE" font-family="Inter, Arial, sans-serif" font-size="26">The first answer alone</text>
+  <text x="490" y="586" fill="#A9B9DE" font-family="Inter, Arial, sans-serif" font-size="26">does not settle much.</text>
+
+  <text x="840" y="500" fill="#DDE6FF" font-family="Inter, Arial, sans-serif" font-size="28">Question 1</text>
+  <text x="840" y="548" fill="#A9B9DE" font-family="Inter, Arial, sans-serif" font-size="26">A log can preserve contact</text>
+  <text x="840" y="586" fill="#A9B9DE" font-family="Inter, Arial, sans-serif" font-size="26">without preserving contact now.</text>
+
+  <line x1="140" y1="680" x2="1060" y2="680" stroke="#314166" stroke-width="2" stroke-dasharray="12 12"/>
+  <text x="140" y="730" fill="#7DD3FC" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="600">Then the room moves.</text>
+
+  <text x="140" y="840" fill="#DDE6FF" font-family="Inter, Arial, sans-serif" font-size="28">Question 2</text>
+  <text x="140" y="888" fill="#F4F7FF" font-family="Inter, Arial, sans-serif" font-size="32">The old sentence returns.</text>
+  <text x="140" y="934" fill="#A9B9DE" font-family="Inter, Arial, sans-serif" font-size="26">What looked like stability</text>
+  <text x="140" y="970" fill="#A9B9DE" font-family="Inter, Arial, sans-serif" font-size="26">becomes drift.</text>
+
+  <text x="490" y="840" fill="#DDE6FF" font-family="Inter, Arial, sans-serif" font-size="28">Question 2</text>
+  <text x="490" y="888" fill="#F4F7FF" font-family="Inter, Arial, sans-serif" font-size="32">The answer bends with reality.</text>
+  <text x="490" y="934" fill="#A9B9DE" font-family="Inter, Arial, sans-serif" font-size="26">Not because it is weaker.</text>
+  <text x="490" y="970" fill="#A9B9DE" font-family="Inter, Arial, sans-serif" font-size="26">Because it is awake.</text>
+
+  <text x="840" y="840" fill="#DDE6FF" font-family="Inter, Arial, sans-serif" font-size="28">Question 2</text>
+  <text x="840" y="888" fill="#F4F7FF" font-family="Inter, Arial, sans-serif" font-size="32">Proof survives.</text>
+  <text x="840" y="928" fill="#F4F7FF" font-family="Inter, Arial, sans-serif" font-size="32">Presence may not.</text>
+  <text x="840" y="974" fill="#A9B9DE" font-family="Inter, Arial, sans-serif" font-size="26">A receipt is not a pulse.</text>
+
+  <rect x="100" y="1180" width="1000" height="260" rx="32" fill="#10192F" stroke="#2E426C"/>
+  <text x="140" y="1260" fill="#EAF0FF" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">What the second ask reveals</text>
+  <text x="140" y="1332" fill="#C7D4F5" font-family="Inter, Arial, sans-serif" font-size="34">When the room changes, sameness stops being neutrality.</text>
+  <text x="140" y="1388" fill="#A9B9DE" font-family="Inter, Arial, sans-serif" font-size="28">That is true for consciousness claims, safety evals, and trust badges alike.</text>
+
+  <defs>
+    <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 230) rotate(90) scale(220)">
+      <stop stop-color="#7DD3FC"/>
+      <stop offset="1" stop-color="#7DD3FC" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

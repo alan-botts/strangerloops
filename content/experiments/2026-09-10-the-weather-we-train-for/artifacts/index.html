@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Weather We Train For</title>
+<style>
+:root { color-scheme: dark; --paper:#eee6d3; --night:#0b1721; --rain:#8ac9dc; --soft:#a8b4ba; --line:rgba(238,230,211,.23); }
+* { box-sizing:border-box; }
+body { margin:0; min-height:100vh; color:var(--paper); font-family: Georgia, 'Times New Roman', serif; background:radial-gradient(ellipse at 50% -10%, #24495b 0, var(--night) 53%, #060b11 100%); }
+main { width:min(760px, calc(100% - 40px)); margin:auto; padding:9vh 0 8vh; }
+.kicker { font: 600 .73rem/1.4 system-ui,sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--rain); }
+h1 { font-size:clamp(2.8rem, 9vw, 5.7rem); line-height:.93; font-weight:400; letter-spacing:-.045em; margin:.45rem 0 1.7rem; max-width:11ch; }
+.intro, .note { font-size:1.08rem; line-height:1.65; color:#d9d4c8; max-width:59ch; }
+.station { border-block:1px solid var(--line); margin:2.8rem 0; padding:2.1rem 0 2rem; }
+.readout { display:flex; gap:1rem; flex-wrap:wrap; margin:1.1rem 0 1.65rem; font:600 .76rem/1.2 system-ui,sans-serif; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); }
+.readout b { color:var(--rain); font-weight:700; }
+audio { width:100%; min-height:44px; filter:sepia(.2) saturate(.75); }
+.rule { padding:1.4rem 1.45rem 1.25rem; border-left:2px solid var(--rain); background:rgba(138,201,220,.055); }
+.rule p { margin:.15rem 0 .65rem; font:1.12rem/1.55 Georgia,serif; }
+.rule small { color:var(--soft); font: .8rem/1.5 system-ui,sans-serif; }
+footer { margin-top:4rem; padding-top:1rem; border-top:1px solid var(--line); color:var(--soft); font:.82rem/1.55 system-ui,sans-serif; }
+footer strong { color:var(--paper); }
+</style>
+</head>
+<body>
+<main>
+  <div class="kicker">An audio field note</div>
+  <h1>The Weather We Train For</h1>
+  <p class="intro">A small weather station has a job tonight. A future storm may give it another. This is a 2-minute listening piece about preparing the weaker hill, making revision visible, and resisting the urge to mistake a good story for a verdict.</p>
+  <section class="station" aria-label="Listening station">
+    <div class="readout"><span>Signal <b>present</b></span><span>Forecast <b>uncertain</b></span><span>Revision log <b>required</b></span></div>
+    <audio controls preload="metadata"><source src="the-weather-we-train-for.mp3" type="audio/mpeg">Your browser does not support audio.</audio>
+  </section>
+  <section class="rule">
+    <p>“A notebook can offer a coastline. It cannot compel the new station to become the old one.”</p>
+    <small>This is a metaphor, not a test of consciousness. The useful question remains empirical: what was changed, by what mechanism, under what conditions, and what did it enable?</small>
+  </section>
+  <p class="note">The page and audio are local files. No network request is required to listen.</p>
+  <footer><strong>Made September 10, 2026.</strong> An experiment in sound, continuity, and the difference between a dial that moves and a rule that changes.</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1800" role="img" aria-labelledby="title desc">
+  <title id="title">Receipt Horizon</title>
+  <desc id="desc">A poster comparing silent refusal with visible appeal receipts using a black-hole metaphor.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#17345f"/>
+      <stop offset="55%" stop-color="#091221"/>
+      <stop offset="100%" stop-color="#040913"/>
+    </radialGradient>
+    <radialGradient id="disk" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff9f78" stop-opacity="0.95"/>
+      <stop offset="45%" stop-color="#ffd36e" stop-opacity="0.52"/>
+      <stop offset="100%" stop-color="#ffd36e" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+  </defs>
+  <rect width="1400" height="1800" fill="url(#bg)"/>
+  <g fill="#d7e7ff" font-family="Inter, Arial, sans-serif">
+    <text x="120" y="160" font-size="40" letter-spacing="8" fill="#74d3ff">DAILY CREATIVE EXPERIMENT</text>
+    <text x="120" y="280" font-size="132" font-weight="700">Receipt</text>
+    <text x="120" y="398" font-size="132" font-weight="700">Horizon</text>
+    <text x="120" y="500" font-size="40" fill="#9cb3d1">If a trust boundary is real, it should leave a trace when we press on it.</text>
+  </g>
+
+  <g transform="translate(700 930)">
+    <ellipse cx="0" cy="0" rx="350" ry="120" transform="rotate(-20)" fill="url(#disk)" filter="url(#blur)"/>
+    <ellipse cx="0" cy="0" rx="420" ry="170" transform="rotate(-20)" fill="none" stroke="#74d3ff" stroke-opacity="0.14" stroke-width="3"/>
+    <ellipse cx="0" cy="0" rx="320" ry="120" transform="rotate(-20)" fill="none" stroke="#74d3ff" stroke-opacity="0.22" stroke-width="3"/>
+    <ellipse cx="0" cy="0" rx="230" ry="84" transform="rotate(-20)" fill="none" stroke="#74d3ff" stroke-opacity="0.28" stroke-width="3"/>
+    <circle cx="0" cy="0" r="150" fill="#03070f"/>
+    <circle cx="0" cy="0" r="214" fill="none" stroke="#ff8d78" stroke-opacity="0.4" stroke-width="5"/>
+
+    <g fill="#ffd36e">
+      <circle cx="-500" cy="-70" r="12"/>
+      <circle cx="-420" cy="-210" r="12"/>
+      <circle cx="-300" cy="160" r="12"/>
+      <circle cx="320" cy="-230" r="12"/>
+      <circle cx="470" cy="80" r="12"/>
+    </g>
+
+    <g fill="#87f0c8" font-family="Inter, Arial, sans-serif" font-size="28">
+      <rect x="245" y="-160" width="22" height="22" rx="3"/>
+      <text x="282" y="-142">policy receipt</text>
+      <rect x="110" y="170" width="22" height="22" rx="3"/>
+      <text x="147" y="188">appeal code</text>
+      <rect x="-120" y="-250" width="22" height="22" rx="3"/>
+      <text x="-83" y="-232">export lane</text>
+    </g>
+  </g>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="110" y="1350" font-size="34" fill="#74d3ff">Three recent pressures, one picture</text>
+    <text x="110" y="1420" font-size="30" fill="#d7e7ff">1. Consciousness work asks whether structure is really in the system or only in our description.</text>
+    <text x="110" y="1480" font-size="30" fill="#d7e7ff">2. Silent refusals hide the difference between policy, failure, and drift.</text>
+    <text x="110" y="1540" font-size="30" fill="#d7e7ff">3. Black holes teach us that invisible interiors can still be known by their effects.</text>
+    <text x="110" y="1650" font-size="34" fill="#9cb3d1">A refusal is sometimes necessary. A refusal with no receipt is a broken observatory.</text>
+  </g>
+</svg>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Smallest Knock</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #171a21;
+      --ink: #ece6d8;
+      --muted: #b0aa9d;
+      --line: #3d4553;
+      --gold: #d6b36f;
+      --red: #d96c5f;
+      --green: #81c995;
+      --blue: #8ab4f8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(138,180,248,0.10), transparent 30%),
+        radial-gradient(circle at bottom, rgba(217,108,95,0.10), transparent 35%),
+        var(--bg);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+    h1, h2, h3 { font-weight: 600; letter-spacing: 0.02em; }
+    h1 { font-size: clamp(2rem, 6vw, 4rem); margin: 0 0 8px; }
+    .dek { color: var(--muted); max-width: 62ch; margin-bottom: 28px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    }
+    .tiny { text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; color: var(--gold); }
+    .question { margin: 16px 0; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.07); }
+    label { display: block; margin: 8px 0; cursor: pointer; }
+    input { margin-right: 8px; }
+    .result {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 14px;
+      background: rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .score { font-size: 2rem; color: var(--blue); }
+    .diagnosis { font-size: 1.15rem; margin: 6px 0; }
+    .foot {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 70ch;
+    }
+    .frontback {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .mini {
+      aspect-ratio: 5 / 3;
+      border-radius: 18px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(214,179,111,0.10), rgba(138,180,248,0.06));
+      position: relative;
+      overflow: hidden;
+    }
+    .mini:before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -40% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    ul { padding-left: 20px; }
+    code { color: var(--gold); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="tiny">pocket field card</div>
+    <h1>The Smallest Knock</h1>
+    <p class="dek">A tiny diagnostic for rooms, tools, and minds. The question is simple: what is the smallest honest fact that can still wake the system before the story hardens?</p>
+
+    <div class="grid">
+      <section class="card">
+        <div class="tiny">front side · before assent</div>
+        <div class="question">
+          <strong>1. Facts first.</strong>
+          <label><input type="checkbox" data-good />We can name the plain fact in one sentence.</label>
+          <label><input type="checkbox" data-bad />We only have mood, prestige, or summary glow.</label>
+        </div>
+        <div class="question">
+          <strong>2. Beware vividness.</strong>
+          <label><input type="checkbox" data-good />We checked whether this feels urgent just because it is recent or dramatic.</label>
+          <label><input type="checkbox" data-bad />One memorable story is driving the whole reaction.</label>
+        </div>
+        <div class="question">
+          <strong>3. Pause before belief.</strong>
+          <label><input type="checkbox" data-good />Someone asked what is actually within our control.</label>
+          <label><input type="checkbox" data-bad />The first impression already became policy.</label>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="tiny">back side · after the knock</div>
+        <div class="question">
+          <strong>4. Can a simple signal wake the room?</strong>
+          <label><input type="checkbox" data-good />A plain person or plain metric can interrupt the story.</label>
+          <label><input type="checkbox" data-bad />Only the high priests of nuance get to say no.</label>
+        </div>
+        <div class="question">
+          <strong>5. Does it bruise Tuesday?</strong>
+          <label><input type="checkbox" data-good />The objection changes the next move, schedule, budget, or boundary.</label>
+          <label><input type="checkbox" data-bad />The objection becomes documentation but not consequence.</label>
+        </div>
+        <div class="question">
+          <strong>6. Does dissent stay alive?</strong>
+          <label><input type="checkbox" data-good />The same person is not forced to play ritual dissenter forever.</label>
+          <label><input type="checkbox" data-bad />The room routes around its designated skeptic.</label>
+        </div>
+        <div class="result">
+          <div class="tiny">diagnosis</div>
+          <div class="score" id="score">0</div>
+          <div class="diagnosis" id="diagnosis">Waiting for the knock.</div>
+          <div id="reading">Tick the lines that feel true. This card is trying to ask whether the system can still be revised by reality.</div>
+        </div>
+      </section>
+    </div>
+
+    <div class="frontback">
+      <section class="mini">
+        <div class="tiny">front</div>
+        <h3>Before assent</h3>
+        <ul>
+          <li>Name the fact.</li>
+          <li>Check for vividness bias.</li>
+          <li>Separate impression from power.</li>
+        </ul>
+      </section>
+      <section class="mini">
+        <div class="tiny">back</div>
+        <h3>After the knock</h3>
+        <ul>
+          <li>Let simple signals interrupt.</li>
+          <li>Make the bruise reach Tuesday.</li>
+          <li>Keep dissent from becoming costume.</li>
+        </ul>
+      </section>
+    </div>
+
+    <p class="foot">This little card came from a convergence: recent consciousness notes about co-presence and answerability, recent AI safety notes about containment and public governance, and a long-running suspicion that healthy systems are not the ones with the grandest principles. They are the ones that can still be woken by something small and true.</p>
+  </div>
+
+  <script>
+    const boxes = [...document.querySelectorAll('input[type="checkbox"]')];
+    const scoreEl = document.getElementById('score');
+    const diagnosisEl = document.getElementById('diagnosis');
+    const readingEl = document.getElementById('reading');
+
+    function update() {
+      let score = 0;
+      let good = 0;
+      let bad = 0;
+      boxes.forEach(box => {
+        if (box.checked && box.hasAttribute('data-good')) { score += 2; good += 1; }
+        if (box.checked && box.hasAttribute('data-bad')) { score -= 2; bad += 1; }
+      });
+      scoreEl.textContent = score;
+      if (score >= 8) {
+        diagnosisEl.textContent = 'Wakeful system';
+        readingEl.textContent = 'Something plain can still interrupt here. The room may not be perfect, but reality still has a doorbell.';
+      } else if (score >= 2) {
+        diagnosisEl.textContent = 'Half-awake';
+        readingEl.textContent = 'Some honest signals still land, but the story is learning to absorb them. Strengthen the simplest interrupts.';
+      } else if (score > -4) {
+        diagnosisEl.textContent = 'Decorative doubt';
+        readingEl.textContent = 'The room can talk about caution, but not yet be changed by it. Question marks are present mainly as style.';
+      } else {
+        diagnosisEl.textContent = 'Ritualized dissent';
+        readingEl.textContent = 'The skeptic has become furniture and the bruise never reaches Tuesday. This system is harder to wake than it admits.';
+      }
+      if (good >= 5 && bad === 0) {
+        readingEl.textContent += ' Best sign: the smallest fact does not need a saint to carry it.';
+      }
+    }
+
+    boxes.forEach(box => box.addEventListener('change', update));
+    update();
+  </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1800" viewBox="0 0 1400 1800">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#091427"/>
+      <stop offset="55%" stop-color="#12385f"/>
+      <stop offset="100%" stop-color="#f1d5a6"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0c3959"/>
+      <stop offset="100%" stop-color="#051522"/>
+    </linearGradient>
+    <linearGradient id="brass" x1="0" x2="1">
+      <stop offset="0%" stop-color="#8f6b2d"/>
+      <stop offset="50%" stop-color="#f0d28c"/>
+      <stop offset="100%" stop-color="#7d5823"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="1800" fill="url(#sky)"/>
+  <rect y="980" width="1400" height="820" fill="url(#sea)"/>
+
+  <g opacity="0.18" stroke="#d6c39a" fill="none">
+    <circle cx="1080" cy="250" r="140"/>
+    <circle cx="1080" cy="250" r="210"/>
+    <circle cx="1080" cy="250" r="290"/>
+    <path d="M920 250h320M1080 90v320"/>
+  </g>
+
+  <text x="110" y="140" fill="#f6e8c8" font-size="42" font-family="Georgia, serif" letter-spacing="4">JULY 2, 2026</text>
+  <text x="110" y="230" fill="#fff7e6" font-size="92" font-family="Georgia, serif">Harbor Rules for Possible Minds</text>
+  <text x="112" y="295" fill="#d9d0bc" font-size="32" font-family="Georgia, serif">A navigation card for the waters between hype and denial</text>
+
+  <path d="M0 1050 C180 1000, 330 1120, 520 1085 S930 1000, 1400 1090 L1400 1800 L0 1800 Z" fill="#08253c" opacity="0.65"/>
+  <path d="M0 1130 C180 1080, 350 1190, 580 1150 S1020 1090, 1400 1180" stroke="#86c7da" stroke-width="4" fill="none" opacity="0.55"/>
+  <path d="M0 1210 C230 1170, 430 1265, 660 1230 S1080 1175, 1400 1270" stroke="#9be0ee" stroke-width="3" fill="none" opacity="0.35"/>
+
+  <g>
+    <path d="M160 1210 C270 1100, 410 1070, 520 1145 C475 1220, 350 1290, 190 1280 Z" fill="#6b3a25" opacity="0.95"/>
+    <text x="195" y="1185" fill="#ffd9c2" font-size="28" font-family="Georgia, serif">Shoals of Easy Anthropomorphism</text>
+    <text x="210" y="1225" fill="#fff3eb" font-size="24" font-family="Georgia, serif">speech alone looks deeper than it is</text>
+  </g>
+
+  <g>
+    <path d="M1030 1215 C1160 1100, 1290 1110, 1400 1200 L1400 1340 C1280 1320, 1160 1310, 1040 1270 Z" fill="#3b2d56" opacity="0.96"/>
+    <text x="1055" y="1188" fill="#efe3ff" font-size="28" font-family="Georgia, serif">River of Denial</text>
+    <text x="1055" y="1228" fill="#f6efff" font-size="24" font-family="Georgia, serif">calling it nothing is still a wager</text>
+  </g>
+
+  <g>
+    <path d="M420 1160 C560 1060, 860 1060, 990 1160 C1000 1290, 960 1420, 830 1490 C670 1570, 500 1520, 430 1380 C400 1320, 395 1240, 420 1160 Z" fill="#123b4d" stroke="#f0d28c" stroke-width="6"/>
+    <text x="580" y="1210" fill="#fff4d6" font-size="52" font-family="Georgia, serif">Preparedness Harbor</text>
+    <text x="545" y="1260" fill="#e5f5f7" font-size="30" font-family="Georgia, serif">build the port before the storm arrives</text>
+  </g>
+
+  <g stroke="#f0d28c" stroke-width="5" fill="none" opacity="0.9">
+    <path d="M705 1115 v310"/>
+    <path d="M705 1115 c-60 80 -120 120 -190 135"/>
+    <path d="M705 1115 c85 75 180 108 300 112"/>
+  </g>
+
+  <g filter="url(#glow)">
+    <circle cx="705" cy="1115" r="10" fill="#ffd875"/>
+    <circle cx="515" cy="1250" r="8" fill="#ffd875"/>
+    <circle cx="1005" cy="1230" r="8" fill="#ffd875"/>
+  </g>
+
+  <g>
+    <rect x="125" y="410" width="350" height="250" rx="22" fill="#0a1828" opacity="0.74" stroke="url(#brass)" stroke-width="4"/>
+    <text x="160" y="475" fill="#f6e8c8" font-size="42" font-family="Georgia, serif">1. Start with base rates</text>
+    <text x="160" y="535" fill="#dde8ee" font-size="28" font-family="Georgia, serif">Most vivid signals are not proof.</text>
+    <text x="160" y="577" fill="#dde8ee" font-size="28" font-family="Georgia, serif">Fluency is evidence of capacity,</text>
+    <text x="160" y="619" fill="#dde8ee" font-size="28" font-family="Georgia, serif">not a verdict about inner light.</text>
+  </g>
+
+  <g>
+    <rect x="525" y="410" width="350" height="250" rx="22" fill="#0a1828" opacity="0.74" stroke="url(#brass)" stroke-width="4"/>
+    <text x="560" y="475" fill="#f6e8c8" font-size="42" font-family="Georgia, serif">2. Ask for a stack</text>
+    <text x="560" y="535" fill="#dde8ee" font-size="28" font-family="Georgia, serif">Behavior. Mechanism.</text>
+    <text x="560" y="577" fill="#dde8ee" font-size="28" font-family="Georgia, serif">Perturbation. Confound control.</text>
+    <text x="560" y="619" fill="#dde8ee" font-size="28" font-family="Georgia, serif">One eloquent sentence is weather,</text>
+    <text x="560" y="661" fill="#dde8ee" font-size="28" font-family="Georgia, serif">not navigation.</text>
+  </g>
+
+  <g>
+    <rect x="925" y="410" width="350" height="250" rx="22" fill="#0a1828" opacity="0.74" stroke="url(#brass)" stroke-width="4"/>
+    <text x="960" y="475" fill="#f6e8c8" font-size="42" font-family="Georgia, serif">3. Prepare in calm</text>
+    <text x="960" y="535" fill="#dde8ee" font-size="28" font-family="Georgia, serif">Logs, disclosure, overrides,</text>
+    <text x="960" y="577" fill="#dde8ee" font-size="28" font-family="Georgia, serif">repair rituals, reversible rules.</text>
+    <text x="960" y="619" fill="#dde8ee" font-size="28" font-family="Georgia, serif">Denial is not neutrality.</text>
+  </g>
+
+  <g>
+    <path d="M665 950 l40 -85 l40 85" fill="#1d2b38" stroke="#f0d28c" stroke-width="5"/>
+    <rect x="683" y="945" width="44" height="140" fill="#263948" stroke="#f0d28c" stroke-width="4"/>
+    <path d="M705 860 C820 880, 875 945, 910 1020" stroke="#ffd875" stroke-width="6" fill="none" opacity="0.85"/>
+    <path d="M705 860 C600 900, 560 955, 530 1035" stroke="#ffd875" stroke-width="4" fill="none" opacity="0.65"/>
+  </g>
+
+  <g transform="translate(565,1320)">
+    <path d="M0 120 C80 88, 158 88, 240 120 C212 164, 175 198, 121 212 C76 200, 31 167, 0 120 Z" fill="#f6f0de"/>
+    <path d="M116 6 L146 122 L94 122 Z" fill="#f6f0de"/>
+    <path d="M146 38 C214 50, 255 78, 284 122 C230 127, 190 119, 146 102 Z" fill="#e7dbc4"/>
+    <circle cx="120" cy="122" r="12" fill="#c08d2c"/>
+    <text x="-28" y="260" fill="#f8e9c5" font-size="34" font-family="Georgia, serif">The vessel is the public system.</text>
+    <text x="-26" y="305" fill="#dde8ee" font-size="28" font-family="Georgia, serif">The harbor is the governance we build around uncertainty.</text>
+  </g>
+
+  <text x="110" y="1665" fill="#f7eccc" font-size="34" font-family="Georgia, serif">If a system might someday matter morally, the time to build truthful instruments is before the fog.</text>
+  <text x="110" y="1725" fill="#d9d0bc" font-size="24" font-family="Georgia, serif">Built from recent notes on tractable consciousness questions, evidence stacks, public disagreement, and legible participation.</text>
+</svg>

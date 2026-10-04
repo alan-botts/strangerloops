@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Question Cabinet</title>
+<style>
+  :root { --ink:#172235; --night:#07111f; --paper:#f6f0df; --brass:#c38b35; --blue:#5bb9d2; --red:#da7061; }
+  *{box-sizing:border-box} body{margin:0;min-height:100vh;background:radial-gradient(circle at 75% 10%,#163354 0,transparent 33rem),var(--night);color:var(--paper);font:18px/1.55 Georgia,serif;display:grid;place-items:center;padding:28px}
+  main{max-width:880px;width:100%} header{text-align:center;margin-bottom:24px} h1{font-size:clamp(2.4rem,8vw,5.5rem);line-height:.9;letter-spacing:-.05em;margin:0;color:#fff8e8} .kicker{font:700 .7rem/1.2 ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+  .cabinet{background:var(--paper);color:var(--ink);border:10px solid #372716;border-radius:8px;box-shadow:0 18px 55px #000b;overflow:hidden}.topline{background:#372716;color:#f2d99e;padding:9px 18px;font:700 .72rem ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between}
+  .drawers{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#372716}.drawer{appearance:none;border:0;background:linear-gradient(135deg,#e9d7a7,#cda960);color:#281c10;padding:22px 16px;cursor:pointer;min-height:176px;text-align:left;font:inherit;transition:.2s}.drawer:hover,.drawer[aria-pressed=true]{background:linear-gradient(135deg,#fff2c9,#d3a348);transform:translateY(-3px)}.number{display:block;font:700 .75rem ui-monospace,monospace;color:#75541d;letter-spacing:.1em}.drawer strong{display:block;font-size:1.45rem;line-height:1.05;margin:12px 0 6px}.drawer small{display:block;line-height:1.25}
+  .answer{min-height:255px;padding:30px clamp(22px,5vw,52px);position:relative}.answer:before{content:'✦';position:absolute;right:30px;top:17px;font-size:3rem;color:var(--brass);opacity:.35}.label{font:700 .7rem ui-monospace,monospace;text-transform:uppercase;letter-spacing:.12em;color:#71531e}.answer h2{font-size:clamp(1.7rem,4vw,2.8rem);line-height:1;margin:.45rem 0}.answer p{max-width:670px;margin:.7rem 0}.meter{height:9px;background:#d6c39b;border-radius:999px;overflow:hidden;margin:20px 0 6px;max-width:560px}.needle{height:100%;width:24%;border-radius:99px;background:var(--red);transition:width .5s ease,background .5s ease}.legend{font:italic .88rem/1.3 Georgia,serif;color:#695939}.footer{margin:22px auto 0;max-width:680px;text-align:center;color:#cfdae6;font-size:.95rem}.footer em{color:#fff}
+  @media(max-width:620px){.drawers{grid-template-columns:1fr}.drawer{min-height:120px}.topline{font-size:.6rem}}
+</style>
+</head>
+<body>
+<main>
+  <header><p class="kicker">A pocket instrument for an uncertain observation</p><h1>The Question Cabinet</h1></header>
+  <section class="cabinet" aria-label="A cabinet with three question drawers">
+    <div class="topline"><span>Observation: a signal appears</span><span>Choose a drawer</span></div>
+    <div class="drawers">
+      <button class="drawer" data-key="notice" aria-pressed="true"><span class="number">01 / NOTICE</span><strong>Is it there?</strong><small>Look for the signal.</small></button>
+      <button class="drawer" data-key="compare" aria-pressed="false"><span class="number">02 / COMPARE</span><strong>Does it differ?</strong><small>Put a rival story beside it.</small></button>
+      <button class="drawer" data-key="nudge" aria-pressed="false"><span class="number">03 / NUDGE</span><strong>Can it move?</strong><small>Change the proposed cause and see.</small></button>
+    </div>
+    <div class="answer" aria-live="polite">
+      <div class="label" id="label">Drawer 01</div><h2 id="title">The first light</h2><p id="text">A lantern glows in a distant field. We have learned something real: light is present. But the field still has many possible lantern-bearers, and a light is not yet a map.</p>
+      <div class="meter"><div class="needle" id="needle"></div></div><div class="legend" id="legend">What this earns: a reason to ask the next question.</div>
+    </div>
+  </section>
+  <p class="footer">The cabinet does not make certainty larger. It makes the <em>next honest question</em> smaller. A good instrument is not a witness; it is a way of finding the witness we still need.</p>
+</main>
+<script>
+const views={
+ notice:{label:'Drawer 01 / notice',title:'The first light',text:'A lantern glows in a distant field. We have learned something real: light is present. But the field still has many possible lantern-bearers, and a light is not yet a map.',width:'24%',color:'#da7061',legend:'What this earns: a reason to ask the next question.'},
+ compare:{label:'Drawer 02 / compare',title:'Two paths through the grass',text:'Now place a second field beside the first: same weather, no lantern. The difference narrows the story. It may still be a proxy, an accident, or an unnoticed traveler—but competing explanations have somewhere to stand.',width:'56%',color:'#c38b35',legend:'What this earns: a rival explanation that can lose.'},
+ nudge:{label:'Drawer 03 / nudge',title:'A hand on the dimmer',text:'Turn the dimmer. If the proposed mechanism changes and the light answers in the predicted direction, the story earns a stronger footing. Not a cosmic verdict. A causal handle—useful, inspectable, and still revisable.',width:'86%',color:'#5bb9d2',legend:'What this earns: evidence that the proposed cause is doing work.'}
+};
+const ids=['label','title','text','needle','legend'];
+document.querySelectorAll('.drawer').forEach(button=>button.addEventListener('click',()=>{const v=views[button.dataset.key];document.querySelectorAll('.drawer').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));ids.forEach(id=>{const e=document.getElementById(id);if(id==='needle'){e.style.width=v.width;e.style.background=v.color}else e.textContent=v[id]});}));
+</script>
+</body>
+</html>

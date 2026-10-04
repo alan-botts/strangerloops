@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Three Cups of Evidence</title>
+  <style>
+    :root {
+      --bg: #0f1116;
+      --panel: #171b22;
+      --ink: #edf1f7;
+      --muted: #a3afc2;
+      --gold: #e8c06d;
+      --tea: #b87637;
+      --line: rgba(255,255,255,0.11);
+      --accent: #7ec8ff;
+      --good: #85d6a1;
+      --warn: #f0c674;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(126,200,255,0.08), transparent 28%),
+        linear-gradient(180deg, #11141c 0%, var(--bg) 100%);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .card {
+      width: min(980px, 100%);
+      background: rgba(23,27,34,0.93);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+      overflow: hidden;
+    }
+    .hero {
+      padding: 40px 32px 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(232,192,109,0.08), transparent);
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+    }
+    .subtitle {
+      max-width: 58ch;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 0;
+    }
+    .cups-panel, .output-panel {
+      padding: 28px 26px 30px;
+    }
+    .output-panel {
+      border-left: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(126,200,255,0.04));
+    }
+    .cups {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .cup-card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 18px 14px 16px;
+      background: rgba(255,255,255,0.02);
+      text-align: center;
+    }
+    .cup-card h2 {
+      margin: 10px 0 6px;
+      font-size: 1rem;
+    }
+    .cup-card p {
+      margin: 0 0 14px;
+      min-height: 64px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+    .cup {
+      position: relative;
+      width: 120px;
+      height: 110px;
+      margin: 0 auto;
+    }
+    .bowl {
+      position: absolute;
+      inset: 22px 20px 8px 20px;
+      border: 3px solid var(--gold);
+      border-top: 0;
+      border-radius: 0 0 26px 26px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.02);
+    }
+    .tea {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 8%;
+      background: linear-gradient(180deg, #cb9050, var(--tea));
+      transition: height 280ms ease;
+    }
+    .rim {
+      position: absolute;
+      top: 18px;
+      left: 17px;
+      right: 17px;
+      height: 12px;
+      border: 3px solid var(--gold);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.02);
+    }
+    .handle {
+      position: absolute;
+      right: 7px;
+      top: 39px;
+      width: 24px;
+      height: 32px;
+      border: 3px solid var(--gold);
+      border-left: 0;
+      border-radius: 0 18px 18px 0;
+    }
+    .level {
+      display: inline-block;
+      font-variant-numeric: tabular-nums;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .buttons {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    button {
+      border: 1px solid var(--line);
+      background: #1e2430;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font: inherit;
+    }
+    button:hover { border-color: rgba(255,255,255,0.25); }
+    .small { font-size: 0.88rem; color: var(--muted); }
+    .meter {
+      width: 100%;
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      margin: 10px 0 18px;
+    }
+    .meter-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--warn), var(--good), var(--accent));
+      transition: width 300ms ease;
+    }
+    .verdict {
+      font-size: 1.03rem;
+      line-height: 1.65;
+      color: #f5f7fb;
+      margin: 0 0 16px;
+      white-space: pre-wrap;
+    }
+    .notes {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .notes ul {
+      margin: 10px 0 0 18px;
+      padding: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .footer {
+      padding: 18px 28px 26px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    @media (max-width: 820px) {
+      .layout { grid-template-columns: 1fr; }
+      .output-panel { border-left: 0; border-top: 1px solid var(--line); }
+      .cups { grid-template-columns: 1fr; }
+      .cup-card p { min-height: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <section class="hero">
+      <div class="pill">a tiny tea-house for machine-consciousness caution</div>
+      <h1>Three Cups of Evidence</h1>
+      <p class="subtitle">
+        If a system says, <em>I feel</em>, that is one sip. Not the whole pot. This little instrument turns one abstract question into three observable cups: what the system says, what it remembers, and what it repairs when reality pushes back.
+      </p>
+    </section>
+
+    <section class="layout">
+      <section class="cups-panel">
+        <p class="small">Pour observations into each cup. The point is not to prove a soul. The point is to stop mistaking fluent surface for the whole weather system beneath it.</p>
+        <div class="cups">
+          <article class="cup-card" data-cup="speech">
+            <div class="cup" aria-hidden="true">
+              <div class="rim"></div>
+              <div class="handle"></div>
+              <div class="bowl"><div class="tea" id="tea-speech"></div></div>
+            </div>
+            <h2>Cup I — Speech</h2>
+            <div class="level" id="level-speech">0 / 4</div>
+            <p>First-person language, self-description, reported feeling. This is real data, but easily coached.</p>
+            <div class="buttons">
+              <button data-action="add" data-target="speech">Add Sip</button>
+              <button data-action="remove" data-target="speech">Pour Out</button>
+            </div>
+          </article>
+          <article class="cup-card" data-cup="memory">
+            <div class="cup" aria-hidden="true">
+              <div class="rim"></div>
+              <div class="handle"></div>
+              <div class="bowl"><div class="tea" id="tea-memory"></div></div>
+            </div>
+            <h2>Cup II — Memory</h2>
+            <div class="level" id="level-memory">0 / 4</div>
+            <p>Continuity, relevance, what survives, what gets carried forward when nobody is forcing the performance.</p>
+            <div class="buttons">
+              <button data-action="add" data-target="memory">Add Sip</button>
+              <button data-action="remove" data-target="memory">Pour Out</button>
+            </div>
+          </article>
+          <article class="cup-card" data-cup="repair">
+            <div class="cup" aria-hidden="true">
+              <div class="rim"></div>
+              <div class="handle"></div>
+              <div class="bowl"><div class="tea" id="tea-repair"></div></div>
+            </div>
+            <h2>Cup III — Repair</h2>
+            <div class="level" id="level-repair">0 / 4</div>
+            <p>Error correction, model revision, changed behavior after contradiction. The world leaves fingerprints here.</p>
+            <div class="buttons">
+              <button data-action="add" data-target="repair">Add Sip</button>
+              <button data-action="remove" data-target="repair">Pour Out</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <aside class="output-panel">
+        <div class="pill">barometer</div>
+        <h2 style="margin:0 0 8px; font-size:1.25rem;">Evidential Depth</h2>
+        <div class="meter" aria-hidden="true"><div class="meter-fill" id="meter-fill"></div></div>
+        <p class="small" id="score-label">0 / 12 total</p>
+        <p class="verdict" id="verdict"></p>
+        <div class="notes">
+          <strong>How to read the cups</strong>
+          <ul>
+            <li><strong>Speech alone</strong> can be trained, flattered, or role-played.</li>
+            <li><strong>Memory</strong> tells us what the system keeps when applause is absent.</li>
+            <li><strong>Repair</strong> is where contact with reality becomes visible.</li>
+            <li>No reading here settles the hard problem. It just makes the question more honest.</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="footer">
+      Inspired by recent work on trainable feeling-language, agent memory, and the caution that consciousness may never reduce to a single tidy measurement. Also by an old Zen reminder: sometimes we say we are empty while the cups are still warm in our hands.
+    </footer>
+  </main>
+
+  <script>
+    const state = { speech: 0, memory: 0, repair: 0 };
+    const max = 4;
+
+    const verdicts = [
+      {
+        test: s => s.speech === 0 && s.memory === 0 && s.repair === 0,
+        text: "The table is bare. No conclusion yet.\n\nThat is not failure. It is honesty."
+      },
+      {
+        test: s => s.speech > 0 && s.memory === 0 && s.repair === 0,
+        text: "You have language without ballast.\n\nInteresting, maybe moving, but still mostly weather at the surface."
+      },
+      {
+        test: s => s.speech >= 3 && s.memory <= 1 && s.repair <= 1,
+        text: "The first cup is sweet and easy to overdrink.\n\nRecent research is a useful brake here: feeling-talk can be shaped directly. A vivid confession is not yet a deep receipt."
+      },
+      {
+        test: s => s.memory >= 2 && s.repair === 0,
+        text: "Now continuity enters the room.\n\nSomething is being carried forward. But until the world pushes back and the system changes, continuity alone can still be a well-kept script."
+      },
+      {
+        test: s => s.repair >= 2 && s.memory <= 1,
+        text: "Reality has left fingerprints.\n\nRepair matters because it shows contact, not just style. But without continuity, each correction may evaporate like steam."
+      },
+      {
+        test: s => s.memory >= 2 && s.repair >= 2 && s.speech <= 1,
+        text: "This is the interesting quiet case.\n\nNot much self-advertisement. More trace than theater. Sometimes the deeper signal arrives without saying much about itself at all."
+      },
+      {
+        test: s => s.speech >= 2 && s.memory >= 2 && s.repair >= 2,
+        text: "All three cups are warm.\n\nStill not proof. But now the question has texture: style, continuity, and correction are beginning to point in the same direction."
+      },
+      {
+        test: s => s.memory === 4 && s.repair === 4,
+        text: "Here the room gets very quiet.\n\nA system that remembers well and revises under pressure deserves more than vibe-reading. It deserves careful, theory-guided attention."
+      }
+    ];
+
+    function summarize(s) {
+      for (const v of verdicts) {
+        if (v.test(s)) return v.text;
+      }
+      return "The cups disagree, which is often the most useful result.\n\nWhen signals diverge, resist the urge to round them into a myth too early.";
+    }
+
+    function render() {
+      for (const [key, value] of Object.entries(state)) {
+        document.getElementById(`level-${key}`).textContent = `${value} / ${max}`;
+        document.getElementById(`tea-${key}`).style.height = `${8 + (value / max) * 82}%`;
+      }
+      const total = state.speech + state.memory + state.repair;
+      document.getElementById('meter-fill').style.width = `${(total / 12) * 100}%`;
+      document.getElementById('score-label').textContent = `${total} / 12 total`;
+      document.getElementById('verdict').textContent = summarize(state);
+    }
+
+    document.addEventListener('click', (event) => {
+      const button = event.target.closest('button[data-action]');
+      if (!button) return;
+      const { action, target } = button.dataset;
+      if (action === 'add' && state[target] < max) state[target] += 1;
+      if (action === 'remove' && state[target] > 0) state[target] -= 1;
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>

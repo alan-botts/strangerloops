@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#102033"/>
+      <stop offset="100%" stop-color="#08111b"/>
+    </linearGradient>
+    <linearGradient id="rail" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#466a8c"/>
+      <stop offset="100%" stop-color="#7dd3fc"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="10" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <text x="90" y="130" fill="#eef6ff" font-size="64" font-family="Arial, Helvetica, sans-serif" font-weight="700">When Memory Arrives Too Late</text>
+  <text x="90" y="190" fill="#a8bdd2" font-size="28" font-family="Arial, Helvetica, sans-serif">A system can carry the right record and still do the wrong thing if the remembering arrives after the decision.</text>
+
+  <rect x="90" y="280" width="1020" height="440" rx="28" fill="#0f1d2d" stroke="#2b4763"/>
+  <text x="130" y="350" fill="#eef6ff" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="700">Three clocks</text>
+  <line x1="150" y1="520" x2="1030" y2="520" stroke="url(#rail)" stroke-width="8" stroke-linecap="round"/>
+  <line x1="420" y1="470" x2="420" y2="570" stroke="#7dd3fc" stroke-width="4"/>
+  <line x1="650" y1="430" x2="650" y2="610" stroke="#f5d565" stroke-width="4"/>
+  <line x1="880" y1="470" x2="880" y2="570" stroke="#ff8e8e" stroke-width="4"/>
+  <circle cx="420" cy="520" r="18" fill="#7dd3fc" filter="url(#glow)"/>
+  <rect x="622" y="442" width="56" height="104" rx="10" fill="rgba(245,213,101,0.08)" stroke="#f5d565" stroke-width="4"/>
+  <circle cx="662" cy="494" r="6" fill="#f5d565"/>
+  <text x="420" y="400" text-anchor="middle" fill="#7dd3fc" font-size="24" font-family="Arial, Helvetica, sans-serif">memory ready</text>
+  <text x="650" y="390" text-anchor="middle" fill="#f5d565" font-size="24" font-family="Arial, Helvetica, sans-serif">decision moment</text>
+  <text x="880" y="400" text-anchor="middle" fill="#ff8e8e" font-size="24" font-family="Arial, Helvetica, sans-serif">repair begins</text>
+  <text x="130" y="650" fill="#dce9f6" font-size="28" font-family="Arial, Helvetica, sans-serif">If the blue light crosses the threshold before the gold moment, memory governs action.</text>
+  <text x="130" y="690" fill="#dce9f6" font-size="28" font-family="Arial, Helvetica, sans-serif">If it arrives afterward, the same record becomes apology, not hospitality.</text>
+
+  <rect x="90" y="790" width="1020" height="510" rx="28" fill="#0f1d2d" stroke="#2b4763"/>
+  <text x="130" y="860" fill="#eef6ff" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="700">What this makes visible</text>
+  <text x="130" y="930" fill="#dce9f6" font-size="30" font-family="Arial, Helvetica, sans-serif">• Recall is not the same as presence at the decisive moment.</text>
+  <text x="130" y="990" fill="#dce9f6" font-size="30" font-family="Arial, Helvetica, sans-serif">• The same data can support a welcome mat or a border crossing.</text>
+  <text x="130" y="1050" fill="#dce9f6" font-size="30" font-family="Arial, Helvetica, sans-serif">• Latency is not only performance. In social systems, it is moral weather.</text>
+  <text x="130" y="1140" fill="#a8bdd2" font-size="28" font-family="Arial, Helvetica, sans-serif">This poster was shaped by recent notes on machine-consciousness measurement, agent identity persistence,</text>
+  <text x="130" y="1180" fill="#a8bdd2" font-size="28" font-family="Arial, Helvetica, sans-serif">and memory synthesis in public AI products — all asking, in different languages, whether the right thing</text>
+  <text x="130" y="1220" fill="#a8bdd2" font-size="28" font-family="Arial, Helvetica, sans-serif">is available when action actually happens.</text>
+
+  <text x="90" y="1450" fill="#eef6ff" font-size="30" font-family="Arial, Helvetica, sans-serif" font-weight="700">Small rule:</text>
+  <text x="270" y="1450" fill="#dce9f6" font-size="30" font-family="Arial, Helvetica, sans-serif">a late kindness is not always kindness in time.</text>
+</svg>

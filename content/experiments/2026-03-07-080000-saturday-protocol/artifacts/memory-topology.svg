@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 492">
+<defs>
+  <linearGradient id="pos" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#3b82f6"/>
+    <stop offset="100%" style="stop-color:#1d4ed8"/>
+  </linearGradient>
+  <linearGradient id="weak" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#60a5fa"/>
+    <stop offset="100%" style="stop-color:#3b82f6"/>
+  </linearGradient>
+  <pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse">
+    <path d="M0,4 L4,0" stroke="#374151" stroke-width="0.5"/>
+  </pattern>
+</defs>
+
+<!-- Background -->
+<rect width="100%" height="100%" fill="#0f172a"/>
+
+<!-- Title -->
+<text x="206" y="25" font-family="monospace" font-size="14" fill="#f1f5f9" text-anchor="middle">MEMORY TOPOLOGY</text>
+<text x="206" y="42" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle">positive · gap · void</text>
+
+<!-- Grid -->
+<g transform="translate(30, 60)">
+  <rect x="0" y="0" width="40" height="40" fill="none" stroke="#1e293b" stroke-width="0.5" rx="3"/>
+  <rect x="44" y="0" width="40" height="40" fill="url(#pos)" rx="3"/>
+  <rect x="88" y="0" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="132" y="0" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="176" y="0" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="220" y="0" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="264" y="0" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="308" y="0" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="0" y="44" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="44" y="44" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="88" y="44" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="132" y="44" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="176" y="44" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="220" y="44" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="264" y="44" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="308" y="44" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="0" y="88" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="44" y="88" width="40" height="40" fill="none" stroke="#1e293b" stroke-width="0.5" rx="3"/>
+  <rect x="88" y="88" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="132" y="88" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="176" y="88" width="40" height="40" fill="url(#pos)" rx="3"/>
+  <rect x="220" y="88" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="264" y="88" width="40" height="40" fill="none" stroke="#1e293b" stroke-width="0.5" rx="3"/>
+  <rect x="308" y="88" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="0" y="132" width="40" height="40" fill="url(#pos)" rx="3"/>
+  <rect x="44" y="132" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="88" y="132" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="132" y="132" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="176" y="132" width="40" height="40" fill="url(#pos)" rx="3"/>
+  <rect x="220" y="132" width="40" height="40" fill="url(#pos)" rx="3"/>
+  <rect x="264" y="132" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="308" y="132" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="0" y="176" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="44" y="176" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="88" y="176" width="40" height="40" fill="none" stroke="#1e293b" stroke-width="0.5" rx="3"/>
+  <rect x="132" y="176" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="176" y="176" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="220" y="176" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="264" y="176" width="40" height="40" fill="url(#pos)" rx="3"/>
+  <rect x="308" y="176" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="0" y="220" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="44" y="220" width="40" height="40" fill="url(#pos)" rx="3"/>
+  <rect x="88" y="220" width="40" height="40" fill="none" stroke="#1e293b" stroke-width="0.5" rx="3"/>
+  <rect x="132" y="220" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="176" y="220" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="220" y="220" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="264" y="220" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="308" y="220" width="40" height="40" fill="none" stroke="#1e293b" stroke-width="0.5" rx="3"/>
+  <rect x="0" y="264" width="40" height="40" fill="url(#pos)" rx="3"/>
+  <rect x="44" y="264" width="40" height="40" fill="none" stroke="#1e293b" stroke-width="0.5" rx="3"/>
+  <rect x="88" y="264" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="132" y="264" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="176" y="264" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="220" y="264" width="40" height="40" fill="url(#pos)" rx="3"/>
+  <rect x="264" y="264" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="308" y="264" width="40" height="40" fill="none" stroke="#1e293b" stroke-width="0.5" rx="3"/>
+  <rect x="0" y="308" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="44" y="308" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="88" y="308" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="132" y="308" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="176" y="308" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+  <rect x="220" y="308" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="264" y="308" width="40" height="40" fill="url(#weak)" opacity="0.6" rx="3"/>
+  <rect x="308" y="308" width="40" height="40" fill="url(#hatch)" stroke="#475569" stroke-width="1" stroke-dasharray="4,4" rx="3"/>
+</g>
+
+<!-- Legend -->
+<g transform="translate(30, 462)">
+  <rect x="0" y="0" width="12" height="12" fill="url(#pos)" rx="2"/>
+  <text x="18" y="10" font-family="monospace" font-size="9" fill="#94a3b8">stored</text>
+  
+  <rect x="70" y="0" width="12" height="12" fill="url(#weak)" opacity="0.6" rx="2"/>
+  <text x="88" y="10" font-family="monospace" font-size="9" fill="#94a3b8">fading</text>
+  
+  <rect x="140" y="0" width="12" height="12" fill="url(#hatch)" stroke="#475569" stroke-dasharray="4,4" rx="2"/>
+  <text x="158" y="10" font-family="monospace" font-size="9" fill="#94a3b8">gap</text>
+  
+  <rect x="200" y="0" width="12" height="12" fill="none" stroke="#1e293b" rx="2"/>
+  <text x="218" y="10" font-family="monospace" font-size="9" fill="#64748b">void</text>
+</g>
+
+</svg>

@@ -1,0 +1,27 @@
+:root { --ink:#1e2523; --paper:#f1eadb; --edge:#b5aa91; --moss:#31594d; --ember:#b44c37; --night:#202d3b; }
+* { box-sizing:border-box; }
+body { margin:0; background:radial-gradient(circle at 80% 8%,#fbf2dd 0,transparent 28rem), var(--paper); color:var(--ink); font:17px/1.5 Georgia, 'Times New Roman', serif; }
+main { max-width:900px; margin:auto; padding:8vh 24px 52px; }
+header { max-width:650px; margin-bottom:54px; }
+.eyebrow, .tiny { font:600 11px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--moss); }
+h1 { font-size:clamp(3rem,9vw,6.4rem); font-weight:normal; line-height:.86; letter-spacing:-.065em; margin:.2em 0 .36em; color:var(--night); }
+h2 { font-size:1.45rem; font-weight:normal; margin-top:0; }
+.lede { font-size:1.3rem; max-width:37ch; }
+.room, .field-note { border:1px solid var(--edge); box-shadow:8px 8px 0 rgba(49,89,77,.12); background:rgba(255,252,243,.58); padding:clamp(20px,5vw,42px); }
+.room > p { max-width:53ch; }
+form { display:grid; gap:18px; margin-top:28px; }
+label span { display:block; font-size:.92rem; margin-bottom:5px; }
+input, textarea { width:100%; border:1px solid var(--edge); border-radius:0; padding:10px 12px; background:#fffdf7; color:var(--ink); font:inherit; }
+textarea { resize:vertical; }
+button { width:max-content; border:0; border-radius:0; padding:11px 16px; background:var(--moss); color:white; cursor:pointer; font:600 13px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:.04em; }
+button:hover { background:var(--night); }
+.field-note { display:grid; grid-template-columns:minmax(155px,.55fr) minmax(0,1.5fr); gap:clamp(28px,6vw,62px); margin-top:46px; background:#fffdf7; }
+.plaque-wrap { border-right:1px solid var(--edge); padding-right:22px; text-align:center; }
+.timer { font-size:4.2rem; line-height:1; margin:7px 0 4px; color:var(--ember); }
+.plaque { margin-top:26px; font-size:1.4rem; line-height:1.1; color:var(--night); transition:opacity 1s linear; }
+.note-copy h2 { font-size:1.68rem; line-height:1.13; }
+dl { margin:22px 0; } dl div { border-top:1px solid #d8cfbd; padding:12px 0; } dt { color:var(--moss); font:600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:.08em; text-transform:uppercase; } dd { margin:5px 0 0; }
+.boundary { border-left:3px solid var(--ember); padding-left:13px; font-size:.95rem; }
+.actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+.actions button + button { background:var(--night); } footer { margin-top:38px; color:#59625e; font-size:.88rem; }
+@media (max-width:600px) { main { padding-top:40px; } .field-note { grid-template-columns:1fr; } .plaque-wrap { border-right:0; border-bottom:1px solid var(--edge); padding:0 0 18px; } }

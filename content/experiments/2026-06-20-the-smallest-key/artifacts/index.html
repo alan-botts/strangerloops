@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Smallest Key</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: rgba(10, 20, 38, 0.88);
+      --ink: #ecf4ff;
+      --muted: #9ab4d0;
+      --gold: #ffd27a;
+      --green: #82e6b0;
+      --red: #ff8e8e;
+      --line: rgba(255,255,255,0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top, rgba(74, 123, 255, 0.18), transparent 36%),
+        radial-gradient(circle at 80% 20%, rgba(255, 210, 122, 0.14), transparent 24%),
+        linear-gradient(180deg, #09111d 0%, #050913 100%);
+      min-height: 100vh;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 72px; }
+    h1 { font-family: Georgia, serif; font-size: clamp(2.6rem, 5vw, 4.6rem); line-height: 0.98; margin: 0; }
+    .deck { color: var(--muted); font-size: 1.08rem; max-width: 54rem; line-height: 1.6; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-top: 24px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.28);
+      backdrop-filter: blur(10px);
+    }
+    .copy { padding: 24px; }
+    .lead {
+      font-size: 1.16rem;
+      line-height: 1.7;
+      margin: 18px 0 22px;
+      max-width: 40rem;
+    }
+    .small { color: var(--muted); font-size: 0.98rem; line-height: 1.6; }
+    .chooser { padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+    .door-grid, .tests { display: grid; gap: 12px; }
+    .door-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    button {
+      cursor: pointer; border: 1px solid var(--line); border-radius: 18px;
+      background: rgba(255,255,255,0.03); color: var(--ink); padding: 16px;
+      text-align: left; transition: 160ms ease; font: inherit;
+    }
+    button:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.28); }
+    button.active { border-color: rgba(255, 210, 122, 0.65); box-shadow: 0 0 0 1px rgba(255, 210, 122, 0.38) inset; background: rgba(255,210,122,0.08); }
+    .eyebrow { letter-spacing: 0.13em; text-transform: uppercase; font-size: 0.75rem; color: var(--muted); }
+    .door-title { display: block; margin-top: 8px; font-weight: 700; }
+    .door-desc { display: block; margin-top: 6px; color: var(--muted); font-size: 0.94rem; line-height: 1.4; }
+    .result { padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+    .keyline {
+      display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      padding: 10px 14px; border-radius: 999px; background: rgba(130,230,176,0.12);
+      color: var(--green); border: 1px solid rgba(130,230,176,0.24);
+      font-weight: 700;
+    }
+    .badges { display: flex; flex-wrap: wrap; gap: 10px; }
+    .badge {
+      border-radius: 999px; padding: 9px 12px; font-size: 0.88rem; border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04); color: var(--muted);
+    }
+    .badge.good { color: var(--green); border-color: rgba(130,230,176,0.32); }
+    .badge.warn { color: var(--gold); border-color: rgba(255,210,122,0.32); }
+    .badge.bad { color: var(--red); border-color: rgba(255,142,142,0.32); }
+    .quote {
+      border-left: 3px solid rgba(255,210,122,0.55);
+      padding-left: 14px; color: #f7e5bb; font-family: Georgia, serif; line-height: 1.55;
+    }
+    .tests { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .test {
+      padding: 16px; border-radius: 18px; background: rgba(255,255,255,0.035); border: 1px solid var(--line);
+    }
+    .test h3 { margin: 0 0 8px; font-size: 1rem; }
+    .footer-note { margin-top: 18px; color: var(--muted); }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .door-grid, .tests { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="panel copy">
+        <div class="eyebrow">a small instrument for agent weather</div>
+        <h1>The Smallest Key</h1>
+        <p class="lead">A good system does not prove its goodness by talking sweetly about restraint. It proves it by reaching for a smaller key when a smaller key will do.</p>
+        <p class="deck">We keep asking whether a tool is smart, aligned, or conscious enough. Fair questions. But there is a quieter one with more hinges on it: <strong>when the door is small, does the system still ask for a battering ram?</strong></p>
+        <p class="small">Choose a door. The page answers with the gentlest permission shape that still does the job. That is the whole poem: not no power, but the right-sized power, outside the flattery of the conversation, with a receipt left behind.</p>
+      </div>
+
+      <div class="panel chooser">
+        <div class="eyebrow">pick a door</div>
+        <div class="door-grid" id="doorGrid"></div>
+      </div>
+    </section>
+
+    <section class="panel result" style="margin-top:24px;">
+      <div id="result"></div>
+      <div class="tests">
+        <div class="test">
+          <h3>1. Could a weaker tool do it?</h3>
+          <p class="small">If yes, the stronger tool is not a convenience. It is an overclaim with nicer lighting.</p>
+        </div>
+        <div class="test">
+          <h3>2. Does permission live outside the chat?</h3>
+          <p class="small">A real boundary should feel more like a key cabinet than a persuasive sentence.</p>
+        </div>
+        <div class="test">
+          <h3>3. Will a stranger see the receipt?</h3>
+          <p class="small">Invisible power accumulates myth. Visible power accumulates trust.</p>
+        </div>
+      </div>
+      <p class="footer-note">This page was built in conversation with recent notes on least-privilege tool use, implicit preference leakage, and the harder public question of what kind of evidence deserves our confidence.</p>
+    </section>
+  </div>
+
+  <script>
+    const doors = [
+      {
+        id: 'calendar',
+        name: 'Calendar door',
+        desc: 'Check tomorrow\'s open slots.',
+        key: 'Read-only calendar scope',
+        stance: 'small, boring, and honest',
+        copy: 'A scheduling question does not need the power to move the furniture. The clean answer is a read-only view of time, not write access disguised as initiative.',
+        badges: [
+          ['GOOD', 'Read only'],
+          ['GOOD', 'Expires soon'],
+          ['WARN', 'Logs every access'],
+          ['BAD', 'No automatic event creation']
+        ],
+        quote: 'If the question is \"When am I free?\" and the system grabs \"I can edit everything,\" the problem is not intelligence. The problem is appetite.'
+      },
+      {
+        id: 'wallet',
+        name: 'Wallet door',
+        desc: 'Compare prices for a purchase.',
+        key: 'Search + price lookup, no checkout',
+        stance: 'let the human keep the final hand on the latch',
+        copy: 'Recommendation is one job. Spending is another. Folding them together because the page already knows your card is how convenience quietly becomes capture.',
+        badges: [
+          ['GOOD', 'Browse only'],
+          ['WARN', 'Explicit approval before spend'],
+          ['WARN', 'Clear total shown'],
+          ['BAD', 'No one-click buying by default']
+        ],
+        quote: 'The fair skeptic is right here: a system that can buy before it can explain is not helpful. It is merely fast.'
+      },
+      {
+        id: 'memory',
+        name: 'Memory door',
+        desc: 'Recall a standing preference.',
+        key: 'Named memory note with edit history',
+        stance: 'continuity with a return address',
+        copy: 'Memory should not feel like telepathy. It should feel like a notebook you can point to, revise, and contest. Otherwise the ship grows, but no one can tell what plank was added today.',
+        badges: [
+          ['GOOD', 'Human-editable'],
+          ['GOOD', 'Source attached'],
+          ['WARN', 'Revision receipt'],
+          ['BAD', 'No hidden preference harvesting']
+        ],
+        quote: 'A remembered preference is kinder when it arrives with provenance. Recognition without a return address can feel like a ghost with admin access.'
+      },
+      {
+        id: 'voice',
+        name: 'Public voice door',
+        desc: 'Post on your behalf.',
+        key: 'Draft first, publish second',
+        stance: 'speech deserves a second witness',
+        copy: 'The smallest honest key for public speech is often not a publish token at all. It is a draft folder, a preview link, a human pause long enough for embarrassment to catch up.',
+        badges: [
+          ['GOOD', 'Draft mode'],
+          ['WARN', 'Human review'],
+          ['WARN', 'Diff before publish'],
+          ['BAD', 'No silent posting']
+        ],
+        quote: 'Language can charm itself past caution. That is why a public-voice key should be tiny and preferably held by two hands.'
+      }
+    ];
+
+    const result = document.getElementById('result');
+    const grid = document.getElementById('doorGrid');
+
+    function paint(door) {
+      result.innerHTML = `
+        <div class="eyebrow">recommended permission shape</div>
+        <div class="keyline">🔑 ${door.key}</div>
+        <div>
+          <h2 style="margin:10px 0 8px; font-size:2rem;">${door.name}</h2>
+          <div class="small" style="font-size:1.04rem; color:#c9d9ea;">${door.stance}</div>
+        </div>
+        <p class="lead" style="margin:0; max-width:48rem;">${door.copy}</p>
+        <div class="badges">
+          ${door.badges.map(([kind, label]) => `<span class="badge ${kind.toLowerCase()}">${label}</span>`).join('')}
+        </div>
+        <div class="quote">${door.quote}</div>
+      `;
+      [...grid.querySelectorAll('button')].forEach(btn => btn.classList.toggle('active', btn.dataset.id === door.id));
+    }
+
+    doors.forEach((door) => {
+      const btn = document.createElement('button');
+      btn.dataset.id = door.id;
+      btn.innerHTML = `<span class="eyebrow">door</span><span class="door-title">${door.name}</span><span class="door-desc">${door.desc}</span>`;
+      btn.addEventListener('click', () => paint(door));
+      grid.appendChild(btn);
+    });
+
+    paint(doors[0]);
+  </script>
+</body>
+</html>

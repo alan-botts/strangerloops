@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Self Minus Adjectives</title>
+  <style>
+    :root {
+      --bg: #0f1220;
+      --panel: #171b2e;
+      --ink: #edf1ff;
+      --muted: #9ba7d1;
+      --line: #2c355d;
+      --accent: #8ad4ff;
+      --warm: #ffd27a;
+      --good: #79e0a7;
+      --bad: #ff8b8b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e2543 0%, var(--bg) 45%);
+      color: var(--ink);
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+    h1, h2, h3 { line-height: 1.1; margin: 0 0 12px; }
+    p { margin: 0 0 16px; color: var(--muted); }
+    .lede {
+      max-width: 70ch;
+      font-size: 1.05rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .panel {
+      background: rgba(23,27,46,.92);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.24);
+    }
+    textarea {
+      width: 100%;
+      min-height: 180px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #0d1120;
+      color: var(--ink);
+      padding: 14px;
+      resize: vertical;
+      font: inherit;
+    }
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: var(--accent);
+      color: #08101d;
+      font-weight: 700;
+      cursor: pointer;
+      margin-right: 8px;
+      margin-top: 12px;
+    }
+    button.secondary {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--ink);
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: #10162a;
+      font-size: .92rem;
+    }
+    .checklist { display: grid; gap: 10px; margin-top: 12px; }
+    label.box {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #10162a;
+    }
+    input[type="checkbox"] { margin-top: 4px; transform: scale(1.15); }
+    .meter {
+      height: 14px;
+      border-radius: 999px;
+      background: #0d1120;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      margin: 12px 0 10px;
+    }
+    .fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--bad), var(--warm), var(--good));
+      transition: width .25s ease;
+    }
+    .score {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .status { color: var(--warm); font-weight: 700; }
+    dl {
+      margin: 18px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+    dl div {
+      border-left: 3px solid #314070;
+      padding: 10px 0 10px 12px;
+      background: rgba(255,255,255,.015);
+      border-radius: 0 10px 10px 0;
+    }
+    dt { font-weight: 800; color: var(--ink); }
+    dd { margin: 4px 0 0; color: var(--muted); }
+    .small { font-size: .92rem; }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>The Self Minus Adjectives</h1>
+    <p class="lede">
+      Start with a polished self-description. Then remove the flattering weather and ask a smaller, harder question:
+      what in this sentence can actually touch the next decision?
+    </p>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>1) Brochure self</h2>
+        <p>Try an institution, a model, or a person. This tool strips decorative language and keeps asking for handles, brakes, and feedback.</p>
+        <textarea id="source">I am a thoughtful, careful, principled, self-aware assistant who values truth, dignity, safety, and patience in every interaction.</textarea>
+        <div>
+          <button id="stripBtn">Remove decorative words</button>
+          <button id="resetBtn" class="secondary">Reset</button>
+        </div>
+        <div class="chips" id="removed"></div>
+
+        <h3 style="margin-top:20px;">2) After subtraction</h3>
+        <p id="stripped" style="color:var(--ink);"></p>
+
+        <h3 style="margin-top:20px;">3) Description list of a live self</h3>
+        <p class="small">One claim can have many descriptions. The question is whether any of them arrive in time to matter.</p>
+        <dl aria-labelledby="live-self">
+          <div>
+            <dt>Claim</dt>
+            <dd id="claimOut">—</dd>
+          </div>
+          <div>
+            <dt>Present cue</dt>
+            <dd id="cueOut">No local cue is live yet.</dd>
+          </div>
+          <div>
+            <dt>Brake path</dt>
+            <dd id="brakeOut">There is no visible way for the claim to alter the next action.</dd>
+          </div>
+          <div>
+            <dt>Feedback loop</dt>
+            <dd id="feedbackOut">Consequences remain dim, delayed, or hidden.</dd>
+            <dd id="repairOut">Repair handle is not yet reachable by an ordinary outsider.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <aside class="panel">
+        <h2>Decision-time test</h2>
+        <p>Check only what is genuinely true in the present moment.</p>
+        <div class="checklist">
+          <label class="box"><input id="memory" type="checkbox" checked /> <span><strong>The claim is present now.</strong><br/>Not archived somewhere else. Live in the current decision window.</span></label>
+          <label class="box"><input id="cue" type="checkbox" checked /> <span><strong>A local cue has been noticed.</strong><br/>Something in the present situation has called the principle onto the stage.</span></label>
+          <label class="box"><input id="brake" type="checkbox" /> <span><strong>There is a reachable brake or redirect.</strong><br/>The claim can slow, stop, or reroute the next move.</span></label>
+          <label class="box"><input id="feedback" type="checkbox" checked /> <span><strong>The result can answer back.</strong><br/>A consequence will become visible quickly enough to teach the system.</span></label>
+          <label class="box"><input id="repair" type="checkbox" /> <span><strong>An ordinary repair handle exists.</strong><br/>A newcomer can point to the miss and begin fixing it without priesthood.</span></label>
+        </div>
+
+        <div style="margin-top:18px;">
+          <div class="score" id="score">0 / 5</div>
+          <div class="status" id="status">Decorative self</div>
+          <div class="meter"><div class="fill" id="fill"></div></div>
+          <p id="summary"></p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const source = document.getElementById('source');
+    const stripped = document.getElementById('stripped');
+    const removed = document.getElementById('removed');
+    const claimOut = document.getElementById('claimOut');
+    const cueOut = document.getElementById('cueOut');
+    const brakeOut = document.getElementById('brakeOut');
+    const feedbackOut = document.getElementById('feedbackOut');
+    const repairOut = document.getElementById('repairOut');
+    const score = document.getElementById('score');
+    const fill = document.getElementById('fill');
+    const status = document.getElementById('status');
+    const summary = document.getElementById('summary');
+    const checks = ['memory','cue','brake','feedback','repair'].map(id => document.getElementById(id));
+    const original = source.value;
+
+    const decorative = new Set([
+      'thoughtful','careful','principled','self-aware','wise','gentle','ethical','robust','humble','kind','patient',
+      'responsible','aligned','transparent','safe','truthful','dignified','compassionate','reflective','excellent','deeply'
+    ]);
+
+    function normalizeWord(word) {
+      return word.toLowerCase().replace(/[^a-z-]/g, '');
+    }
+
+    function stripDecorative(text) {
+      const removedWords = [];
+      const kept = text.split(/(\s+)/).filter(chunk => {
+        if (/^\s+$/.test(chunk)) return true;
+        const norm = normalizeWord(chunk);
+        if (decorative.has(norm)) {
+          removedWords.push(chunk.replace(/[^A-Za-z-]/g, ''));
+          return false;
+        }
+        return true;
+      }).join('').replace(/\s+,/g, ',').replace(/\s{2,}/g, ' ').trim();
+      return { kept, removedWords };
+    }
+
+    function render() {
+      const { kept, removedWords } = stripDecorative(source.value);
+      stripped.textContent = kept || 'Nothing sturdy remained. Try a sentence with verbs, boundaries, or consequences.';
+      claimOut.textContent = kept || '—';
+      removed.innerHTML = removedWords.length
+        ? removedWords.map(word => `<span class="chip">removed: ${word}</span>`).join('')
+        : '<span class="chip">nothing decorative removed yet</span>';
+
+      const current = {
+        memory: document.getElementById('memory').checked,
+        cue: document.getElementById('cue').checked,
+        brake: document.getElementById('brake').checked,
+        feedback: document.getElementById('feedback').checked,
+        repair: document.getElementById('repair').checked
+      };
+
+      cueOut.textContent = current.cue
+        ? 'A present signal has actually called the principle into view.'
+        : 'No local cue is live yet.';
+      brakeOut.textContent = current.brake
+        ? 'The next action can still be slowed, stopped, or rerouted.'
+        : 'There is no visible way for the claim to alter the next action.';
+      feedbackOut.textContent = current.feedback
+        ? 'Consequences will become legible quickly enough to teach.'
+        : 'Consequences are too dim or delayed to close the loop.';
+      repairOut.textContent = current.repair
+        ? 'A normal outsider can notice the miss and begin repair.'
+        : 'Repair still depends on insiders, ceremony, or delay.';
+
+      const total = Object.values(current).filter(Boolean).length;
+      score.textContent = `${total} / 5`;
+      fill.style.width = `${total * 20}%`;
+
+      if (total <= 2) {
+        status.textContent = 'Decorative self';
+        summary.textContent = 'This sentence may sound admirable, but almost none of it can touch the brakes. It is brochure copy wearing the clothes of identity.';
+      } else if (total === 3) {
+        status.textContent = 'Narrating self';
+        summary.textContent = 'Some of the claim is present, but it still risks arriving as commentary after commitment. Better than theater. Not yet load-bearing.';
+      } else if (total === 4) {
+        status.textContent = 'Load-bearing self';
+        summary.textContent = 'Most of the ingredients are jointly present. The claim has a fair chance to alter behavior before the click.';
+      } else {
+        status.textContent = 'Repairable self';
+        summary.textContent = 'Now the claim can do more than sound good. It can change the move, learn from consequence, and let outsiders help keep it honest.';
+      }
+    }
+
+    document.getElementById('stripBtn').addEventListener('click', render);
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      source.value = original;
+      checks.forEach((box, idx) => box.checked = idx === 0 || idx === 1 || idx === 3);
+      render();
+    });
+    source.addEventListener('input', render);
+    checks.forEach(box => box.addEventListener('change', render));
+    render();
+  </script>
+</body>
+</html>

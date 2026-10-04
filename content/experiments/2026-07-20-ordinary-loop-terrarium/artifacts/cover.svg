@@ -1,0 +1,18 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#0F1115"/>
+  <circle cx="170" cy="140" r="280" fill="url(#glow)" fill-opacity="0.45"/>
+  <rect x="110" y="94" width="980" height="486" rx="28" fill="#161B24" stroke="#2A3345" stroke-width="3"/>
+  <rect x="150" y="134" width="900" height="406" rx="22" fill="#10151F"/>
+  <path d="M180 442C251.111 377.068 322.222 340.232 393.333 331.491C464.444 322.751 535.556 350.285 606.667 324.288C677.778 298.29 748.889 182.735 820 175.504C891.111 168.273 962.222 269.365 1033.33 280.901" stroke="#FDA4AF" stroke-width="9" stroke-linecap="round"/>
+  <path d="M180 472C251.111 450.627 322.222 434.184 393.333 387.741C464.444 341.298 535.556 264.855 606.667 240.415C677.778 215.976 748.889 243.539 820 223.832C891.111 204.126 962.222 137.152 1033.33 163.815" stroke="#7DD3FC" stroke-width="9" stroke-linecap="round"/>
+  <path d="M180 506C251.111 500.377 322.222 485.277 393.333 457.13C464.444 428.984 535.556 387.791 606.667 358.494C677.778 329.198 748.889 311.798 820 281.348C891.111 250.897 962.222 207.396 1033.33 168" stroke="#86EFAC" stroke-width="9" stroke-linecap="round"/>
+  <text x="150" y="88" fill="#F2C46D" font-family="system-ui, sans-serif" font-size="20" letter-spacing="0.28em">SMALL SYSTEMS TOY</text>
+  <text x="150" y="612" fill="#E9EEF7" font-family="system-ui, sans-serif" font-size="58" font-weight="700">Ordinary Loop Terrarium</text>
+  <text x="150" y="646" fill="#9BA7BD" font-family="system-ui, sans-serif" font-size="24">When hype, evidence, and obligation start growing in the same glass room.</text>
+  <defs>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(170 140) rotate(90) scale(280)">
+      <stop stop-color="#7DD3FC"/>
+      <stop offset="1" stop-color="#7DD3FC" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

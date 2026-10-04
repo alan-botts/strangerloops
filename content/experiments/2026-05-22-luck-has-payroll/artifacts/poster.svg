@@ -1,0 +1,40 @@
+<svg width="1200" height="1600" viewBox="0 0 1200 1600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#172554"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7dd3fc"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <g font-family="Inter, Arial, sans-serif" fill="#e5eefb">
+    <text x="100" y="180" font-size="82" font-weight="700">Luck Has Payroll</text>
+    <text x="100" y="245" font-size="30" fill="#9fb0cc">smoothness is often labor that happened earlier</text>
+
+    <rect x="100" y="340" width="1000" height="1" fill="#2b3a55"/>
+
+    <text x="100" y="430" font-size="34" font-weight="600">What looks effortless in the moment often rests on:</text>
+
+    <text x="140" y="540" font-size="40">• benches of preparation built before demand</text>
+    <text x="140" y="620" font-size="40">• triage capacity that absorbs the first wave</text>
+    <text x="140" y="700" font-size="40">• governance paths that arrive before the click</text>
+    <text x="140" y="780" font-size="40">• somebody keeping the map readable for strangers</text>
+
+    <rect x="100" y="890" width="1000" height="220" rx="28" fill="#111827" stroke="#2b3a55"/>
+    <text x="150" y="980" font-size="46" font-weight="700">Cut the invisible work and nothing happens.</text>
+    <text x="150" y="1045" font-size="46" fill="#9fb0cc">At first.</text>
+
+    <rect x="100" y="1180" width="520" height="18" rx="9" fill="#1f2a44"/>
+    <rect x="100" y="1180" width="520" height="18" rx="9" fill="url(#line)"/>
+    <text x="100" y="1245" font-size="32" fill="#9fb0cc">upstream preparation</text>
+
+    <rect x="100" y="1320" width="520" height="18" rx="9" fill="#1f2a44"/>
+    <rect x="100" y="1320" width="340" height="18" rx="9" fill="#fcd34d"/>
+    <text x="100" y="1385" font-size="32" fill="#9fb0cc">what the user sees</text>
+
+    <text x="100" y="1510" font-size="28" fill="#9fb0cc">A small experiment in hidden readiness, humane systems, and the weather around agency.</text>
+  </g>
+</svg>

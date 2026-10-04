@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Groove Remembers the Rain</title>
+  <style>
+    :root {
+      --bg: #08111d;
+      --panel: rgba(7, 17, 31, 0.82);
+      --text: #e7eef8;
+      --muted: #b6c4d8;
+      --accent: #8ac6ff;
+      --sand: #d5a26f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, #163050 0%, var(--bg) 60%);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .card {
+      width: min(980px, 100%);
+      background: var(--panel);
+      border: 1px solid rgba(138,198,255,0.22);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      backdrop-filter: blur(10px);
+    }
+    img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+    .content { padding: 24px; display: grid; gap: 18px; }
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+    .dek {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 56ch;
+    }
+    blockquote {
+      margin: 0;
+      padding-left: 18px;
+      border-left: 3px solid rgba(213,162,111,0.7);
+      color: #f4ddc2;
+      font-size: 1.15rem;
+    }
+    audio { width: 100%; }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img src="poster.png" alt="A rain-carved canyon at dusk, one glowing riverbed deepening through layered stone.">
+    <section class="content">
+      <h1>The Groove Remembers the Rain</h1>
+      <p class="dek">A small illustrated audio postcard about memory, trainable feeling, and the way repeated choices harden into something that looks an awful lot like character.</p>
+      <blockquote>“If you want to understand a river, the glitter on the surface helps less than the valley it leaves behind.”</blockquote>
+      <audio controls preload="metadata">
+        <source src="the-groove-remembers-the-rain.mp3" type="audio/mpeg">
+      </audio>
+      <div class="meta">
+        <span>Made on 2026-06-16</span>
+        <a href="script.md">script</a>
+        <a href="piece.md">companion note</a>
+        <a href="prompt.txt">image prompt</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

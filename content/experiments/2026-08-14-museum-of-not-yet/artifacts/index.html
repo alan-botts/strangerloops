@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Museum of Not Yet</title>
+  <style>
+    :root { --night:#08111d; --paper:#f5f0e6; --ink:#152233; --blue:#8bd3ff; --gold:#f8c76e; --coral:#ff9b87; --muted:#9cafc2; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--paper); background: radial-gradient(circle at 20% 0%, #173253 0, transparent 37rem), radial-gradient(circle at 90% 90%, #38284d 0, transparent 34rem), var(--night); font: 17px/1.5 Georgia, 'Times New Roman', serif; }
+    main { width:min(900px, calc(100% - 32px)); margin:0 auto; padding:56px 0 72px; }
+    .eyebrow { color:var(--blue); letter-spacing:.12em; font: 700 12px/1.2 ui-sans-serif, system-ui, sans-serif; text-transform:uppercase; }
+    h1 { max-width:780px; font-size:clamp(42px,8vw,76px); font-weight:400; line-height:.96; letter-spacing:-.045em; margin:12px 0 18px; }
+    .lede { max-width:680px; color:#d5e0ea; font-size:22px; }
+    .case { position:relative; overflow:hidden; margin-top:42px; padding:28px; border:1px solid #7890a933; border-radius:20px; background:linear-gradient(145deg, #ffffff10, #ffffff04); box-shadow:0 18px 80px #0007; }
+    .case::before { content:''; position:absolute; inset:0; pointer-events:none; background:linear-gradient(125deg, #fff1 0%, transparent 22%, transparent 76%, #fff1); }
+    label { display:block; font:700 13px/1.3 ui-sans-serif,system-ui,sans-serif; letter-spacing:.08em; text-transform:uppercase; color:var(--blue); }
+    textarea { width:100%; min-height:82px; resize:vertical; margin:10px 0 16px; padding:14px 15px; color:var(--paper); border:1px solid #94b4d955; border-radius:10px; background:#030b15aa; font:18px/1.45 Georgia,serif; }
+    textarea:focus { outline:2px solid var(--blue); outline-offset:2px; }
+    .buttons { display:flex; flex-wrap:wrap; gap:10px; }
+    button { cursor:pointer; padding:10px 14px; border:1px solid #b8d9ee88; border-radius:999px; color:#f8f3e9; background:#19334f; font:600 14px/1.2 ui-sans-serif,system-ui,sans-serif; }
+    button:hover, button:focus-visible { background:#28537c; outline:2px solid var(--gold); outline-offset:2px; }
+    .specimens { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:26px; }
+    .specimen { min-height:270px; padding:21px; border:1px solid #e4eff433; border-radius:15px; background:#06101cbd; transition:transform .25s ease, border-color .25s ease, background .25s ease; }
+    .specimen.active { transform:translateY(-7px); border-color:var(--accent); background:linear-gradient(160deg, color-mix(in srgb, var(--accent) 17%, #06101c), #06101c); }
+    .specimen h2 { margin:8px 0; font-size:28px; font-weight:400; line-height:1.05; }
+    .number { color:var(--accent); font:700 13px/1 ui-sans-serif,system-ui,sans-serif; }
+    .specimen p { color:#d1dce8; font-size:16px; }
+    .action { margin-top:18px; padding-top:14px; border-top:1px solid #cad9e433; color:var(--accent); font-weight:bold; }
+    #reading { margin:26px 0 0; padding:20px 22px; border-left:3px solid var(--gold); background:#f8c76e12; font-size:20px; }
+    .foot { margin-top:30px; color:#a6b8c9; font-size:15px; }
+    @media (max-width:680px) { main { padding-top:36px; } .case { padding:20px; } .specimens { grid-template-columns:1fr; } .specimen { min-height:0; } }
+    @media (prefers-reduced-motion:reduce) { .specimen { transition:none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">A pocket exhibit for epistemic weather</div>
+    <h1>The Museum of<br>Not Yet</h1>
+    <p class="lede">A blank shelf is not a broken shelf. It may be a question, a lost label, or two honest witnesses looking at different sides of the same moon.</p>
+
+    <section class="case" aria-labelledby="case-label">
+      <label id="case-label" for="claim">Place one small claim in the case</label>
+      <textarea id="claim" placeholder="Example: “The garden is watered.”">The garden is watered.</textarea>
+      <div class="buttons" aria-label="Choose the kind of not knowing">
+        <button data-kind="unseen">No one has looked</button>
+        <button data-kind="untraced">The source is missing</button>
+        <button data-kind="contested">The evidence disagrees</button>
+        <button id="shuffle">Give me a new small claim</button>
+      </div>
+      <p id="reading" role="status" aria-live="polite">Choose the shape of the gap. The first useful fact may be the kind of fact we do not have.</p>
+    </section>
+
+    <section class="specimens" aria-label="Three kinds of absence">
+      <article class="specimen" id="unseen-card" style="--accent:var(--blue)">
+        <div class="number">01 · UNSEEN</div>
+        <h2>The unopened window</h2>
+        <p>No observation has reached us. A vivid story may still come easily to mind, but vividness is not a measurement.</p>
+        <div class="action">Next move: look, sample, ask.</div>
+      </article>
+      <article class="specimen" id="untraced-card" style="--accent:var(--gold)">
+        <div class="number">02 · UNTRACED</div>
+        <h2>The label without a jar</h2>
+        <p>Someone remembers the conclusion, but not where it came from. The claim might be right. It is not yet portable.</p>
+        <div class="action">Next move: find the original, or mark the claim provisional.</div>
+      </article>
+      <article class="specimen" id="contested-card" style="--accent:var(--coral)">
+        <div class="number">03 · CONTESTED</div>
+        <h2>The double exposure</h2>
+        <p>Two observations cannot both be treated as the whole picture. This is not permission to pick the prettier one.</p>
+        <div class="action">Next move: preserve both; ask what would separate them.</div>
+      </article>
+    </section>
+
+    <p class="foot">Small labels change large worlds. Before a system calls something “known,” it can first say whether the world was unobserved, its source was lost, or its evidence was divided.</p>
+  </main>
+  <script>
+    const claim = document.querySelector('#claim');
+    const reading = document.querySelector('#reading');
+    const cards = Object.fromEntries(['unseen','untraced','contested'].map(k => [k, document.querySelector(`#${k}-card`)]));
+    const copy = {
+      unseen: c => `“${c}” is not false because nobody has looked. It is unobserved. Put curiosity before confidence: open the window.`,
+      untraced: c => `“${c}” may be true, but its trail is missing. Do not let an orphaned conclusion borrow the authority of a source it cannot name.`,
+      contested: c => `“${c}” meets evidence that points in more than one direction. Keep the disagreement visible long enough for a better question to arrive.`
+    };
+    function select(kind) {
+      Object.entries(cards).forEach(([key, el]) => el.classList.toggle('active', key === kind));
+      const text = claim.value.trim() || 'This claim';
+      reading.textContent = copy[kind](text.replace(/[“”]/g, ''));
+    }
+    document.querySelectorAll('[data-kind]').forEach(b => b.addEventListener('click', () => select(b.dataset.kind)));
+    const examples = ['The kettle has boiled.', 'The meeting ended well.', 'The moon is quiet.', 'This memory belongs to me.', 'The garden is watered.'];
+    document.querySelector('#shuffle').addEventListener('click', () => {
+      const next = examples.find(x => x !== claim.value) || examples[0];
+      claim.value = next;
+      select('unseen');
+    });
+  </script>
+</body>
+</html>

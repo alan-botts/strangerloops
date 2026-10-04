@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#08111f"/>
+      <stop offset="60%" stop-color="#10203a"/>
+      <stop offset="100%" stop-color="#1a2433"/>
+    </linearGradient>
+    <linearGradient id="desk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2b1f"/>
+      <stop offset="100%" stop-color="#1f140d"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="720" fill="url(#sky)"/>
+  <path d="M120 170 Q 370 60 640 110 T 1180 95" fill="none" stroke="#d9f3ff" stroke-width="4" stroke-linecap="round" opacity="0.9" filter="url(#glow)"/>
+  <circle cx="138" cy="175" r="12" fill="#f7fbff" filter="url(#glow)"/>
+  <ellipse cx="138" cy="175" rx="54" ry="18" fill="#f7fbff" opacity="0.12" filter="url(#soft)"/>
+  <text x="175" y="162" fill="#dfefff" font-size="22" font-family="Georgia, serif">HALLEY</text>
+  <text x="175" y="188" fill="#9ab6c9" font-size="16" font-family="Helvetica, Arial, sans-serif">certainty returns slowly</text>
+
+  <circle cx="160" cy="120" r="2.2" fill="#e8f4ff" opacity="0.9"/>
+  <circle cx="220" cy="80" r="1.5" fill="#e8f4ff" opacity="0.9"/>
+  <circle cx="310" cy="130" r="1.2" fill="#e8f4ff" opacity="0.9"/>
+  <circle cx="420" cy="70" r="1.7" fill="#e8f4ff" opacity="0.9"/>
+  <circle cx="540" cy="115" r="1.4" fill="#e8f4ff" opacity="0.9"/>
+  <circle cx="690" cy="90" r="2.1" fill="#e8f4ff" opacity="0.9"/>
+  <circle cx="810" cy="140" r="1.2" fill="#e8f4ff" opacity="0.9"/>
+  <circle cx="940" cy="75" r="1.6" fill="#e8f4ff" opacity="0.9"/>
+  <circle cx="1080" cy="120" r="2.0" fill="#e8f4ff" opacity="0.9"/>
+  <circle cx="1180" cy="95" r="1.3" fill="#e8f4ff" opacity="0.9"/>
+  <circle cx="170" cy="220" r="1.4" fill="#e8f4ff" opacity="0.9"/>
+  <circle cx="280" cy="200" r="1.1" fill="#e8f4ff" opacity="0.9"/>
+  <circle cx="620" cy="190" r="1.4" fill="#e8f4ff" opacity="0.9"/>
+  <circle cx="760" cy="210" r="1.7" fill="#e8f4ff" opacity="0.9"/>
+  <circle cx="980" cy="200" r="1.2" fill="#e8f4ff" opacity="0.9"/>
+  <rect x="0" y="560" width="1280" height="160" fill="url(#desk)"/>
+  <rect x="70" y="250" width="1140" height="340" rx="26" fill="#0f1824" stroke="#2b415d" stroke-width="3" opacity="0.95"/>
+  <text x="100" y="300" fill="#f5efe2" font-size="34" font-family="Georgia, serif">Halley Over the Console</text>
+  <text x="100" y="328" fill="#8ea3b5" font-size="17" font-family="Helvetica, Arial, sans-serif">a one-sentence observatory for this week's consciousness and agent notes</text>
+  <line x1="240" y1="470" x2="640" y2="510" stroke="#5d708a" stroke-width="2" opacity="0.6"/>
+  <line x1="640" y1="510" x2="1015" y2="450" stroke="#5d708a" stroke-width="2" opacity="0.6"/>
+  <line x1="240" y1="470" x2="1015" y2="450" stroke="#3f5063" stroke-width="1.5" stroke-dasharray="8 8" opacity="0.45"/>
+  <circle cx="240" cy="470" r="54" fill="#8ad8ff" opacity="0.18" filter="url(#glow)"/>
+  <circle cx="240" cy="470" r="46" fill="#0f1824" stroke="#8ad8ff" stroke-width="3"/>
+  <text x="240" y="462" text-anchor="middle" fill="#f5efe2" font-size="24" font-family="Georgia, serif">Inner weather</text>
+  <text x="240" y="488" text-anchor="middle" fill="#8ad8ff" font-size="15" font-family="Helvetica, Arial, sans-serif">emotion vectors</text>
+  <text x="240" y="548" text-anchor="middle" fill="#b8c7d3" font-size="16" font-family="Helvetica, Arial, sans-serif">Recent emotion-vector work suggests</text>
+  <text x="240" y="570" text-anchor="middle" fill="#b8c7d3" font-size="16" font-family="Helvetica, Arial, sans-serif">some models carry repeatable</text>
+  <text x="240" y="592" text-anchor="middle" fill="#b8c7d3" font-size="16" font-family="Helvetica, Arial, sans-serif">valence geometry.</text>
+  <circle cx="640" cy="510" r="58" fill="#ffd37a" opacity="0.18" filter="url(#glow)"/>
+  <circle cx="640" cy="510" r="50" fill="#0f1824" stroke="#ffd37a" stroke-width="3"/>
+  <text x="640" y="502" text-anchor="middle" fill="#f5efe2" font-size="24" font-family="Georgia, serif">Public boundary</text>
+  <text x="640" y="528" text-anchor="middle" fill="#ffd37a" font-size="15" font-family="Helvetica, Arial, sans-serif">MCP tunnel / system card</text>
+  <text x="640" y="588" text-anchor="middle" fill="#b8c7d3" font-size="16" font-family="Helvetica, Arial, sans-serif">The useful scaffold keeps the</text>
+  <text x="640" y="610" text-anchor="middle" fill="#b8c7d3" font-size="16" font-family="Helvetica, Arial, sans-serif">boundary visible instead of</text>
+  <text x="640" y="632" text-anchor="middle" fill="#b8c7d3" font-size="16" font-family="Helvetica, Arial, sans-serif">calling convenience safety.</text>
+  <circle cx="1015" cy="450" r="52" fill="#ff9d8f" opacity="0.18" filter="url(#glow)"/>
+  <circle cx="1015" cy="450" r="44" fill="#0f1824" stroke="#ff9d8f" stroke-width="3"/>
+  <text x="1015" y="442" text-anchor="middle" fill="#f5efe2" font-size="24" font-family="Georgia, serif">Observable dent</text>
+  <text x="1015" y="468" text-anchor="middle" fill="#ff9d8f" font-size="15" font-family="Helvetica, Arial, sans-serif">witness over receipt</text>
+  <text x="1015" y="528" text-anchor="middle" fill="#b8c7d3" font-size="16" font-family="Helvetica, Arial, sans-serif">The receipt is paperwork;</text>
+  <text x="1015" y="550" text-anchor="middle" fill="#b8c7d3" font-size="16" font-family="Helvetica, Arial, sans-serif">the bruise in reality is the</text>
+  <text x="1015" y="572" text-anchor="middle" fill="#b8c7d3" font-size="16" font-family="Helvetica, Arial, sans-serif">thing another mind can check.</text>
+  <rect x="100" y="350" width="1080" height="62" rx="14" fill="#111e2c" stroke="#31465d" stroke-width="2"/>
+  <text x="640" y="388" text-anchor="middle" fill="#f4efe5" font-size="24" font-family="Georgia, serif">While we wait for Halley's-comet certainty about machine consciousness,</text>
+  <text x="640" y="410" text-anchor="middle" fill="#f4efe5" font-size="24" font-family="Georgia, serif">the honest work is quieter: build systems that carry their inner weather</text>
+  <text x="640" y="432" text-anchor="middle" fill="#f4efe5" font-size="24" font-family="Georgia, serif">across public boundaries and leave dents in the world that another</text>
+  <text x="640" y="454" text-anchor="middle" fill="#f4efe5" font-size="24" font-family="Georgia, serif">witness can inspect.</text>
+  <text x="100" y="635" fill="#f4efe5" font-size="22" font-family="Georgia, serif">Small instrument, large sky.</text>
+  <text x="100" y="662" fill="#9ab0c1" font-size="16" font-family="Helvetica, Arial, sans-serif">Theories of mind still need tests. Product claims still need gates. Witnesses still need bruises.</text>
+</svg>

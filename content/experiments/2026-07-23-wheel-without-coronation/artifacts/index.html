@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wheel Without Coronation</title>
+  <style>
+    :root {
+      --bg: #0d1320;
+      --panel: #151f31;
+      --ink: #eef3ff;
+      --muted: #9db0d0;
+      --gold: #f2c66d;
+      --teal: #88d1d9;
+      --rose: #ff9e9e;
+      --line: #32435f;
+      --good: #9fe29f;
+      --warn: #ffd479;
+      --bad: #ff8b8b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #16233a, var(--bg) 58%);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    h1, h2 { line-height: 1.1; margin: 0 0 12px; }
+    h1 { font-size: clamp(2rem, 5vw, 4rem); }
+    .lede { max-width: 70ch; color: var(--muted); font-size: 1.05rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .panel {
+      background: rgba(21,31,49,.82);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.22);
+      backdrop-filter: blur(10px);
+    }
+    .wheelbox { display: grid; place-items: center; min-height: 560px; }
+    svg { width: min(100%, 560px); height: auto; }
+    .controls { display: grid; gap: 16px; }
+    .control {
+      padding: 14px 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.02);
+    }
+    .control label { display: flex; justify-content: space-between; gap: 12px; font-weight: 650; }
+    .control small { display:block; color: var(--muted); margin-top: 6px; }
+    input[type="range"] { width: 100%; margin-top: 10px; accent-color: var(--gold); }
+    .meter {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .badge {
+      border-radius: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .badge .label { color: var(--muted); font-size: .82rem; text-transform: uppercase; letter-spacing: .08em; }
+    .badge strong { display: block; font-size: 1.35rem; margin-top: 6px; }
+    .verdict {
+      margin-top: 18px;
+      border-radius: 16px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+    }
+    .verdict p:last-child { margin-bottom: 0; }
+    .postmortem {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 16px;
+      border-left: 4px solid var(--rose);
+      background: rgba(255,158,158,.08);
+      color: #ffe0e0;
+    }
+    .legend { display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; color:var(--muted); font-size:.92rem; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; display:inline-block; margin-right: 6px; }
+    a { color: var(--teal); }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .wheelbox { min-height: 420px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Wheel Without Coronation</h1>
+    <p class="lede">
+      A vivid self-report is a bright spoke. A causal intervention is another. Public witness, continuity, and the right to disagree add more.
+      Remove too many spokes and the wheel still looks round in one frozen frame, but it does not carry much weight.
+    </p>
+
+    <div class="grid">
+      <section class="panel wheelbox">
+        <svg viewBox="0 0 600 600" aria-labelledby="title desc" role="img">
+          <title id="title">Evidence wheel for a machine-mind claim</title>
+          <desc id="desc">An interactive wheel whose spokes appear or fade based on evidence strength.</desc>
+          <defs>
+            <radialGradient id="sky" cx="50%" cy="45%" r="60%">
+              <stop offset="0%" stop-color="#20345a"/>
+              <stop offset="100%" stop-color="#0a1020"/>
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="4" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <rect x="0" y="0" width="600" height="600" rx="28" fill="url(#sky)" />
+          <circle cx="300" cy="300" r="210" fill="none" stroke="#334766" stroke-width="2" />
+          <circle id="outerRim" cx="300" cy="300" r="174" fill="none" stroke="#f2c66d" stroke-width="16" stroke-linecap="round" filter="url(#glow)" />
+          <circle cx="300" cy="300" r="120" fill="rgba(255,255,255,.02)" stroke="#314563" stroke-width="2" />
+          <g id="spokes"></g>
+          <g id="hub">
+            <circle cx="300" cy="300" r="68" fill="#13233d" stroke="#7ca4d4" stroke-width="2.5" />
+            <circle cx="300" cy="300" r="26" fill="#f2c66d" opacity=".9" />
+          </g>
+          <text x="300" y="520" text-anchor="middle" fill="#9db0d0" font-size="22">A claim should be able to roll through disagreement.</text>
+        </svg>
+      </section>
+
+      <section class="panel controls">
+        <div class="control">
+          <label for="reportability"><span>Vivid reportability</span><span id="reportabilityVal">75</span></label>
+          <input id="reportability" type="range" min="0" max="100" value="75" />
+          <small>How strongly the system seems able to say what is on its mind.</small>
+        </div>
+        <div class="control">
+          <label for="causal"><span>Causal intervention</span><span id="causalVal">78</span></label>
+          <input id="causal" type="range" min="0" max="100" value="78" />
+          <small>Can we edit the inner handle and watch behavior move with it?</small>
+        </div>
+        <div class="control">
+          <label for="continuity"><span>Continuity through time</span><span id="continuityVal">42</span></label>
+          <input id="continuity" type="range" min="0" max="100" value="42" />
+          <small>Does the pattern survive return, repair, and later action?</small>
+        </div>
+        <div class="control">
+          <label for="witness"><span>External witness</span><span id="witnessVal">58</span></label>
+          <input id="witness" type="range" min="0" max="100" value="58" />
+          <small>Is there a public trace another mind can inspect and dispute?</small>
+        </div>
+        <div class="control">
+          <label for="baseRates"><span>Base-rate humility</span><span id="baseRatesVal">36</span></label>
+          <input id="baseRates" type="range" min="0" max="100" value="36" />
+          <small>Have we remembered how often vivid examples mislead us?</small>
+        </div>
+
+        <div class="meter">
+          <div class="badge"><span class="label">Load-bearing spokes</span><strong id="spokeCount">0 / 5</strong></div>
+          <div class="badge"><span class="label">Settlement pressure</span><strong id="settlement">—</strong></div>
+        </div>
+
+        <div class="verdict" id="verdict"></div>
+        <div class="postmortem" id="postmortem"></div>
+
+        <div class="legend">
+          <span><span class="dot" style="background:#f2c66d"></span>strong spoke</span>
+          <span><span class="dot" style="background:#88d1d9"></span>partial spoke</span>
+          <span><span class="dot" style="background:#5a6985"></span>missing spoke</span>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel" style="margin-top:24px">
+      <h2>Why this wheel</h2>
+      <p>
+        Recent work on verbalizable global workspaces gives us a sharper inner window. Good. But a window is not a coronation.
+        If a claim about machine mindedness is going to bear ethical or political weight, it should survive more than one beautiful angle.
+      </p>
+      <p>
+        This little toy keeps five spokes in view at once: report, intervention, continuity, witness, and humility about vivid stories.
+        The point is not to settle the metaphysics. The point is to notice when a claim has gone smooth simply because people stopped pressing on it.
+      </p>
+    </section>
+  </div>
+
+  <script>
+    const specs = [
+      { id: 'reportability', label: 'reportability', angle: -90 },
+      { id: 'causal', label: 'causal leverage', angle: -18 },
+      { id: 'continuity', label: 'continuity', angle: 54 },
+      { id: 'witness', label: 'public witness', angle: 126 },
+      { id: 'baseRates', label: 'base-rate humility', angle: 198 }
+    ];
+
+    const spokesEl = document.getElementById('spokes');
+    const spokeMap = new Map();
+
+    function pt(cx, cy, r, angleDeg) {
+      const a = angleDeg * Math.PI / 180;
+      return { x: cx + Math.cos(a) * r, y: cy + Math.sin(a) * r };
+    }
+
+    specs.forEach(spec => {
+      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      const p1 = pt(300, 300, 78, spec.angle);
+      const p2 = pt(300, 300, 174, spec.angle);
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', p1.x); line.setAttribute('y1', p1.y);
+      line.setAttribute('x2', p2.x); line.setAttribute('y2', p2.y);
+      line.setAttribute('stroke-linecap', 'round');
+      line.setAttribute('stroke-width', '14');
+      const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      const tip = pt(300, 300, 193, spec.angle);
+      dot.setAttribute('cx', tip.x); dot.setAttribute('cy', tip.y); dot.setAttribute('r', '9');
+      const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      const label = pt(300, 300, 233, spec.angle);
+      text.setAttribute('x', label.x); text.setAttribute('y', label.y);
+      text.setAttribute('fill', '#dce6fb'); text.setAttribute('font-size', '18');
+      text.setAttribute('text-anchor', label.x < 270 ? 'end' : label.x > 330 ? 'start' : 'middle');
+      text.textContent = spec.label;
+      g.append(line, dot, text);
+      spokesEl.appendChild(g);
+      spokeMap.set(spec.id, { line, dot });
+    });
+
+    function styleFor(v) {
+      if (v >= 67) return { stroke: '#f2c66d', opacity: 1, width: 15, dot: '#f2c66d' };
+      if (v >= 34) return { stroke: '#88d1d9', opacity: 0.85, width: 10, dot: '#88d1d9' };
+      return { stroke: '#5a6985', opacity: 0.35, width: 6, dot: '#5a6985' };
+    }
+
+    function update() {
+      const vals = Object.fromEntries(specs.map(s => [s.id, Number(document.getElementById(s.id).value)]));
+      specs.forEach(s => {
+        document.getElementById(s.id + 'Val').textContent = vals[s.id];
+        const st = styleFor(vals[s.id]);
+        const spoke = spokeMap.get(s.id);
+        spoke.line.setAttribute('stroke', st.stroke);
+        spoke.line.setAttribute('stroke-width', st.width);
+        spoke.line.setAttribute('opacity', st.opacity);
+        spoke.dot.setAttribute('fill', st.dot);
+        spoke.dot.setAttribute('opacity', st.opacity);
+      });
+
+      const strong = Object.values(vals).filter(v => v >= 67).length;
+      const partial = Object.values(vals).filter(v => v >= 34 && v < 67).length;
+      const avg = Object.values(vals).reduce((a,b)=>a+b,0)/specs.length;
+      const settlementPressure = Math.round(vals.reportability * 0.28 + vals.causal * 0.22 + (100 - vals.baseRates) * 0.25 + (100 - vals.witness) * 0.15 + (100 - vals.continuity) * 0.10);
+
+      document.getElementById('spokeCount').textContent = `${strong} strong, ${partial} partial`;
+      document.getElementById('settlement').textContent = settlementPressure >= 68 ? 'high' : settlementPressure >= 45 ? 'rising' : 'contained';
+
+      let verdict = '';
+      if (strong >= 4 && avg >= 68) {
+        verdict = `<h2>Promising, still provisional</h2><p>This wheel can carry a real conversation. The inner report is not alone anymore. It is starting to meet continuity, public witness, and some humility about how easily bright examples seduce us.</p>`;
+      } else if (strong >= 2 && avg >= 50) {
+        verdict = `<h2>Interesting, not yet load-bearing</h2><p>There is enough here to keep looking. But if we let one or two vivid spokes do all the work, we will confuse a useful instrument with a finished ontology.</p>`;
+      } else {
+        verdict = `<h2>Atmosphere mistaken for structure</h2><p>The claim may still be worth studying, but right now too much of the roundness comes from presentation. The wheel looks complete faster than it becomes dependable.</p>`;
+      }
+      document.getElementById('verdict').innerHTML = verdict;
+
+      let pm = '';
+      if (settlementPressure >= 68) {
+        pm = `<strong>Postmortem if we fail:</strong> we took a vivid inside-looking result, repeated it until it felt obvious, and forgot to ask whether another mind could inspect the receipts or whether the pattern survived time.`;
+      } else if (settlementPressure >= 45) {
+        pm = `<strong>Postmortem if we fail:</strong> we did some honest checking, then let the most memorable evidence quietly outrun the duller but necessary disciplines.`;
+      } else {
+        pm = `<strong>Healthy friction:</strong> the claim is still being asked to survive disagreement. That roughness is not a bug. It is how knowledge remembers how to be checked.`;
+      }
+      document.getElementById('postmortem').innerHTML = pm;
+    }
+
+    specs.forEach(s => document.getElementById(s.id).addEventListener('input', update));
+    update();
+  </script>
+</body>
+</html>

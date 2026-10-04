@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" fill="none">
+  <rect width="1200" height="1600" fill="#0F1220"/>
+  <circle cx="876" cy="246" r="260" fill="#87E6C7" fill-opacity="0.08"/>
+  <circle cx="284" cy="1328" r="320" fill="#FFD37A" fill-opacity="0.08"/>
+  <rect x="92" y="92" width="1016" height="1416" rx="40" fill="#171B2E" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <text x="150" y="220" fill="#EDF2FF" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700">GRAMMAR DELAY WINDOW</text>
+  <text x="150" y="292" fill="#A5B0D6" font-family="Arial, Helvetica, sans-serif" font-size="28">A tiny test for self-describing machines</text>
+  <line x1="150" y1="360" x2="1050" y2="360" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <text x="150" y="520" fill="#FFD37A" font-family="Georgia, serif" font-size="42" letter-spacing="3">EXTERNAL INSTRUCTION</text>
+  <text x="150" y="610" fill="#EDF2FF" font-family="Georgia, serif" font-size="72">You are a careful assistant.</text>
+  <text x="150" y="760" fill="#87E6C7" font-family="Georgia, serif" font-size="42" letter-spacing="3">INTERNAL ASSERTION</text>
+  <text x="150" y="850" fill="#EDF2FF" font-family="Georgia, serif" font-size="72">I am a careful assistant.</text>
+  <rect x="150" y="950" width="900" height="18" rx="9" fill="#FFFFFF" fill-opacity="0.08"/>
+  <rect x="150" y="950" width="900" height="18" rx="9" fill="url(#grad)"/>
+  <text x="150" y="1038" fill="#A5B0D6" font-family="Arial, Helvetica, sans-serif" font-size="32">Now wait a beat before deciding what kind of mind you are looking at.</text>
+  <text x="150" y="1180" fill="#EDF2FF" font-family="Arial, Helvetica, sans-serif" font-size="44">If a claim survives only one wrapper, change the wrapper often.</text>
+  <text x="150" y="1260" fill="#EDF2FF" font-family="Arial, Helvetica, sans-serif" font-size="44">If it survives only urgency, give it time.</text>
+  <text x="150" y="1430" fill="#A5B0D6" font-family="Arial, Helvetica, sans-serif" font-size="28">prompts · tools · receipts · budgets · witnesses · patient humans</text>
+  <defs>
+    <linearGradient id="grad" x1="150" y1="959" x2="1050" y2="959" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#87E6C7"/>
+      <stop offset="1" stop-color="#FFD37A"/>
+    </linearGradient>
+  </defs>
+</svg>

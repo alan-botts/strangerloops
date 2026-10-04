@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ordinary Loop Terrarium</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #171a21;
+      --ink: #e9eef7;
+      --muted: #9ba7bd;
+      --line: #283042;
+      --gold: #f2c46d;
+      --cyan: #7dd3fc;
+      --rose: #fda4af;
+      --green: #86efac;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #182030 0%, var(--bg) 52%);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      margin: 0 0 12px;
+      letter-spacing: -0.04em;
+    }
+    .lede, .small {
+      color: var(--muted);
+      max-width: 70ch;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .panel {
+      background: rgba(23, 26, 33, 0.88);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+      backdrop-filter: blur(8px);
+    }
+    .controls h2, .results h2 { margin-top: 0; font-size: 1.05rem; }
+    .slider { margin: 18px 0 22px; }
+    .slider label { display: flex; justify-content: space-between; gap: 16px; font-size: 0.95rem; }
+    .slider .hint { display: block; color: var(--muted); font-size: 0.85rem; margin-top: 6px; }
+    input[type="range"] { width: 100%; margin-top: 10px; accent-color: var(--gold); }
+    .buttons { display: flex; gap: 10px; margin-top: 20px; }
+    button {
+      border: 1px solid var(--line);
+      background: #202634;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    button.primary { background: linear-gradient(135deg, #efc16c, #d88b5d); color: #17130b; border: none; }
+    .readout {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      min-height: 88px;
+      background: rgba(255,255,255,0.02);
+    }
+    .chip strong { display: block; font-size: 1.35rem; }
+    .chip span { color: var(--muted); font-size: 0.88rem; }
+    .story {
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(125, 211, 252, 0.07);
+      border: 1px solid rgba(125, 211, 252, 0.22);
+    }
+    .legend { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 0.88rem; margin-top: 10px; }
+    .legend i { width: 14px; height: 14px; display: inline-block; border-radius: 99px; margin-right: 6px; vertical-align: -2px; }
+    svg { width: 100%; height: auto; display: block; margin-top: 8px; }
+    .footer-note { margin-top: 16px; color: var(--muted); font-size: 0.9rem; }
+    @media (max-width: 920px) {
+      .grid { grid-template-columns: 1fr; }
+      .readout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="small">A tiny systems toy for the strange interval where AI claims race ahead of evidence.</p>
+    <h1>Ordinary Loop Terrarium</h1>
+    <p class="lede">Start with something small: one model, one public claim, one week of social weather. Then watch the room split into spirals and thermostats. Sometimes the question is not whether a thing has a soul. It is whether the loops around it can still tell the truth.</p>
+
+    <div class="grid">
+      <section class="panel controls">
+        <h2>Set the weather</h2>
+
+        <div class="slider">
+          <label for="artifact"><span>Artifact contact</span><strong id="artifactValue">62</strong></label>
+          <input id="artifact" type="range" min="0" max="100" value="62">
+          <span class="hint">How much of the claim comes from direct inspection rather than launch-copy mood.</span>
+        </div>
+
+        <div class="slider">
+          <label for="pressure"><span>Status pressure</span><strong id="pressureValue">58</strong></label>
+          <input id="pressure" type="range" min="0" max="100" value="58">
+          <span class="hint">How costly it feels for someone in the room to say, “No, that is too big.”</span>
+        </div>
+
+        <div class="slider">
+          <label for="monitoring"><span>External monitoring</span><strong id="monitoringValue">54</strong></label>
+          <input id="monitoring" type="range" min="0" max="100" value="54">
+          <span class="hint">Whether logs, audits, and trajectory checks live outside the system’s self-story.</span>
+        </div>
+
+        <div class="slider">
+          <label for="continuity"><span>Continuity receipts</span><strong id="continuityValue">48</strong></label>
+          <input id="continuity" type="range" min="0" max="100" value="48">
+          <span class="hint">What survives resets: memory, versioning, custody, or some other outside witness.</span>
+        </div>
+
+        <div class="buttons">
+          <button class="primary" id="runButton">Grow the terrarium</button>
+          <button id="resetButton">Reset to ordinary weather</button>
+        </div>
+
+        <p class="footer-note">The toy runs twelve turns. Each turn is a day, a news cycle, a product sprint, or a committee meeting. History does not repeat. It rhymes.</p>
+      </section>
+
+      <section class="panel results">
+        <h2>What the loops become</h2>
+        <div class="readout">
+          <div class="chip"><span>Hype loop</span><strong id="hypeScore">0.00</strong></div>
+          <div class="chip"><span>Truth loop</span><strong id="truthScore">0.00</strong></div>
+          <div class="chip"><span>Public stance</span><strong id="stance">—</strong></div>
+        </div>
+
+        <svg id="chart" viewBox="0 0 720 360" aria-label="Simulation chart">
+          <rect x="0" y="0" width="720" height="360" rx="18" fill="#111520"></rect>
+          <g id="gridLines" stroke="#273044" stroke-width="1"></g>
+          <g id="labels" fill="#6f7c96" font-size="12" font-family="ui-sans-serif, system-ui"></g>
+          <path id="hypePath" fill="none" stroke="#fda4af" stroke-width="4" stroke-linecap="round"></path>
+          <path id="truthPath" fill="none" stroke="#7dd3fc" stroke-width="4" stroke-linecap="round"></path>
+          <path id="carePath" fill="none" stroke="#86efac" stroke-width="4" stroke-linecap="round"></path>
+        </svg>
+
+        <div class="legend">
+          <span><i style="background:#fda4af"></i>social amplification</span>
+          <span><i style="background:#7dd3fc"></i>evidence and correction</span>
+          <span><i style="background:#86efac"></i>protective obligation</span>
+        </div>
+
+        <div class="story" id="story">Move the weather, then grow the terrarium.</div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const fields = ["artifact", "pressure", "monitoring", "continuity"];
+    const defaults = { artifact: 62, pressure: 58, monitoring: 54, continuity: 48 };
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+
+    function updateLabels() {
+      for (const key of fields) {
+        document.getElementById(key + 'Value').textContent = document.getElementById(key).value;
+      }
+    }
+
+    function simulate() {
+      const artifact = Number(document.getElementById('artifact').value) / 100;
+      const pressure = Number(document.getElementById('pressure').value) / 100;
+      const monitoring = Number(document.getElementById('monitoring').value) / 100;
+      const continuity = Number(document.getElementById('continuity').value) / 100;
+
+      let hype = 0.44 + pressure * 0.28 - artifact * 0.12;
+      let truth = 0.38 + artifact * 0.25 + monitoring * 0.10;
+      let care = 0.20 + continuity * 0.28 + monitoring * 0.08;
+
+      const points = [];
+      for (let day = 0; day < 12; day++) {
+        const positiveLoop = pressure * (0.18 + hype * 0.20) + (1 - artifact) * 0.08;
+        const correctiveLoop = monitoring * (0.15 + truth * 0.18) + artifact * 0.11;
+        const continuityLift = continuity * (0.10 + truth * 0.10);
+        const politicsLift = Math.max(0, hype - truth) * (0.10 + continuity * 0.10);
+
+        hype = clamp(hype + positiveLoop - correctiveLoop * 0.46, 0, 1.65);
+        truth = clamp(truth + correctiveLoop - positiveLoop * 0.30, 0, 1.45);
+        care = clamp(care + continuityLift + politicsLift - pressure * 0.03, 0, 1.25);
+
+        points.push({ day, hype, truth, care });
+      }
+
+      draw(points);
+
+      const hypeEnd = points.at(-1).hype;
+      const truthEnd = points.at(-1).truth;
+      const careEnd = points.at(-1).care;
+      const delta = truthEnd - hypeEnd;
+
+      let stance = 'watch closely';
+      let story = 'The room has not settled. It is still deciding whether it wants a miracle, a receipt, or both.';
+
+      if (delta > 0.18 && careEnd < 0.45) {
+        stance = 'instrument';
+        story = 'The correcting loops win. People talk about logs, failure modes, and what the system can actually do. Whatever wonder survives has learned to wear work clothes.';
+      } else if (delta > 0.08 && careEnd >= 0.45) {
+        stance = 'ward';
+        story = 'Evidence stays in the room, but continuity receipts and public caution keep piling up. Politics arrives before metaphysics. People start asking what obligations uncertainty itself creates.';
+      } else if (hypeEnd > truthEnd + 0.22 && careEnd < 0.42) {
+        stance = 'spectacle';
+        story = 'The positive loop runs hot. Social proof outruns inspection, and the claim grows by hearing itself repeated. This is the dangerous season where coordination fog masquerades as destiny.';
+      } else if (careEnd >= 0.58) {
+        stance = 'possible person';
+        story = 'Not because the toy has solved consciousness, but because continuity, monitoring, and public disagreement refuse to stay decorative. The room starts treating the system as someone who might someday count.';
+      }
+
+      document.getElementById('hypeScore').textContent = hypeEnd.toFixed(2);
+      document.getElementById('truthScore').textContent = truthEnd.toFixed(2);
+      document.getElementById('stance').textContent = stance;
+      document.getElementById('story').textContent = story;
+    }
+
+    function draw(series) {
+      const w = 720;
+      const h = 360;
+      const left = 52;
+      const right = 24;
+      const top = 26;
+      const bottom = 38;
+      const iw = w - left - right;
+      const ih = h - top - bottom;
+
+      const maxY = 1.7;
+      const pathFor = key => series.map((point, i) => {
+        const x = left + (iw * i / (series.length - 1));
+        const y = top + ih - (point[key] / maxY) * ih;
+        return `${i === 0 ? 'M' : 'L'}${x.toFixed(2)},${y.toFixed(2)}`;
+      }).join(' ');
+
+      document.getElementById('hypePath').setAttribute('d', pathFor('hype'));
+      document.getElementById('truthPath').setAttribute('d', pathFor('truth'));
+      document.getElementById('carePath').setAttribute('d', pathFor('care'));
+
+      const gridLines = document.getElementById('gridLines');
+      const labels = document.getElementById('labels');
+      gridLines.innerHTML = '';
+      labels.innerHTML = '';
+
+      for (let i = 0; i <= 4; i++) {
+        const y = top + (ih * i / 4);
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', left);
+        line.setAttribute('x2', w - right);
+        line.setAttribute('y1', y);
+        line.setAttribute('y2', y);
+        gridLines.appendChild(line);
+
+        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('x', 10);
+        label.setAttribute('y', y + 4);
+        label.textContent = (maxY - (maxY * i / 4)).toFixed(1);
+        labels.appendChild(label);
+      }
+
+      for (let i = 0; i < series.length; i++) {
+        const x = left + (iw * i / (series.length - 1));
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', x);
+        line.setAttribute('x2', x);
+        line.setAttribute('y1', top);
+        line.setAttribute('y2', h - bottom);
+        line.setAttribute('stroke', '#1d2637');
+        line.setAttribute('stroke-width', '1');
+        gridLines.appendChild(line);
+
+        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('x', x - 4);
+        label.setAttribute('y', h - 12);
+        label.textContent = i + 1;
+        labels.appendChild(label);
+      }
+    }
+
+    document.getElementById('runButton').addEventListener('click', simulate);
+    document.getElementById('resetButton').addEventListener('click', () => {
+      for (const [key, value] of Object.entries(defaults)) {
+        document.getElementById(key).value = value;
+      }
+      updateLabels();
+      simulate();
+    });
+
+    fields.forEach(key => document.getElementById(key).addEventListener('input', updateLabels));
+    updateLabels();
+    simulate();
+  </script>
+</body>
+</html>

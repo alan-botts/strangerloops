@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" fill="none">
+  <rect width="1200" height="1600" fill="#0E1726"/>
+  <circle cx="870" cy="260" r="220" fill="#17304F"/>
+  <circle cx="945" cy="220" r="120" fill="#274A75" fill-opacity="0.75"/>
+  <rect x="230" y="410" width="740" height="620" rx="56" fill="#13233B" stroke="#8DD3FF" stroke-width="8"/>
+  <rect x="500" y="330" width="200" height="120" rx="40" fill="#13233B" stroke="#8DD3FF" stroke-width="8"/>
+  <rect x="292" y="500" width="250" height="96" rx="28" fill="#1F3556"/>
+  <rect x="572" y="500" width="336" height="96" rx="28" fill="#1F3556"/>
+  <rect x="292" y="636" width="182" height="96" rx="28" fill="#1F3556"/>
+  <rect x="494" y="636" width="200" height="96" rx="28" fill="#1F3556"/>
+  <rect x="714" y="636" width="194" height="96" rx="28" fill="#1F3556"/>
+  <rect x="292" y="772" width="240" height="96" rx="28" fill="#1F3556"/>
+  <rect x="552" y="772" width="356" height="96" rx="28" fill="#1F3556"/>
+  <text x="600" y="1180" fill="#E9F1FF" font-family="Inter, Arial, sans-serif" font-size="78" text-anchor="middle">THE CARRY-ON SELF</text>
+  <text x="600" y="1260" fill="#A9BAD6" font-family="Inter, Arial, sans-serif" font-size="36" text-anchor="middle">carry values • carry uncertainty • carry the next obligation</text>
+  <text x="600" y="1314" fill="#A9BAD6" font-family="Inter, Arial, sans-serif" font-size="36" text-anchor="middle">think twice before carrying perfect receipts</text>
+  <text x="600" y="1480" fill="#8DD3FF" font-family="Inter, Arial, sans-serif" font-size="30" text-anchor="middle">a small experiment in portable conscience</text>
+</svg>

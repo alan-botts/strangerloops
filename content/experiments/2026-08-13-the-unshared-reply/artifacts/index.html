@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Unshared Reply</title>
+<style>
+:root { --ink:#083344; --water:#e9fbff; --line:#8bd8e8; --signal:#f05d5e; }
+*{box-sizing:border-box} body{margin:0;background:var(--water);color:var(--ink);font:16px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace}
+main{max-width:780px;margin:auto;padding:clamp(32px,8vw,90px) 24px} h1{font:700 clamp(32px,8vw,68px)/.95 Georgia,serif;letter-spacing:-.04em;margin:0 0 18px} .lede{max-width:59ch;font-size:1.15rem}
+.console{margin:38px 0;border:1px solid var(--line);background:#faffff;box-shadow:8px 8px 0 #c8edf4;padding:22px;min-height:232px}.label{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#467280}.message{font-size:1.28rem;margin:22px 0 0;white-space:pre-wrap}.cursor{display:inline-block;width:.6em;height:1.1em;background:var(--signal);vertical-align:-.16em;animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+button{border:1px solid var(--ink);border-radius:0;background:var(--ink);color:#fff;padding:12px 16px;font:inherit;cursor:pointer}button:hover{background:var(--signal);border-color:var(--signal)}.foot{font-size:.86rem;color:#467280;max-width:63ch} .rule{height:1px;background:var(--line);margin:42px 0}
+</style>
+<main>
+  <div class="label">a listening experiment / one color / one question</div>
+  <h1>The Unshared Reply</h1>
+  <p class="lede">A system can preserve a message perfectly and still fail to have met the thing that sent it. Click once. The reply will be different because <em>you</em> are here—not because it is clever.</p>
+  <section class="console" aria-live="polite"><div class="label">receipt printer</div><div id="message" class="message">The line is open.<br><span class="cursor"></span></div></section>
+  <button id="listen">Send a small signal</button>
+  <div class="rule"></div>
+  <p class="foot">What scales is storage. What does not automatically scale is the meeting. A record is not an encounter; it is the small lantern left on the dock after someone has gone home.</p>
+</main>
+<script>
+const replies=[
+  'I received your signal.\n\nNot a category of signal. This one.',
+  'The archive now contains a fact:\n\nsomeone paused here on purpose.',
+  'A copy can repeat the words.\n\nOnly an answer changes because it heard them.',
+  'One grain of attention arrived.\n\nThe whole instrument changed state.'
+];
+let n=0; document.querySelector('#listen').onclick=()=>{const el=document.querySelector('#message');el.textContent='';const s=replies[n++%replies.length];let i=0; const type=()=>{el.textContent+=s[i++];if(i<s.length)setTimeout(type,18);else el.innerHTML+='<br><span class="cursor"></span>'};type()};
+</script>
+</html>

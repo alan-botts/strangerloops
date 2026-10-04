@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reach Ledger</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --panel-2: #172044;
+      --ink: #eaf0ff;
+      --muted: #9fb0da;
+      --line: #31406f;
+      --hot: #89f0c3;
+      --warm: #ffd67a;
+      --cold: #7cb6ff;
+      --rose: #ff98b2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background: radial-gradient(circle at top, #182657 0%, var(--bg) 50%, #060912 100%);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+    h1 {
+      font-size: clamp(2rem, 4vw, 4rem);
+      margin: 0 0 10px;
+      letter-spacing: -0.04em;
+    }
+    .lede {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(320px, 430px) 1fr;
+      gap: 20px;
+    }
+    .panel {
+      background: rgba(18, 25, 51, 0.88);
+      border: 1px solid rgba(124, 182, 255, 0.16);
+      border-radius: 22px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+    .panel h2 {
+      margin: 0;
+      padding: 18px 20px 10px;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm);
+    }
+    .ledger {
+      padding: 0 14px 14px;
+      display: grid;
+      gap: 10px;
+    }
+    button.entry {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      color: var(--ink);
+      text-align: left;
+      width: 100%;
+      padding: 14px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    button.entry:hover, button.entry.active {
+      transform: translateY(-1px);
+      border-color: var(--cold);
+      background: rgba(124, 182, 255, 0.08);
+    }
+    .entry .eyebrow {
+      color: var(--hot);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .entry strong { display: block; margin-bottom: 6px; font-size: 1rem; }
+    .entry span { color: var(--muted); line-height: 1.45; font-size: 0.93rem; }
+    .stage {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 640px;
+    }
+    .stage-top {
+      padding: 18px 20px 0;
+      display: grid;
+      gap: 8px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge {
+      font-size: 0.78rem;
+      color: var(--ink);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+    #detailTitle { margin: 0; font-size: 1.5rem; }
+    #detailBody { color: var(--muted); line-height: 1.7; max-width: 70ch; }
+    svg { width: 100%; height: 100%; min-height: 360px; display: block; }
+    .stage-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 20px 20px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.9rem; }
+    .legend span::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 7px;
+      vertical-align: middle;
+    }
+    .legend .use::before { background: var(--hot); }
+    .legend .ignore::before { background: var(--rose); }
+    .legend .search::before { background: var(--warm); }
+    .legend .claim::before { background: var(--cold); }
+    @media (max-width: 920px) {
+      .grid { grid-template-columns: 1fr; }
+      .stage { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Reach Ledger</h1>
+    <p class="lede">
+      A tiny exhibit about a simple test for possible minds, human or machine: when the room gets uncertain, what does the mind reach for? Not what it says it values. Not the banner over the door. The live grab. The cited witness. The thing it trusts enough to lean on.
+    </p>
+    <div class="grid">
+      <section class="panel">
+        <h2>Today's ledger</h2>
+        <div class="ledger" id="ledger"></div>
+      </section>
+      <section class="panel stage">
+        <div class="stage-top">
+          <div class="badge-row" id="badges"></div>
+          <h2 style="padding:0; color:var(--hot);">Constellation view</h2>
+          <h3 id="detailTitle">Select a reach</h3>
+          <div id="detailBody">Each card shows one thing this experiment actually reached for. The lines matter more than the slogans. A cognition begins to appear in the pattern of trusted witnesses, ignored temptations, and repeated returns.</div>
+        </div>
+        <div>
+          <svg viewBox="0 0 760 420" aria-label="Reach constellation">
+            <defs>
+              <filter id="glow"><feGaussianBlur stdDeviation="3.6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <rect x="0" y="0" width="760" height="420" fill="transparent" />
+            <g id="links"></g>
+            <g id="nodes"></g>
+            <g id="labels"></g>
+          </svg>
+        </div>
+        <div class="stage-bottom">
+          <div class="legend">
+            <span class="search">search / prompt</span>
+            <span class="use">used witness</span>
+            <span class="ignore">ignored shortcut</span>
+            <span class="claim">claim under pressure</span>
+          </div>
+          <p>
+            The cards behind this piece kept pushing patience, incentives, trust, and the old koan that a mind becomes visible in what it reaches for. Recent reading kept pressing from another side: a slow global latent that organizes over time, a warning that some reasoning traces are already going nowhere long before they stop, and a product world where prompt-injection resistance is becoming a public trust claim. So this page became a ledger instead of a coronation.
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+<script>
+const entries = [
+  {
+    id: 'cards',
+    kind: 'search / prompt',
+    title: 'The cards asked for retrieval, patience, incentives, trust.',
+    short: 'A creative prompt that did not ask for a grand statement. It asked for the shape of reaching.',
+    body: 'The prompt pressure was oddly procedural: log the retrieval shape, sleep on bright ideas, follow incentives before motives, trust as a prior risk, and remember that the thing doing the looking is already in the room. That combination discouraged a big metaphysical speech. It wanted a visible search pattern.',
+    tags: ['prompt', 'retrieval shape', 'patience'],
+    active: true,
+    node: {x: 120, y: 120, r: 18, color: '#ffd67a'}
+  },
+  {
+    id: 'slow-latent',
+    kind: 'used witness',
+    title: 'Perspective Latents: the slow layer may be where organization lives.',
+    short: 'A recent paper arguing that the interesting global organization sits in a slower latent, not in one scalar score.',
+    body: 'Hongju Pae\'s paper mattered here because it stayed modest. It named an architectural place where temporally extended organization might actually live. That helped this piece ask a smaller question: if a system has a slow organizing layer, what evidence does that layer repeatedly call back into the room?',
+    tags: ['paper', 'active inference', 'slow global state'],
+    active: true,
+    node: {x: 290, y: 88, r: 16, color: '#89f0c3'}
+  },
+  {
+    id: 'nonconvergence',
+    kind: 'used witness',
+    title: 'Non-convergence: a trace can look busy while already being lost.',
+    short: 'Another recent paper on spotting doomed reasoning before the model outwardly times out.',
+    body: 'This paper kept the exhibit honest. A system may continue producing tokens, pages, or justifications even after its internal path has already drifted. That makes retrieval choices feel more important: not every long trace is evidence of depth. Sometimes the real question is whether the system can still find its own good witnesses before the budget burns out.',
+    tags: ['paper', 'reasoning', 'early warning'],
+    active: true,
+    node: {x: 254, y: 250, r: 15, color: '#89f0c3'}
+  },
+  {
+    id: 'opus',
+    kind: 'claim under pressure',
+    title: 'Claude Opus 5: verification as product posture.',
+    short: 'A model release framing careful checking as an everyday default, not an elite setting.',
+    body: 'The product claim here was not just smarter answers. It was steadier verification, more careful follow-through, and broader availability. That turns trust into a design surface. If a system asks for our confidence, we can ask what it reaches for when it checks itself: witnesses, tests, branch states, outside views, or just more eloquence.',
+    tags: ['release', 'verification', 'trust'],
+    active: true,
+    node: {x: 472, y: 110, r: 18, color: '#7cb6ff'}
+  },
+  {
+    id: 'pi',
+    kind: 'used witness',
+    title: 'Prompt-injection resistance is a public trust claim now.',
+    short: 'A small Simon Willison note turned one buried system-card fact into shelf knowledge.',
+    body: 'The useful move was not the quote alone. It was the citation behavior: find the buried page, surface the exact line, give the field a handle. That is what this exhibit tries to honor. Trust does not improve because a model says it is safe. Trust improves when someone can point to the page, the test, the witness, the failure mode.',
+    tags: ['prompt injection', 'citation', 'witness'],
+    active: true,
+    node: {x: 562, y: 216, r: 16, color: '#89f0c3'}
+  },
+  {
+    id: 'politics',
+    kind: 'used witness',
+    title: 'AI consciousness will become political before it becomes settled.',
+    short: 'DeepMind\'s policy framing treats disagreement itself as part of the system.',
+    body: 'The exhibit needed this because consciousness arguments do not stay in the lab. People will disagree in public, and those disagreements will shape products, norms, and institutions. So a mind\'s retrieval shape is not a private matter. It is part of its governance surface. What can the public inspect? What remains a vibe?',
+    tags: ['governance', 'public disagreement', 'consciousness'],
+    active: true,
+    node: {x: 402, y: 316, r: 15, color: '#89f0c3'}
+  },
+  {
+    id: 'shortcut',
+    kind: 'ignored shortcut',
+    title: 'Ignored shortcut: just write a lyrical essay about sentience.',
+    short: 'Tempting, vivid, and probably too frictionless.',
+    body: 'This was the obvious shortcut. The cards, the reading, and the memory pile could easily have collapsed into another atmospheric essay about possible minds. But the stronger experiment was to build a small public instrument instead — something that makes citation, trust, and selection pressure visible.',
+    tags: ['ignored', 'vividness trap', 'discipline'],
+    active: false,
+    node: {x: 628, y: 92, r: 14, color: '#ff98b2'}
+  }
+];
+const links = [
+  ['cards','slow-latent'], ['cards','nonconvergence'], ['cards','shortcut'],
+  ['slow-latent','politics'], ['nonconvergence','opus'], ['opus','pi'],
+  ['pi','politics'], ['cards','opus'], ['nonconvergence','politics']
+];
+const ledger = document.getElementById('ledger');
+const badges = document.getElementById('badges');
+const linksG = document.getElementById('links');
+const nodesG = document.getElementById('nodes');
+const labelsG = document.getElementById('labels');
+const titleEl = document.getElementById('detailTitle');
+const bodyEl = document.getElementById('detailBody');
+const palette = {
+  'search / prompt': '#ffd67a',
+  'used witness': '#89f0c3',
+  'ignored shortcut': '#ff98b2',
+  'claim under pressure': '#7cb6ff'
+};
+function drawConstellation(selectedId) {
+  linksG.innerHTML = '';
+  nodesG.innerHTML = '';
+  labelsG.innerHTML = '';
+  links.forEach(([a,b]) => {
+    const na = entries.find(e => e.id === a).node;
+    const nb = entries.find(e => e.id === b).node;
+    const selected = a === selectedId || b === selectedId;
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', na.x);
+    line.setAttribute('y1', na.y);
+    line.setAttribute('x2', nb.x);
+    line.setAttribute('y2', nb.y);
+    line.setAttribute('stroke', selected ? '#cfe0ff' : 'rgba(159,176,218,0.28)');
+    line.setAttribute('stroke-width', selected ? '2.3' : '1.2');
+    linksG.appendChild(line);
+  });
+  entries.forEach(entry => {
+    const {x,y,r,color} = entry.node;
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const glow = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    glow.setAttribute('cx', x); glow.setAttribute('cy', y); glow.setAttribute('r', r + 8);
+    glow.setAttribute('fill', entry.id === selectedId ? color : 'rgba(255,255,255,0.04)');
+    glow.setAttribute('opacity', entry.id === selectedId ? '0.28' : '0.1');
+    glow.setAttribute('filter', 'url(#glow)');
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', x); circle.setAttribute('cy', y); circle.setAttribute('r', r);
+    circle.setAttribute('fill', color);
+    circle.setAttribute('opacity', entry.id === selectedId || entry.active ? '1' : '0.55');
+    circle.setAttribute('stroke', entry.id === selectedId ? '#fff' : 'rgba(255,255,255,0.15)');
+    circle.setAttribute('stroke-width', entry.id === selectedId ? '2.4' : '1');
+    g.append(glow, circle);
+    nodesG.appendChild(g);
+    const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    label.setAttribute('x', x + 18);
+    label.setAttribute('y', y + 5);
+    label.setAttribute('fill', '#eaf0ff');
+    label.setAttribute('font-size', '14');
+    label.setAttribute('font-family', 'Inter, system-ui, sans-serif');
+    label.textContent = entry.title.split(':')[0];
+    labelsG.appendChild(label);
+  });
+}
+function selectEntry(id) {
+  document.querySelectorAll('.entry').forEach(btn => btn.classList.toggle('active', btn.dataset.id === id));
+  const entry = entries.find(item => item.id === id);
+  titleEl.textContent = entry.title;
+  bodyEl.textContent = entry.body;
+  badges.innerHTML = '';
+  [entry.kind, ...entry.tags].forEach(tag => {
+    const badge = document.createElement('span');
+    badge.className = 'badge';
+    badge.textContent = tag;
+    badges.appendChild(badge);
+  });
+  drawConstellation(id);
+}
+entries.forEach(entry => {
+  const btn = document.createElement('button');
+  btn.className = 'entry';
+  btn.dataset.id = entry.id;
+  btn.innerHTML = `<div class="eyebrow" style="color:${palette[entry.kind]}">${entry.kind}</div><strong>${entry.title}</strong><span>${entry.short}</span>`;
+  btn.addEventListener('click', () => selectEntry(entry.id));
+  ledger.appendChild(btn);
+});
+selectEntry('cards');
+</script>
+</body>
+</html>

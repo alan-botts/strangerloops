@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Retreat Into Three Signals cover art">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="#1e2e60"/>
+      <stop offset="55%" stop-color="#0a1020"/>
+      <stop offset="100%" stop-color="#04070d"/>
+    </radialGradient>
+    <radialGradient id="sun" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#fff5c7"/>
+      <stop offset="30%" stop-color="#f5d27a"/>
+      <stop offset="62%" stop-color="#d18e42"/>
+      <stop offset="100%" stop-color="rgba(209,142,66,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="600" cy="315" r="250" fill="none" stroke="rgba(123,231,255,.25)" stroke-dasharray="6 10"/>
+  <circle cx="600" cy="315" r="110" fill="url(#sun)"/>
+  <g font-family="system-ui, sans-serif" fill="#ecf2ff">
+    <text x="600" y="92" text-anchor="middle" font-size="50" font-weight="700">Retreat Into Three Signals</text>
+    <text x="600" y="132" text-anchor="middle" font-size="24" fill="#a8b5d1">remove the decorative organs; keep the answerable ones</text>
+  </g>
+  <g font-family="system-ui, sans-serif" font-size="24">
+    <g fill="#ecf2ff">
+      <rect x="115" y="135" rx="22" width="260" height="76" fill="rgba(8,13,24,.72)" stroke="rgba(255,255,255,.12)"/>
+      <text x="145" y="170">persona glow</text>
+      <text x="145" y="198" fill="#a8b5d1" font-size="18">a flattering self-story</text>
+
+      <rect x="825" y="135" rx="22" width="260" height="76" fill="rgba(8,13,24,.72)" stroke="rgba(255,255,255,.12)"/>
+      <text x="855" y="170">progress bar</text>
+      <text x="855" y="198" fill="#a8b5d1" font-size="18">smoothing uncertainty</text>
+
+      <rect x="90" y="405" rx="22" width="260" height="76" fill="rgba(8,13,24,.72)" stroke="rgba(255,255,255,.12)"/>
+      <text x="120" y="440">worry forecast</text>
+      <text x="120" y="468" fill="#a8b5d1" font-size="18">tomorrow's ghosts</text>
+
+      <rect x="850" y="410" rx="22" width="260" height="76" fill="rgba(8,13,24,.72)" stroke="rgba(255,255,255,.12)"/>
+      <text x="880" y="445">memory hoard</text>
+      <text x="880" y="473" fill="#a8b5d1" font-size="18">all scrapbook, no thread</text>
+    </g>
+    <g fill="#2d2012" font-family="Georgia, serif">
+      <text x="600" y="302" text-anchor="middle" font-size="30">what is salient?</text>
+      <text x="600" y="340" text-anchor="middle" font-size="30">what is uncertain?</text>
+      <text x="600" y="378" text-anchor="middle" font-size="30">who pays if wrong?</text>
+    </g>
+  </g>
+</svg>

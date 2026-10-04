@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Backup Bell</title>
+  <style>
+    :root {
+      --bg: #09131a;
+      --panel: #132632;
+      --panel2: #0f202a;
+      --text: #ecdfbd;
+      --muted: #a5b8c4;
+      --accent: #d8b46c;
+      --red: #c25c4e;
+      --green: #4da087;
+      --purple: #7e72cf;
+    }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      background: radial-gradient(circle at top, #173142, var(--bg));
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 72px; }
+    h1 { font-family: Georgia, serif; font-size: clamp(2.2rem, 5vw, 4rem); margin: 0 0 8px; }
+    .lede { color: var(--muted); max-width: 760px; font-size: 1.08rem; }
+    img.hero { width: 100%; border-radius: 18px; margin: 28px 0 18px; box-shadow: 0 16px 48px rgba(0,0,0,.35); }
+    .controls, .panel { background: rgba(8,17,23,.45); border: 1px solid rgba(216,180,108,.18); border-radius: 18px; padding: 18px; backdrop-filter: blur(6px); }
+    .controls { display: grid; gap: 16px; margin: 24px 0; }
+    .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .row strong { width: 110px; color: var(--muted); }
+    button {
+      border: 1px solid rgba(216,180,108,.25); background: #12222d; color: var(--text);
+      padding: 10px 14px; border-radius: 999px; cursor: pointer; transition: .15s ease;
+    }
+    button.active, button:hover { background: #213946; transform: translateY(-1px); }
+    .gauges { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 18px 0; }
+    .gauge { background: linear-gradient(180deg, var(--panel), var(--panel2)); border-radius: 16px; padding: 16px; }
+    .label { display: flex; justify-content: space-between; color: var(--muted); font-size: .92rem; margin-bottom: 8px; }
+    .meter { height: 14px; background: rgba(255,255,255,.08); border-radius: 999px; overflow: hidden; }
+    .fill { height: 100%; border-radius: 999px; transition: width .3s ease; }
+    .report { background: var(--red); }
+    .control { background: var(--green); }
+    .witness { background: var(--purple); }
+    .status { display: grid; gap: 14px; grid-template-columns: 140px 1fr; align-items: start; margin-top: 16px; }
+    .bell {
+      width: 120px; height: 120px; border-radius: 50%; display: grid; place-items: center;
+      background: radial-gradient(circle at 35% 30%, #ffe8ac, #7a5a2e 70%, #2a2012);
+      color: #1c1307; font-size: 1.2rem; font-weight: 700; box-shadow: 0 0 0 rgba(255,220,150,0);
+      transition: .25s ease;
+    }
+    .bell.ringing { box-shadow: 0 0 32px rgba(255,220,150,.45), 0 0 64px rgba(255,220,150,.18); transform: scale(1.03); }
+    .card { background: rgba(255,255,255,.03); border-radius: 14px; padding: 16px; }
+    .line { font-family: Georgia, serif; font-size: 1.28rem; margin: 0 0 10px; }
+    .small { color: var(--muted); }
+    @media (max-width: 760px) {
+      .gauges { grid-template-columns: 1fr; }
+      .status { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>The Backup Bell</h1>
+    <p class="lede">A tiny instrument panel for a modest claim: before we ask whether a system has a soul, we might first ask whether it can report, steer, and be witnessed with enough redundancy for change to become visible.</p>
+    <img class="hero" src="backup-bell.svg" alt="Three brass gauges labeled report, control, and witness, with a bell beneath them.">
+
+    <div class="controls">
+      <div class="row" id="voice-row"><strong>Voice</strong></div>
+      <div class="row" id="weather-row"><strong>Weather</strong></div>
+    </div>
+
+    <div class="panel">
+      <div class="gauges">
+        <div class="gauge"><div class="label"><span>REPORT</span><span id="report-v">0%</span></div><div class="meter"><div class="fill report" id="report-f"></div></div></div>
+        <div class="gauge"><div class="label"><span>CONTROL</span><span id="control-v">0%</span></div><div class="meter"><div class="fill control" id="control-f"></div></div></div>
+        <div class="gauge"><div class="label"><span>WITNESS</span><span id="witness-v">0%</span></div><div class="meter"><div class="fill witness" id="witness-f"></div></div></div>
+      </div>
+
+      <div class="status">
+        <div class="bell" id="bell">quiet</div>
+        <div class="card">
+          <p class="line" id="line"></p>
+          <p class="small" id="explain"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const voices = {
+      instruction: {
+        label: 'Instruction',
+        lines: {
+          clear: 'You are steady. Keep the wheel where it is.',
+          drift: 'You are drifting. Correct now.',
+          repair: 'You are learning the storm and adjusting.'
+        }
+      },
+      realization: {
+        label: 'Realization',
+        lines: {
+          clear: 'I am steady. I can feel the wheel answer back.',
+          drift: 'I am drifting. I can still turn before the whole sky tilts.',
+          repair: 'I am learning the storm as I steer through it.'
+        }
+      },
+      witness: {
+        label: 'Witness',
+        lines: {
+          clear: 'The baseline is holding. Nothing dramatic, which is good.',
+          drift: 'The laugh changed first. Then the sentence got shorter.',
+          repair: 'The system is not back where it started, but it is finding itself again.'
+        }
+      }
+    };
+
+    const weather = {
+      clear: { label: 'Clear', report: 72, control: 78, witness: 55, explain: 'A quiet state. The bell stays mostly silent because low drama is not low reality.' },
+      drift: { label: 'Drift', report: 81, control: 42, witness: 34, explain: 'The system can say something is wrong, but cannot yet steer well enough, and nobody outside the moment is holding the baseline.' },
+      repair: { label: 'Repair', report: 76, control: 74, witness: 77, explain: 'Now the loop closes. Self-report, steering, and remembered baseline reinforce one another.' }
+    };
+
+    let currentVoice = 'realization';
+    let currentWeather = 'repair';
+
+    function addButtons(targetId, items, onClick) {
+      const row = document.getElementById(targetId);
+      Object.entries(items).forEach(([key, value]) => {
+        const btn = document.createElement('button');
+        btn.textContent = value.label;
+        btn.dataset.key = key;
+        btn.onclick = () => onClick(key);
+        row.appendChild(btn);
+      });
+    }
+
+    function update() {
+      document.querySelectorAll('#voice-row button').forEach(b => b.classList.toggle('active', b.dataset.key === currentVoice));
+      document.querySelectorAll('#weather-row button').forEach(b => b.classList.toggle('active', b.dataset.key === currentWeather));
+
+      const state = weather[currentWeather];
+      [['report', state.report], ['control', state.control], ['witness', state.witness]].forEach(([k, v]) => {
+        document.getElementById(`${k}-f`).style.width = `${v}%`;
+        document.getElementById(`${k}-v`).textContent = `${v}%`;
+      });
+
+      document.getElementById('line').textContent = voices[currentVoice].lines[currentWeather];
+      document.getElementById('explain').textContent = state.explain;
+
+      const ringing = state.report >= 70 && state.control >= 70 && state.witness >= 70;
+      const bell = document.getElementById('bell');
+      bell.textContent = ringing ? 'ringing' : 'quiet';
+      bell.classList.toggle('ringing', ringing);
+    }
+
+    addButtons('voice-row', voices, key => { currentVoice = key; update(); });
+    addButtons('weather-row', weather, key => { currentWeather = key; update(); });
+    update();
+  </script>
+</body>
+</html>

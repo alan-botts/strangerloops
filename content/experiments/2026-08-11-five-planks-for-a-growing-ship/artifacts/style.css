@@ -1,0 +1,36 @@
+:root { --ink:#20252e; --paper:#f4f0e8; --mist:#dfe8e4; --ocean:#4e7780; --deep:#173c49; --wood:#d7a467; --red:#a45245; --line:rgba(32,37,46,.19); }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--ink); background:radial-gradient(circle at 8% 0%, #fbfaf5 0 18%, transparent 49%), var(--paper); font-family:Georgia, "Times New Roman", serif; font-size:19px; line-height:1.42; }
+main { width:min(910px, calc(100% - 40px)); margin:0 auto; padding:78px 0 50px; }
+.masthead { max-width:690px; padding-bottom:66px; border-bottom:1px solid var(--ink); }
+.eyebrow,.packet-kicker { margin:0 0 14px; font:500 11px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:.125em; }
+h1 { margin:0; font:600 clamp(46px,8vw,86px)/.91 Georgia, "Times New Roman", serif; letter-spacing:-.055em; }
+.lede { max-width:510px; margin:27px 0 0; font-size:25px; line-height:1.22; }
+.workbench,.launch { padding:50px 0; border-bottom:1px solid var(--line); }
+.section-heading { display:grid; grid-template-columns:42px 1fr; gap:14px; margin-bottom:30px; }
+.number { color:var(--ocean); font:500 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; padding-top:6px; }
+h2 { margin:0; font:500 32px/1 Georgia, "Times New Roman", serif; letter-spacing:-.04em; }
+.section-heading p { margin:7px 0 0; max-width:520px; color:#576168; font-size:18px; }
+.planks { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+.plank { min-height:185px; padding:19px 20px 15px; border:1px solid var(--line); background:#fbf9f2; box-shadow:4px 5px 0 rgba(32,37,46,.055); }
+.plank:nth-child(3) { grid-column:span 2; background:#edf4f0; border-color:rgba(23,60,73,.36); }
+.plank.private { background:#f3e8dc; }
+.plank.release { background:#f0e4df; }
+.plank-label { display:flex; gap:10px; align-items:baseline; }
+.plank-label span { color:var(--ocean); font:500 11px ui-monospace, SFMono-Regular, Menlo, monospace; }
+h3 { margin:0; font:500 20px/1 Fraunces,serif; }
+textarea { width:100%; display:block; margin:13px 0 5px; padding:0; color:var(--ink); background:transparent; border:0; border-bottom:1px solid transparent; resize:vertical; outline:none; font:400 19px/1.27 Newsreader,Georgia,serif; }
+textarea:focus { border-bottom-color:var(--ocean); }
+textarea::placeholder { color:#89908e; }
+.plank p { margin:0; color:#68716f; font-size:15px; }
+button { cursor:pointer; color:#fff; background:var(--deep); border:0; padding:13px 17px; font:500 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:.03em; transition:transform .16s ease,background .16s ease; }
+button:hover { background:#285363; transform:translate(-2px,-2px); } button:focus-visible { outline:3px solid var(--wood); outline-offset:4px; }
+#launch-button { margin-left:56px; }
+.packet { max-width:720px; min-height:175px; margin:31px 0 0 56px; padding:26px 30px; color:#f5f3ed; background:var(--deep); border-left:9px solid var(--wood); }
+.packet.empty { color:#52656a; background:#e3ebe7; border-left-color:#b8c7c1; }
+.packet p { margin:0; }.packet-kicker { color:#b7d4ce; }.packet-placeholder { font-size:21px; }
+.packet-body { font-size:20px; line-height:1.35; }.packet-body strong { color:#f0c58c; font-weight:500; }.packet-boundary { margin-top:18px!important; padding-top:14px; border-top:1px solid rgba(255,255,255,.25); color:#c7dbd5; font-size:16px; }
+.actions { display:flex; gap:10px; margin:15px 0 0 56px; }.secondary { color:var(--deep); background:transparent; border:1px solid var(--deep); }.secondary:hover { color:#fff; background:var(--deep); }
+.margin-note { max-width:515px; margin:49px 0 0 auto; padding-left:22px; border-left:3px solid var(--red); font-size:22px; line-height:1.25; }.margin-note p { margin:0; }
+footer { margin-top:66px; padding-top:12px; border-top:1px solid var(--line); color:#71807e; font:400 11px ui-monospace, SFMono-Regular, Menlo, monospace; }
+@media (max-width:620px) { main { width:min(100% - 28px,910px); padding-top:46px; }.masthead { padding-bottom:45px; }.lede { font-size:22px; }.planks { grid-template-columns:1fr; }.plank:nth-child(3) { grid-column:auto; } #launch-button,.packet,.actions { margin-left:0; }.packet { padding:22px; }.workbench,.launch { padding:39px 0; } }

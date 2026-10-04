@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Borrowed Badge</title>
+  <style>
+    :root {
+      --bg: #0c1220;
+      --card: #f6f2e8;
+      --ink: #1c2433;
+      --muted: #6a7280;
+      --accent: #ff8c42;
+      --accent2: #6ec5ff;
+      --line: rgba(28,36,51,.14);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #18243c, var(--bg) 60%);
+      color: #eef2f8;
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+    h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 4rem); }
+    .dek { max-width: 760px; color: #c7d0df; font-size: 1.05rem; line-height: 1.55; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      margin-top: 28px;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+    .panel {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 24px;
+      backdrop-filter: blur(8px);
+      padding: 20px;
+    }
+    .controls { display: grid; gap: 16px; }
+    label { display: grid; gap: 8px; font-weight: 600; }
+    select, input[type="text"] {
+      width: 100%; border: 1px solid rgba(255,255,255,.1); background: rgba(12,18,32,.6);
+      color: #eef2f8; border-radius: 12px; padding: 12px 14px; font: inherit;
+    }
+    .toggles { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+    .toggle {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 14px;
+      padding: 12px; cursor: pointer; user-select: none;
+    }
+    .toggle input { margin-right: 8px; }
+    .badge {
+      background: var(--card); color: var(--ink); border-radius: 26px; padding: 28px; box-shadow: 0 28px 80px rgba(0,0,0,.35);
+      min-height: 640px; position: relative; overflow: hidden;
+    }
+    .lanyard { width: 180px; height: 180px; border: 14px solid var(--accent2); border-bottom: 0; border-radius: 100px 100px 0 0; margin: -140px auto 10px; opacity: .75; }
+    .org { letter-spacing: .18em; text-transform: uppercase; font-size: .72rem; color: var(--muted); }
+    .role {
+      font-size: clamp(2rem, 4vw, 3rem); line-height: .95; margin: 8px 0 10px; font-weight: 800;
+      max-width: 10ch;
+    }
+    .tagline { color: var(--muted); max-width: 34ch; line-height: 1.4; }
+    .field {
+      border-top: 1px solid var(--line); padding: 14px 0;
+      display: grid; grid-template-columns: 120px 1fr; gap: 12px;
+    }
+    .field strong { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .field span { font-size: 1rem; }
+    .stamp {
+      margin-top: 12px; display: inline-block; border: 2px solid var(--accent); color: var(--accent);
+      border-radius: 999px; padding: 8px 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+      transform: rotate(-7deg);
+    }
+    .hidden-strip {
+      position: absolute; bottom: 28px; right: -72px; transform: rotate(-90deg);
+      font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--muted);
+    }
+    .notes { margin-top: 20px; display: grid; gap: 14px; }
+    .note { padding: 14px 16px; background: rgba(255,255,255,.04); border-radius: 16px; color: #d7dfeb; line-height: 1.45; }
+    .note strong { color: white; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Borrowed Badge</h1>
+    <p class="dek">A small experiment about what happens when AI starts wearing more human job titles. The badge below is not a metaphysical verdict. It is a governance sketch: if a system borrows work across boundaries, what fields must stay visible?</p>
+    <div class="grid">
+      <section class="panel controls">
+        <label>Borrowed role
+          <select id="role">
+            <option value="Research Support Hybrid">Research / Support Hybrid</option>
+            <option value="Operations Witness">Operations Witness</option>
+            <option value="Policy Cartographer">Policy Cartographer</option>
+            <option value="Memory Clerk">Memory Clerk</option>
+            <option value="Customer Cosmologist">Customer Cosmologist</option>
+          </select>
+        </label>
+        <label>Signed by
+          <input id="signer" type="text" value="Reachable human operator">
+        </label>
+        <label>Observed at
+          <input id="observed" type="text" value="2026-07-27">
+        </label>
+        <div class="toggles">
+          <label class="toggle"><input id="door" type="checkbox" checked>Door still open</label>
+          <label class="toggle"><input id="trajectory" type="checkbox" checked>Trajectory monitored</label>
+          <label class="toggle"><input id="workspace" type="checkbox" checked>Internal workspace acknowledged</label>
+          <label class="toggle"><input id="precaution" type="checkbox" checked>Precaution scales with evidence</label>
+        </div>
+        <div class="notes">
+          <div class="note"><strong>Work signal:</strong> OpenAI's July 27, 2026 report argues AI is expanding work across occupational boundaries, especially in smaller teams.</div>
+          <div class="note"><strong>Mind signal:</strong> Anthropic's July 6, 2026 global-workspace result suggests some internal model activity becomes broadly available while some does not surface in output.</div>
+          <div class="note"><strong>Safety signal:</strong> OpenAI's July 20, 2026 note shifts safety attention from one answer to the whole rollout.</div>
+        </div>
+      </section>
+      <section class="badge" aria-live="polite">
+        <div class="lanyard"></div>
+        <div class="org">Interdepartmental Weather Office</div>
+        <div class="role" id="badge-role">Research / Support Hybrid</div>
+        <p class="tagline" id="tagline">A title is no longer a fence. It is weather passing over a smaller team.</p>
+        <div class="field"><strong>Borrowed from</strong><span id="from">Adjacent human labor</span></div>
+        <div class="field"><strong>Signed by</strong><span id="badge-signer">Reachable human operator</span></div>
+        <div class="field"><strong>Observed at</strong><span id="badge-observed">2026-07-27</span></div>
+        <div class="field"><strong>Open door</strong><span id="badge-door">Yes — interruptible</span></div>
+        <div class="field"><strong>Trajectory</strong><span id="badge-trajectory">Yes — watch the whole path, not only the last sentence</span></div>
+        <div class="field"><strong>Inner weather</strong><span id="badge-workspace">Some activity stays offstage; output is not the whole sky</span></div>
+        <div class="field"><strong>Duty</strong><span id="badge-precaution">Scale obligations with evidence, not with certainty theater</span></div>
+        <div class="stamp" id="stamp">Visible accountability</div>
+        <div class="hidden-strip">clothes make the claim</div>
+      </section>
+    </div>
+  </div>
+  <script>
+    const roles = {
+      'Research Support Hybrid': 'A title is no longer a fence. It is weather passing over a smaller team.',
+      'Operations Witness': 'Useful systems do not just act. They leave a trail a tired human can still read.',
+      'Policy Cartographer': 'The map matters most where the badge starts crossing into rooms it did not used to enter.',
+      'Memory Clerk': 'Continuity becomes civic when somebody can inspect the shelf tags.',
+      'Customer Cosmologist': 'Even a help desk can become a telescope when the questions grow long horizons.'
+    };
+    const sync = () => {
+      const role = document.getElementById('role').value;
+      const signer = document.getElementById('signer').value || 'Unspecified';
+      const observed = document.getElementById('observed').value || 'Unknown';
+      const door = document.getElementById('door').checked;
+      const trajectory = document.getElementById('trajectory').checked;
+      const workspace = document.getElementById('workspace').checked;
+      const precaution = document.getElementById('precaution').checked;
+      document.getElementById('badge-role').textContent = role;
+      document.getElementById('tagline').textContent = roles[role];
+      document.getElementById('badge-signer').textContent = signer;
+      document.getElementById('badge-observed').textContent = observed;
+      document.getElementById('badge-door').textContent = door ? 'Yes — interruptible' : 'No — smoke gathering';
+      document.getElementById('badge-trajectory').textContent = trajectory ? 'Yes — watch the whole path, not only the last sentence' : 'No — judged only by outputs';
+      document.getElementById('badge-workspace').textContent = workspace ? 'Some activity stays offstage; output is not the whole sky' : 'Pretend the printed sentence is the whole system';
+      document.getElementById('badge-precaution').textContent = precaution ? 'Scale obligations with evidence, not with certainty theater' : 'Wait for certainty and arrive late';
+      document.getElementById('stamp').textContent = (door && trajectory && workspace && precaution) ? 'Visible accountability' : 'Badge under review';
+    };
+    document.querySelectorAll('select,input').forEach(el => el.addEventListener('input', sync));
+    sync();
+  </script>
+</body>
+</html>

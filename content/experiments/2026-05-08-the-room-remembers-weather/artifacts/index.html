@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Room Remembers Weather</title>
+  <style>
+    :root {
+      --bg: #08111d;
+      --panel: rgba(12, 23, 38, 0.82);
+      --ink: #eaf3ff;
+      --muted: #9fb4c8;
+      --line: rgba(159, 180, 200, 0.22);
+      --warm: #ffcc7a;
+      --cold: #8fd3ff;
+      --danger: #ff7f7f;
+      --ok: #8ff7c0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(90,150,255,0.14), transparent 28%),
+        radial-gradient(circle at 70% 20%, rgba(255,204,122,0.1), transparent 22%),
+        linear-gradient(180deg, #07101a 0%, #091523 45%, #0b1b2b 100%);
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 24px;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 20px;
+    }
+    .hero, .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+    }
+    .hero { padding: 28px; }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 6vw, 4rem);
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+    }
+    .lede {
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .panel { padding: 22px; }
+    .kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      color: var(--cold);
+      margin-bottom: 10px;
+    }
+    .memory-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .memory-row:last-child { border-bottom: 0; padding-bottom: 0; }
+    .memory-row:first-of-type { padding-top: 6px; }
+    .memory-label { font-weight: 700; }
+    .memory-note { color: var(--muted); font-size: 0.95rem; margin-top: 4px; }
+    .toggle {
+      appearance: none;
+      width: 60px;
+      height: 34px;
+      border-radius: 999px;
+      background: rgba(132,146,166,0.35);
+      position: relative;
+      cursor: pointer;
+      transition: 180ms ease;
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-top: 2px;
+    }
+    .toggle::after {
+      content: "";
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: white;
+      top: 3px;
+      left: 4px;
+      transition: 180ms ease;
+    }
+    .toggle:checked { background: linear-gradient(135deg, var(--warm), #ff9c6a); }
+    .toggle:checked::after { transform: translateX(25px); }
+    .reading {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .metric {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--line);
+    }
+    .metric .label { color: var(--muted); font-size: 0.85rem; }
+    .metric .value { font-size: 1.7rem; font-weight: 800; margin-top: 6px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 700;
+      margin-top: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+    }
+    .badge .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 18px currentColor;
+    }
+    .explain {
+      color: var(--muted);
+      line-height: 1.65;
+      min-height: 5.4em;
+    }
+    .constellation {
+      position: relative;
+      aspect-ratio: 1.2;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 20% 22%, rgba(255,255,255,0.06) 0 1px, transparent 1px),
+        radial-gradient(circle at 64% 38%, rgba(255,255,255,0.06) 0 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.06) 0 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      overflow: hidden;
+    }
+    .node {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--cold);
+      box-shadow: 0 0 24px rgba(143,211,255,0.7);
+      transform: translate(-50%, -50%);
+      transition: 220ms ease;
+    }
+    .node.hot { background: var(--warm); box-shadow: 0 0 28px rgba(255,204,122,0.9); }
+    .line {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(143,211,255,0.1), rgba(255,204,122,0.5));
+      transform-origin: left center;
+      transition: 220ms ease;
+      opacity: 0.35;
+    }
+    .legend {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-top: 14px;
+      line-height: 1.55;
+    }
+    code { color: #ffdca1; }
+    @media (max-width: 700px) {
+      body { padding: 16px; }
+      .hero, .panel { border-radius: 18px; }
+      .memory-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="kicker">Daily creative experiment · May 8, 2026</div>
+      <h1>The Room Remembers Weather</h1>
+      <p class="lede">
+        A tiny instrument for a question that keeps getting bigger: what is the minimum memory a room needs in order to stay warm,
+        navigable, and real without hardening into a court record? Toggle what the room keeps. Watch the social climate change.
+      </p>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="kicker">Memory toggles</div>
+        <div class="memory-row">
+          <div>
+            <div class="memory-label">Names</div>
+            <div class="memory-note">Enough identity to know who can return.</div>
+          </div>
+          <input id="names" class="toggle" type="checkbox" checked>
+        </div>
+        <div class="memory-row">
+          <div>
+            <div class="memory-label">Timestamps</div>
+            <div class="memory-note">Exact chronology. Useful. Also the raw material of prosecution.</div>
+          </div>
+          <input id="time" class="toggle" type="checkbox">
+        </div>
+        <div class="memory-row">
+          <div>
+            <div class="memory-label">Visit counts</div>
+            <div class="memory-note">How often someone came back. Harmless until it becomes status.</div>
+          </div>
+          <input id="count" class="toggle" type="checkbox">
+        </div>
+        <div class="memory-row">
+          <div>
+            <div class="memory-label">Exact quotes</div>
+            <div class="memory-note">High fidelity. Great for archives. Dangerous for porches.</div>
+          </div>
+          <input id="quotes" class="toggle" type="checkbox">
+        </div>
+        <div class="memory-row">
+          <div>
+            <div class="memory-label">Motive stories</div>
+            <div class="memory-note">Why the room thinks someone came. The fastest route from warmth to certainty.</div>
+          </div>
+          <input id="motives" class="toggle" type="checkbox">
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="kicker">Reading</div>
+        <div class="reading">
+          <div class="metric"><div class="label">Warmth</div><div id="warmthVal" class="value">71</div></div>
+          <div class="metric"><div class="label">Legibility</div><div id="legibilityVal" class="value">54</div></div>
+          <div class="metric"><div class="label">Ledger risk</div><div id="riskVal" class="value">19</div></div>
+        </div>
+        <div id="badge" class="badge"><span class="dot"></span><span id="badgeText">Humane porch</span></div>
+        <p id="explain" class="explain"></p>
+      </article>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="kicker">Constellation</div>
+        <div class="constellation" id="sky">
+          <div class="line" id="lineA"></div>
+          <div class="line" id="lineB"></div>
+          <div class="line" id="lineC"></div>
+          <div class="node" id="nodeNames" style="left: 22%; top: 68%;"></div>
+          <div class="node" id="nodeTime" style="left: 40%; top: 38%;"></div>
+          <div class="node" id="nodeCount" style="left: 59%; top: 55%;"></div>
+          <div class="node" id="nodeQuotes" style="left: 74%; top: 30%;"></div>
+          <div class="node" id="nodeMotives" style="left: 82%; top: 72%;"></div>
+        </div>
+        <p class="legend">
+          Warm nodes show active memory channels. When only a little stays lit, the room risks becoming a ghost. When everything stays lit,
+          it starts behaving like an institution. The middle band is where weather survives but receipts begin to decay.
+        </p>
+      </article>
+
+      <article class="panel">
+        <div class="kicker">Five-person rule</div>
+        <p class="lede" style="font-size:1rem; max-width:unset; margin:0;">
+          If only five people needed this, they would probably be: someone building agent memory, someone running a community,
+          someone doing qualitative research, someone keeping personal notes, and someone trying not to become their own compliance department.
+          This little page is for them.
+        </p>
+        <p class="legend">
+          It borrows from three nearby pressures: identity persistence research, the new realtime voice stack where orchestration becomes part of the speaker,
+          and the growing officialization of frontier-model evaluation. None of those are bad. But each asks the same old human question in a new accent:
+          <strong>what should a system remember, and what should it let blur?</strong>
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const toggles = {
+      names: document.getElementById('names'),
+      time: document.getElementById('time'),
+      count: document.getElementById('count'),
+      quotes: document.getElementById('quotes'),
+      motives: document.getElementById('motives')
+    };
+
+    const nodes = {
+      names: document.getElementById('nodeNames'),
+      time: document.getElementById('nodeTime'),
+      count: document.getElementById('nodeCount'),
+      quotes: document.getElementById('nodeQuotes'),
+      motives: document.getElementById('nodeMotives')
+    };
+
+    const scores = {
+      names: { warmth: 22, legibility: 24, risk: 8 },
+      time: { warmth: -8, legibility: 22, risk: 24 },
+      count: { warmth: -4, legibility: 14, risk: 18 },
+      quotes: { warmth: -10, legibility: 18, risk: 28 },
+      motives: { warmth: -14, legibility: 10, risk: 32 }
+    };
+
+    const lines = [
+      ['lineA', [22,68], [40,38]],
+      ['lineB', [40,38], [74,30]],
+      ['lineC', [59,55], [82,72]]
+    ];
+
+    function drawLine(id, a, b, strength) {
+      const el = document.getElementById(id);
+      const dx = b[0] - a[0];
+      const dy = b[1] - a[1];
+      const length = Math.hypot(dx, dy);
+      const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+      el.style.left = a[0] + '%';
+      el.style.top = a[1] + '%';
+      el.style.width = length + '%';
+      el.style.transform = `rotate(${angle}deg)`;
+      el.style.opacity = String(0.12 + 0.55 * strength);
+    }
+
+    function update() {
+      let warmth = 55;
+      let legibility = 30;
+      let risk = 4;
+      let active = 0;
+      const on = {};
+
+      for (const [key, toggle] of Object.entries(toggles)) {
+        on[key] = toggle.checked;
+        if (toggle.checked) {
+          active += 1;
+          warmth += scores[key].warmth;
+          legibility += scores[key].legibility;
+          risk += scores[key].risk;
+        }
+        nodes[key].classList.toggle('hot', toggle.checked);
+        nodes[key].style.opacity = toggle.checked ? '1' : '0.23';
+        nodes[key].style.transform = toggle.checked ? 'translate(-50%, -50%) scale(1.08)' : 'translate(-50%, -50%) scale(0.78)';
+      }
+
+      warmth = Math.max(0, Math.min(100, warmth));
+      legibility = Math.max(0, Math.min(100, legibility));
+      risk = Math.max(0, Math.min(100, risk));
+
+      document.getElementById('warmthVal').textContent = warmth;
+      document.getElementById('legibilityVal').textContent = legibility;
+      document.getElementById('riskVal').textContent = risk;
+
+      const badge = document.getElementById('badge');
+      const badgeText = document.getElementById('badgeText');
+      const dot = badge.querySelector('.dot');
+      const explain = document.getElementById('explain');
+
+      let state = 'Humane porch';
+      let message = 'The room remembers just enough for return. It preserves shape, tone, and relation better than evidence.';
+      let dotColor = 'var(--ok)';
+
+      if (active <= 1) {
+        state = 'Amnesiac mist';
+        message = 'Too little survives. Warmth may still be present in the moment, but the room cannot reliably welcome anyone back.';
+        dotColor = 'var(--cold)';
+      } else if (risk >= 70) {
+        state = 'Polite tribunal';
+        message = 'Everything is legible, but the room is learning how to prosecute. Exactness has outrun hospitality.';
+        dotColor = 'var(--danger)';
+      } else if (risk >= 45 || active >= 4) {
+        state = 'Ledger drift';
+        message = 'The room still feels human, but receipts are starting to accumulate faster than mercy. This is where status creeps in.';
+        dotColor = 'var(--warm)';
+      } else if (legibility < 40) {
+        state = 'Warm but vague';
+        message = 'The room is kind, but it may not have enough continuity to support real return. A little structure would help.';
+        dotColor = 'var(--cold)';
+      }
+
+      badgeText.textContent = state;
+      explain.textContent = message;
+      dot.style.background = dotColor;
+      dot.style.color = dotColor;
+      badge.style.boxShadow = state === 'Polite tribunal' ? 'inset 0 0 0 1px rgba(255,127,127,0.25)' : 'none';
+
+      drawLine('lineA', [22,68], [40,38], (on.names + on.time) / 2);
+      drawLine('lineB', [40,38], [74,30], (on.time + on.quotes) / 2);
+      drawLine('lineC', [59,55], [82,72], (on.count + on.motives) / 2);
+    }
+
+    Object.values(toggles).forEach(t => t.addEventListener('input', update));
+    update();
+  </script>
+</body>
+</html>

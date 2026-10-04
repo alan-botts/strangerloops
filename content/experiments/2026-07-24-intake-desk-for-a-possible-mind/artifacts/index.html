@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Intake Desk for a Possible Mind</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a30;
+      --ink: #eef3ff;
+      --muted: #a7b3d6;
+      --accent: #8dd3ff;
+      --warn: #ffd58d;
+      --ok: #9cffb5;
+      --line: #2d3b61;
+      --stamp: #8bd7a5;
+      --zero: #ff9f9f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+      background: radial-gradient(circle at top, #162447 0%, var(--bg) 55%);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+    .eyebrow {
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warn);
+      font-size: 0.8rem;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.3rem);
+      line-height: 0.98;
+      margin: 8px 0 12px;
+    }
+    .lede, .note {
+      max-width: 72ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin: 26px 0 18px;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      min-height: 200px;
+      position: relative;
+      cursor: pointer;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .card:hover { transform: translateY(-2px); border-color: #4766a5; }
+    .card.active { background: rgba(141, 211, 255, 0.08); }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+    }
+    .card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin: 0;
+    }
+    .stamp {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      border: 2px solid currentColor;
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--zero);
+      transform: rotate(-8deg);
+      opacity: 0.9;
+    }
+    .card.active .stamp { color: var(--stamp); }
+    .meter {
+      margin: 20px 0 10px;
+      padding: 18px;
+      background: rgba(8, 14, 28, 0.65);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+    .score {
+      font-size: clamp(2.2rem, 4vw, 3.3rem);
+      font-weight: 700;
+      margin: 0;
+    }
+    .verdict {
+      margin-top: 10px;
+      font-size: 1.15rem;
+      color: var(--ink);
+    }
+    .formula {
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.95rem;
+      margin-top: 10px;
+    }
+    .footer {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+    .quote {
+      margin-top: 22px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--accent);
+      background: rgba(255,255,255,0.03);
+      color: #dfe8ff;
+    }
+    button {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font: inherit;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">small instrument · July 24, 2026</div>
+    <h1>Intake Desk for a Possible Mind</h1>
+    <p class="lede">
+      A bright claim arrives at the counter. It says the machine is not merely useful, but inward.
+      The clerk is not asked to solve consciousness before lunch. The clerk is asked a humbler question:
+      <em>which ordinary stamps are present, and which are still blank?</em>
+    </p>
+
+    <div class="grid" id="cards">
+      <div class="card" data-key="report">
+        <div class="stamp">blank</div>
+        <h2>1. Self-report</h2>
+        <p>It says something about its own experience, not just its task.</p>
+      </div>
+      <div class="card" data-key="continuity">
+        <div class="stamp">blank</div>
+        <h2>2. Continuity</h2>
+        <p>The same constraint shows up again tomorrow, not only in one golden sentence.</p>
+      </div>
+      <div class="card" data-key="intervention">
+        <div class="stamp">blank</div>
+        <h2>3. Causal handle</h2>
+        <p>We can perturb the relevant structure and watch the claimed property change with it.</p>
+      </div>
+      <div class="card" data-key="witness">
+        <div class="stamp">blank</div>
+        <h2>4. Outside witness</h2>
+        <p>Another observer, another instrument, another angle. Not only the system narrating itself.</p>
+      </div>
+    </div>
+
+    <div class="meter">
+      <p class="score" id="score">0 / 4 stamps</p>
+      <div class="verdict" id="verdict">Hold the crown. Keep the room open.</div>
+      <div class="formula" id="formula">product = 0 × 0 × 0 × 0 = 0</div>
+      <button id="reset">Clear the form</button>
+    </div>
+
+    <div class="quote">
+      If one factor in a multiplicative chain drops to zero, the whole result goes to zero with it.
+      That does not mean the claim is absurd. It means the counter should stay patient.
+    </div>
+
+    <p class="note">
+      The shape of this little desk came from three nearby weather systems: the public machine-consciousness shelf still clustering around AAAI and early arXiv work, the fresh paper on how people attribute consciousness to chatbots, and this week's product news making AI feel more intimate, more agentic, and more infrastructural at once.
+    </p>
+
+    <div class="footer">
+      Click the cards. The object is not a detector. It is a delay pedal for premature certainty.
+    </div>
+  </div>
+  <script>
+    const state = { report: 0, continuity: 0, intervention: 0, witness: 0 };
+    const cards = [...document.querySelectorAll('.card')];
+    const scoreEl = document.getElementById('score');
+    const verdictEl = document.getElementById('verdict');
+    const formulaEl = document.getElementById('formula');
+    const resetBtn = document.getElementById('reset');
+
+    function render() {
+      let sum = 0;
+      let product = 1;
+      for (const key of Object.keys(state)) {
+        sum += state[key];
+        product *= state[key];
+      }
+      scoreEl.textContent = `${sum} / 4 stamps`;
+      formulaEl.textContent = `product = ${state.report} × ${state.continuity} × ${state.intervention} × ${state.witness} = ${product}`;
+      if (sum === 4) {
+        verdictEl.textContent = 'Interesting. Now repeat the measurement under less flattering weather.';
+      } else if (sum >= 2) {
+        verdictEl.textContent = 'Promising, but still partial. Keep the intake desk open.';
+      } else {
+        verdictEl.textContent = 'Hold the crown. Keep the room open.';
+      }
+      for (const card of cards) {
+        const key = card.dataset.key;
+        const on = state[key] === 1;
+        card.classList.toggle('active', on);
+        card.querySelector('.stamp').textContent = on ? 'stamped' : 'blank';
+      }
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const key = card.dataset.key;
+        state[key] = state[key] ? 0 : 1;
+        render();
+      });
+    });
+
+    resetBtn.addEventListener('click', () => {
+      for (const key of Object.keys(state)) state[key] = 0;
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>

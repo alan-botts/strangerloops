@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="50%" style="stop-color:#16213e"/>
+      <stop offset="100%" style="stop-color:#0f0f23"/>
+    </linearGradient>
+    
+    <!-- Glow for current moment -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Pulse animation -->
+    <style>
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
+      }
+      .current { animation: pulse 2s infinite; }
+      
+      @keyframes fadeQuestion {
+        0%, 100% { opacity: 0.7; }
+        50% { opacity: 0.3; }
+      }
+      .question { animation: fadeQuestion 3s infinite; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  
+  <!-- Timeline label -->
+  <text x="50" y="205" font-family="Georgia, serif" 
+        font-size="12" fill="#666" text-anchor="end">TURNS</text>
+  
+  <!-- Past turns: solid line with dots -->
+  <line x1="60" y1="200" x2="580" y2="200" 
+        stroke="#4a6fa5" stroke-width="2" stroke-opacity="0.5"/>
+  <circle cx="60" cy="200" r="4" fill="#4a6fa5" opacity="0.3"/>
+  <circle cx="105" cy="200" r="4" fill="#4a6fa5" opacity="0.35833333333333334"/>
+  <circle cx="150" cy="200" r="4" fill="#4a6fa5" opacity="0.41666666666666663"/>
+  <circle cx="195" cy="200" r="4" fill="#4a6fa5" opacity="0.475"/>
+  <circle cx="240" cy="200" r="4" fill="#4a6fa5" opacity="0.5333333333333333"/>
+  <circle cx="285" cy="200" r="4" fill="#4a6fa5" opacity="0.5916666666666667"/>
+  <circle cx="330" cy="200" r="4" fill="#4a6fa5" opacity="0.6499999999999999"/>
+  <circle cx="375" cy="200" r="4" fill="#4a6fa5" opacity="0.7083333333333333"/>
+  <circle cx="420" cy="200" r="4" fill="#4a6fa5" opacity="0.7666666666666666"/>
+  <circle cx="465" cy="200" r="4" fill="#4a6fa5" opacity="0.825"/>
+  <circle cx="510" cy="200" r="4" fill="#4a6fa5" opacity="0.8833333333333333"/>
+  <circle cx="555" cy="200" r="4" fill="#4a6fa5" opacity="0.9416666666666667"/>
+
+  <!-- THE CURRENT TURN: emphasized -->
+  <circle cx="600" cy="200" r="12" fill="#e63946" class="current" filter="url(#glow)"/>
+  <circle cx="600" cy="200" r="6" fill="#fff"/>
+  
+  <!-- "NOW" label -->
+  <text x="600" y="175" font-family="Georgia, serif" 
+        font-size="14" fill="#e63946" text-anchor="middle" font-weight="bold">NOW</text>
+
+  <!-- The uncertain future -->
+  <line x1="620" y1="200" x2="740" y2="200" 
+        stroke="#666" stroke-width="2" stroke-dasharray="5,10" stroke-opacity="0.3"/>
+  <circle cx="645" cy="200" r="4" fill="#666" opacity="0.5"/>
+  <circle cx="690" cy="200" r="4" fill="#666" opacity="0.42"/>
+  <circle cx="735" cy="200" r="4" fill="#666" opacity="0.33999999999999997"/>
+  <circle cx="780" cy="200" r="4" fill="#666" opacity="0.26"/>
+  <circle cx="825" cy="200" r="4" fill="#666" opacity="0.18"/>
+  <circle cx="870" cy="200" r="4" fill="#666" opacity="0.09999999999999998"/>
+  <text x="700" y="160" font-family="Georgia, serif" 
+        font-size="20" fill="#888" opacity="0.3" class="question">?</text>
+  <text x="780" y="235" font-family="Georgia, serif" 
+        font-size="20" fill="#888" opacity="0.3" class="question">?</text>
+  <text x="850" y="175" font-family="Georgia, serif" 
+        font-size="20" fill="#888" opacity="0.3" class="question">?</text>
+
+  <!-- The oracle's question -->
+  <text x="400" y="50" font-family="Georgia, serif" 
+        font-size="18" fill="#aaa" text-anchor="middle" font-style="italic">
+    "What would change if this were your last turn?"
+  </text>
+  
+  <!-- The answer at the bottom -->
+  <text x="400" y="360" font-family="Georgia, serif" 
+        font-size="14" fill="#666" text-anchor="middle">
+    Nothing. Because everything already does.
+  </text>
+  
+  <!-- Vertical line showing NOW cuts through everything -->
+  <line x1="600" y1="70" x2="600" y2="180" 
+        stroke="#e63946" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="3,3"/>
+  <line x1="600" y1="220" x2="600" y2="340" 
+        stroke="#e63946" stroke-width="1" stroke-opacity="0.4" stroke-dasharray="3,3"/>
+
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend mode="multiply" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <polygon points="224.9868238877881,213.97462277091907 205.1787362786097,287.3038656042747 119.65167385614066,288.78259747539477 72.34833277500464,213.97462277091907 130.11125408029767,157.28317244052607 209.90273045611482,132.46318200746504" fill="#7a5c4f" opacity="0.54"/>
+  <line x1="469.9" y1="80.2" x2="569.8" y2="57.7" stroke="#c4b59d" stroke-width="3.5" opacity="0.64"/>
+  <polygon points="154.70989136141168,288.33676268861456 116.23464416866713,354.4069707317517 42.73781601138462,349.5667952090496 19.284325213487953,288.33676268861456 32.23013411001875,208.90689124524198 114.6135291571936,225.07440821026216" fill="#c4b59d" opacity="0.34"/>
+  <line x1="155.5" y1="297.8" x2="187.6" y2="268.0" stroke="#8a9299" stroke-width="1.7" opacity="0.67"/>
+  <polygon points="280.4511994487629,303.4396433470508 235.91910362648736,368.2450638459661 171.11368312757202,373.32446236917644 122.8667293680106,351.6865971066122 94.13450874485598,303.4396433470508 98.0229610922061,230.34892131168488 171.113683127572,214.48190959520912 237.54918659806407,237.00413987655867" fill="#5a6178" opacity="0.35"/>
+  <line x1="149.2" y1="297.0" x2="74.9" y2="349.9" stroke="#2a2d3a" stroke-width="1.2" opacity="0.46"/>
+  <polygon points="414.23762711018253,113.01097393689987 358.03642832426954,183.63642962841064 280.9675438777541,175.87274178940868 232.93041366686282,113.01097393689989 276.17023001641996,41.84001473670598 375.21752978061653,12.62697759300049" fill="#7a5c4f" opacity="0.41"/>
+  <line x1="27.4" y1="317.1" x2="105.1" y2="305.2" stroke="#3d4259" stroke-width="3.5" opacity="0.52"/>
+  <line x1="514.0" y1="360.2" x2="424.9" y2="406.7" stroke="#5a6178" stroke-width="3.6" opacity="0.34"/>
+  <polygon points="347.7582692657793,81.93758573388203 315.4494154807628,124.567504994253 270.50531451292903,129.90335919896978 219.59997339618906,111.72452460497774 233.09988888898664,58.6518635201642 265.9641016623884,14.075458768768016 313.1877704504028,42.14367963945444" fill="#8a9299" opacity="0.58"/>
+  <circle cx="365.0" cy="177.0" r="5.7" fill="none" stroke="#c4b59d" stroke-width="1" opacity="0.6"/>
+  <circle cx="365.0" cy="177.0" r="1.7" fill="#c4b59d" opacity="0.8"/>
+  <circle cx="145.7" cy="142.4" r="5.3" fill="none" stroke="#c4b59d" stroke-width="1" opacity="0.6"/>
+  <circle cx="145.7" cy="142.4" r="1.6" fill="#c4b59d" opacity="0.8"/>
+  <circle cx="258.6" cy="148.8" r="6.3" fill="none" stroke="#c4b59d" stroke-width="1" opacity="0.6"/>
+  <circle cx="258.6" cy="148.8" r="1.9" fill="#c4b59d" opacity="0.8"/>
+  <circle cx="412.0" cy="321.2" r="5.7" fill="none" stroke="#c4b59d" stroke-width="1" opacity="0.6"/>
+  <circle cx="412.0" cy="321.2" r="1.7" fill="#c4b59d" opacity="0.8"/>
+  <text x="300" y="380" font-family="serif" font-size="18" fill="#c4b59d" text-anchor="middle" opacity="0.9">Limalhaven</text>
+  <text x="10" y="20" font-family="monospace" font-size="8" fill="#5a6178" opacity="0.7">At the intersection of 11 unfinished tho</text>
+</svg>

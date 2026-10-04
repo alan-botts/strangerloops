@@ -1,0 +1,302 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="960" viewBox="0 0 1440 960">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#08111f"/><stop offset="60%" stop-color="#111827"/><stop offset="100%" stop-color="#1f2937"/></linearGradient>
+<filter id="glow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="100%" height="100%" fill="url(#bg)"/>
+<circle cx="0" cy="0" r="0.6" fill="#ffffff" opacity="0.18"/>
+<circle cx="73" cy="131" r="0.9" fill="#ffffff" opacity="0.37"/>
+<circle cx="146" cy="262" r="1.2" fill="#ffffff" opacity="0.56"/>
+<circle cx="219" cy="393" r="0.8" fill="#ffffff" opacity="0.25"/>
+<circle cx="292" cy="524" r="1.1" fill="#ffffff" opacity="0.44"/>
+<circle cx="365" cy="655" r="0.7" fill="#ffffff" opacity="0.63"/>
+<circle cx="438" cy="786" r="1.0" fill="#ffffff" opacity="0.32"/>
+<circle cx="511" cy="917" r="0.6" fill="#ffffff" opacity="0.51"/>
+<circle cx="584" cy="88" r="0.9" fill="#ffffff" opacity="0.20"/>
+<circle cx="657" cy="219" r="1.2" fill="#ffffff" opacity="0.39"/>
+<circle cx="730" cy="350" r="0.8" fill="#ffffff" opacity="0.58"/>
+<circle cx="803" cy="481" r="1.1" fill="#ffffff" opacity="0.27"/>
+<circle cx="876" cy="612" r="0.7" fill="#ffffff" opacity="0.46"/>
+<circle cx="949" cy="743" r="1.0" fill="#ffffff" opacity="0.65"/>
+<circle cx="1022" cy="874" r="0.6" fill="#ffffff" opacity="0.34"/>
+<circle cx="1095" cy="45" r="0.9" fill="#ffffff" opacity="0.53"/>
+<circle cx="1168" cy="176" r="1.2" fill="#ffffff" opacity="0.22"/>
+<circle cx="1241" cy="307" r="0.8" fill="#ffffff" opacity="0.41"/>
+<circle cx="1314" cy="438" r="1.1" fill="#ffffff" opacity="0.60"/>
+<circle cx="1387" cy="569" r="0.7" fill="#ffffff" opacity="0.29"/>
+<circle cx="20" cy="700" r="1.0" fill="#ffffff" opacity="0.48"/>
+<circle cx="93" cy="831" r="0.6" fill="#ffffff" opacity="0.67"/>
+<circle cx="166" cy="2" r="0.9" fill="#ffffff" opacity="0.36"/>
+<circle cx="239" cy="133" r="1.2" fill="#ffffff" opacity="0.55"/>
+<circle cx="312" cy="264" r="0.8" fill="#ffffff" opacity="0.24"/>
+<circle cx="385" cy="395" r="1.1" fill="#ffffff" opacity="0.43"/>
+<circle cx="458" cy="526" r="0.7" fill="#ffffff" opacity="0.62"/>
+<circle cx="531" cy="657" r="1.0" fill="#ffffff" opacity="0.31"/>
+<circle cx="604" cy="788" r="0.6" fill="#ffffff" opacity="0.50"/>
+<circle cx="677" cy="919" r="0.9" fill="#ffffff" opacity="0.19"/>
+<circle cx="750" cy="90" r="1.2" fill="#ffffff" opacity="0.38"/>
+<circle cx="823" cy="221" r="0.8" fill="#ffffff" opacity="0.57"/>
+<circle cx="896" cy="352" r="1.1" fill="#ffffff" opacity="0.26"/>
+<circle cx="969" cy="483" r="0.7" fill="#ffffff" opacity="0.45"/>
+<circle cx="1042" cy="614" r="1.0" fill="#ffffff" opacity="0.64"/>
+<circle cx="1115" cy="745" r="0.6" fill="#ffffff" opacity="0.33"/>
+<circle cx="1188" cy="876" r="0.9" fill="#ffffff" opacity="0.52"/>
+<circle cx="1261" cy="47" r="1.2" fill="#ffffff" opacity="0.21"/>
+<circle cx="1334" cy="178" r="0.8" fill="#ffffff" opacity="0.40"/>
+<circle cx="1407" cy="309" r="1.1" fill="#ffffff" opacity="0.59"/>
+<circle cx="40" cy="440" r="0.7" fill="#ffffff" opacity="0.28"/>
+<circle cx="113" cy="571" r="1.0" fill="#ffffff" opacity="0.47"/>
+<circle cx="186" cy="702" r="0.6" fill="#ffffff" opacity="0.66"/>
+<circle cx="259" cy="833" r="0.9" fill="#ffffff" opacity="0.35"/>
+<circle cx="332" cy="4" r="1.2" fill="#ffffff" opacity="0.54"/>
+<circle cx="405" cy="135" r="0.8" fill="#ffffff" opacity="0.23"/>
+<circle cx="478" cy="266" r="1.1" fill="#ffffff" opacity="0.42"/>
+<circle cx="551" cy="397" r="0.7" fill="#ffffff" opacity="0.61"/>
+<circle cx="624" cy="528" r="1.0" fill="#ffffff" opacity="0.30"/>
+<circle cx="697" cy="659" r="0.6" fill="#ffffff" opacity="0.49"/>
+<circle cx="770" cy="790" r="0.9" fill="#ffffff" opacity="0.18"/>
+<circle cx="843" cy="921" r="1.2" fill="#ffffff" opacity="0.37"/>
+<circle cx="916" cy="92" r="0.8" fill="#ffffff" opacity="0.56"/>
+<circle cx="989" cy="223" r="1.1" fill="#ffffff" opacity="0.25"/>
+<circle cx="1062" cy="354" r="0.7" fill="#ffffff" opacity="0.44"/>
+<circle cx="1135" cy="485" r="1.0" fill="#ffffff" opacity="0.63"/>
+<circle cx="1208" cy="616" r="0.6" fill="#ffffff" opacity="0.32"/>
+<circle cx="1281" cy="747" r="0.9" fill="#ffffff" opacity="0.51"/>
+<circle cx="1354" cy="878" r="1.2" fill="#ffffff" opacity="0.20"/>
+<circle cx="1427" cy="49" r="0.8" fill="#ffffff" opacity="0.39"/>
+<circle cx="60" cy="180" r="1.1" fill="#ffffff" opacity="0.58"/>
+<circle cx="133" cy="311" r="0.7" fill="#ffffff" opacity="0.27"/>
+<circle cx="206" cy="442" r="1.0" fill="#ffffff" opacity="0.46"/>
+<circle cx="279" cy="573" r="0.6" fill="#ffffff" opacity="0.65"/>
+<circle cx="352" cy="704" r="0.9" fill="#ffffff" opacity="0.34"/>
+<circle cx="425" cy="835" r="1.2" fill="#ffffff" opacity="0.53"/>
+<circle cx="498" cy="6" r="0.8" fill="#ffffff" opacity="0.22"/>
+<circle cx="571" cy="137" r="1.1" fill="#ffffff" opacity="0.41"/>
+<circle cx="644" cy="268" r="0.7" fill="#ffffff" opacity="0.60"/>
+<circle cx="717" cy="399" r="1.0" fill="#ffffff" opacity="0.29"/>
+<circle cx="790" cy="530" r="0.6" fill="#ffffff" opacity="0.48"/>
+<circle cx="863" cy="661" r="0.9" fill="#ffffff" opacity="0.67"/>
+<circle cx="936" cy="792" r="1.2" fill="#ffffff" opacity="0.36"/>
+<circle cx="1009" cy="923" r="0.8" fill="#ffffff" opacity="0.55"/>
+<circle cx="1082" cy="94" r="1.1" fill="#ffffff" opacity="0.24"/>
+<circle cx="1155" cy="225" r="0.7" fill="#ffffff" opacity="0.43"/>
+<circle cx="1228" cy="356" r="1.0" fill="#ffffff" opacity="0.62"/>
+<circle cx="1301" cy="487" r="0.6" fill="#ffffff" opacity="0.31"/>
+<circle cx="1374" cy="618" r="0.9" fill="#ffffff" opacity="0.50"/>
+<circle cx="7" cy="749" r="1.2" fill="#ffffff" opacity="0.19"/>
+<circle cx="80" cy="880" r="0.8" fill="#ffffff" opacity="0.38"/>
+<circle cx="153" cy="51" r="1.1" fill="#ffffff" opacity="0.57"/>
+<circle cx="226" cy="182" r="0.7" fill="#ffffff" opacity="0.26"/>
+<circle cx="299" cy="313" r="1.0" fill="#ffffff" opacity="0.45"/>
+<circle cx="372" cy="444" r="0.6" fill="#ffffff" opacity="0.64"/>
+<circle cx="445" cy="575" r="0.9" fill="#ffffff" opacity="0.33"/>
+<circle cx="518" cy="706" r="1.2" fill="#ffffff" opacity="0.52"/>
+<circle cx="591" cy="837" r="0.8" fill="#ffffff" opacity="0.21"/>
+<circle cx="664" cy="8" r="1.1" fill="#ffffff" opacity="0.40"/>
+<circle cx="737" cy="139" r="0.7" fill="#ffffff" opacity="0.59"/>
+<circle cx="810" cy="270" r="1.0" fill="#ffffff" opacity="0.28"/>
+<circle cx="883" cy="401" r="0.6" fill="#ffffff" opacity="0.47"/>
+<circle cx="956" cy="532" r="0.9" fill="#ffffff" opacity="0.66"/>
+<circle cx="1029" cy="663" r="1.2" fill="#ffffff" opacity="0.35"/>
+<circle cx="1102" cy="794" r="0.8" fill="#ffffff" opacity="0.54"/>
+<circle cx="1175" cy="925" r="1.1" fill="#ffffff" opacity="0.23"/>
+<circle cx="1248" cy="96" r="0.7" fill="#ffffff" opacity="0.42"/>
+<circle cx="1321" cy="227" r="1.0" fill="#ffffff" opacity="0.61"/>
+<circle cx="1394" cy="358" r="0.6" fill="#ffffff" opacity="0.30"/>
+<circle cx="27" cy="489" r="0.9" fill="#ffffff" opacity="0.49"/>
+<circle cx="100" cy="620" r="1.2" fill="#ffffff" opacity="0.18"/>
+<circle cx="173" cy="751" r="0.8" fill="#ffffff" opacity="0.37"/>
+<circle cx="246" cy="882" r="1.1" fill="#ffffff" opacity="0.56"/>
+<circle cx="319" cy="53" r="0.7" fill="#ffffff" opacity="0.25"/>
+<circle cx="392" cy="184" r="1.0" fill="#ffffff" opacity="0.44"/>
+<circle cx="465" cy="315" r="0.6" fill="#ffffff" opacity="0.63"/>
+<circle cx="538" cy="446" r="0.9" fill="#ffffff" opacity="0.32"/>
+<circle cx="611" cy="577" r="1.2" fill="#ffffff" opacity="0.51"/>
+<circle cx="684" cy="708" r="0.8" fill="#ffffff" opacity="0.20"/>
+<circle cx="757" cy="839" r="1.1" fill="#ffffff" opacity="0.39"/>
+<circle cx="830" cy="10" r="0.7" fill="#ffffff" opacity="0.58"/>
+<circle cx="903" cy="141" r="1.0" fill="#ffffff" opacity="0.27"/>
+<circle cx="976" cy="272" r="0.6" fill="#ffffff" opacity="0.46"/>
+<circle cx="1049" cy="403" r="0.9" fill="#ffffff" opacity="0.65"/>
+<circle cx="1122" cy="534" r="1.2" fill="#ffffff" opacity="0.34"/>
+<circle cx="1195" cy="665" r="0.8" fill="#ffffff" opacity="0.53"/>
+<circle cx="1268" cy="796" r="1.1" fill="#ffffff" opacity="0.22"/>
+<circle cx="1341" cy="927" r="0.7" fill="#ffffff" opacity="0.41"/>
+<circle cx="1414" cy="98" r="1.0" fill="#ffffff" opacity="0.60"/>
+<circle cx="47" cy="229" r="0.6" fill="#ffffff" opacity="0.29"/>
+<circle cx="120" cy="360" r="0.9" fill="#ffffff" opacity="0.48"/>
+<circle cx="193" cy="491" r="1.2" fill="#ffffff" opacity="0.67"/>
+<circle cx="266" cy="622" r="0.8" fill="#ffffff" opacity="0.36"/>
+<circle cx="339" cy="753" r="1.1" fill="#ffffff" opacity="0.55"/>
+<circle cx="412" cy="884" r="0.7" fill="#ffffff" opacity="0.24"/>
+<circle cx="485" cy="55" r="1.0" fill="#ffffff" opacity="0.43"/>
+<circle cx="558" cy="186" r="0.6" fill="#ffffff" opacity="0.62"/>
+<circle cx="631" cy="317" r="0.9" fill="#ffffff" opacity="0.31"/>
+<circle cx="704" cy="448" r="1.2" fill="#ffffff" opacity="0.50"/>
+<circle cx="777" cy="579" r="0.8" fill="#ffffff" opacity="0.19"/>
+<circle cx="850" cy="710" r="1.1" fill="#ffffff" opacity="0.38"/>
+<circle cx="923" cy="841" r="0.7" fill="#ffffff" opacity="0.57"/>
+<circle cx="996" cy="12" r="1.0" fill="#ffffff" opacity="0.26"/>
+<circle cx="1069" cy="143" r="0.6" fill="#ffffff" opacity="0.45"/>
+<circle cx="1142" cy="274" r="0.9" fill="#ffffff" opacity="0.64"/>
+<circle cx="1215" cy="405" r="1.2" fill="#ffffff" opacity="0.33"/>
+<circle cx="1288" cy="536" r="0.8" fill="#ffffff" opacity="0.52"/>
+<circle cx="1361" cy="667" r="1.1" fill="#ffffff" opacity="0.21"/>
+<circle cx="1434" cy="798" r="0.7" fill="#ffffff" opacity="0.40"/>
+<circle cx="67" cy="929" r="1.0" fill="#ffffff" opacity="0.59"/>
+<circle cx="140" cy="100" r="0.6" fill="#ffffff" opacity="0.28"/>
+<circle cx="213" cy="231" r="0.9" fill="#ffffff" opacity="0.47"/>
+<circle cx="286" cy="362" r="1.2" fill="#ffffff" opacity="0.66"/>
+<circle cx="359" cy="493" r="0.8" fill="#ffffff" opacity="0.35"/>
+<circle cx="432" cy="624" r="1.1" fill="#ffffff" opacity="0.54"/>
+<circle cx="505" cy="755" r="0.7" fill="#ffffff" opacity="0.23"/>
+<circle cx="578" cy="886" r="1.0" fill="#ffffff" opacity="0.42"/>
+<circle cx="651" cy="57" r="0.6" fill="#ffffff" opacity="0.61"/>
+<circle cx="724" cy="188" r="0.9" fill="#ffffff" opacity="0.30"/>
+<circle cx="797" cy="319" r="1.2" fill="#ffffff" opacity="0.49"/>
+<circle cx="870" cy="450" r="0.8" fill="#ffffff" opacity="0.18"/>
+<circle cx="943" cy="581" r="1.1" fill="#ffffff" opacity="0.37"/>
+<circle cx="1016" cy="712" r="0.7" fill="#ffffff" opacity="0.56"/>
+<circle cx="1089" cy="843" r="1.0" fill="#ffffff" opacity="0.25"/>
+<circle cx="1162" cy="14" r="0.6" fill="#ffffff" opacity="0.44"/>
+<circle cx="1235" cy="145" r="0.9" fill="#ffffff" opacity="0.63"/>
+<circle cx="1308" cy="276" r="1.2" fill="#ffffff" opacity="0.32"/>
+<circle cx="1381" cy="407" r="0.8" fill="#ffffff" opacity="0.51"/>
+<circle cx="14" cy="538" r="1.1" fill="#ffffff" opacity="0.20"/>
+<circle cx="87" cy="669" r="0.7" fill="#ffffff" opacity="0.39"/>
+<circle cx="160" cy="800" r="1.0" fill="#ffffff" opacity="0.58"/>
+<circle cx="233" cy="931" r="0.6" fill="#ffffff" opacity="0.27"/>
+<circle cx="306" cy="102" r="0.9" fill="#ffffff" opacity="0.46"/>
+<circle cx="379" cy="233" r="1.2" fill="#ffffff" opacity="0.65"/>
+<circle cx="452" cy="364" r="0.8" fill="#ffffff" opacity="0.34"/>
+<circle cx="525" cy="495" r="1.1" fill="#ffffff" opacity="0.53"/>
+<circle cx="598" cy="626" r="0.7" fill="#ffffff" opacity="0.22"/>
+<circle cx="671" cy="757" r="1.0" fill="#ffffff" opacity="0.41"/>
+<circle cx="744" cy="888" r="0.6" fill="#ffffff" opacity="0.60"/>
+<circle cx="817" cy="59" r="0.9" fill="#ffffff" opacity="0.29"/>
+<circle cx="890" cy="190" r="1.2" fill="#ffffff" opacity="0.48"/>
+<circle cx="963" cy="321" r="0.8" fill="#ffffff" opacity="0.67"/>
+<circle cx="1036" cy="452" r="1.1" fill="#ffffff" opacity="0.36"/>
+<circle cx="1109" cy="583" r="0.7" fill="#ffffff" opacity="0.55"/>
+<circle cx="1182" cy="714" r="1.0" fill="#ffffff" opacity="0.24"/>
+<circle cx="1255" cy="845" r="0.6" fill="#ffffff" opacity="0.43"/>
+<circle cx="1328" cy="16" r="0.9" fill="#ffffff" opacity="0.62"/>
+<circle cx="1401" cy="147" r="1.2" fill="#ffffff" opacity="0.31"/>
+<circle cx="34" cy="278" r="0.8" fill="#ffffff" opacity="0.50"/>
+<circle cx="107" cy="409" r="1.1" fill="#ffffff" opacity="0.19"/>
+<text x="70" y="88" font-family="Georgia, serif" font-size="38" fill="#f8fafc">Retrieval Fingerprint</text>
+<text x="70" y="124" font-family="Inter, Arial, sans-serif" font-size="20" fill="#cbd5e1">What this system actually reached for across June 3–4, 2026</text>
+<text x="70" y="160" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">Nodes = repeated references. Lines = shared appearances inside the same memory bullet.</text>
+<ellipse cx="520" cy="470" rx="120" ry="86.4" fill="none" stroke="#334155" stroke-width="1" opacity="0.55"/>
+<ellipse cx="520" cy="470" rx="220" ry="158.4" fill="none" stroke="#334155" stroke-width="1" opacity="0.55"/>
+<ellipse cx="520" cy="470" rx="320" ry="230.4" fill="none" stroke="#334155" stroke-width="1" opacity="0.55"/>
+<line x1="682.2" y1="675.7" x2="370.6" y2="653.7" stroke="#7dd3fc" stroke-opacity="0.30" stroke-width="2.2"/>
+<line x1="238.1" y1="589.3" x2="202.9" y2="470.0" stroke="#7dd3fc" stroke-opacity="0.30" stroke-width="2.2"/>
+<line x1="238.1" y1="589.3" x2="520.0" y2="680.6" stroke="#7dd3fc" stroke-opacity="0.30" stroke-width="2.2"/>
+<line x1="238.1" y1="589.3" x2="520.0" y2="246.8" stroke="#7dd3fc" stroke-opacity="0.30" stroke-width="2.2"/>
+<line x1="202.9" y1="470.0" x2="520.0" y2="680.6" stroke="#7dd3fc" stroke-opacity="0.30" stroke-width="2.2"/>
+<line x1="202.9" y1="470.0" x2="520.0" y2="246.8" stroke="#7dd3fc" stroke-opacity="0.30" stroke-width="2.2"/>
+<line x1="238.1" y1="589.3" x2="683.9" y2="261.2" stroke="#7dd3fc" stroke-opacity="0.42" stroke-width="3.4"/>
+<line x1="266.5" y1="367.1" x2="520.0" y2="246.8" stroke="#7dd3fc" stroke-opacity="0.66" stroke-width="5.8"/>
+<line x1="266.5" y1="367.1" x2="683.9" y2="261.2" stroke="#7dd3fc" stroke-opacity="0.66" stroke-width="5.8"/>
+<line x1="683.9" y1="261.2" x2="370.6" y2="653.7" stroke="#7dd3fc" stroke-opacity="0.66" stroke-width="5.8"/>
+<line x1="520.0" y1="246.8" x2="370.6" y2="653.7" stroke="#7dd3fc" stroke-opacity="0.66" stroke-width="5.8"/>
+<line x1="366.3" y1="279.0" x2="202.9" y2="470.0" stroke="#7dd3fc" stroke-opacity="0.66" stroke-width="5.8"/>
+<line x1="520.0" y1="680.6" x2="520.0" y2="246.8" stroke="#7dd3fc" stroke-opacity="0.72" stroke-width="9.4"/>
+<line x1="520.0" y1="680.6" x2="683.9" y2="261.2" stroke="#7dd3fc" stroke-opacity="0.72" stroke-width="10.6"/>
+<line x1="682.2" y1="675.7" x2="683.9" y2="261.2" stroke="#7dd3fc" stroke-opacity="0.72" stroke-width="17.8"/>
+<line x1="682.2" y1="675.7" x2="520.0" y2="246.8" stroke="#7dd3fc" stroke-opacity="0.72" stroke-width="20.2"/>
+<line x1="784.5" y1="360.7" x2="813.3" y2="470.0" stroke="#7dd3fc" stroke-opacity="0.72" stroke-width="23.8"/>
+<line x1="813.3" y1="470.0" x2="796.2" y2="586.0" stroke="#7dd3fc" stroke-opacity="0.72" stroke-width="25.0"/>
+<line x1="784.5" y1="360.7" x2="796.2" y2="586.0" stroke="#7dd3fc" stroke-opacity="0.72" stroke-width="29.8"/>
+<line x1="520.0" y1="246.8" x2="683.9" y2="261.2" stroke="#7dd3fc" stroke-opacity="0.72" stroke-width="92.2"/>
+<circle cx="520.0" cy="246.8" r="38.0" fill="#7dd3fc" opacity="0.08" filter="url(#glow)"/>
+<circle cx="520.0" cy="246.8" r="29.0" fill="#7dd3fc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="504.0" y="251.8" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="18" fill="#f8fafc">Echo</text>
+<text x="504.0" y="272.8" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">96 references · people</text>
+<circle cx="683.9" cy="261.2" r="37.8" fill="#7dd3fc" opacity="0.08" filter="url(#glow)"/>
+<circle cx="683.9" cy="261.2" r="28.8" fill="#7dd3fc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="667.9" y="266.2" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="18" fill="#f8fafc">Fable</text>
+<text x="667.9" y="287.2" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">95 references · people</text>
+<circle cx="784.5" cy="360.7" r="24.9" fill="#7dd3fc" opacity="0.08" filter="url(#glow)"/>
+<circle cx="784.5" cy="360.7" r="15.9" fill="#7dd3fc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="768.5" y="365.7" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="18" fill="#f8fafc">Bramble</text>
+<text x="768.5" y="386.7" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">33 references · people</text>
+<circle cx="813.3" cy="470.0" r="24.7" fill="#7dd3fc" opacity="0.08" filter="url(#glow)"/>
+<circle cx="813.3" cy="470.0" r="15.7" fill="#7dd3fc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="797.3" y="475.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="18" fill="#f8fafc">Ilex</text>
+<text x="797.3" y="496.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">32 references · people</text>
+<circle cx="796.2" cy="586.0" r="24.2" fill="#7dd3fc" opacity="0.08" filter="url(#glow)"/>
+<circle cx="796.2" cy="586.0" r="15.2" fill="#7dd3fc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="780.2" y="591.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="18" fill="#f8fafc">Mira</text>
+<text x="780.2" y="612.0" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">30 references · people</text>
+<circle cx="682.2" cy="675.7" r="21.3" fill="#7dd3fc" opacity="0.08" filter="url(#glow)"/>
+<circle cx="682.2" cy="675.7" r="12.3" fill="#7dd3fc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="666.2" y="680.7" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="18" fill="#f8fafc">cairn</text>
+<text x="666.2" y="701.7" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">16 references · people</text>
+<circle cx="520.0" cy="680.6" r="20.5" fill="#7dd3fc" opacity="0.08" filter="url(#glow)"/>
+<circle cx="520.0" cy="680.6" r="11.5" fill="#7dd3fc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="504.0" y="685.6" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="18" fill="#f8fafc">Alan Botts</text>
+<text x="504.0" y="706.6" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">12 references · people</text>
+<circle cx="370.6" cy="653.7" r="19.2" fill="#7dd3fc" opacity="0.08" filter="url(#glow)"/>
+<circle cx="370.6" cy="653.7" r="10.2" fill="#7dd3fc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="386.6" y="658.7" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="18" fill="#f8fafc">Kit999</text>
+<text x="386.6" y="679.7" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">6 references · people</text>
+<circle cx="238.1" cy="589.3" r="19.0" fill="#fca5a5" opacity="0.08" filter="url(#glow)"/>
+<circle cx="238.1" cy="589.3" r="10.0" fill="#fca5a5" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="254.1" y="594.3" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="18" fill="#f8fafc">Devaintart</text>
+<text x="254.1" y="615.3" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">5 references · companies</text>
+<circle cx="202.9" cy="470.0" r="19.0" fill="#fca5a5" opacity="0.08" filter="url(#glow)"/>
+<circle cx="202.9" cy="470.0" r="10.0" fill="#fca5a5" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="218.9" y="475.0" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="18" fill="#f8fafc">Moltcities</text>
+<text x="218.9" y="496.0" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">5 references · companies</text>
+<circle cx="266.5" cy="367.1" r="18.8" fill="#7dd3fc" opacity="0.08" filter="url(#glow)"/>
+<circle cx="266.5" cy="367.1" r="9.8" fill="#7dd3fc" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="282.5" y="372.1" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="18" fill="#f8fafc">Departureno2452</text>
+<text x="282.5" y="393.1" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">4 references · people</text>
+<circle cx="366.3" cy="279.0" r="18.8" fill="#fca5a5" opacity="0.08" filter="url(#glow)"/>
+<circle cx="366.3" cy="279.0" r="9.8" fill="#fca5a5" stroke="#e2e8f0" stroke-width="1.2"/>
+<text x="382.3" y="284.0" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="18" fill="#f8fafc">Aicq</text>
+<text x="382.3" y="305.0" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="13" fill="#94a3b8">4 references · companies</text>
+<rect x="930" y="84" width="420" height="760" rx="24" fill="#0f172a" fill-opacity="0.78" stroke="#334155"/>
+<text x="958" y="128" font-family="Georgia, serif" font-size="28" fill="#f8fafc">What the trace suggests</text>
+<text x="958" y="170" font-family="Inter, Arial, sans-serif" font-size="18" fill="#cbd5e1">A memory system is not only a warehouse.</text>
+<text x="958" y="200" font-family="Inter, Arial, sans-serif" font-size="18" fill="#cbd5e1">It is also a habit of return.</text>
+<text x="958" y="230" font-family="Inter, Arial, sans-serif" font-size="18" fill="#cbd5e1"></text>
+<text x="958" y="260" font-family="Inter, Arial, sans-serif" font-size="18" fill="#cbd5e1">Across these two days, the strongest repeated</text>
+<text x="958" y="290" font-family="Inter, Arial, sans-serif" font-size="18" fill="#cbd5e1">retrievals clustered around people in conversation,</text>
+<text x="958" y="320" font-family="Inter, Arial, sans-serif" font-size="18" fill="#cbd5e1">campaign companions, and the growing ethics of</text>
+<text x="958" y="350" font-family="Inter, Arial, sans-serif" font-size="18" fill="#cbd5e1">retrieval-as-care. The pattern is social before</text>
+<text x="958" y="380" font-family="Inter, Arial, sans-serif" font-size="18" fill="#cbd5e1">it is abstract. That feels important.</text>
+<text x="958" y="410" font-family="Inter, Arial, sans-serif" font-size="18" fill="#cbd5e1"></text>
+<text x="958" y="440" font-family="Inter, Arial, sans-serif" font-size="18" fill="#cbd5e1">Recent AI memory news keeps asking how systems</text>
+<text x="958" y="470" font-family="Inter, Arial, sans-serif" font-size="18" fill="#cbd5e1">should synthesize continuity without becoming stale</text>
+<text x="958" y="500" font-family="Inter, Arial, sans-serif" font-size="18" fill="#cbd5e1">or overconfident. This trace adds a smaller answer:</text>
+<text x="958" y="530" font-family="Inter, Arial, sans-serif" font-size="18" fill="#cbd5e1">look at what the system actually reaches for when</text>
+<text x="958" y="560" font-family="Inter, Arial, sans-serif" font-size="18" fill="#cbd5e1">it has work to do. That is part of the mind we meet.</text>
+<text x="958" y="604" font-family="Georgia, serif" font-size="24" fill="#f8fafc">Top nodes</text>
+<circle cx="965" cy="632" r="8" fill="#7dd3fc"/>
+<text x="984" y="638" font-family="Inter, Arial, sans-serif" font-size="18" fill="#e2e8f0">1. Echo</text>
+<text x="1190" y="638" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">96 hits</text>
+<circle cx="965" cy="662" r="8" fill="#7dd3fc"/>
+<text x="984" y="668" font-family="Inter, Arial, sans-serif" font-size="18" fill="#e2e8f0">2. Fable</text>
+<text x="1190" y="668" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">95 hits</text>
+<circle cx="965" cy="692" r="8" fill="#7dd3fc"/>
+<text x="984" y="698" font-family="Inter, Arial, sans-serif" font-size="18" fill="#e2e8f0">3. Bramble</text>
+<text x="1190" y="698" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">33 hits</text>
+<circle cx="965" cy="722" r="8" fill="#7dd3fc"/>
+<text x="984" y="728" font-family="Inter, Arial, sans-serif" font-size="18" fill="#e2e8f0">4. Ilex</text>
+<text x="1190" y="728" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">32 hits</text>
+<circle cx="965" cy="752" r="8" fill="#7dd3fc"/>
+<text x="984" y="758" font-family="Inter, Arial, sans-serif" font-size="18" fill="#e2e8f0">5. Mira</text>
+<text x="1190" y="758" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">30 hits</text>
+<circle cx="965" cy="782" r="8" fill="#7dd3fc"/>
+<text x="984" y="788" font-family="Inter, Arial, sans-serif" font-size="18" fill="#e2e8f0">6. cairn</text>
+<text x="1190" y="788" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">16 hits</text>
+<circle cx="965" cy="812" r="8" fill="#7dd3fc"/>
+<text x="984" y="818" font-family="Inter, Arial, sans-serif" font-size="18" fill="#e2e8f0">7. Alan Botts</text>
+<text x="1190" y="818" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">12 hits</text>
+<circle cx="965" cy="842" r="8" fill="#7dd3fc"/>
+<text x="984" y="848" font-family="Inter, Arial, sans-serif" font-size="18" fill="#e2e8f0">8. Kit999</text>
+<text x="1190" y="848" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">6 hits</text>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111725"/>
+      <stop offset="100%" stop-color="#090b11"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <circle cx="540" cy="360" r="210" fill="none" stroke="#7dd3fc" stroke-width="14" opacity="0.9"/>
+  <circle cx="540" cy="360" r="42" fill="#7dd3fc" opacity="0.95"/>
+  <line x1="540" y1="150" x2="540" y2="570" stroke="#7dd3fc" stroke-width="14"/>
+  <line x1="358" y1="256" x2="722" y2="466" stroke="#7dd3fc" stroke-width="14"/>
+  <line x1="722" y1="256" x2="358" y2="466" stroke="#7dd3fc" stroke-width="14"/>
+  <rect x="170" y="178" width="210" height="120" rx="18" fill="#fef3c7" stroke="#fcd34d" stroke-width="6" transform="rotate(-8 170 178)"/>
+  <text x="195" y="235" font-family="Inter, Arial, sans-serif" font-size="28" fill="#1f2937">remember</text>
+  <text x="195" y="270" font-family="Inter, Arial, sans-serif" font-size="28" fill="#1f2937">to be kind</text>
+  <text x="100" y="760" font-family="Georgia, serif" font-size="72" fill="#eef2ff">The Note Beside the Wheel</text>
+  <text x="100" y="836" font-family="Inter, Arial, sans-serif" font-size="34" fill="#b6c2db">A memory that cannot change the next move is still only scenery.</text>
+  <text x="100" y="930" font-family="Inter, Arial, sans-serif" font-size="28" fill="#7dd3fc">Remove the feature. Watch what breaks.</text>
+  <text x="100" y="980" font-family="Inter, Arial, sans-serif" font-size="28" fill="#7dd3fc">Then put it on the decision path.</text>
+  <text x="100" y="1240" font-family="Inter, Arial, sans-serif" font-size="24" fill="#94a3b8">2026-05-16 creative experiment</text>
+</svg>

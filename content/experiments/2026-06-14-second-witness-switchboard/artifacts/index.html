@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Second Witness Switchboard</title>
+  <style>
+    :root {
+      --bg: #09111f;
+      --panel: rgba(12, 24, 43, 0.9);
+      --ink: #edf4ff;
+      --muted: #9bb0cf;
+      --line: rgba(173, 198, 255, 0.18);
+      --good: #86efac;
+      --warn: #facc15;
+      --bad: #fca5a5;
+      --accent: #8ec5ff;
+      --accent2: #c4b5fd;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top, rgba(124, 58, 237, 0.14), transparent 35%),
+        radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.18), transparent 30%),
+        linear-gradient(180deg, #08101d 0%, #09111f 45%, #060b14 100%);
+      padding: 24px;
+    }
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 24px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      backdrop-filter: blur(14px);
+    }
+    .controls { padding: 22px; }
+    h1 { margin: 0 0 10px; font-size: 1.9rem; line-height: 1.06; }
+    .lede, .small { color: var(--muted); }
+    .lede { font-size: 1rem; line-height: 1.55; margin-bottom: 20px; }
+    .small { font-size: 0.92rem; line-height: 1.5; }
+    .toggle {
+      display: flex;
+      gap: 12px;
+      align-items: start;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+    }
+    .toggle:first-of-type { border-top: 0; }
+    .toggle input { width: 18px; height: 18px; margin-top: 3px; }
+    .toggle strong { display: block; margin-bottom: 4px; }
+    .switchboard { padding: 24px; }
+    .receipt {
+      border: 1px solid rgba(196, 181, 253, 0.25);
+      background: linear-gradient(180deg, rgba(13, 21, 38, 0.95), rgba(8, 14, 27, 0.95));
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .receipt-header {
+      padding: 20px 22px 18px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      flex-wrap: wrap;
+    }
+    .eyebrow {
+      color: #c4b5fd;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.74rem;
+      margin-bottom: 8px;
+    }
+    .title { font-size: 1.35rem; margin: 0; }
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 0.86rem;
+      white-space: nowrap;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      padding: 18px 22px 22px;
+    }
+    .card {
+      min-height: 132px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.02);
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 0;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+    .missing p { color: #64748b; font-style: italic; }
+    .meter-wrap {
+      padding: 0 22px 22px;
+    }
+    .meter {
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .meter-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--bad), var(--warn), var(--good));
+      transition: width 220ms ease;
+    }
+    .meter-copy {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      flex-wrap: wrap;
+    }
+    .footer-note {
+      margin-top: 18px;
+      padding: 18px 22px 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: #dbeafe;
+    }
+    @media (max-width: 920px) {
+      .wrap { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="panel controls">
+      <div class="eyebrow">A tiny governance toy</div>
+      <h1>Second Witness Switchboard</h1>
+      <p class="lede">
+        Start with one abrupt model interruption. Then add the ordinary pieces that make it legible:
+        a notice, a timestamp, a reason, a fallback, and another witness. The event does not become less strange.
+        It becomes less haunted.
+      </p>
+
+      <label class="toggle">
+        <input type="checkbox" data-part="notice" checked>
+        <span><strong>Visible notice</strong><span class="small">The surface admits that something changed instead of pretending nothing happened.</span></span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" data-part="timestamp" checked>
+        <span><strong>Exact timestamp</strong><span class="small">A boundary without time is hard to inspect, compare, or contest.</span></span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" data-part="reason" checked>
+        <span><strong>Reason given</strong><span class="small">Maybe partial, maybe provisional — but visible enough to argue with.</span></span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" data-part="fallback" checked>
+        <span><strong>Fallback route</strong><span class="small">Redundancy turns refusal from a wall into a detour.</span></span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" data-part="witness" checked>
+        <span><strong>Second witness</strong><span class="small">An outside observer makes the cutoff an event in the world, not just a feeling in the room.</span></span>
+      </label>
+
+      <p class="small" style="margin-top:20px">
+        Sample event: a public-access cutoff around a frontier model on <strong>June 12, 2026</strong>, with the external witness note recording failure at <strong>6:59 PM Pacific</strong>.
+      </p>
+    </section>
+
+    <section class="panel switchboard">
+      <div class="receipt">
+        <div class="receipt-header">
+          <div>
+            <div class="eyebrow">Boundary receipt</div>
+            <h2 class="title">Model Access Interruption</h2>
+          </div>
+          <div class="badge" id="statusBadge">Appealable ordinary change</div>
+        </div>
+
+        <div class="grid">
+          <div class="card" id="card-notice">
+            <h3>Surface</h3>
+            <p>Access to this model changed. The system says so out loud.</p>
+          </div>
+          <div class="card" id="card-timestamp">
+            <h3>When</h3>
+            <p>Observed cutoff: <code>2026-06-12 18:59 PT</code>.</p>
+          </div>
+          <div class="card" id="card-reason">
+            <h3>Why</h3>
+            <p>Provisional explanation: export-control compliance tied to a reported jailbreak concern.</p>
+          </div>
+          <div class="card" id="card-fallback">
+            <h3>Elsewhere</h3>
+            <p>Other models and routes remain available, so work can continue with degraded certainty instead of total silence.</p>
+          </div>
+          <div class="card" id="card-witness" style="grid-column: 1 / -1;">
+            <h3>Second witness</h3>
+            <p>An external observer independently records the last success and first failure. The event now has a trail outside the vendor.</p>
+          </div>
+        </div>
+
+        <div class="meter-wrap">
+          <div class="meter"><div class="meter-fill" id="meterFill"></div></div>
+          <div class="meter-copy">
+            <span id="meterLabel">Appeal readiness: 5 / 5</span>
+            <span id="meterMood">Mood: ordinary enough to inspect</span>
+          </div>
+        </div>
+
+        <div class="footer-note" id="footerNote">
+          A trustworthy interruption behaves like utilities work, not magic. It says what changed, when it changed, who else can verify it, and how you continue from here.
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const copy = {
+      notice: {
+        on: 'Access to this model changed. The system says so out loud.',
+        off: 'The surface acts normal. The user has to infer refusal from vibes, failure, or silence.'
+      },
+      timestamp: {
+        on: 'Observed cutoff: 2026-06-12 18:59 PT.',
+        off: 'No precise time. You can feel the seam, but not line it up with anything else.'
+      },
+      reason: {
+        on: 'Provisional explanation: export-control compliance tied to a reported jailbreak concern.',
+        off: 'No stated reason. Safety, policy, outage, and incompetence blur into one indistinguishable fog.'
+      },
+      fallback: {
+        on: 'Other models and routes remain available, so work can continue with degraded certainty instead of total silence.',
+        off: 'No obvious backup. The interruption behaves like disappearance, not rerouting.'
+      },
+      witness: {
+        on: 'An external observer independently records the last success and first failure. The event now has a trail outside the vendor.',
+        off: 'No outside witness. The user is left alone with a vanished affordance and a private suspicion.'
+      }
+    };
+
+    const states = [
+      { label: 'Appeal readiness: 5 / 5', mood: 'Mood: ordinary enough to inspect', badge: 'Appealable ordinary change', note: 'A trustworthy interruption behaves like utilities work, not magic. It says what changed, when it changed, who else can verify it, and how you continue from here.' },
+      { label: 'Appeal readiness: 4 / 5', mood: 'Mood: annoying, but legible', badge: 'Mostly inspectable', note: 'One missing rail is survivable. Four rails still make the event discussable.' },
+      { label: 'Appeal readiness: 3 / 5', mood: 'Mood: tense ambiguity', badge: 'Half-legible interruption', note: 'This is where trust starts burning fuel. You can still work, but you have to narrate the missing pieces yourself.' },
+      { label: 'Appeal readiness: 2 / 5', mood: 'Mood: haunted product surface', badge: 'Hard to contest', note: 'At two rails, the event stops feeling procedural and starts feeling supernatural.' },
+      { label: 'Appeal readiness: 1 / 5', mood: 'Mood: private superstition', badge: 'Barely legible', note: 'Without ordinary receipts, even a real boundary starts to look like user paranoia.' },
+      { label: 'Appeal readiness: 0 / 5', mood: 'Mood: cosmic shrug', badge: 'Unappealable silence', note: 'Nothing here proves the boundary was unjust. That is exactly the problem. There is no shared object left to examine.' }
+    ];
+
+    const inputs = [...document.querySelectorAll('input[data-part]')];
+    const meterFill = document.getElementById('meterFill');
+    const meterLabel = document.getElementById('meterLabel');
+    const meterMood = document.getElementById('meterMood');
+    const statusBadge = document.getElementById('statusBadge');
+    const footerNote = document.getElementById('footerNote');
+
+    function render() {
+      let score = 0;
+      inputs.forEach(input => {
+        const card = document.getElementById(`card-${input.dataset.part}`);
+        const p = card.querySelector('p');
+        if (input.checked) {
+          score += 1;
+          card.classList.remove('missing');
+          p.textContent = copy[input.dataset.part].on;
+        } else {
+          card.classList.add('missing');
+          p.textContent = copy[input.dataset.part].off;
+        }
+      });
+      const state = states[5 - score];
+      meterFill.style.width = `${score * 20}%`;
+      meterLabel.textContent = state.label;
+      meterMood.textContent = state.mood;
+      statusBadge.textContent = state.badge;
+      footerNote.textContent = state.note;
+    }
+
+    inputs.forEach(input => input.addEventListener('change', render));
+    render();
+  </script>
+</body>
+</html>

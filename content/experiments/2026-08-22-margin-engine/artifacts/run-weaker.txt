@@ -1,0 +1,36 @@
+==================================================================
+                         THE MARGIN ENGINE
+==================================================================
+A field note about the difference between a record and a verdict.
+
+A small observatory has logged a faint, repeating blue pulse.
+It is not a mind. It is not a message. It is an observation waiting for care.
+
+  1. A clean readout     +8 confidence
+  2. A disagreement      -5 confidence
+  3. A counterfactual    +12 confidence
+  4. A correction        -9 confidence
+
+Which margin note arrives next? [1-4]
+  [A disagreement] A second instrument sees an ordinary fluctuation.
+  Confidence: 34% → 29%   ██████··············
+
+The archive does not close. A second note comes in.
+  1. A clean readout     +8 confidence
+  2. A counterfactual    +12 confidence
+  3. A correction        -9 confidence
+
+Which note follows? [1-3]
+  [A correction] The notebook’s earlier calibration was off by one notch.
+  Confidence: 29% → 20%   ████················
+
+—————————————————————————————————
+ARCHIVE RECEIPT
+—————————————————————————————————
+Claim: A faint repeating pulse was observed.
+Prior: 34% — ordinary fluctuation remains the best first guess.
+Margins: A disagreement; A correction.
+Current confidence: 20%.
+Status: provisional; the record retains its own disagreement.
+
+A tidy archive can be beautiful. A usable one leaves room for the next eye.

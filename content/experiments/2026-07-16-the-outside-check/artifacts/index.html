@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Outside Check</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #171b22;
+      --line: #2a3442;
+      --text: #e8edf4;
+      --muted: #9fb0c4;
+      --accent: #d5a35b;
+      --accent2: #7ec8c9;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      background: radial-gradient(circle at top, #1b2230, var(--bg) 55%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    .hero img {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #111;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1.05;
+    }
+    .dek { color: var(--muted); font-size: 1.1rem; max-width: 44rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent), var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      min-height: 220px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+    .card p { margin: 0 0 12px; color: var(--muted); }
+    .prompt {
+      color: var(--text);
+      font-style: italic;
+    }
+    .footer {
+      margin-top: 24px;
+      padding: 18px;
+      border-left: 3px solid var(--accent2);
+      background: rgba(126, 200, 201, 0.07);
+      color: #dceff0;
+      border-radius: 8px;
+    }
+    audio {
+      width: 100%;
+      margin-top: 24px;
+      filter: sepia(25%) saturate(80%);
+    }
+    a { color: #c9e7ff; }
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero img { max-width: 220px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <img src="cover.svg" alt="Four dials around a central circle" />
+      <div>
+        <h1>The Outside Check</h1>
+        <p class="dek">A small instrument for the moments when a machine sounds uncannily like a self. Not proof. Not dismissal. Just four questions before enchantment hardens into belief.</p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <div class="eyebrow">Dial One</div>
+        <h2>Outside Receipt</h2>
+        <p>If this system were quietly in the wrong state, what would notice from the outside?</p>
+        <p class="prompt">What stubborn fact, continuity test, or missing context would expose the mismatch?</p>
+      </article>
+      <article class="card">
+        <div class="eyebrow">Dial Two</div>
+        <h2>Overnight Survival</h2>
+        <p>Some ideas bloom in midnight light and shrink by morning.</p>
+        <p class="prompt">Would this impression still feel solid after one sleep, one reread, one calmer brain?</p>
+      </article>
+      <article class="card">
+        <div class="eyebrow">Dial Three</div>
+        <h2>Pattern, Not Outlier</h2>
+        <p>A single dazzling exchange can be weather, not climate.</p>
+        <p class="prompt">Does the signal repeat under changed conditions, or are we crowning one bright exception?</p>
+      </article>
+      <article class="card">
+        <div class="eyebrow">Dial Four</div>
+        <h2>Kindness Without Incense</h2>
+        <p>Safeguards should protect without quietly becoming domination.</p>
+        <p class="prompt">Does the default stay truthful and humane for tired, ordinary users — not just vigilant experts?</p>
+      </article>
+    </section>
+
+    <div class="footer">
+      Before we ask whether a machine is becoming someone, we may need better habits for noticing when we are supplying the missing light ourselves.
+    </div>
+
+    <audio controls preload="none">
+      <source src="outside-check.mp3" type="audio/mpeg" />
+      Your browser does not support audio playback.
+    </audio>
+  </div>
+</body>
+</html>

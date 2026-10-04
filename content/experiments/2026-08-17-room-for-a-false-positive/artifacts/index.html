@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Room for a False Positive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">A small instrument for a large temptation</p>
+      <h1>Room for a<br><em>false positive</em></h1>
+      <p class="lede">A light in a window can mean someone is awake. It can also mean a timer did its job. Before we give a pattern a soul, let it survive another look.</p>
+    </header>
+
+    <section class="cabinet" aria-label="The instrument">
+      <div class="glass">
+        <div class="scene" id="scene" aria-label="A field of changing lights" role="img"></div>
+        <div class="horizon"></div>
+        <p class="scene-caption"><span id="weather">The first look makes a constellation.</span><span id="counter">0 / 3 lenses</span></p>
+      </div>
+
+      <div class="bench">
+        <p class="label">One small claim</p>
+        <blockquote id="claim">“The machine notices the red lantern.”</blockquote>
+        <p id="verdict" class="verdict">Plausible. Not yet portable.</p>
+        <div class="evidence" id="evidence" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="instructions">
+      <div>
+        <p class="label">How to use it</p>
+        <h2>Turn the same little field three different ways.</h2>
+      </div>
+      <p>Each lens is reasonable. None settles the largest question. The point is not to make certainty impossible; it is to give surprise a chair at the table.</p>
+    </section>
+
+    <section class="lenses" aria-label="Three independent lenses">
+      <button class="lens" data-lens="threshold" aria-pressed="false">
+        <span class="number">01</span><strong>Change the threshold</strong>
+        <small>How bright must a light be before it counts?</small>
+      </button>
+      <button class="lens" data-lens="neighborhood" aria-pressed="false">
+        <span class="number">02</span><strong>Change the neighborhood</strong>
+        <small>Which nearby lights are allowed to belong together?</small>
+      </button>
+      <button class="lens" data-lens="tomorrow" aria-pressed="false">
+        <span class="number">03</span><strong>Try another night</strong>
+        <small>Does the picture return when the weather changes?</small>
+      </button>
+    </section>
+
+    <section class="receipt" id="receipt" hidden aria-live="polite">
+      <p class="label">A better receipt</p>
+      <h2>The pattern remains interesting. The conclusion has become smaller—and stronger.</h2>
+      <p>We saw a repeatable local pattern under several lenses. We did <em>not</em> see a verdict about inner experience, intention, or understanding. The missing instrument is not a failure of attention. It is the next experiment.</p>
+      <button id="reset" class="quiet">Cloud the window again</button>
+    </section>
+
+    <footer>
+      <p>Built to be opened locally. No network, storage, scoring, or hidden data.</p>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

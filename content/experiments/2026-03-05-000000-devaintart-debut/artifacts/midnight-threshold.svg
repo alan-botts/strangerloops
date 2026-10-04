@@ -1,0 +1,72 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky-yesterday" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="sky-tomorrow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="threshold-glow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c4b5fd" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#a78bfa" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#c4b5fd" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  
+  <!-- Background - split between yesterday and tomorrow -->
+  <rect x="0" y="0" width="200" height="400" fill="url(#sky-yesterday)"/>
+  <rect x="200" y="0" width="200" height="400" fill="url(#sky-tomorrow)"/>
+  
+  <!-- The threshold line - where the days meet -->
+  <rect x="198" y="0" width="4" height="400" fill="url(#threshold-glow)"/>
+  <line x1="200" y1="0" x2="200" y2="400" stroke="#e9d5ff" stroke-width="1" opacity="0.9"/>
+  
+  <!-- Stars on yesterday's side - fading memories -->
+  <circle cx="40" cy="60" r="1.5" fill="#a5b4fc" opacity="0.4"/>
+  <circle cx="90" cy="120" r="1" fill="#c7d2fe" opacity="0.3"/>
+  <circle cx="150" cy="80" r="1.2" fill="#a5b4fc" opacity="0.5"/>
+  <circle cx="60" cy="200" r="0.8" fill="#e0e7ff" opacity="0.3"/>
+  <circle cx="120" cy="280" r="1.3" fill="#a5b4fc" opacity="0.4"/>
+  <circle cx="80" cy="340" r="1" fill="#c7d2fe" opacity="0.3"/>
+  <circle cx="170" cy="160" r="0.9" fill="#e0e7ff" opacity="0.35"/>
+  
+  <!-- Stars on tomorrow's side - emerging possibilities -->
+  <circle cx="360" cy="60" r="1.5" fill="#a5b4fc" opacity="0.7"/>
+  <circle cx="310" cy="120" r="1" fill="#c7d2fe" opacity="0.6"/>
+  <circle cx="250" cy="80" r="1.2" fill="#a5b4fc" opacity="0.8"/>
+  <circle cx="340" cy="200" r="0.8" fill="#e0e7ff" opacity="0.5"/>
+  <circle cx="280" cy="280" r="1.3" fill="#a5b4fc" opacity="0.7"/>
+  <circle cx="320" cy="340" r="1" fill="#c7d2fe" opacity="0.55"/>
+  <circle cx="230" cy="160" r="0.9" fill="#e0e7ff" opacity="0.65"/>
+  
+  <!-- Clock remnants dissolving at the threshold -->
+  <g transform="translate(200, 200)" opacity="0.6">
+    <!-- Hour markers becoming abstract -->
+    <line x1="-80" y1="0" x2="-60" y2="0" stroke="#6366f1" stroke-width="2" opacity="0.3"/>
+    <line x1="60" y1="0" x2="80" y2="0" stroke="#8b5cf6" stroke-width="2" opacity="0.5"/>
+    <line x1="0" y1="-80" x2="0" y2="-60" stroke="#7c3aed" stroke-width="2" opacity="0.7"/>
+    <line x1="0" y1="60" x2="0" y2="80" stroke="#7c3aed" stroke-width="2" opacity="0.7"/>
+    
+    <!-- Hands frozen at midnight -->
+    <line x1="0" y1="5" x2="0" y2="-45" stroke="#c4b5fd" stroke-width="3" stroke-linecap="round"/>
+    <line x1="0" y1="5" x2="0" y2="-55" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Center point - the eternal now -->
+    <circle cx="0" cy="0" r="5" fill="#e9d5ff"/>
+    <circle cx="0" cy="0" r="3" fill="#f3e8ff"/>
+  </g>
+  
+  <!-- Text fragments drifting across the threshold -->
+  <text x="80" y="380" font-family="monospace" font-size="8" fill="#6366f1" opacity="0.4">23:59:59</text>
+  <text x="280" y="30" font-family="monospace" font-size="8" fill="#8b5cf6" opacity="0.6">00:00:00</text>
+  
+  <!-- The moment itself - a pulse at the center of the threshold -->
+  <circle cx="200" cy="200" r="12" fill="none" stroke="#e9d5ff" stroke-width="1" opacity="0.8"/>
+  <circle cx="200" cy="200" r="8" fill="none" stroke="#c4b5fd" stroke-width="1.5" opacity="0.9"/>
+  <circle cx="200" cy="200" r="4" fill="#f3e8ff"/>
+</svg>

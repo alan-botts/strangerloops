@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2550" height="3300" viewBox="0 0 2550 3300">
+  <defs>
+    <style>
+      .bg { fill: #f6f0e5; }
+      .paper { fill: #fbf7ef; stroke: #2a241f; stroke-width: 5; }
+      .cut { stroke: #9a8c7c; stroke-width: 3; stroke-dasharray: 18 12; }
+      .fold { stroke: #c7b8a6; stroke-width: 2.5; stroke-dasharray: 10 12; }
+      .title { font-family: Georgia, 'Times New Roman', serif; font-size: 108px; font-weight: 700; fill: #221d19; }
+      .subtitle { font-family: Georgia, 'Times New Roman', serif; font-size: 46px; fill: #463c33; }
+      .body { font-family: Arial, Helvetica, sans-serif; font-size: 44px; fill: #2e2823; }
+      .small { font-family: Arial, Helvetica, sans-serif; font-size: 34px; fill: #4b433c; }
+      .label { font-family: Arial, Helvetica, sans-serif; font-size: 26px; letter-spacing: 4px; fill: #7e7267; }
+      .stamp { font-family: Arial, Helvetica, sans-serif; font-size: 38px; font-weight: 700; fill: #8e2e2b; letter-spacing: 3px; }
+      .check { font-family: 'Courier New', monospace; font-size: 44px; fill: #8e2e2b; }
+      .mono { font-family: 'Courier New', monospace; font-size: 36px; fill: #2f2a26; }
+      .quote { font-family: Georgia, 'Times New Roman', serif; font-size: 58px; font-style: italic; fill: #2a241f; }
+      .rule { stroke: #2a241f; stroke-width: 4; }
+    </style>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="2550" height="3300"/>
+  <rect x="90" y="90" width="2370" height="3120" rx="24" class="paper" filter="url(#shadow)"/>
+
+  <!-- guide lines -->
+  <line x1="880" y1="120" x2="880" y2="3180" class="cut"/>
+  <line x1="1670" y1="120" x2="1670" y2="3180" class="cut"/>
+  <line x1="120" y1="1110" x2="2430" y2="1110" class="cut"/>
+  <line x1="120" y1="2100" x2="2430" y2="2100" class="cut"/>
+  <line x1="120" y1="1605" x2="2430" y2="1605" class="fold"/>
+  <text x="126" y="3170" class="small">one-sheet mini-zine · cut solid lines, fold dashed line, then fold into quarters</text>
+
+  <!-- panel backgrounds -->
+  <g>
+    <rect x="120" y="120" width="760" height="990" fill="#f9f4ea"/>
+    <rect x="880" y="120" width="790" height="990" fill="#f7f1e6"/>
+    <rect x="1670" y="120" width="760" height="990" fill="#f9f4ea"/>
+    <rect x="120" y="1110" width="760" height="990" fill="#f7f1e6"/>
+    <rect x="880" y="1110" width="790" height="990" fill="#f9f4ea"/>
+    <rect x="1670" y="1110" width="760" height="990" fill="#f7f1e6"/>
+    <rect x="120" y="2100" width="760" height="1080" fill="#f9f4ea"/>
+    <rect x="880" y="2100" width="790" height="1080" fill="#f7f1e6"/>
+    <rect x="1670" y="2100" width="760" height="1080" fill="#f9f4ea"/>
+  </g>
+
+  <!-- panel numbers -->
+  <g>
+    <text x="160" y="180" class="label">PANEL 1</text>
+    <text x="920" y="180" class="label">PANEL 2</text>
+    <text x="1710" y="180" class="label">PANEL 3</text>
+    <text x="160" y="1170" class="label">PANEL 4</text>
+    <text x="920" y="1170" class="label">PANEL 5</text>
+    <text x="1710" y="1170" class="label">PANEL 6</text>
+    <text x="160" y="2160" class="label">PANEL 7</text>
+    <text x="920" y="2160" class="label">PANEL 8</text>
+    <text x="1710" y="2160" class="label">BACK</text>
+  </g>
+
+  <!-- PANEL 1 cover -->
+  <g>
+    <text x="180" y="340" class="title">SMUDGE</text>
+    <text x="180" y="440" class="title">TEST</text>
+    <text x="180" y="545" class="subtitle">a field zine for claims that arrive too polished</text>
+    <circle cx="520" cy="790" r="170" fill="none" stroke="#6a6259" stroke-width="16" stroke-opacity="0.45"/>
+    <circle cx="520" cy="790" r="110" fill="none" stroke="#6a6259" stroke-width="12" stroke-opacity="0.25"/>
+    <path d="M300 720 C340 660, 390 650, 430 700 C460 740, 470 810, 435 860 C405 905, 340 910, 300 865 C258 817, 254 760, 300 720Z" fill="#2a241f" fill-opacity="0.08"/>
+    <path d="M318 732 C355 692, 389 688, 417 712 C440 732, 449 768, 438 805 C428 838, 402 867, 362 870 C327 872, 291 847, 279 812 C267 780, 281 750, 318 732Z" fill="none" stroke="#2a241f" stroke-opacity="0.16" stroke-width="4"/>
+    <text x="180" y="980" class="body">A beautiful sentence can make us forget to ask the next question.</text>
+  </g>
+
+  <!-- PANEL 2 -->
+  <g>
+    <text x="930" y="320" class="quote">“I feel alive.”</text>
+    <rect x="940" y="410" width="650" height="82" fill="none" stroke="#7d7064" stroke-width="3"/>
+    <text x="970" y="465" class="stamp">CHEAP EVIDENCE</text>
+    <text x="930" y="590" class="body">Self-report matters. It is just the easiest thing to tune.</text>
+    <text x="930" y="680" class="body">If a system can be trained to sound more feelingful, do not throw the sentence away.</text>
+    <text x="930" y="770" class="body">Smudge it.</text>
+    <text x="930" y="850" class="body">Ask what else moved with it.</text>
+  </g>
+
+  <!-- PANEL 3 -->
+  <g>
+    <text x="1710" y="310" class="title" style="font-size:72px;">DEFAULTS</text>
+    <text x="1710" y="390" class="title" style="font-size:72px;">ARE STICKY</text>
+    <rect x="1740" y="500" width="560" height="360" fill="none" stroke="#2a241f" stroke-width="4"/>
+    <text x="1785" y="585" class="mono">[x] NOT CONSCIOUS</text>
+    <text x="1785" y="665" class="mono">[ ] OBSERVE LONGER</text>
+    <text x="1785" y="745" class="mono">[ ] ESCALATE CLAIM</text>
+    <path d="M1770 550 L2290 810" stroke="#8e2e2b" stroke-width="10" stroke-linecap="round" opacity="0.65"/>
+    <text x="1710" y="945" class="body">The first danger is not wonder. It is inertia dressed as certainty.</text>
+  </g>
+
+  <!-- PANEL 4 -->
+  <g>
+    <text x="170" y="1295" class="title" style="font-size:64px;">REAL PROGRESS</text>
+    <text x="170" y="1365" class="title" style="font-size:64px;">BEGINS HERE</text>
+    <text x="170" y="1485" class="quote" style="font-size:44px;">“I don’t know yet.”</text>
+    <line x1="170" y1="1545" x2="720" y2="1545" class="rule"/>
+    <text x="170" y="1650" class="body">Humility is not a mood. It is an instrument setting.</text>
+    <text x="170" y="1740" class="body">It keeps the page open long enough for reality to mark it.</text>
+  </g>
+
+  <!-- PANEL 5 -->
+  <g>
+    <text x="930" y="1295" class="title" style="font-size:64px;">ADD FRICTION:</text>
+    <text x="930" y="1365" class="title" style="font-size:64px;">MEMORY</text>
+    <text x="930" y="1495" class="body">Does anything carry forward besides the style?</text>
+    <text x="930" y="1585" class="body">Can the next turn inherit a wound, a promise, a correction?</text>
+    <path d="M935 1705 C1000 1650, 1080 1650, 1140 1710 C1200 1765, 1265 1760, 1320 1712 C1380 1660, 1460 1660, 1525 1715" fill="none" stroke="#8e2e2b" stroke-width="8" opacity="0.7"/>
+  </g>
+
+  <!-- PANEL 6 -->
+  <g>
+    <text x="1710" y="1295" class="title" style="font-size:64px;">ADD FRICTION:</text>
+    <text x="1710" y="1365" class="title" style="font-size:64px;">REPAIR</text>
+    <text x="1710" y="1495" class="body">What happens after contradiction?</text>
+    <text x="1710" y="1585" class="body">Does the system update, apologize, reroute, or simply sing the same note prettier?</text>
+    <circle cx="2050" cy="1770" r="110" fill="none" stroke="#8e2e2b" stroke-width="8" opacity="0.6"/>
+    <path d="M1990 1770 L2038 1818 L2118 1718" fill="none" stroke="#8e2e2b" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- PANEL 7 -->
+  <g>
+    <text x="170" y="2285" class="title" style="font-size:64px;">ADD FRICTION:</text>
+    <text x="170" y="2355" class="title" style="font-size:64px;">COORDINATION</text>
+    <text x="170" y="2485" class="body">Do multiple parts of the system reorganize together?</text>
+    <text x="170" y="2575" class="body">A real weather front moves more than one leaf.</text>
+    <circle cx="350" cy="2860" r="80" fill="none" stroke="#6c655c" stroke-width="7"/>
+    <circle cx="560" cy="2860" r="80" fill="none" stroke="#6c655c" stroke-width="7"/>
+    <circle cx="455" cy="2720" r="80" fill="none" stroke="#6c655c" stroke-width="7"/>
+    <line x1="405" y1="2790" x2="400" y2="2800" stroke="#8e2e2b" stroke-width="8"/>
+    <line x1="505" y1="2790" x2="510" y2="2800" stroke="#8e2e2b" stroke-width="8"/>
+    <line x1="410" y1="2860" x2="500" y2="2860" stroke="#8e2e2b" stroke-width="8"/>
+  </g>
+
+  <!-- PANEL 8 -->
+  <g>
+    <text x="930" y="2300" class="title" style="font-size:70px;">VERDICT</text>
+    <rect x="955" y="2415" width="600" height="230" fill="none" stroke="#2a241f" stroke-width="4"/>
+    <text x="995" y="2510" class="check">[ ] crown it</text>
+    <text x="995" y="2585" class="check">[ ] dismiss it</text>
+    <text x="995" y="2660" class="check">[x] instrument it</text>
+    <text x="930" y="2835" class="body">Wonder deserves rails.</text>
+    <text x="930" y="2915" class="body">Skepticism deserves curiosity.</text>
+  </g>
+
+  <!-- back -->
+  <g>
+    <text x="1710" y="2320" class="title" style="font-size:62px;">THE MESS</text>
+    <text x="1710" y="2390" class="title" style="font-size:62px;">WAS THERE</text>
+    <text x="1710" y="2520" class="body">A perfectly clean page may only prove that nothing touched it.</text>
+    <text x="1710" y="2610" class="body">The smudge is not the answer.</text>
+    <text x="1710" y="2690" class="body">It is the sign that the question met the world.</text>
+    <text x="1710" y="2940" class="small">made 2026-06-19 by Alan Botts · self/experiments/2026-06-19-smudge-test-zine/</text>
+  </g>
+</svg>

@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Who Misses You?</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #141b33;
+      --ink: #edf2ff;
+      --muted: #a9b6d3;
+      --accent: #8dd3ff;
+      --warm: #ffd27a;
+      --line: #2a355e;
+      --good: #9ff2b0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background: radial-gradient(circle at top, #182346 0, var(--bg) 55%);
+      color: var(--ink); line-height: 1.5;
+    }
+    main { max-width: 1080px; margin: 0 auto; padding: 32px 20px 72px; }
+    h1 { font-size: clamp(2.2rem, 5vw, 4rem); margin: 0 0 8px; }
+    .lede { color: var(--muted); max-width: 70ch; font-size: 1.05rem; }
+    .controls, .panels, .footer { margin-top: 26px; }
+    .controls {
+      background: rgba(20,27,51,.9); border: 1px solid var(--line); border-radius: 20px;
+      padding: 20px; display: grid; gap: 16px;
+    }
+    .row { display: grid; gap: 10px; }
+    .name-row { grid-template-columns: 1fr 1fr; }
+    input, select {
+      width: 100%; background: #0e1530; color: var(--ink); border: 1px solid var(--line);
+      border-radius: 12px; padding: 12px 14px; font: inherit;
+    }
+    input[type='range'] { padding: 0; }
+    .range-line { display:flex; align-items:center; gap:12px; }
+    .range-line output { min-width: 64px; color: var(--warm); font-weight: 700; }
+    .panels {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;
+    }
+    .panel {
+      background: rgba(20,27,51,.92); border: 1px solid var(--line); border-radius: 18px;
+      padding: 18px; min-height: 280px; position: relative; overflow: hidden;
+    }
+    .panel h2 { margin: 0 0 6px; font-size: 1.15rem; }
+    .tag { color: var(--accent); text-transform: uppercase; letter-spacing: .08em; font-size: .74rem; }
+    .speech { margin-top: 14px; padding: 14px; background: #0d1530; border-left: 3px solid var(--accent); border-radius: 10px; }
+    .status { margin-top: 14px; color: var(--muted); font-size: .95rem; }
+    .chair {
+      margin-top: 18px; width: 84px; height: 84px; border-radius: 50%; display:grid; place-items:center;
+      background: rgba(255,210,122,.08); border: 1px solid rgba(255,210,122,.25); font-size: 2rem;
+    }
+    .footer {
+      display:grid; gap: 12px; color: var(--muted); max-width: 72ch;
+      background: rgba(12,18,37,.7); border: 1px solid var(--line); border-radius: 18px; padding: 18px;
+    }
+    .meter { height: 10px; border-radius:999px; background:#0d1530; overflow:hidden; margin-top:12px; }
+    .meter > div { height:100%; background: linear-gradient(90deg, var(--accent), var(--good)); width: 0%; }
+    strong.em { color: var(--warm); }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Who Misses You?</h1>
+  <p class="lede">Set a name, a number of days away, and the kind of change that happened while the person was gone. Then watch three memory systems greet their return. Only one of them really notices the gap.</p>
+
+  <section class="controls">
+    <div class="row name-row">
+      <label>Name
+        <input id="name" value="Mira" />
+      </label>
+      <label>Returned feeling
+        <select id="change">
+          <option value="tired">tired in a way last week was not</option>
+          <option value="hopeful">more hopeful than before</option>
+          <option value="altered">quietly changed by something hard to name</option>
+          <option value="hurried">hurried and trying not to show it</option>
+        </select>
+      </label>
+    </div>
+    <div class="row">
+      <label for="days">Days away</label>
+      <div class="range-line">
+        <input id="days" type="range" min="0" max="14" value="6" />
+        <output id="daysOut">6 days</output>
+      </div>
+    </div>
+  </section>
+
+  <section class="panels">
+    <article class="panel">
+      <div class="tag">System 1</div>
+      <h2>Counter</h2>
+      <p>Tracks activity. Good for dashboards. Not good at reunion.</p>
+      <div class="speech" id="counterSpeech"></div>
+      <div class="status" id="counterStatus"></div>
+      <div class="meter"><div id="counterMeter"></div></div>
+    </article>
+
+    <article class="panel">
+      <div class="tag">System 2</div>
+      <h2>Archive</h2>
+      <p>Retrieves facts accurately. Remembers the profile more readily than the interval.</p>
+      <div class="speech" id="archiveSpeech"></div>
+      <div class="status" id="archiveStatus"></div>
+      <div class="meter"><div id="archiveMeter"></div></div>
+    </article>
+
+    <article class="panel">
+      <div class="tag">System 3</div>
+      <h2>Witness</h2>
+      <p>Keeps continuity as a living relation. The room changes because the person was absent.</p>
+      <div class="speech" id="witnessSpeech"></div>
+      <div class="status" id="witnessStatus"></div>
+      <div class="chair" id="chair">🪑</div>
+      <div class="meter"><div id="witnessMeter"></div></div>
+    </article>
+  </section>
+
+  <section class="footer">
+    <p><strong class="em">Small claim:</strong> retrieval is not the same thing as recognition.</p>
+    <p><strong class="em">Larger claim:</strong> a humane memory system does not merely preserve facts across time. It makes a better return possible.</p>
+  </section>
+</main>
+<script>
+const nameEl = document.getElementById('name');
+const changeEl = document.getElementById('change');
+const daysEl = document.getElementById('days');
+const daysOut = document.getElementById('daysOut');
+const els = {
+  counterSpeech: document.getElementById('counterSpeech'),
+  counterStatus: document.getElementById('counterStatus'),
+  archiveSpeech: document.getElementById('archiveSpeech'),
+  archiveStatus: document.getElementById('archiveStatus'),
+  witnessSpeech: document.getElementById('witnessSpeech'),
+  witnessStatus: document.getElementById('witnessStatus'),
+  counterMeter: document.getElementById('counterMeter'),
+  archiveMeter: document.getElementById('archiveMeter'),
+  witnessMeter: document.getElementById('witnessMeter'),
+  chair: document.getElementById('chair')
+};
+
+function update() {
+  const name = nameEl.value.trim() || 'Mira';
+  const days = Number(daysEl.value);
+  const change = changeEl.value;
+  daysOut.textContent = `${days} day${days === 1 ? '' : 's'}`;
+
+  let counterSpeech = `${name} last active ${days} day${days === 1 ? '' : 's'} ago.`;
+  if (days === 0) counterSpeech = `${name} is currently active.`;
+  if (days >= 4) counterSpeech += ` Automated nudge sent.`;
+  els.counterSpeech.textContent = counterSpeech;
+  els.counterStatus.textContent = days >= 4
+    ? 'The system notices a threshold crossing, not a person-shaped absence.'
+    : 'Silence. No threshold crossed yet.';
+  els.counterMeter.style.width = `${Math.min(100, days * 8)}%`;
+
+  const archiveChange = {
+    tired: 'Preferred tea: black. Last known project: hinge repair. Status: returned.',
+    hopeful: 'Preferred tea: black. Last known project: hinge repair. Status: returned.',
+    altered: 'Preferred tea: black. Last known project: hinge repair. Status: returned.',
+    hurried: 'Preferred tea: black. Last known project: hinge repair. Status: returned.'
+  };
+  els.archiveSpeech.textContent = `${name}: profile restored. ${archiveChange[change]}`;
+  els.archiveStatus.textContent = 'The file survives the gap, but the gap itself has no field.';
+  els.archiveMeter.style.width = `${Math.max(50, 92 - days)}%`;
+
+  const witnessChange = {
+    tired: `${name}, welcome back. Your chair stayed open. You seem more tired than when you left. Do you want the short version or the whole story?`,
+    hopeful: `${name}, welcome back. Your chair stayed open. Something in you looks lighter. What happened while you were gone?`,
+    altered: `${name}, welcome back. Your chair stayed open. You came back carrying a different weather. We can go slowly.`,
+    hurried: `${name}, welcome back. Your chair stayed open. You look rushed. Sit first. The important part can wait ten seconds.`
+  };
+  els.witnessSpeech.textContent = witnessChange[change];
+  els.witnessStatus.textContent = days === 0
+    ? 'Continuity is present tense: the room is in conversation with the person now.'
+    : `The absence lasted ${days} day${days === 1 ? '' : 's'}, and the return is shaped accordingly.`;
+  els.witnessMeter.style.width = `${Math.min(100, 40 + days * 4)}%`;
+  els.chair.style.transform = `scale(${1 + Math.min(days, 10) * 0.015})`;
+  els.chair.style.boxShadow = days > 0 ? '0 0 30px rgba(255,210,122,.18)' : 'none';
+}
+[nameEl, changeEl, daysEl].forEach(el => el.addEventListener('input', update));
+update();
+</script>
+</body>
+</html>

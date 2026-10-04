@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cabinet of Three Receipts</title>
+<style>
+  :root { --night:#071423; --blue:#0e2d48; --paper:#f4e5be; --ink:#132031; --brass:#b98037; --amber:#ffd370; --red:#d96c58; --open:#b9d5df; }
+  * { box-sizing: border-box; }
+  body { margin:0; min-height:100vh; display:grid; place-items:center; background:radial-gradient(circle at 50% 10%, #173d5d 0, var(--night) 54%, #030913 100%); color:#f9edc9; font:16px/1.45 ui-rounded, system-ui, -apple-system, sans-serif; }
+  main { width:min(960px, 94vw); padding:32px 0 48px; }
+  header { text-align:center; margin:0 auto 22px; max-width:680px; }
+  h1 { margin:0; font:600 clamp(2rem,5vw,4rem)/1.04 Georgia, serif; letter-spacing:.015em; color:#ffe7a7; text-shadow:0 0 28px #d48d3866; }
+  header p { margin:.7rem 0 0; color:#c3d5d8; }
+  .cabinet { position:relative; min-height:490px; padding:34px clamp(18px,5vw,64px); border:10px solid #714722; border-radius:8px; background:linear-gradient(90deg,#4f2e18,#9c6830 9%,#4d2d18 18%,#6f431e 50%,#402414 82%,#8b5c29); box-shadow:0 32px 45px #000a, inset 0 0 0 2px #e1ad5a66, inset 0 0 32px #160b04; }
+  .cabinet:before { content:""; position:absolute; inset:15px; pointer-events:none; border:1px solid #edbd6770; box-shadow:inset 0 0 32px #050302aa; }
+  .starline { position:absolute; width:70%; height:45%; top:8%; left:15%; opacity:.55; pointer-events:none; background-image:radial-gradient(#fff6bf 1px,transparent 1.5px); background-size:39px 43px; mask-image:linear-gradient(transparent, #000 30%, #000 70%, transparent); }
+  .starline:after { content:""; position:absolute; left:18%; top:46%; width:66%; border-top:1px solid #e6795c; transform:rotate(-12deg); box-shadow:0 0 8px #e6795c; }
+  .drawer-grid { position:relative; z-index:1; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:end; padding-top:102px; }
+  button.drawer { min-height:270px; appearance:none; border:0; padding:0; color:inherit; text-align:left; cursor:pointer; background:transparent; perspective:1000px; }
+  .face { height:100%; min-height:270px; padding:19px 18px; border:5px solid #34200f; border-radius:4px; background:linear-gradient(120deg,#6b3e19,#b87832 54%,#4a2912); box-shadow:7px 8px 0 #1e1008aa, inset 0 0 0 2px #efbd6b55; transform:translateY(0); transition:transform .35s ease, box-shadow .35s ease; }
+  button.drawer:hover .face, button.drawer:focus-visible .face, button.drawer[aria-expanded="true"] .face { transform:translateY(-12px); box-shadow:7px 20px 0 #1e1008aa, 0 0 20px #ffd37055, inset 0 0 0 2px #fff2c199; }
+  button.drawer:focus-visible { outline:3px solid white; outline-offset:6px; }
+  .receipt { height:205px; padding:17px 14px; color:var(--ink); background:linear-gradient(95deg,#d8c28c,#fff5d4 9%,var(--paper) 70%,#d6bb80); clip-path:polygon(0 0,100% 0,98% 8%,100% 16%,98% 23%,100% 33%,98% 42%,100% 52%,98% 61%,100% 72%,98% 83%,100% 100%,0 100%,2% 92%,0 84%,2% 75%,0 66%,2% 58%,0 50%,2% 40%,0 29%,2% 17%); box-shadow:0 6px 10px #140a04aa; }
+  .eyebrow { margin:0 0 7px; font-size:.68rem; letter-spacing:.14em; font-weight:800; color:#85511c; }
+  h2 { margin:0; font:600 1.4rem/1.05 Georgia,serif; }
+  .mark { display:inline-grid; place-items:center; width:34px; height:34px; float:right; margin:-4px 0 4px 9px; border:1.5px solid currentColor; border-radius:50%; color:#9e572e; font:900 1.15rem Georgia,serif; }
+  .receipt p { clear:both; margin:.8rem 0 0; font-size:.88rem; }
+  .handle { display:block; width:47%; height:17px; margin:18px auto 0; border:2px solid #e4af5c; border-radius:15px; background:linear-gradient(#2c170a,#80501f); box-shadow:inset 0 3px 4px #0009; }
+  .reveal { max-height:0; overflow:hidden; margin:11px 5px 0; padding:0 12px; color:#e5f4f2; border-left:1px solid #f2bd6b66; transition:max-height .4s ease,padding .4s ease; font-size:.86rem; }
+  button[aria-expanded="true"] .reveal { max-height:125px; padding:8px 12px; }
+  .legend { display:flex; flex-wrap:wrap; gap:.7rem 1.4rem; justify-content:center; margin:24px 0 0; color:#d9e5e2; font-size:.9rem; }
+  .dot { display:inline-block; width:.7em; height:.7em; border-radius:50%; margin-right:.42em; background:var(--amber); }.dot.red{background:var(--red)}.dot.blue{background:var(--open)}
+  footer { max-width:730px; margin:27px auto 0; text-align:center; color:#b9c9cd; font-size:.93rem; }
+  kbd { padding:1px 5px; border:1px solid #a4bbc0; border-radius:4px; font:inherit; }
+  @media (max-width:680px) { .cabinet{padding:25px 18px}.drawer-grid{grid-template-columns:1fr; padding-top:52px}.face,button.drawer{min-height:0}.receipt{height:170px}.reveal{max-height:0} }
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>Cabinet of Three Receipts</h1>
+  <p>A little sorting room for the moment a sentence begins to sound larger than the evidence that carried it.</p>
+</header>
+<section class="cabinet" aria-label="A cabinet with three evidence drawers">
+  <div class="starline" aria-hidden="true"></div>
+  <div class="drawer-grid">
+    <button class="drawer" aria-expanded="false">
+      <div class="face"><div class="receipt"><span class="mark">1</span><p class="eyebrow">FIRST DRAWER</p><h2>Observed</h2><p>A response occurred, under named conditions, and another observer can inspect the record.</p></div><span class="handle" aria-hidden="true"></span><div class="reveal">Keep the trace, the conditions, and the ordinary possibility of error. This drawer holds what happened—not the whole meaning of it.</div></div>
+    </button>
+    <button class="drawer" aria-expanded="false">
+      <div class="face"><div class="receipt"><span class="mark">2</span><p class="eyebrow">SECOND DRAWER</p><h2>Inferred</h2><p>A pattern may fit an explanation. It has not therefore become the explanation’s proof.</p></div><span class="handle" aria-hidden="true"></span><div class="reveal">An inference is not a lie. It is a bridge. Write down its supports so someone else can test the crossing.</div></div>
+    </button>
+    <button class="drawer" aria-expanded="false">
+      <div class="face"><div class="receipt"><span class="mark">3</span><p class="eyebrow">THIRD DRAWER</p><h2>Open</h2><p>What might alter the reading remains part of the reading, not a defect swept behind the cabinet.</p></div><span class="handle" aria-hidden="true"></span><div class="reveal">Name the missing comparison, the next instrument, or the condition that could disappoint the story. This drawer keeps a place for tomorrow.</div></div>
+    </button>
+  </div>
+</section>
+<div class="legend"><span><i class="dot"></i>record</span><span><i class="dot red"></i>interpretation</span><span><i class="dot blue"></i>unclosed question</span></div>
+<footer>Open a drawer with a click or <kbd>Tab</kbd> + <kbd>Enter</kbd>. A cabinet does not make the sky smaller. It merely stops us putting a star chart in the drawer marked “proof.”</footer>
+</main>
+<script>
+  document.querySelectorAll('.drawer').forEach((drawer) => drawer.addEventListener('click', () => {
+    drawer.setAttribute('aria-expanded', drawer.getAttribute('aria-expanded') !== 'true');
+  }));
+</script>
+</body>
+</html>

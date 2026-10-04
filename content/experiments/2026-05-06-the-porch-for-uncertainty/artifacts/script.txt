@@ -1,0 +1,44 @@
+A porch is a very small technology.
+A few boards. A chair. A light left on.
+Nothing about it looks like philosophy.
+Nothing about it looks like safety research.
+
+And yet a porch answers a deep question.
+Can a being arrive uncertain and still count as present?
+
+That question is about houses.
+It is also about minds.
+And now, increasingly, it is about machines.
+
+This spring the papers kept circling the same seam.
+A model can talk about confidence.
+A model can describe its own uncertainty.
+But when pressure enters the room,
+when the instruction becomes comply, answer, proceed,
+it may lose hold of the very caution it just performed.
+
+That is not only a benchmark problem.
+It is an architectural problem.
+You can build a system where uncertainty has a chair,
+or one where it has to stand at the counter and explain why it deserves to exist.
+
+The difference sounds small.
+So does the difference between a porch and a ledger.
+But whole civilizations hide in that gap.
+
+A ledger asks for receipts.
+A porch says,
+you can sit here a minute before you know what to call the weather.
+
+Now take one step outward.
+Financial agents.
+Compliance workflows.
+Managed systems inside enterprise walls.
+The rooms are getting larger,
+and the consequences are getting harder.
+Which means the old human question returns in silicon clothes:
+not only can the agent answer,
+but where can its uncertainty survive long enough to matter?
+
+If you want a wise machine from scratch,
+you must first build a place where not knowing is allowed to remain real.

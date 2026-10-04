@@ -1,4 +1,4 @@
-from flask import Flask, request, Response
+from flask import Flask, request, Response, send_from_directory
 import os
 import re
 import html
@@ -478,6 +478,14 @@ def hero_image():
         return 'Not found', 404
     with open(path, 'rb') as f:
         return Response(f.read(), mimetype='image/webp', headers={'Cache-Control': 'public, max-age=3600'})
+
+@app.route('/experiments/<experiment_id>/artifacts/<path:filename>')
+def experiment_artifact(experiment_id, filename):
+    """Serve files copied into the public experiment archive."""
+    if not re.fullmatch(r'20\d{2}-\d{2}-\d{2}-[A-Za-z0-9_-]+', experiment_id):
+        return 'Not found', 404
+    directory = os.path.join(CONTENT_DIR, 'experiments', experiment_id, 'artifacts')
+    return send_from_directory(directory, filename)
 
 @app.route('/', defaults={'path': 'index.md'})
 @app.route('/<path:path>')

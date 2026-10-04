@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1056" height="816" viewBox="0 0 1056 816" role="img" aria-labelledby="title desc">
+  <title id="title">Field Guide to the Wrong Save File</title>
+  <desc id="desc">A printable four-panel pocket field guide for recognizing when a fluent answer may belong to the wrong context.</desc>
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071225"/><stop offset="1" stop-color="#172a40"/></linearGradient>
+    <pattern id="stars" width="57" height="57" patternUnits="userSpaceOnUse"><circle cx="7" cy="9" r="1" fill="#fff4c7" opacity=".7"/><circle cx="39" cy="26" r=".8" fill="#b7dcff" opacity=".55"/><circle cx="18" cy="47" r=".7" fill="#fff4c7" opacity=".5"/></pattern>
+    <style>
+      .h { font: 700 30px Georgia, serif; fill: #fff8df; letter-spacing: 1px; }
+      .k { font: 700 13px Arial, sans-serif; fill: #79c8e6; letter-spacing: 2px; }
+      .b { font: 18px Georgia, serif; fill: #e4ecf4; }
+      .s { font: 14px Arial, sans-serif; fill: #c5d6e5; }
+      .tiny { font: 11px Arial, sans-serif; fill: #9eb7ca; letter-spacing: .7px; }
+      .rule { stroke: #5f9fba; stroke-width: 1; opacity: .7; }
+    </style>
+  </defs>
+  <rect width="1056" height="816" fill="#e8dfca"/>
+  <g transform="translate(32 32)">
+    <rect width="992" height="752" rx="6" fill="url(#night)"/>
+    <rect width="992" height="752" rx="6" fill="url(#stars)" opacity=".48"/>
+    <path d="M248 0V752M496 0V752M744 0V752" stroke="#e8dfca" stroke-width="2" stroke-dasharray="9 7" opacity=".78"/>
+    <g transform="translate(28 32)">
+      <text class="k" x="0" y="0">POCKET FIELD GUIDE / ISSUE 01</text>
+      <text class="h" x="0" y="54">THE WRONG</text><text class="h" x="0" y="91">SAVE FILE</text>
+      <path class="rule" d="M0 112H190"/>
+      <text class="b" x="0" y="147">A fluent answer can be</text><text class="b" x="0" y="171">perfectly formed and still</text><text class="b" x="0" y="195">belong to another question.</text>
+      <circle cx="96" cy="311" r="67" fill="none" stroke="#f7d575" stroke-width="2"/>
+      <circle cx="96" cy="311" r="43" fill="none" stroke="#79c8e6" stroke-width="1.5"/>
+      <circle cx="96" cy="311" r="5" fill="#fff8df"/>
+      <path d="M96 237V385M22 311H170" stroke="#79c8e6" opacity=".7"/>
+      <text class="tiny" x="0" y="454">PRINT • FOLD ON THE DOTTED LINES • CARRY</text>
+      <text class="tiny" x="0" y="474">WHEN THE ANSWER ARRIVES TOO SMOOTHLY</text>
+    </g>
+    <g transform="translate(276 32)">
+      <text class="k" x="0" y="0">01 / STOP AT THE SHINE</text>
+      <text class="h" x="0" y="51">Fluency is</text><text class="h" x="0" y="86">capacity, not fit.</text>
+      <path class="rule" d="M0 106H190"/>
+      <text class="b" x="0" y="143">Before using a confident</text><text class="b" x="0" y="167">answer, ask one quiet</text><text class="b" x="0" y="191">question:</text>
+      <rect x="0" y="222" width="190" height="115" rx="4" fill="#0b1b2f" stroke="#79c8e6"/>
+      <text class="s" x="14" y="250">WHAT QUESTION</text><text class="s" x="14" y="273">DID THIS ANSWER</text><text class="s" x="14" y="296">THINK IT HEARD?</text>
+      <text class="tiny" x="0" y="418">A MAP CAN BE EXQUISITE.</text><text class="tiny" x="0" y="438">IT MAY STILL MAP ANOTHER ISLAND.</text>
+    </g>
+    <g transform="translate(524 32)">
+      <text class="k" x="0" y="0">02 / CHECK THE LABEL</text>
+      <text class="h" x="0" y="51">Give each claim</text><text class="h" x="0" y="86">an address.</text>
+      <path class="rule" d="M0 106H190"/>
+      <text class="s" x="0" y="146">RECORD FOUR SMALL THINGS:</text>
+      <text class="b" x="0" y="182">• What was observed?</text>
+      <text class="b" x="0" y="214">• What was requested?</text>
+      <text class="b" x="0" y="246">• What was supplied?</text>
+      <text class="b" x="0" y="278">• What could change it?</text>
+      <rect x="0" y="318" width="190" height="64" rx="4" fill="#f7d575"/>
+      <text x="12" y="345" style="font:700 14px Arial,sans-serif; fill:#12233a; letter-spacing:1px">A LABEL IS NOT A CAGE.</text>
+      <text x="12" y="365" style="font:14px Georgia,serif; fill:#12233a">It is a handle for the next hand.</text>
+    </g>
+    <g transform="translate(772 32)">
+      <text class="k" x="0" y="0">03 / LEAVE A DOOR OPEN</text>
+      <text class="h" x="0" y="51">The unknown</text><text class="h" x="0" y="86">is a workspace.</text>
+      <path class="rule" d="M0 106H190"/>
+      <text class="b" x="0" y="145">A number can summarize.</text><text class="b" x="0" y="169">A story can guide.</text><text class="b" x="0" y="193">Neither is a verdict</text><text class="b" x="0" y="217">just because it arrives</text><text class="b" x="0" y="241">wearing a good suit.</text>
+      <path d="M30 300H160V424H30Z M52 322H138V424H52Z" fill="none" stroke="#f7d575" stroke-width="2"/>
+      <path d="M106 374h3" stroke="#f7d575" stroke-width="5"/>
+      <text class="tiny" x="0" y="470">THE NEXT OBSERVER NEEDS A HANDLE,</text><text class="tiny" x="0" y="490">NOT A COMMAND TO BELIEVE.</text>
+    </g>
+    <text x="496" y="720" text-anchor="middle" class="tiny">A SMALL DEVICE FOR KEEPING WONDER LARGER THAN ITS FIRST EXPLANATION</text>
+  </g>
+</svg>

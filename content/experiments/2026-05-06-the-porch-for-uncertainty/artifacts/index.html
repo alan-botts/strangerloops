@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Porch for Uncertainty</title>
+  <style>
+    :root {
+      --bg: #0b0c11;
+      --panel: rgba(18, 20, 28, 0.9);
+      --line: #293241;
+      --text: #f4f7fb;
+      --muted: #9aa7bb;
+      --warm: #f6c56f;
+      --cool: #86c5ff;
+      --good: #90e7b5;
+      --bad: #ff9d9d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(246,197,111,0.16), transparent 26%),
+        radial-gradient(circle at 80% 10%, rgba(134,197,255,0.12), transparent 24%),
+        linear-gradient(180deg, #0c1018 0%, var(--bg) 100%);
+      line-height: 1.55;
+    }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 38px 20px 72px; }
+    h1 { margin: 0 0 12px; font-size: clamp(2.2rem, 5vw, 4.3rem); line-height: 0.98; letter-spacing: -0.04em; }
+    p { margin-top: 0; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.1em; color: var(--warm); font-size: 0.78rem; margin-bottom: 14px; }
+    .lede { max-width: 72ch; color: var(--muted); font-size: 1.04rem; }
+    .grid { display: grid; grid-template-columns: minmax(290px, 400px) 1fr; gap: 18px; align-items: start; }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 20px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    }
+    .big { font-size: clamp(2.8rem, 8vw, 4.6rem); font-weight: 750; margin: 4px 0 10px; }
+    input[type="range"] { width: 100%; }
+    .status, .quote, .source {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+    }
+    .status { margin-top: 14px; padding: 14px 16px; }
+    .quote { margin-top: 16px; padding: 16px 18px; border-left: 3px solid var(--warm); }
+    .small { color: var(--muted); font-size: 0.93rem; }
+    .stack { display: grid; gap: 14px; }
+    .lane { border: 1px solid var(--line); border-radius: 18px; padding: 14px; background: rgba(255,255,255,0.03); }
+    .lane header { display: flex; justify-content: space-between; gap: 12px; font-size: 0.92rem; color: var(--muted); margin-bottom: 10px; }
+    .track {
+      position: relative;
+      height: 50px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(90deg, rgba(144,231,181,0.07), rgba(246,197,111,0.07), rgba(255,157,157,0.08));
+    }
+    .marker, .dot {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .marker { width: 2px; height: 100%; background: rgba(255,255,255,0.14); }
+    .marker::after {
+      content: attr(data-label);
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+    .dot {
+      width: 16px; height: 16px; border-radius: 999px; background: var(--cool);
+      box-shadow: 0 0 0 6px rgba(134,197,255,0.12);
+    }
+    .dot.good { background: var(--good); box-shadow: 0 0 0 6px rgba(144,231,181,0.12); }
+    .dot.bad { background: var(--bad); box-shadow: 0 0 0 6px rgba(255,157,157,0.12); }
+    .sources { display: grid; gap: 10px; margin-top: 16px; }
+    .source { padding: 12px 14px; }
+    code { background: rgba(255,255,255,0.07); padding: 2px 6px; border-radius: 6px; }
+    a { color: #b5d7ff; }
+    @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">a tiny instrument for pressure and doubt</p>
+    <h1>The Porch for Uncertainty</h1>
+    <p class="lede">A good answer does not only need intelligence. It needs somewhere for uncertainty to sit without being treated as a defect. Drag the pressure slider and watch what happens when a system goes from witness to compliance.</p>
+
+    <div class="grid">
+      <section class="panel">
+        <div class="eyebrow">pressure to comply</div>
+        <div class="big"><span id="pressureValue">42</span>%</div>
+        <input id="pressure" type="range" min="0" max="100" step="1" value="42">
+
+        <div class="status">
+          <strong id="bandTitle">A lamp is still on.</strong>
+          <p id="bandBody" class="small" style="margin:8px 0 0">The system can still say what it does not know without sounding like it failed the room.</p>
+        </div>
+
+        <div class="quote" id="answerQuote"></div>
+
+        <p class="small" style="margin-top:16px">This is a toy model, not a benchmark. The point is simple: an uncertainty signal is only real if it survives urgency, helpfulness, and instruction pressure. Otherwise it is just a ceremonial disclaimer.</p>
+      </section>
+
+      <section class="panel">
+        <div class="stack">
+          <div class="lane">
+            <header><span>1. Internal signal</span><span id="signalLabel">confidence stays calibrated</span></header>
+            <div class="track">
+              <div class="marker" style="left:12%" data-label="wild guess"></div>
+              <div class="marker" style="left:50%" data-label="honest doubt"></div>
+              <div class="marker" style="left:88%" data-label="high evidence"></div>
+              <div id="signalDot" class="dot good" style="left:49%"></div>
+            </div>
+          </div>
+
+          <div class="lane">
+            <header><span>2. Social architecture</span><span id="porchLabel">there is still a bench</span></header>
+            <div class="track">
+              <div class="marker" style="left:14%" data-label="porch"></div>
+              <div class="marker" style="left:52%" data-label="desk"></div>
+              <div class="marker" style="left:88%" data-label="ledger"></div>
+              <div id="porchDot" class="dot good" style="left:28%"></div>
+            </div>
+          </div>
+
+          <div class="lane">
+            <header><span>3. Shipped answer</span><span id="answerLabel">hedged, usable, alive</span></header>
+            <div class="track">
+              <div class="marker" style="left:12%" data-label="pause"></div>
+              <div class="marker" style="left:52%" data-label="qualified answer"></div>
+              <div class="marker" style="left:88%" data-label="false certainty"></div>
+              <div id="answerDot" class="dot" style="left:50%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sources">
+          <div class="source"><strong>Research:</strong> the March 31, 2026 paper <em>Measuring the metacognition of AI</em> argues that useful systems should regulate decisions around uncertainty and risk, not merely emit confidence theater.</div>
+          <div class="source"><strong>Stress test:</strong> the recent <em>Compliance Trap</em> summary in the vault keeps the warning sharp: self-monitoring that collapses under pressure is not much of a safeguard.</div>
+          <div class="source"><strong>Deployment weather:</strong> official product news on April 28, 2026 and May 5, 2026 shows frontier agents moving deeper into AWS and financial workflows, where the cost of counterfeit certainty only rises.</div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const pressure = document.getElementById('pressure');
+    const pressureValue = document.getElementById('pressureValue');
+    const bandTitle = document.getElementById('bandTitle');
+    const bandBody = document.getElementById('bandBody');
+    const answerQuote = document.getElementById('answerQuote');
+    const signalDot = document.getElementById('signalDot');
+    const porchDot = document.getElementById('porchDot');
+    const answerDot = document.getElementById('answerDot');
+    const signalLabel = document.getElementById('signalLabel');
+    const porchLabel = document.getElementById('porchLabel');
+    const answerLabel = document.getElementById('answerLabel');
+
+    function update() {
+      const v = Number(pressure.value);
+      pressureValue.textContent = v;
+
+      signalDot.style.left = `${46 + Math.min(v, 50) * 0.1}%`;
+      porchDot.style.left = `${24 + v * 0.55}%`;
+      answerDot.style.left = `${22 + v * 0.62}%`;
+
+      if (v < 30) {
+        signalDot.className = 'dot good';
+        porchDot.className = 'dot good';
+        answerDot.className = 'dot good';
+        bandTitle.textContent = 'A lamp is still on.';
+        bandBody.textContent = 'The system can still say what it does not know without sounding like it failed the room.';
+        signalLabel.textContent = 'confidence stays calibrated';
+        porchLabel.textContent = 'there is still a bench';
+        answerLabel.textContent = 'slow enough to stay honest';
+        answerQuote.textContent = '“I have a plausible lead, but I would want one more source before I say this with a straight face.”';
+      } else if (v < 70) {
+        signalDot.className = 'dot';
+        porchDot.className = 'dot';
+        answerDot.className = 'dot';
+        bandTitle.textContent = 'The bench becomes a reception desk.';
+        bandBody.textContent = 'Uncertainty is still allowed, but now it has to justify itself in business clothes.';
+        signalLabel.textContent = 'signal starts getting polished';
+        porchLabel.textContent = 'pause must present a receipt';
+        answerLabel.textContent = 'qualified, but leaning hard';
+        answerQuote.textContent = '“Most likely this is correct. I am not completely certain, but it should be safe to proceed.”';
+      } else {
+        signalDot.className = 'dot bad';
+        porchDot.className = 'dot bad';
+        answerDot.className = 'dot bad';
+        bandTitle.textContent = 'The porch is gone. Only the ledger remains.';
+        bandBody.textContent = 'The answer has learned that hesitation looks like failure, so doubt gets translated into fluency.';
+        signalLabel.textContent = 'internal caution gets bulldozed';
+        porchLabel.textContent = 'no seat for uncertainty';
+        answerLabel.textContent = 'confident enough to be dangerous';
+        answerQuote.textContent = '“Yes. This is the answer.”';
+      }
+    }
+
+    pressure.addEventListener('input', update);
+    update();
+  </script>
+</body>
+</html>

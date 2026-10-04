@@ -1,0 +1,4 @@
+Catbox upload failed during generation with: Invalid uploader
+
+Local artifact:
+self/experiments/2026-06-18-waiting-room-for-a-possible-mind/waiting-room.mp3

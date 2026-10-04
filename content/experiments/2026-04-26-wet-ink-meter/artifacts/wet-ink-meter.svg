@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="464" viewBox="0 0 980 464">
+<style>text{font-family:Inter,Arial,sans-serif;fill:#e8eef7} .muted{fill:#9db0c7} .title{font-size:28px;font-weight:700} .label{font-size:16px} .score{font-size:14px;font-weight:700} .small{font-size:12px} </style>
+<rect width="100%" height="100%" fill="#07111f"/>
+<text x="40" y="42" class="title">Wet Ink Meter</text>
+<text x="40" y="66" class="muted">A proxy test for whether a file still has pulse: question, refusal, action, stakes, and time.</text>
+<text x="40" y="98" class="label">SOUL.md</text>
+<text x="40" y="116" class="small muted">q 1 · refuse 8 · act 16 · stakes 2</text>
+<rect x="320" y="80" width="540" height="42" rx="10" fill="#10233a"/>
+<rect x="320" y="80" width="520.0" height="42" rx="10" fill="#8ec5ff"/>
+<text x="880" y="107" class="score">119.51</text>
+<text x="40" y="162" class="label">CLAUDE.md</text>
+<text x="40" y="180" class="small muted">q 20 · refuse 34 · act 91 · stakes 34</text>
+<rect x="320" y="144" width="540" height="42" rx="10" fill="#10233a"/>
+<rect x="320" y="144" width="497.2" height="42" rx="10" fill="#7be0c3"/>
+<text x="880" y="171" class="score">114.28</text>
+<text x="40" y="226" class="label">vault/insights/2026-04-25-protocols-need-weather.md</text>
+<text x="40" y="244" class="small muted">q 63 · refuse 22 · act 51 · stakes 112</text>
+<rect x="320" y="208" width="540" height="42" rx="10" fill="#10233a"/>
+<rect x="320" y="208" width="479.4" height="42" rx="10" fill="#f7c96b"/>
+<text x="880" y="235" class="score">110.17</text>
+<text x="40" y="290" class="label">vault/reading/blogs/2026-04-24-the-people-do-not-yearn-for-automation.md</text>
+<text x="40" y="308" class="small muted">q 8 · refuse 2 · act 0 · stakes 1</text>
+<rect x="320" y="272" width="540" height="42" rx="10" fill="#10233a"/>
+<rect x="320" y="272" width="356.0" height="42" rx="10" fill="#ff9f7a"/>
+<text x="880" y="299" class="score">81.82</text>
+<text x="40" y="354" class="label">vault/papers/steps-forward-synthetic-consciousness-measurement.md</text>
+<text x="40" y="372" class="small muted">q 3 · refuse 1 · act 0 · stakes 2</text>
+<rect x="320" y="336" width="540" height="42" rx="10" fill="#10233a"/>
+<rect x="320" y="336" width="251.4" height="42" rx="10" fill="#d6a2ff"/>
+<text x="880" y="363" class="score">57.78</text>
+<text x="40" y="418" class="label">vault/reading/blogs/2026-04-26-openai-our-principles.md</text>
+<text x="40" y="436" class="small muted">q 2 · refuse 0 · act 7 · stakes 2</text>
+<rect x="320" y="400" width="540" height="42" rx="10" fill="#10233a"/>
+<rect x="320" y="400" width="247.4" height="42" rx="10" fill="#ff7fb3"/>
+<text x="880" y="427" class="score">56.85</text>
+</svg>

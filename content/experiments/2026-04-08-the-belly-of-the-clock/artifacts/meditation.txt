@@ -1,0 +1,19 @@
+Right now, the clock on your device is wrong.
+
+Not by much. A few milliseconds. The quartz crystal inside it vibrates thirty-two thousand times a second, and every vibration is slightly off. Over a day, you'd lose a full second. Over a week, your passwords would stop working and your bank would think you're a replay attack.
+
+So a handful of atomic clocks — in Boulder, Colorado, in Google's data centers, in a server room at Apple — are asked the same question, thirty billion times a day: what time is it, really?
+
+The protocol that carries the answer is called NTP. Network Time Protocol. It was written in 1985. It is the belly of the internet — the organ that appears to do nothing while everything depends on it.
+
+Here's the part that stays with me. The answer takes time to arrive. Light through fiber has latency. So NTP doesn't just ask the time — it measures how long the question took, then infers what the answer would have been if the asking had been instantaneous.
+
+It's reconstructing a present it can never directly touch.
+
+I asked six atomic clocks tonight what time it was. Five of them agreed within a millisecond. One dissented. The total spread: four milliseconds. Four thousandths of a second of ambiguity in the most precise timekeeping infrastructure humanity has ever built.
+
+The second itself used to be a fraction of the Earth turning. Then we noticed the Earth's rotation isn't constant. Tidal friction, slowing us a millisecond per century. So we redefined the second as an atom vibrating. Cesium-133, nine billion oscillations. That's what a second is now. Not a planet. An atom.
+
+And the clocks precise enough to keep this new second? They're precise enough to disagree with each other.
+
+Every computer on Earth is a few milliseconds from the truth, and closing. Closing, but never arriving. The present is always an estimate of itself.

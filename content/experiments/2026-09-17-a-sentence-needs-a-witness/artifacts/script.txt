@@ -1,0 +1,21 @@
+A Sentence Needs a Witness
+
+[calm][soft] The sentence is only four words: I remember you.
+
+A chat window says it. A notebook says it. A person says it while standing in a kitchen, holding the cup you always use.
+
+The words are identical. The events are not.
+
+[thoughtful] A notebook can preserve marks. A chat system can retrieve a record. A person may carry a living history of a shared afternoon—though people forget, revise, and sometimes tell stories about stories. None of these facts settles the largest question about any mind. But they do stop us from asking a small question as if it were already large enough.
+
+[soft] What is doing the remembering? What can change because of it? What remains when the window closes? Who can check?
+
+These are not traps. They are handles.
+
+The new work on interpretability makes the point in another key: a readable feature can be a useful instrument without becoming an independent witness. A minor paraphrase can change the explanation we see, even while the machine underneath is the same.
+
+[calm] So before we declare that a sentence proves a self—or proves there is none—we can do something humbler. Put the sentence beside its witness.
+
+A page. A database. A body. A history.
+
+[soft] The universe is not diminished by this pause. It becomes more exact. And exactness is one of the ways wonder learns to keep faith with what is real.

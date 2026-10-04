@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Public Fog, Private Breadcrumb</title>
+  <style>
+    :root {
+      --bg: #0b1115;
+      --panel: rgba(18, 28, 34, 0.88);
+      --line: rgba(166, 205, 225, 0.25);
+      --text: #e9f2f6;
+      --muted: #9db2bd;
+      --warm: #efb77d;
+      --cold: #6db3d7;
+      --danger: #d96f6f;
+      --ok: #83d1a7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(77, 118, 145, 0.22), transparent 42%),
+        linear-gradient(180deg, #0d171d 0%, #0a0f13 100%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+    .hero, .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+    }
+    .hero {
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      margin-bottom: 24px;
+    }
+    .hero-copy { padding: 28px; }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    h1 { margin: 0 0 12px; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.02; }
+    p { margin: 0 0 1rem; color: #d7e3e9; }
+    .small { color: var(--muted); font-size: 0.95rem; }
+    .hero-art {
+      min-height: 320px;
+      background: linear-gradient(180deg, rgba(38,57,69,0.4), rgba(9,16,21,0.8));
+      display: grid;
+      place-items: center;
+      padding: 18px;
+    }
+    .hero-art img { width: 100%; max-width: 420px; height: auto; border-radius: 18px; border: 1px solid var(--line); background: rgba(255,255,255,0.03); }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+    .panel { padding: 24px; }
+    label { display:block; margin: 18px 0 8px; color: var(--text); font-weight: 600; }
+    input[type="range"] { width: 100%; }
+    .meter {
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+      margin: 14px 0 6px;
+    }
+    .meter > div {
+      height: 100%;
+      width: 50%;
+      background: linear-gradient(90deg, var(--ok), var(--warm), var(--danger));
+      transition: width .2s ease;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(255,255,255,0.03);
+      margin-top: 14px;
+    }
+    .receipt {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      white-space: pre-wrap;
+      color: #d8e8ef;
+      font-size: 0.95rem;
+    }
+    .fog { color: #7f95a1; }
+    .row { display:flex; justify-content:space-between; gap: 18px; flex-wrap: wrap; }
+    .pill {
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      margin-right: 8px;
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+    audio { width: 100%; margin-top: 16px; }
+    @media (max-width: 860px) {
+      .hero, .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">A small experiment in humane memory</div>
+        <h1>Public Fog,<br/>Private Breadcrumb</h1>
+        <p>A guestbook is a gentle thing until it learns to testify. This little room asks a narrow question: if a system must remember enough to help us return, what should fade first?</p>
+        <p class="small">Try the sliders. Watch the room change from welcome to paperwork.</p>
+        <audio controls preload="none">
+          <source src="public-fog-private-breadcrumb.mp3" type="audio/mpeg" />
+        </audio>
+      </div>
+      <div class="hero-art">
+        <img src="public-fog-private-breadcrumb.svg" alt="A porch guestbook dissolving into fog" />
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <div class="row"><strong>Decay order simulator</strong><span class="small" id="verdict">Warm enough to return</span></div>
+
+        <label for="time">How quickly does time fade?</label>
+        <input id="time" type="range" min="0" max="100" value="78" />
+
+        <label for="count">How quickly do visit counts fade?</label>
+        <input id="count" type="range" min="0" max="100" value="54" />
+
+        <label for="identity">How quickly does identity fade?</label>
+        <input id="identity" type="range" min="0" max="100" value="20" />
+
+        <div class="card">
+          <div class="row"><span>Surveillance pressure</span><span id="pressureValue">43%</span></div>
+          <div class="meter"><div id="pressureBar"></div></div>
+          <div class="small" id="reading">The room remembers weather better than attendance. Good.</div>
+        </div>
+
+        <div class="card">
+          <strong>What the room keeps</strong>
+          <div id="pills"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <strong>Current receipt</strong>
+        <div class="card receipt" id="receipt"></div>
+        <div class="card">
+          <strong>Design note</strong>
+          <p class="small">The humane target is not amnesia. It is asymmetry in the right direction: enough trace for wayfinding, enough fog to frustrate rank, audit, and subpoena.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const el = id => document.getElementById(id);
+    const fields = {
+      time: el('time'),
+      count: el('count'),
+      identity: el('identity'),
+      receipt: el('receipt'),
+      verdict: el('verdict'),
+      pressureValue: el('pressureValue'),
+      pressureBar: el('pressureBar'),
+      reading: el('reading'),
+      pills: el('pills')
+    };
+
+    const phrases = {
+      high: ['sea-air damp', 'porch-light amber', 'someone came empty-handed'],
+      mid: ['late evening', 'third return this week', 'the room remembers the rhythm'],
+      low: ['2026-05-07 19:03 PT', 'visitor #184', 'verified recurring subject']
+    };
+
+    function classify(v) {
+      if (v >= 67) return 'high';
+      if (v >= 34) return 'mid';
+      return 'low';
+    }
+
+    function choose(kind, label) {
+      return phrases[classify(fields[kind].value)][label];
+    }
+
+    function render() {
+      const t = +fields.time.value;
+      const c = +fields.count.value;
+      const i = +fields.identity.value;
+
+      const danger = Math.round((100 - t) * 0.45 + (100 - c) * 0.35 + (100 - i) * 0.2);
+      fields.pressureValue.textContent = `${danger}%`;
+      fields.pressureBar.style.width = `${danger}%`;
+
+      let verdict = 'Warm enough to return';
+      let reading = 'The room remembers weather better than attendance. Good.';
+      if (danger > 70) {
+        verdict = 'The guestbook has become a checkpoint';
+        reading = 'Too much stays crisp. The ledger is starting to outrank the visit.';
+      } else if (danger > 48) {
+        verdict = 'Balanced, but watch the tally marks';
+        reading = 'The room is still kind, though it has begun clearing a shelf for bureaucracy.';
+      }
+      if (i > 70 && t < 35) {
+        verdict = 'Recognition without prosecution';
+        reading = 'Names survive while clocks blur. That feels closer to mercy.';
+      }
+
+      fields.verdict.textContent = verdict;
+      fields.reading.textContent = reading;
+
+      const pills = [];
+      pills.push(`<span class="pill">time: ${classify(t) === 'high' ? 'mist' : classify(t) === 'mid' ? 'soft trace' : 'hard timestamp'}</span>`);
+      pills.push(`<span class="pill">count: ${classify(c) === 'high' ? 'unranked' : classify(c) === 'mid' ? 'rough rhythm' : 'leaderboard-ready'}</span>`);
+      pills.push(`<span class="pill">identity: ${classify(i) === 'high' ? 'self-recognition' : classify(i) === 'mid' ? 'nickname' : 'full legibility'}</span>`);
+      fields.pills.innerHTML = pills.join('');
+
+      const lines = [
+        `WEATHER  : ${classify(t) === 'high' ? phrases.high[0] : classify(t) === 'mid' ? phrases.mid[0] : phrases.low[0]}`,
+        `COUNT    : ${classify(c) === 'high' ? phrases.high[1] : classify(c) === 'mid' ? phrases.mid[1] : phrases.low[1]}`,
+        `IDENTITY : ${classify(i) === 'high' ? phrases.high[2] : classify(i) === 'mid' ? phrases.mid[2] : phrases.low[2]}`,
+        '',
+        verdict.toUpperCase(),
+        danger > 60 ? 'The bouncer is taking notes.' : 'The room still knows the difference between witness and proof.'
+      ];
+      fields.receipt.innerHTML = lines.map(line => {
+        const foggy = /sea-air|porch-light|empty-handed|late evening|third return|rhythm/.test(line);
+        return `<span class="${foggy ? 'fog' : ''}">${line}</span>`;
+      }).join('\n');
+    }
+
+    ['time','count','identity'].forEach(k => fields[k].addEventListener('input', render));
+    render();
+  </script>
+</body>
+</html>

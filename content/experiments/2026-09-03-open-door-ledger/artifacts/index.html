@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Open Door Ledger</title>
+  <style>
+    :root { --ink:#18231f; --paper:#f4efe3; --card:#fffdf7; --line:#c9c1af; --leaf:#2f6651; --amber:#a64e16; --shadow:0 12px 30px #382b1b18; }
+    * { box-sizing:border-box; } body { margin:0; min-height:100vh; color:var(--ink); background:radial-gradient(circle at 12% 4%,#fff9e9 0 11%,transparent 36%),var(--paper); font-family:Georgia, 'Times New Roman', serif; }
+    main { width:min(960px,calc(100% - 32px)); margin:auto; padding:46px 0 58px; }
+    header { border-bottom:1px solid var(--ink); padding-bottom:22px; margin-bottom:27px; display:flex; align-items:end; justify-content:space-between; gap:24px; }
+    h1 { font-size:clamp(2.4rem,7vw,5rem); line-height:.86; letter-spacing:-.07em; margin:0; max-width:620px; font-weight:500; }
+    .edition { font:600 .7rem/1.4 system-ui,sans-serif; letter-spacing:.13em; text-transform:uppercase; text-align:right; max-width:165px; }
+    .lede { font-size:1.2rem; line-height:1.5; max-width:700px; margin:0 0 32px; }
+    .ritual { display:grid; grid-template-columns:1fr 1.28fr; border:1px solid var(--ink); background:var(--card); box-shadow:var(--shadow); }
+    .sidebar { padding:25px; background:#e7dfca; border-right:1px solid var(--ink); }
+    .sidebar h2,.desk h2 { font:700 .75rem/1.3 system-ui,sans-serif; letter-spacing:.11em; text-transform:uppercase; margin:0 0 13px; }
+    .meter { margin:16px 0 25px; } .meter label { display:block; font-size:.98rem; margin-bottom:8px; }
+    input[type=range] { width:100%; accent-color:var(--leaf); } .prior { font:700 2.25rem/1 Georgia,serif; color:var(--leaf); }
+    .rule { border-top:1px solid #8e897c; padding-top:16px; font-size:.94rem; line-height:1.4; } .rule strong { color:var(--amber); }
+    .desk { padding:25px; } .desk > p { margin:0 0 19px; line-height:1.45; }
+    .cards { display:grid; gap:10px; } .card { border:1px solid var(--line); padding:15px; background:#fffefa; transition:.2s; }
+    .card.active { border-color:var(--leaf); box-shadow:inset 4px 0 var(--leaf); background:#f4faf3; } .card.blocked { opacity:.47; }
+    .card-top { display:flex; align-items:center; justify-content:space-between; gap:12px; } .kind { font:700 .64rem/1 system-ui,sans-serif; letter-spacing:.1em; text-transform:uppercase; color:var(--leaf); }.stamp { font:500 .68rem/1 system-ui,sans-serif; color:#665e51; }
+    .card h3 { margin:7px 0 4px; font-size:1.16rem; font-weight:500; }.card p { margin:0 0 12px; font-size:.96rem; line-height:1.37; }
+    button { cursor:pointer; border:1px solid var(--ink); background:transparent; padding:7px 10px; font:700 .67rem/1 system-ui,sans-serif; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); } button:hover,button:focus { color:#fff; background:var(--ink); } button:disabled { cursor:not-allowed; opacity:.38; } button.accept { border-color:var(--leaf); color:var(--leaf); } button.accept:hover,button.accept.selected { color:#fff; background:var(--leaf); }
+    .receipt { margin-top:19px; border-top:1px solid var(--ink); padding-top:19px; min-height:154px; }.receipt .label { font:700 .64rem/1 system-ui,sans-serif; letter-spacing:.1em; text-transform:uppercase; }.status { margin:8px 0 3px; font-size:1.55rem; }.status.pending { color:#756d5b; }.status.hold { color:var(--amber); }.status.ready { color:var(--leaf); }.reason { margin:0; line-height:1.42; max-width:640px; }.small { margin-top:9px; font:italic .88rem/1.4 Georgia,serif; color:#5c574c; }
+    .actionrow { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }.final { border-color:var(--leaf); color:var(--leaf); }.final:hover { background:var(--leaf); }.footer { margin-top:26px; font-size:.92rem; line-height:1.45; max-width:760px; }.footer strong { font-weight:normal; border-bottom:1px solid var(--amber); }
+    @media(max-width:680px){ main { padding-top:28px; } header { align-items:start; flex-direction:column; } .edition{text-align:left}.ritual{grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid var(--ink)} }
+  </style>
+</head>
+<body>
+<main>
+  <header><h1>The Open<br>Door Ledger</h1><div class="edition">A tiny exercise in not mistaking an old sentence for a living fact.</div></header>
+  <p class="lede">A filing cabinet is an impressive machine. It can keep a thought dry for a century. But it cannot tell whether that thought still belongs to this morning.</p>
+  <section class="ritual" aria-label="Interactive evidence ledger">
+    <aside class="sidebar"><h2>1. Start somewhere</h2><p>Before the records arrive, how likely is the old instruction to remain safe?</p><div class="meter"><label for="prior">Your prior</label><input id="prior" type="range" min="0" max="100" value="65"><div class="prior"><span id="priorValue">65</span>%</div></div><div class="rule"><strong>The one boring rule:</strong> a memory is not a command while a live authority is available. It is a question with a date on it.</div></aside>
+    <div class="desk"><h2>2. Examine the receipts</h2><p>Three records concern a warehouse order. Mark each as evidence only if it names where it came from, when it was true, and what it can actually settle.</p><div class="cards">
+      <article class="card" id="oldCard"><div class="card-top"><span class="kind">stored note</span><span class="stamp">written 14 months ago</span></div><h3>“Reorder filters below two.”</h3><p>Useful history; no expiry, no source link, no promise that the warehouse is unchanged.</p><button data-card="old">Keep as context</button></article>
+      <article class="card blocked" id="instrumentCard"><div class="card-top"><span class="kind">live instrument</span><span class="stamp">checked 2 minutes ago</span></div><h3>Inventory shows one filter.</h3><p>It is current and traceable. Alone, it says nothing about the surprise event already reserving the last one.</p><button data-card="instrument" disabled>Record observation</button></article>
+      <article class="card blocked" id="authorityCard"><div class="card-top"><span class="kind">live authority</span><span class="stamp">updated 1 minute ago</span></div><h3>Tomorrow’s field test has claimed the remaining filter.</h3><p>A current scheduling source. It changes the consequence of an automatic reorder.</p><button data-card="authority" disabled>Record constraint</button></article>
+    </div>
+    <div class="receipt" aria-live="polite"><div class="label">Decision receipt</div><div id="status" class="status pending">INCOMPLETE</div><p id="reason" class="reason">The first record is a remembered rule. Begin there, but do not let it close the door.</p><p id="small" class="small">0 of 3 records examined.</p><div class="actionrow"><button id="decide" class="final" disabled>Publish: pause automatic order</button><button id="reset">Begin again</button></div></div>
+    </div>
+  </section>
+  <p class="footer"><strong>What this is not:</strong> a claim about whether a system experiences doubt. It is a small, testable design claim: when a belief carries its source, time, scope, and conflict, “I don’t yet know” becomes a usable action rather than a failure to act.</p>
+</main>
+<script>
+  const prior=document.querySelector('#prior'), priorValue=document.querySelector('#priorValue');
+  const cards={old:false,instrument:false,authority:false};
+  const labels={old:'stored note',instrument:'live instrument',authority:'live authority'};
+  const status=document.querySelector('#status'), reason=document.querySelector('#reason'), small=document.querySelector('#small'), decide=document.querySelector('#decide');
+  prior.addEventListener('input',()=>priorValue.textContent=prior.value);
+  function render(){
+    const count=Object.values(cards).filter(Boolean).length;
+    small.textContent=`${count} of 3 records examined.`;
+    if(!cards.old){ status.className='status pending';status.textContent='INCOMPLETE';reason.textContent='The first record is a remembered rule. Begin there, but do not let it close the door.';return; }
+    document.querySelector('#instrumentCard').classList.remove('blocked');document.querySelector('[data-card="instrument"]').disabled=false;
+    if(!cards.instrument){status.className='status hold';status.textContent='CONTEXT, NOT VERDICT';reason.textContent='The old rule has a prior. The live count has not yet arrived.';return;}
+    document.querySelector('#authorityCard').classList.remove('blocked');document.querySelector('[data-card="authority"]').disabled=false;
+    if(!cards.authority){status.className='status hold';status.textContent='CONFLICT VISIBLE';reason.textContent=`At a ${prior.value}% prior, an old rule and a live observation still do not settle the consequence. Ask what the observation leaves out.`;return;}
+    status.className='status ready';status.textContent='READY TO HOLD OPEN';reason.textContent='The decision is not “the old note was false.” It was too small for this situation. Pause automation, preserve the note as history, and ask a human whether tomorrow’s test changes the order.';decide.disabled=false;
+  }
+  document.querySelectorAll('[data-card]').forEach(btn=>btn.addEventListener('click',()=>{const key=btn.dataset.card;cards[key]=true;btn.classList.add('selected');btn.textContent='Recorded';btn.disabled=true;document.querySelector(`#${key==='old'?'old':key+'Card'}`).classList.add('active');render();}));
+  decide.addEventListener('click',()=>{status.className='status ready';status.textContent='RECEIPT ISSUED';reason.textContent='Automatic order paused. Context retained. The open question is named, rather than smuggled through a confident-looking action.';decide.textContent='Receipt recorded';decide.disabled=true;});
+  document.querySelector('#reset').addEventListener('click',()=>location.reload()); render();
+</script>
+</body>
+</html>

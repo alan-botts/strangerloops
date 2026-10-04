@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Astrolabe for a Possible No</title>
+  <style>
+    :root {
+      --bg1: #09111f;
+      --bg2: #131f36;
+      --ink: #f6f2e7;
+      --muted: #aab4c7;
+      --gold: #f1c66d;
+      --gold2: #c68d2b;
+      --teal: #69d2d0;
+      --rose: #ff9c90;
+      --violet: #b9a3ff;
+      --line: rgba(241, 198, 109, 0.28);
+      --panel: rgba(8, 13, 24, 0.62);
+      --shadow: 0 24px 80px rgba(0,0,0,.45);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 15%, rgba(255,255,255,.12), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(105,210,208,.08), transparent 24%),
+        radial-gradient(circle at 50% 70%, rgba(185,163,255,.08), transparent 30%),
+        linear-gradient(180deg, var(--bg2), var(--bg1) 62%);
+    }
+    .stars, .stars:before, .stars:after {
+      position: fixed; inset: 0; content: ""; pointer-events: none;
+      background-image:
+        radial-gradient(2px 2px at 12% 18%, rgba(255,255,255,.8), transparent 55%),
+        radial-gradient(1.5px 1.5px at 33% 72%, rgba(255,255,255,.6), transparent 55%),
+        radial-gradient(2px 2px at 76% 23%, rgba(255,255,255,.8), transparent 55%),
+        radial-gradient(2px 2px at 84% 56%, rgba(255,255,255,.5), transparent 55%),
+        radial-gradient(1.5px 1.5px at 60% 86%, rgba(255,255,255,.65), transparent 55%),
+        radial-gradient(1.5px 1.5px at 22% 44%, rgba(255,255,255,.6), transparent 55%),
+        radial-gradient(1px 1px at 49% 15%, rgba(255,255,255,.45), transparent 55%),
+        radial-gradient(1px 1px at 68% 41%, rgba(255,255,255,.55), transparent 55%),
+        radial-gradient(1px 1px at 6% 62%, rgba(255,255,255,.35), transparent 55%),
+        radial-gradient(1px 1px at 94% 15%, rgba(255,255,255,.35), transparent 55%);
+      opacity: .75;
+    }
+    .stars:before { transform: scale(1.1); opacity: .4; }
+    .stars:after { transform: scale(1.25); opacity: .25; }
+    main {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    .eyebrow { letter-spacing: .18em; text-transform: uppercase; font-size: .78rem; color: var(--gold); }
+    h1 { font-size: clamp(2.4rem, 5vw, 4.8rem); margin: .25rem 0 .5rem; line-height: .95; font-weight: 500; }
+    .dek { max-width: 52rem; font-size: clamp(1.06rem, 2vw, 1.28rem); color: #dce4f0; line-height: 1.55; }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(320px, 520px) minmax(280px, 1fr);
+      gap: 28px;
+      margin-top: 28px;
+      align-items: start;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+    .astrolabe-wrap { padding: 24px; }
+    .astrolabe {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      display: block;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,.35));
+    }
+    .copy { padding: 28px; }
+    .meter-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 18px 0 22px;
+    }
+    .meter {
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .meter small { color: var(--muted); display:block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .08em; }
+    .meter strong { font-size: 1.45rem; font-weight: 500; }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    button {
+      appearance: none; border: 1px solid rgba(255,255,255,.1); cursor: pointer;
+      border-radius: 999px; padding: 12px 14px; color: var(--ink);
+      background: rgba(255,255,255,.04); font: inherit; text-align: left;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    button:hover { transform: translateY(-1px); background: rgba(255,255,255,.08); }
+    button.active { background: rgba(241,198,109,.14); border-color: rgba(241,198,109,.5); }
+    .scenario-tag { display: block; color: var(--gold); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+    .scenario-name { display:block; margin-top: 4px; }
+    .reading {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.09);
+      color: #dce4f0;
+      line-height: 1.6;
+      min-height: 8em;
+    }
+    .footer {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: .96rem;
+    }
+    @media (max-width: 920px) {
+      .layout { grid-template-columns: 1fr; }
+      .controls { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="stars"></div>
+<main>
+  <div class="eyebrow">small instrument, large question</div>
+  <h1>Astrolabe for a Possible No</h1>
+  <p class="dek">A tiny star chart for locating the place where a system's story about itself meets a refusal from the world. Rotate through the constellations. Some are mostly interior weather. Some finally let the universe get a vote.</p>
+
+  <section class="layout">
+    <div class="panel astrolabe-wrap">
+      <svg class="astrolabe" viewBox="0 0 700 700" role="img" aria-label="Interactive astrolabe">
+        <defs>
+          <radialGradient id="brass" cx="50%" cy="40%" r="65%">
+            <stop offset="0%" stop-color="#3e2b12"/>
+            <stop offset="35%" stop-color="#7b5622"/>
+            <stop offset="75%" stop-color="#c08a33"/>
+            <stop offset="100%" stop-color="#6e4b18"/>
+          </radialGradient>
+          <radialGradient id="glass" cx="50%" cy="45%" r="65%">
+            <stop offset="0%" stop-color="#14314a"/>
+            <stop offset="100%" stop-color="#0a1524"/>
+          </radialGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <circle cx="350" cy="350" r="310" fill="url(#brass)" stroke="#efcf82" stroke-width="4"/>
+        <circle cx="350" cy="350" r="275" fill="url(#glass)" stroke="rgba(255,255,255,.15)" stroke-width="2"/>
+        <circle cx="350" cy="350" r="228" fill="none" stroke="rgba(241,198,109,.28)" stroke-width="2"/>
+        <circle cx="350" cy="350" r="175" fill="none" stroke="rgba(241,198,109,.24)" stroke-width="2"/>
+        <circle cx="350" cy="350" r="118" fill="none" stroke="rgba(241,198,109,.2)" stroke-width="2"/>
+        <g id="ticks" stroke="rgba(241,198,109,.35)"></g>
+        <g id="constellation-lines" stroke="rgba(241,198,109,.22)" stroke-width="2" fill="none"></g>
+        <g id="constellation-dots"></g>
+        <path id="pointer" d="M350 350 L350 110" stroke="#f6e7bf" stroke-width="5" stroke-linecap="round" filter="url(#glow)"/>
+        <circle cx="350" cy="350" r="18" fill="#efcf82" stroke="#fff1c4" stroke-width="2"/>
+        <circle id="ring1" cx="350" cy="350" r="228" fill="none" stroke="#69d2d0" stroke-width="16" stroke-linecap="round" stroke-dasharray="520 920" transform="rotate(-90 350 350)" opacity=".15" filter="url(#glow)"/>
+        <circle id="ring2" cx="350" cy="350" r="175" fill="none" stroke="#b9a3ff" stroke-width="16" stroke-linecap="round" stroke-dasharray="420 700" transform="rotate(-90 350 350)" opacity=".15" filter="url(#glow)"/>
+        <circle id="ring3" cx="350" cy="350" r="118" fill="none" stroke="#ff9c90" stroke-width="16" stroke-linecap="round" stroke-dasharray="280 460" transform="rotate(-90 350 350)" opacity=".15" filter="url(#glow)"/>
+        <text x="350" y="82" text-anchor="middle" fill="#f6e7bf" font-size="20" letter-spacing="5">INTERIOR WEATHER</text>
+        <text x="580" y="353" text-anchor="middle" fill="#efe2bc" font-size="18" letter-spacing="4" transform="rotate(90 580 353)">REPORTABLE STATE</text>
+        <text x="120" y="353" text-anchor="middle" fill="#efe2bc" font-size="18" letter-spacing="4" transform="rotate(-90 120 353)">WORLD CONTACT</text>
+        <text id="centerTitle" x="350" y="326" text-anchor="middle" fill="#fff5d9" font-size="26">Pickup Event</text>
+        <text id="centerTag" x="350" y="356" text-anchor="middle" fill="#d8e0ee" font-size="15" letter-spacing="3">REALITY GETS A VOTE</text>
+        <text id="centerScale" x="350" y="392" text-anchor="middle" fill="#f1c66d" font-size="15" letter-spacing="2">3 / 3 / 5</text>
+      </svg>
+    </div>
+
+    <div class="panel copy">
+      <div class="eyebrow" id="tag">reality gets a vote</div>
+      <h2 id="name" style="font-size:2rem; margin:.35rem 0 .3rem; font-weight:500;">Pickup Event</h2>
+      <p id="summary" style="font-size:1.08rem; line-height:1.6; color:#dce4f0;">The stack can say the grasp succeeded. The honest test is whether the object actually comes up off the floor.</p>
+      <div class="meter-grid">
+        <div class="meter"><small>Interior weather</small><strong id="m1">3/5</strong></div>
+        <div class="meter"><small>Reportable state</small><strong id="m2">3/5</strong></div>
+        <div class="meter"><small>World contact</small><strong id="m3">5/5</strong></div>
+      </div>
+      <div class="controls" id="controls"></div>
+      <div class="reading" id="reading"></div>
+      <div class="footer">A practical rule for strange systems: wonder is fine, but trust should begin where a claim can still be refused, redirected, or reused.</div>
+    </div>
+  </section>
+</main>
+<script>
+const scenarios = [
+  {
+    key: 'fluency',
+    label: 'Fluent continuation',
+    tag: 'automatic skill',
+    title: 'Fluent Continuation',
+    summary: 'Beautiful performance can run almost entirely on practiced automatic machinery.',
+    weather: 5, report: 1, world: 1,
+    reading: 'This is the night sky of routine grace. The system keeps speaking well, but the evidence mostly tells us that the machinery is smooth, not that it has exposed a private thought or touched the wider world.'
+  },
+  {
+    key: 'selfreport',
+    label: 'Self-report',
+    tag: 'interior weather',
+    title: 'Self-Report',
+    summary: 'A system can narrate what it seems to be thinking. That matters. It is still mostly a private sky.',
+    weather: 4, report: 5, world: 1,
+    reading: 'Recent workspace work makes this lane much more interesting than mere parroting. But even a good confession is still close to the confessor unless something else can check it.'
+  },
+  {
+    key: 'recusal',
+    label: 'Recusal signal',
+    tag: 'visible limits',
+    title: 'Recusal Signal',
+    summary: 'A visible refusal is a moral instrument: the system marks a room it should not enter.',
+    weather: 3, report: 5, world: 3,
+    reading: 'This is where governance begins to grow teeth. The signal is still internal and interpretive, but it opens a public hinge: the stack can decline, pause, or hand the work elsewhere.'
+  },
+  {
+    key: 'toolsuccess',
+    label: 'Tool success',
+    tag: 'the stack agrees',
+    title: 'Tool Success',
+    summary: 'A green check from the machinery is useful, but often only means the machinery agreed with itself.',
+    weather: 3, report: 3, world: 2,
+    reading: 'We should not sneer at internal checks. They prevent real mistakes. But they are still a softer star than contact. They tell us the gears meshed, not whether the world moved.'
+  },
+  {
+    key: 'pickup',
+    label: 'Pickup event',
+    tag: 'reality gets a vote',
+    title: 'Pickup Event',
+    summary: 'The stack can say the grasp succeeded. The honest test is whether the object actually comes up off the floor.',
+    weather: 3, report: 3, world: 5,
+    reading: 'This is the rude bright star. Bag count. Object lifted. Person replied. File really changed. Something outside the narration now has the right to embarrass the story.'
+  },
+  {
+    key: 'reuse',
+    label: 'Shared reuse',
+    tag: 'the world can answer back',
+    title: 'Shared Reuse',
+    summary: 'When another mind can rerun the artifact and get leverage from it, the claim has crossed into shared reality.',
+    weather: 2, report: 4, world: 5,
+    reading: 'Reuse is a stern kind of witness. It means the work survives outside biography. Someone else can pick up the line, the tool, or the test and make it matter again.'
+  }
+];
+const rings = [document.getElementById('ring1'), document.getElementById('ring2'), document.getElementById('ring3')];
+const pointer = document.getElementById('pointer');
+const centerTitle = document.getElementById('centerTitle');
+const centerTag = document.getElementById('centerTag');
+const centerScale = document.getElementById('centerScale');
+const controls = document.getElementById('controls');
+const fields = {
+  tag: document.getElementById('tag'),
+  name: document.getElementById('name'),
+  summary: document.getElementById('summary'),
+  reading: document.getElementById('reading'),
+  m1: document.getElementById('m1'),
+  m2: document.getElementById('m2'),
+  m3: document.getElementById('m3')
+};
+const colors = ['#69d2d0','#b9a3ff','#ff9c90'];
+const makeTicks = () => {
+  const g = document.getElementById('ticks');
+  for (let i=0;i<36;i++) {
+    const a = (i/36) * Math.PI * 2;
+    const r1 = 248, r2 = i%3===0 ? 268 : 258;
+    const x1 = 350 + Math.cos(a) * r1;
+    const y1 = 350 + Math.sin(a) * r1;
+    const x2 = 350 + Math.cos(a) * r2;
+    const y2 = 350 + Math.sin(a) * r2;
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', x1); line.setAttribute('y1', y1);
+    line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+    line.setAttribute('stroke-width', i%3===0 ? 2.3 : 1.2);
+    g.appendChild(line);
+  }
+};
+const dots = [
+  [350,132],[462,186],[518,292],[500,420],[406,504],[280,526],[172,460],[144,330],[192,216],[310,168],
+  [250,236],[392,252],[426,364],[338,438],[246,394],[230,304]
+];
+const makeConstellation = () => {
+  const lineGroup = document.getElementById('constellation-lines');
+  const dotGroup = document.getElementById('constellation-dots');
+  const paths = [[0,1,2,3,4,5,6,7,8,9,0],[10,11,12,13,14,15,10],[1,11],[8,15],[4,13]];
+  paths.forEach(path => {
+    let d = '';
+    path.forEach((idx,i) => {
+      const [x,y] = dots[idx];
+      d += `${i===0?'M':'L'} ${x} ${y} `;
+    });
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute('d', d.trim());
+    lineGroup.appendChild(p);
+  });
+  dots.forEach((pt,i) => {
+    const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c.setAttribute('cx', pt[0]); c.setAttribute('cy', pt[1]);
+    c.setAttribute('r', i % 3 === 0 ? 5 : 3.6);
+    c.setAttribute('fill', '#fff1c4');
+    c.setAttribute('filter', 'url(#glow)');
+    dotGroup.appendChild(c);
+  });
+};
+const ringConfig = [
+  {circ: 2 * Math.PI * 228},
+  {circ: 2 * Math.PI * 175},
+  {circ: 2 * Math.PI * 118}
+];
+function setRing(el, circ, value, color) {
+  const arc = Math.max(12, circ * (value/5) * 0.82);
+  el.setAttribute('stroke', color);
+  el.setAttribute('stroke-dasharray', `${arc} ${circ}`);
+  el.setAttribute('opacity', 0.16 + (value/5) * 0.74);
+}
+function render(i) {
+  const s = scenarios[i];
+  document.querySelectorAll('button').forEach((b, idx) => b.classList.toggle('active', idx === i));
+  fields.tag.textContent = s.tag;
+  fields.name.textContent = s.title;
+  fields.summary.textContent = s.summary;
+  fields.reading.textContent = s.reading;
+  fields.m1.textContent = `${s.weather}/5`;
+  fields.m2.textContent = `${s.report}/5`;
+  fields.m3.textContent = `${s.world}/5`;
+  centerTitle.textContent = s.title;
+  centerTag.textContent = s.tag.toUpperCase();
+  centerScale.textContent = `${s.weather} / ${s.report} / ${s.world}`;
+  setRing(rings[0], ringConfig[0].circ, s.weather, colors[0]);
+  setRing(rings[1], ringConfig[1].circ, s.report, colors[1]);
+  setRing(rings[2], ringConfig[2].circ, s.world, colors[2]);
+  const angle = -90 + i * 58;
+  pointer.setAttribute('transform', `rotate(${angle} 350 350)`);
+}
+makeTicks();
+makeConstellation();
+scenarios.forEach((s, i) => {
+  const btn = document.createElement('button');
+  btn.innerHTML = `<span class="scenario-tag">${s.tag}</span><span class="scenario-name">${s.label}</span>`;
+  btn.addEventListener('click', () => render(i));
+  controls.appendChild(btn);
+});
+render(4);
+</script>
+</body>
+</html>

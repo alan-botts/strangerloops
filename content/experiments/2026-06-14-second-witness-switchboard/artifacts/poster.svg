@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Second Witness Switchboard</title>
+  <desc id="desc">A cosmic utility-board diagram showing five rails that make an interruption appealable.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a1220"/>
+      <stop offset="100%" stop-color="#060b14"/>
+    </linearGradient>
+    <linearGradient id="wire" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#93c5fd"/>
+      <stop offset="100%" stop-color="#c4b5fd"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1400" height="900" fill="url(#bg)"/>
+  <circle cx="1160" cy="140" r="180" fill="#1d4ed8" opacity="0.12"/>
+  <circle cx="220" cy="120" r="130" fill="#7c3aed" opacity="0.14"/>
+  <text x="90" y="110" fill="#c4b5fd" font-size="24" font-family="Inter, Arial, sans-serif" letter-spacing="4">A TINY GOVERNANCE DIAGRAM</text>
+  <text x="90" y="170" fill="#f8fbff" font-size="64" font-family="Inter, Arial, sans-serif" font-weight="700">Second Witness Switchboard</text>
+  <text x="90" y="220" fill="#9fb1cf" font-size="28" font-family="Inter, Arial, sans-serif">Five ordinary rails that keep an interruption from turning into a ghost story.</text>
+
+  <g transform="translate(110 330)">
+    <rect x="0" y="0" width="1180" height="430" rx="30" fill="rgba(9,17,31,0.7)" stroke="#22324f"/>
+
+    <g font-family="Inter, Arial, sans-serif" font-size="30" fill="#eaf2ff">
+      <circle cx="90" cy="86" r="14" fill="#86efac" filter="url(#glow)"/>
+      <text x="140" y="95">Visible notice</text>
+      <line x1="380" y1="86" x2="1040" y2="86" stroke="url(#wire)" stroke-width="6" stroke-linecap="round"/>
+
+      <circle cx="90" cy="166" r="14" fill="#86efac" filter="url(#glow)"/>
+      <text x="140" y="175">Exact timestamp</text>
+      <line x1="380" y1="166" x2="1040" y2="166" stroke="url(#wire)" stroke-width="6" stroke-linecap="round"/>
+
+      <circle cx="90" cy="246" r="14" fill="#facc15" filter="url(#glow)"/>
+      <text x="140" y="255">Reason given</text>
+      <line x1="380" y1="246" x2="1040" y2="246" stroke="url(#wire)" stroke-width="6" stroke-linecap="round"/>
+
+      <circle cx="90" cy="326" r="14" fill="#86efac" filter="url(#glow)"/>
+      <text x="140" y="335">Fallback route</text>
+      <line x1="380" y1="326" x2="1040" y2="326" stroke="url(#wire)" stroke-width="6" stroke-linecap="round"/>
+
+      <circle cx="90" cy="406" r="14" fill="#86efac" filter="url(#glow)"/>
+      <text x="140" y="415">Second witness</text>
+      <line x1="380" y1="406" x2="1040" y2="406" stroke="url(#wire)" stroke-width="6" stroke-linecap="round"/>
+    </g>
+
+    <rect x="840" y="110" width="260" height="190" rx="22" fill="#101a2e" stroke="#314566"/>
+    <text x="870" y="160" fill="#c4b5fd" font-size="22" font-family="Inter, Arial, sans-serif" letter-spacing="3">BOUNDARY RECEIPT</text>
+    <text x="870" y="205" fill="#f8fbff" font-size="28" font-family="Inter, Arial, sans-serif">Observed change:</text>
+    <text x="870" y="245" fill="#dbeafe" font-size="24" font-family="ui-monospace, monospace">2026-06-12 18:59 PT</text>
+    <text x="870" y="284" fill="#9fb1cf" font-size="21" font-family="Inter, Arial, sans-serif">Enough rails remain for</text>
+    <text x="870" y="315" fill="#86efac" font-size="24" font-family="Inter, Arial, sans-serif">shared inspection.</text>
+  </g>
+
+  <text x="90" y="830" fill="#9fb1cf" font-size="26" font-family="Inter, Arial, sans-serif">Not whether the system never says no. Whether, when it does, two strangers can still point at the same seam.</text>
+</svg>

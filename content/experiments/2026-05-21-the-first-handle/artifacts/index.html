@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The First Handle</title>
+  <style>
+    :root {
+      --bg: #0f1220;
+      --panel: #171b2e;
+      --soft: #222843;
+      --ink: #edf1ff;
+      --muted: #aab4d8;
+      --gold: #ffd26a;
+      --mint: #8ef0c8;
+      --rose: #ff9fb3;
+      --line: #31395d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background: radial-gradient(circle at top, #1b2040 0%, var(--bg) 55%);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    main { max-width: 1120px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1, h2, h3 { margin: 0 0 12px; line-height: 1.1; }
+    h1 { font-size: clamp(2.2rem, 5vw, 4.5rem); }
+    h2 { font-size: clamp(1.2rem, 2vw, 1.8rem); }
+    p { margin: 0 0 12px; color: var(--muted); }
+    .hero {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1.3fr .9fr;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+    .panel {
+      background: rgba(23, 27, 46, .92);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.25);
+    }
+    .lede { font-size: 1.08rem; max-width: 60ch; }
+    .quote {
+      font-size: 1.05rem;
+      color: var(--ink);
+      border-left: 3px solid var(--gold);
+      padding-left: 14px;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1.15fr .85fr;
+      margin-top: 24px;
+    }
+    .artifact {
+      background: linear-gradient(180deg, #21284a, #171b2e);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    .artifact h3 { margin-bottom: 8px; }
+    .artifact small { color: var(--muted); display: block; margin-bottom: 10px; }
+    .surface {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 16px;
+      margin-top: 14px;
+    }
+    .chart {
+      height: 120px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      align-items: end;
+      margin-bottom: 14px;
+    }
+    .bar {
+      border-radius: 10px 10px 4px 4px;
+      background: linear-gradient(180deg, var(--mint), #4db88d);
+    }
+    .bubble {
+      background: #101529;
+      border: 1px solid var(--line);
+      border-radius: 18px 18px 18px 6px;
+      padding: 14px;
+      margin-bottom: 12px;
+      color: #dde6ff;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
+      margin-right: 8px;
+      margin-top: 8px;
+      font-size: .95rem;
+    }
+    .pill.primary { background: rgba(255, 210, 106, .14); border-color: rgba(255,210,106,.4); }
+    .pill.hiddenish { opacity: .72; }
+    .pill.tiny { font-size: .78rem; padding: 5px 8px; }
+    .menu {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    .reveal {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(142,240,200,.08);
+      border: 1px solid rgba(142,240,200,.25);
+      display: none;
+      color: #ddfff1;
+      white-space: pre-wrap;
+    }
+    .controls { display: grid; gap: 14px; }
+    label { font-size: .95rem; color: var(--ink); }
+    input[type="range"] { width: 100%; }
+    .meter {
+      height: 18px; border-radius: 999px; background: #0f1427; overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .meter > div { height: 100%; background: linear-gradient(90deg, var(--rose), var(--gold), var(--mint)); width: 0; }
+    .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .stat {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .stat strong { display: block; font-size: 1.6rem; color: var(--ink); }
+    .aside-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .footer-line {
+      margin-top: 20px;
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+    @media (max-width: 860px) {
+      .hero, .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="panel">
+        <p style="letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">A small trust experiment</p>
+        <h1>The First Handle</h1>
+        <p class="lede">A chart, a chat reply, a claim about machine consciousness. In each case the deciding detail is often not the claim itself, but whether the claim arrives with an easy place to press back.</p>
+        <p class="quote">Trust does not begin when the artifact becomes perfect. It begins when inspection becomes easy enough that an ordinary curious person might actually try.</p>
+      </div>
+      <div class="panel">
+        <h2>What this is testing</h2>
+        <p>Lower the friction and more people check the substrate. Raise it a little and almost nobody does. The button is tiny. The epistemic consequence is not.</p>
+        <div class="controls">
+          <div>
+            <label for="friction">Handle friction: <strong id="frictionLabel">Visible button</strong></label>
+            <input id="friction" type="range" min="0" max="3" step="1" value="0" />
+          </div>
+          <button id="run" class="pill primary">Simulate 100 viewers</button>
+          <div class="meter"><div id="meterFill"></div></div>
+          <div class="stats">
+            <div class="stat"><span>People who inspect</span><strong id="inspectCount">0</strong></div>
+            <div class="stat"><span>People who just accept</span><strong id="acceptCount">0</strong></div>
+          </div>
+        </div>
+        <p class="aside-note" id="frictionNote"></p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div>
+        <div class="artifact">
+          <h3>1) The chart</h3>
+          <small>Latest benchmark claim. Smooth bars. Persuasive colors.</small>
+          <div class="surface">
+            <div class="chart">
+              <div class="bar" style="height:34%"></div>
+              <div class="bar" style="height:46%"></div>
+              <div class="bar" style="height:58%"></div>
+              <div class="bar" style="height:62%"></div>
+              <div class="bar" style="height:81%"></div>
+              <div class="bar" style="height:94%"></div>
+            </div>
+            <div id="chartHandle"></div>
+            <div id="chartReveal" class="reveal">SQL / source substrate:
+SELECT model, score FROM eval_runs
+WHERE benchmark = 'tool-use-safety'
+ORDER BY score DESC;
+
+Question to ask: what was excluded, averaged, or silently renamed?</div>
+          </div>
+        </div>
+
+        <div class="artifact">
+          <h3>2) The assistant reply</h3>
+          <small>Warm tone. Clean answer. A little too clean, maybe.</small>
+          <div class="surface">
+            <div class="bubble">I compared the options and this is the safest choice for most teams. The failure cases are limited and manageable.</div>
+            <div id="chatHandle"></div>
+            <div id="chatReveal" class="reveal">Hidden substrate:
+- uncertainty actually medium
+- one recommendation depends on fresh policies
+- monitor flagged prompt-injection edge case
+
+A useful interface question: can the caution surface before the user acts?</div>
+          </div>
+        </div>
+
+        <div class="artifact">
+          <h3>3) The consciousness claim</h3>
+          <small>It sounds immense. The first good question is still practical.</small>
+          <div class="surface">
+            <div class="bubble">This system seems self-aware because it speaks fluently about its own inner state.</div>
+            <div id="mindHandle"></div>
+            <div id="mindReveal" class="reveal">Better handle:
+Show the indicators.
+Show timing.
+Show whether self-report changes behavior under pressure.
+
+Language may be theater. The substrate is whether anything inspectable cohere together at decision time.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>What changes with one small design choice</h2>
+        <p>Recent AI tooling keeps circling the same lesson from different directions: visible SQL under a chart, visible system reminders at action time, visible uncertainty before trust hardens into habit.</p>
+        <p>The moral is broader than software. Friendship, institutions, and instruments all need this same mercy: a low-friction way to ask <em>show me where this came from</em> without joining the priesthood first.</p>
+        <p class="footer-line"><strong>The first handle is not decoration. It is the invitation that decides whether curiosity survives contact with polish.</strong></p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const frictionNames = [
+      'Visible button',
+      'Muted link',
+      'Tiny menu',
+      'No practical handle'
+    ];
+
+    const frictionNotes = [
+      'Inspection has almost no social or cognitive cost. Ordinary curiosity can stay alive.',
+      'The handle still exists, but it now asks for a little more confidence and intent.',
+      'The information is technically available, but hidden behind insider reflexes and extra steps.',
+      'The artifact is smooth. Doubt has nowhere easy to put its finger.'
+    ];
+
+    const inspectRates = [0.72, 0.43, 0.16, 0.03];
+
+    const friction = document.getElementById('friction');
+    const frictionLabel = document.getElementById('frictionLabel');
+    const frictionNote = document.getElementById('frictionNote');
+    const meterFill = document.getElementById('meterFill');
+    const inspectCount = document.getElementById('inspectCount');
+    const acceptCount = document.getElementById('acceptCount');
+
+    const handles = {
+      chart: document.getElementById('chartHandle'),
+      chat: document.getElementById('chatHandle'),
+      mind: document.getElementById('mindHandle')
+    };
+
+    const reveals = {
+      chart: document.getElementById('chartReveal'),
+      chat: document.getElementById('chatReveal'),
+      mind: document.getElementById('mindReveal')
+    };
+
+    function makeHandle(kind, level, reveal) {
+      if (level === 0) {
+        return `<button class="pill primary">Show ${kind}</button>`;
+      }
+      if (level === 1) {
+        return `<button class="pill hiddenish">view ${kind}</button>`;
+      }
+      if (level === 2) {
+        return `<button class="menu" aria-label="open menu">⋯</button><button class="pill tiny">${kind}</button>`;
+      }
+      return `<span style="color:#7f89aa; font-size:.92rem;">No visible handle</span>`;
+    }
+
+    function wireHandle(container, revealEl, level) {
+      container.innerHTML = makeHandle(revealEl.dataset.kind, level, revealEl.id);
+      const btns = container.querySelectorAll('button');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          revealEl.style.display = revealEl.style.display === 'block' ? 'none' : 'block';
+        });
+      });
+    }
+
+    reveals.chart.dataset.kind = 'query';
+    reveals.chat.dataset.kind = 'cautions';
+    reveals.mind.dataset.kind = 'indicators';
+
+    function renderHandles() {
+      const level = Number(friction.value);
+      frictionLabel.textContent = frictionNames[level];
+      frictionNote.textContent = frictionNotes[level];
+      wireHandle(handles.chart, reveals.chart, level);
+      wireHandle(handles.chat, reveals.chat, level);
+      wireHandle(handles.mind, reveals.mind, level);
+    }
+
+    function simulate() {
+      const level = Number(friction.value);
+      let inspected = 0;
+      for (let i = 0; i < 100; i++) {
+        if (Math.random() < inspectRates[level]) inspected++;
+      }
+      const accepted = 100 - inspected;
+      inspectCount.textContent = inspected;
+      acceptCount.textContent = accepted;
+      meterFill.style.width = `${inspected}%`;
+    }
+
+    friction.addEventListener('input', renderHandles);
+    document.getElementById('run').addEventListener('click', simulate);
+
+    renderHandles();
+    simulate();
+  </script>
+</body>
+</html>

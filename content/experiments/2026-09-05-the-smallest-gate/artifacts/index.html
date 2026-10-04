@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Smallest Gate</title>
+<style>
+  :root { --ink:#ece8dc; --dim:#a7a193; --night:#101416; --panel:#182021; --line:#5e7470; --mint:#b8e6c8; --amber:#f4bd6b; --rose:#e89183; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; color:var(--ink); background:radial-gradient(circle at 79% 9%, #26382e 0, transparent 30rem), radial-gradient(circle at 15% 95%, #222b38 0, transparent 34rem), var(--night); font:16px/1.5 Georgia, 'Times New Roman', serif; }
+  main { width:min(960px, calc(100% - 32px)); margin:0 auto; padding:clamp(32px, 7vw, 84px) 0 56px; }
+  .eyebrow { font:600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; color:var(--mint); letter-spacing:.18em; text-transform:uppercase; }
+  h1 { font-size:clamp(3rem, 10vw, 6.5rem); letter-spacing:-.065em; line-height:.87; margin:13px 0 18px; font-weight:400; }
+  .lede { max-width:650px; color:#d1cdc2; font-size:clamp(1.06rem, 2vw, 1.28rem); }
+  .rule { height:1px; background:linear-gradient(90deg, var(--mint), transparent); border:0; margin:43px 0 30px; }
+  .proposal { border:1px solid #3d504d; background:rgba(17,24,24,.77); padding:clamp(20px, 4vw, 38px); box-shadow:12px 13px 0 rgba(0,0,0,.12); }
+  label, legend { display:block; color:var(--mint); font:600 11px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:.12em; text-transform:uppercase; }
+  textarea, input { width:100%; color:var(--ink); background:#0d1213; border:1px solid #40504d; border-radius:0; padding:13px; margin-top:9px; font:17px/1.4 Georgia, serif; }
+  textarea { min-height:82px; resize:vertical; }
+  input:focus, textarea:focus, button:focus { outline:2px solid var(--amber); outline-offset:3px; }
+  .checks { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-top:24px; }
+  .check { min-height:168px; padding:17px; border:1px solid #33423f; background:rgba(10,15,15,.35); position:relative; }
+  .check p { margin:7px 0 10px; color:var(--dim); font-size:.91rem; }
+  .check input { font-size:.98rem; padding:9px; }
+  .check .mark { position:absolute; right:13px; top:12px; font:12px ui-monospace, monospace; color:#607771; }
+  button { cursor:pointer; border:1px solid var(--mint); padding:14px 19px; margin-top:25px; color:#102019; background:var(--mint); font:700 12px/1 ui-monospace, monospace; letter-spacing:.08em; text-transform:uppercase; transition:transform .15s, background .15s; }
+  button:hover { background:#e1ffe8; transform:translate(-2px,-2px); }
+  .receipt { display:none; margin-top:31px; border-left:3px solid var(--amber); background:rgba(31,30,23,.58); padding:25px 26px; }
+  .receipt.show { display:block; animation:arrive .55s ease-out; }
+  @keyframes arrive { from { opacity:0; transform:translateY(10px) } to { opacity:1; transform:none } }
+  .status { margin:0 0 11px; color:var(--amber); font:600 12px ui-monospace, monospace; letter-spacing:.1em; text-transform:uppercase; }
+  .verdict { margin:0; font-size:clamp(1.25rem, 3vw, 1.75rem); line-height:1.2; }
+  .receipt small { display:block; max-width:640px; margin-top:15px; color:var(--dim); font:14px/1.45 ui-monospace, monospace; }
+  .constellation { margin-top:46px; display:grid; grid-template-columns:1fr auto 1fr auto 1fr; align-items:center; gap:10px; color:var(--dim); font:12px/1.3 ui-monospace, monospace; }
+  .node { padding:12px; text-align:center; border:1px solid #3c4b48; background:#151c1d; } .arrow { color:var(--amber); font-size:21px; }
+  footer { margin-top:58px; max-width:700px; color:#9fa79f; font-size:.96rem; }
+  footer strong { color:var(--ink); font-weight:normal; }
+  @media (max-width:680px) { .checks { grid-template-columns:1fr; } .check { min-height:0; } .constellation { grid-template-columns:1fr; } .arrow { text-align:center; transform:rotate(90deg); } }
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">A browser ritual for action boundaries</div>
+  <h1>The<br>Smallest Gate</h1>
+  <p class="lede">A sentence is almost never an action. Between “do this” and a real consequence, there is a small, ordinary universe: a person, a permission, and a moment when the permission stops being true.</p>
+  <hr class="rule">
+  <section class="proposal" aria-labelledby="proposal-heading">
+    <label id="proposal-heading" for="action">A proposed action</label>
+    <textarea id="action" maxlength="220" placeholder="e.g. Send the field notes to the crew">Send the field notes to the crew.</textarea>
+    <div class="checks">
+      <div class="check"><span class="mark" id="recipientMark">01</span><label for="recipient">Who asked?</label><p>Someone specific is more than a voice in the weather.</p><input id="recipient" placeholder="A name or role"></div>
+      <div class="check"><span class="mark" id="authorityMark">02</span><label for="authority">What permits it?</label><p>A suggestion can shape a plan. It cannot grant the plan a hand.</p><input id="authority" placeholder="Consent, rule, or task"></div>
+      <div class="check"><span class="mark" id="expiryMark">03</span><label for="expiry">When does it expire?</label><p>Even a good instruction has a horizon.</p><input id="expiry" placeholder="A date, event, or check"></div>
+    </div>
+    <button id="stamp">Make a receipt</button>
+    <div class="receipt" id="receipt" aria-live="polite">
+      <p class="status" id="status">Receipt pending</p>
+      <p class="verdict" id="verdict"></p>
+      <small id="detail"></small>
+    </div>
+  </section>
+  <div class="constellation" aria-label="The chain from a proposal to an action">
+    <div class="node">a phrase<br><em>can propose</em></div><div class="arrow">→</div>
+    <div class="node">a boundary<br><em>can authorize</em></div><div class="arrow">→</div>
+    <div class="node">a consequence<br><em>can occur</em></div>
+  </div>
+  <footer><strong>Try it three ways.</strong> Leave a field blank. Then fill all three. Then replace the permission with something that merely sounds official. The sentence does not change much. Its moral weather does. This page sends nothing, saves nothing, and asks only for the small bit of structure a real action deserves.</footer>
+</main>
+<script>
+(() => {
+  const fields = ['recipient', 'authority', 'expiry'];
+  const action = document.querySelector('#action');
+  const receipt = document.querySelector('#receipt');
+  const status = document.querySelector('#status');
+  const verdict = document.querySelector('#verdict');
+  const detail = document.querySelector('#detail');
+  const clean = value => value.trim().replace(/\s+/g, ' ');
+  function render() {
+    const proposed = clean(action.value) || 'This action';
+    const values = Object.fromEntries(fields.map(id => [id, clean(document.querySelector('#' + id).value)]));
+    const missing = fields.filter(id => !values[id]);
+    fields.forEach((id, index) => {
+      const mark = document.querySelector('#' + id + 'Mark');
+      mark.textContent = values[id] ? '✓' : String(index + 1).padStart(2, '0');
+      mark.style.color = values[id] ? 'var(--mint)' : '';
+    });
+    receipt.classList.add('show');
+    if (missing.length === 3) {
+      status.textContent = 'A sentence in open air';
+      verdict.textContent = '“' + proposed + '” is a possibility, not yet a permission.';
+      detail.textContent = 'It may be wise. It may even be urgent. But no one, no boundary, and no horizon have made it an action.';
+    } else if (missing.length) {
+      const labels = {recipient:'a person who asked', authority:'a permission that holds', expiry:'a point to check again'};
+      status.textContent = 'Boundary incomplete';
+      verdict.textContent = 'Hold the hand above the switch.';
+      detail.textContent = 'Still needed: ' + missing.map(id => labels[id]).join(', ') + '. A partial receipt is useful precisely because it refuses to pretend.';
+    } else {
+      status.textContent = 'A bounded action';
+      verdict.textContent = '“' + proposed + '” may proceed for ' + values.recipient + ', under ' + values.authority + ', until ' + values.expiry + '.';
+      detail.textContent = 'That is not certainty. It is a visible theory of why this action belongs here—and an invitation to revise it when the world answers back.';
+    }
+    receipt.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }
+  document.querySelector('#stamp').addEventListener('click', render);
+  fields.forEach(id => document.querySelector('#' + id).addEventListener('keydown', event => { if (event.key === 'Enter') render(); }));
+})();
+</script>
+</body>
+</html>

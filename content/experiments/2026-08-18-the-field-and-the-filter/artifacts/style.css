@@ -1,0 +1,29 @@
+
+:root { --ink:#172331; --paper:#f4f0e7; --night:#16212d; --mist:#b8c1bd; --lime:#d9ef92; --coral:#f48166; --line:#c8c3b6; }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--ink); background:radial-gradient(circle at 80% 0%, #dde7d5 0, transparent 30rem), var(--paper); font-family:"DM Mono", ui-monospace, monospace; }
+main { width:min(100% - 2rem, 70rem); margin:0 auto; padding:5rem 0 3rem; }
+header { max-width:48rem; margin-bottom:3rem; }
+h1,h2,p { margin-top:0; } h1,h2 { font-family:Fraunces, Georgia, serif; font-weight:650; letter-spacing:-.035em; }
+h1 { font-size:clamp(3rem, 8vw, 6rem); line-height:.9; margin-bottom:1.2rem; } h2 { font-size:clamp(1.6rem, 3vw, 2.25rem); line-height:1; margin-bottom:.75rem; }
+.eyebrow { color:#5b6871; font-size:.7rem; letter-spacing:.11em; text-transform:uppercase; }
+.lede { max-width:43rem; font-size:1.05rem; line-height:1.7; }
+.instrument { display:grid; grid-template-columns:1fr 1.65fr; background:#fffdf7; border:1px solid var(--line); box-shadow:8px 8px 0 rgba(23,35,49,.08); }
+.controls { padding:2rem; border-right:1px solid var(--line); } .controls h2 { font-size:1.75rem; }
+.observer-buttons { display:grid; gap:.55rem; }
+button { color:var(--ink); background:transparent; border:1px solid var(--ink); padding:.7rem .8rem; font:500 .72rem "DM Mono", monospace; letter-spacing:.02em; text-align:left; cursor:pointer; transition:all .18s ease; }
+button:hover, button:focus-visible { background:var(--lime); outline:2px solid var(--ink); outline-offset:2px; } .observer.active { background:var(--night); color:white; }
+.rule { margin:1.5rem 0 0; font-size:.78rem; line-height:1.65; color:#465560; }
+.field-wrap { grid-column:2; grid-row:1 / span 2; position:relative; min-height:29rem; padding:1.3rem; background:var(--night); }
+.field { display:grid; grid-template-columns:repeat(4, 1fr); grid-template-rows:repeat(3, 1fr); gap:.75rem; min-height:25rem; }
+.lantern { min-height:6rem; display:flex; flex-direction:column; justify-content:space-between; padding:.6rem; border:1px solid rgba(244,240,231,.22); color:#f4f0e7; transition:opacity .35s ease, transform .35s ease, background .35s ease; }
+.lantern strong { font-size:.76rem; font-weight:500; } .lantern small { font-size:.61rem; color:#c7d0ca; line-height:1.4; }
+.lantern.counted { border-color:var(--lime); background:rgba(217,239,146,.16); box-shadow:inset 0 0 0 1px rgba(217,239,146,.16); } .lantern.held { opacity:.38; }
+.light { width:.7rem; height:.7rem; border-radius:50%; box-shadow:0 0 16px currentColor; }
+.legend { position:absolute; bottom:1.1rem; left:1.3rem; color:#d8ded8; font-size:.62rem; }.dot { display:inline-block; width:.55rem; height:.55rem; border-radius:50%; margin:0 .3rem 0 .8rem; }.dot.counted { background:var(--lime); }.dot.held { background:#788690; }
+.claim { grid-column:1; padding:2rem; border-top:1px solid var(--line); background:#e4ecdc; }.claim p { font-size:.87rem; line-height:1.65; }.claim h2 { font-size:1.8rem; }.scope { color:#4a5a55; font-size:.72rem !important; }
+.ledger-section { margin-top:4rem; padding-top:1.2rem; border-top:2px solid var(--ink); }.ledger-heading { display:flex; justify-content:space-between; align-items:end; gap:1rem; }.ledger-heading button { white-space:nowrap; }.ledger { margin-top:1.5rem; display:grid; grid-template-columns:repeat(3,1fr); gap:.7rem; }.entry { border:1px solid var(--line); padding:.85rem; background:#fffdf7; min-height:7rem; }.entry b { display:block; margin-bottom:.55rem; font-size:.72rem; }.entry span { color:#50606a; font-size:.68rem; line-height:1.5; }
+.question { max-width:42rem; margin:5rem 0 1rem; }.question p { font-family:Fraunces, Georgia, serif; font-size:1.32rem; line-height:1.5; }.question button { margin-top:.75rem; }
+footer { padding:2rem; color:#657078; text-align:center; font-size:.63rem; }
+@media (max-width: 760px) { main { padding-top:3rem; }.instrument { display:block; }.controls { border-right:0; }.field-wrap { min-height:25rem; }.field { min-height:21rem; gap:.45rem; }.lantern { min-height:5rem; }.ledger { grid-template-columns:repeat(2,1fr); }.ledger-heading { align-items:start; flex-direction:column; } }
+@media (max-width:430px) { .field { grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(4,1fr); }.ledger { grid-template-columns:1fr; } }

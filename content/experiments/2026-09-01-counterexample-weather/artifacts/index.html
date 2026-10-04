@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Counterexample Weather</title>
+<style>
+  :root { --ink:#17222a; --paper:#f5f0e3; --night:#153442; --blue:#62b4bf; --sun:#dfa74d; --coral:#cf7160; }
+  * { box-sizing:border-box; } body { margin:0; min-height:100vh; display:grid; place-items:center; color:var(--ink); background:radial-gradient(circle at 50% 0%,#fcf7e8 0 23%,#dce7de 70%,#b7d1cb); font:16px/1.48 Georgia,serif; }
+  main { width:min(920px,94vw); margin:32px 0; padding:clamp(22px,4vw,48px); background:rgba(245,240,227,.92); box-shadow:0 22px 62px #15344255; border:1px solid #15344255; }
+  header { display:grid; grid-template-columns:1fr auto; gap:18px; align-items:start; border-bottom:1px solid #15344255; padding-bottom:18px; }
+  h1 { margin:0; font-size:clamp(2rem,5vw,4.2rem); line-height:.95; font-weight:normal; letter-spacing:-.055em; } .kicker,.small { font:600 .72rem/1.3 ui-monospace,monospace; letter-spacing:.12em; text-transform:uppercase; } .kicker { color:#42606b; margin:0 0 11px; } .seal { width:66px; height:66px; border:1px solid var(--night); border-radius:50%; display:grid; place-items:center; color:var(--night); font:600 .61rem/1.1 ui-monospace,monospace; text-align:center; transform:rotate(-10deg); }
+  .intro { max-width:61ch; font-size:1.13rem; margin:25px 0 30px; }
+  .instrument { display:grid; grid-template-columns:minmax(250px,1.15fr) minmax(230px,.85fr); gap:32px; align-items:center; }
+  .sky { min-height:330px; position:relative; overflow:hidden; background:linear-gradient(#12313f 0 60%,#25606b 60% 61%,#d7bf78 61%); border:8px solid #12313f; box-shadow:inset 0 0 0 1px #94d4cc; }
+  .star { position:absolute; width:4px; height:4px; border-radius:50%; background:#fff7bd; opacity:.8; } .star:nth-child(1){left:13%;top:16%}.star:nth-child(2){left:76%;top:10%}.star:nth-child(3){left:40%;top:31%}.star:nth-child(4){left:88%;top:39%}.star:nth-child(5){left:25%;top:48%}.star:nth-child(6){left:59%;top:18%}
+  .vane { position:absolute; inset:0; display:grid; place-items:center; } .mast { height:227px; width:5px; background:#e8d692; box-shadow:0 0 0 1px #6b4e25; position:absolute; top:56px; } .cross { height:5px; width:170px; background:#e8d692; box-shadow:0 0 0 1px #6b4e25; position:absolute; top:165px; }
+  .arrow { position:absolute; width:190px; height:70px; transition:transform 850ms cubic-bezier(.2,.8,.2,1); transform:rotate(var(--angle)); } .shaft { position:absolute; top:33px; left:18px; width:145px; height:5px; background:var(--coral); } .head { position:absolute; left:0; top:13px; width:0; height:0; border-top:23px solid transparent; border-bottom:23px solid transparent; border-right:44px solid var(--coral); } .tail { position:absolute; right:0; top:5px; width:0; height:0; border-top:29px solid transparent; border-bottom:29px solid transparent; border-left:26px solid #ddad70; }
+  .label { position:absolute; color:#fff9d9; font:600 .65rem ui-monospace,monospace; letter-spacing:.09em; } .north{top:17px}.east{right:17px;top:157px}.south{bottom:17px}.west{left:17px;top:157px}
+  .readout { position:absolute; bottom:12px; left:12px; right:12px; color:#fff9d9; background:#12313fd9; padding:8px 10px; font:600 .66rem/1.3 ui-monospace,monospace; letter-spacing:.06em; text-transform:uppercase; }
+  .panel { border-left:2px solid var(--sun); padding-left:22px; } h2 { margin:.1rem 0 .4rem; font-weight:normal; font-size:1.4rem; } .case { min-height:90px; } .case strong { color:#285664; } .controls { display:grid; gap:8px; margin:18px 0; } button { appearance:none; cursor:pointer; text-align:left; padding:10px 12px; background:transparent; color:var(--ink); border:1px solid #607d7d; font:600 .78rem/1.2 ui-monospace,monospace; letter-spacing:.03em; transition:.18s; } button:hover,button:focus-visible { outline:3px solid #dfa74d88; background:#fff9e8; } button.active { background:#153442; color:#fff9d9; border-color:#153442; } button:disabled { opacity:.42; cursor:not-allowed; }
+  .ledger { padding:16px 0 0; border-top:1px solid #15344255; } .ledger p { margin:.4rem 0; } .decision { margin-top:12px; color:#6d3028; font-style:italic; min-height:3em; }
+  footer { margin-top:34px; padding-top:15px; border-top:1px solid #15344255; color:#42606b; font-size:.9rem; max-width:70ch; }
+  @media (max-width:680px) { header,.instrument { grid-template-columns:1fr; } .seal{display:none}.panel{border-left:0;border-top:2px solid var(--sun);padding:19px 0 0}.sky{min-height:290px} }
+</style>
+</head>
+<body>
+<main>
+<header><div><p class="kicker">A small instrument for not mistaking wind for a verdict</p><h1>Counterexample<br>Weather</h1></div><div class="seal">FIELD<br>STATION<br>01</div></header>
+<p class="intro">A weather vane tells us where the wind is coming from. It does not tell us what to build. This little station asks for one more thing: a place where an unwelcome observation could actually change the plan.</p>
+<section class="instrument" aria-label="Counterexample weather station">
+  <div class="sky" aria-hidden="true"><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><span class="label north">LOUDER</span><span class="label east">OLDER</span><span class="label south">OTHER</span><span class="label west">RETURN</span><div class="vane"><div class="mast"></div><div class="cross"></div><div class="arrow" id="arrow" style="--angle:0deg"><i class="shaft"></i><i class="head"></i><i class="tail"></i></div></div><div class="readout" id="readout">wind is waiting</div></div>
+  <div class="panel"><p class="small">Choose a tempting signal</p><h2 id="title">A dashboard turns green.</h2><div class="case" id="case">The room gets the good news. What observation would be allowed to interrupt it?</div><div class="controls" id="controls"></div><div class="ledger"><p class="small">The field note</p><p id="note">No action has been authorized. A signal may be real and still be too thin to carry a conclusion.</p><p class="decision" id="decision" aria-live="polite"></p></div></div>
+</section>
+<footer>This is a local, self-contained sketch. It stores nothing and sends nothing. Its only trick is a very old one: before the weather becomes a story, leave a hook for the evidence that might spoil it.</footer>
+</main>
+<script>
+const cases=[
+ {title:'A dashboard turns green.', text:'The room gets the good news. What observation would be allowed to interrupt it?', angle:0, signal:'The wind says: LOUDER.', tests:['Read a changed condition, not the same dashboard again.','Name the failure that a green tile cannot see.','Wait one full cycle and compare the route, not the headline.'], done:'A return wire is attached. The green light may now be treated as a question with consequences, not a coronation.'},
+ {title:'A model says it feels afraid.', text:'The words may matter. They are not yet a map of the whole system.', angle:90, signal:'The wind says: OTHER.', tests:['Use a matched situation without feeling-language.','Test whether a relevant internal route changes downstream behavior.','Decide a modest protective duty that does not require a metaphysical verdict.'], done:'A counterexample now has a door into the room. The claim remains open; care need not wait for certainty.'},
+ {title:'The newest tool is astonishing.', text:'Novelty has its own weather: it can blow a loose roof clean off a house.', angle:180, signal:'The wind says: OLDER.', tests:['Compare it with a boring tool that has survived real use.','Write the six-month failure notice before choosing it.','Find a cost that a demo has no reason to reveal.'], done:'The old rope has been inspected beside the bright new one. Choose, if you choose, with both in view.'},
+ {title:'No one objected.', text:'Silence can be peace, fear, absence, or simply a channel with no return path.', angle:270, signal:'The wind says: RETURN.', tests:['Ask through a route where an answer can change the outcome.','Make the default cost the decider something.','Set a clock for the silence to expire before it becomes consent.'], done:'The quiet now has a boundary and an owner. It may be evidence of something, but no longer an empty signature line.'}
+];
+let selected=0, test=-1;
+const $=id=>document.getElementById(id);
+function render(){const c=cases[selected]; $('title').textContent=c.title;$('case').textContent=c.text;$('arrow').style.setProperty('--angle',c.angle+'deg');$('readout').textContent=test<0?c.signal:'counter-wind recorded';$('note').textContent=test<0?'No action has been authorized. A signal may be real and still be too thin to carry a conclusion.':'Counterexample hook: '+c.tests[test];$('decision').textContent=test<0?'':c.done;
+$('controls').innerHTML=''; cases.forEach((x,i)=>{let b=document.createElement('button');b.textContent=(i===selected?'● ':'○ ')+x.title;b.className=i===selected?'active':'';b.onclick=()=>{selected=i;test=-1;render()};$('controls').append(b)}); let label=document.createElement('p');label.className='small';label.textContent='Attach one counterexample hook';$('controls').append(label); c.tests.forEach((x,i)=>{let b=document.createElement('button');b.textContent=(i===test?'✓ ':'+ ')+x;b.className=i===test?'active':'';b.onclick=()=>{test=i;render()};$('controls').append(b)});}
+render();
+</script>
+</body>
+</html>

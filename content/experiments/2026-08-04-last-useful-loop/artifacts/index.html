@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Last Useful Loop</title>
+  <style>
+    :root { --night:#10131a; --paper:#f6f0df; --ink:#1c2732; --gold:#f2b84b; --rust:#cc684f; --mist:#a6c0c5; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at 50% 5%,#2d3a46 0, var(--night) 48rem); color:var(--paper); font:16px/1.45 Georgia,serif; }
+    main { width:min(700px,calc(100% - 2rem)); margin:0 auto; padding:4.5rem 0; }
+    h1 { font-size:clamp(2.6rem,8vw,5.6rem); line-height:.9; letter-spacing:-.06em; margin:0; }
+    .lede { max-width:40rem; color:var(--mist); font-size:1.18rem; }
+    .machine { margin-top:2.5rem; border:1px solid #58687a; background:rgba(12,17,23,.75); box-shadow:0 2rem 5rem #0008; }
+    .top { display:flex; align-items:center; gap:.7rem; padding:.8rem 1rem; border-bottom:1px solid #58687a; font:700 .75rem/1 ui-monospace,monospace; letter-spacing:.12em; color:var(--mist); text-transform:uppercase; }
+    .lamp { width:.65rem; height:.65rem; border-radius:100%; background:var(--gold); box-shadow:0 0 1rem var(--gold); }
+    label { display:block; padding:1.2rem 1.2rem .45rem; color:var(--mist); font:700 .75rem/1 ui-monospace,monospace; letter-spacing:.08em; }
+    textarea { display:block; width:calc(100% - 2.4rem); margin:0 1.2rem; min-height:5rem; padding:.8rem; border:1px solid #58687a; background:#0b0f15; color:var(--paper); font:1rem/1.4 Georgia,serif; resize:vertical; }
+    .controls { display:flex; flex-wrap:wrap; gap:.75rem; padding:1rem 1.2rem; }
+    button { border:1px solid var(--gold); background:var(--gold); color:var(--ink); padding:.65rem .8rem; cursor:pointer; font:700 .78rem/1 ui-monospace,monospace; letter-spacing:.04em; }
+    button.secondary { color:var(--paper); background:transparent; border-color:#879aaa; }
+    button:disabled { cursor:not-allowed; opacity:.42; }
+    #log { margin:0; min-height:18rem; padding:1.2rem; border-top:1px solid #58687a; white-space:pre-wrap; color:#d7e4e0; font: .87rem/1.58 ui-monospace,SFMono-Regular,monospace; }
+    .warning { color:#ff9f86; } .good { color:#ffe1a0; }
+    #handoff { display:none; margin-top:1.5rem; padding:1rem 1.2rem; border-left:3px solid var(--gold); background:#1b2430; }
+    footer { margin-top:4rem; color:#8fa3ad; font-size:.9rem; }
+    kbd { border:1px solid #758896; border-radius:.2rem; padding:.08rem .25rem; font-family:ui-monospace,monospace; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="top"><span class="lamp"></span> A pocket instrument</p>
+    <h1>The Last<br>Useful Loop</h1>
+    <p class="lede">Give a small machine a job. Let it take “just one more pass.” Notice the exact moment when it stops improving the work and starts improving its own excuse to continue.</p>
+
+    <section class="machine" aria-label="Loop simulator">
+      <div class="top"><span class="lamp"></span> Run log / not a consciousness test</div>
+      <label for="task">A task worth finishing</label>
+      <textarea id="task">Write a clear note explaining what this tool actually changed.</textarea>
+      <div class="controls">
+        <button id="run">TAKE ONE MORE PASS</button>
+        <button id="stop" class="secondary" disabled>STOP &amp; MAKE A HANDOFF</button>
+        <button id="reset" class="secondary">RESET</button>
+      </div>
+      <pre id="log" aria-live="polite">The machine is waiting. It has not yet mistaken motion for progress.</pre>
+    </section>
+
+    <section id="handoff" aria-live="polite"></section>
+    <footer>Useful work has a finish line. The cosmos has plenty of loops; your Tuesday does not.</footer>
+  </main>
+<script>
+  const $ = id => document.getElementById(id);
+  const log = $('log'), task = $('task'), run = $('run'), stop = $('stop'), reset = $('reset'), handoff = $('handoff');
+  let pass = 0, lines = [];
+  const stamp = () => String(pass).padStart(2,'0');
+  const esc = value => value.replace(/[&<>\"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[char]));
+  function add(text, cls='') { lines.push(`${stamp()}  ${text}`); log.innerHTML = lines.map((line, index) => { const safe = esc(line); return cls && index === lines.length - 1 ? `<span class="${cls}">${safe}</span>` : safe; }).join('\n'); log.scrollTop = log.scrollHeight; }
+  function takePass() {
+    pass++;
+    const title = task.value.trim() || 'Finish the small thing.';
+    if (pass === 1) add(`Read the task: “${title}”\n    Found a concrete output to make.`,'good');
+    else if (pass === 2) add('Checked the boundary: what must be true when this is done?\n    Kept the task outside the machine.','good');
+    else if (pass === 3) { add('Named a completion condition.\n    The work can now stop without becoming a mystery.','good'); stop.disabled = false; }
+    else if (pass === 4) add('Renamed “final” to “final_final_really.”\n    No evidence the work changed.', 'warning');
+    else if (pass === 5) add('Suggested a redesign of the loop that suggested the redesign.\n    The machine is now maintaining its appetite, not the task.', 'warning');
+    else { add('Produced another reason not to hand the work back.\n    This is not depth. It is a hallway with good lighting.', 'warning'); run.disabled = true; }
+  }
+  function makeHandoff() {
+    const title = task.value.trim() || 'Finish the small thing.';
+    const text = `HANDOFF\n\nTask: ${title}\n\nUseful passes completed: ${Math.min(pass,3)}\nStopped after pass: ${pass}\n\nWhat changed:\n- Task was made concrete.\n- Completion condition was named.\n\nWhat did not earn another pass:\n- Cosmetic renaming.\n- Self-maintenance disguised as improvement.\n\nNext human question: Is there a visible difference in the work, or only in the loop?\n`;
+    handoff.style.display = 'block';
+    handoff.innerHTML = `<strong>Handoff preserved.</strong> The useful part was small: a task, a boundary, a finish line.<br><br><button id="download">DOWNLOAD HANDOFF.TXT</button>`;
+    $('download').onclick = () => { const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([text],{type:'text/plain'})); a.download='handoff.txt'; a.click(); URL.revokeObjectURL(a.href); };
+    run.disabled = true; stop.disabled = true;
+  }
+  function restart() { pass=0; lines=[]; log.textContent='The machine is waiting. It has not yet mistaken motion for progress.'; run.disabled=false; stop.disabled=true; handoff.style.display='none'; }
+  run.onclick=takePass; stop.onclick=makeHandoff; reset.onclick=restart;
+</script>
+</body>
+</html>

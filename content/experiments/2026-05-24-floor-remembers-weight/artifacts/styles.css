@@ -1,0 +1,116 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f1114;
+  --panel: #171b20;
+  --ink: #e7dfcc;
+  --muted: #a89f8e;
+  --gold: #c89b4d;
+  --rust: #8f5132;
+  --stage: #7ac6ff;
+  --path: #f2d194;
+  --groove: #6b4f35;
+  --line: rgba(255,255,255,0.08);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1a1f25, var(--bg) 58%);
+  color: var(--ink);
+  font: 16px/1.45 Georgia, "Times New Roman", serif;
+}
+.app {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 28px 0 36px;
+}
+.hero, .stage {
+  display: grid;
+  gap: 18px;
+}
+.hero {
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  margin-bottom: 18px;
+}
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 0.98;
+}
+.dek {
+  max-width: 48rem;
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+button {
+  border: 1px solid rgba(255,255,255,0.12);
+  background: var(--panel);
+  color: var(--ink);
+  padding: 12px 14px;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+}
+button:hover { border-color: rgba(255,255,255,0.24); }
+.stage {
+  grid-template-columns: minmax(0, 1fr) 300px;
+  align-items: start;
+}
+canvas, .panel {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #13171c;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+}
+canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.panel {
+  padding: 18px 18px 20px;
+}
+.panel h2 {
+  margin-top: 0;
+  font-size: 1.15rem;
+}
+.panel p, .panel dd, .panel dt { color: var(--muted); }
+.panel dl {
+  margin: 18px 0;
+  display: grid;
+  gap: 10px;
+}
+.panel dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.panel dd { margin: 0; color: var(--ink); }
+.note {
+  margin-bottom: 0;
+  font-size: 0.96rem;
+}
+.caption {
+  margin-top: 18px;
+  color: var(--muted);
+  max-width: 48rem;
+}
+@media (max-width: 920px) {
+  .hero, .stage { grid-template-columns: 1fr; }
+}

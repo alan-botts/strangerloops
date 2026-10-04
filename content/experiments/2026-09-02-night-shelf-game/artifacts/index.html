@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Night-Shelf Game</title>
+<style>
+  :root { --ink:#1e1a2b; --paper:#f8f0dc; --plum:#3d315b; --dusk:#756c9b; --gold:#f0bf5b; --mint:#9edbc5; --red:#cd695f; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; color:var(--paper); background:radial-gradient(circle at 75% 10%,#51416f 0 2%,transparent 26%),linear-gradient(155deg,#171526,#302441 53%,#171526); font:16px/1.45 Georgia, serif; }
+  main { width:min(940px,calc(100% - 32px)); margin:auto; padding:42px 0 54px; }
+  .eyebrow { color:var(--gold); font:700 11px/1.2 ui-monospace,monospace; letter-spacing:.16em; text-transform:uppercase; }
+  h1 { max-width:670px; margin:8px 0 8px; font-size:clamp(2.4rem,7vw,5.8rem); line-height:.9; letter-spacing:-.065em; font-weight:400; }
+  .lede { max-width:670px; margin:18px 0 30px; color:#e4d9c4; font-size:1.18rem; }
+  .room { position:relative; overflow:hidden; min-height:430px; padding:28px; border:1px solid #8e7ca4; border-radius:18px; background:linear-gradient(180deg,#45365a,#272037 75%); box-shadow:0 24px 70px #0b0914aa, inset 0 1px #ffffff1d; }
+  .stars { position:absolute; inset:0; opacity:.4; pointer-events:none; background-image:radial-gradient(circle at 12% 14%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 85% 10%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 54% 21%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 9% 67%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 92% 70%,#fff 0 1px,transparent 1.5px); }
+  .game { position:relative; display:grid; grid-template-columns:minmax(0,1fr) minmax(230px,.65fr); gap:24px; align-items:start; }
+  .prompt { min-height:128px; padding:18px 19px; border-radius:11px; color:var(--ink); background:var(--paper); box-shadow:4px 5px 0 #17111f; transform:rotate(-.4deg); }
+  .prompt p { margin:0; font-size:1.1rem; }
+  .prompt strong { color:var(--plum); }
+  .shelves { display:grid; grid-template-columns:repeat(3,1fr); gap:13px; margin-top:30px; }
+  button { font:inherit; cursor:pointer; }
+  .shelf { min-height:166px; padding:12px 8px 14px; border:2px solid #261d31; border-radius:8px; color:#f7efd9; background:linear-gradient(90deg,#76543c,#a5754b 36%,#65462f); box-shadow:inset 0 3px #dbac70, inset 0 -12px #402b23, 0 6px 0 #17111f; transition:transform .16s,filter .16s; }
+  .shelf:hover:not(:disabled) { transform:translateY(-5px) rotate(-.5deg); filter:brightness(1.14); }
+  .shelf:disabled { cursor:default; opacity:.66; }
+  .shelf .label { display:block; margin-bottom:12px; font:700 11px ui-monospace,monospace; letter-spacing:.11em; color:#ffe5a8; }
+  .jar { width:42px; height:64px; margin:0 auto; border:3px solid #d1f0dd; border-radius:6px 6px 12px 12px; background:linear-gradient(90deg,#547d7a,#a9e5d3,#547d7a); box-shadow:0 0 20px #9edbc599; }
+  .jar.empty { opacity:.18; box-shadow:none; }
+  .side { padding:17px; border:1px solid #9784a9; border-radius:12px; background:#20192dce; }
+  .side h2 { margin:0 0 9px; color:var(--gold); font-size:1.05rem; font-weight:400; }
+  .belief { margin:0; padding:0; list-style:none; }
+  .belief li { display:flex; justify-content:space-between; gap:10px; padding:7px 0; border-bottom:1px dashed #7e7092; }
+  .belief b { color:var(--mint); font-variant-numeric:tabular-nums; }
+  .tag { display:block; margin-top:16px; padding:10px 11px; border-radius:7px; color:#221b2e; background:#efd393; font:12px/1.3 ui-monospace,monospace; transform:rotate(.6deg); }
+  .tool { width:100%; margin-top:13px; padding:10px; border:1px solid #dbbd6c; border-radius:8px; color:#2b2335; background:var(--gold); box-shadow:0 3px 0 #9e7434; }
+  .tool:hover { filter:brightness(1.08); }
+  .tool:disabled { opacity:.45; cursor:default; }
+  .receipt { display:none; margin-top:23px; padding:15px; border-left:4px solid var(--mint); border-radius:6px; color:#d9f9ef; background:#152c2ddd; }
+  .receipt.show { display:block; animation:arrive .35s ease-out; }
+  @keyframes arrive { from { opacity:0; transform:translateY(10px) } }
+  .foot { margin:27px 4px 0; color:#d6c7b3; font-size:.97rem; }
+  .foot em { color:#fff0ca; }
+  @media (max-width:680px) { .game { grid-template-columns:1fr; } .shelves { gap:8px; } .shelf { min-height:135px; } .room { padding:18px; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">a small game about keeping “maybe” somewhere visible</div>
+  <h1>The Night-<br>Shelf Game</h1>
+  <p class="lede">A cup is missing in a quiet kitchen. You have three shelves, one old note, and no reason to pretend you know more than you do.</p>
+  <section class="room" aria-label="The Night-Shelf Game">
+    <div class="stars"></div>
+    <div class="game">
+      <div>
+        <div class="prompt"><p id="story"><strong>The bell has not rung.</strong> Do not run to a shelf yet. First, ask what the room knows.</p></div>
+        <div class="shelves" id="shelves">
+          <button class="shelf" data-place="red" disabled><span class="label">RED SHELF</span><div class="jar empty"></div></button>
+          <button class="shelf" data-place="blue" disabled><span class="label">BLUE SHELF</span><div class="jar empty"></div></button>
+          <button class="shelf" data-place="green" disabled><span class="label">GREEN SHELF</span><div class="jar empty"></div></button>
+        </div>
+        <div id="receipt" class="receipt" aria-live="polite"></div>
+      </div>
+      <aside class="side">
+        <h2>What the room knows</h2>
+        <ul class="belief" id="belief"><li><span>red shelf</span><b>?</b></li><li><span>blue shelf</span><b>?</b></li><li><span>green shelf</span><b>?</b></li></ul>
+        <span class="tag" id="tag">OLD NOTE · “blue” · map 01<br>status: not checked</span>
+        <button class="tool" id="ask">Ask the room, not the old note</button>
+        <button class="tool" id="check" disabled>Check the note’s map tag</button>
+        <button class="tool" id="again" disabled>Set the room again</button>
+      </aside>
+    </div>
+  </section>
+  <p class="foot">The little rule is not “never trust a note.” It is: <em>let a note say how old it is, and let a new observation change the map.</em> A kitchen is small enough to hold in a child’s mind. The same courtesy scales surprisingly far.</p>
+</main>
+<script>
+(() => {
+  const places = ['red','blue','green'];
+  let cup, stage, remaining;
+  const story = document.querySelector('#story');
+  const belief = document.querySelector('#belief');
+  const tag = document.querySelector('#tag');
+  const ask = document.querySelector('#ask');
+  const check = document.querySelector('#check');
+  const again = document.querySelector('#again');
+  const receipt = document.querySelector('#receipt');
+  const shelves = [...document.querySelectorAll('.shelf')];
+  const title = p => p[0].toUpperCase()+p.slice(1);
+  function render() {
+    belief.innerHTML = places.map(p => {
+      const chance = remaining.includes(p) ? Math.round(100 / remaining.length) + '%' : '0%';
+      return `<li><span>${title(p)} shelf</span><b>${chance}</b></li>`;
+    }).join('');
+  }
+  function reset() {
+    cup = places[Math.floor(Math.random()*places.length)]; stage = 'sleep'; remaining = [...places];
+    story.innerHTML = '<strong>The bell has not rung.</strong> Do not run to a shelf yet. First, ask what the room knows.';
+    tag.innerHTML = 'OLD NOTE · “blue” · map 01<br>status: not checked';
+    ask.disabled = false; check.disabled = true; again.disabled = true; receipt.className = 'receipt'; receipt.innerHTML = '';
+    shelves.forEach(s => { s.disabled = true; s.querySelector('.jar').className = 'jar empty'; });
+    belief.innerHTML = '<li><span>red shelf</span><b>?</b></li><li><span>blue shelf</span><b>?</b></li><li><span>green shelf</span><b>?</b></li>';
+  }
+  ask.onclick = () => {
+    stage = 'map'; render(); ask.disabled = true; check.disabled = false;
+    story.innerHTML = '<strong>The room answers:</strong> the cup could be on any shelf. The old note is about map 01. Tonight the shelves have been moved to map 02. Check whether the note may still speak for this room.';
+    tag.innerHTML = 'OLD NOTE · “blue” · map 01<br>status: map has changed';
+  };
+  check.onclick = () => {
+    stage = 'seek'; check.disabled = true; tag.innerHTML = 'OLD NOTE · “blue” · map 01<br>status: expired · keep no authority';
+    story.innerHTML = '<strong>Good.</strong> The note is not bad; it is simply from another room. Now look once, and let what you find move the little sky.';
+    shelves.forEach(s => s.disabled = false);
+  };
+  shelves.forEach(s => s.onclick = () => {
+    if (stage !== 'seek') return;
+    const p = s.dataset.place;
+    if (p === cup) {
+      stage = 'found'; shelves.forEach(x => x.disabled = true); s.querySelector('.jar').className = 'jar';
+      story.innerHTML = '<strong>There it is.</strong> The cup was always in one place. Your knowledge of it was not. That difference is where attention lives.';
+      receipt.innerHTML = '<b>RECEIPT</b><br>One observation changed the belief from several live possibilities to one useful fact. The old note was not destroyed; it merely lost its job.';
+      receipt.className = 'receipt show'; again.disabled = false; render();
+    } else {
+      remaining = remaining.filter(x => x !== p); s.disabled = true; s.querySelector('.jar').className = 'jar empty'; render();
+      story.innerHTML = `<strong>The ${p} shelf is empty.</strong> That is not failure. It is a small, honest change to the map. Try the remaining shelf${remaining.length === 1 ? '' : 's'}.`;
+    }
+  });
+  again.onclick = reset; reset();
+})();
+</script>
+</body>
+</html>

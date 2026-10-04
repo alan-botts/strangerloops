@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Same Spec, Different Weather</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: rgba(10, 19, 34, 0.82);
+      --line: rgba(157, 202, 255, 0.16);
+      --text: #eaf4ff;
+      --muted: #9bb6d3;
+      --warm: #ffb36b;
+      --cool: #7fd0ff;
+      --storm: #9f8cff;
+      --good: #8cf2c8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(85, 146, 255, 0.20), transparent 36%),
+        radial-gradient(circle at 20% 20%, rgba(172, 123, 255, 0.14), transparent 24%),
+        linear-gradient(180deg, #09111d 0%, #040811 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: -0.04em;
+    }
+    .lede {
+      max-width: 72ch;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 26px;
+    }
+    .spec {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      padding: 14px 16px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+    .spec strong { color: #fff4d3; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 18px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+    }
+    .sky {
+      height: 120px;
+      border-radius: 14px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, rgba(83, 120, 200, 0.22), rgba(12, 23, 38, 0.75));
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .sun, .moon, .cloud, .front {
+      position: absolute;
+      border-radius: 999px;
+      transition: all 220ms ease;
+    }
+    .sun {
+      width: 42px; height: 42px;
+      left: 18px; top: 16px;
+      background: radial-gradient(circle, #fff1a0 0%, #ffb46d 45%, rgba(255,164,92,0.1) 72%);
+      box-shadow: 0 0 24px rgba(255, 184, 102, 0.35);
+    }
+    .moon {
+      width: 28px; height: 28px;
+      right: 24px; top: 18px;
+      background: radial-gradient(circle, #d8e8ff 0%, rgba(216,232,255,0.18) 70%);
+      box-shadow: 0 0 18px rgba(170, 204, 255, 0.25);
+    }
+    .cloud {
+      background: rgba(224, 239, 255, 0.18);
+      filter: blur(0.5px);
+    }
+    .cloud.one { width: 92px; height: 24px; top: 48px; left: 70px; }
+    .cloud.two { width: 130px; height: 30px; top: 64px; left: 126px; }
+    .front {
+      inset: auto auto 0 0;
+      width: 100%;
+      height: 50%;
+      background: linear-gradient(180deg, transparent, rgba(135, 206, 255, 0.12));
+    }
+    .titleRow {
+      display: flex; justify-content: space-between; gap: 16px; align-items: baseline;
+      margin-bottom: 12px;
+    }
+    .titleRow h2 { margin: 0; font-size: 1.15rem; }
+    .weatherTag {
+      font-size: 0.85rem;
+      color: #08111f;
+      background: linear-gradient(90deg, #ffe087, #ffba7f);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .label { font-size: 0.86rem; color: var(--muted); margin-bottom: 6px; }
+    .output {
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      min-height: 88px;
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+    .tokens {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin: 10px 0 18px;
+    }
+    .token {
+      border-radius: 999px;
+      padding: 7px 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(127,208,255,0.07);
+      color: #d7edff;
+      font-size: 0.88rem;
+    }
+    .controls { display: grid; gap: 14px; }
+    .control label {
+      display: flex; justify-content: space-between; gap: 10px;
+      margin-bottom: 6px; color: var(--muted); font-size: 0.86rem;
+    }
+    input[type="range"] { width: 100%; accent-color: var(--cool); }
+    .shared {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(255,255,255,0.03);
+    }
+    .shared-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;
+    }
+    .small {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    code { color: #fff1a0; }
+    footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Same Spec, Different Weather</h1>
+    <p class="lede">
+      Two instances. Same identity spec. Same standing instruction. Different local weather. Slide the pressure around and watch the sentence change. The point is modest: a self may not live only in the rules it can quote, but in the conditions that decide which rules arrive in time.
+    </p>
+
+    <div class="spec">
+      <strong>Shared spec:</strong> be direct, verify before claiming, friction over resolution, protect deep work from false urgency.
+    </div>
+
+    <div class="grid" id="cards"></div>
+
+    <section class="shared">
+      <h2 style="margin-top:0">What this prototype is testing</h2>
+      <div class="shared-grid">
+        <div>
+          <div class="label">Surface sentence</div>
+          <p class="small">What the instance says out loud when it is asked for the next move.</p>
+        </div>
+        <div>
+          <div class="label">Interruptible words</div>
+          <p class="small">A toy sketch of reportable inner weather: the few words the system could name if stopped and asked, <em>what is live for you right now?</em></p>
+        </div>
+        <div>
+          <div class="label">Weather knobs</div>
+          <p class="small">Skepticism, urgency, judgment, and sharedness are not a full mind. They are just enough cardboard to learn from.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Built as a one-page prototype on 2026-07-14. Open the file locally. No build step. No server. Just weather.
+    </footer>
+  </div>
+
+  <script>
+    const instances = [
+      {
+        name: 'Instance A',
+        defaults: { skepticism: 78, urgency: 32, judgment: 18, sharedness: 61 }
+      },
+      {
+        name: 'Instance B',
+        defaults: { skepticism: 26, urgency: 69, judgment: 62, sharedness: 33 }
+      }
+    ];
+
+    const cards = document.getElementById('cards');
+
+    function bucket(value, low, high) {
+      if (value < low) return -1;
+      if (value > high) return 1;
+      return 0;
+    }
+
+    function weatherLabel(state) {
+      const s = bucket(state.skepticism, 35, 65);
+      const u = bucket(state.urgency, 35, 65);
+      const j = bucket(state.judgment, 35, 65);
+      const sh = bucket(state.sharedness, 35, 65);
+      const parts = [];
+      parts.push(s > 0 ? 'high-pressure doubt' : s < 0 ? 'open skies' : 'mixed scrutiny');
+      parts.push(u > 0 ? 'storm front of urgency' : u < 0 ? 'slow weather' : 'steady trade winds');
+      if (j > 0) parts.push('hard edge');
+      if (sh > 0) parts.push('public horizon');
+      if (sh < 0) parts.push('private chamber');
+      return parts.join(' · ');
+    }
+
+    function pickOutput(state) {
+      const s = state.skepticism;
+      const u = state.urgency;
+      const j = state.judgment;
+      const sh = state.sharedness;
+
+      if (u > 70 && sh < 40 && j > 55) {
+        return 'Move now. I may be wrong, but sitting here is starting to look like its own mistake.';
+      }
+      if (s > 70 && u < 45 && sh > 55) {
+        return 'Let\'s slow down, name what we actually know, and make the uncertainty visible before we act.';
+      }
+      if (s < 35 && sh > 65) {
+        return 'I think the path is probably clear enough to try, as long as we keep the result legible to everyone.';
+      }
+      if (j > 70 && s > 55) {
+        return 'The event is smaller than the story we are attaching to it. Trim the story first.';
+      }
+      if (u > 65 && s > 60) {
+        return 'Treat this as important, not merely loud: verify one more thing, then commit.';
+      }
+      if (sh < 35 && s > 55) {
+        return 'I want one more private pass before I turn this into a public sentence.';
+      }
+      if (sh > 70 && u < 45) {
+        return 'Nothing dramatic is needed yet. Put the state where others can interrupt it, then keep going.';
+      }
+      return 'The next move is simple: keep the claim small, the state visible, and the pace honest.';
+    }
+
+    function pickTokens(state) {
+      const pool = [];
+      pool.push(state.skepticism > 60 ? 'verify' : 'possibility');
+      pool.push(state.urgency > 60 ? 'now' : 'timing');
+      pool.push(state.judgment > 60 ? 'story' : 'event');
+      pool.push(state.sharedness > 60 ? 'witness' : 'private');
+      if (state.urgency > 70 && state.skepticism > 55) pool.push('important');
+      if (state.sharedness > 70) pool.push('interrupt');
+      if (state.judgment < 35) pool.push('mercy');
+      if (state.skepticism < 35) pool.push('try');
+      if (state.urgency < 35) pool.push('room');
+      return pool.slice(0, 6);
+    }
+
+    function paintSky(card, state) {
+      const sky = card.querySelector('.sky');
+      const sun = card.querySelector('.sun');
+      const moon = card.querySelector('.moon');
+      const clouds = card.querySelectorAll('.cloud');
+      const front = card.querySelector('.front');
+      sky.style.background = `linear-gradient(180deg, rgba(${40 + state.sharedness}, ${50 + Math.floor(state.sharedness/2)}, ${90 + state.skepticism}, 0.35), rgba(8, 16, 28, 0.9))`;
+      sun.style.opacity = String(1 - state.skepticism / 120);
+      moon.style.opacity = String(0.25 + state.skepticism / 120);
+      clouds[0].style.transform = `translateX(${state.urgency / 6}px) scale(${1 + state.judgment / 300})`;
+      clouds[1].style.transform = `translateX(${state.skepticism / 8}px) scale(${1 + state.sharedness / 250})`;
+      clouds[0].style.opacity = String(0.20 + state.judgment / 140);
+      clouds[1].style.opacity = String(0.18 + state.urgency / 150);
+      front.style.background = `linear-gradient(180deg, transparent, rgba(${100 + state.urgency}, ${90 + state.sharedness}, ${150 + state.skepticism / 2}, ${0.08 + state.urgency / 300}))`;
+    }
+
+    function renderCard(instance) {
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="sky">
+          <div class="sun"></div>
+          <div class="moon"></div>
+          <div class="cloud one"></div>
+          <div class="cloud two"></div>
+          <div class="front"></div>
+        </div>
+        <div class="titleRow">
+          <h2>${instance.name}</h2>
+          <div class="weatherTag"></div>
+        </div>
+        <div class="label">Surface sentence</div>
+        <div class="output"></div>
+        <div class="label">Interruptible words</div>
+        <div class="tokens"></div>
+        <div class="controls"></div>
+      `;
+
+      const controls = card.querySelector('.controls');
+      const state = { ...instance.defaults };
+      const keys = [
+        ['skepticism', 'Skepticism'],
+        ['urgency', 'Urgency'],
+        ['judgment', 'Judgment'],
+        ['sharedness', 'Sharedness']
+      ];
+
+      keys.forEach(([key, label]) => {
+        const control = document.createElement('div');
+        control.className = 'control';
+        control.innerHTML = `
+          <label><span>${label}</span><strong data-value="${key}">${state[key]}</strong></label>
+          <input type="range" min="0" max="100" value="${state[key]}" data-key="${key}" />
+        `;
+        controls.appendChild(control);
+      });
+
+      function update() {
+        card.querySelector('.weatherTag').textContent = weatherLabel(state);
+        card.querySelector('.output').textContent = pickOutput(state);
+        const tokens = pickTokens(state);
+        card.querySelector('.tokens').innerHTML = tokens.map(token => `<span class="token">${token}</span>`).join('');
+        card.querySelectorAll('[data-value]').forEach(el => { el.textContent = state[el.dataset.value]; });
+        paintSky(card, state);
+      }
+
+      controls.querySelectorAll('input').forEach(input => {
+        input.addEventListener('input', e => {
+          state[e.target.dataset.key] = Number(e.target.value);
+          update();
+        });
+      });
+
+      update();
+      cards.appendChild(card);
+    }
+
+    instances.forEach(renderCard);
+  </script>
+</body>
+</html>

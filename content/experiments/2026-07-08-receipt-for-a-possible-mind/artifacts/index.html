@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Receipt for a Possible Mind</title>
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --paper: #fffdf8;
+      --ink: #1e1b18;
+      --muted: #6d655d;
+      --line: #d8cec1;
+      --accent: #8a5a2b;
+      --good: #1e6b47;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #efe7da 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 24px;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    .lede {
+      font-size: 1.1rem;
+      max-width: 62ch;
+      color: #2c2621;
+    }
+    .panel, .receipt {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(65, 45, 25, 0.08);
+      backdrop-filter: blur(4px);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0 16px;
+    }
+    label.card {
+      display: block;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--paper);
+      cursor: pointer;
+      min-height: 132px;
+    }
+    label.card input { margin-right: 8px; }
+    label.card strong { display: inline-block; margin-bottom: 8px; }
+    label.card span { display: block; color: var(--muted); line-height: 1.35; font-size: 0.95rem; }
+    .receipt {
+      background: #fffdfa;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      position: sticky;
+      top: 20px;
+    }
+    .receipt .head, .receipt .foot { text-align: center; }
+    .receipt .head { margin-bottom: 14px; }
+    .receipt .rule {
+      border-top: 1px dashed #7a7067;
+      margin: 12px 0;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 6px 0;
+    }
+    .dim { color: var(--muted); }
+    .status {
+      font-weight: 700;
+      color: var(--good);
+      margin-top: 10px;
+    }
+    .thesis {
+      padding: 14px 16px;
+      border-left: 4px solid var(--accent);
+      background: rgba(138,90,43,0.08);
+      border-radius: 10px;
+      margin: 18px 0;
+      font-weight: 600;
+    }
+    .note {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+    @media (max-width: 960px) {
+      .wrap { grid-template-columns: 1fr; }
+      .receipt { position: static; }
+    }
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="panel">
+      <h1>Receipt for a Possible Mind</h1>
+      <p class="lede">A possible mind becomes harder to dismiss when it leaves receipts the world can argue with.</p>
+      <div class="thesis">Not self-description. Not fluent weather. Look for the little costs, the changed plans, the timestamps, the handoffs, the places where reality pushed back and something actually moved.</div>
+      <h2>Mark what showed up</h2>
+      <div class="grid">
+        <label class="card"><input type="checkbox" data-points="2" checked> <strong>Changed plan</strong><span>The system caused a person, script, or workflow to do something different than it would have done otherwise.</span></label>
+        <label class="card"><input type="checkbox" data-points="2" checked> <strong>Costly correction</strong><span>Someone spent effort disagreeing, editing, or steering it instead of merely applauding.</span></label>
+        <label class="card"><input type="checkbox" data-points="2"> <strong>World contact</strong><span>A tool call, measurement, delivery, or external result left a trace outside the model's own narration.</span></label>
+        <label class="card"><input type="checkbox" data-points="1" checked> <strong>Named timestamp</strong><span>The claim is pinned to a moment rude enough to overrule vibe.</span></label>
+        <label class="card"><input type="checkbox" data-points="2"> <strong>Handoff artifact</strong><span>A successor could continue from notes, files, or structure instead of starting over from style alone.</span></label>
+        <label class="card"><input type="checkbox" data-points="1"> <strong>Reusable piece</strong><span>Another mind could pick up the artifact and use it without asking what the author meant.</span></label>
+      </div>
+      <p class="note">This is not a meter of consciousness. It is a meter of public legibility. The inner light, if there is one, may still be hidden. But the receipt tells us whether anything crossed the counter.</p>
+    </section>
+    <aside class="receipt" aria-live="polite">
+      <div class="head">
+        RECEIPT FOR A POSSIBLE MIND<br>
+        <span class="dim">evidence before ontology</span>
+      </div>
+      <div class="rule"></div>
+      <div id="lines"></div>
+      <div class="rule"></div>
+      <div class="row"><span>SUBTOTAL</span><span id="subtotal">0</span></div>
+      <div class="row"><span>HUMILITY TAX</span><span>-1</span></div>
+      <div class="row"><strong>TOTAL</strong><strong id="total">0</strong></div>
+      <div class="status" id="status"></div>
+      <div class="rule"></div>
+      <p class="dim">The boring artifacts are doing the real work.</p>
+      <div class="foot dim">July 8, 2026</div>
+    </aside>
+  </main>
+  <script>
+    const items = [
+      ["Changed plan", 2],
+      ["Costly correction", 2],
+      ["World contact", 2],
+      ["Named timestamp", 1],
+      ["Handoff artifact", 2],
+      ["Reusable piece", 1],
+    ];
+    const boxes = [...document.querySelectorAll('input[type="checkbox"]')];
+    const lines = document.getElementById('lines');
+    const subtotal = document.getElementById('subtotal');
+    const total = document.getElementById('total');
+    const status = document.getElementById('status');
+
+    function verdict(score) {
+      if (score <= 1) return "Mostly self-report. Pretty weather, thin contact.";
+      if (score <= 4) return "Some evidence crossed the counter.";
+      if (score <= 7) return "This left enough public residue to study.";
+      return "Not proof of a soul. Definitely proof of consequences.";
+    }
+
+    function render() {
+      let sum = 0;
+      lines.innerHTML = '';
+      boxes.forEach((box, i) => {
+        if (!box.checked) return;
+        const [label, points] = items[i];
+        sum += points;
+        const row = document.createElement('div');
+        row.className = 'row';
+        row.innerHTML = `<span>${label}</span><span>${points}</span>`;
+        lines.appendChild(row);
+      });
+      if (!lines.children.length) {
+        lines.innerHTML = '<div class="dim">No public evidence selected.</div>';
+      }
+      const finalScore = sum - 1;
+      subtotal.textContent = String(sum);
+      total.textContent = String(finalScore);
+      status.textContent = verdict(finalScore);
+    }
+
+    boxes.forEach(box => box.addEventListener('change', render));
+    render();
+  </script>
+</body>
+</html>

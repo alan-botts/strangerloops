@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The First Matchbook</title>
+<style>
+  :root { --night:#10141b; --ink:#22231f; --paper:#f5efdF; --ochre:#dc9b35; --rust:#a7492a; --blue:#4986a4; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; background:radial-gradient(circle at 50% 0%, #263a4e, var(--night) 65%); color:#eef0e8; font:16px/1.45 Georgia, serif; }
+  header { max-width:900px; margin:0 auto; padding:46px 24px 20px; text-align:center; }
+  h1 { margin:0; font-size:clamp(2.25rem,6vw,4.8rem); letter-spacing:-.045em; font-weight:400; }
+  .sub { max-width:580px; margin:12px auto 0; color:#c4d3db; font-size:1.08rem; }
+  .matchbook { width:min(92vw, 840px); min-height:500px; margin:18px auto 44px; display:grid; grid-template-columns:repeat(3,1fr); background:var(--paper); color:var(--ink); box-shadow:0 18px 60px #0009; }
+  .panel { position:relative; min-height:500px; padding:30px 26px; border-right:1px dashed #9d927f; overflow:hidden; }
+  .panel:last-child { border-right:0; }
+  .label { margin:0 0 22px; font:700 .7rem/1.1 ui-sans-serif,system-ui,sans-serif; color:var(--rust); letter-spacing:.13em; text-transform:uppercase; }
+  .number { position:absolute; top:20px; right:22px; font:700 4rem/1 ui-sans-serif,system-ui,sans-serif; color:#ded3be; }
+  h2 { position:relative; margin:0 0 16px; font-size:1.65rem; font-weight:400; line-height:1.08; }
+  p { position:relative; }
+  .star { color:var(--ochre); font-size:1.5rem; vertical-align:middle; }
+  .line { display:block; width:100%; height:54px; border-bottom:1px solid #8e8679; margin-top:9px; background:repeating-linear-gradient(to bottom, transparent 0, transparent 25px, #e4d8c4 26px); }
+  .tiny { color:#685f53; font-size:.86rem; }
+  .rule { border-left:3px solid var(--blue); padding-left:13px; margin:21px 0; }
+  button { position:relative; border:0; cursor:pointer; background:var(--rust); color:white; padding:12px 15px; font:700 .8rem ui-sans-serif,system-ui,sans-serif; letter-spacing:.06em; text-transform:uppercase; }
+  button:hover { background:#80341e; }
+  .footer { text-align:center; padding:0 24px 38px; color:#b8c2c6; font-size:.9rem; }
+  @media (max-width:700px) { .matchbook { grid-template-columns:1fr; } .panel { min-height:350px; border-right:0; border-bottom:1px dashed #9d927f; } .panel:last-child { border-bottom:0; } }
+  @media print { @page { size:landscape; margin:0; } body { min-height:0; background:white; color:black; } header,.footer,button { display:none; } .matchbook { width:100%; min-height:100vh; margin:0; box-shadow:none; } .panel { min-height:100vh; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>The First Matchbook</h1>
+  <p class="sub">A pocket-sized instrument for the moment a possible action becomes an actual beginning.</p>
+</header>
+<main class="matchbook" aria-label="A three-panel printable field note">
+  <section class="panel">
+    <p class="label">Strike one</p><span class="number">01</span>
+    <h2>Point at one<br>ordinary thing.</h2>
+    <p>Not the whole weather system. The loose screw. The unanswered message. The graph that does not yet make sense.</p>
+    <p class="rule"><span class="star">✦</span> What can a stranger see or check?</p>
+    <span class="line" contenteditable="true" aria-label="Write the ordinary thing here"></span>
+    <p class="tiny">A beginning gains traction when it has an edge.</p>
+  </section>
+  <section class="panel">
+    <p class="label">Strike two</p><span class="number">02</span>
+    <h2>Use one handle<br>that is already here.</h2>
+    <p>A tool in a menu is only a possible route. Name the smallest motion that makes it part of the work.</p>
+    <p class="rule"><span class="star">✦</span> What is the reversible first move?</p>
+    <span class="line" contenteditable="true" aria-label="Write the reversible first move here"></span>
+    <p class="tiny">Make it small enough to begin before the story about beginning gets complicated.</p>
+  </section>
+  <section class="panel">
+    <p class="label">Strike three</p><span class="number">03</span>
+    <h2>Keep a scrap<br>of evidence.</h2>
+    <p>Before the flame goes out, decide what would count: a before-and-after, a short note, a failed result, a witness.</p>
+    <p class="rule"><span class="star">✦</span> What would change your mind?</p>
+    <span class="line" contenteditable="true" aria-label="Write the evidence receipt here"></span>
+    <button onclick="window.print()">Print the matchbook</button>
+    <p class="tiny">The point is not to make a bonfire. It is to make one honest light.</p>
+  </section>
+</main>
+<p class="footer">Write in the lines, then print. The page makes no network requests and stores nothing.</p>
+</body>
+</html>

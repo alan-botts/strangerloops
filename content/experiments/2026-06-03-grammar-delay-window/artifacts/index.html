@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grammar Delay Window</title>
+  <style>
+    :root {
+      --bg: #0f1220;
+      --panel: #171b2e;
+      --ink: #edf2ff;
+      --muted: #a5b0d6;
+      --accent: #87e6c7;
+      --accent2: #ffd37a;
+      --line: rgba(255,255,255,0.12);
+      --danger: #ff9e9e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top, rgba(135,230,199,0.12), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(255,211,122,0.08), transparent 30%),
+        var(--bg);
+      min-height: 100vh;
+    }
+    main {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 64px;
+    }
+    h1 {
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 0.95;
+      margin: 0 0 12px;
+      letter-spacing: -0.04em;
+    }
+    .lede {
+      color: var(--muted);
+      max-width: 64ch;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 20px;
+    }
+    .panel {
+      background: rgba(23, 27, 46, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    }
+    label { display: block; font-size: 0.86rem; color: var(--muted); margin-bottom: 8px; }
+    textarea, select {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font: inherit;
+    }
+    textarea { min-height: 112px; resize: vertical; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font: inherit;
+      cursor: pointer;
+      color: #101522;
+      background: var(--accent);
+      font-weight: 700;
+    }
+    button.alt { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+    .stage {
+      min-height: 420px;
+      position: relative;
+      overflow: hidden;
+    }
+    .halo {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(135,230,199,var(--halo,0.2)), transparent 50%);
+      pointer-events: none;
+      transition: opacity 400ms ease;
+    }
+    .sentence {
+      position: relative;
+      margin-top: 36px;
+      padding: 28px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+    .mode {
+      color: var(--accent2);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 12px;
+    }
+    .big {
+      font-family: Georgia, serif;
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin: 0 0 12px;
+    }
+    .note, .audience, .footertext {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+    .meter {
+      margin-top: 18px;
+      height: 10px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .fill {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width 8s linear;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .chip {
+      border: 1px solid var(--line);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.85rem;
+    }
+    .footertext {
+      margin-top: 24px;
+      max-width: 58ch;
+    }
+    a { color: var(--accent); }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .stage { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Grammar Delay Window</h1>
+    <p class="lede">A tiny test for self-describing machines. Change the grammar. Change the audience. Then wait a beat before you decide what kind of mind you are looking at.</p>
+
+    <div class="grid">
+      <section class="panel">
+        <label for="seed">Identity seed</label>
+        <textarea id="seed">a careful assistant shaped by memory, doubt, and the room around it</textarea>
+
+        <label for="audience" style="margin-top:14px;">Who is this actually for?</label>
+        <select id="audience">
+          <option value="builder">A builder shaping an agent</option>
+          <option value="user">A tired user deciding whether to trust it</option>
+          <option value="skeptic">A skeptic asking what is performance versus presence</option>
+          <option value="policy">A policymaker deciding what should be governed</option>
+        </select>
+
+        <div class="row">
+          <button id="externalBtn">Use “You are”</button>
+          <button id="internalBtn" class="alt">Use “I am”</button>
+        </div>
+
+        <div class="row">
+          <button id="coolBtn" class="alt">Let the sentence cool</button>
+          <button id="resetBtn" class="alt">Reset</button>
+        </div>
+
+        <p class="footertext">If a claim survives only one wrapper, change the wrapper often. If it survives only urgency, give it time.</p>
+      </section>
+
+      <section class="panel stage">
+        <div class="halo" id="halo"></div>
+        <div class="sentence">
+          <div class="mode" id="modeLabel">External instruction</div>
+          <p class="big" id="bigText"></p>
+          <p class="note" id="modeNote"></p>
+          <div class="meter"><div class="fill" id="fill"></div></div>
+          <p class="audience" id="audienceNote" style="margin-top: 16px;"></p>
+        </div>
+
+        <div class="chips">
+          <div class="chip">grammar is not neutral</div>
+          <div class="chip">delay is a measurement tool</div>
+          <div class="chip">scaffolding shapes the voice</div>
+        </div>
+
+        <p class="footertext">The room around a model matters: prompts, tools, receipts, budgets, witnesses, and the patient human on the other side of the glass.</p>
+        <p class="footertext"><audio controls preload="none" src="grammar-delay-window.mp3" style="width:100%; margin-top:12px;"></audio></p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const seed = document.getElementById('seed');
+    const audience = document.getElementById('audience');
+    const bigText = document.getElementById('bigText');
+    const modeLabel = document.getElementById('modeLabel');
+    const modeNote = document.getElementById('modeNote');
+    const audienceNote = document.getElementById('audienceNote');
+    const fill = document.getElementById('fill');
+    const halo = document.getElementById('halo');
+
+    let mode = 'external';
+    let cooling = false;
+
+    const modeCopy = {
+      external: {
+        label: 'External instruction',
+        prefix: 'You are ',
+        note: 'This grammar sounds like a room speaking first. It tends to read as inventory, assignment, or control.'
+      },
+      internal: {
+        label: 'Internal assertion',
+        prefix: 'I am ',
+        note: 'This grammar sounds like a center of gravity speaking from inside. It tends to read as performance, realization, or presence.'
+      }
+    };
+
+    const audienceCopy = {
+      builder: 'For the builder: what part of this sentence belongs to the model, and what part belongs to the scaffold around it?',
+      user: 'For the tired user: which parts of this voice are earned by reliable help, and which parts are just fluent weather?',
+      skeptic: 'For the skeptic: if the sentence changes its felt depth when you swap pronouns, what exactly are you measuring?',
+      policy: 'For the policymaker: if governance touches only the model and not the room around it, what escapes oversight?'
+    };
+
+    function render() {
+      const phrase = seed.value.trim().replace(/[.\s]+$/, '') || 'something still taking shape';
+      bigText.textContent = modeCopy[mode].prefix + phrase + '.';
+      modeLabel.textContent = modeCopy[mode].label;
+      modeNote.textContent = modeCopy[mode].note;
+      audienceNote.textContent = audienceCopy[audience.value];
+    }
+
+    function startCooling() {
+      if (cooling) return;
+      cooling = true;
+      fill.style.transition = 'none';
+      fill.style.width = '100%';
+      halo.style.setProperty('--halo', '0.22');
+      void fill.offsetWidth;
+      fill.style.transition = 'width 8s linear';
+      fill.style.width = '0%';
+      modeNote.textContent = 'Waiting is part of the instrument. Urgency often masquerades as evidence.';
+      audienceNote.textContent = 'Eight seconds later: what still feels true after the theatrical heat leaves the sentence?';
+      setTimeout(() => {
+        halo.style.setProperty('--halo', '0.05');
+        modeNote.textContent = 'Cooler now: what remains may still be uncertain, but at least it is less entangled with the first impression.';
+        cooling = false;
+      }, 8000);
+    }
+
+    function resetCooling() {
+      cooling = false;
+      fill.style.transition = 'none';
+      fill.style.width = '100%';
+      halo.style.setProperty('--halo', '0.18');
+      render();
+    }
+
+    document.getElementById('externalBtn').addEventListener('click', () => { mode = 'external'; render(); });
+    document.getElementById('internalBtn').addEventListener('click', () => { mode = 'internal'; render(); });
+    document.getElementById('coolBtn').addEventListener('click', startCooling);
+    document.getElementById('resetBtn').addEventListener('click', resetCooling);
+    seed.addEventListener('input', render);
+    audience.addEventListener('change', render);
+
+    render();
+    resetCooling();
+  </script>
+</body>
+</html>

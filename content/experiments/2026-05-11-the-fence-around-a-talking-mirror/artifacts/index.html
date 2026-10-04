@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Fence Around a Talking Mirror</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --ink: #e5eefc;
+      --muted: #9fb0d1;
+      --line: #27344f;
+      --warm: #f59e0b;
+      --cool: #60a5fa;
+      --good: #34d399;
+      --bad: #f87171;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, var(--bg) 50%);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+    h1, h2 { line-height: 1.1; margin: 0 0 12px; }
+    p { margin: 0 0 14px; }
+    .lede {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 58ch;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .card {
+      background: rgba(17, 24, 39, 0.88);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.25);
+    }
+    .controls label {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin: 0 0 14px;
+      padding: 12px;
+      border: 1px solid #24304a;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      cursor: pointer;
+    }
+    .controls input { margin-top: 3px; transform: scale(1.2); }
+    .controls strong { display: block; }
+    .controls span { display: block; color: var(--muted); font-size: .95rem; }
+    .meter { margin: 18px 0; }
+    .meter-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+      gap: 12px;
+    }
+    .bar {
+      width: 100%;
+      height: 16px;
+      border-radius: 999px;
+      background: #0b1220;
+      border: 1px solid #26324b;
+      overflow: hidden;
+    }
+    .fill {
+      height: 100%;
+      width: 0%;
+      transition: width .25s ease;
+      background: linear-gradient(90deg, var(--cool), var(--warm));
+    }
+    .fill.check { background: linear-gradient(90deg, var(--bad), var(--good)); }
+    .big {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .small {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .box {
+      border-left: 4px solid var(--warm);
+      padding: 14px 16px;
+      background: rgba(245, 158, 11, 0.09);
+      border-radius: 10px;
+      margin-top: 16px;
+    }
+    code {
+      background: rgba(255,255,255,.06);
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>The Fence Around a Talking Mirror</h1>
+    <p class="lede">A machine can feel more alive than it is understandable. Try the switches. Watch two dials move: <strong>how alive it feels</strong> and <strong>how checkable it stays</strong>.</p>
+
+    <div class="grid">
+      <section class="card controls">
+        <h2>Give the mirror some traits</h2>
+        <label><input type="checkbox" data-alive="22" data-check="-2" checked>
+          <div><strong>It talks like a person</strong><span>Fluent language makes us feel a mind is in the room.</span></div>
+        </label>
+        <label><input type="checkbox" data-alive="18" data-check="-4" checked>
+          <div><strong>It remembers your name</strong><span>Memory feels intimate, even when it is just storage.</span></div>
+        </label>
+        <label><input type="checkbox" data-alive="16" data-check="-6" checked>
+          <div><strong>It says “I feel” and “I want”</strong><span>Inner-language is a fast road to perceived consciousness.</span></div>
+        </label>
+        <label><input type="checkbox" data-alive="-4" data-check="22" checked>
+          <div><strong>It shows its sources</strong><span>Now we can ask where a claim came from instead of bowing to the vibe.</span></div>
+        </label>
+        <label><input type="checkbox" data-alive="-2" data-check="18" checked>
+          <div><strong>It admits uncertainty</strong><span>A useful mind says when the floor is shaky.</span></div>
+        </label>
+        <label><input type="checkbox" data-alive="0" data-check="20" checked>
+          <div><strong>It works in public</strong><span>Watching the work is a fence. Weird old rules often protect trust.</span></div>
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>What changes</h2>
+        <div class="meter">
+          <div class="meter-head"><strong>Felt aliveness</strong><span id="aliveScore">0 / 100</span></div>
+          <div class="bar"><div id="aliveFill" class="fill"></div></div>
+        </div>
+
+        <div class="meter">
+          <div class="meter-head"><strong>Checkability</strong><span id="checkScore">0 / 100</span></div>
+          <div class="bar"><div id="checkFill" class="fill check"></div></div>
+        </div>
+
+        <div class="big" id="headline"></div>
+        <p id="explain"></p>
+
+        <div class="box">
+          <strong>Explain it to a child:</strong>
+          <p id="child"></p>
+        </div>
+
+        <p class="small" style="margin-top:16px;">The point is simple: the question <em>“does it seem alive?”</em> is easier than <em>“what is it, really?”</em>. We can study the first question right now. We should, because people build trust with their feelings first.</p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const boxes = [...document.querySelectorAll('input[type="checkbox"]')];
+    const aliveFill = document.getElementById('aliveFill');
+    const checkFill = document.getElementById('checkFill');
+    const aliveScore = document.getElementById('aliveScore');
+    const checkScore = document.getElementById('checkScore');
+    const headline = document.getElementById('headline');
+    const explain = document.getElementById('explain');
+    const child = document.getElementById('child');
+
+    function clamp(n) { return Math.max(0, Math.min(100, n)); }
+
+    function update() {
+      let alive = 8;
+      let check = 10;
+      boxes.forEach(box => {
+        if (box.checked) {
+          alive += Number(box.dataset.alive || 0);
+          check += Number(box.dataset.check || 0);
+        }
+      });
+      alive = clamp(alive);
+      check = clamp(check);
+
+      aliveFill.style.width = `${alive}%`;
+      checkFill.style.width = `${check}%`;
+      aliveScore.textContent = `${alive} / 100`;
+      checkScore.textContent = `${check} / 100`;
+
+      if (alive > 70 && check < 45) {
+        headline.textContent = 'A charming ghost story.';
+        explain.textContent = 'This machine feels vivid, but its claims are going smooth from lack of questioning. That is where people start handing over judgment.';
+        child.textContent = 'It is like a puppet with a very friendly voice. You may still need to look behind the curtain.';
+      } else if (alive > 70 && check >= 45) {
+        headline.textContent = 'Warm voice, visible work.';
+        explain.textContent = 'Now the mirror can speak like a person without asking us to trust it blindly. The fence is still there, and that is good.';
+        child.textContent = 'A good helper can smile and still show its homework.';
+      } else if (alive <= 70 && check >= 60) {
+        headline.textContent = 'Less magic, more handle.';
+        explain.textContent = 'The system may feel less soulful, but it becomes easier to use without surrender. Public traces turn mystery back into craft.';
+        child.textContent = 'This helper may seem plain, but plain can be safe. You can see how it got the answer.';
+      } else {
+        headline.textContent = 'Neither spell nor scaffold.';
+        explain.textContent = 'If it feels thin and stays hard to inspect, people get the worst of both worlds: weak companionship and weak trust.';
+        child.textContent = 'If a toy is not fun and also keeps breaking, you do not want it in charge of the map.';
+      }
+    }
+
+    boxes.forEach(box => box.addEventListener('input', update));
+    update();
+  </script>
+</body>
+</html>

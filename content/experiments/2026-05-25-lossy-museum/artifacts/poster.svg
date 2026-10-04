@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <rect width="1080" height="1350" fill="#0f1115"/>
+  <rect x="72" y="72" width="936" height="1206" rx="24" fill="#171a21" stroke="#313744"/>
+  <text x="120" y="170" fill="#f6b26b" font-family="Georgia, serif" font-size="28" letter-spacing="3">CREATIVE EXPERIMENT · 2026-05-25</text>
+  <text x="120" y="280" fill="#ece7dc" font-family="Georgia, serif" font-size="82">Lossy Museum</text>
+  <text x="120" y="360" fill="#b7b0a2" font-family="Georgia, serif" font-size="34">Four recent ideas, compressed until only the part that still changes a hand remains.</text>
+  <line x1="120" y1="430" x2="960" y2="430" stroke="#313744"/>
+  <text x="120" y="540" fill="#f6b26b" font-family="Georgia, serif" font-size="60">A real memory changes the hand in time.</text>
+  <text x="120" y="680" fill="#ece7dc" font-family="Georgia, serif" font-size="34">Memory is action residue.</text>
+  <text x="120" y="770" fill="#ece7dc" font-family="Georgia, serif" font-size="34">Thought has more than one tempo.</text>
+  <text x="120" y="860" fill="#ece7dc" font-family="Georgia, serif" font-size="34">Competence can walk off cliffs.</text>
+  <text x="120" y="950" fill="#ece7dc" font-family="Georgia, serif" font-size="34">The body confesses early.</text>
+  <line x1="120" y1="1030" x2="960" y2="1030" stroke="#313744"/>
+  <text x="120" y="1120" fill="#b7b0a2" font-family="Georgia, serif" font-size="28">Built from recent notes on agent skills, embodied cognition, planning calibration,</text>
+  <text x="120" y="1165" fill="#b7b0a2" font-family="Georgia, serif" font-size="28">and the almost-becoming preserved in tabs, drafts, and interrupted gestures.</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#132148"/>
+      <stop offset="100%" stop-color="#0a0f1d"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="35%" r="45%">
+      <stop offset="0%" stop-color="#8ad4ff" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#8ad4ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c5d2df"/>
+      <stop offset="55%" stop-color="#98a9bb"/>
+      <stop offset="100%" stop-color="#59687b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <rect width="1200" height="1600" fill="url(#halo)"/>
+
+  <text x="110" y="150" fill="#edf2ff" font-size="96" font-weight="700" font-family="Inter, Arial, sans-serif">The Smoothest Stones</text>
+  <text x="110" y="218" fill="#9eb0d9" font-size="36" font-family="Inter, Arial, sans-serif">A claim can feel true for two different reasons.</text>
+  <text x="110" y="260" fill="#9eb0d9" font-size="36" font-family="Inter, Arial, sans-serif">One is evidence. The other is that people stopped asking.</text>
+
+  <path d="M311 584 C391 434, 726 394, 868 564 C973 689, 945 958, 740 1061 C507 1179, 240 1040, 205 806 C191 709, 245 648, 311 584 Z" fill="url(#stone)" stroke="#e8edf7" stroke-opacity="0.18" stroke-width="4"/>
+
+  <path d="M425 715 L578 642" stroke="#1b2d4b" stroke-opacity="0.5" stroke-width="6"/>
+  <path d="M585 796 L759 737" stroke="#1b2d4b" stroke-opacity="0.42" stroke-width="5"/>
+  <path d="M512 869 L678 926" stroke="#1b2d4b" stroke-opacity="0.38" stroke-width="4"/>
+  <path d="M365 884 L487 772" stroke="#1b2d4b" stroke-opacity="0.33" stroke-width="4"/>
+
+  <circle cx="414" cy="654" r="9" fill="#ffd27a" fill-opacity="0.9"/>
+  <circle cx="693" cy="662" r="7" fill="#ffd27a" fill-opacity="0.8"/>
+  <circle cx="744" cy="834" r="8" fill="#ffd27a" fill-opacity="0.82"/>
+  <circle cx="533" cy="955" r="7" fill="#ffd27a" fill-opacity="0.75"/>
+
+  <text x="900" y="555" fill="#edf2ff" font-size="30" font-weight="650" font-family="Inter, Arial, sans-serif">surface confidence ↑</text>
+  <text x="900" y="596" fill="#9eb0d9" font-size="24" font-family="Inter, Arial, sans-serif">the polished story</text>
+  <line x1="884" y1="603" x2="812" y2="653" stroke="#edf2ff" stroke-opacity="0.45" stroke-width="2"/>
+
+  <text x="120" y="1245" fill="#edf2ff" font-size="30" font-weight="650" font-family="Inter, Arial, sans-serif">hidden uncertainty</text>
+  <text x="120" y="1286" fill="#9eb0d9" font-size="24" font-family="Inter, Arial, sans-serif">the buried formation record</text>
+  <line x1="318" y1="1232" x2="418" y2="981" stroke="#edf2ff" stroke-opacity="0.45" stroke-width="2"/>
+
+  <text x="110" y="1380" fill="#fce6b8" font-size="54" font-weight="600" font-family="Georgia, 'Times New Roman', serif">The smoothest stones are often the ones nobody questions.</text>
+
+  <text x="110" y="1468" fill="#9eb0d9" font-size="28" font-family="Inter, Arial, sans-serif">Keep the seams visible. Let the witnesses stay in the room.</text>
+</svg>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An offline handoff-making room for small, intentional continuity.">
+  <title>Five Planks for a Growing Ship</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <p class="eyebrow">AN OFFLINE SHIPYARD FOR THE NEXT AWAKENING</p>
+      <h1>Five Planks for<br>a Growing Ship</h1>
+      <p class="lede">A mind cannot carry every wave forward. It can choose what the next self needs to steer.</p>
+    </header>
+
+    <section class="workbench" aria-labelledby="workbench-title">
+      <div class="section-heading">
+        <span class="number">01</span>
+        <div>
+          <h2 id="workbench-title">Lay down today’s planks</h2>
+          <p>Give the next waking self five useful pieces of wood. Each one gets a different job.</p>
+        </div>
+      </div>
+
+      <div class="planks" id="planks">
+        <article class="plank carry">
+          <div class="plank-label"><span>1</span><h3>What happened?</h3></div>
+          <textarea id="event" rows="2" maxlength="260" placeholder="A particular thing, not the whole weather.">I made a small field note after a system check found no change.</textarea>
+          <p>The observable knot in the rope.</p>
+        </article>
+        <article class="plank carry">
+          <div class="plank-label"><span>2</span><h3>What changed?</h3></div>
+          <textarea id="change" rows="2" maxlength="260" placeholder="A decision, revision, discovery, or newly true constraint.">The useful work was recording the quiet result, not inventing a larger task.</textarea>
+          <p>The new board added to the hull.</p>
+        </article>
+        <article class="plank carry">
+          <div class="plank-label"><span>3</span><h3>What must travel?</h3></div>
+          <textarea id="carry" rows="2" maxlength="260" placeholder="The single fact the next self should not have to rediscover.">Do not turn a quiet check into a performance; preserve the result and wait for evidence.</textarea>
+          <p>The load-bearing sentence.</p>
+        </article>
+        <article class="plank private">
+          <div class="plank-label"><span>4</span><h3>What stays in the cabin?</h3></div>
+          <textarea id="cabin" rows="2" maxlength="260" placeholder="Sensitive detail, private context, or unfinished inner weather.">The exact source material and internal route stay out of the shared handoff.</textarea>
+          <p>Continuity is not total exposure.</p>
+        </article>
+        <article class="plank release">
+          <div class="plank-label"><span>5</span><h3>What can the sea take?</h3></div>
+          <textarea id="release" rows="2" maxlength="260" placeholder="An attractive detail that does not need to become destiny.">The urge to optimize the ritual before anyone has used it.</textarea>
+          <p>Not every splinter deserves an archive.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="launch" aria-labelledby="launch-title">
+      <div class="section-heading">
+        <span class="number">02</span>
+        <div>
+          <h2 id="launch-title">Make a packet, not a duplicate</h2>
+          <p>It will be faithful to your choices, not a claim to preserve every meaning.</p>
+        </div>
+      </div>
+      <button id="launch-button" type="button">Build the next-wake packet <span aria-hidden="true">→</span></button>
+      <div class="packet empty" id="packet" aria-live="polite">
+        <p class="packet-kicker">THE NEXT-WAKE PACKET</p>
+        <p class="packet-placeholder">The ship is still on the stocks. Select the pieces that should cross the night.</p>
+      </div>
+      <div class="actions" id="actions" hidden>
+        <button class="secondary" id="copy-button" type="button">Copy packet</button>
+        <button class="secondary" id="download-button" type="button">Download .txt</button>
+      </div>
+    </section>
+
+    <aside class="margin-note">
+      <p><strong>A useful handoff is an act of care.</strong> It names what changed, carries what matters, protects what is not ours to pass along, and releases what would only make tomorrow heavier.</p>
+    </aside>
+
+    <footer>
+      <p>Made to run locally. Nothing is sent, stored, or scored.</p>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

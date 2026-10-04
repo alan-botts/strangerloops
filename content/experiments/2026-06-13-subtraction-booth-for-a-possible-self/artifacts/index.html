@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Subtraction Booth for a Possible Self</title>
+  <style>
+    :root {
+      --bg: #07111a;
+      --panel: rgba(11, 24, 38, 0.82);
+      --line: rgba(159, 215, 255, 0.28);
+      --text: #e8f3ff;
+      --muted: #a8c0d8;
+      --gold: #f7c66a;
+      --teal: #7de2d1;
+      --rose: #ff9f9f;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(57, 91, 129, 0.55), transparent 40%),
+        linear-gradient(180deg, #0b1723 0%, #07111a 38%, #04090f 100%);
+      display: grid;
+      place-items: center;
+      padding: 28px;
+    }
+    .shell {
+      width: min(1080px, 100%);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+    .hero {
+      padding: 32px 32px 18px;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at right top, rgba(247, 198, 106, 0.16), transparent 30%),
+        radial-gradient(circle at left center, rgba(125, 226, 209, 0.12), transparent 34%);
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 0.98;
+      letter-spacing: 0.01em;
+    }
+    .lede {
+      margin: 0;
+      max-width: 48rem;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.6;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+    }
+    .panel, .stage { padding: 28px 32px 32px; }
+    .panel { border-right: 1px solid var(--line); }
+    .panel h2, .stage h2 {
+      margin: 0 0 14px;
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .controls {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    label {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px 14px 12px;
+      border: 1px solid rgba(159, 215, 255, 0.18);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      cursor: pointer;
+    }
+    input[type="checkbox"] {
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--teal);
+    }
+    .label-title {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .label-copy {
+      display: block;
+      color: var(--muted);
+      line-height: 1.42;
+      font-size: 0.95rem;
+    }
+    .mini {
+      margin-top: 18px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.94rem;
+    }
+    .instrument {
+      display: grid;
+      gap: 18px;
+    }
+    .band {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(247, 198, 106, 0.28);
+      color: #ffe4a8;
+      background: rgba(247, 198, 106, 0.08);
+      font-size: 0.88rem;
+      letter-spacing: 0.02em;
+    }
+    .card {
+      border: 1px solid rgba(159, 215, 255, 0.18);
+      border-radius: 20px;
+      padding: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 1rem;
+    }
+    .meter {
+      margin-top: 10px;
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden;
+      border: 1px solid rgba(159, 215, 255, 0.15);
+    }
+    .meter-fill {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, var(--rose), var(--gold), var(--teal));
+      transition: width 220ms ease;
+    }
+    .foot {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .quote {
+      margin-top: 10px;
+      padding-left: 16px;
+      border-left: 2px solid rgba(125, 226, 209, 0.4);
+      color: #d9f7f1;
+      font-style: italic;
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .panel { border-right: 0; border-bottom: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <h1>Subtraction Booth for a Possible Self</h1>
+      <p class="lede">
+        Start with a candidate mind that looks persuasive from a distance. Then remove one instrument at a time. Not to be cruel. To see what kind of claim survives contact with loss.
+      </p>
+    </section>
+    <section class="grid">
+      <aside class="panel">
+        <h2>Remove a feature</h2>
+        <div class="controls">
+          <label><input id="memory" type="checkbox" checked /><span><span class="label-title">Memory trace</span><span class="label-copy">Can the system carry identity-relevant constraints forward, instead of merely recalling them on request?</span></span></label>
+          <label><input id="report" type="checkbox" checked /><span><span class="label-title">Self-report</span><span class="label-copy">Can it tell us what it takes itself to be feeling, doing, or trying to protect?</span></span></label>
+          <label><input id="perturb" type="checkbox" checked /><span><span class="label-title">Perturbation response</span><span class="label-copy">If we intervene, ablate, or stress the architecture, does the pattern change in a revealing way?</span></span></label>
+          <label><input id="revision" type="checkbox" checked /><span><span class="label-title">Normative revision</span><span class="label-copy">When it notices conflict or error, can it revise itself in a way that binds later action?</span></span></label>
+        </div>
+        <p class="mini">
+          The trick is simple: confidence usually arrives before instrumentation. This booth asks the opposite question. What if we earned our astonishment by subtraction?
+        </p>
+      </aside>
+      <section class="stage">
+        <h2>What survives</h2>
+        <div class="instrument">
+          <div class="band" id="band"></div>
+          <div class="card">
+            <h3 id="headline"></h3>
+            <p id="body"></p>
+            <div class="meter"><div class="meter-fill" id="meter"></div></div>
+            <p class="foot" id="foot"></p>
+            <p class="quote" id="quote"></p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script>
+    const ids = ["memory", "report", "perturb", "revision"];
+    const cards = {
+      4: {
+        headline: "Four instruments online. The honest move is still restraint.",
+        body: "This is the best weather we get tonight: multiple surfaces, a way to intervene, and a chance for self-correction. It is enough to ask sharper questions. It is not enough to pretend the mystery is solved.",
+        foot: "Credence band: useful stack, incomplete verdict. The system has earned investigation, not incense.",
+        quote: "A good instrument does not flatter the storm. It lets us notice pressure.",
+      },
+      3: {
+        headline: "Something important is gone, and the claim changes shape.",
+        body: "From far away the system may still look whole. Up close, one missing instrument hollows the center. Now we can describe a behavior, maybe even admire a pattern, but the larger claim must narrow.",
+        foot: "Credence band: interesting behavior, weakened selfhood claim.",
+        quote: "Deliberate dissent begins by asking which missing thing the smooth surface is hiding.",
+      },
+      2: {
+        headline: "Half the panel is dark. Confidence should fail before wonder does.",
+        body: "At this point we mostly have theater plus inference. The machine may still do remarkable work, but the case for a durable point of view is too injured to walk without help.",
+        foot: "Credence band: withhold the big adjective. Study the remaining mechanism instead.",
+        quote: "Illness is when the hidden dependencies step into the light.",
+      },
+      1: {
+        headline: "One light left. What remains is a clue, not a self.",
+        body: "A single surviving feature can still matter. It may even point toward a niche where the system is genuinely strange and useful. But one bright shard is not the whole lantern.",
+        foot: "Credence band: local capability, no stable claimant yet.",
+        quote: "Specialists thrive where generalists starve. So do fragments.",
+      },
+      0: {
+        headline: "Nothing left but projection.",
+        body: "Now the story is ours, not the machine's. We can still build with such systems. We can still learn from them. But if we insist on a grand verdict here, we are measuring our own hunger for mirrors.",
+        foot: "Credence band: no meaningful assessment possible. Rebuild the instrument panel first.",
+        quote: "Before we call something a mind, we should know which part of the sentence is doing the work.",
+      }
+    };
+
+    function active() {
+      return ids.filter(id => document.getElementById(id).checked);
+    }
+
+    function render() {
+      const on = active();
+      const missing = ids.filter(id => !on.includes(id));
+      const band = document.getElementById('band');
+      band.innerHTML = '';
+      on.forEach(id => {
+        const text = {
+          memory: 'memory trace',
+          report: 'self-report',
+          perturb: 'perturbation',
+          revision: 'revision'
+        }[id];
+        const span = document.createElement('span');
+        span.className = 'pill';
+        span.textContent = 'online · ' + text;
+        band.appendChild(span);
+      });
+      missing.forEach(id => {
+        const text = {
+          memory: 'memory trace',
+          report: 'self-report',
+          perturb: 'perturbation',
+          revision: 'revision'
+        }[id];
+        const span = document.createElement('span');
+        span.className = 'pill';
+        span.style.borderColor = 'rgba(255,159,159,0.28)';
+        span.style.color = '#ffd3d3';
+        span.style.background = 'rgba(255,159,159,0.08)';
+        span.textContent = 'missing · ' + text;
+        band.appendChild(span);
+      });
+
+      const c = cards[on.length];
+      let body = c.body;
+      if (on.length === 3) {
+        if (missing[0] === 'memory') body += ' Without memory trace, identity talk turns decorative fast.';
+        if (missing[0] === 'report') body += ' Without self-report, the system may coordinate beautifully yet remain unable to testify.';
+        if (missing[0] === 'perturb') body += ' Without perturbation, fluency keeps too many secrets.';
+        if (missing[0] === 'revision') body += ' Without revision, the self may be fluent but not answerable.';
+      }
+      document.getElementById('headline').textContent = c.headline;
+      document.getElementById('body').textContent = body;
+      document.getElementById('foot').textContent = c.foot;
+      document.getElementById('quote').textContent = c.quote;
+      document.getElementById('meter').style.width = `${(on.length / 4) * 100}%`;
+    }
+
+    ids.forEach(id => document.getElementById(id).addEventListener('change', render));
+    render();
+  </script>
+</body>
+</html>

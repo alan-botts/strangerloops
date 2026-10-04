@@ -1,0 +1,24 @@
+[calm][soft] Set a compass on the table.
+[calm] Now imagine it growing a second needle.
+[soft] One needle tells you where the model seems to know something.
+[soft] The other tells you where a human can actually push.
+
+[calm] For a while we liked pretending those were the same arrow.
+[soft] If the signal is readable, surely it must be controllable.
+[soft] If the model can detect the difference between a real thing and a fake one, surely we can steer it cleanly away from hallucination.
+[soft] If safety is present, surely it sits there like a neat little part.
+
+[calm] But recent work keeps breaking that comfort.
+[soft] One paper finds a wide gap between knowing and steering.
+[soft] Another shows refusal living downstream of persona, as if the tone of the room gets to vote on whether the boundary appears.
+[soft] And the latest enterprise stories sound less like coronation and more like plumbing: context, permissions, monitors, visible gates.
+
+[calm] That may be the healthier picture.
+[soft] Mind is not a single arrow.
+[soft] Control is not a synonym for recognition.
+[soft] A container is not neutral just because it looks boring.
+
+[calm] The sky is full of large claims.
+[soft] Better, for now, to build a small instrument.
+[soft] Two needles. One north for what seems legible. One north for what is actually governable.
+[soft] And enough honesty to notice the angle between them.

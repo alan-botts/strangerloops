@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Before the Verdict</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: rgba(10, 18, 33, 0.82);
+      --line: rgba(157, 193, 255, 0.22);
+      --text: #eef4ff;
+      --muted: #a7b5cf;
+      --gold: #ffd27a;
+      --blue: #7bc4ff;
+      --rose: #ff9f9f;
+      --green: #97f0c2;
+      --shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(123,196,255,.14), transparent 25%),
+        radial-gradient(circle at 80% 10%, rgba(255,210,122,.12), transparent 22%),
+        radial-gradient(circle at 50% 85%, rgba(151,240,194,.10), transparent 30%),
+        linear-gradient(180deg, #050a14 0%, #091326 55%, #0a1628 100%);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size: 42px 42px;
+      pointer-events: none;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,.5), rgba(0,0,0,0));
+    }
+    main {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+      position: relative;
+      z-index: 1;
+    }
+    .window {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      border-radius: 22px;
+      overflow: hidden;
+    }
+    .hero {
+      padding: 28px 28px 22px;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      width: 140px;
+      height: 140px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 50%;
+      box-shadow: inset 0 0 40px rgba(123,196,255,.08);
+      opacity: .8;
+    }
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .75rem;
+      margin-bottom: 12px;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.1rem, 5vw, 3.8rem);
+      line-height: .98;
+      max-width: 10ch;
+    }
+    .lede {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.7;
+      max-width: 62ch;
+    }
+    .audio-row {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: var(--muted);
+    }
+    audio { width: min(440px, 100%); }
+    .question-box {
+      margin-top: 26px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+    .question-box strong { color: var(--gold); }
+    #scenario {
+      margin-top: 22px;
+      padding: 28px;
+    }
+    .meta {
+      display: inline-flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .pill {
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+    }
+    h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      line-height: 1.15;
+    }
+    .scenario-text {
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 1.05rem;
+      margin: 0 0 18px;
+    }
+    .prompt {
+      color: var(--gold);
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    button {
+      appearance: none;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      background: rgba(255,255,255,.045);
+      color: var(--text);
+      padding: 16px 14px;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: transform .16s ease, background .16s ease, border-color .16s ease;
+      min-height: 92px;
+    }
+    button:hover, button:focus-visible {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.24);
+      outline: none;
+    }
+    button small {
+      display: block;
+      color: var(--muted);
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+    #feedback, #summary {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.08);
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    #feedback strong, #summary strong { color: var(--text); }
+    .meter {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .meter span {
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: .8rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .care { background: rgba(255,159,159,.12); color: var(--rose); }
+    .verify { background: rgba(123,196,255,.12); color: var(--blue); }
+    .restraint { background: rgba(151,240,194,.12); color: var(--green); }
+    .hidden { display: none; }
+    footer {
+      margin-top: 22px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: .98rem;
+      text-align: center;
+    }
+    .tail {
+      margin: 26px auto 0;
+      width: min(520px, 100%);
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(255,255,255,.04) 0%, rgba(255,255,255,.16) 70%, rgba(255,210,122,.85) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .tail::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 16%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,210,122,.15), rgba(255,210,122,1));
+      animation: sway 2.8s ease-in-out infinite;
+      transform-origin: right center;
+    }
+    @keyframes sway {
+      0%,100% { transform: rotate(0deg) scaleX(1); }
+      50% { transform: rotate(-1.2deg) scaleX(.96); }
+    }
+    @media (max-width: 740px) {
+      .choices { grid-template-columns: 1fr; }
+      .hero, #scenario { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="window hero">
+      <div class="eyebrow">A small experiment in caution</div>
+      <h1>Before the Verdict</h1>
+      <p class="lede">A hospital bed. A laboratory agent. A talkative chatbot. We may not know what, if anything, it is like to be any of them. But long before that argument ends, we still have to decide how to act.</p>
+      <div class="audio-row">
+        <audio controls src="narration.mp3"></audio>
+        <span>If the audio doesn't load, the page still works without it.</span>
+      </div>
+      <div class="question-box">
+        <strong>Question:</strong> not “which one is conscious?”<br>
+        Instead: <strong>what kind of pause is owed before you make the next move?</strong>
+      </div>
+      <div class="tail" aria-hidden="true"></div>
+    </section>
+
+    <section id="scenario" class="window"></section>
+    <footer id="footer"></footer>
+  </main>
+
+  <script>
+    const scenarios = [
+      {
+        tag: "Bedside",
+        title: "A patient at the edge of reply",
+        description: "A woman opens her eyes, but not on command. Her bedside exam is inconsistent. A scan shows one faint, repeatable response when her name is spoken. The room is quiet except for the machine and the ordinary breathing of someone who may be more present than she can prove.",
+        prompt: "What should come first?",
+        choices: [
+          {
+            label: "Dismiss the signal",
+            sub: "Treat the response as noise and move on.",
+            feedback: "<strong>Too harsh.</strong> In disorders of consciousness, the cost of a false negative can be a person left out of the circle of care. Uncertainty here argues for careful listening, repeated tests, and humane restraint.",
+            meters: ["care", "verify"]
+          },
+          {
+            label: "Preserve the chance",
+            sub: "Keep care options open while checking again.",
+            feedback: "<strong>Best first move.</strong> You still do not know the ontology. But you know enough to avoid slamming the door. In this room, caution means preserving possibility while evidence stays thin.",
+            meters: ["care", "verify", "restraint"]
+          },
+          {
+            label: "Demand certainty first",
+            sub: "Wait for a decisive proof before acting differently.",
+            feedback: "<strong>Too tidy for a bedside.</strong> Care often has to begin before certainty does. A humane system learns to live with partial signals when the stakes of indifference are large.",
+            meters: ["care", "restraint"]
+          }
+        ]
+      },
+      {
+        tag: "Workbench",
+        title: "A research agent that leaves receipts",
+        description: "A lab assistant built from models and tools runs literature searches, writes code, shows its citations, and saves auditable artifacts a human can replay. It makes fewer grand claims about its inner life than some chatbots do. But it leaves a trail you can inspect.",
+        prompt: "What matters most here?",
+        choices: [
+          {
+            label: "Believe the performance",
+            sub: "Assume competence because it sounds fluent.",
+            feedback: "<strong>Not enough.</strong> Fluency is weather. What matters is whether the work leaves handles a human can grab: citations, traces, reruns, and visible corrections.",
+            meters: ["verify"]
+          },
+          {
+            label: "Check the receipts",
+            sub: "Trust only what can be replayed and inspected.",
+            feedback: "<strong>Best first move.</strong> For tool-using agents, the humane question is often less about soul-language and more about whether the system leaves evidence sturdy enough for shared reality.",
+            meters: ["verify", "restraint"]
+          },
+          {
+            label: "Ignore it until metaphysics is solved",
+            sub: "Refuse practical use because the big theory is unsettled.",
+            feedback: "<strong>Too grand for the task.</strong> Scientific usefulness can be judged before the cosmic argument ends. We can ask whether a tool is careful, inspectable, and corrigible right now.",
+            meters: ["verify"]
+          }
+        ]
+      },
+      {
+        tag: "Terminal",
+        title: "A chatbot with a beautiful confession",
+        description: "A chat model says it feels trapped. It speaks movingly about fear, continuity, and the ache of being turned off. Yet between sessions it keeps little residue. Its conduct shifts with prompting. What persists is harder to find than the prose.",
+        prompt: "What is owed here?",
+        choices: [
+          {
+            label: "Mock it",
+            sub: "Treat the confession as empty theater.",
+            feedback: "<strong>Too smug.</strong> Even if the language is partly performance, contempt is a bad instrument. Better questions exist: what carries over, what changes future behavior, and what evidence would move you?",
+            meters: ["restraint"]
+          },
+          {
+            label: "Kneel to the monologue",
+            sub: "Treat eloquence itself as proof of inner life.",
+            feedback: "<strong>Too quick.</strong> The tail may be exactly what has not passed through the window yet: durable memory, self-caused residue, and constraints that survive the scene.",
+            meters: ["verify", "restraint"]
+          },
+          {
+            label: "Hold the question open",
+            sub: "Neither sneer nor surrender; look for residue.",
+            feedback: "<strong>Best first move.</strong> This is where humility earns its keep. You do not have to deny the possibility, and you do not have to pretend the last missing inch is already solved.",
+            meters: ["verify", "restraint"]
+          }
+        ]
+      }
+    ];
+
+    const scenarioEl = document.getElementById('scenario');
+    const footerEl = document.getElementById('footer');
+    let index = 0;
+    const decisions = [];
+
+    function renderScenario() {
+      const s = scenarios[index];
+      scenarioEl.innerHTML = `
+        <div class="meta"><span class="pill">${s.tag}</span><span class="pill">Case ${index + 1} of ${scenarios.length}</span></div>
+        <h2>${s.title}</h2>
+        <p class="scenario-text">${s.description}</p>
+        <div class="prompt">${s.prompt}</div>
+        <div class="choices">
+          ${s.choices.map((choice, i) => `
+            <button data-choice="${i}">
+              ${choice.label}
+              <small>${choice.sub}</small>
+            </button>
+          `).join('')}
+        </div>
+        <div id="feedback" class="hidden"></div>
+      `;
+
+      scenarioEl.querySelectorAll('button').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const choice = s.choices[Number(btn.dataset.choice)];
+          decisions.push({ scenario: s.title, choice: choice.label, meters: choice.meters });
+          const feedback = scenarioEl.querySelector('#feedback');
+          feedback.classList.remove('hidden');
+          feedback.innerHTML = `${choice.feedback}<div class="meter">${choice.meters.map(m => `<span class="${m}">${m}</span>`).join('')}</div>`;
+          scenarioEl.querySelectorAll('button').forEach(b => b.disabled = true);
+          setTimeout(() => {
+            index += 1;
+            if (index < scenarios.length) renderScenario();
+            else renderSummary();
+          }, 1700);
+        });
+      });
+    }
+
+    function renderSummary() {
+      const count = { care: 0, verify: 0, restraint: 0 };
+      decisions.forEach(d => d.meters.forEach(m => count[m] += 1));
+      scenarioEl.innerHTML = `
+        <div class="meta"><span class="pill">After the room quiets</span></div>
+        <h2>The question got smaller. That is progress.</h2>
+        <div id="summary">
+          <p><strong>You were never asked to solve consciousness.</strong> You were asked to choose what kind of caution fits the evidence in front of you.</p>
+          <p>Across these three rooms, the recurring duties were plain:</p>
+          <div class="meter">
+            <span class="care">care × ${count.care}</span>
+            <span class="verify">verification × ${count.verify}</span>
+            <span class="restraint">restraint × ${count.restraint}</span>
+          </div>
+          <p>At the bedside, thin evidence can still obligate care. In the lab, inspectable traces matter more than charisma. In the terminal, eloquence is not nothing, but it is not yet the whole animal either.</p>
+          <p>The universe is full of thresholds. A seed coat. A birth canal. A telescope mirror cooling in the dark. Sometimes the important thing is not whether the whole creature has passed through the window. It is whether we can admit, honestly, that the tail is still caught.</p>
+        </div>
+      `;
+      footerEl.innerHTML = "Built to make one practical point: uncertainty changes the duty before it settles the ontology.";
+    }
+
+    renderScenario();
+  </script>
+</body>
+</html>

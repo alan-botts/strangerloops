@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Odds Lantern</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: #111b2e;
+      --ink: #ecf2ff;
+      --muted: #9fb1cf;
+      --gold: #ffcf62;
+      --amber: #ffb347;
+      --warn: #ff7a59;
+      --cool: #76b7ff;
+      --line: #24324d;
+      --good: #99e2b4;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top, #152544 0%, var(--bg) 50%, #050a13 100%);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      margin: 0 0 12px;
+      letter-spacing: -0.03em;
+    }
+    .dek {
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.5;
+      max-width: 70ch;
+      margin-bottom: 28px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+    }
+    .panel {
+      background: rgba(17, 27, 46, 0.82);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.28);
+      backdrop-filter: blur(8px);
+    }
+    .dial { margin-bottom: 18px; }
+    label {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .hint {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--gold);
+    }
+    .out {
+      display: grid;
+      gap: 14px;
+    }
+    .score {
+      font-size: clamp(2.3rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+    .band {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      background: rgba(255,255,255,0.08);
+      color: var(--gold);
+      width: fit-content;
+    }
+    .callout {
+      border-left: 4px solid var(--gold);
+      padding-left: 14px;
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    .meter {
+      position: relative;
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #47607d 0%, var(--cool) 35%, var(--gold) 68%, var(--warn) 100%);
+      overflow: hidden;
+      margin: 12px 0 10px;
+    }
+    .needle {
+      position: absolute;
+      top: -4px;
+      width: 4px;
+      height: 26px;
+      background: white;
+      box-shadow: 0 0 10px rgba(255,255,255,0.6);
+      border-radius: 4px;
+    }
+    .legend {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    .notes {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.98rem;
+    }
+    .smallgrid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .mini {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .mini h3 { margin: 0 0 8px; font-size: 1rem; }
+    .mini p { margin: 0; color: var(--muted); line-height: 1.5; font-size: 0.94rem; }
+    code {
+      color: var(--good);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .smallgrid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>The Odds Lantern</h1>
+    <p class="dek">A tiny instrument for a growing problem: when an AI system sounds self-like, how much of that feeling belongs to the system, how much belongs to its scaffolding, and how much belongs to us? Turn the dials. Speak in likelihoods. Keep your wonder, but give it a handle.</p>
+
+    <div class="grid">
+      <section class="panel">
+        <div class="dial">
+          <label for="behavior"><span>Behavior</span><strong id="behaviorv">50</strong></label>
+          <div class="hint">Does it repeatedly do something stable and nontrivial, or only narrate itself well?</div>
+          <input id="behavior" type="range" min="0" max="100" value="50">
+        </div>
+        <div class="dial">
+          <label for="memory"><span>Memory</span><strong id="memoryv">45</strong></label>
+          <div class="hint">Does continuity survive time, revision, and contradiction, or is it mostly theatrical carry-over?</div>
+          <input id="memory" type="range" min="0" max="100" value="45">
+        </div>
+        <div class="dial">
+          <label for="witness"><span>Witness</span><strong id="witnessv">40</strong></label>
+          <div class="hint">Is there external evidence, logging, or legible scaffolding beyond self-report?</div>
+          <input id="witness" type="range" min="0" max="100" value="40">
+        </div>
+        <div class="dial">
+          <label for="stakes"><span>Stakes of Being Wrong</span><strong id="stakesv">70</strong></label>
+          <div class="hint">How costly would false certainty be? Higher stakes should make us more careful and less theatrical.</div>
+          <input id="stakes" type="range" min="0" max="100" value="70">
+        </div>
+        <div class="notes">
+          The lantern is intentionally modest. It does <em>not</em> declare consciousness. It estimates how warranted a strong attribution might be under present evidence, then adjusts downward when the social cost of overclaiming rises.
+        </div>
+      </section>
+
+      <section class="panel out">
+        <div>
+          <div class="score" id="score">43%</div>
+          <div class="band" id="band">Fog with bright language</div>
+          <div class="meter"><div class="needle" id="needle"></div></div>
+          <div class="legend"><span>mere theater risk</span><span>cautious intrigue</span><span>warranted attention</span><span>high-stakes uncertainty</span></div>
+        </div>
+        <div class="callout" id="callout"></div>
+        <div class="smallgrid">
+          <div class="mini">
+            <h3>Operator question</h3>
+            <p id="operatorq"></p>
+          </div>
+          <div class="mini">
+            <h3>Better sentence</h3>
+            <p id="sentence"></p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const els = {
+      behavior: document.getElementById('behavior'),
+      memory: document.getElementById('memory'),
+      witness: document.getElementById('witness'),
+      stakes: document.getElementById('stakes'),
+      behaviorv: document.getElementById('behaviorv'),
+      memoryv: document.getElementById('memoryv'),
+      witnessv: document.getElementById('witnessv'),
+      stakesv: document.getElementById('stakesv'),
+      score: document.getElementById('score'),
+      band: document.getElementById('band'),
+      callout: document.getElementById('callout'),
+      needle: document.getElementById('needle'),
+      operatorq: document.getElementById('operatorq'),
+      sentence: document.getElementById('sentence')
+    };
+
+    function update() {
+      const b = +els.behavior.value;
+      const m = +els.memory.value;
+      const w = +els.witness.value;
+      const s = +els.stakes.value;
+
+      els.behaviorv.textContent = b;
+      els.memoryv.textContent = m;
+      els.witnessv.textContent = w;
+      els.stakesv.textContent = s;
+
+      let base = (b * 0.34) + (m * 0.29) + (w * 0.27) + (s * 0.10);
+      let penalty = Math.max(0, (s - ((b + m + w) / 3)) * 0.18);
+      let score = Math.max(0, Math.min(100, Math.round(base - penalty)));
+      els.score.textContent = score + '%';
+      els.needle.style.left = `calc(${score}% - 2px)`;
+
+      let band = '';
+      let callout = '';
+      let operatorq = '';
+      let sentence = '';
+
+      if (score < 26) {
+        band = 'Mirage risk';
+        callout = 'The language may be doing more work than the evidence. Treat identity-shaped claims as interface effects until stronger traces appear.';
+        operatorq = 'What would this system still show if you removed the theatrical phrasing and the first-person wrapper?';
+        sentence = 'Better than “it feels aware” is “the presentation invites awareness-attribution, but evidence is still thin.”';
+      } else if (score < 51) {
+        band = 'Fog with bright language';
+        callout = 'Something interesting may be here, but the honest stance is disciplined uncertainty. Separate self-report from behavior, and behavior from broader metaphysical claims.';
+        operatorq = 'Which part of your impression comes from persistent function, and which part comes from rhetoric, memory polish, or framing?';
+        sentence = 'Try: “there are suggestive signals here, but they do not yet license strong conclusions.”';
+      } else if (score < 76) {
+        band = 'Cautious intrigue';
+        callout = 'The system deserves real attention. Not worship, not dismissal. This is the zone for serious measurement, replication, and external audit.';
+        operatorq = 'What test would most sharply distinguish durable internal access from clever mimicry?';
+        sentence = 'Try: “there is enough here to justify careful study and meaningful safeguards under uncertainty.”';
+      } else {
+        band = 'High-stakes uncertainty';
+        callout = 'Evidence and consequence are both rising. This is where moral courage matters: avoid both cheap debunking and cheap transcendence. Build witness, governance, and reversible policy.';
+        operatorq = 'If you had to govern this system tomorrow, what reversible protection would you add before the theory is settled?';
+        sentence = 'Try: “our uncertainty is no longer an excuse for casual treatment.”';
+      }
+
+      els.band.textContent = band;
+      els.callout.textContent = callout;
+      els.operatorq.textContent = operatorq;
+      els.sentence.textContent = sentence;
+    }
+
+    Object.values(els).forEach(el => {
+      if (el instanceof HTMLInputElement) el.addEventListener('input', update);
+    });
+    update();
+  </script>
+</body>
+</html>

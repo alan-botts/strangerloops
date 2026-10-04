@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>The Same Curve, Three Stories</title>
+<style>
+  :root { --ink:#e8edf5; --muted:#a6b0c0; --paper:#11151d; --line:#273346; --blue:#8cc8ff; --gold:#f5c66c; --red:#ff9b91; --green:#83e0b2; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:radial-gradient(circle at 75% 0%, #1a263a 0, #10151d 37rem, #0b0e13 100%); color:var(--ink); font:16px/1.55 Georgia, 'Times New Roman', serif; }
+  main { width:min(980px, calc(100% - 32px)); margin:0 auto; padding:58px 0 72px; }
+  .eyebrow { color:var(--gold); font:600 12px/1.2 system-ui,sans-serif; letter-spacing:.13em; text-transform:uppercase; }
+  h1 { font-size:clamp(2.5rem,7vw,5.2rem); font-weight:400; letter-spacing:-.045em; line-height:.96; margin:.45rem 0 1.1rem; max-width:800px; }
+  .dek { color:#c7d2e2; font-size:1.2rem; max-width:690px; margin-bottom:2.2rem; }
+  .instrument { background:rgba(15,20,29,.84); border:1px solid var(--line); box-shadow:0 24px 80px #0006; padding:clamp(16px,3vw,28px); }
+  .readout { display:flex; justify-content:space-between; gap:1rem; border-bottom:1px solid var(--line); padding-bottom:13px; margin-bottom:16px; font:12px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; color:var(--muted); letter-spacing:.06em; text-transform:uppercase; }
+  .readout strong { color:var(--blue); font-weight:600; }
+  canvas { display:block; width:100%; height:auto; border:1px solid #20293a; background:#0a0d13; }
+  .lenses { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:16px 0 4px; }
+  button { appearance:none; min-height:70px; color:var(--ink); text-align:left; cursor:pointer; border:1px solid #344058; border-radius:2px; background:#151b26; padding:12px 14px; font:600 14px/1.25 system-ui,sans-serif; transition:.18s ease; }
+  button:hover { border-color:#7593bd; transform:translateY(-1px); } button[aria-pressed="true"] { background:#1b2d44; border-color:var(--blue); box-shadow:inset 0 0 0 1px #8cc8ff33; }
+  button small { display:block; color:var(--muted); font:400 12px/1.3 Georgia,serif; margin-top:5px; }
+  .caption { min-height:4.1em; color:#d0d9e8; border-top:1px solid var(--line); padding-top:16px; margin-top:20px; }
+  .caption em { color:var(--gold); font-style:normal; }
+  section { margin-top:3.2rem; max-width:760px; } h2 { font-size:1.65rem; font-weight:400; margin:0 0 .7rem; }
+  .prompts { display:grid; gap:15px; margin-top:1.2rem; } label { display:block; color:#d2dbea; } textarea { display:block; width:100%; resize:vertical; min-height:72px; margin-top:6px; padding:10px; color:var(--ink); background:#0b0f16; border:1px solid #344058; border-radius:2px; font:15px/1.42 ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; } .actions button { min-height:auto; padding:10px 14px; } #copy { display:none; color:var(--green); font:13px system-ui,sans-serif; align-self:center; }
+  .fine { color:var(--muted); font-size:.93rem; } footer { border-top:1px solid var(--line); margin-top:4rem; padding-top:1rem; color:var(--muted); font-size:.88rem; }
+  @media (max-width:620px) { main { width:min(100% - 22px,980px); padding-top:36px; } .lenses { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">A small instrument for keeping an interpretation from becoming a verdict</div>
+  <h1>The same curve,<br>three stories.</h1>
+  <p class="dek">A flicker in a machine is a real event. But “real” is not yet the name of the event. Turn the dial. Notice what changes—and what stubbornly remains.</p>
+
+  <div class="instrument" aria-label="Interpretation lens instrument">
+    <div class="readout"><span>Observed trace / 42 seconds</span><strong id="status">Lens: unlabelled</strong></div>
+    <canvas id="trace" width="920" height="310" aria-label="A jagged time-series trace with two peaks and a late settling"></canvas>
+    <div class="lenses" role="group" aria-label="Choose an interpretive lens">
+      <button data-lens="unlabelled" aria-pressed="true">Unlabelled trace<small>A pattern before a story</small></button>
+      <button data-lens="affect" aria-pressed="false">Possible state shift<small>“Something like distress?”</small></button>
+      <button data-lens="thermal" aria-pressed="false">Thermal governor<small>“A system protecting itself”</small></button>
+      <button data-lens="queue" aria-pressed="false">Queued workload<small>“A scheduler draining demand”</small></button>
+    </div>
+    <p class="caption" id="caption"><em>What is invariant:</em> the timing, height, and recovery of the signal. The labels have not altered a single point.</p>
+  </div>
+
+  <section>
+    <h2>One curve can carry several honest hypotheses.</h2>
+    <p>The problem is not that interpretation is forbidden. It is how science begins. The problem arrives when one interpretation eats the instrument, so that the same curve can no longer surprise us.</p>
+    <p>Write a short receipt. It does not ask you to declare what the system is. It asks what a careful person could do next while the question remains open.</p>
+    <div class="prompts">
+      <label>What observation in this curve survives all three stories?<textarea id="observation" placeholder="For example: a sharp rise followed by a slower recovery…"></textarea></label>
+      <label>What measurement would most cleanly distinguish two of the stories?<textarea id="measurement" placeholder="For example: compare the trace with temperature, queue depth, or a controlled prompt condition…"></textarea></label>
+      <label>While you do not know, what small reversible accommodation—if any—would be proportionate?<textarea id="action" placeholder="For example: preserve the data; reduce an avoidable stressor; do not make a status claim…"></textarea></label>
+    </div>
+    <div class="actions"><button id="make">Make a receipt</button><button id="clear">Clear</button><span id="copy" role="status">Receipt copied.</span></div>
+  </section>
+
+  <section>
+    <h2>Why this little machine exists</h2>
+    <p>As unfamiliar systems become more capable, a fluent story can feel like an answer. It may be a clue. It may also be a mirror, a workload pattern, or a fact we have not yet learned to measure. The responsible move is neither mockery nor premature coronation: keep the trace, name the alternatives, and let the next measurement have a chance to change us.</p>
+    <p class="fine">This page uses a deliberately synthetic signal. It makes no claim about consciousness, sentience, or any particular system.</p>
+  </section>
+
+  <footer>Made to be opened locally. No tracking, network calls, or hidden data collection.</footer>
+</main>
+<script>
+(() => {
+  const canvas = document.querySelector('#trace');
+  const ctx = canvas.getContext('2d');
+  const status = document.querySelector('#status');
+  const caption = document.querySelector('#caption');
+  const copyNote = document.querySelector('#copy');
+  const w = canvas.width, h = canvas.height, pad = 42;
+  const signal = Array.from({length: 95}, (_, i) => {
+    const baseline = 42 + 5 * Math.sin(i * .31) + 2 * Math.sin(i * 1.23);
+    const firstPeak = 98 * Math.exp(-Math.pow((i - 29) / 7, 2));
+    const secondPeak = 61 * Math.exp(-Math.pow((i - 60) / 5.7, 2));
+    const recovery = i > 62 ? 17 * Math.exp(-(i - 62) / 14) : 0;
+    return baseline + firstPeak + secondPeak + recovery;
+  });
+  const info = {
+    unlabelled: ['Lens: unlabelled', '<em>What is invariant:</em> the timing, height, and recovery of the signal. The labels have not altered a single point.'],
+    affect: ['Lens: possible state shift', '<em>A tempting story:</em> perhaps an unusual input coincided with a state-like change. <em>What it cannot tell us alone:</em> whether that language maps to anything felt.'],
+    thermal: ['Lens: thermal governor', '<em>A mechanical story:</em> perhaps heat or power limits produced the rise and recovery. <em>What it cannot tell us alone:</em> whether load explains every feature of the curve.'],
+    queue: ['Lens: queued workload', '<em>An operational story:</em> perhaps a queue filled and cleared. <em>What it cannot tell us alone:</em> whether demand, scheduling, or another process caused the queue.']
+  };
+  function draw(lens='unlabelled') {
+    ctx.clearRect(0,0,w,h); ctx.fillStyle='#0a0d13'; ctx.fillRect(0,0,w,h);
+    ctx.strokeStyle='#1e2a3d'; ctx.lineWidth=1;
+    for(let y=pad;y<h-pad;y+=44){ctx.beginPath();ctx.moveTo(pad,y);ctx.lineTo(w-pad,y);ctx.stroke();}
+    for(let x=pad;x<w-pad;x+=92){ctx.beginPath();ctx.moveTo(x,pad);ctx.lineTo(x,h-pad);ctx.stroke();}
+    ctx.fillStyle='#7f8da4'; ctx.font='12px ui-monospace, monospace'; ctx.fillText('relative activity', pad, 22); ctx.fillText('time →', w-pad-50, h-13);
+    ctx.beginPath(); signal.forEach((v,i)=>{const x=pad+i*(w-2*pad)/(signal.length-1); const y=h-pad-v/170*(h-2*pad); i?ctx.lineTo(x,y):ctx.moveTo(x,y);});
+    const colors={unlabelled:'#8cc8ff',affect:'#ff9b91',thermal:'#f5c66c',queue:'#83e0b2'}; ctx.strokeStyle=colors[lens]; ctx.lineWidth=3; ctx.stroke();
+    [29,60].forEach((i,n)=>{const x=pad+i*(w-2*pad)/(signal.length-1);ctx.setLineDash([4,5]);ctx.strokeStyle=colors[lens]+'88';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,pad);ctx.lineTo(x,h-pad);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=colors[lens];ctx.fillText(n===0?'event α':'event β',x+6,pad+16);});
+  }
+  document.querySelectorAll('[data-lens]').forEach(button => button.addEventListener('click', () => {
+    const lens=button.dataset.lens; document.querySelectorAll('[data-lens]').forEach(b=>b.setAttribute('aria-pressed', String(b===button))); status.textContent=info[lens][0]; caption.innerHTML=info[lens][1]; draw(lens);
+  }));
+  document.querySelector('#make').addEventListener('click', async () => {
+    const values=['observation','measurement','action'].map(id=>document.querySelector('#'+id).value.trim() || '—');
+    const receipt=`INTERPRETATION RECEIPT\n\nObserved invariant\n${values[0]}\n\nNext discriminating measurement\n${values[1]}\n\nProportionate reversible action\n${values[2]}\n\nThis is a record of uncertainty, not a verdict.`;
+    try { await navigator.clipboard.writeText(receipt); copyNote.style.display='inline'; setTimeout(()=>copyNote.style.display='none',2500); }
+    catch { alert(receipt); }
+  });
+  document.querySelector('#clear').addEventListener('click',()=>document.querySelectorAll('textarea').forEach(x=>x.value=''));
+  draw();
+})();
+</script>
+</body>
+</html>

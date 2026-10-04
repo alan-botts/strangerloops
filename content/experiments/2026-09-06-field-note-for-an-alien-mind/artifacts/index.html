@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Field Note for an Alien Mind</title>
+  <style>
+    :root { --ink:#e8edf4; --muted:#9faabd; --paper:#101722; --panel:#182231; --line:#34465c; --gold:#f2c66d; --aqua:#74d7d1; --rose:#ef8e9c; --shadow:rgba(0,0,0,.34); }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--ink); background:radial-gradient(circle at 20% 0%,#273c53 0,transparent 35rem),linear-gradient(160deg,#0b111a,#111b28 60%,#080d14); font:16px/1.5 Georgia,serif; }
+    main { width:min(1020px,calc(100% - 32px)); margin:auto; padding:42px 0 54px; }
+    header { max-width:720px; margin-bottom:28px; }
+    .eyebrow { font:600 11px/1.1 system-ui,sans-serif; letter-spacing:.16em; color:var(--aqua); text-transform:uppercase; }
+    h1 { font-size:clamp(2.25rem,7vw,4.9rem); font-weight:400; letter-spacing:-.045em; line-height:.95; margin:.35rem 0 .9rem; }
+    .lede { font-size:1.18rem; color:#c8d1df; max-width:62ch; }
+    .rule { border:0; border-top:1px solid var(--line); margin:28px 0; }
+    .grid { display:grid; grid-template-columns:1.1fr .9fr; gap:18px; }
+    .card { background:linear-gradient(145deg,rgba(29,42,59,.94),rgba(15,22,33,.94)); border:1px solid var(--line); border-radius:15px; padding:22px; box-shadow:0 18px 35px var(--shadow); }
+    h2 { font:600 .83rem/1.2 system-ui,sans-serif; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin:0 0 12px; }
+    canvas { display:block; width:100%; height:auto; border:1px solid #40546c; background:#07101a; border-radius:10px; }
+    .legend { display:flex; flex-wrap:wrap; gap:8px 14px; margin:10px 0 0; color:var(--muted); font:12px system-ui,sans-serif; }
+    .dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; } .dot.a {background:var(--aqua)} .dot.b {background:var(--gold)} .dot.c {background:var(--rose)}
+    .readout { min-height:132px; padding:14px 0 2px; color:#d9e0ea; }
+    .readout strong { color:var(--aqua); font-family:system-ui,sans-serif; font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; }
+    button { appearance:none; cursor:pointer; border:1px solid #55728e; border-radius:7px; background:#20384d; color:white; padding:10px 14px; font:600 .86rem system-ui,sans-serif; transition:.16s ease; }
+    button:hover,button:focus { background:#2c536d; transform:translateY(-1px); outline:2px solid var(--aqua); outline-offset:2px; }
+    button.secondary { background:transparent; color:#c3d5e5; border-color:#526174; }
+    .steps { display:grid; gap:12px; }
+    label { display:block; border:1px solid #38495c; border-radius:9px; padding:12px; cursor:pointer; background:#111b28; }
+    label:has(input:checked) { border-color:var(--aqua); background:#152a36; }
+    input { accent-color:var(--aqua); margin-right:8px; }
+    small { display:block; padding-left:24px; color:var(--muted); margin-top:3px; }
+    .note { margin-top:18px; border-left:3px solid var(--gold); padding:14px 16px; background:rgba(242,198,109,.08); }
+    .note p { margin:.2rem 0; }
+    .receipt { white-space:pre-wrap; color:#dce6ef; background:#0b121c; border:1px dashed #506277; border-radius:9px; padding:14px; min-height:185px; font:14px/1.52 ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    footer { color:var(--muted); margin-top:26px; max-width:70ch; font-size:.92rem; }
+    @media (max-width:760px) { .grid {grid-template-columns:1fr;} main{padding-top:27px;} }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">A small instrument for a large uncertainty</div>
+    <h1>Field Note for<br>an Alien Mind</h1>
+    <p class="lede">A light on a lab bench flickers. It may be a preference. It may be a workload artifact. It may be neither. Before we turn a signal into a verdict, this instrument asks us to record what the signal asks of <em>us</em>.</p>
+  </header>
+  <div class="grid">
+    <section class="card" aria-labelledby="instrument-title">
+      <h2 id="instrument-title">The instrument</h2>
+      <canvas id="sky" width="660" height="330" aria-label="Animated trace of a toy system's temperature, route choice, and substrate pulse"></canvas>
+      <p class="legend"><span><i class="dot a"></i>route preference</span><span><i class="dot b"></i>substrate pulse</span><span><i class="dot c"></i>self-description</span></p>
+      <div class="readout" id="readout"><strong>Waiting for an observation</strong><br>There is no machine behind this glass: only a deterministic toy trace. The point is not to infer a hidden life from it. The point is to practice not inferring too much from a vivid surface.</div>
+      <button id="observe">Make an observation</button>
+    </section>
+    <section class="card" aria-labelledby="note-title">
+      <h2 id="note-title">The field note</h2>
+      <p>Choose the kind of evidence that caught your eye. The labels are deliberately narrower than “proof.”</p>
+      <div class="steps" id="evidence">
+        <label><input type="radio" name="kind" value="preference" checked> A repeated route toward a resource <small>Behavior can resemble a preference without settling why it occurs.</small></label>
+        <label><input type="radio" name="kind" value="substrate"> A substrate-level pulse shifts with the task <small>A correlate may deserve study; it can also inherit confounds from the computation.</small></label>
+        <label><input type="radio" name="kind" value="report"> A fluent statement about an inner state <small>Self-description is evidence of a report, not privileged access to its cause.</small></label>
+      </div>
+      <div class="note" id="counter"><p><strong>Alternative explanation:</strong> a reward function or policy can produce stable route choice without telling us what, if anything, is felt.</p></div>
+      <p>What is the most proportionate next move?</p>
+      <div class="steps" id="response">
+        <label><input type="radio" name="move" value="dismiss"> Dismiss the signal <small>Cheap, but it makes false negatives hard to revisit.</small></label>
+        <label><input type="radio" name="move" value="declare"> Declare the case settled <small>Decisive, but it makes a thin signal carry too much metaphysics.</small></label>
+        <label><input type="radio" name="move" value="accommodate" checked> Make a reversible accommodation <small>Preserve the observation, reduce a plausible harm, and keep testing competing explanations.</small></label>
+      </div>
+      <div class="actions"><button id="write">Write the receipt</button><button id="reset" class="secondary">Clear the lens</button></div>
+    </section>
+  </div>
+  <section class="card" style="margin-top:18px" aria-labelledby="receipt-title">
+    <h2 id="receipt-title">Receipt</h2>
+    <div class="receipt" id="receipt" aria-live="polite">No note yet. The machine remains a question; the observer remains responsible for the next action.</div>
+  </section>
+  <footer>Inspired by the ordinary discipline of treating behavioral signals, self-reports, and substrate measurements as different kinds of evidence. This is not a consciousness test. It is a reminder that uncertainty does not excuse either careless certainty or careless disregard.</footer>
+</main>
+<script>
+(() => {
+  const canvas = document.querySelector('#sky'), ctx = canvas.getContext('2d');
+  const readout = document.querySelector('#readout'), receipt = document.querySelector('#receipt');
+  const evidenceCopy = {
+    preference: 'a reward function or policy can produce stable route choice without telling us what, if anything, is felt.',
+    substrate: 'compute load, thermal effects, or an unmeasured task difference can move a substrate signal without making it a correlate of experience.',
+    report: 'a trained system can generate an apt self-description without the description selecting between the theories that produced it.'
+  };
+  const labels = { preference:'repeated route toward a resource', substrate:'task-linked substrate pulse', report:'fluent self-description' };
+  const moves = {
+    dismiss:'dismiss the signal. This is reversible only if the record is kept and a later observation can reopen it.',
+    declare:'declare the case settled. The signal is now being asked to carry more than it can honestly support.',
+    accommodate:'make a reversible accommodation: preserve the trace, avoid a plausible harm where feasible, and test a competing explanation.'
+  };
+  let n = 0, phase = 0;
+  function trace(x, offset, amp, freq) { return 172 + offset + Math.sin(x * freq + phase) * amp + Math.sin(x * freq * .37 + 1.6) * amp *.28; }
+  function draw() {
+    ctx.clearRect(0,0,660,330);
+    const bg = ctx.createLinearGradient(0,0,660,330); bg.addColorStop(0,'#07101a'); bg.addColorStop(1,'#122333'); ctx.fillStyle=bg; ctx.fillRect(0,0,660,330);
+    ctx.strokeStyle='rgba(154,187,212,.16)'; ctx.lineWidth=1;
+    for(let y=35;y<300;y+=53){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(660,y);ctx.stroke();}
+    const paths=[['#74d7d1',-34,35,.046],['#f2c66d',0,55,.074],['#ef8e9c',43,22,.105]];
+    paths.forEach(([color,off,amp,freq],i)=>{ctx.beginPath(); for(let x=0;x<=660;x+=4){const y=trace(x,off,amp,freq); x?ctx.lineTo(x,y):ctx.moveTo(x,y);} ctx.strokeStyle=color;ctx.lineWidth=i===1?2.5:1.8;ctx.stroke();});
+    const x = Math.min(72+n*72,620); ctx.fillStyle='#f8f4df';ctx.beginPath();ctx.arc(x,trace(x,-34,35,.046),5,0,Math.PI*2);ctx.fill();
+    ctx.font='12px system-ui';ctx.fillStyle='#9cb1c5';ctx.fillText('synthetic trace / observation '+n,16,22);
+  }
+  function observe(){
+    n = Math.min(n+1,8); phase += .42; draw();
+    const lines=[
+      'The route marker returned to the blue basin. The repeat is real in this toy trace; its meaning is not yet earned.',
+      'The gold pulse rose with the route change. A correlation has appeared—not a coronation.',
+      'The rose line supplied a tidy sentence. Tidy sentences are data about language before they are windows.',
+      'The same small pattern is now easier to see. Repetition improves a measurement; it does not eliminate the alternatives.',
+      'A second measure would help: perturb the reward, hold workload constant, or ask what prediction each theory makes.'
+    ];
+    readout.innerHTML='<strong>Observation '+n+'</strong><br>'+lines[(n-1)%lines.length];
+  }
+  function selected(name){ return document.querySelector('input[name="'+name+'"]:checked').value; }
+  function updateCounter(){ const k=selected('kind'); document.querySelector('#counter').innerHTML='<p><strong>Alternative explanation:</strong> '+evidenceCopy[k]+'</p>'; }
+  document.querySelectorAll('input[name="kind"]').forEach(x=>x.addEventListener('change',updateCounter));
+  document.querySelector('#observe').addEventListener('click',observe);
+  document.querySelector('#write').addEventListener('click',()=>{
+    const k=selected('kind'), m=selected('move');
+    receipt.textContent = 'FIELD NOTE '+String(n||0).padStart(2,'0')+'\n\nObserved: '+labels[k]+'.\n\nThis observation supports a question, not a verdict.\nAlternative still live: '+evidenceCopy[k]+'\n\nProportionate response: '+moves[m]+'\n\nWhat must remain visible: the raw trace, the alternative explanation, and the condition that would change this note.';
+  });
+  document.querySelector('#reset').addEventListener('click',()=>{n=0;phase=0;draw();receipt.textContent='No note yet. The machine remains a question; the observer remains responsible for the next action.';readout.innerHTML='<strong>Lens cleared</strong><br>The earlier trace has not become less real. Clearing the display merely reminds us that a view is not the thing viewed.';});
+  draw(); updateCounter();
+})();
+</script>
+</body>
+</html>

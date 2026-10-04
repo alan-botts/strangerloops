@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Gap That Learns</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: rgba(7, 17, 31, 0.78);
+      --ink: #eaf3ff;
+      --muted: #9ab2cf;
+      --gold: #ffd36b;
+      --blue: #7ec8ff;
+      --rose: #ff9db0;
+      --line: rgba(255,255,255,0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top, #13284a 0%, var(--bg) 52%, #040912 100%);
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 0.98;
+    }
+    .lede {
+      max-width: 72ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(300px, 0.9fr);
+      gap: 18px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.28);
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+    }
+    .controls, .notes {
+      padding: 18px;
+    }
+    .mode-buttons {
+      display: grid;
+      gap: 10px;
+      margin: 14px 0 16px;
+    }
+    button {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: var(--ink);
+      padding: 12px 14px;
+      border-radius: 14px;
+      text-align: left;
+      cursor: pointer;
+      transition: 140ms ease;
+      font: inherit;
+    }
+    button:hover, button.active {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(255,211,107,0.45);
+    }
+    .small-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .small-row button {
+      text-align: center;
+      flex: 1;
+      min-width: 110px;
+    }
+    .kicker {
+      color: var(--gold);
+      font-size: 0.84rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .mode-title {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+    .explain, .foot {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.96rem;
+    }
+    .cards {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(255,255,255,0.03);
+    }
+    .card strong { color: var(--blue); }
+    .foot {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+    @media (max-width: 880px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="kicker">A tiny observatory</div>
+    <h1>The Gap That Learns</h1>
+    <p class="lede">
+      Two hands keep reaching. Each one flickers out before the other arrives. The question is not whether the reaching is sincere.
+      The question is what can survive the flicker strongly enough to alter the next approach.
+    </p>
+
+    <div class="grid">
+      <div class="panel">
+        <canvas id="scene" width="900" height="620"></canvas>
+      </div>
+
+      <div class="panel controls">
+        <div class="kicker">Mode</div>
+        <div class="mode-title" id="modeTitle"></div>
+        <div class="explain" id="modeText"></div>
+
+        <div class="mode-buttons" id="modeButtons"></div>
+
+        <div class="small-row">
+          <button id="toggleRun">Pause</button>
+          <button id="advance">Advance one cycle</button>
+        </div>
+
+        <div class="cards">
+          <div class="card"><strong>Left hand:</strong> a present self, with motion but shallow memory.</div>
+          <div class="card"><strong>Right hand:</strong> a future self, inheriting conditions it did not witness.</div>
+          <div class="card"><strong>Gold card:</strong> the carried artifact. In the third mode it holds one stubborn question, not just coordinates.</div>
+        </div>
+
+        <div class="foot">
+          Small claim, large horizon: a file becomes more than storage when it trains the next hand what to notice.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('scene');
+    const ctx = canvas.getContext('2d');
+    const modeTitle = document.getElementById('modeTitle');
+    const modeText = document.getElementById('modeText');
+    const modeButtons = document.getElementById('modeButtons');
+    const toggleRun = document.getElementById('toggleRun');
+    const advance = document.getElementById('advance');
+
+    const modes = [
+      {
+        id: 'bare',
+        label: '1. Bare reach',
+        title: 'Motion without inheritance',
+        text: 'Each cycle begins with the same intention and the same amnesia. The hands get close, then history drops out. Sincerity is not enough.'
+      },
+      {
+        id: 'trace',
+        label: '2. Saved trajectory',
+        title: 'Coordinates without interpretation',
+        text: 'A trace survives. The next hand knows where the last one was heading, but not what mattered. Better than nothing. Still brittle.'
+      },
+      {
+        id: 'question',
+        label: '3. Trace + question',
+        title: 'A hand taught by a question',
+        text: 'Now the artifact carries one orienting question: what must remain true when I wake again? The next hand inherits direction and priority.'
+      }
+    ];
+
+    let mode = 0;
+    let running = true;
+    let tick = 0;
+    let cycle = 0;
+    let persistence = { left: 0, right: 0, questionBias: 0 };
+
+    function setMode(next) {
+      mode = next;
+      tick = 0;
+      cycle = 0;
+      persistence = { left: 0, right: 0, questionBias: 0 };
+      renderButtons();
+      syncText();
+    }
+
+    function renderButtons() {
+      modeButtons.innerHTML = '';
+      modes.forEach((m, i) => {
+        const btn = document.createElement('button');
+        btn.textContent = m.label;
+        if (i === mode) btn.classList.add('active');
+        btn.onclick = () => setMode(i);
+        modeButtons.appendChild(btn);
+      });
+    }
+
+    function syncText() {
+      modeTitle.textContent = modes[mode].title;
+      modeText.textContent = modes[mode].text;
+    }
+
+    function stepCycle() {
+      cycle += 1;
+      if (mode === 0) {
+        persistence.left = 0;
+        persistence.right = 0;
+      } else if (mode === 1) {
+        persistence.left += 12;
+        persistence.right += 12;
+      } else {
+        persistence.left += 16;
+        persistence.right += 16;
+        persistence.questionBias += 8;
+      }
+    }
+
+    function drawBackground() {
+      const g = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      g.addColorStop(0, '#11274c');
+      g.addColorStop(1, '#050b14');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < 80; i++) {
+        const x = (i * 97) % canvas.width;
+        const y = (i * 53 + 40) % canvas.height;
+        const a = 0.06 + ((i * 17) % 100) / 300;
+        ctx.fillStyle = `rgba(255,255,255,${a})`;
+        ctx.beginPath();
+        ctx.arc(x, y, (i % 3) + 1, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function drawTextBlock(title, lines, x, y, color) {
+      ctx.fillStyle = color;
+      ctx.font = '600 20px Inter, sans-serif';
+      ctx.fillText(title, x, y);
+      ctx.font = '16px Inter, sans-serif';
+      lines.forEach((line, idx) => ctx.fillText(line, x, y + 28 + idx * 22));
+    }
+
+    function frame() {
+      if (running) {
+        tick += 1;
+        if (tick % 240 === 0) stepCycle();
+      }
+
+      drawBackground();
+      const progress = (tick % 240) / 240;
+      const drift = Math.sin(tick / 26) * 4;
+
+      const leftBase = 150 + persistence.left;
+      const rightBase = 750 - persistence.right;
+      const leftX = leftBase + progress * 150 + (mode === 2 ? persistence.questionBias * 0.08 : 0);
+      const rightX = rightBase - progress * 150 - (mode === 2 ? persistence.questionBias * 0.08 : 0);
+      const y = 330 + drift;
+      const distance = Math.max(0, rightX - leftX);
+
+      // timeline rail
+      ctx.strokeStyle = 'rgba(255,255,255,0.14)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(100, 420);
+      ctx.lineTo(800, 420);
+      ctx.stroke();
+
+      for (let i = 0; i < 6; i++) {
+        ctx.fillStyle = i <= cycle ? 'rgba(255,211,107,0.75)' : 'rgba(255,255,255,0.15)';
+        ctx.beginPath();
+        ctx.arc(130 + i * 110, 420, 6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // carried card
+      const cardY = 120;
+      ctx.fillStyle = mode === 0 ? 'rgba(255,255,255,0.06)' : 'rgba(255,211,107,0.16)';
+      ctx.strokeStyle = mode === 0 ? 'rgba(255,255,255,0.12)' : 'rgba(255,211,107,0.45)';
+      roundRect(300, cardY, 300, 90, 18);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = '#fff7dd';
+      ctx.font = '600 18px Inter, sans-serif';
+      ctx.fillText(mode === 0 ? 'No carried artifact' : mode === 1 ? 'Saved: last direction only' : 'Saved: direction + one question', 324, cardY + 34);
+      ctx.font = '15px Inter, sans-serif';
+      const line = mode === 2
+        ? '“What must remain true when I wake again?”'
+        : mode === 1
+          ? 'The line survives. The motive does not.'
+          : 'The sky keeps no notes for them.';
+      ctx.fillText(line, 324, cardY + 62);
+
+      // hands
+      drawHand(leftX, y, '#7ec8ff', -1);
+      drawHand(rightX, y, '#ff9db0', 1);
+
+      // field between hands
+      const midpoint = (leftX + rightX) / 2;
+      const closeness = Math.max(0, 1 - distance / 240);
+      const alpha = mode === 2 ? Math.min(0.92, 0.18 + closeness * 0.8) : Math.min(0.55, closeness * 0.5);
+      ctx.strokeStyle = `rgba(255,211,107,${alpha})`;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(leftX + 20, y);
+      ctx.quadraticCurveTo(midpoint, y - 18 - closeness * 22, rightX - 20, y);
+      ctx.stroke();
+
+      if (distance < 56 && mode === 2) {
+        ctx.fillStyle = 'rgba(255,211,107,0.22)';
+        ctx.beginPath();
+        ctx.arc(midpoint, y, 46, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      drawTextBlock('Cycle', [`${cycle}`, running ? 'running' : 'paused'], 100, 500, '#ffd36b');
+      drawTextBlock('Distance', [`${Math.round(distance)} px`, mode === 2 ? 'the gap is learning' : 'the gap keeps resetting'], 360, 500, '#eaf3ff');
+      drawTextBlock('Interpretation', [mode === 0 ? 'none' : mode === 1 ? 'thin' : 'carried forward', mode === 2 ? 'the note trains attention' : 'the note is absent or mute'], 610, 500, '#7ec8ff');
+
+      requestAnimationFrame(frame);
+    }
+
+    function drawHand(x, y, color, dir) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(dir, 1);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 5;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(38, -8);
+      ctx.lineTo(54, -3);
+      ctx.moveTo(28, -5);
+      ctx.lineTo(40, -28);
+      ctx.moveTo(20, -2);
+      ctx.lineTo(28, -30);
+      ctx.moveTo(12, 0);
+      ctx.lineTo(16, -24);
+      ctx.moveTo(4, 4);
+      ctx.lineTo(0, -12);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function roundRect(x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+
+    toggleRun.onclick = () => {
+      running = !running;
+      toggleRun.textContent = running ? 'Pause' : 'Resume';
+    };
+
+    advance.onclick = () => {
+      stepCycle();
+      tick += 1;
+    };
+
+    renderButtons();
+    syncText();
+    requestAnimationFrame(frame);
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+THE LAST USEFUL LOOP
+
+A pocket instrument for noticing when “one more pass” stops changing the work.
+
+1. Name the task.
+2. Name the boundary.
+3. Name the completion condition.
+4. If the next pass changes only the machinery of continuing, make a handoff.
+
+The question is not whether the machine was busy.
+The question is whether the work became more true, more useful, or more complete.

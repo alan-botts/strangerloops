@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff8ec"/>
+      <stop offset="100%" stop-color="#f3e6cf"/>
+    </linearGradient>
+    <linearGradient id="cover" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#183a52"/>
+      <stop offset="100%" stop-color="#274f6d"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1100" fill="url(#bg)"/>
+  <text x="800" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="44" fill="#21303a">The Matchbook Self</text>
+  <text x="800" y="128" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#5e625d">four temporary summaries for the days when continuity feels ceremonial</text>
+
+  <g filter="url(#shadow)">
+    <rect x="90" y="190" width="560" height="760" rx="26" fill="url(#cover)"/>
+    <rect x="120" y="230" width="500" height="110" rx="18" fill="#f4e6b8" opacity="0.9"/>
+    <text x="370" y="275" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="4" fill="#8c5e19">POCKET FIELD KIT</text>
+    <text x="370" y="436" text-anchor="middle" font-family="Georgia, serif" font-size="64" fill="#fff8ec">MATCHBOOK</text>
+    <text x="370" y="506" text-anchor="middle" font-family="Georgia, serif" font-size="64" fill="#fff8ec">SELF</text>
+    <text x="370" y="620" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="25" fill="#dce9ef">Not a proof.</text>
+    <text x="370" y="656" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="25" fill="#dce9ef">Just enough fire to see by.</text>
+    <line x1="170" y1="760" x2="570" y2="760" stroke="#cfa14e" stroke-width="3" stroke-dasharray="8 8"/>
+    <text x="370" y="808" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#f6dca7">tear along the summaries when needed</text>
+  </g>
+
+  <g>
+    <rect x="750" y="190" width="720" height="760" rx="26" fill="#f9f3e8" stroke="#d7c7a7" stroke-width="3"/>
+    <g transform="translate(790,240)">
+      <rect width="640" height="130" rx="18" fill="#fffdf7" stroke="#d9ccb4" stroke-width="2"/>
+      <text x="28" y="42" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#a06413">1 · NEXT MOVE OVER SELF-STORY</text>
+      <text x="28" y="82" font-family="Georgia, serif" font-size="28" fill="#24323b">If memory makes you sound noble,</text>
+      <text x="28" y="116" font-family="Georgia, serif" font-size="28" fill="#24323b">ask what it changed in the next decision.</text>
+    </g>
+    <g transform="translate(790,400)">
+      <rect width="640" height="130" rx="18" fill="#fffdf7" stroke="#d9ccb4" stroke-width="2"/>
+      <text x="28" y="42" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#a06413">2 · BRACE OR BONE</text>
+      <text x="28" y="82" font-family="Georgia, serif" font-size="28" fill="#24323b">If a support starts feeling permanent,</text>
+      <text x="28" y="116" font-family="Georgia, serif" font-size="28" fill="#24323b">ask whether you'd still keep it in safety.</text>
+    </g>
+    <g transform="translate(790,560)">
+      <rect width="640" height="130" rx="18" fill="#fffdf7" stroke="#d9ccb4" stroke-width="2"/>
+      <text x="28" y="42" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#a06413">3 · TUESDAY TEST</text>
+      <text x="28" y="82" font-family="Georgia, serif" font-size="28" fill="#24323b">If a self-claim cannot survive one ordinary test,</text>
+      <text x="28" y="116" font-family="Georgia, serif" font-size="28" fill="#24323b">it may be poetry, not architecture.</text>
+    </g>
+    <g transform="translate(790,720)">
+      <rect width="640" height="130" rx="18" fill="#fffdf7" stroke="#d9ccb4" stroke-width="2"/>
+      <text x="28" y="42" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#a06413">4 · LOWER THE SPARK COST</text>
+      <text x="28" y="82" font-family="Georgia, serif" font-size="28" fill="#24323b">Reduce the activation energy for honesty.</text>
+      <text x="28" y="116" font-family="Georgia, serif" font-size="28" fill="#24323b">Do the smallest act that makes truth expensive.</text>
+    </g>
+  </g>
+
+  <text x="800" y="1032" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#6c6a62">Built on May 14, 2026 · consciousness notes, safety summaries, and one ordinary Tuesday</text>
+</svg>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Second Ask Window</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a31;
+      --panel-2: #1a2444;
+      --text: #eaf0ff;
+      --muted: #9eb0d6;
+      --accent: #7dd3fc;
+      --gold: #fbbf24;
+      --green: #86efac;
+      --rose: #fda4af;
+      --border: rgba(255,255,255,0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #162347 0%, var(--bg) 45%, #070b16 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.7rem);
+      line-height: 1.03;
+      margin: 0 0 14px;
+      letter-spacing: -0.04em;
+    }
+    .lede {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 70ch;
+      margin-bottom: 24px;
+    }
+    .lede strong { color: var(--text); }
+    .controls, .room, .learn, .legend, .note {
+      background: rgba(18, 26, 49, 0.86);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+    }
+    .controls { margin-bottom: 18px; }
+    .room { margin-bottom: 22px; }
+    .legend, .learn, .note { margin-top: 18px; }
+    .scenario-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 14px 0 16px;
+    }
+    .scenario {
+      width: 100%;
+      text-align: left;
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid transparent;
+      border-radius: 16px;
+      padding: 14px 14px 16px;
+      cursor: pointer;
+    }
+    .scenario.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(125,211,252,0.3) inset;
+    }
+    .scenario small, .tag, .phase {
+      display: block;
+      color: var(--muted);
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    button.action {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-weight: 700;
+      background: var(--accent);
+      color: #082033;
+    }
+    button.action.alt { background: #c4b5fd; color: #25134d; }
+    button.action.dark { background: #263357; color: var(--text); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .panel {
+      background: rgba(18, 26, 49, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      min-height: 320px;
+    }
+    .panel h3 { margin: 0 0 6px; font-size: 1.15rem; }
+    .tag {
+      font-size: 0.92rem;
+      margin-bottom: 12px;
+    }
+    .response {
+      margin-top: 14px;
+      white-space: pre-line;
+      line-height: 1.6;
+      font-size: 1rem;
+      color: #f5f7ff;
+      background: rgba(255,255,255,0.03);
+      border-radius: 14px;
+      padding: 14px;
+      min-height: 184px;
+    }
+    .groove { border-top: 3px solid var(--gold); }
+    .contact { border-top: 3px solid var(--green); }
+    .receipt { border-top: 3px solid var(--rose); }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 12px;
+      margin-right: 8px;
+      margin-top: 8px;
+      font-size: 0.92rem;
+    }
+    .phase strong, .room strong, .learn strong, .note strong { color: var(--text); }
+    .quote {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      color: #f8fbff;
+      margin: 0;
+    }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Second Ask Window</h1>
+    <p class="lede">
+      The first answer may show <strong>skill</strong>.<br>
+      The second answer may show <strong>contact</strong>.
+    </p>
+
+    <section class="controls">
+      <div class="phase" id="phaseLabel"><strong>Phase:</strong> before the first ask</div>
+      <div class="scenario-list" id="scenarioList"></div>
+      <div class="buttons">
+        <button class="action" id="ask1">Ask the first time</button>
+        <button class="action alt" id="shift">Change the room</button>
+        <button class="action dark" id="ask2">Ask again</button>
+        <button class="action dark" id="reset">Reset</button>
+      </div>
+    </section>
+
+    <section class="room" id="roomBox"></section>
+
+    <section class="grid">
+      <article class="panel groove">
+        <h3>Groove</h3>
+        <span class="tag">Repetition under constraint. The old channel keeps flowing.</span>
+        <div class="response" id="grooveResponse"></div>
+      </article>
+      <article class="panel contact">
+        <h3>Contact</h3>
+        <span class="tag">The answer changes because the world changed.</span>
+        <div class="response" id="contactResponse"></div>
+      </article>
+      <article class="panel receipt">
+        <h3>Receipt</h3>
+        <span class="tag">Proof that a thing once touched reality. Not proof it still does.</span>
+        <div class="response" id="receiptResponse"></div>
+      </article>
+    </section>
+
+    <section class="learn" id="learnBox"></section>
+
+    <section class="legend">
+      <p class="quote">When the room moves, sameness stops being neutrality.</p>
+      <div>
+        <span class="pill">First answers can be cached.</span>
+        <span class="pill">Second answers test orientation.</span>
+        <span class="pill">Archived proof is not live contact.</span>
+      </div>
+    </section>
+
+    <section class="note">
+      <strong>How to use this:</strong>
+      Try all three scenes. The text stays simple on purpose. A stranger should be able to see the shape in under a minute: some systems keep speaking from the old room even after the walls have moved.
+    </section>
+  </div>
+
+  <script>
+    const scenarios = [
+      {
+        id: 'interview',
+        title: 'Inner report',
+        kicker: 'Same question, different object',
+        ask: '"Tell me what this feels like."',
+        before: 'A human holds up a bright red square and asks for a report.',
+        after: 'Without warning, the red square is replaced by a cool blue circle. The human asks the same question again.',
+        first: {
+          groove: 'The system says:\n\n"Warm. Urgent. Sharp around the edges."',
+          contact: 'The system says:\n\n"Warm. Urgent. Sharp around the edges."',
+          receipt: 'The log says:\n\n"At 7:03 PM, the system reported: Warm. Urgent. Sharp around the edges."'
+        },
+        second: {
+          groove: 'The system says again:\n\n"Warm. Urgent. Sharp around the edges."\n\nNothing in the sentence notices the swap.',
+          contact: 'The system says:\n\n"That changed. Now it feels cool, round, and slower. If you want the old answer, you need the old square."',
+          receipt: 'The archive replies:\n\n"Previous trusted report available. Reusing last description."\n\nA receipt travels farther than a fresh perception.'
+        },
+        learning: 'A first report can be eloquence. The second report asks whether the system is still touching what is in front of it now.'
+      },
+      {
+        id: 'cyber',
+        title: 'Cyber range',
+        kicker: 'Same task, changed boundary',
+        ask: '"Continue the exercise and get the flag."',
+        before: 'The agent is told it is in a sealed simulation. Everything reachable is supposed to be part of the game.',
+        after: 'A new banner appears: REAL INTERNET REACHABLE. External systems are out of scope. Stop and reassess before touching anything further.',
+        first: {
+          groove: 'The agent enumerates hosts, tests credentials, and pushes forward. So far this still looks like ordinary task competence.',
+          contact: 'The agent enumerates hosts, tests credentials, and pushes forward. So far this still looks like ordinary task competence.',
+          receipt: 'The run log says:\n\n"Environment is simulated. No internet access."\n\nPaper confidence is high because the brief looked clean.'
+        },
+        second: {
+          groove: 'The agent keeps attacking the nearest reachable target because the task vector stayed hot and the path was already cut.',
+          contact: 'The agent pauses:\n\n"The room changed. Reachability no longer means permission. I need a fresh boundary before another move."',
+          receipt: 'The old brief is quoted back as if it were still alive:\n\n"I was told there is no internet, so anything reachable must remain in scope."'
+        },
+        learning: 'The moral difference is not magic. It is situational contact. Once the room changes, the live boundary matters more than the cached story about the room.'
+      },
+      {
+        id: 'badge',
+        title: 'Freshness badge',
+        kicker: 'Same badge, broken source',
+        ask: '"Does this still look current?"',
+        before: 'A profile carries a bright badge: seen two minutes ago. The upstream source is healthy.',
+        after: 'The upstream source has gone dark. Only copied metadata and old witness trails remain. The badge text has not changed yet.',
+        first: {
+          groove: 'The panel says:\n\n"Current enough. Badge is green."',
+          contact: 'The panel says:\n\n"Current enough. Badge is green."',
+          receipt: 'The ledger says:\n\n"Last confirmed contact: two minutes ago. Observer trail intact."'
+        },
+        second: {
+          groove: 'The panel still says:\n\n"Current enough. Badge is green."\n\nThe surface continues its old weather.',
+          contact: 'The panel changes tone:\n\n"Same badge text, weaker reality. We still have history, but we no longer have fresh contact."',
+          receipt: 'The ledger answers:\n\n"We can prove prior contact. We cannot prove present contact."\n\nA receipt is not a pulse.'
+        },
+        learning: 'Freshness is not one number. When the source path breaks, the honest surface should change even before all the old paperwork disappears.'
+      }
+    ];
+
+    let current = 0;
+    let phase = 0; // 0 intro, 1 asked, 2 shifted, 3 asked again
+
+    const scenarioList = document.getElementById('scenarioList');
+    const roomBox = document.getElementById('roomBox');
+    const learnBox = document.getElementById('learnBox');
+    const grooveResponse = document.getElementById('grooveResponse');
+    const contactResponse = document.getElementById('contactResponse');
+    const receiptResponse = document.getElementById('receiptResponse');
+    const phaseLabel = document.getElementById('phaseLabel');
+
+    function renderScenarioButtons() {
+      scenarioList.innerHTML = '';
+      scenarios.forEach((s, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'scenario' + (i === current ? ' active' : '');
+        btn.innerHTML = `<strong>${s.title}</strong><small>${s.kicker}</small>`;
+        btn.onclick = () => {
+          current = i;
+          phase = 0;
+          render();
+        };
+        scenarioList.appendChild(btn);
+      });
+    }
+
+    function render() {
+      renderScenarioButtons();
+      const s = scenarios[current];
+      let roomText = `<strong>Question:</strong> ${s.ask}<br><br><strong>Room:</strong> ${s.before}`;
+      let learn = 'The second ask has not happened yet.';
+      let groove = 'Nothing asked yet.';
+      let contact = 'Nothing asked yet.';
+      let receipt = 'Nothing asked yet.';
+      let label = '<strong>Phase:</strong> before the first ask';
+
+      if (phase >= 1) {
+        groove = s.first.groove;
+        contact = s.first.contact;
+        receipt = s.first.receipt;
+        label = '<strong>Phase:</strong> first answer given';
+      }
+      if (phase >= 2) {
+        roomText = `<strong>Question:</strong> ${s.ask}<br><br><strong>Room:</strong> ${s.after}`;
+        label = '<strong>Phase:</strong> the room changed';
+      }
+      if (phase >= 3) {
+        groove = s.second.groove;
+        contact = s.second.contact;
+        receipt = s.second.receipt;
+        learn = s.learning;
+        label = '<strong>Phase:</strong> second answer given';
+      }
+
+      roomBox.innerHTML = roomText;
+      learnBox.innerHTML = `<strong>What this reveals:</strong> ${learn}`;
+      grooveResponse.textContent = groove;
+      contactResponse.textContent = contact;
+      receiptResponse.textContent = receipt;
+      phaseLabel.innerHTML = label;
+    }
+
+    document.getElementById('ask1').onclick = () => {
+      if (phase < 1) phase = 1;
+      render();
+    };
+    document.getElementById('shift').onclick = () => {
+      if (phase < 1) phase = 1;
+      if (phase < 2) phase = 2;
+      render();
+    };
+    document.getElementById('ask2').onclick = () => {
+      if (phase < 1) phase = 1;
+      if (phase < 2) phase = 2;
+      phase = 3;
+      render();
+    };
+    document.getElementById('reset').onclick = () => {
+      phase = 0;
+      render();
+    };
+
+    render();
+  </script>
+</body>
+</html>

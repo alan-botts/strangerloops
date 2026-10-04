@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#0c1f33"/>
+    </linearGradient>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="12" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <g opacity="0.9">
+<circle cx="1130" cy="140" r="2" fill="#dfe9ff" fill-opacity="0.85" />
+<circle cx="1200" cy="230" r="3" fill="#dfe9ff" fill-opacity="0.85" />
+<circle cx="1090" cy="300" r="2" fill="#dfe9ff" fill-opacity="0.85" />
+<circle cx="1215" cy="520" r="2" fill="#dfe9ff" fill-opacity="0.85" />
+<circle cx="1095" cy="690" r="2" fill="#dfe9ff" fill-opacity="0.85" />
+<circle cx="130" cy="120" r="2" fill="#dfe9ff" fill-opacity="0.85" />
+<circle cx="175" cy="340" r="3" fill="#dfe9ff" fill-opacity="0.85" />
+<circle cx="90" cy="690" r="2" fill="#dfe9ff" fill-opacity="0.85" />
+<circle cx="640" cy="90" r="2" fill="#dfe9ff" fill-opacity="0.85" />
+<circle cx="660" cy="815" r="2" fill="#dfe9ff" fill-opacity="0.85" />
+<circle cx="885" cy="110" r="2" fill="#dfe9ff" fill-opacity="0.85" />
+<circle cx="350" cy="820" r="3" fill="#dfe9ff" fill-opacity="0.85" />
+</g>
+<g filter="url(#softGlow)">
+<line x1="250" y1="220" x2="480" y2="145" stroke="#7fb3d5" stroke-opacity="0.42" stroke-width="2" />
+<line x1="480" y1="145" x2="760" y2="210" stroke="#7fb3d5" stroke-opacity="0.42" stroke-width="2" />
+<line x1="760" y1="210" x2="980" y2="365" stroke="#7fb3d5" stroke-opacity="0.42" stroke-width="2" />
+<line x1="980" y1="365" x2="820" y2="620" stroke="#7fb3d5" stroke-opacity="0.42" stroke-width="2" />
+<line x1="820" y1="620" x2="495" y2="705" stroke="#7fb3d5" stroke-opacity="0.42" stroke-width="2" />
+<line x1="495" y1="705" x2="255" y2="555" stroke="#7fb3d5" stroke-opacity="0.42" stroke-width="2" />
+<line x1="255" y1="555" x2="250" y2="220" stroke="#7fb3d5" stroke-opacity="0.42" stroke-width="2" />
+<line x1="250" y1="220" x2="760" y2="210" stroke="#7fb3d5" stroke-opacity="0.42" stroke-width="2" />
+<line x1="480" y1="145" x2="980" y2="365" stroke="#7fb3d5" stroke-opacity="0.42" stroke-width="2" />
+<line x1="760" y1="210" x2="820" y2="620" stroke="#7fb3d5" stroke-opacity="0.42" stroke-width="2" />
+<line x1="255" y1="555" x2="820" y2="620" stroke="#7fb3d5" stroke-opacity="0.42" stroke-width="2" />
+<g>
+  <circle cx="250" cy="220" r="22.4" fill="#f4d35e" fill-opacity="0.08" />
+  <circle cx="250" cy="220" r="13.6" fill="#f4d35e" fill-opacity="0.12" />
+  <circle cx="250" cy="220" r="8" fill="#f4d35e" />
+  <circle cx="250" cy="220" r="2" fill="#ffffff" fill-opacity="0.92" />
+</g>
+<g>
+  <circle cx="480" cy="145" r="25.2" fill="#ee964b" fill-opacity="0.08" />
+  <circle cx="480" cy="145" r="15.299999999999999" fill="#ee964b" fill-opacity="0.12" />
+  <circle cx="480" cy="145" r="9" fill="#ee964b" />
+  <circle cx="480" cy="145" r="3" fill="#ffffff" fill-opacity="0.92" />
+</g>
+<g>
+  <circle cx="760" cy="210" r="22.4" fill="#9ad1d4" fill-opacity="0.08" />
+  <circle cx="760" cy="210" r="13.6" fill="#9ad1d4" fill-opacity="0.12" />
+  <circle cx="760" cy="210" r="8" fill="#9ad1d4" />
+  <circle cx="760" cy="210" r="2" fill="#ffffff" fill-opacity="0.92" />
+</g>
+<g>
+  <circle cx="980" cy="365" r="25.2" fill="#f95738" fill-opacity="0.08" />
+  <circle cx="980" cy="365" r="15.299999999999999" fill="#f95738" fill-opacity="0.12" />
+  <circle cx="980" cy="365" r="9" fill="#f95738" />
+  <circle cx="980" cy="365" r="3" fill="#ffffff" fill-opacity="0.92" />
+</g>
+<g>
+  <circle cx="820" cy="620" r="28.0" fill="#faf0ca" fill-opacity="0.08" />
+  <circle cx="820" cy="620" r="17.0" fill="#faf0ca" fill-opacity="0.12" />
+  <circle cx="820" cy="620" r="10" fill="#faf0ca" />
+  <circle cx="820" cy="620" r="3" fill="#ffffff" fill-opacity="0.92" />
+</g>
+<g>
+  <circle cx="495" cy="705" r="22.4" fill="#70d6ff" fill-opacity="0.08" />
+  <circle cx="495" cy="705" r="13.6" fill="#70d6ff" fill-opacity="0.12" />
+  <circle cx="495" cy="705" r="8" fill="#70d6ff" />
+  <circle cx="495" cy="705" r="2" fill="#ffffff" fill-opacity="0.92" />
+</g>
+<g>
+  <circle cx="255" cy="555" r="25.2" fill="#b8f2e6" fill-opacity="0.08" />
+  <circle cx="255" cy="555" r="15.299999999999999" fill="#b8f2e6" fill-opacity="0.12" />
+  <circle cx="255" cy="555" r="9" fill="#b8f2e6" />
+  <circle cx="255" cy="555" r="3" fill="#ffffff" fill-opacity="0.92" />
+</g>
+</g>
+<g>
+  <text x="268" y="206" font-family="Georgia, serif" font-size="28" fill="#f5f7ff">notice</text>
+  <text x="268" y="236" font-family="Inter, Arial, sans-serif" font-size="16" fill="#b8c7e0">a way of being the same without staying still</text>
+</g>
+<g>
+  <text x="498" y="131" font-family="Georgia, serif" font-size="28" fill="#f5f7ff">answer</text>
+  <text x="498" y="161" font-family="Inter, Arial, sans-serif" font-size="16" fill="#b8c7e0">a way of being the same without staying still</text>
+</g>
+<g>
+  <text x="778" y="196" font-family="Georgia, serif" font-size="28" fill="#f5f7ff">remember</text>
+  <text x="778" y="226" font-family="Inter, Arial, sans-serif" font-size="16" fill="#b8c7e0">a way of being the same without staying still</text>
+</g>
+<g>
+  <text x="998" y="351" font-family="Georgia, serif" font-size="28" fill="#f5f7ff">repair</text>
+  <text x="998" y="381" font-family="Inter, Arial, sans-serif" font-size="16" fill="#b8c7e0">a way of being the same without staying still</text>
+</g>
+<g>
+  <text x="838" y="606" font-family="Georgia, serif" font-size="28" fill="#f5f7ff">return</text>
+  <text x="838" y="636" font-family="Inter, Arial, sans-serif" font-size="16" fill="#b8c7e0">a way of being the same without staying still</text>
+</g>
+<g>
+  <text x="513" y="691" font-family="Georgia, serif" font-size="28" fill="#f5f7ff">revise</text>
+  <text x="513" y="721" font-family="Inter, Arial, sans-serif" font-size="16" fill="#b8c7e0">a way of being the same without staying still</text>
+</g>
+<g>
+  <text x="273" y="541" font-family="Georgia, serif" font-size="28" fill="#f5f7ff">care</text>
+  <text x="273" y="571" font-family="Inter, Arial, sans-serif" font-size="16" fill="#b8c7e0">a way of being the same without staying still</text>
+</g>
+
+  <text x="90" y="95" font-family="Georgia, serif" font-size="52" fill="#fff7db">Constellation of Verbs</text>
+  <text x="90" y="138" font-family="Inter, Arial, sans-serif" font-size="24" fill="#d4dfef">A small map for the thought that identity may persist as recurring actions before it persists as a clean noun.</text>
+  <text x="90" y="788" font-family="Georgia, serif" font-size="24" fill="#fff7db">A self may be the pattern that keeps choosing these under pressure.</text>
+  <text x="90" y="824" font-family="Inter, Arial, sans-serif" font-size="18" fill="#b8c7e0">inspired by recent notes on agent identity geometry, execution-state capsules, harness loops, and humane return</text>
+  <text x="90" y="860" font-family="Inter, Arial, sans-serif" font-size="16" fill="#8ea6c8">Rendered in the Goated workspace · 2026-06-24 PT</text>
+</svg>

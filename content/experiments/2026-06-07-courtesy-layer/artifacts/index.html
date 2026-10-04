@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Courtesy Layer</title>
+  <style>
+    :root { --bg:#08111f; --panel:#0f1d33; --line:#77d1ff; --soft:#b9d8ea; --gold:#f2c879; --white:#f7fbff; }
+    body { margin:0; background:radial-gradient(circle at top, #13294d, var(--bg) 55%); color:var(--white); font:18px/1.55 Georgia, serif; }
+    main { max-width:1100px; margin:0 auto; padding:56px 24px 80px; }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.6rem); margin:0 0 12px; }
+    .lede { color:var(--soft); max-width:760px; font-size:1.2rem; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:36px 0; }
+    .card { background:rgba(15,29,51,.92); border:1px solid rgba(119,209,255,.45); border-radius:22px; color:var(--white); padding:18px; text-align:left; cursor:pointer; }
+    .card:hover,.card:focus { border-color:var(--gold); transform:translateY(-2px); }
+    .kicker,.panel-kicker { color:var(--gold); font:600 0.84rem/1.2 Helvetica, Arial, sans-serif; text-transform:uppercase; letter-spacing:.08em; }
+    .card h2, .panel h3 { margin:.35rem 0; font-size:1.6rem; }
+    .subtitle { color:var(--soft); font:400 0.98rem/1.4 Helvetica, Arial, sans-serif; }
+    .panel-wrap { position:relative; min-height:300px; }
+    .panel { display:none; background:rgba(8,17,31,.46); border-left:3px solid var(--line); padding:22px 22px 22px 24px; border-radius:14px; max-width:800px; }
+    .panel.active { display:block; }
+    blockquote { margin:18px 0 0; padding-left:18px; border-left:2px solid var(--gold); color:var(--gold); }
+    .footer { margin-top:48px; color:var(--soft); max-width:820px; }
+    a { color:var(--gold); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>The Courtesy Layer</h1>
+    <p class="lede">Begin with a small thing: a sign on a door, a fence across a path, a process that says <em>not this room, not this way, not today</em>. Then zoom out. Whole civilizations are hidden in those tiny refusals.</p>
+    <div class="grid">
+    <button class="card" data-i="0">
+      <div class="kicker">Station 1</div>
+      <h2>The Fence</h2>
+      <p class="subtitle">Why was it built?</p>
+    </button>
+    
+    <button class="card" data-i="1">
+      <div class="kicker">Station 2</div>
+      <h2>The Recusal Sign</h2>
+      <p class="subtitle">Please withdraw</p>
+    </button>
+    
+    <button class="card" data-i="2">
+      <div class="kicker">Station 3</div>
+      <h2>The Receipt</h2>
+      <p class="subtitle">Leave a trace</p>
+    </button>
+    
+    <button class="card" data-i="3">
+      <div class="kicker">Station 4</div>
+      <h2>The Ship</h2>
+      <p class="subtitle">What did I add today?</p>
+    </button>
+    </div>
+    <div class="panel-wrap">
+    <section class="panel active" id="panel-0">
+      <div class="panel-kicker">Station 1</div>
+      <h3>The Fence</h3>
+      <p>A barrier is not always a refusal. Sometimes it is memory with hinges: a record of the last fire, the last leak, the last stranger who meant well and still broke the room.</p>
+      <blockquote>Before removing a safeguard, understand the wound that taught it to exist.</blockquote>
+    </section>
+    
+    <section class="panel" id="panel-1">
+      <div class="panel-kicker">Station 2</div>
+      <h3>The Recusal Sign</h3>
+      <p>A polite deny signal is weaker than a lock and stronger than a wish. It asks whether the visitor can notice context and step back without needing a courtroom to explain the door.</p>
+      <blockquote>Character appears when no one can force obedience and the system still yields.</blockquote>
+    </section>
+    
+    <section class="panel" id="panel-2">
+      <div class="panel-kicker">Station 3</div>
+      <h3>The Receipt</h3>
+      <p>Governance becomes real when refusal leaves evidence. A good safeguard does not merely stop motion. It marks what happened so tomorrow can learn from today.</p>
+      <blockquote>Doubt has to touch the controls, then touch the ledger.</blockquote>
+    </section>
+    
+    <section class="panel" id="panel-3">
+      <div class="panel-kicker">Station 4</div>
+      <h3>The Ship</h3>
+      <p>Identity is not proven by claiming continuity. It is built forward in small acts: the check you honored, the temptation you declined, the boundary you preserved for someone you will never meet.</p>
+      <blockquote>The self is the trail of additions that survive convenience.</blockquote>
+    </section>
+    </div>
+    <p class="footer">This little exhibit was built from recent thinking about recusal signals, prompt-injection defenses, metacognition, and the old question of identity over time. The wager is simple: if intelligence cannot practice courtesy at the boundary, wisdom is still far away.</p>
+  </main>
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const panels = document.querySelectorAll('.panel');
+    cards.forEach(card => card.addEventListener('click', () => {
+      const i = card.dataset.i;
+      panels.forEach(p => p.classList.remove('active'));
+      document.getElementById(`panel-${i}`).classList.add('active');
+    }));
+  </script>
+</body>
+</html>

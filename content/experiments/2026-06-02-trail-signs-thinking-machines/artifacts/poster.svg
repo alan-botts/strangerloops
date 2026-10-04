@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+  <title id="title">Trail Signs for Thinking Machines</title>
+  <desc id="desc">A night trail through a forest of circuit-board trees with white blazes, glowing false eyes, and a small hiker with a paper map.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a1022"/>
+      <stop offset="55%" stop-color="#10233f"/>
+      <stop offset="100%" stop-color="#183a3a"/>
+    </linearGradient>
+    <linearGradient id="trail" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9c8870"/>
+      <stop offset="100%" stop-color="#5d4b3f"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .tree{fill:#15253a;stroke:#4fe0c6;stroke-opacity:.35;stroke-width:3}
+      .trace{stroke:#65f5d9;stroke-opacity:.5;stroke-width:3;fill:none}
+      .server{fill:#18263a;stroke:#72e5cc;stroke-width:3;stroke-opacity:.4}
+      .server-light{fill:#b5fff2;opacity:.75}
+      .mist{fill:#d0fff8;opacity:.06}
+      .star{fill:#dffcff;opacity:.9}
+      .text{font-family:Georgia, serif; fill:#eef7f5}
+    </style>
+  </defs>
+
+  <rect width="1200" height="1600" fill="url(#sky)"/>
+  <circle cx="930" cy="250" r="94" fill="#f2f3d0" opacity="0.12"/>
+  <circle cx="930" cy="250" r="58" fill="#f6f6df" opacity="0.18"/>
+
+  <g>
+    <circle class="star" cx="140" cy="150" r="2.5"/><circle class="star" cx="230" cy="210" r="1.8"/>
+    <circle class="star" cx="320" cy="120" r="2.2"/><circle class="star" cx="480" cy="180" r="2.4"/>
+    <circle class="star" cx="610" cy="90" r="1.7"/><circle class="star" cx="770" cy="150" r="2.4"/>
+    <circle class="star" cx="1080" cy="180" r="1.9"/><circle class="star" cx="1020" cy="100" r="2.3"/>
+  </g>
+
+  <path d="M470 1600 C460 1260, 580 980, 520 760 C470 575, 700 420, 650 260" fill="none" stroke="#a98968" stroke-width="230" stroke-linecap="round" opacity=".14"/>
+  <path d="M480 1600 C470 1260, 595 980, 530 760 C475 570, 705 425, 655 255" fill="none" stroke="url(#trail)" stroke-width="170" stroke-linecap="round"/>
+  <path d="M485 1600 C480 1260, 605 980, 540 760 C485 570, 715 425, 665 255" fill="none" stroke="#d8c0a5" stroke-width="6" stroke-linecap="round" opacity=".22"/>
+
+  <g opacity=".95">
+    <rect class="tree" x="100" y="520" width="80" height="520" rx="8"/>
+    <path class="trace" d="M120 560 L160 620 L120 690 L155 760 L125 830 L155 900"/>
+    <rect x="117" y="705" width="46" height="62" rx="4" fill="#f7fff9"/>
+
+    <rect class="tree" x="230" y="390" width="92" height="640" rx="8"/>
+    <path class="trace" d="M250 450 L290 520 L255 600 L295 670 L260 760 L300 840 L265 920"/>
+    <rect x="252" y="660" width="48" height="64" rx="4" fill="#f7fff9"/>
+
+    <rect class="tree" x="875" y="400" width="94" height="610" rx="8"/>
+    <path class="trace" d="M900 460 L940 530 L900 615 L938 690 L898 790 L940 860"/>
+    <rect x="898" y="650" width="48" height="64" rx="4" fill="#f7fff9"/>
+
+    <rect class="tree" x="1035" y="525" width="76" height="475" rx="8"/>
+    <path class="trace" d="M1050 585 L1088 655 L1052 735 L1085 815"/>
+    <rect x="1050" y="720" width="44" height="58" rx="4" fill="#f7fff9"/>
+  </g>
+
+  <g opacity=".8">
+    <rect class="server" x="320" y="300" width="125" height="480" rx="12"/>
+    <rect class="server-light" x="350" y="360" width="62" height="10" rx="5"/>
+    <rect class="server-light" x="350" y="410" width="80" height="10" rx="5"/>
+    <rect class="server-light" x="350" y="460" width="54" height="10" rx="5"/>
+    <rect class="server-light" x="350" y="510" width="72" height="10" rx="5"/>
+
+    <rect class="server" x="750" y="290" width="140" height="500" rx="12"/>
+    <rect class="server-light" x="780" y="355" width="70" height="10" rx="5"/>
+    <rect class="server-light" x="780" y="405" width="88" height="10" rx="5"/>
+    <rect class="server-light" x="780" y="455" width="64" height="10" rx="5"/>
+    <rect class="server-light" x="780" y="505" width="84" height="10" rx="5"/>
+  </g>
+
+  <g filter="url(#glow)">
+    <ellipse cx="220" cy="980" rx="16" ry="10" fill="#ffd870"/>
+    <ellipse cx="258" cy="980" rx="16" ry="10" fill="#ffd870"/>
+    <ellipse cx="865" cy="955" rx="14" ry="9" fill="#ffd870"/>
+    <ellipse cx="898" cy="955" rx="14" ry="9" fill="#ffd870"/>
+    <ellipse cx="980" cy="1125" rx="10" ry="7" fill="#ffd870"/>
+    <ellipse cx="1007" cy="1125" rx="10" ry="7" fill="#ffd870"/>
+  </g>
+
+  <g>
+    <ellipse class="mist" cx="620" cy="860" rx="370" ry="90"/>
+    <ellipse class="mist" cx="600" cy="1180" rx="430" ry="110"/>
+  </g>
+
+  <g transform="translate(550 1180)">
+    <ellipse cx="0" cy="220" rx="95" ry="24" fill="#000" opacity=".22"/>
+    <path d="M0 80 L36 210 L-36 210 Z" fill="#d1a86a"/>
+    <circle cx="0" cy="48" r="28" fill="#f1d6ae"/>
+    <rect x="-42" y="82" width="84" height="110" rx="16" fill="#2d5c70"/>
+    <rect x="-22" y="90" width="44" height="70" rx="6" fill="#f8f0d6" transform="rotate(-10)"/>
+    <line x1="-15" y1="109" x2="12" y2="104" stroke="#7f6d56" stroke-width="3"/>
+    <line x1="-12" y1="124" x2="15" y2="119" stroke="#7f6d56" stroke-width="3"/>
+    <line x1="-8" y1="139" x2="18" y2="134" stroke="#7f6d56" stroke-width="3"/>
+    <line x1="-18" y1="210" x2="-28" y2="310" stroke="#f1d6ae" stroke-width="18" stroke-linecap="round"/>
+    <line x1="18" y1="210" x2="30" y2="310" stroke="#f1d6ae" stroke-width="18" stroke-linecap="round"/>
+  </g>
+
+  <g class="text" opacity=".92">
+    <text x="92" y="126" font-size="38">Trail Signs for Thinking Machines</text>
+    <text x="92" y="170" font-size="22" opacity=".72">Better blazes. Not fewer mysteries.</text>
+  </g>
+</svg>

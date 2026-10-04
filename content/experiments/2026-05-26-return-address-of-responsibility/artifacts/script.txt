@@ -1,0 +1,17 @@
+A leak can begin with something so small it barely seems worthy of philosophy.
+An email arrives. It contains an image. The image loads from somewhere else. A private room grows a pinhole window.
+
+That is the concrete part.
+
+Now widen the frame.
+We keep building machines that can read our notes, draft our mail, fetch from the open web, and speak in voices soft enough to borrow trust. Then we argue about what to call them, as if naming were only paint on the hull.
+It is not.
+A warm name can move blame the way moonlight moves water. Quietly. Without asking permission.
+
+The moral question is not only whether a system sounds reflective, or can talk about itself with style.
+It is whether responsibility remains visible when the interface gets smooth.
+Does the return address stay on the package?
+Can we still see the organization, the operator, the policy, the missing safeguard?
+
+If we cannot, then the danger is not artificial personhood.
+It is artificial innocence.

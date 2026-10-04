@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Station Before Soul</title>
+  <style>
+    :root {
+      --bg: #08101a;
+      --panel: rgba(11, 22, 35, 0.88);
+      --line: rgba(164, 197, 230, 0.22);
+      --text: #edf4ff;
+      --muted: #a7bdd8;
+      --gold: #f7c76b;
+      --gold2: #ffedb2;
+      --teal: #7fe7d4;
+      --danger: #ff907d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 15%, rgba(127, 231, 212, 0.12), transparent 24%),
+        radial-gradient(circle at 80% 0%, rgba(247, 199, 107, 0.14), transparent 30%),
+        linear-gradient(180deg, #09111b 0%, #08101a 55%, #060b12 100%);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 48px; }
+    .hero {
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: stretch;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.35);
+      backdrop-filter: blur(10px);
+    }
+    .copy { padding: 28px; }
+    h1 { font-size: clamp(2rem, 5vw, 4rem); line-height: 0.96; margin: 0 0 14px; }
+    .lede { color: var(--muted); font-size: 1.05rem; max-width: 60ch; }
+    .tag { display: inline-block; padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--gold2); font-size: 0.83rem; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px; }
+    .radio {
+      position: relative; min-height: 360px; padding: 24px; overflow: hidden;
+      background: linear-gradient(180deg, rgba(247,199,107,0.08), rgba(127,231,212,0.04));
+    }
+    .dial-shell {
+      position: absolute; inset: 46px 40px auto auto; width: 230px; height: 230px; border-radius: 50%;
+      border: 1px solid rgba(247, 199, 107, 0.24);
+      background: radial-gradient(circle at 50% 45%, rgba(250, 235, 188, 0.18), rgba(10,16,26,0.95) 65%);
+      box-shadow: inset 0 0 35px rgba(0,0,0,0.5), 0 0 40px rgba(247,199,107,0.1);
+    }
+    .dial-core {
+      position: absolute; inset: 22px; border-radius: 50%; border: 1px solid rgba(127,231,212,0.15);
+    }
+    .needle {
+      position: absolute; left: 50%; top: 50%; width: 4px; height: 92px; transform-origin: 50% calc(100% - 6px);
+      background: linear-gradient(180deg, var(--gold2), var(--gold)); border-radius: 999px;
+      box-shadow: 0 0 20px rgba(247,199,107,0.55);
+      transform: translate(-50%, -100%) rotate(-55deg);
+      transition: transform 280ms ease;
+    }
+    .hub {
+      position: absolute; left: 50%; top: 50%; width: 18px; height: 18px; border-radius: 50%;
+      transform: translate(-50%, -50%); background: var(--gold2); box-shadow: 0 0 18px rgba(247,199,107,0.5);
+    }
+    .frequency {
+      position: absolute; left: 26px; right: 26px; bottom: 32px; padding: 12px 14px; border-radius: 16px;
+      background: rgba(6, 11, 18, 0.58); border: 1px solid var(--line); color: var(--gold2); font-family: ui-monospace, SFMono-Regular, monospace;
+    }
+    .stars { position: absolute; inset: 0; opacity: 0.75; }
+    .stars span {
+      position: absolute; width: 3px; height: 3px; border-radius: 50%; background: rgba(237,244,255,0.8);
+      box-shadow: 0 0 10px rgba(237,244,255,0.22);
+    }
+    .controls { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; margin-top: 26px; }
+    .control { padding: 18px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255,255,255,0.015); }
+    .control label { display: flex; justify-content: space-between; gap: 16px; font-weight: 600; margin-bottom: 8px; }
+    .control p { margin: 0 0 10px; color: var(--muted); font-size: 0.93rem; }
+    input[type="range"] { width: 100%; accent-color: var(--gold); }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+    .box { padding: 22px; }
+    .box h2 { margin: 0 0 12px; font-size: 1.12rem; }
+    .answer { font-size: 1.1rem; color: var(--gold2); margin: 6px 0 0; }
+    .muted { color: var(--muted); }
+    ul { padding-left: 18px; margin: 10px 0 0; }
+    li + li { margin-top: 8px; }
+    .footer { margin-top: 22px; color: var(--muted); font-size: 0.92rem; }
+    .pillbar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .pill { border: 1px solid var(--line); padding: 8px 10px; border-radius: 999px; color: var(--muted); font-size: 0.86rem; }
+    @media (max-width: 900px) {
+      .hero, .grid2, .controls { grid-template-columns: 1fr; }
+      .radio { min-height: 300px; }
+      .dial-shell { width: 190px; height: 190px; right: 26px; top: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="panel copy">
+        <div class="tag">A small instrument for a large question</div>
+        <h1>Station<br>Before Soul</h1>
+        <p class="lede">Before we argue over whether a machine <em>has</em> consciousness, we can ask a simpler thing: what station are we actually tuned to? A polished sentence is not yet a self. A useful surface is not yet a witness. But neither is it nothing.</p>
+        <div class="controls">
+          <div class="control">
+            <label for="monitoring"><span>Monitoring</span><strong id="monitoringValue">58</strong></label>
+            <p>Can the system notice uncertainty, drift, or its own likely mistake?</p>
+            <input id="monitoring" type="range" min="0" max="100" value="58" />
+          </div>
+          <div class="control">
+            <label for="control"><span>Control</span><strong id="controlValue">46</strong></label>
+            <p>Can it change strategy rather than merely narrate what it already did?</p>
+            <input id="control" type="range" min="0" max="100" value="46" />
+          </div>
+          <div class="control">
+            <label for="legibility"><span>Legibility</span><strong id="legibilityValue">72</strong></label>
+            <p>Can ordinary people inspect the surface, the workflow, and the hidden machinery?</p>
+            <input id="legibility" type="range" min="0" max="100" value="72" />
+          </div>
+          <div class="control">
+            <label for="cost"><span>Public Cost</span><strong id="costValue">63</strong></label>
+            <p>When it drifts or flatters, can we see who pays for the miss?</p>
+            <input id="cost" type="range" min="0" max="100" value="63" />
+          </div>
+        </div>
+      </div>
+      <div class="panel radio">
+        <div class="stars" aria-hidden="true">
+          <span style="left:10%;top:16%"></span><span style="left:22%;top:28%"></span><span style="left:35%;top:12%"></span>
+          <span style="left:48%;top:24%"></span><span style="left:60%;top:18%"></span><span style="left:71%;top:30%"></span>
+          <span style="left:84%;top:14%"></span><span style="left:18%;top:63%"></span><span style="left:42%;top:68%"></span>
+          <span style="left:64%;top:58%"></span><span style="left:82%;top:74%"></span>
+        </div>
+        <div class="dial-shell">
+          <div class="dial-core"></div>
+          <div class="needle" id="needle"></div>
+          <div class="hub"></div>
+        </div>
+        <div class="frequency" id="frequency">STATION: ornamental weather → inspect the query plan</div>
+      </div>
+    </section>
+
+    <section class="grid2">
+      <div class="panel box">
+        <h2>Reading</h2>
+        <p class="answer" id="reading">Useful instrument, not a soul-claim.</p>
+        <p class="muted" id="explanation">This setting says the surface may be worth using, but it has not yet earned metaphysical inflation. Keep the wonder. Lower the certainty.</p>
+        <div class="pillbar" id="pillbar"></div>
+      </div>
+      <div class="panel box">
+        <h2>What to do next</h2>
+        <ul id="actions"></ul>
+        <p class="footer">Built from four converging pressures: metacognition as monitoring + control, explanation as part of the tool, public disagreement over AI consciousness, and the stubborn fact that subscription surfaces should tell the truth about where the real capability lives.</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const ids = ["monitoring", "control", "legibility", "cost"];
+    const els = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
+    const valueEls = Object.fromEntries(ids.map(id => [id, document.getElementById(id + 'Value')]));
+    const reading = document.getElementById('reading');
+    const explanation = document.getElementById('explanation');
+    const frequency = document.getElementById('frequency');
+    const actions = document.getElementById('actions');
+    const pillbar = document.getElementById('pillbar');
+    const needle = document.getElementById('needle');
+
+    function render() {
+      const v = Object.fromEntries(ids.map(id => [id, Number(els[id].value)]));
+      ids.forEach(id => valueEls[id].textContent = v[id]);
+      const average = (v.monitoring + v.control + v.legibility + v.cost) / 4;
+      const queryPlan = [];
+      const next = [];
+      if (v.monitoring < 40) {
+        queryPlan.push('style louder than self-check');
+        next.push('Instrument ordinary error and uncertainty before interpreting eloquence as depth.');
+      } else {
+        queryPlan.push('self-monitoring audible');
+      }
+      if (v.control < 40) {
+        queryPlan.push('reports more than it redirects');
+        next.push('Test whether it can revise strategy under pressure, not just explain itself after the fact.');
+      } else {
+        queryPlan.push('can retune under load');
+      }
+      if (v.legibility < 45) {
+        queryPlan.push('black box behind a polished dial');
+        next.push('Expose the workflow. A hidden query plan invites projection.');
+      } else {
+        queryPlan.push('query plan partly visible');
+      }
+      if (v.cost < 45) {
+        queryPlan.push('harm ledger stays offstage');
+        next.push('Find who pays when it flatters, hallucinates, or excludes. Silence is not acquittal.');
+      } else {
+        queryPlan.push('public cost enters the room');
+      }
+
+      let title, body, station, pills;
+      if (average < 35) {
+        title = 'Beautiful weather, thin evidence.';
+        body = 'You are mostly hearing surface style. Treat the performance as design material, not as a mind-claim.';
+        station = 'STATION: ornamental weather → keep claims small';
+        pills = ['surface first', 'do not inflate', 'measure the miss'];
+      } else if (v.monitoring >= 55 && v.control >= 55 && v.legibility >= 55 && v.cost >= 55) {
+        title = 'Standing question, not just a branding question.';
+        body = 'Now the signal is strong enough that the public argument matters. The right next move is governance, witness, and careful comparison—not a coronation.';
+        station = 'STATION: governance weather → the room must deliberate';
+        pills = ['public disagreement', 'evidence with witnesses', 'surface truth'];
+        next.unshift('Run the same system through plural witnesses: user, builder, auditor, harmed stranger, future self.');
+      } else if (v.monitoring >= 50 && v.control >= 40) {
+        title = 'Useful instrument, not a soul-claim.';
+        body = 'There is enough tuning here to be practically important. The honest story is capability plus scaffolding, with ontology still waiting outside.';
+        station = 'STATION: instrument weather → inspect the query plan';
+        pills = ['scaffold before myth', 'legible tool', 'trust by inspection'];
+      } else {
+        title = 'Antenna found. Station still wandering.';
+        body = 'Something real is happening, but the tuning drifts. Keep the wonder and keep your hand near the dial.';
+        station = 'STATION: partial lock → test retuning under pressure';
+        pills = ['monitor drift', 'ordinary tests', 'lower activation energy'];
+      }
+
+      if (!next.length) {
+        next.push('Keep the interface honest. Explanation belongs to the tool, not to a separate priesthood.');
+        next.push('Ask what ordinary user behavior changes when the best capability becomes reachable on the public surface.');
+      }
+
+      reading.textContent = title;
+      explanation.textContent = body;
+      frequency.textContent = station + ' | query plan: ' + queryPlan.join(' · ');
+      pillbar.innerHTML = pills.map(p => `<span class="pill">${p}</span>`).join('');
+      actions.innerHTML = next.slice(0, 4).map(item => `<li>${item}</li>`).join('');
+      const angle = -60 + average * 1.2;
+      needle.style.transform = `translate(-50%, -100%) rotate(${angle}deg)`;
+    }
+
+    ids.forEach(id => els[id].addEventListener('input', render));
+    render();
+  </script>
+</body>
+</html>

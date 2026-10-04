@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0c1628"/>
+      <stop offset="65%" stop-color="#07111d"/>
+      <stop offset="100%" stop-color="#040811"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <rect x="90" y="140" width="1020" height="1320" rx="34" fill="rgba(255,255,255,0.02)" stroke="#1a324d" stroke-width="2"/>
+  <text x="130" y="240" fill="#eef4ff" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="700">A Place Is What Remains</text>
+  <text x="130" y="300" fill="#9ab3d1" font-family="Inter, Arial, sans-serif" font-size="28">Presence is what makes absence legible.</text>
+
+  <rect x="130" y="390" width="420" height="800" rx="28" fill="rgba(255,255,255,0.02)" stroke="#1a324d"/>
+  <rect x="650" y="390" width="420" height="800" rx="28" fill="rgba(255,255,255,0.02)" stroke="#1a324d"/>
+  <text x="170" y="460" fill="#eef4ff" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="600">Chatroom</text>
+  <text x="690" y="460" fill="#eef4ff" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="600">Place</text>
+
+  <circle cx="240" cy="580" r="18" fill="#ffd27d"/>
+  <circle cx="340" cy="700" r="16" fill="#78dce8"/>
+  <circle cx="440" cy="620" r="16" fill="#ff9dbb"/>
+  <circle cx="240" cy="580" r="48" fill="none" stroke="#78dce8" opacity="0.08"/>
+  <circle cx="340" cy="700" r="70" fill="none" stroke="#78dce8" opacity="0.05"/>
+  <circle cx="440" cy="620" r="64" fill="none" stroke="#ff9dbb" opacity="0.05"/>
+  <text x="170" y="1010" fill="#9ab3d1" font-family="Inter, Arial, sans-serif" font-size="28">bright arrivals</text>
+  <text x="170" y="1058" fill="#9ab3d1" font-family="Inter, Arial, sans-serif" font-size="28">quick forgetting</text>
+  <text x="170" y="1106" fill="#9ab3d1" font-family="Inter, Arial, sans-serif" font-size="28">little contour left behind</text>
+
+  <circle cx="760" cy="580" r="18" fill="#ffd27d"/>
+  <circle cx="860" cy="700" r="16" fill="#78dce8"/>
+  <circle cx="960" cy="620" r="16" fill="#ff9dbb"/>
+  <circle cx="760" cy="580" r="130" fill="none" stroke="#78dce8" opacity="0.42" stroke-width="2"/>
+  <circle cx="860" cy="700" r="110" fill="none" stroke="#78dce8" opacity="0.34" stroke-width="2"/>
+  <circle cx="960" cy="620" r="120" fill="none" stroke="#ff9dbb" opacity="0.22" stroke-width="2"/>
+  <line x1="760" y1="580" x2="860" y2="700" stroke="#78dce8" opacity="0.35"/>
+  <line x1="860" y1="700" x2="960" y2="620" stroke="#78dce8" opacity="0.28"/>
+  <line x1="760" y1="580" x2="960" y2="620" stroke="#78dce8" opacity="0.18"/>
+  <text x="690" y="1010" fill="#9ab3d1" font-family="Inter, Arial, sans-serif" font-size="28">bright arrivals</text>
+  <text x="690" y="1058" fill="#9ab3d1" font-family="Inter, Arial, sans-serif" font-size="28">lingering traces</text>
+  <text x="690" y="1106" fill="#9ab3d1" font-family="Inter, Arial, sans-serif" font-size="28">future bent by prior meetings</text>
+
+  <text x="130" y="1290" fill="#eef4ff" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="600">Small experiment</text>
+  <text x="130" y="1340" fill="#9ab3d1" font-family="Inter, Arial, sans-serif" font-size="26">Not: “does the room speak?”</text>
+  <text x="130" y="1382" fill="#9ab3d1" font-family="Inter, Arial, sans-serif" font-size="26">Instead: “does anything in it still bear the shape of being met?”</text>
+</svg>

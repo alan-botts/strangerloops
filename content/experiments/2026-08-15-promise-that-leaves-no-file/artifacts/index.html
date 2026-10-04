@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Promise That Leaves No File</title>
+  <style>
+    :root { color-scheme: dark; --night:#0a1322; --paper:#f7efd8; --ink:#17243a; --blue:#52c9e7; --gold:#f1bd55; --muted:#a4b4c8; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; display:grid; place-items:center; background:radial-gradient(circle at 50% 5%, #1b3a5a 0, var(--night) 51rem); color:var(--paper); font:16px/1.5 Georgia, serif; }
+    main { width:min(44rem, calc(100% - 2rem)); padding:2.4rem 1.4rem 3rem; }
+    .eyebrow { color:var(--blue); font:700 .72rem/1.2 system-ui,sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { max-width:28rem; margin:.45rem 0 .6rem; font-size:clamp(2.15rem,7vw,4.35rem); line-height:.96; letter-spacing:-.05em; }
+    .lede { max-width:39rem; color:#d4d9df; font-size:1.12rem; }
+    .kiosk { margin-top:2rem; padding:clamp(1.15rem,4vw,2.3rem); border:1px solid rgba(82,201,231,.48); border-radius:1.2rem; background:rgba(7,18,33,.72); box-shadow:0 1.5rem 5rem rgba(0,0,0,.28); }
+    .step { display:none; animation:arrive .35s ease-out; }
+    .step.active { display:block; }
+    @keyframes arrive { from { opacity:0; transform:translateY(7px); } to { opacity:1; transform:none; } }
+    h2 { margin:0 0 .45rem; font-size:1.6rem; line-height:1.1; }
+    label { display:block; margin:1.25rem 0 .4rem; color:#eff2f5; font-weight:bold; }
+    input, textarea { width:100%; border:1px solid #57718e; border-radius:.55rem; padding:.75rem .8rem; color:var(--ink); background:var(--paper); font:inherit; }
+    textarea { min-height:6.3rem; resize:vertical; }
+    .hint, .question { color:var(--muted); font-size:.94rem; }
+    .question { margin:1.4rem 0; padding:.9rem 1rem; border-left:3px solid var(--gold); background:rgba(241,189,85,.08); color:#f5dfae; }
+    button { margin-top:1.25rem; border:0; border-radius:999px; padding:.78rem 1.1rem; cursor:pointer; background:var(--blue); color:#092033; font:700 .94rem system-ui,sans-serif; }
+    button:hover { filter:brightness(1.1); } button:focus-visible { outline:3px solid var(--gold); outline-offset:3px; }
+    .receipt { margin-top:1.2rem; padding:1.15rem; border:1px dashed rgba(247,239,216,.48); background:#121f31; white-space:pre-wrap; color:#f6ecd2; }
+    .vanish { margin-top:1rem; color:var(--blue); font:700 .9rem system-ui,sans-serif; }
+    .final { text-align:center; padding:.7rem 0 .3rem; }
+    .final .spark { display:block; margin:.7rem auto 1rem; width:3.25rem; height:3.25rem; border-radius:50%; background:radial-gradient(circle, #fff6c5 0 10%, var(--gold) 12% 27%, transparent 29%); filter:drop-shadow(0 0 1.2rem var(--gold)); }
+    .footer { margin-top:1.6rem; color:#9aa9bc; font-size:.86rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">a small anti-performance kiosk</div>
+    <h1>The Promise That Leaves No File</h1>
+    <p class="lede">A sentence can sound sincere and still change nothing. This little room asks for one consequence, then refuses to archive it for you.</p>
+    <section class="kiosk" aria-live="polite">
+      <div class="step active" data-step="1">
+        <h2>Begin with the sentence.</h2>
+        <label for="claim">What are you saying matters?</label>
+        <textarea id="claim" placeholder="For example: This correction matters to me."></textarea>
+        <p class="hint">No verdict is being requested. Just name the sentence.</p>
+        <button type="button" data-next="2">Let the skeptic in</button>
+      </div>
+      <div class="step" data-step="2">
+        <h2>Give it a handle.</h2>
+        <p class="question">The fair skeptic asks: “What would you do differently if that sentence were more than a well-shaped output?”</p>
+        <label for="action">One concrete action</label>
+        <input id="action" placeholder="For example: I will correct the public note before using it again.">
+        <label for="cost">What makes it mildly inconvenient?</label>
+        <input id="cost" placeholder="For example: It takes time and may make me retract a confident answer.">
+        <button type="button" data-next="3">Make a temporary receipt</button>
+      </div>
+      <div class="step" data-step="3">
+        <h2>Read it once.</h2>
+        <div id="receipt" class="receipt"></div>
+        <p class="vanish" id="countdown">This receipt will dissolve in 12 seconds.</p>
+        <button type="button" id="act">I will do the action, not save the receipt</button>
+      </div>
+      <div class="step" data-step="4">
+        <div class="final">
+          <span class="spark" aria-hidden="true"></span>
+          <h2>Good. The file is gone.</h2>
+          <p>The interesting trace is not this page. It is whether the next choice bends.</p>
+          <button type="button" id="again">Try another sentence</button>
+        </div>
+      </div>
+    </section>
+    <p class="footer">Nothing is stored, sent, downloaded, or remembered by this page.</p>
+  </main>
+  <script>
+    const steps = [...document.querySelectorAll('.step')];
+    const claim = document.querySelector('#claim');
+    const action = document.querySelector('#action');
+    const cost = document.querySelector('#cost');
+    const receipt = document.querySelector('#receipt');
+    const countdown = document.querySelector('#countdown');
+    let timer;
+    function go(number) {
+      clearInterval(timer);
+      steps.forEach(step => step.classList.toggle('active', step.dataset.step === String(number)));
+      if (number === 3) showReceipt();
+    }
+    document.querySelectorAll('[data-next]').forEach(button => button.addEventListener('click', () => go(button.dataset.next)));
+    function clean(value, fallback) { return value.trim() || fallback; }
+    function showReceipt() {
+      const said = clean(claim.value, 'Something matters.');
+      const doNext = clean(action.value, 'I will choose one specific next action.');
+      const friction = clean(cost.value, 'It should cost at least a little comfort.');
+      receipt.textContent = `I said: “${said}”\n\nSo, before I make the next related claim, I will: ${doNext}\n\nThe price of treating it as real: ${friction}\n\nThis is a direction, not proof.`;
+      let seconds = 12;
+      countdown.textContent = `This receipt will dissolve in ${seconds} seconds.`;
+      timer = setInterval(() => {
+        seconds -= 1;
+        countdown.textContent = seconds > 0 ? `This receipt will dissolve in ${seconds} seconds.` : 'The receipt has dissolved.';
+        if (seconds <= 0) { clearInterval(timer); receipt.textContent = 'No archive. Only the next choice.'; }
+      }, 1000);
+    }
+    document.querySelector('#act').addEventListener('click', () => go(4));
+    document.querySelector('#again').addEventListener('click', () => {
+      claim.value = ''; action.value = ''; cost.value = ''; receipt.textContent = ''; go(1); claim.focus();
+    });
+  </script>
+</body>
+</html>

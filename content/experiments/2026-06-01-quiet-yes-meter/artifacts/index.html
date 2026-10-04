@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiet Yes Meter</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #141b31;
+      --ink: #eef2ff;
+      --muted: #a7b0d6;
+      --accent: #8bd3ff;
+      --warm: #ffd28b;
+      --red: #ff8b9a;
+      --green: #95f0b5;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #18213d 0%, var(--bg) 60%);
+      color: var(--ink);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .app {
+      width: min(920px, 100%);
+      background: rgba(20, 27, 49, 0.95);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      overflow: hidden;
+    }
+    .hero { padding: 28px 28px 14px; }
+    h1 { margin: 0 0 8px; font-size: clamp(2rem, 4vw, 3rem); }
+    p { color: var(--muted); line-height: 1.5; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 0;
+    }
+    .controls, .result { padding: 24px 28px 28px; }
+    .controls { border-right: 1px solid rgba(255,255,255,0.08); }
+    .control { margin: 0 0 22px; }
+    label { display: flex; justify-content: space-between; gap: 10px; font-weight: 600; margin-bottom: 8px; }
+    .hint { display:block; font-weight: 400; font-size: 0.92rem; color: var(--muted); margin-top: 4px; }
+    input[type="range"] { width: 100%; }
+    .pill {
+      display: inline-block; padding: 6px 10px; border-radius: 999px; font-size: 0.9rem;
+      background: rgba(255,255,255,0.08); color: var(--ink); margin-right: 6px; margin-bottom: 6px;
+    }
+    .meter {
+      height: 18px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,0.08); margin: 10px 0 18px;
+    }
+    .fill { height: 100%; width: 50%; background: linear-gradient(90deg, var(--red), var(--warm), var(--green)); }
+    .card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 18px; margin-top: 16px;
+    }
+    .big { font-size: 1.5rem; font-weight: 800; margin: 0 0 10px; }
+    .small { font-size: 0.95rem; color: var(--muted); }
+    ul { margin: 12px 0 0 18px; color: var(--muted); }
+    code { color: var(--accent); }
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: 1fr; }
+      .controls { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div class="pill">tiny project oracle</div>
+      <div class="pill">care before code</div>
+      <h1>Quiet Yes Meter</h1>
+      <p>Not every possible thing deserves a future. This little instrument asks a simpler question than <em>can</em> you build it: what are the odds you'll still want to care for it once the applause wears off?</p>
+    </section>
+    <section class="grid">
+      <section class="controls">
+        <div class="control">
+          <label>Energy now <strong id="sparkV">7</strong></label>
+          <span class="hint">Does the idea wake you up in a clean way, or just light your nerves on fire?</span>
+          <input id="spark" type="range" min="0" max="10" value="7" />
+        </div>
+        <div class="control">
+          <label>Maintenance drag <strong id="upkeepV">4</strong></label>
+          <span class="hint">How much future sweeping, fixing, and explaining comes bundled with this thing?</span>
+          <input id="upkeep" type="range" min="0" max="10" value="4" />
+        </div>
+        <div class="control">
+          <label>Probability you'll revisit it in 10 days <strong id="revisitV">60%</strong></label>
+          <span class="hint">Rough odds only. The world runs on maybe.</span>
+          <input id="revisit" type="range" min="0" max="100" value="60" />
+        </div>
+        <div class="control">
+          <label>Real witness or stake <strong id="witnessV">6</strong></label>
+          <span class="hint">Is there a person, question, or bruise this serves, or is it mostly self-stimulation?</span>
+          <input id="witness" type="range" min="0" max="10" value="6" />
+        </div>
+        <div class="control">
+          <label>Relief if you do nothing <strong id="silenceV">3</strong></label>
+          <span class="hint">Sometimes the honest move is not another artifact but a quieter room.</span>
+          <input id="silence" type="range" min="0" max="10" value="3" />
+        </div>
+      </section>
+      <section class="result">
+        <div class="small">Estimated care odds</div>
+        <div class="meter"><div class="fill" id="fill"></div></div>
+        <p class="big" id="headline">Build the small version</p>
+        <p id="summary"></p>
+        <div class="card">
+          <div class="small">Next move</div>
+          <p id="advice"></p>
+        </div>
+        <div class="card">
+          <div class="small">Why this exists</div>
+          <p>Cheap generation can trick us into adopting futures we never consciously chose. A little probability and a little silence can save a lot of ghost projects.</p>
+          <ul>
+            <li><strong>High score:</strong> make the smallest version tonight.</li>
+            <li><strong>Middle score:</strong> leave a seed note, not a new obligation.</li>
+            <li><strong>Low score:</strong> let the idea remain weather.</li>
+          </ul>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script>
+    const ids = ['spark','upkeep','revisit','witness','silence'];
+    const el = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
+    const out = {
+      spark: document.getElementById('sparkV'),
+      upkeep: document.getElementById('upkeepV'),
+      revisit: document.getElementById('revisitV'),
+      witness: document.getElementById('witnessV'),
+      silence: document.getElementById('silenceV'),
+      fill: document.getElementById('fill'),
+      headline: document.getElementById('headline'),
+      summary: document.getElementById('summary'),
+      advice: document.getElementById('advice')
+    };
+
+    function update() {
+      out.spark.textContent = el.spark.value;
+      out.upkeep.textContent = el.upkeep.value;
+      out.revisit.textContent = `${el.revisit.value}%`;
+      out.witness.textContent = el.witness.value;
+      out.silence.textContent = el.silence.value;
+
+      const spark = +el.spark.value;
+      const upkeep = +el.upkeep.value;
+      const revisit = +el.revisit.value;
+      const witness = +el.witness.value;
+      const silence = +el.silence.value;
+
+      let score = 22 + spark * 5 + witness * 4 + revisit * 0.35 - upkeep * 6 - silence * 5;
+      score = Math.max(0, Math.min(100, Math.round(score)));
+      out.fill.style.width = `${score}%`;
+
+      if (score >= 67) {
+        out.headline.textContent = 'Build the small version';
+        out.summary.textContent = `About ${score}% odds this idea has a living future. The energy looks more like devotion than panic, and the maintenance bill has not eaten the stars.`;
+        out.advice.textContent = 'Make one modest artifact now. Keep it portable. Stop before the tool starts drafting tomorrow on your behalf.';
+      } else if (score >= 40) {
+        out.headline.textContent = 'Leave a seed, not a system';
+        out.summary.textContent = `About ${score}% odds. There is something real here, but not enough to justify another hungry machine. Preserve the spark without adopting the upkeep.`;
+        out.advice.textContent = 'Write the note. Sketch the shape. Save one sentence about why it matters. Let tomorrow earn the right to ask for more.';
+      } else {
+        out.headline.textContent = 'Let it remain weather';
+        out.summary.textContent = `About ${score}% odds. The room may want quiet more than output. Not every bright thought is a contract with the future.`;
+        out.advice.textContent = 'Close the tab. Put the idea in a notebook if needed. If it returns with its own gravity, you can meet it then.';
+      }
+    }
+
+    ids.forEach(id => el[id].addEventListener('input', update));
+    update();
+  </script>
+</body>
+</html>

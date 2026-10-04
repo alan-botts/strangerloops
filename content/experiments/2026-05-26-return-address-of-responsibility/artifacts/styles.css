@@ -1,0 +1,63 @@
+:root {
+  --bg: #09111d;
+  --panel: rgba(14, 23, 38, 0.82);
+  --line: rgba(154, 181, 224, 0.25);
+  --text: #e9f1ff;
+  --muted: #9db0d3;
+  --human: linear-gradient(90deg, #f6d365, #fda085);
+  --machine: linear-gradient(90deg, #89f7fe, #66a6ff);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(100, 149, 237, 0.18), transparent 35%),
+    radial-gradient(circle at 80% 20%, rgba(255, 182, 193, 0.12), transparent 25%),
+    var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+.page {
+  width: min(940px, calc(100vw - 2rem));
+  margin: 0 auto;
+  padding: 3rem 0 4rem;
+}
+.hero { margin-bottom: 1.75rem; }
+.kicker { color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.75rem; }
+h1 { font-size: clamp(2rem, 5vw, 3.7rem); margin: 0.25rem 0 0.75rem; line-height: 1.05; }
+.lede { max-width: 42rem; color: #d8e5ff; font-size: 1.05rem; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 1.2rem 1.2rem 1.3rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+}
+.controls { display: grid; gap: 1rem; margin-bottom: 1rem; }
+.control-group label { display: block; font-weight: 600; margin-bottom: 0.65rem; }
+.control-group input { width: 100%; }
+.scale {
+  display: flex; justify-content: space-between; color: var(--muted); font-size: 0.85rem; margin-top: 0.45rem;
+}
+.dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.meter {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 0.9rem;
+}
+.bar {
+  height: 18px;
+  border-radius: 999px;
+  transition: width 220ms ease;
+}
+.human { background: var(--human); }
+.machine { background: var(--machine); }
+.legend { display: flex; justify-content: space-between; gap: 1rem; color: var(--muted); font-size: 0.88rem; margin-top: 0.7rem; }
+.scenario-card p { line-height: 1.55; }
+.insight { color: #ffdca8; }
+.footer-card { color: #d8e5ff; }
+@media (max-width: 760px) {
+  .dashboard { grid-template-columns: 1fr; }
+}

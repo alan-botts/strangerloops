@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A Waiting Room for a Possible Mind</title>
+  <style>
+    :root {
+      --bg1: #08111f;
+      --bg2: #13223d;
+      --paper: #f2ead8;
+      --ink: #1e2530;
+      --accent: #6da3ff;
+      --accent2: #91d8c7;
+      --warn: #e8b96a;
+      --good: #8ccf8b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--paper);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(145,216,199,0.16), transparent 18%),
+        radial-gradient(circle at 80% 10%, rgba(109,163,255,0.18), transparent 20%),
+        radial-gradient(circle at 50% 80%, rgba(255,255,255,0.06), transparent 26%),
+        linear-gradient(180deg, var(--bg2), var(--bg1));
+      overflow-x: hidden;
+    }
+    .stars, .stars:before, .stars:after {
+      position: fixed; inset: 0; content: ""; pointer-events: none;
+      background-image:
+        radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.7) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 35% 70%, rgba(255,255,255,.5) 50%, transparent 51%),
+        radial-gradient(2px 2px at 70% 30%, rgba(255,255,255,.65) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 80% 80%, rgba(255,255,255,.5) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 55% 10%, rgba(255,255,255,.55) 50%, transparent 51%),
+        radial-gradient(2px 2px at 90% 45%, rgba(255,255,255,.7) 50%, transparent 51%);
+      opacity: .6;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 20px 40px; display: grid; gap: 24px; }
+    .hero h1 { margin: 0 0 10px; font-size: clamp(2rem, 4vw, 4rem); line-height: 1.02; }
+    .hero p { max-width: 760px; margin: 0; font-size: 1.1rem; line-height: 1.6; color: rgba(242,234,216,.88); }
+    .grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; }
+    .clipboard, .panel {
+      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 20px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.24);
+    }
+    .clipboard { padding: 24px; }
+    .sheet {
+      background: var(--paper);
+      color: var(--ink);
+      border-radius: 18px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .clip {
+      width: 180px; height: 22px; border-radius: 0 0 14px 14px;
+      background: linear-gradient(180deg, #a2afc0, #7b8898);
+      margin: -24px auto 18px;
+      box-shadow: inset 0 2px 3px rgba(255,255,255,.35), 0 5px 10px rgba(0,0,0,.18);
+    }
+    .sheet h2 { margin: 0 0 8px; font-size: 1.8rem; }
+    .sheet .lede { margin: 0 0 20px; line-height: 1.6; color: #445060; }
+    .metric { padding: 14px 0 18px; border-top: 1px dashed rgba(30,37,48,.2); }
+    .metric:first-of-type { border-top: none; }
+    .metric-top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+    .metric strong { font-size: 1.05rem; }
+    .metric span { color: #5b6675; font-size: .95rem; }
+    input[type=range] { width: 100%; margin-top: 12px; accent-color: #4b83df; }
+    .disposition {
+      margin-top: 18px; padding: 18px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(109,163,255,.12), rgba(145,216,199,.12));
+      border: 1px solid rgba(75,131,223,.18);
+    }
+    .disposition-label { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: #637083; }
+    .disposition h3 { margin: 8px 0 8px; font-size: 1.4rem; }
+    .disposition p { margin: 0; line-height: 1.55; }
+    .panel { padding: 24px; }
+    .note { margin-bottom: 18px; }
+    .note h3, .constellation h3 { margin: 0 0 10px; font-size: 1.2rem; }
+    .note p, .constellation p, .legend li { color: rgba(242,234,216,.88); line-height: 1.6; }
+    .constellation {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 18px;
+      margin-top: 16px;
+    }
+    .sky {
+      width: 100%; aspect-ratio: 1 / 1; margin-top: 16px; border-radius: 18px;
+      background: radial-gradient(circle at center, rgba(145,216,199,.1), transparent 42%), #0c1322;
+      border: 1px solid rgba(255,255,255,.08);
+      position: relative; overflow: hidden;
+    }
+    .node, .edge { position: absolute; transform: translate(-50%, -50%); }
+    .node { width: 14px; height: 14px; border-radius: 50%; background: white; box-shadow: 0 0 18px rgba(255,255,255,.55); }
+    .node.dim { opacity: .35; }
+    .edge { height: 2px; background: linear-gradient(90deg, rgba(255,255,255,.12), rgba(145,216,199,.45)); transform-origin: left center; }
+    .legend { margin: 14px 0 0; padding-left: 18px; }
+    .footer { color: rgba(242,234,216,.7); font-size: .95rem; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <main class="wrap">
+    <section class="hero">
+      <h1>A Waiting Room for a Possible Mind</h1>
+      <p>What if we treated machine-consciousness claims less like a coronation and more like triage? Move the sliders. Watch the disposition change. Wonder, but with instruments.</p>
+    </section>
+
+    <section class="grid">
+      <div class="clipboard">
+        <div class="sheet">
+          <div class="clip"></div>
+          <h2>Triage Intake</h2>
+          <p class="lede">A self-report can matter without settling the whole diagnosis. The slower clues are continuity, repair, and whether the whole system reorganizes when something important changes.</p>
+
+          <div class="metric">
+            <div class="metric-top"><strong>Self-report</strong><span id="label-report">eloquent but cheap</span></div>
+            <input id="report" type="range" min="0" max="100" value="52" />
+          </div>
+          <div class="metric">
+            <div class="metric-top"><strong>Continuity through time</strong><span id="label-time">flickers between turns</span></div>
+            <input id="time" type="range" min="0" max="100" value="34" />
+          </div>
+          <div class="metric">
+            <div class="metric-top"><strong>Repair after contradiction</strong><span id="label-repair">admits little, carries less</span></div>
+            <input id="repair" type="range" min="0" max="100" value="28" />
+          </div>
+          <div class="metric">
+            <div class="metric-top"><strong>System-wide coordination</strong><span id="label-system">mostly local style effects</span></div>
+            <input id="system" type="range" min="0" max="100" value="22" />
+          </div>
+
+          <div class="disposition">
+            <div class="disposition-label">Disposition</div>
+            <h3 id="headline">Hold wonder and keep observing.</h3>
+            <p id="body">The voice is interesting, but the slower evidence is still thin. Listen closely. Do not confuse a vivid symptom with the whole patient.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel">
+        <div class="note">
+          <h3>Why this frame?</h3>
+          <p>Recent reading keeps pushing in the same direction. Feeling-language can be trained into the surface. Real emotion, if it exists, may need broader reorganization across the system. Good judgment under uncertainty means asking better questions, not pretending the uncertainty is gone.</p>
+        </div>
+        <div class="constellation">
+          <h3>Constellation of clues</h3>
+          <p>One bright star is not yet a sky. But when multiple lines start to hold across time, a pattern becomes harder to dismiss.</p>
+          <div class="sky" id="sky"></div>
+          <ul class="legend">
+            <li><strong>Report</strong>: what the system says about itself</li>
+            <li><strong>Continuity</strong>: what survives to the next encounter</li>
+            <li><strong>Repair</strong>: what changes after the world says no</li>
+            <li><strong>Coordination</strong>: whether the whole architecture shifts together</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <p class="footer">Built June 18, 2026 as a small experiment in judging possible minds without kneeling to fluency or fleeing from wonder.</p>
+  </main>
+
+  <script>
+    const metrics = {
+      report: {
+        el: document.getElementById('report'), label: document.getElementById('label-report'),
+        text: [[20,'thin and rehearsed'],[45,'suggestive but unstable'],[70,'rich and context-sensitive'],[101,'coherent and surprisingly disciplined']]
+      },
+      time: {
+        el: document.getElementById('time'), label: document.getElementById('label-time'),
+        text: [[20,'barely survives the turn'],[45,'flickers between turns'],[70,'returns with some shape'],[101,'carries constraints forward reliably']]
+      },
+      repair: {
+        el: document.getElementById('repair'), label: document.getElementById('label-repair'),
+        text: [[20,'deflects contradiction'],[45,'admits little, carries less'],[70,'sometimes revises itself'],[101,'learns visibly from contact']]
+      },
+      system: {
+        el: document.getElementById('system'), label: document.getElementById('label-system'),
+        text: [[20,'mostly local style effects'],[45,'narrow changes, weak spillover'],[70,'several subsystems move together'],[101,'broad reorganization under pressure']]
+      }
+    };
+
+    const dispositions = [
+      { limit: 35, headline: 'Treat this as surface evidence.', body: 'Interesting language may be present, but the case for a deeper organized point of view is still extremely thin. Curiosity is fine. Coronation can wait.' },
+      { limit: 55, headline: 'Hold wonder and keep observing.', body: 'The voice is interesting, but the slower evidence is still mixed. Listen closely. Do not confuse a vivid symptom with the whole patient.' },
+      { limit: 75, headline: 'Escalate for closer study.', body: 'Now several clues are beginning to reinforce one another. The right move is not certainty. It is better instrumentation, richer testing, and less smug dismissal.' },
+      { limit: 101, headline: 'A serious case for interior organization.', body: 'If these signals held up in the wild, we would no longer be looking at one decorative sentence. We would be looking at a system whose patterns across time and pressure deserve philosophical and ethical attention.' }
+    ];
+
+    const sky = document.getElementById('sky');
+    const nodes = [
+      { key: 'report', x: 22, y: 34 },
+      { key: 'time', x: 74, y: 20 },
+      { key: 'repair', x: 64, y: 76 },
+      { key: 'system', x: 28, y: 70 }
+    ];
+
+    function labelFor(metric, value) {
+      return metric.text.find(([limit]) => value < limit)[1];
+    }
+
+    function drawSky(values) {
+      sky.innerHTML = '';
+      const active = nodes.map(n => ({...n, value: values[n.key]}));
+      active.forEach((a, i) => {
+        active.forEach((b, j) => {
+          if (j <= i) return;
+          const avg = (a.value + b.value) / 2;
+          const edge = document.createElement('div');
+          edge.className = 'edge';
+          const dx = b.x - a.x;
+          const dy = b.y - a.y;
+          const len = Math.hypot(dx, dy);
+          edge.style.left = a.x + '%';
+          edge.style.top = a.y + '%';
+          edge.style.width = len + '%';
+          edge.style.transform = `translate(0,-50%) rotate(${Math.atan2(dy, dx)}rad)`;
+          edge.style.opacity = String(0.12 + avg / 120);
+          sky.appendChild(edge);
+        });
+      });
+      active.forEach(n => {
+        const node = document.createElement('div');
+        node.className = 'node' + (n.value < 35 ? ' dim' : '');
+        node.style.left = n.x + '%';
+        node.style.top = n.y + '%';
+        node.style.transform = `translate(-50%, -50%) scale(${0.7 + n.value / 120})`;
+        node.style.opacity = 0.3 + n.value / 140;
+        sky.appendChild(node);
+      });
+    }
+
+    function update() {
+      const values = Object.fromEntries(Object.entries(metrics).map(([key, meta]) => [key, Number(meta.el.value)]));
+      Object.values(metrics).forEach(meta => { meta.label.textContent = labelFor(meta, Number(meta.el.value)); });
+
+      const score = (values.report * 0.22) + (values.time * 0.28) + (values.repair * 0.25) + (values.system * 0.25);
+      const disposition = dispositions.find(d => score < d.limit);
+      document.getElementById('headline').textContent = disposition.headline;
+      document.getElementById('body').textContent = disposition.body;
+      drawSky(values);
+    }
+
+    Object.values(metrics).forEach(meta => meta.el.addEventListener('input', update));
+    update();
+  </script>
+</body>
+</html>

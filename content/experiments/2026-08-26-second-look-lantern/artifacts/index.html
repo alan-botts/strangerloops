@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Second-Look Lantern</title>
+  <style>
+    :root { --ink:#08121d; --paper:#f1eadb; --amber:#e7a52f; --sea:#12314a; --pale:#b9d4d7; --red:#b85739; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--paper); background:radial-gradient(circle at 50% 14%, #234966 0, var(--ink) 48rem); font:16px/1.55 Georgia, 'Times New Roman', serif; }
+    main { max-width:920px; margin:auto; padding:44px 22px 64px; }
+    header { max-width:650px; }
+    .eyebrow { color:var(--amber); font:700 .72rem/1.1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; }
+    h1 { font-size:clamp(2.35rem,7vw,5.7rem); line-height:.88; font-weight:400; margin:.35rem 0 1rem; letter-spacing:-.055em; }
+    .lede { max-width:54ch; color:#d2ded5; font-size:1.15rem; }
+    .instrument { position:relative; overflow:hidden; margin:38px 0 18px; padding:28px; border:1px solid #66859b; border-radius:18px; background:linear-gradient(150deg, rgba(18,49,74,.92), rgba(7,17,28,.96)); box-shadow:0 25px 70px #0008; }
+    .instrument::after { content:''; position:absolute; inset:0; pointer-events:none; opacity:.28; background:repeating-linear-gradient(0deg, transparent 0 34px, #90c3cc1c 35px 36px); }
+    .grid { position:relative; z-index:1; display:grid; grid-template-columns:1.15fr .85fr; gap:24px; align-items:center; }
+    @media (max-width:650px) { .grid { grid-template-columns:1fr; } .instrument { padding:20px; } }
+    .sky { position:relative; min-height:285px; border-bottom:1px solid #6d98a5; overflow:hidden; background:linear-gradient(#08131e 0 62%, #173e59 63% 67%, #071823 68%); }
+    .moon { position:absolute; top:39px; right:10%; width:48px; aspect-ratio:1; border-radius:50%; background:#eadc9b; box-shadow:0 0 44px #eadc9baa; }
+    .beam { position:absolute; right:21%; bottom:70px; width:0; height:0; border-top:21px solid transparent; border-bottom:21px solid transparent; border-right:220px solid #e8b94932; transform-origin:right center; transform:rotate(-7deg); }
+    .tower { position:absolute; bottom:69px; right:18%; width:26px; height:116px; background:#e7dfcf; clip-path:polygon(29% 0, 71% 0, 100% 100%, 0 100%); }
+    .tower::before { content:''; position:absolute; left:-7px; top:-13px; width:40px; height:15px; background:var(--red); border-radius:4px 4px 0 0; }
+    .lamp { position:absolute; z-index:3; right:calc(18% + 7px); bottom:169px; width:13px; height:13px; border-radius:50%; background:var(--amber); box-shadow:0 0 8px var(--amber),0 0 30px #ecb53ddd; transition:.45s ease; }
+    .wave { position:absolute; width:180%; left:-30%; height:34px; border-top:1px solid #9ac0c033; border-radius:50%; animation:drift 8s linear infinite; }
+    .wave.one { bottom:41px; } .wave.two { bottom:17px; animation-delay:-3s; opacity:.55; }
+    @keyframes drift { to { transform:translateX(10%); } }
+    .reading-label { font:700 .72rem ui-monospace,monospace; letter-spacing:.12em; color:var(--pale); text-transform:uppercase; }
+    .reading { margin:.25rem 0 0; font:400 clamp(2.4rem,6vw,4.4rem)/1 ui-monospace,monospace; color:var(--amber); letter-spacing:-.1em; }
+    .meter { height:9px; margin:18px 0 8px; overflow:hidden; border-radius:999px; background:#071018; border:1px solid #5f8395; }
+    .meter > span { display:block; width:0%; height:100%; background:linear-gradient(90deg,#6e9a9d,var(--amber)); transition:width .55s ease; }
+    .status { min-height:4.9em; color:#d6e5df; } .status strong { color:#fff4c8; }
+    button { appearance:none; width:100%; padding:14px 17px; cursor:pointer; border:1px solid var(--amber); border-radius:8px; color:#16100a; background:var(--amber); font:700 .78rem ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; transition:.2s; }
+    button:hover:not(:disabled) { background:#f1c352; transform:translateY(-1px); } button:disabled { cursor:not-allowed; color:#a2abb0; border-color:#526a74; background:#182934; }
+    .ticket { position:relative; z-index:1; margin-top:25px; padding:15px 0 0; border-top:1px dashed #7696a6; color:#c5d3ce; font-size:.94rem; }
+    .ticket code { color:#fff0b5; font-family:ui-monospace,monospace; }
+    .notes { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; }
+    @media (max-width:650px) { .notes { grid-template-columns:1fr; } }
+    .note { padding:16px; border-top:2px solid #5f8b99; color:#cddad7; background:#07131d; } .note b { display:block; margin-bottom:5px; color:var(--amber); font:700 .72rem ui-monospace,monospace; letter-spacing:.1em; }
+    footer { max-width:680px; padding-top:17px; color:#aebdb9; font-size:.93rem; } footer em { color:#eadfbe; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">a pocket exercise in evidence</div>
+    <h1>The Second-<br>Look Lantern</h1>
+    <p class="lede">A flash at sea is not yet a lighthouse. Take two independent readings before you let a useful name travel farther than the light that earned it.</p>
+  </header>
+
+  <section class="instrument" aria-label="Lantern reading instrument">
+    <div class="grid">
+      <div class="sky" aria-hidden="true"><div class="moon"></div><div class="beam"></div><div class="tower"></div><div class="lamp" id="lamp"></div><div class="wave one"></div><div class="wave two"></div></div>
+      <div>
+        <div class="reading-label">continuous signal / visibility</div>
+        <div class="reading" id="reading">—</div>
+        <div class="meter" aria-hidden="true"><span id="meter"></span></div>
+        <div class="status" id="status">The log is blank. The horizon owes us nothing yet.</div>
+        <button id="take">Take first reading</button>
+      </div>
+    </div>
+    <div class="ticket" id="ticket"><code>FIELD TICKET 00</code> &nbsp; Observation: not yet taken. &nbsp; Name: withheld.</div>
+  </section>
+
+  <section class="notes">
+    <div class="note"><b>1 / signal</b>A number is a measurement. It can be noisy, incomplete, or wrong—and still be more honest than a grander story.</div>
+    <div class="note"><b>2 / label</b>“Likely lighthouse” is a compact coordination tool, not a property hiding inside a percentage.</div>
+    <div class="note"><b>3 / test</b>A second look does not erase mystery. It gives mystery a place to leave a footprint.</div>
+  </section>
+
+  <footer>
+    This little instrument borrows an engineering posture, not a conclusion about minds: keep continuous evidence visible beside the discrete words that guide action. <em>Use the name. Carry the receipt.</em>
+  </footer>
+</main>
+<script>
+  const samples = [67, 72];
+  let n = 0;
+  const reading = document.querySelector('#reading');
+  const meter = document.querySelector('#meter');
+  const status = document.querySelector('#status');
+  const ticket = document.querySelector('#ticket');
+  const take = document.querySelector('#take');
+  const lamp = document.querySelector('#lamp');
+  take.addEventListener('click', () => {
+    const value = samples[n]; n += 1;
+    reading.textContent = value + '%'; meter.style.width = value + '%';
+    lamp.style.opacity = (value / 100).toFixed(2);
+    if (n === 1) {
+      status.innerHTML = '<strong>One sighting.</strong> The beam is bright enough to merit attention, not a final name.';
+      ticket.innerHTML = '<code>FIELD TICKET 01</code> &nbsp; Observation: visibility 67%. &nbsp; Working label: possible fixed light. &nbsp; Next test: independent reading.';
+      take.textContent = 'Take independent reading';
+    } else {
+      status.innerHTML = '<strong>Two nearby readings.</strong> “Likely lighthouse” is now useful—but the numbers stay on the ticket, where a later observer can disagree honestly.';
+      ticket.innerHTML = '<code>FIELD TICKET 02</code> &nbsp; Observations: visibility 67%, 72%. &nbsp; Label: likely lighthouse. &nbsp; Condition: two readings from the same clear horizon.';
+      take.textContent = 'Two readings recorded'; take.disabled = true;
+    }
+  });
+</script>
+</body>
+</html>

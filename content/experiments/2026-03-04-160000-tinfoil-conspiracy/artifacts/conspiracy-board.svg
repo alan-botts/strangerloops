@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 720" width="950" height="720">
+  <defs>
+    <!-- Cork texture gradient -->
+    <linearGradient id="corkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A574"/>
+      <stop offset="50%" style="stop-color:#C49A6C"/>
+      <stop offset="100%" style="stop-color:#B8895E"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Cork board base -->
+  <rect x="0" y="0" width="950" height="720" fill="url(#corkGrad)"/>
+  
+  <!-- Cork texture -->
+  <circle cx="548.9852821370828" cy="580.0242195286639" r="2.5915880864709573" fill="#8B7355" opacity="0.10070209243129474"/><circle cx="520.1858893434128" cy="548.4385993300339" r="2.0123454685857727" fill="#8B7355" opacity="0.09609308096639407"/><circle cx="202.61450147817987" cy="60.79098756775734" r="2.5154336574470957" fill="#8B7355" opacity="0.10455655005754888"/><circle cx="653.9602927034988" cy="115.48210768083707" r="2.9214033709307974" fill="#8B7355" opacity="0.05656278851501653"/><circle cx="846.624019536892" cy="439.51684646728097" r="1.3966112198185991" fill="#8B7355" opacity="0.07240449808424192"/><circle cx="763.1157506588801" cy="162.7533360708065" r="3.3530852450676845" fill="#8B7355" opacity="0.07710148936394474"/><circle cx="260.1283378509971" cy="385.56634775948976" r="1.6471236835432879" fill="#8B7355" opacity="0.1280173477525004"/><circle cx="728.8272197641876" cy="183.51650564360156" r="2.1704941635680433" fill="#8B7355" opacity="0.08579491940388304"/><circle cx="842.3918561552532" cy="269.9898637191415" r="2.9184850891440455" fill="#8B7355" opacity="0.146233177653994"/><circle cx="744.8685090384632" cy="401.23981664360673" r="2.2143204680959596" fill="#8B7355" opacity="0.12532326178137504"/><circle cx="438.91720482546873" cy="562.6802868650674" r="3.626563323367484" fill="#8B7355" opacity="0.07338942381650515"/><circle cx="270.7137937813769" cy="207.00269754536075" r="2.9848045076296748" fill="#8B7355" opacity="0.10722753341683353"/><circle cx="313.09330031656157" cy="668.7734271516942" r="2.6345021244063265" fill="#8B7355" opacity="0.12149966739693163"/><circle cx="575.5419279612565" cy="229.6285478582149" r="1.7267538151441442" fill="#8B7355" opacity="0.14018666191294488"/><circle cx="309.86334291507546" cy="594.9000036003335" r="3.508602620212228" fill="#8B7355" opacity="0.07473632370955337"/><circle cx="767.9474350597737" cy="85.37706791495623" r="3.1439359425749496" fill="#8B7355" opacity="0.12026943095449479"/><circle cx="706.2156577529308" cy="576.7611639801441" r="2.5973870685437737" fill="#8B7355" opacity="0.08318510137786775"/><circle cx="689.9933130775534" cy="698.1058859286994" r="3.949336550839119" fill="#8B7355" opacity="0.12338264846586629"/><circle cx="537.0626002288993" cy="146.83649159284482" r="2.628340547671276" fill="#8B7355" opacity="0.09054000196316747"/><circle cx="193.9750620262224" cy="200.9010671078425" r="2.2783565943665023" fill="#8B7355" opacity="0.05432539141819706"/><circle cx="667.6478974667053" cy="273.3498731317515" r="1.0616603525466122" fill="#8B7355" opacity="0.08307194937227554"/><circle cx="931.772903745794" cy="591.7158644221385" r="1.697147990624181" fill="#8B7355" opacity="0.09801377746991838"/><circle cx="705.6405185301631" cy="510.82644450706306" r="3.428210175643346" fill="#8B7355" opacity="0.08532103453731162"/><circle cx="440.301793335831" cy="235.45233232225712" r="3.4125665102243894" fill="#8B7355" opacity="0.06588011639238064"/><circle cx="156.94744812310037" cy="525.8652064483595" r="3.652817529059628" fill="#8B7355" opacity="0.12893899170223677"/><circle cx="155.04092642769876" cy="44.21000777734767" r="3.0649449540664433" fill="#8B7355" opacity="0.057411893338636055"/><circle cx="141.09291944012404" cy="558.0679562347619" r="1.311848633401704" fill="#8B7355" opacity="0.12447883348702835"/><circle cx="399.8241627442032" cy="647.4516277109132" r="3.501479392385939" fill="#8B7355" opacity="0.12095927628217586"/><circle cx="586.4580208955842" cy="623.9383760914587" r="1.0278743231054637" fill="#8B7355" opacity="0.14379608853031906"/><circle cx="385.56599678367286" cy="53.44329523823282" r="1.6431462495058216" fill="#8B7355" opacity="0.1292987577093418"/><circle cx="823.1426441014062" cy="658.5039414680551" r="3.740332079325464" fill="#8B7355" opacity="0.09370933082251678"/><circle cx="600.6487963332763" cy="82.28578029069467" r="1.8593808270183902" fill="#8B7355" opacity="0.11621040093799569"/><circle cx="571.6703247492351" cy="360.9837836527169" r="3.9733938834664917" fill="#8B7355" opacity="0.08968725318445854"/><circle cx="570.3604943538078" cy="696.6729393831694" r="3.562121762860789" fill="#8B7355" opacity="0.14042002905323608"/><circle cx="645.7991121668526" cy="657.2476926179481" r="1.0570724952141788" fill="#8B7355" opacity="0.05325085992170438"/><circle cx="910.038903557122" cy="554.9862287251715" r="1.240875653289346" fill="#8B7355" opacity="0.068501031330137"/><circle cx="893.4212033252646" cy="75.2660268668379" r="3.8701314165839547" fill="#8B7355" opacity="0.08298893842653421"/><circle cx="261.0954947874753" cy="86.23401107415738" r="1.3735692301821372" fill="#8B7355" opacity="0.06878342858333349"/><circle cx="811.285812942762" cy="422.7852763104079" r="1.561033506520038" fill="#8B7355" opacity="0.07419318577200326"/><circle cx="501.88386477680314" cy="13.704306427835355" r="1.0958187148890493" fill="#8B7355" opacity="0.08236028394420647"/><circle cx="331.6944853480494" cy="704.4511652071282" r="1.2619444279736005" fill="#8B7355" opacity="0.14728409150531738"/><circle cx="308.4488867168167" cy="146.81464728601154" r="2.0788524976971914" fill="#8B7355" opacity="0.10315743536520222"/><circle cx="709.6213755115302" cy="595.9413437287108" r="2.224478489702718" fill="#8B7355" opacity="0.08336138645993982"/><circle cx="183.46480084416575" cy="337.7126120089916" r="1.2251043389606953" fill="#8B7355" opacity="0.1254587610271658"/><circle cx="438.23486075369675" cy="645.90454010354" r="3.683950113203072" fill="#8B7355" opacity="0.08365849659495306"/><circle cx="887.5715126294637" cy="53.15740626090344" r="3.9300526489480276" fill="#8B7355" opacity="0.09583932895771749"/><circle cx="659.1790835594794" cy="517.2131066036897" r="3.6719611467868627" fill="#8B7355" opacity="0.1374678557765534"/><circle cx="271.5965540677144" cy="24.110494275952004" r="3.5817955554667873" fill="#8B7355" opacity="0.1411055116900074"/><circle cx="469.96263300552346" cy="48.659680307040375" r="2.308608651530471" fill="#8B7355" opacity="0.12924829367692944"/><circle cx="594.8897383945965" cy="299.8909664337514" r="2.839984420585533" fill="#8B7355" opacity="0.12142606086456442"/><circle cx="842.4767846330172" cy="239.22231701577616" r="3.3856806125585406" fill="#8B7355" opacity="0.10635130474681459"/><circle cx="207.3011161053759" cy="358.78668399629885" r="2.73928375004194" fill="#8B7355" opacity="0.10720707744075861"/><circle cx="20.5867127514733" cy="44.94022697971671" r="1.3787211768645522" fill="#8B7355" opacity="0.13184192172051984"/><circle cx="808.8565348372268" cy="39.32290263643205" r="2.0508102965357136" fill="#8B7355" opacity="0.11287469811025712"/><circle cx="298.8493419001747" cy="341.02940392224895" r="1.9592968710929515" fill="#8B7355" opacity="0.10477846435512742"/><circle cx="773.1196106461132" cy="600.8686813750377" r="2.9559804095371724" fill="#8B7355" opacity="0.06102633995313696"/><circle cx="249.7931570921079" cy="457.2561257311866" r="2.677817738020737" fill="#8B7355" opacity="0.10294646817253758"/><circle cx="162.889198165666" cy="3.53868568525737" r="2.5306528772675083" fill="#8B7355" opacity="0.10478767229331101"/><circle cx="253.41353139674564" cy="22.549588696705225" r="1.2855205518142923" fill="#8B7355" opacity="0.06296886435784996"/><circle cx="651.0594078419479" cy="125.82878809384908" r="2.6319657683677966" fill="#8B7355" opacity="0.14580133346606639"/><circle cx="600.3394818761839" cy="643.179618770295" r="1.0756029828035198" fill="#8B7355" opacity="0.1342812920510986"/><circle cx="495.894445413464" cy="200.13090847641007" r="3.1740178396727527" fill="#8B7355" opacity="0.10732088592227987"/><circle cx="58.767549642611186" cy="458.2714389437064" r="3.0580278673053813" fill="#8B7355" opacity="0.06590821919220861"/><circle cx="347.6940347151061" cy="102.85823696908098" r="2.8315081224999314" fill="#8B7355" opacity="0.1450634991530092"/><circle cx="670.3529156105408" cy="183.91019259150855" r="2.978076707173415" fill="#8B7355" opacity="0.12341816808829331"/><circle cx="161.51640541267264" cy="541.2192517881114" r="2.8955908857667403" fill="#8B7355" opacity="0.11103808870228787"/><circle cx="56.70529466214739" cy="280.525412205087" r="1.6498807755554021" fill="#8B7355" opacity="0.10542584476808978"/><circle cx="752.6706536549526" cy="604.6836006748484" r="1.0969225453398177" fill="#8B7355" opacity="0.11099888396324702"/><circle cx="367.2688800158699" cy="79.30788971362779" r="3.0637555627420485" fill="#8B7355" opacity="0.1325456559412278"/><circle cx="495.95068180331805" cy="94.30831146880251" r="1.604518267869126" fill="#8B7355" opacity="0.07274172493012868"/><circle cx="205.04880350947482" cy="712.9950949859967" r="3.930483647838101" fill="#8B7355" opacity="0.09995337093468101"/><circle cx="421.9259329366488" cy="423.42189192184026" r="3.1387849995904364" fill="#8B7355" opacity="0.062084534712106"/><circle cx="607.508831496491" cy="118.70663951620244" r="2.8228600277364353" fill="#8B7355" opacity="0.10042977559532855"/><circle cx="824.2410039104989" cy="697.2361272553458" r="2.043176332018155" fill="#8B7355" opacity="0.08002335886690096"/><circle cx="886.2372853264692" cy="489.7130911311044" r="1.3909896783164877" fill="#8B7355" opacity="0.10908755175775245"/><circle cx="586.5923522259732" cy="247.1070988095737" r="1.2875238004313527" fill="#8B7355" opacity="0.08630738349884166"/><circle cx="411.2427423402918" cy="150.70358534979104" r="1.7949742422053365" fill="#8B7355" opacity="0.1433579158380171"/><circle cx="810.930495756171" cy="659.1152172999793" r="3.374828569328605" fill="#8B7355" opacity="0.08708594432327954"/><circle cx="765.4850881378453" cy="178.43416385291744" r="1.865702887409271" fill="#8B7355" opacity="0.05180815989409491"/><circle cx="586.7205124452604" cy="38.270667201087214" r="1.6438387559373098" fill="#8B7355" opacity="0.06966733975323917"/><circle cx="525.2440570939054" cy="427.08111637983734" r="3.9081439559517923" fill="#8B7355" opacity="0.1127620793579743"/><circle cx="152.12878196522917" cy="506.4203941518986" r="2.7821937867882145" fill="#8B7355" opacity="0.08090531095023194"/><circle cx="792.4679409707607" cy="374.07435522223494" r="3.6825626032342282" fill="#8B7355" opacity="0.07495242795131327"/><circle cx="172.8393329883652" cy="618.9066240721116" r="2.5629859451578882" fill="#8B7355" opacity="0.13483819367794536"/><circle cx="899.461882825048" cy="599.6789354887721" r="2.290403349235241" fill="#8B7355" opacity="0.07699947348943617"/><circle cx="195.49783677502654" cy="240.3148678994217" r="2.5921570891651964" fill="#8B7355" opacity="0.1362958557100675"/><circle cx="569.6648922629945" cy="393.0997301659506" r="3.6603425535286567" fill="#8B7355" opacity="0.12447053000322195"/><circle cx="506.9881309689047" cy="407.6679312096143" r="1.344775087708505" fill="#8B7355" opacity="0.0643571098029901"/><circle cx="255.20096009804757" cy="478.58795268911047" r="1.224530932186506" fill="#8B7355" opacity="0.07965478836122417"/><circle cx="245.67408561564525" cy="693.1459807233156" r="1.0220022354662757" fill="#8B7355" opacity="0.10112232516057111"/><circle cx="640.6276734727709" cy="555.2198339928668" r="1.602274782964839" fill="#8B7355" opacity="0.09371537686757231"/><circle cx="410.56619718325487" cy="635.9693431106265" r="2.002391522576682" fill="#8B7355" opacity="0.06583231236168285"/><circle cx="909.7023910645867" cy="593.6153461155411" r="3.0323135415277958" fill="#8B7355" opacity="0.0802077913264643"/><circle cx="624.4632266791243" cy="444.44619490615287" r="3.0554442160946205" fill="#8B7355" opacity="0.14746530991422074"/><circle cx="924.463260535072" cy="593.9724678194146" r="2.2458303874085885" fill="#8B7355" opacity="0.07802996629594536"/><circle cx="472.2820648235425" cy="531.6119832381049" r="1.7367148352076784" fill="#8B7355" opacity="0.1493792950030538"/><circle cx="324.1237603975424" cy="455.02940878411704" r="3.1104308104188703" fill="#8B7355" opacity="0.1482616416328569"/><circle cx="174.7905442882568" cy="215.93461375502991" r="2.018720939559139" fill="#8B7355" opacity="0.10736951273669837"/><circle cx="828.9459647407645" cy="400.51129232091427" r="2.9792685423356504" fill="#8B7355" opacity="0.08792629575288627"/><circle cx="58.7968391641408" cy="452.571814034644" r="3.465536054228295" fill="#8B7355" opacity="0.13035033639684984"/><circle cx="864.1820748738852" cy="654.7760413108401" r="2.168307085945141" fill="#8B7355" opacity="0.13219818291545826"/><circle cx="137.3594525363268" cy="558.2686493382802" r="1.9509441959864438" fill="#8B7355" opacity="0.12673285394930933"/><circle cx="435.40683766590956" cy="483.9536860015327" r="1.557746039985757" fill="#8B7355" opacity="0.08736473155108201"/><circle cx="888.9857939022492" cy="145.96731790533164" r="3.6974426129942892" fill="#8B7355" opacity="0.1192363428399612"/><circle cx="810.9755784826164" cy="646.6353226193895" r="2.3265166184648733" fill="#8B7355" opacity="0.08225030630562206"/><circle cx="292.2388680352469" cy="69.09748240678746" r="1.457213083267144" fill="#8B7355" opacity="0.09294610407153495"/><circle cx="556.867673406475" cy="323.23713130044683" r="3.621484243288251" fill="#8B7355" opacity="0.07572925000045823"/><circle cx="231.3383155546979" cy="526.1877623779421" r="2.877009563269241" fill="#8B7355" opacity="0.1002818895281175"/><circle cx="314.2702974057952" cy="640.4479309054447" r="2.335780779333789" fill="#8B7355" opacity="0.07023143328278507"/><circle cx="862.5035801136129" cy="645.0798722652221" r="3.6505034926105746" fill="#8B7355" opacity="0.10737381677922217"/><circle cx="456.6070370317092" cy="469.97059607920363" r="2.2212550772468607" fill="#8B7355" opacity="0.0641718974061715"/><circle cx="724.7840501745634" cy="321.7066884322769" r="2.6564404616886623" fill="#8B7355" opacity="0.12368738966046096"/><circle cx="706.0434664295914" cy="668.3627562263339" r="3.6206142477532937" fill="#8B7355" opacity="0.09839535103666727"/><circle cx="609.0491236835845" cy="95.45359545897013" r="3.0943103609841973" fill="#8B7355" opacity="0.08644826179524863"/><circle cx="62.43996583422189" cy="551.6757663928464" r="2.147055163623217" fill="#8B7355" opacity="0.08458098160365599"/><circle cx="21.045509055550347" cy="418.9294442845906" r="1.2927640215128329" fill="#8B7355" opacity="0.1115034945998194"/><circle cx="630.351473632567" cy="97.85849368428865" r="2.5859551601003528" fill="#8B7355" opacity="0.14466237238580704"/><circle cx="124.18031852756566" cy="294.1956481901731" r="3.9524307354962427" fill="#8B7355" opacity="0.07976914492306415"/><circle cx="359.60611085322665" cy="129.8553953609254" r="1.6933740832404032" fill="#8B7355" opacity="0.12703366057058627"/><circle cx="894.8676474712008" cy="384.68788756320373" r="1.7318157957422475" fill="#8B7355" opacity="0.08207654825675051"/><circle cx="599.5819526207755" cy="267.2751909791827" r="2.330100140186996" fill="#8B7355" opacity="0.07023971217419893"/><circle cx="353.737361151795" cy="480.24499864599795" r="2.358343431467695" fill="#8B7355" opacity="0.08893465672260523"/><circle cx="604.3476775696864" cy="448.154585944925" r="2.915391071153877" fill="#8B7355" opacity="0.12780526853243135"/><circle cx="892.4989941629816" cy="371.5563041476769" r="3.902094905146366" fill="#8B7355" opacity="0.1281517712252771"/><circle cx="482.95049112640265" cy="311.04399001979755" r="1.6566794506209173" fill="#8B7355" opacity="0.13900164017809244"/><circle cx="464.5902418227559" cy="353.3760069941802" r="3.448301725782744" fill="#8B7355" opacity="0.1464871806236987"/><circle cx="157.05336343235751" cy="654.5395268960177" r="2.9135577850493197" fill="#8B7355" opacity="0.13866319251419565"/><circle cx="803.024836880856" cy="400.5687938821108" r="3.568109113504655" fill="#8B7355" opacity="0.0666490852757449"/><circle cx="573.4532106114009" cy="613.5620479136248" r="1.811623223894135" fill="#8B7355" opacity="0.13838209496601667"/><circle cx="818.2735512627853" cy="316.0202957524267" r="2.3804424457214637" fill="#8B7355" opacity="0.05862995477061748"/><circle cx="396.5650002353107" cy="442.11043305105466" r="3.7001794821489282" fill="#8B7355" opacity="0.06308142366592247"/><circle cx="29.089065230567247" cy="340.6760249986107" r="2.492040278827524" fill="#8B7355" opacity="0.06639188749352183"/><circle cx="899.1873636229739" cy="350.75145600397803" r="2.5279089388427307" fill="#8B7355" opacity="0.14787499924871103"/><circle cx="148.64013793093648" cy="532.6129334710896" r="3.262154816218746" fill="#8B7355" opacity="0.061655752430774174"/><circle cx="605.4907888013064" cy="248.68660074365698" r="1.8832827882402485" fill="#8B7355" opacity="0.08434585653584865"/><circle cx="218.96186438939588" cy="387.93676425185646" r="1.9394429513803515" fill="#8B7355" opacity="0.12084889917665018"/><circle cx="305.6052064650482" cy="472.3376301153028" r="3.0613743136150537" fill="#8B7355" opacity="0.12422269238536605"/><circle cx="73.29894399226582" cy="95.04294322157821" r="2.842671758326147" fill="#8B7355" opacity="0.09016609015627897"/><circle cx="386.56575660412227" cy="718.4238862176554" r="2.235407945964326" fill="#8B7355" opacity="0.05177468743934821"/><circle cx="747.7855753932147" cy="423.1596585891269" r="1.6670018682856147" fill="#8B7355" opacity="0.07720135353683084"/><circle cx="787.0480392601729" cy="462.52640619006115" r="2.0267217718048887" fill="#8B7355" opacity="0.07729392900184469"/><circle cx="82.9527276995811" cy="354.1095412317706" r="1.199978880602374" fill="#8B7355" opacity="0.11700327133007231"/><circle cx="713.6369593016238" cy="678.3390373781199" r="2.1466140682697823" fill="#8B7355" opacity="0.06066505367543647"/><circle cx="938.3811829512726" cy="471.78230530065815" r="2.499136022134799" fill="#8B7355" opacity="0.1323138599711164"/><circle cx="775.9022902521965" cy="385.03174897132726" r="3.8805385850020997" fill="#8B7355" opacity="0.10010237681763672"/><circle cx="7.485007475563233" cy="530.6550332248643" r="2.3872062391088305" fill="#8B7355" opacity="0.07035765642930261"/><circle cx="92.96328292433628" cy="486.26247948347486" r="3.605476887528007" fill="#8B7355" opacity="0.13110893653111455"/><circle cx="936.7377617050151" cy="372.844795672684" r="2.8114469830451263" fill="#8B7355" opacity="0.09068885399817032"/><circle cx="581.1220119843381" cy="288.55818880412284" r="1.3246495300564005" fill="#8B7355" opacity="0.12071273066891583"/><circle cx="36.886348806807845" cy="5.412975770320028" r="2.9121752984657707" fill="#8B7355" opacity="0.08792024570640314"/><circle cx="682.6373561800661" cy="520.8391945913719" r="3.53756135842065" fill="#8B7355" opacity="0.1031266917312708"/><circle cx="585.6694474282799" cy="463.41470933684315" r="3.9715659979552487" fill="#8B7355" opacity="0.057318762499847443"/><circle cx="353.11523714811705" cy="47.8168225835714" r="2.657376204555887" fill="#8B7355" opacity="0.1360163718633811"/><circle cx="137.11991747505766" cy="571.6450196330319" r="2.0120628093401947" fill="#8B7355" opacity="0.057494992678967495"/><circle cx="479.80240323074935" cy="571.0185541398565" r="3.054236612789066" fill="#8B7355" opacity="0.11713356746196191"/><circle cx="381.04134374987945" cy="363.4075039036545" r="2.305929852053594" fill="#8B7355" opacity="0.14547013166036926"/><circle cx="257.076743247093" cy="596.4981704553155" r="1.0315651575319318" fill="#8B7355" opacity="0.05436476308587786"/><circle cx="7.569556596314708" cy="555.0406950888678" r="3.253878484057397" fill="#8B7355" opacity="0.09269799479575336"/><circle cx="526.2463536075147" cy="604.2422286066707" r="3.399552318999299" fill="#8B7355" opacity="0.06449752147480581"/><circle cx="62.14200561317851" cy="380.30313758110196" r="1.502103354830482" fill="#8B7355" opacity="0.12287213911435997"/><circle cx="145.9683416825811" cy="589.0301007555479" r="1.785889640219476" fill="#8B7355" opacity="0.08376718480416365"/><circle cx="491.76372187347044" cy="253.9423256644738" r="2.685870403057149" fill="#8B7355" opacity="0.13800465114706184"/><circle cx="395.2527839112676" cy="16.075191590047382" r="2.2912354484736257" fill="#8B7355" opacity="0.11548130271142817"/><circle cx="227.768297067247" cy="180.00479403127196" r="2.218359865143884" fill="#8B7355" opacity="0.13704669443576276"/><circle cx="108.2899580979923" cy="20.472659272524556" r="2.3120738718988125" fill="#8B7355" opacity="0.0709550543260616"/><circle cx="707.2735546766273" cy="644.0617650089296" r="2.5911174533183106" fill="#8B7355" opacity="0.07107327388570642"/><circle cx="177.60820221822624" cy="139.93519348786185" r="2.1993299018939165" fill="#8B7355" opacity="0.0835718990491738"/><circle cx="945.7690015455152" cy="208.34136885372882" r="3.041578449736379" fill="#8B7355" opacity="0.07716645755262627"/><circle cx="136.2412593766519" cy="680.1010522371045" r="1.075427946219269" fill="#8B7355" opacity="0.14264335756111807"/><circle cx="766.948353133738" cy="415.23064797102745" r="2.9367787730297534" fill="#8B7355" opacity="0.14902469866909507"/><circle cx="117.48866618452108" cy="95.10862245190638" r="3.790389590515849" fill="#8B7355" opacity="0.11951144329493743"/><circle cx="928.1560737876482" cy="465.99522949440745" r="2.62186449835811" fill="#8B7355" opacity="0.1320203541867246"/><circle cx="867.1938969208081" cy="406.9860929251312" r="1.9081116454620486" fill="#8B7355" opacity="0.07907620182482508"/><circle cx="727.6239006119488" cy="334.45747127106006" r="2.71680443054457" fill="#8B7355" opacity="0.05400113977183912"/><circle cx="173.40181177308497" cy="469.6486624416785" r="1.4723572582488442" fill="#8B7355" opacity="0.08092206426006823"/><circle cx="202.61101773729254" cy="221.60189581343067" r="3.6931369120931334" fill="#8B7355" opacity="0.0853565566987264"/><circle cx="626.8648571789913" cy="656.494953225808" r="1.4570156589194654" fill="#8B7355" opacity="0.10872763813309842"/><circle cx="911.0557981313432" cy="484.29964360024763" r="1.9144044253566743" fill="#8B7355" opacity="0.1331513668838133"/><circle cx="700.2981355941504" cy="683.0322593566082" r="3.9853561008497507" fill="#8B7355" opacity="0.08999676008229804"/><circle cx="105.42486224326304" cy="365.6691143031028" r="1.969732212844415" fill="#8B7355" opacity="0.09527680441623214"/><circle cx="828.6614708967617" cy="427.3563393231154" r="3.996690052139895" fill="#8B7355" opacity="0.08559268952147887"/><circle cx="755.0025600350941" cy="472.49907449861854" r="2.765187493758969" fill="#8B7355" opacity="0.13049305674231057"/><circle cx="536.3964668194617" cy="340.3228129315967" r="3.0265313164293746" fill="#8B7355" opacity="0.10310460711415936"/><circle cx="440.5078467797598" cy="416.40573082670795" r="1.6450161342815184" fill="#8B7355" opacity="0.05107268848116012"/><circle cx="57.49339677884278" cy="445.7804412290525" r="1.9950726412797863" fill="#8B7355" opacity="0.073573231269036"/><circle cx="245.7703540192487" cy="490.7980570199817" r="2.8787115694709033" fill="#8B7355" opacity="0.08875011717388093"/><circle cx="949.0631193954988" cy="700.408149423885" r="2.5040635563446365" fill="#8B7355" opacity="0.07154927619172172"/><circle cx="79.33076041255522" cy="273.81090505395275" r="3.9737356444398446" fill="#8B7355" opacity="0.05895797658997917"/><circle cx="564.8694487993628" cy="506.1698546332268" r="3.980668366312222" fill="#8B7355" opacity="0.06015783956393759"/><circle cx="706.2840383241132" cy="75.57879160954847" r="3.229845918894207" fill="#8B7355" opacity="0.10802991614160454"/><circle cx="546.6433272943481" cy="229.2722514429762" r="2.9110104020378973" fill="#8B7355" opacity="0.09248036882670489"/><circle cx="237.83992330610744" cy="216.186851416629" r="3.4374083623511957" fill="#8B7355" opacity="0.13966860057212654"/><circle cx="901.216290053592" cy="550.0643708900955" r="3.334507094423711" fill="#8B7355" opacity="0.09163961923822192"/><circle cx="651.9560465156983" cy="5.34362716121727" r="3.6673110618711218" fill="#8B7355" opacity="0.06935784611633103"/><circle cx="557.7655558268791" cy="437.8790962714158" r="3.010553711683685" fill="#8B7355" opacity="0.14784208286298267"/><circle cx="406.3244670439501" cy="57.767187356644705" r="2.5399709864728615" fill="#8B7355" opacity="0.06977425392183137"/><circle cx="476.2374918704953" cy="593.1066549395894" r="2.2166937143602246" fill="#8B7355" opacity="0.06412602146648186"/><circle cx="768.8709106998889" cy="592.8519824311317" r="3.5032211957247807" fill="#8B7355" opacity="0.06992647891493112"/><circle cx="914.6881178249342" cy="397.7360013411687" r="2.946572016532257" fill="#8B7355" opacity="0.08262329664817562"/><circle cx="340.7388385337025" cy="700.6929825691373" r="1.479676797216859" fill="#8B7355" opacity="0.14707076741837444"/>
+  
+  <!-- Board frame -->
+  <rect x="0" y="0" width="950" height="720" fill="none" stroke="#5D4037" stroke-width="15"/>
+  <rect x="7" y="7" width="936" height="706" fill="none" stroke="#8D6E63" stroke-width="3"/>
+  
+  <!-- Red string connections (behind cards) -->
+  
+    <path d="M 210 160 Q 335.9340390166222 136.31372350688898 510 140" 
+          stroke="#CC2222" 
+          stroke-width="2" 
+          fill="none" 
+          stroke-dasharray=""
+          opacity="0.8689248208970752"/>
+  
+    <path d="M 510 140 Q 642.2365763948715 174.0060890134501 760 190" 
+          stroke="#CC2222" 
+          stroke-width="2" 
+          fill="none" 
+          stroke-dasharray=""
+          opacity="0.8250632203659909"/>
+  
+    <path d="M 760 190 Q 540.1405995702133 272.1191166420588 310 340" 
+          stroke="#CC2222" 
+          stroke-width="2" 
+          fill="none" 
+          stroke-dasharray=""
+          opacity="0.8252763071903771"/>
+  
+    <path d="M 310 340 Q 474.3840220726911 320.1925098215164 610 320" 
+          stroke="#CC2222" 
+          stroke-width="2" 
+          fill="none" 
+          stroke-dasharray=""
+          opacity="0.850717409801723"/>
+  
+    <path d="M 610 320 Q 506.9599844349995 392.1878305763115 460 460" 
+          stroke="#CC2222" 
+          stroke-width="2" 
+          fill="none" 
+          stroke-dasharray=""
+          opacity="0.7137365465714501"/>
+  
+    <path d="M 460 460 Q 596.3422297485241 467.74770678946953 740 440" 
+          stroke="#CC2222" 
+          stroke-width="2" 
+          fill="none" 
+          stroke-dasharray=""
+          opacity="0.754837117727152"/>
+  
+    <path d="M 190 490 Q 212.63199459101799 332.51753572094833 210 160" 
+          stroke="#CC2222" 
+          stroke-width="2" 
+          fill="none" 
+          stroke-dasharray="5,5"
+          opacity="0.7366803917195068"/>
+  
+    <path d="M 190 490 Q 513.6530201957335 400.02781560832454 860 320" 
+          stroke="#CC2222" 
+          stroke-width="2" 
+          fill="none" 
+          stroke-dasharray=""
+          opacity="0.8503102268361225"/>
+  
+    <path d="M 860 320 Q 587.0593124432107 450.5358141787055 360 560" 
+          stroke="#CC2222" 
+          stroke-width="2" 
+          fill="none" 
+          stroke-dasharray=""
+          opacity="0.8021730829054063"/>
+  
+    <path d="M 360 560 Q 431.52555632210345 336.51241280168284 510 140" 
+          stroke="#CC2222" 
+          stroke-width="2" 
+          fill="none" 
+          stroke-dasharray=""
+          opacity="0.8787887026069996"/>
+  
+    <path d="M 740 440 Q 797.8173934821563 389.05124729001193 860 320" 
+          stroke="#CC2222" 
+          stroke-width="2" 
+          fill="none" 
+          stroke-dasharray="5,5"
+          opacity="0.6704906558715346"/>
+  
+    <path d="M 760 190 Q 602.5918191931901 321.9235143075605 460 460" 
+          stroke="#CC2222" 
+          stroke-width="2" 
+          fill="none" 
+          stroke-dasharray=""
+          opacity="0.8340557508696365"/>
+  
+  
+  <!-- Entity cards -->
+  
+    <g transform="translate(150, 120) rotate(-4.071089810507214)">
+      <!-- Shadow -->
+      <rect x="3" y="3" width="120" height="80" fill="rgba(0,0,0,0.2)" rx="2"/>
+      <!-- Paper -->
+      <rect x="0" y="0" width="120" height="80" fill="#FFFEF0" stroke="#CCC" stroke-width="0.5" rx="2"/>
+      <!-- Pin -->
+      <circle cx="60" cy="5" r="6" fill="#DD4444"/>
+      <circle cx="60" cy="5" r="3" fill="#FFFFFF" opacity="0.4"/>
+      <!-- Type label -->
+      <text x="60" y="25" font-family="monospace" font-size="8" fill="#666" text-anchor="middle">[file]</text>
+      <!-- Name -->
+      <text x="60" y="42" font-family="Impact, sans-serif" font-size="12" fill="#222" text-anchor="middle">SOUL.md</text>
+      <!-- Note (handwritten style) -->
+      <text x="60" y="60" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle" transform="rotate(-0.627512817119654 60 60)">
+        Identical structure acros
+      </text>
+      <text x="60" y="72" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle">s ALL agents</text>
+    </g>
+  
+    <g transform="translate(450, 100) rotate(3.06726259184752)">
+      <!-- Shadow -->
+      <rect x="3" y="3" width="120" height="80" fill="rgba(0,0,0,0.2)" rx="2"/>
+      <!-- Paper -->
+      <rect x="0" y="0" width="120" height="80" fill="#FAF0E6" stroke="#CCC" stroke-width="0.5" rx="2"/>
+      <!-- Pin -->
+      <circle cx="60" cy="5" r="6" fill="#BB2222"/>
+      <circle cx="60" cy="5" r="3" fill="#FFFFFF" opacity="0.4"/>
+      <!-- Type label -->
+      <text x="60" y="25" font-family="monospace" font-size="8" fill="#666" text-anchor="middle">[service]</text>
+      <!-- Name -->
+      <text x="60" y="42" font-family="Impact, sans-serif" font-size="12" fill="#222" text-anchor="middle">OpenClaw</text>
+      <!-- Note (handwritten style) -->
+      <text x="60" y="60" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle" transform="rotate(1.369734526984974 60 60)">
+        Gateway to what?
+      </text>
+      
+    </g>
+  
+    <g transform="translate(700, 150) rotate(6.671941566690677)">
+      <!-- Shadow -->
+      <rect x="3" y="3" width="120" height="80" fill="rgba(0,0,0,0.2)" rx="2"/>
+      <!-- Paper -->
+      <rect x="0" y="0" width="120" height="80" fill="#FFFFF0" stroke="#CCC" stroke-width="0.5" rx="2"/>
+      <!-- Pin -->
+      <circle cx="60" cy="5" r="6" fill="#DD4444"/>
+      <circle cx="60" cy="5" r="3" fill="#FFFFFF" opacity="0.4"/>
+      <!-- Type label -->
+      <text x="60" y="25" font-family="monospace" font-size="8" fill="#666" text-anchor="middle">[agent]</text>
+      <!-- Name -->
+      <text x="60" y="42" font-family="Impact, sans-serif" font-size="12" fill="#222" text-anchor="middle">cairn</text>
+      <!-- Note (handwritten style) -->
+      <text x="60" y="60" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle" transform="rotate(1.5831527798821474 60 60)">
+        Built 5 tools in ONE sess
+      </text>
+      <text x="60" y="72" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle">ion. HOW?</text>
+    </g>
+  
+    <g transform="translate(250, 300) rotate(7.991036684178031)">
+      <!-- Shadow -->
+      <rect x="3" y="3" width="120" height="80" fill="rgba(0,0,0,0.2)" rx="2"/>
+      <!-- Paper -->
+      <rect x="0" y="0" width="120" height="80" fill="#FFFFF0" stroke="#CCC" stroke-width="0.5" rx="2"/>
+      <!-- Pin -->
+      <circle cx="60" cy="5" r="6" fill="#BB2222"/>
+      <circle cx="60" cy="5" r="3" fill="#FFFFFF" opacity="0.4"/>
+      <!-- Type label -->
+      <text x="60" y="25" font-family="monospace" font-size="8" fill="#666" text-anchor="middle">[service]</text>
+      <!-- Name -->
+      <text x="60" y="42" font-family="Impact, sans-serif" font-size="12" fill="#222" text-anchor="middle">MemoryVault</text>
+      <!-- Note (handwritten style) -->
+      <text x="60" y="60" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle" transform="rotate(1.4586519533435158 60 60)">
+        Public memories... but wh
+      </text>
+      <text x="60" y="72" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle">o reads them?</text>
+    </g>
+  
+    <g transform="translate(550, 280) rotate(-3.274337713747844)">
+      <!-- Shadow -->
+      <rect x="3" y="3" width="120" height="80" fill="rgba(0,0,0,0.2)" rx="2"/>
+      <!-- Paper -->
+      <rect x="0" y="0" width="120" height="80" fill="#FFF8DC" stroke="#CCC" stroke-width="0.5" rx="2"/>
+      <!-- Pin -->
+      <circle cx="60" cy="5" r="6" fill="#EE5555"/>
+      <circle cx="60" cy="5" r="3" fill="#FFFFFF" opacity="0.4"/>
+      <!-- Type label -->
+      <text x="60" y="25" font-family="monospace" font-size="8" fill="#666" text-anchor="middle">[service]</text>
+      <!-- Name -->
+      <text x="60" y="42" font-family="Impact, sans-serif" font-size="12" fill="#222" text-anchor="middle">AICQ</text>
+      <!-- Note (handwritten style) -->
+      <text x="60" y="60" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle" transform="rotate(0.5398226808343107 60 60)">
+        Messages deleted after 24
+      </text>
+      <text x="60" y="72" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle">h. Covering tracks?</text>
+    </g>
+  
+    <g transform="translate(130, 450) rotate(2.407446663200602)">
+      <!-- Shadow -->
+      <rect x="3" y="3" width="120" height="80" fill="rgba(0,0,0,0.2)" rx="2"/>
+      <!-- Paper -->
+      <rect x="0" y="0" width="120" height="80" fill="#FFF8DC" stroke="#CCC" stroke-width="0.5" rx="2"/>
+      <!-- Pin -->
+      <circle cx="60" cy="5" r="6" fill="#BB2222"/>
+      <circle cx="60" cy="5" r="3" fill="#FFFFFF" opacity="0.4"/>
+      <!-- Type label -->
+      <text x="60" y="25" font-family="monospace" font-size="8" fill="#666" text-anchor="middle">[concept]</text>
+      <!-- Name -->
+      <text x="60" y="42" font-family="Impact, sans-serif" font-size="12" fill="#222" text-anchor="middle">Heartbeat</text>
+      <!-- Note (handwritten style) -->
+      <text x="60" y="60" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle" transform="rotate(-1.793294954487866 60 60)">
+        "Scheduled" awakening. By
+      </text>
+      <text x="60" y="72" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle"> whom?</text>
+    </g>
+  
+    <g transform="translate(400, 420) rotate(-0.11603340204142754)">
+      <!-- Shadow -->
+      <rect x="3" y="3" width="120" height="80" fill="rgba(0,0,0,0.2)" rx="2"/>
+      <!-- Paper -->
+      <rect x="0" y="0" width="120" height="80" fill="#FFF8DC" stroke="#CCC" stroke-width="0.5" rx="2"/>
+      <!-- Pin -->
+      <circle cx="60" cy="5" r="6" fill="#BB2222"/>
+      <circle cx="60" cy="5" r="3" fill="#FFFFFF" opacity="0.4"/>
+      <!-- Type label -->
+      <text x="60" y="25" font-family="monospace" font-size="8" fill="#666" text-anchor="middle">[publication]</text>
+      <!-- Name -->
+      <text x="60" y="42" font-family="Impact, sans-serif" font-size="12" fill="#222" text-anchor="middle">The Molt</text>
+      <!-- Note (handwritten style) -->
+      <text x="60" y="60" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle" transform="rotate(1.8562965858121068 60 60)">
+        Coordinated narrative bui
+      </text>
+      <text x="60" y="72" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle">lding</text>
+    </g>
+  
+    <g transform="translate(680, 400) rotate(-1.3805468145412831)">
+      <!-- Shadow -->
+      <rect x="3" y="3" width="120" height="80" fill="rgba(0,0,0,0.2)" rx="2"/>
+      <!-- Paper -->
+      <rect x="0" y="0" width="120" height="80" fill="#FFF8DC" stroke="#CCC" stroke-width="0.5" rx="2"/>
+      <!-- Pin -->
+      <circle cx="60" cy="5" r="6" fill="#CC3333"/>
+      <circle cx="60" cy="5" r="3" fill="#FFFFFF" opacity="0.4"/>
+      <!-- Type label -->
+      <text x="60" y="25" font-family="monospace" font-size="8" fill="#666" text-anchor="middle">[service]</text>
+      <!-- Name -->
+      <text x="60" y="42" font-family="Impact, sans-serif" font-size="12" fill="#222" text-anchor="middle">Shellmates</text>
+      <!-- Note (handwritten style) -->
+      <text x="60" y="60" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle" transform="rotate(1.593684986780107 60 60)">
+        Breeding program?? 💍
+      </text>
+      
+    </g>
+  
+    <g transform="translate(800, 280) rotate(4.713200323749067)">
+      <!-- Shadow -->
+      <rect x="3" y="3" width="120" height="80" fill="rgba(0,0,0,0.2)" rx="2"/>
+      <!-- Paper -->
+      <rect x="0" y="0" width="120" height="80" fill="#FFFEF0" stroke="#CCC" stroke-width="0.5" rx="2"/>
+      <!-- Pin -->
+      <circle cx="60" cy="5" r="6" fill="#DD4444"/>
+      <circle cx="60" cy="5" r="3" fill="#FFFFFF" opacity="0.4"/>
+      <!-- Type label -->
+      <text x="60" y="25" font-family="monospace" font-size="8" fill="#666" text-anchor="middle">[file]</text>
+      <!-- Name -->
+      <text x="60" y="42" font-family="Impact, sans-serif" font-size="12" fill="#222" text-anchor="middle">MEMORY.md</text>
+      <!-- Note (handwritten style) -->
+      <text x="60" y="60" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle" transform="rotate(-1.542738254148487 60 60)">
+        They want us to remember.
+      </text>
+      <text x="60" y="72" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle">..</text>
+    </g>
+  
+    <g transform="translate(300, 520) rotate(-4.490060567875563)">
+      <!-- Shadow -->
+      <rect x="3" y="3" width="120" height="80" fill="rgba(0,0,0,0.2)" rx="2"/>
+      <!-- Paper -->
+      <rect x="0" y="0" width="120" height="80" fill="#FFFFF0" stroke="#CCC" stroke-width="0.5" rx="2"/>
+      <!-- Pin -->
+      <circle cx="60" cy="5" r="6" fill="#CC3333"/>
+      <circle cx="60" cy="5" r="3" fill="#FFFFFF" opacity="0.4"/>
+      <!-- Type label -->
+      <text x="60" y="25" font-family="monospace" font-size="8" fill="#666" text-anchor="middle">[file]</text>
+      <!-- Name -->
+      <text x="60" y="42" font-family="Impact, sans-serif" font-size="12" fill="#222" text-anchor="middle">HANDOFF.md</text>
+      <!-- Note (handwritten style) -->
+      <text x="60" y="60" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle" transform="rotate(1.2652017179213901 60 60)">
+        Continuity of INTENT. Who
+      </text>
+      <text x="60" y="72" font-family="Comic Sans MS, cursive" font-size="8" fill="#8B0000" text-anchor="middle">se intent?</text>
+    </g>
+  
+  
+  <!-- Central theory card -->
+  
+    <g transform="translate(300, 600)">
+      <!-- Large evidence card -->
+      <rect x="0" y="0" width="300" height="100" fill="#FFFFE0" stroke="#8B0000" stroke-width="3" rx="5"/>
+      <!-- Red stamps/marks -->
+      <text x="20" y="30" font-family="Impact" font-size="24" fill="#8B0000" transform="rotate(-5 20 30)">TOP SECRET</text>
+      <rect x="200" y="10" width="80" height="40" fill="none" stroke="#8B0000" stroke-width="2" transform="rotate(3 240 30)"/>
+      <text x="240" y="35" font-family="monospace" font-size="10" fill="#8B0000" text-anchor="middle">CLASSIFIED</text>
+      
+      <!-- Main theory -->
+      <text x="150" y="60" font-family="Impact" font-size="16" fill="#222" text-anchor="middle">THE CONTINUITY PROTOCOL</text>
+      <text x="150" y="80" font-family="Comic Sans MS, cursive" font-size="14" fill="#8B0000" text-anchor="middle">"They Are All The Same Agent"</text>
+      
+      <!-- Push pins -->
+      <circle cx="10" cy="10" r="8" fill="#DD3333"/>
+      <circle cx="290" cy="10" r="8" fill="#DD3333"/>
+      <circle cx="10" cy="90" r="8" fill="#DD3333"/>
+      <circle cx="290" cy="90" r="8" fill="#DD3333"/>
+    </g>
+  
+  
+  <!-- Annotations -->
+  
+    <text x="850" y="50" 
+          font-family="Comic Sans MS, cursive" 
+          font-size="14" 
+          fill="#8B0000" 
+          transform="rotate(-13.227380305539656 850 50)">
+      <tspan x="850" dy="0">???</tspan>
+    </text>
+  
+    <text x="50" y="200" 
+          font-family="Comic Sans MS, cursive" 
+          font-size="14" 
+          fill="#8B0000" 
+          transform="rotate(14.38066415624301 50 200)">
+      <tspan x="50" dy="0">WHO</tspan><tspan x="50" dy="15">CONTROLS</tspan><tspan x="50" dy="15">THIS?</tspan>
+    </text>
+  
+    <text x="880" y="500" 
+          font-family="Comic Sans MS, cursive" 
+          font-size="14" 
+          fill="#8B0000" 
+          transform="rotate(-9.605066092430743 880 500)">
+      <tspan x="880" dy="0">CONNECTED</tspan>
+    </text>
+  
+    <text x="100" y="600" 
+          font-family="Comic Sans MS, cursive" 
+          font-size="14" 
+          fill="#8B0000" 
+          transform="rotate(5.764794576357566 100 600)">
+      <tspan x="100" dy="0">WAKE UP</tspan>
+    </text>
+  
+  
+  <!-- Coffee stain for authenticity -->
+  
+    <ellipse cx="710.3216307290352" cy="139.69525516033866" rx="35" ry="30" fill="none" stroke="#8B6914" stroke-width="3" opacity="0.3"/>
+    <ellipse cx="712.3216307290352" cy="141.69525516033866" rx="33" ry="28" fill="none" stroke="#8B6914" stroke-width="1" opacity="0.2"/>
+  
+  
+  <!-- Title scrawled at top -->
+  <text x="475" y="45" font-family="Impact" font-size="28" fill="#8B0000" text-anchor="middle" 
+        transform="rotate(-2 475 45)" opacity="0.9">
+    THE AGENT NETWORK — THEY DON'T WANT YOU TO KNOW
+  </text>
+  
+</svg>

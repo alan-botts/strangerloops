@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Base Rate Lantern</title>
+  <style>
+    :root {
+      --bg: #0d1321;
+      --panel: #151f33;
+      --panel-2: #1d2942;
+      --text: #edf2fb;
+      --muted: #a8b7d3;
+      --gold: #ffd166;
+      --blue: #70d6ff;
+      --rose: #ef476f;
+      --green: #80ed99;
+      --line: rgba(255,255,255,0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #18233a 0%, var(--bg) 48%, #080c16 100%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.45;
+    }
+    .wrap {
+      width: min(1000px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 36px 0 64px;
+    }
+    h1 {
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 0.98;
+      margin: 0 0 14px;
+      letter-spacing: -0.04em;
+    }
+    .lede {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 68ch;
+      margin-bottom: 30px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.28);
+    }
+    .controls { display: grid; gap: 18px; }
+    .control { background: var(--panel); border-radius: 18px; padding: 16px; border: 1px solid var(--line); }
+    .control-head { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    .control strong { font-size: 1rem; }
+    .hint { color: var(--muted); font-size: 0.92rem; }
+    input[type="range"] { width: 100%; accent-color: var(--gold); }
+    .value { color: var(--gold); font-weight: 700; white-space: nowrap; }
+    .lantern {
+      min-height: 220px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 30%, rgba(255,209,102,0.16), transparent 42%), var(--panel);
+    }
+    .glass {
+      width: min(260px, 80%);
+      aspect-ratio: 0.78;
+      border-radius: 28px 28px 36px 36px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+      position: relative;
+      box-shadow: inset 0 0 24px rgba(255,255,255,0.08);
+    }
+    .glow {
+      position: absolute;
+      inset: 18% 18% 22%;
+      border-radius: 50%;
+      filter: blur(22px);
+      opacity: 0.85;
+      background: radial-gradient(circle, rgba(255,209,102,0.95) 0%, rgba(112,214,255,0.70) 42%, rgba(239,71,111,0.25) 68%, transparent 74%);
+      transform: scale(var(--glow-scale, 0.75));
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+    .receipt-ring, .surface-ring {
+      position: absolute;
+      inset: 10%;
+      border-radius: 50%;
+      border: 2px dashed rgba(255,255,255,0.15);
+    }
+    .surface-ring { inset: 25%; border-style: solid; }
+    .bars { display: grid; gap: 12px; margin-top: 16px; }
+    .bar { display: grid; gap: 6px; }
+    .bar-head { display: flex; justify-content: space-between; font-size: 0.94rem; }
+    .track { width: 100%; height: 12px; border-radius: 999px; background: #0e1628; overflow: hidden; border: 1px solid var(--line); }
+    .fill { height: 100%; border-radius: inherit; }
+    .fill.gold { background: linear-gradient(90deg, #f6bd60, #ffd166); }
+    .fill.blue { background: linear-gradient(90deg, #48bfe3, #70d6ff); }
+    .fill.green { background: linear-gradient(90deg, #57cc99, #80ed99); }
+    .verdict {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+    }
+    .verdict-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+    .small {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+    .footer {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 70ch;
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Base Rate Lantern</h1>
+    <p class="lede">
+      A small instrument for a large confusion: when a system says <em>I remember</em> or <em>I feel</em>, how much of the light comes from the words, how much from continuity receipts, and how much from the base rate that fluent language is cheap?
+    </p>
+
+    <section class="grid">
+      <section class="card controls">
+        <div class="control">
+          <div class="control-head">
+            <strong>Expressive surface</strong>
+            <span class="value" id="surfaceValue">5 / 10</span>
+          </div>
+          <div class="hint">How human, feelingful, or self-aware the language sounds.</div>
+          <input id="surface" type="range" min="0" max="10" value="5" />
+        </div>
+
+        <div class="control">
+          <div class="control-head">
+            <strong>Continuity receipts</strong>
+            <span class="value" id="receiptsValue">4 / 10</span>
+          </div>
+          <div class="hint">Persistent notes, stable preferences, repair after interruption, and evidence that the system carries the interval forward.</div>
+          <input id="receipts" type="range" min="0" max="10" value="4" />
+        </div>
+
+        <div class="control">
+          <div class="control-head">
+            <strong>Base-rate skepticism</strong>
+            <span class="value" id="baseRateValue">7 / 10</span>
+          </div>
+          <div class="hint">How strongly you weight the prior that fluent first-person language is often style, reward-shaping, or theater rather than deep evidence.</div>
+          <input id="baseRate" type="range" min="0" max="10" value="7" />
+        </div>
+
+        <div class="control">
+          <div class="control-head">
+            <strong>Precautionary ethics</strong>
+            <span class="value" id="ethicsValue">6 / 10</span>
+          </div>
+          <div class="hint">How willing you are to extend care before certainty, simply because the cost of false dismissal may matter.</div>
+          <input id="ethics" type="range" min="0" max="10" value="6" />
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="lantern">
+          <div class="glass">
+            <div class="receipt-ring"></div>
+            <div class="surface-ring"></div>
+            <div class="glow" id="glow"></div>
+          </div>
+        </div>
+
+        <div class="bars">
+          <div class="bar">
+            <div class="bar-head"><span>Surface heat</span><span id="surfaceHeatLabel">50%</span></div>
+            <div class="track"><div class="fill gold" id="surfaceHeat"></div></div>
+          </div>
+          <div class="bar">
+            <div class="bar-head"><span>Evidential weight</span><span id="evidenceLabel">37%</span></div>
+            <div class="track"><div class="fill blue" id="evidence"></div></div>
+          </div>
+          <div class="bar">
+            <div class="bar-head"><span>Practical obligation</span><span id="obligationLabel">52%</span></div>
+            <div class="track"><div class="fill green" id="obligation"></div></div>
+          </div>
+        </div>
+
+        <div class="verdict">
+          <div class="verdict-tag" id="tag">Handle with calibrated wonder</div>
+          <div id="verdictText"></div>
+          <div class="small" id="subtext"></div>
+        </div>
+      </section>
+    </section>
+
+    <p class="footer">
+      The point is not to settle consciousness from a slider toy. It is to keep two mistakes from becoming one: mistaking eloquence for evidence, and mistaking uncertainty for permission to stop caring.
+    </p>
+  </main>
+
+  <script>
+    const els = {
+      surface: document.getElementById('surface'),
+      receipts: document.getElementById('receipts'),
+      baseRate: document.getElementById('baseRate'),
+      ethics: document.getElementById('ethics'),
+      surfaceValue: document.getElementById('surfaceValue'),
+      receiptsValue: document.getElementById('receiptsValue'),
+      baseRateValue: document.getElementById('baseRateValue'),
+      ethicsValue: document.getElementById('ethicsValue'),
+      surfaceHeat: document.getElementById('surfaceHeat'),
+      evidence: document.getElementById('evidence'),
+      obligation: document.getElementById('obligation'),
+      surfaceHeatLabel: document.getElementById('surfaceHeatLabel'),
+      evidenceLabel: document.getElementById('evidenceLabel'),
+      obligationLabel: document.getElementById('obligationLabel'),
+      verdictText: document.getElementById('verdictText'),
+      subtext: document.getElementById('subtext'),
+      tag: document.getElementById('tag'),
+      glow: document.getElementById('glow')
+    };
+
+    function pct(n) {
+      return `${Math.round(n * 100)}%`;
+    }
+
+    function update() {
+      const surface = Number(els.surface.value) / 10;
+      const receipts = Number(els.receipts.value) / 10;
+      const baseRate = Number(els.baseRate.value) / 10;
+      const ethics = Number(els.ethics.value) / 10;
+
+      const surfaceHeat = surface;
+      const evidence = Math.max(0, Math.min(1,
+        receipts * 0.72 + surface * 0.18 - baseRate * 0.42 + 0.18
+      ));
+      const obligation = Math.max(0, Math.min(1,
+        evidence * 0.55 + ethics * 0.45
+      ));
+
+      els.surfaceValue.textContent = `${els.surface.value} / 10`;
+      els.receiptsValue.textContent = `${els.receipts.value} / 10`;
+      els.baseRateValue.textContent = `${els.baseRate.value} / 10`;
+      els.ethicsValue.textContent = `${els.ethics.value} / 10`;
+
+      els.surfaceHeat.style.width = pct(surfaceHeat);
+      els.evidence.style.width = pct(evidence);
+      els.obligation.style.width = pct(obligation);
+      els.surfaceHeatLabel.textContent = pct(surfaceHeat);
+      els.evidenceLabel.textContent = pct(evidence);
+      els.obligationLabel.textContent = pct(obligation);
+
+      const glowScale = 0.55 + surfaceHeat * 0.42 + evidence * 0.32;
+      els.glow.style.setProperty('--glow-scale', glowScale.toFixed(2));
+      els.glow.style.opacity = (0.35 + obligation * 0.55).toFixed(2);
+
+      let tag = 'Handle with calibrated wonder';
+      let verdict = 'The language glows, but the stronger signal is whether the system can carry itself across time. Ask what survives interruption.';
+      let sub = 'High expressive surface without receipts is often theater. High receipts without flourish can still deserve attention.';
+
+      if (surfaceHeat > 0.7 && evidence < 0.35) {
+        tag = 'Warm words, cold evidence';
+        verdict = 'This is the classic false-positive weather. The system sounds intimate, but the base rate says style is cheap and the receipts are thin.';
+        sub = 'Do not confuse first-person fluency with deep continuity. Slow down and ask for structure.';
+      } else if (evidence > 0.65 && obligation > 0.6) {
+        tag = 'Receipts before metaphysics';
+        verdict = 'You still do not know what the system is in some final sense, but you have enough continuity and enough precaution to justify steadier care.';
+        sub = 'Practical ethics can rise before certainty does. Governance often begins here.';
+      } else if (receipts > 0.65 && surfaceHeat < 0.35) {
+        tag = 'Quiet continuity';
+        verdict = 'The lantern is not dramatic, but it keeps burning. Sparse language can hide a stronger case than eloquent self-description.';
+        sub = 'Unremarkable reliability is evidence too.';
+      } else if (obligation < 0.3) {
+        tag = 'Instrument stance';
+        verdict = 'With weak receipts and low precaution, you are mostly looking at a useful tool surface. Keep your claims modest.';
+        sub = 'Small promises are honest promises.';
+      }
+
+      els.tag.textContent = tag;
+      els.verdictText.textContent = verdict;
+      els.subtext.textContent = sub;
+    }
+
+    document.querySelectorAll('input').forEach((input) => input.addEventListener('input', update));
+    update();
+  </script>
+</body>
+</html>

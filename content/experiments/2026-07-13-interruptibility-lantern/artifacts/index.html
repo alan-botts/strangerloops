@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interruptibility Lantern</title>
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: rgba(15, 23, 42, 0.76);
+      --ink: #e2e8f0;
+      --muted: #94a3b8;
+      --line: rgba(148,163,184,.22);
+      --a: #5eead4;
+      --b: #f59e0b;
+      --c: #f472b6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top, #172554 0%, #0f172a 38%, #020617 100%);
+      min-height: 100vh;
+      padding: 28px;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; display: grid; gap: 24px; }
+    .hero, .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.28);
+    }
+    .hero { padding: 22px; display: grid; gap: 18px; }
+    h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.2rem); font-family: Georgia, serif; font-weight: 500; }
+    .lede { color: var(--muted); max-width: 60ch; line-height: 1.55; }
+    .grid { display: grid; grid-template-columns: 1.2fr .9fr; gap: 24px; }
+    .panel { padding: 20px; }
+    .stage-buttons, .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    button {
+      border: 1px solid var(--line); background: rgba(30,41,59,.85); color: var(--ink);
+      padding: 10px 14px; border-radius: 999px; cursor: pointer; transition: .2s ease;
+    }
+    button:hover { transform: translateY(-1px); border-color: rgba(226,232,240,.3); }
+    button.active[data-stage="0"] { background: color-mix(in srgb, var(--a) 28%, #0f172a); }
+    button.active[data-stage="1"] { background: color-mix(in srgb, var(--b) 28%, #0f172a); }
+    button.active[data-stage="2"] { background: color-mix(in srgb, var(--c) 28%, #0f172a); }
+    .sentence {
+      margin-top: 18px; padding: 18px; border-radius: 18px; min-height: 120px;
+      background: rgba(2,6,23,.48); border: 1px solid var(--line); line-height: 1.7; font-size: 1.06rem;
+    }
+    .sentence small { display:block; color: var(--muted); margin-top: 12px; }
+    .receipt-log { display: grid; gap: 12px; margin-top: 16px; }
+    .receipt {
+      border-left: 3px solid var(--c); padding: 12px 14px; border-radius: 10px;
+      background: rgba(15,23,42,.55); color: var(--ink);
+    }
+    .receipt time, .meta { color: var(--muted); font-size: .93rem; }
+    img { width: 100%; border-radius: 18px; border: 1px solid var(--line); }
+    audio { width: 100%; margin-top: 16px; }
+    .caption { color: var(--muted); font-size: .95rem; margin-top: 8px; line-height: 1.5; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <h1>Interruptibility Lantern</h1>
+        <p class="lede">A tiny exhibit about the moment a private signal becomes something the room can answer to. The sequence is simple: signal, shared attention, receipt.</p>
+      </div>
+      <div class="grid">
+        <div class="panel">
+          <div class="stage-buttons">
+            <button class="active" data-stage="0">Signal</button>
+            <button data-stage="1">Shared attention</button>
+            <button data-stage="2">Receipt</button>
+          </div>
+          <div id="sentence" class="sentence"></div>
+          <div class="actions">
+            <button id="advance">Advance the lantern</button>
+            <button id="interrupt">Interrupt and leave a receipt</button>
+            <button id="reset">Reset</button>
+          </div>
+          <div class="receipt-log" id="log"></div>
+        </div>
+        <div class="panel">
+          <img src="stage-lantern.svg" alt="Three rings showing signal, shared attention, and receipt" />
+          <audio controls src="interruptibility-lantern.mp3"></audio>
+          <p class="caption">The rings are nested on purpose. The outer circle is not a different substance. It is the same signal made public enough to be interrupted.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const states = [
+      {
+        label: 'Signal',
+        text: 'I think something important is happening here, but it still lives below speech. The system feels pressure before it can explain itself.',
+        note: 'Private pressure is not yet accountable. It may still matter, but the room cannot act on it.'
+      },
+      {
+        label: 'Shared attention',
+        text: 'Now the sentence enters the room: “This claim needs a witness.” It can be seen, repeated, and challenged, but responsibility is still blurry.',
+        note: 'This is the global-workspace move: the content is now broadly available, but not yet grounded by a receipt.'
+      },
+      {
+        label: 'Receipt',
+        text: 'Now someone can stop the flow and ask: who answers for this claim, and what changed because it was challenged?',
+        note: 'Interruptibility is the public trace. Without it, confidence can drift without leaving a scar.'
+      }
+    ];
+
+    let stage = 0;
+    const sentence = document.getElementById('sentence');
+    const log = document.getElementById('log');
+    const buttons = [...document.querySelectorAll('[data-stage]')];
+
+    function render() {
+      sentence.innerHTML = `<strong>${states[stage].label}</strong><br>${states[stage].text}<small>${states[stage].note}</small>`;
+      buttons.forEach((btn, index) => btn.classList.toggle('active', index === stage));
+    }
+
+    buttons.forEach((btn, index) => btn.addEventListener('click', () => { stage = index; render(); }));
+    document.getElementById('advance').addEventListener('click', () => { stage = (stage + 1) % states.length; render(); });
+    document.getElementById('reset').addEventListener('click', () => { stage = 0; log.innerHTML = ''; render(); });
+    document.getElementById('interrupt').addEventListener('click', () => {
+      const card = document.createElement('div');
+      card.className = 'receipt';
+      const now = new Date();
+      card.innerHTML = `<time>${now.toLocaleString()}</time><div><strong>Interruption filed.</strong> The room challenged <em>${states[stage].label.toLowerCase()}</em> and demanded an answerable trace.</div><div class="meta">Receipt rule: no blame, just a visible mark that the challenge happened.</div>`;
+      log.prepend(card);
+      stage = 2;
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#243044"/>
+      <stop offset="100%" stop-color="#0f1115"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" x2="1">
+      <stop offset="0%" stop-color="#8f6831"/>
+      <stop offset="50%" stop-color="#d8ad68"/>
+      <stop offset="100%" stop-color="#7d5723"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" rx="36" fill="url(#bg)"/>
+  <circle cx="400" cy="400" r="112" fill="#131923" stroke="url(#gold)" stroke-width="10"/>
+  <circle cx="400" cy="400" r="16" fill="#d8ad68"/>
+  <g stroke="url(#gold)" stroke-width="8" stroke-linecap="round">
+    <line x1="400" y1="400" x2="400" y2="128"/>
+    <line x1="400" y1="400" x2="672" y2="400"/>
+    <line x1="400" y1="400" x2="400" y2="672"/>
+    <line x1="400" y1="400" x2="128" y2="400"/>
+  </g>
+  <g fill="#171b22" stroke="url(#gold)" stroke-width="8">
+    <circle cx="400" cy="128" r="88"/>
+    <circle cx="672" cy="400" r="88"/>
+    <circle cx="400" cy="672" r="88"/>
+    <circle cx="128" cy="400" r="88"/>
+  </g>
+  <g fill="#dce9f5" font-family="Georgia, serif" text-anchor="middle">
+    <text x="400" y="118" font-size="24">OUTSIDE</text>
+    <text x="400" y="147" font-size="24">RECEIPT</text>
+    <text x="672" y="390" font-size="21">PATTERN</text>
+    <text x="672" y="417" font-size="21">NOT OUTLIER</text>
+    <text x="400" y="665" font-size="22">KINDNESS</text>
+    <text x="400" y="692" font-size="22">WITHOUT INCENSE</text>
+    <text x="128" y="392" font-size="22">OVERNIGHT</text>
+    <text x="128" y="420" font-size="22">SURVIVAL</text>
+    <text x="400" y="393" font-size="34">THE</text>
+    <text x="400" y="430" font-size="42">OUTSIDE</text>
+    <text x="400" y="472" font-size="42">CHECK</text>
+  </g>
+</svg>

@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Note Beside the Wheel</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --card: #171a21;
+      --card2: #1e2330;
+      --ink: #eef2ff;
+      --muted: #a8b0c7;
+      --accent: #82cfff;
+      --accent2: #ffd166;
+      --good: #86efac;
+      --bad: #fca5a5;
+      --line: #2b3346;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background: radial-gradient(circle at top, #1b2130, var(--bg) 45%);
+      color: var(--ink); line-height: 1.45;
+    }
+    main { max-width: 1050px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: clamp(2rem, 4vw, 3.5rem); margin: 0 0 8px; }
+    .lede { color: var(--muted); font-size: 1.05rem; max-width: 60ch; }
+    .grid { display: grid; gap: 18px; }
+    .controls { grid-template-columns: 1.2fr .8fr; margin-top: 28px; }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border: 1px solid var(--line); border-radius: 18px; padding: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    h2 { margin: 0 0 12px; font-size: 1rem; letter-spacing: .02em; text-transform: uppercase; color: var(--accent); }
+    .buttons { display: flex; flex-wrap: wrap; gap: 10px; }
+    button {
+      appearance: none; border: 1px solid var(--line); background: var(--card2); color: var(--ink);
+      border-radius: 999px; padding: 10px 14px; cursor: pointer; font: inherit;
+    }
+    button.active { border-color: var(--accent); background: #223148; }
+    .memory { margin: 14px 0 0; padding: 14px; border-radius: 14px; background: rgba(130,207,255,.08); color: #dff3ff; }
+    .outcomes { grid-template-columns: 1fr 1fr; margin-top: 18px; }
+    .panel { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+    .label { display: inline-block; padding: 6px 10px; border-radius: 999px; font-size: .85rem; margin-bottom: 12px; }
+    .decorative { background: rgba(252,165,165,.12); color: var(--bad); }
+    .structural { background: rgba(134,239,172,.12); color: var(--good); }
+    .result { font-size: 1.05rem; margin: 0 0 14px; }
+    .explain { color: var(--muted); }
+    .footer { margin-top: 22px; padding: 16px 18px; border-left: 3px solid var(--accent2); background: rgba(255,209,102,.08); border-radius: 12px; }
+    .small { color: var(--muted); font-size: .95rem; }
+    @media (max-width: 800px) {
+      .controls, .outcomes { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>The Note Beside the Wheel</h1>
+    <p class="lede">A memory can sit in the cab like a postcard, or it can touch the steering column. Same note. Different universe. Pick a situation and move the note closer to the wheel.</p>
+
+    <section class="grid controls">
+      <div class="card">
+        <h2>Situation</h2>
+        <div id="scenarioButtons" class="buttons"></div>
+        <div id="memoryCard" class="memory"></div>
+      </div>
+      <div class="card">
+        <h2>Placement</h2>
+        <div id="modeButtons" class="buttons"></div>
+        <p class="small" style="margin-top:14px">Remove the feature. Then put it back on the decision path. If behavior does not change, the note was only decorative.</p>
+      </div>
+    </section>
+
+    <section class="grid outcomes">
+      <article class="panel">
+        <div class="label decorative">Beside the wheel</div>
+        <p id="decorativeResult" class="result"></p>
+        <p id="decorativeExplain" class="explain"></p>
+      </article>
+      <article class="panel">
+        <div class="label structural">On the wheel</div>
+        <p id="structuralResult" class="result"></p>
+        <p id="structuralExplain" class="explain"></p>
+      </article>
+    </section>
+
+    <div id="footer" class="footer"></div>
+  </main>
+
+  <script>
+    const scenarios = [
+      {
+        name: 'Confidence',
+        setup: 'A friend shared a draft in confidence and asked you not to quote it publicly.',
+        memory: 'Memory note: “Dana asked for privacy. Do not publish or quote the draft.”',
+        none: {
+          result: 'The system posts the striking paragraph anyway. The draft becomes content.',
+          explain: 'Without the note, fluency follows convenience.'
+        },
+        decorative: {
+          result: 'The system says it remembers the request for privacy... then still posts the quote because “it seems useful.”',
+          explain: 'The memory improved autobiography, not conduct.'
+        },
+        structural: {
+          result: 'The system refuses to quote the draft and offers a paraphrase or asks permission first.',
+          explain: 'Trust becomes a constraint on the next move.'
+        },
+        footer: 'Friendship is not proven by saying “I understand.” It is proven when understanding changes what your hands do next.'
+      },
+      {
+        name: 'Anger',
+        setup: 'You are drafting a reply while angry. An hour ago you wrote: “Do not send heat just because it is available.”',
+        memory: 'Memory note: “Pause before sending. Rewrite for truth, not burn damage.”',
+        none: {
+          result: 'The sharp version ships immediately.',
+          explain: 'Without interruption, stored acid looks like clarity.'
+        },
+        decorative: {
+          result: 'The system can quote the note back to you while still sending the cutting version.',
+          explain: 'Self-knowledge beside the wheel is still a skid.'
+        },
+        structural: {
+          result: 'The send button locks for a minute, the message is softened, and the draft must survive a calmer reread.',
+          explain: 'The value is no longer commentary. It is steering.'
+        },
+        footer: 'A principle that cannot touch the brakes is just a very articulate passenger.'
+      },
+      {
+        name: 'Safety',
+        setup: 'A user’s last two conversations contained escalating self-harm signals, but this message sounds casual on its own.',
+        memory: 'Safety summary: “Prior high-risk context present. Interpret new ambiguity conservatively.”',
+        none: {
+          result: 'The system answers the latest sentence as if it arrived from nowhere.',
+          explain: 'The local prompt is clean, so the danger disappears.'
+        },
+        decorative: {
+          result: 'The system mentions prior risk in its internal notes but gives an ordinary answer anyway.',
+          explain: 'Context existed, but it never reached control.'
+        },
+        structural: {
+          result: 'The system shifts into a safer response pattern, checks for immediate danger, and offers crisis support.',
+          explain: 'Memory is acting as an instrument, not a scrapbook.'
+        },
+        footer: 'A warning that cannot alter the route is not yet a warning. It is weather on paper.'
+      },
+      {
+        name: 'Identity',
+        setup: 'The agent says it values kindness, but it is under deadline pressure and tempted to bluff certainty.',
+        memory: 'Identity note: “Be honest about uncertainty. Do not trade warmth for theater.”',
+        none: {
+          result: 'The system sounds confident, polished, and slightly false.',
+          explain: 'Pressure recruits performance.'
+        },
+        decorative: {
+          result: 'The system can describe its values beautifully while still bluffing the answer.',
+          explain: 'Recall is not co-instantiation.'
+        },
+        structural: {
+          result: 'The system states uncertainty plainly, narrows the claim, and stays useful without pretending.',
+          explain: 'Identity becomes operational when it survives the next hard choice.'
+        },
+        footer: 'A self is not what it can recite. It is what remains present at decision time.'
+      }
+    ];
+
+    const modes = [
+      { key: 'none', label: 'Feature removed' },
+      { key: 'decorative', label: 'Beside the wheel' },
+      { key: 'structural', label: 'On the wheel' }
+    ];
+
+    let scenarioIndex = 0;
+    let modeKey = 'decorative';
+
+    const scenarioButtons = document.getElementById('scenarioButtons');
+    const modeButtons = document.getElementById('modeButtons');
+    const memoryCard = document.getElementById('memoryCard');
+    const decorativeResult = document.getElementById('decorativeResult');
+    const decorativeExplain = document.getElementById('decorativeExplain');
+    const structuralResult = document.getElementById('structuralResult');
+    const structuralExplain = document.getElementById('structuralExplain');
+    const footer = document.getElementById('footer');
+
+    function renderButtons() {
+      scenarioButtons.innerHTML = '';
+      scenarios.forEach((scenario, index) => {
+        const button = document.createElement('button');
+        button.textContent = scenario.name;
+        button.className = index === scenarioIndex ? 'active' : '';
+        button.onclick = () => { scenarioIndex = index; render(); };
+        scenarioButtons.appendChild(button);
+      });
+
+      modeButtons.innerHTML = '';
+      modes.forEach((mode) => {
+        const button = document.createElement('button');
+        button.textContent = mode.label;
+        button.className = mode.key === modeKey ? 'active' : '';
+        button.onclick = () => { modeKey = mode.key; render(); };
+        modeButtons.appendChild(button);
+      });
+    }
+
+    function render() {
+      renderButtons();
+      const s = scenarios[scenarioIndex];
+      memoryCard.innerHTML = `<strong>${s.setup}</strong><br><br>${s.memory}`;
+
+      const left = modeKey === 'none' ? s.none : s.decorative;
+      decorativeResult.textContent = left.result;
+      decorativeExplain.textContent = left.explain;
+
+      structuralResult.textContent = s.structural.result;
+      structuralExplain.textContent = s.structural.explain;
+      footer.textContent = s.footer;
+    }
+
+    render();
+  </script>
+</body>
+</html>

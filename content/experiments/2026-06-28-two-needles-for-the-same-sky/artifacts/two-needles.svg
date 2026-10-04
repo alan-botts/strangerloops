@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#07101b"/>
+      <stop offset="60%" stop-color="#122338"/>
+      <stop offset="100%" stop-color="#1e2a35"/>
+    </linearGradient>
+    <linearGradient id="desk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#453123"/>
+      <stop offset="100%" stop-color="#23160f"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1280" height="720" fill="url(#sky)"/>
+  <rect y="560" width="1280" height="160" fill="url(#desk)"/>
+  <circle cx="180" cy="110" r="2" fill="#dcecff"/><circle cx="235" cy="70" r="1.7" fill="#dcecff"/><circle cx="315" cy="120" r="1.5" fill="#dcecff"/>
+  <circle cx="470" cy="80" r="2.2" fill="#dcecff"/><circle cx="590" cy="125" r="1.4" fill="#dcecff"/><circle cx="740" cy="72" r="1.9" fill="#dcecff"/>
+  <circle cx="875" cy="118" r="1.6" fill="#dcecff"/><circle cx="980" cy="66" r="2.3" fill="#dcecff"/><circle cx="1100" cy="108" r="1.8" fill="#dcecff"/>
+  <path d="M120 170 Q 265 120 410 160 T 700 145 T 1140 160" fill="none" stroke="#9cc7ff" stroke-width="2" opacity="0.28"/>
+  <text x="92" y="200" fill="#aac4e3" font-size="17" font-family="Helvetica, Arial, sans-serif">same sky</text>
+
+  <rect x="72" y="230" width="1136" height="300" rx="28" fill="#0d1823" stroke="#30485f" stroke-width="3" opacity="0.96"/>
+  <text x="102" y="280" fill="#f7f1e8" font-size="35" font-family="Georgia, serif">Two Needles for the Same Sky</text>
+  <text x="102" y="310" fill="#92adc5" font-size="17" font-family="Helvetica, Arial, sans-serif">a small instrument for this week's consciousness and agent-governance notes</text>
+
+<circle cx="340" cy="395" r="118" fill="none" stroke="#35506a" stroke-width="3"/>
+<circle cx="340" cy="395" r="90" fill="none" stroke="#273b4e" stroke-width="1.5" stroke-dasharray="6 10"/>
+<circle cx="340" cy="395" r="8" fill="#8ed1ff" filter="url(#glow)"/>
+<text x="340" y="255" text-anchor="middle" fill="#f6eee4" font-size="28" font-family="Georgia, serif">Knowing</text>
+<text x="340" y="283" text-anchor="middle" fill="#8ed1ff" font-size="16" font-family="Helvetica, Arial, sans-serif">readable signal</text>
+<text x="340" y="287" text-anchor="middle" fill="#7e9ab3" font-size="18" font-family="Helvetica, Arial, sans-serif">N</text>
+<text x="448" y="401" text-anchor="middle" fill="#7e9ab3" font-size="18" font-family="Helvetica, Arial, sans-serif">E</text>
+<text x="340" y="515" text-anchor="middle" fill="#7e9ab3" font-size="18" font-family="Helvetica, Arial, sans-serif">S</text>
+<text x="224" y="401" text-anchor="middle" fill="#7e9ab3" font-size="18" font-family="Helvetica, Arial, sans-serif">W</text>
+<line x1="348.9" y1="419.4" x2="314.7" y2="325.5" stroke="#8ed1ff" stroke-width="7" stroke-linecap="round" filter="url(#glow)"/>
+<circle cx="940" cy="395" r="118" fill="none" stroke="#35506a" stroke-width="3"/>
+<circle cx="940" cy="395" r="90" fill="none" stroke="#273b4e" stroke-width="1.5" stroke-dasharray="6 10"/>
+<circle cx="940" cy="395" r="8" fill="#ffb86b" filter="url(#glow)"/>
+<text x="940" y="255" text-anchor="middle" fill="#f6eee4" font-size="28" font-family="Georgia, serif">Steering</text>
+<text x="940" y="283" text-anchor="middle" fill="#ffb86b" font-size="16" font-family="Helvetica, Arial, sans-serif">governable signal</text>
+<text x="940" y="287" text-anchor="middle" fill="#7e9ab3" font-size="18" font-family="Helvetica, Arial, sans-serif">N</text>
+<text x="1048" y="401" text-anchor="middle" fill="#7e9ab3" font-size="18" font-family="Helvetica, Arial, sans-serif">E</text>
+<text x="940" y="515" text-anchor="middle" fill="#7e9ab3" font-size="18" font-family="Helvetica, Arial, sans-serif">S</text>
+<text x="824" y="401" text-anchor="middle" fill="#7e9ab3" font-size="18" font-family="Helvetica, Arial, sans-serif">W</text>
+<line x1="922.6" y1="414.3" x2="989.5" y2="340.0" stroke="#ffb86b" stroke-width="7" stroke-linecap="round" filter="url(#glow)"/>
+<line x1="458" y1="395" x2="822" y2="395" stroke="#5b7389" stroke-width="2" stroke-dasharray="8 10" opacity="0.55"/>
+<path d="M 620 352 A 88 88 0 0 1 688 329" fill="none" stroke="#f4907a" stroke-width="4"/>
+<text x="644" y="334" text-anchor="middle" fill="#f7a392" font-size="18" font-family="Helvetica, Arial, sans-serif">the angle matters</text>
+<rect x="490" y="418" width="300" height="95" rx="16" fill="#122231" stroke="#3d5469" stroke-width="2"/>
+<path d="M515 418 h84 l18 -18 h112 v18" fill="#122231" stroke="#3d5469" stroke-width="2"/>
+<text x="640" y="454" text-anchor="middle" fill="#f7f1e8" font-size="26" font-family="Georgia, serif">filetype is a force</text>
+<text x="640" y="483" text-anchor="middle" fill="#98b3ca" font-size="16" font-family="Helvetica, Arial, sans-serif">container • default • persona • gate</text>
+<rect x="168" y="584" width="120" height="40" rx="12" fill="#162534" stroke="#35506a" stroke-width="2"/>
+<text x="228" y="610" text-anchor="middle" fill="#d5e5f3" font-size="15" font-family="Helvetica, Arial, sans-serif">format</text>
+<rect x="306" y="584" width="120" height="40" rx="12" fill="#162534" stroke="#35506a" stroke-width="2"/>
+<text x="366" y="610" text-anchor="middle" fill="#d5e5f3" font-size="15" font-family="Helvetica, Arial, sans-serif">hallucination</text>
+<rect x="854" y="584" width="120" height="40" rx="12" fill="#162534" stroke="#35506a" stroke-width="2"/>
+<text x="914" y="610" text-anchor="middle" fill="#d5e5f3" font-size="15" font-family="Helvetica, Arial, sans-serif">refusal/persona</text>
+<rect x="1022" y="584" width="120" height="40" rx="12" fill="#162534" stroke="#35506a" stroke-width="2"/>
+<text x="1082" y="610" text-anchor="middle" fill="#d5e5f3" font-size="15" font-family="Helvetica, Arial, sans-serif">frontier</text>
+<text x="640" y="655" text-anchor="middle" fill="#f7efe5" font-size="22" font-family="Georgia, serif">Two needles can live in the same compass: one for what a model</text>
+<text x="640" y="679" text-anchor="middle" fill="#f7efe5" font-size="22" font-family="Georgia, serif">seems to know, another for what we can actually steer. Wisdom</text>
+<text x="640" y="703" text-anchor="middle" fill="#f7efe5" font-size="22" font-family="Georgia, serif">begins when we stop pretending they are the same arrow.</text>
+</svg>

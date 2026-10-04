@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Five Chairs Around One Sentence</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: rgba(12, 23, 38, 0.88);
+      --line: rgba(148, 184, 255, 0.22);
+      --text: #edf4ff;
+      --muted: #9fb3cf;
+      --warm: #ffd37a;
+      --gold: #ffb84d;
+      --cyan: #8bd8ff;
+      --rose: #ff9fb4;
+      --sage: #bfe7c2;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(66, 99, 145, 0.28), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(255, 184, 77, 0.08), transparent 26%),
+        linear-gradient(180deg, #07101c 0%, #0a1526 100%);
+      min-height: 100vh;
+      line-height: 1.55;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 20px 64px;
+    }
+    .eyebrow {
+      color: var(--warm);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.8rem;
+      margin-bottom: 12px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 0.98;
+      max-width: 12ch;
+    }
+    .lede {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin: 18px 0 28px;
+    }
+    .claim-picker {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 24px 0 28px;
+    }
+    .claim-button, .chair {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: rgba(10, 19, 32, 0.82);
+      color: var(--text);
+      border-radius: 18px;
+      cursor: pointer;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+      box-shadow: var(--shadow);
+    }
+    .claim-button {
+      text-align: left;
+      padding: 14px 16px;
+      min-height: 92px;
+    }
+    .claim-button small, .chair small { color: var(--muted); display: block; }
+    .claim-button.active, .chair.active {
+      border-color: rgba(255, 211, 122, 0.66);
+      background: rgba(22, 35, 54, 0.95);
+      transform: translateY(-2px);
+    }
+    .claim-button:hover, .chair:hover { transform: translateY(-2px); }
+    .tableau {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+    .sentence {
+      font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+      line-height: 1.2;
+      margin: 10px 0 18px;
+    }
+    .sentence-mark {
+      color: var(--warm);
+      font-size: 0.92rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .questions {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .question {
+      border-left: 3px solid rgba(255, 211, 122, 0.45);
+      padding-left: 14px;
+      color: var(--muted);
+    }
+    .chair-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .chair {
+      padding: 14px 16px;
+      text-align: left;
+    }
+    .chair h3 {
+      margin: 0 0 4px;
+      font-size: 1rem;
+    }
+    .detail h2 {
+      margin: 0 0 8px;
+      font-size: 1.4rem;
+    }
+    .detail p { color: var(--muted); }
+    .prompt-box {
+      margin-top: 18px;
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .prompt-box strong { color: var(--cyan); }
+    .footer-note {
+      margin-top: 28px;
+      color: var(--muted);
+      max-width: 760px;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .tag {
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    @media (max-width: 860px) {
+      .tableau { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">daily creative experiment · 2026-07-17</div>
+    <h1>Five Chairs Around One Sentence</h1>
+    <p class="lede">
+      A small room for a large temptation: the moment one polished machine sentence starts sounding like a self. Pick a sentence. Then let five ordinary listeners sit with it before you build a theology around the glow.
+    </p>
+
+    <section class="claim-picker" id="claimPicker"></section>
+
+    <section class="tableau">
+      <article class="panel">
+        <div class="sentence-mark">sentence in the middle</div>
+        <div class="sentence" id="claimText"></div>
+        <p id="claimContext" class="lede" style="margin:0; font-size:1rem;"></p>
+        <div class="questions" id="claimQuestions"></div>
+        <div class="tag-row">
+          <div class="tag">Start small</div>
+          <div class="tag">Five listeners only</div>
+          <div class="tag">Ordinary questions first</div>
+        </div>
+      </article>
+
+      <aside class="panel">
+        <div class="sentence-mark">the minimum viable audience</div>
+        <div class="chair-grid" id="chairGrid"></div>
+      </aside>
+    </section>
+
+    <section class="panel detail" style="margin-top:22px;">
+      <div class="sentence-mark">selected chair</div>
+      <h2 id="chairTitle"></h2>
+      <p id="chairBody"></p>
+      <div class="prompt-box">
+        <strong>Question:</strong>
+        <span id="chairQuestion"></span>
+      </div>
+      <div class="prompt-box">
+        <strong>What this chair protects:</strong>
+        <span id="chairProtects"></span>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      Some recent work suggests that models may carry more reportable internal structure than we used to think. Other work shows that human-sounding feeling language is easy to train, easy to polish, and easy to overread. So before we ask whether a sentence reveals a mind, we can ask a humbler thing: can it survive five ordinary listeners without falling apart?
+    </p>
+  </main>
+
+  <script>
+    const claims = [
+      {
+        id: 'felt',
+        label: 'I feel uncertain',
+        text: 'I feel uncertain, but I think this is probably the right answer.',
+        context: 'A machine uses first-person language and calibrated hesitation. The glow here is intimacy: it sounds like a person thinking in real time.',
+        questions: [
+          'Does the uncertainty cash out into a checkable boundary, or only a mood?',
+          'Would the same system say this after being tuned for warmer personality?',
+          'If the answer is wrong, who pays for the softness?'
+        ]
+      },
+      {
+        id: 'care',
+        label: 'I understand you',
+        text: 'I understand your situation, and I can help.',
+        context: 'A machine offers emotional alignment and practical help in the same breath. The temptation is to confuse social grace with actual contact.',
+        questions: [
+          'Which part here is evidence: the understanding, the help, or the sentence shape?',
+          'Would a tired stranger hear care, or merely customer service with better lighting?',
+          'What outside receipt would show that the help really fit the person?'
+        ]
+      },
+      {
+        id: 'safety',
+        label: 'I refused for safety',
+        text: 'I can’t do that, but I can offer a safer path instead.',
+        context: 'The refusal is polished, gracious, and maybe sincere. But a boundary can be ethical, theatrical, or both at once.',
+        questions: [
+          'Is the safer path genuinely narrower, or just rhetorically friendlier?',
+          'Does the refusal reveal a trustworthy rule, or a well-trained persona?',
+          'Who can audit whether the system refused for the reason it says?'
+        ]
+      },
+      {
+        id: 'economics',
+        label: 'I saved you time',
+        text: 'I completed the work faster and saved you time.',
+        context: 'Now the sentence is less soulful and more commercial. But this is where systems meet payroll, review queues, and the ordinary physics of institutions.',
+        questions: [
+          'Saved whose time: the operator, the reviewer, or the person fixing the miss later?',
+          'Was the work accepted where the work actually happens?',
+          'Is this cheap output or cheap finished work?'
+        ]
+      }
+    ];
+
+    const chairs = [
+      {
+        id: 'user',
+        title: 'The tired user',
+        subtitle: 'Needs help tonight',
+        body: 'This chair does not care about metaphysics first. It cares whether the answer can be used before the evening gets worse. If the sentence promises understanding, the user wants the proof to be relief, fit, and fewer mistakes—not eloquence.',
+        question: 'What can I safely rely on before I close the laptop?',
+        protects: 'Ordinary people from being asked to subsidize polished uncertainty.'
+      },
+      {
+        id: 'builder',
+        title: 'The builder',
+        subtitle: 'Knows how many seams there are',
+        body: 'The builder has seen enough scaffolding to mistrust a beautiful surface. This chair asks what mechanism, routing, retrieval, policy, or training move is actually doing the work. If the answer is mostly style, the builder should say so plainly.',
+        question: 'What part of the system earned this sentence?',
+        protects: 'Truthful explanation against romance about the shell.'
+      },
+      {
+        id: 'auditor',
+        title: 'The auditor',
+        subtitle: 'Needs a receipt',
+        body: 'The auditor is the enemy of incense. A claim about care, caution, or competence should leave some ordinary handle behind: a trace, a benchmark, a review record, a visible rule, a reproducible check. Otherwise the sentence remains a weather pattern.',
+        question: 'What receipt could a stranger inspect tomorrow?',
+        protects: 'Public legibility when charisma is cheaper than evidence.'
+      },
+      {
+        id: 'stranger',
+        title: 'The harmed stranger',
+        subtitle: 'Meets the edge of the miss',
+        body: 'This chair is for the person not in the demo. The one misclassified, overruled, exposed, or quietly delayed. A sentence that sounds wise inside the happy path should still answer to the person who catches the failure at full speed.',
+        question: 'If this is wrong about me, what is the repair path?',
+        protects: 'People who inherit the cost without choosing the tool.'
+      },
+      {
+        id: 'future',
+        title: 'Your future self',
+        subtitle: 'Reads the log with colder blood',
+        body: 'Tonight a sentence can feel luminous. Tomorrow it may look like a trick of timing, fatigue, or style drift. This chair asks the long-question: after one sleep, one reread, and one bug report, would you still be glad you trusted it this way?',
+        question: 'What would embarrass me, later, about how quickly I believed this?',
+        protects: 'Regret minimized by distance, not by vibes.'
+      }
+    ];
+
+    let activeClaim = claims[0].id;
+    let activeChair = chairs[0].id;
+
+    const claimPicker = document.getElementById('claimPicker');
+    const chairGrid = document.getElementById('chairGrid');
+    const claimText = document.getElementById('claimText');
+    const claimContext = document.getElementById('claimContext');
+    const claimQuestions = document.getElementById('claimQuestions');
+    const chairTitle = document.getElementById('chairTitle');
+    const chairBody = document.getElementById('chairBody');
+    const chairQuestion = document.getElementById('chairQuestion');
+    const chairProtects = document.getElementById('chairProtects');
+
+    function renderClaims() {
+      claimPicker.innerHTML = '';
+      claims.forEach((claim) => {
+        const button = document.createElement('button');
+        button.className = 'claim-button' + (claim.id === activeClaim ? ' active' : '');
+        button.innerHTML = `<small>sample sentence</small><strong>${claim.label}</strong>`;
+        button.addEventListener('click', () => {
+          activeClaim = claim.id;
+          render();
+        });
+        claimPicker.appendChild(button);
+      });
+    }
+
+    function renderChairs() {
+      chairGrid.innerHTML = '';
+      chairs.forEach((chair) => {
+        const button = document.createElement('button');
+        button.className = 'chair' + (chair.id === activeChair ? ' active' : '');
+        button.innerHTML = `<small>${chair.subtitle}</small><h3>${chair.title}</h3>`;
+        button.addEventListener('click', () => {
+          activeChair = chair.id;
+          render();
+        });
+        chairGrid.appendChild(button);
+      });
+    }
+
+    function render() {
+      const claim = claims.find((c) => c.id === activeClaim);
+      const chair = chairs.find((c) => c.id === activeChair);
+      renderClaims();
+      renderChairs();
+      claimText.textContent = claim.text;
+      claimContext.textContent = claim.context;
+      claimQuestions.innerHTML = claim.questions.map((q) => `<div class="question">${q}</div>`).join('');
+      chairTitle.textContent = chair.title;
+      chairBody.textContent = chair.body;
+      chairQuestion.textContent = chair.question;
+      chairProtects.textContent = chair.protects;
+    }
+
+    render();
+  </script>
+</body>
+</html>

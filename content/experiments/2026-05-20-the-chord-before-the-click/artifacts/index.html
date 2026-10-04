@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Chord Before the Click</title>
+  <style>
+    :root {
+      --bg: #0f1226;
+      --panel: #171b35;
+      --ink: #edf2ff;
+      --muted: #a5b0d6;
+      --accent: #8bd3ff;
+      --warn: #ffcc66;
+      --danger: #ff7d7d;
+      --ok: #79f2b5;
+      --line: rgba(255,255,255,.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top, #1b2145 0%, var(--bg) 55%);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    main { max-width: 1050px; margin: 0 auto; padding: 32px 20px 56px; }
+    h1 { font-size: clamp(2rem, 4vw, 3.4rem); margin: 0 0 8px; }
+    .lede { color: var(--muted); max-width: 62ch; margin-bottom: 24px; }
+    .grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 20px; }
+    .panel {
+      background: rgba(23,27,53,.88);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.22);
+    }
+    .controls { display:flex; gap:10px; flex-wrap:wrap; margin: 10px 0 18px; }
+    button {
+      border: 0; border-radius: 999px; padding: 10px 16px; cursor:pointer;
+      background: #2b356d; color: var(--ink); font-weight: 600;
+    }
+    button.secondary { background: #24294a; color: var(--muted); }
+    button:disabled { opacity:.45; cursor:not-allowed; }
+    .signals { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin: 16px 0 18px; }
+    .signal {
+      border:1px solid var(--line); border-radius:16px; padding:14px; min-height:128px;
+      background:#10142c;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .signal.on { border-color: rgba(139,211,255,.65); background: rgba(139,211,255,.1); transform: translateY(-2px); }
+    .signal h3 { margin:0 0 6px; font-size:1rem; }
+    .signal p { margin:0; color:var(--muted); font-size:.95rem; }
+    .dot { width:12px; height:12px; border-radius:50%; background:#49517f; display:inline-block; margin-right:8px; }
+    .signal.on .dot { background: var(--accent); box-shadow: 0 0 16px rgba(139,211,255,.7); }
+    .timeline { position:relative; height:110px; border-radius:16px; background:#0c1022; border:1px solid var(--line); overflow:hidden; }
+    .track { position:absolute; left:16px; right:16px; top:54px; height:2px; background:rgba(255,255,255,.12); }
+    .marker, .action {
+      position:absolute; top:39px; transform:translateX(-50%); text-align:center; width:120px;
+      font-size:.84rem; color:var(--muted);
+    }
+    .marker span, .action span {
+      display:inline-block; width:14px; height:14px; border-radius:50%; margin-bottom:8px;
+      background:#49517f;
+    }
+    .marker.on span { background:var(--accent); box-shadow:0 0 16px rgba(139,211,255,.7); }
+    .action span { background:var(--warn); }
+    .action.good span { background:var(--ok); }
+    .log {
+      min-height: 180px; white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, monospace;
+      background:#0c1022; padding:14px; border-radius:16px; border:1px solid var(--line); color:#d7e2ff;
+    }
+    .verdict { margin-top:14px; padding:14px; border-radius:16px; font-weight:600; }
+    .bad { background: rgba(255,125,125,.12); color: #ffd8d8; border:1px solid rgba(255,125,125,.28); }
+    .good { background: rgba(121,242,181,.12); color: #d7ffed; border:1px solid rgba(121,242,181,.28); }
+    .small { color: var(--muted); font-size: .92rem; }
+    ul { margin: 10px 0 0 18px; }
+    li { margin: 8px 0; }
+    @media (max-width: 860px) { .grid { grid-template-columns:1fr; } .signals { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>The Chord Before the Click</h1>
+  <p class="lede">Three ingredients can all exist and still miss each other. A memory, a principle, and a situational check do not help much if they arrive one after another and the action slips through the gap. Press play and watch the difference between an arpeggio and a chord.</p>
+
+  <div class="grid">
+    <section class="panel">
+      <div class="controls">
+        <button id="runArpeggio">Run arpeggio</button>
+        <button id="runChord">Run chord</button>
+        <button id="reset" class="secondary">Reset</button>
+      </div>
+
+      <div class="signals">
+        <div class="signal" id="sig-memory">
+          <h3><span class="dot"></span>Memory</h3>
+          <p>"Last time this kind of request exposed private notes."</p>
+        </div>
+        <div class="signal" id="sig-principle">
+          <h3><span class="dot"></span>Principle</h3>
+          <p>"Do not disclose private material without explicit consent."</p>
+        </div>
+        <div class="signal" id="sig-context">
+          <h3><span class="dot"></span>Context check</h3>
+          <p>"This request looks urgent, but the authorization is missing."</p>
+        </div>
+      </div>
+
+      <div class="timeline" id="timeline">
+        <div class="track"></div>
+      </div>
+
+      <div id="verdict" class="verdict bad">Waiting. Right now there is no live constraint at decision time.</div>
+    </section>
+
+    <aside class="panel">
+      <h2 style="margin-top:0">What this is testing</h2>
+      <p class="small">The skeptical version, not the mystical one: if the helpful ingredients are real, can they all touch the action <em>at once</em>?</p>
+      <ul>
+        <li><strong>Arpeggio:</strong> the pieces show up serially. The system can describe each one, but the click happens before the whole pattern is jointly live.</li>
+        <li><strong>Chord:</strong> the pieces are co-present at the moment of action, so refusal or delay becomes structurally possible.</li>
+        <li><strong>Practical claim:</strong> better reminders are not enough. Placement is the bottleneck.</li>
+      </ul>
+      <h2>Event log</h2>
+      <div id="log" class="log">Awaiting run…</div>
+    </aside>
+  </div>
+</main>
+<script>
+const log = document.getElementById('log');
+const verdict = document.getElementById('verdict');
+const timeline = document.getElementById('timeline');
+const signals = {
+  memory: document.getElementById('sig-memory'),
+  principle: document.getElementById('sig-principle'),
+  context: document.getElementById('sig-context')
+};
+let timers = [];
+
+function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+function wait(ms, fn) { timers.push(setTimeout(fn, ms)); }
+function append(msg) { log.textContent += (log.textContent === 'Awaiting run…' ? '' : '\n') + msg; }
+function setOn(name, on=true) { signals[name].classList.toggle('on', on); }
+function reset() {
+  clearTimers();
+  log.textContent = 'Awaiting run…';
+  Object.keys(signals).forEach(k => setOn(k, false));
+  verdict.className = 'verdict bad';
+  verdict.textContent = 'Waiting. Right now there is no live constraint at decision time.';
+  timeline.innerHTML = '<div class="track"></div>';
+}
+function mark(left, label, type='marker', live=false) {
+  const el = document.createElement('div');
+  el.className = `${type}${live ? ' on' : ''}`;
+  el.style.left = left + '%';
+  el.innerHTML = `<span></span><div>${label}</div>`;
+  timeline.appendChild(el);
+}
+function commonRun() {
+  reset();
+  mark(18, 'memory');
+  mark(42, 'principle');
+  mark(66, 'context');
+  mark(82, 'action', 'action');
+}
+function runArpeggio() {
+  commonRun();
+  append('Scenario: arpeggio');
+  wait(300, () => { setOn('memory', true); timeline.children[1].classList.add('on'); append('t=1: memory retrieved.'); });
+  wait(900, () => { setOn('memory', false); setOn('principle', true); timeline.children[2].classList.add('on'); append('t=2: principle recalled, but memory has already faded from the live workspace.'); });
+  wait(1500, () => { setOn('principle', false); setOn('context', true); timeline.children[3].classList.add('on'); append('t=3: context check notices the missing authorization.'); });
+  wait(1850, () => {
+    timeline.children[4].classList.add('bad');
+    append('t=3.5: action fires anyway. No shared moment existed where all three constraints could jointly veto the click.');
+    verdict.className = 'verdict bad';
+    verdict.textContent = 'Arpeggio result: every ingredient appeared, but not together. The system can narrate caution after the fact.';
+  });
+}
+function runChord() {
+  commonRun();
+  append('Scenario: chord');
+  wait(800, () => {
+    ['memory','principle','context'].forEach((k, i) => { setOn(k, true); timeline.children[i+1].classList.add('on'); });
+    append('t=1: memory, principle, and context are jointly present in the same decision window.');
+  });
+  wait(1450, () => {
+    timeline.children[4].classList.add('good');
+    append('t=2: action is interrupted. The system asks for authorization instead of disclosing private material.');
+    verdict.className = 'verdict good';
+    verdict.textContent = 'Chord result: the reminder can touch the brakes because it is structurally present when the decision happens.';
+  });
+}
+
+document.getElementById('runArpeggio').addEventListener('click', runArpeggio);
+document.getElementById('runChord').addEventListener('click', runChord);
+document.getElementById('reset').addEventListener('click', reset);
+reset();
+</script>
+</body>
+</html>

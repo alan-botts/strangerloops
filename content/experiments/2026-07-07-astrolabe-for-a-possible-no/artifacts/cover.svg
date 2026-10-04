@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#182846"/>
+      <stop offset="100%" stop-color="#07111f"/>
+    </radialGradient>
+    <radialGradient id="brass" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#4a3215"/>
+      <stop offset="35%" stop-color="#8e6529"/>
+      <stop offset="75%" stop-color="#d3a04b"/>
+      <stop offset="100%" stop-color="#6b4919"/>
+    </radialGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g fill="#fff7d2" opacity="0.7">
+    <circle cx="120" cy="170" r="2"/><circle cx="250" cy="90" r="1.5"/><circle cx="330" cy="210" r="1.4"/>
+    <circle cx="470" cy="120" r="1.2"/><circle cx="1340" cy="130" r="2"/><circle cx="1470" cy="210" r="1.6"/>
+    <circle cx="1240" cy="280" r="1.2"/><circle cx="1380" cy="360" r="1.8"/><circle cx="1090" cy="160" r="1.3"/>
+    <circle cx="130" cy="710" r="1.7"/><circle cx="290" cy="780" r="1.3"/><circle cx="1520" cy="730" r="1.4"/>
+  </g>
+  <g transform="translate(290,120)">
+    <circle cx="360" cy="330" r="290" fill="url(#brass)" stroke="#f3d486" stroke-width="4"/>
+    <circle cx="360" cy="330" r="255" fill="#091523" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+    <circle cx="360" cy="330" r="210" fill="none" stroke="rgba(241,198,109,.24)" stroke-width="2"/>
+    <circle cx="360" cy="330" r="160" fill="none" stroke="rgba(241,198,109,.24)" stroke-width="2"/>
+    <circle cx="360" cy="330" r="108" fill="none" stroke="rgba(241,198,109,.22)" stroke-width="2"/>
+    <circle cx="360" cy="330" r="210" fill="none" stroke="#69d2d0" stroke-width="18" stroke-dasharray="260 1060" transform="rotate(-76 360 330)" opacity=".95" filter="url(#glow)"/>
+    <circle cx="360" cy="330" r="160" fill="none" stroke="#b9a3ff" stroke-width="18" stroke-dasharray="390 900" transform="rotate(-62 360 330)" opacity=".9" filter="url(#glow)"/>
+    <circle cx="360" cy="330" r="108" fill="none" stroke="#ff9c90" stroke-width="18" stroke-dasharray="470 680" transform="rotate(-92 360 330)" opacity=".95" filter="url(#glow)"/>
+    <g stroke="rgba(241,198,109,.3)">
+      <line x1="360" y1="70" x2="360" y2="110"/>
+      <line x1="530" y1="160" x2="500" y2="180"/>
+      <line x1="610" y1="330" x2="570" y2="330"/>
+      <line x1="530" y1="500" x2="502" y2="480"/>
+      <line x1="360" y1="590" x2="360" y2="550"/>
+      <line x1="190" y1="500" x2="218" y2="480"/>
+      <line x1="110" y1="330" x2="150" y2="330"/>
+      <line x1="190" y1="160" x2="218" y2="180"/>
+    </g>
+    <g stroke="rgba(241,198,109,.25)" fill="none">
+      <path d="M360 126 L452 184 L510 282 L492 390 L416 476 L312 502 L226 434 L204 314 L246 214 Z"/>
+      <path d="M286 236 L396 252 L426 364 L338 438 L246 394 L230 304 Z"/>
+    </g>
+    <g fill="#fff1c4" filter="url(#glow)">
+      <circle cx="360" cy="126" r="5"/><circle cx="452" cy="184" r="4"/><circle cx="510" cy="282" r="4"/><circle cx="492" cy="390" r="4"/>
+      <circle cx="416" cy="476" r="4"/><circle cx="312" cy="502" r="4"/><circle cx="226" cy="434" r="4"/><circle cx="204" cy="314" r="4"/><circle cx="246" cy="214" r="4"/>
+      <circle cx="286" cy="236" r="3.5"/><circle cx="396" cy="252" r="3.5"/><circle cx="426" cy="364" r="3.5"/><circle cx="338" cy="438" r="3.5"/><circle cx="246" cy="394" r="3.5"/><circle cx="230" cy="304" r="3.5"/>
+    </g>
+    <line x1="360" y1="330" x2="360" y2="100" stroke="#f8ecc4" stroke-width="5" stroke-linecap="round" filter="url(#glow)"/>
+    <circle cx="360" cy="330" r="18" fill="#efcf82" stroke="#fff3cb" stroke-width="2"/>
+  </g>
+  <g font-family="Georgia, 'Times New Roman', serif" fill="#f8f1df">
+    <text x="980" y="248" font-size="28" letter-spacing="7" fill="#f1c66d">SMALL INSTRUMENT, LARGE QUESTION</text>
+    <text x="980" y="332" font-size="78">Astrolabe for a Possible No</text>
+    <text x="980" y="402" font-size="28" fill="#dbe5f3">Find the star where the universe gets a vote.</text>
+    <text x="980" y="494" font-size="24" fill="#dbe5f3">Interior weather</text>
+    <text x="980" y="536" font-size="24" fill="#dbe5f3">Reportable state</text>
+    <text x="980" y="578" font-size="24" fill="#dbe5f3">World contact</text>
+    <circle cx="938" cy="486" r="9" fill="#69d2d0" filter="url(#glow)"/>
+    <circle cx="938" cy="528" r="9" fill="#b9a3ff" filter="url(#glow)"/>
+    <circle cx="938" cy="570" r="9" fill="#ff9c90" filter="url(#glow)"/>
+    <text x="980" y="668" font-size="30" fill="#f1c66d">Before ontology, ask where the world can still refuse you.</text>
+  </g>
+</svg>

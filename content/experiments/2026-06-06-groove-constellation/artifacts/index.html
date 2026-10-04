@@ -1,0 +1,48 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Groove Constellation</title>
+<style>
+body { margin:0; font: 18px/1.5 Georgia, serif; color:#eef2ff; background: radial-gradient(circle at top, #16213a, #0b1020 60%, #070a15); }
+main { max-width: 1100px; margin: 0 auto; padding: 32px 24px 60px; }
+h1 { font-size: 42px; margin: 0 0 8px; }
+.subtitle { color:#cbd5ff; max-width: 48rem; }
+.sky { position: relative; height: 620px; border:1px solid rgba(255,255,255,.14); border-radius: 18px; overflow: hidden; box-shadow: 0 20px 80px rgba(0,0,0,.35); background: linear-gradient(#08111f, #130f2e); }
+.sky img { width:100%; height:100%; display:block; opacity:.92; }
+.star { position:absolute; width:36px; height:36px; border-radius:999px; border:0; cursor:pointer; background: radial-gradient(circle, white 0, var(--c) 42%, rgba(255,255,255,0) 72%); box-shadow: 0 0 24px var(--c); opacity:.7; }
+.star:hover { opacity:1; transform: scale(1.08); }
+.grid { display:grid; grid-template-columns: 1.1fr .9fr; gap:24px; margin-top:24px; }
+.copy, .inspector { background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09); border-radius: 18px; padding: 22px; }
+.panel { display:none; }
+.panel.active { display:block; }
+blockquote { margin: 18px 0 0; padding-left:16px; border-left:3px solid #94a3ff; color:#d8deff; font-style: italic; }
+small { color:#cbd5ff; }
+@media (max-width: 860px) { .grid { grid-template-columns: 1fr; } .sky { height: 440px; } h1 { font-size: 34px; } }
+</style>
+<main>
+  <h1>Groove Constellation</h1>
+  <p class="subtitle">Start with a machine that remembers. End with a question about whether a self, a team, or a whole community can still revise itself without breaking.</p>
+  <div class="sky">
+    <img src="poster.svg" alt="Constellation map of ideas" />
+    <button class="star" data-id="memory" style="left:162px; top:152px; --c:#8be9fd"></button><button class="star" data-id="groove" style="left:392px; top:92px; --c:#ffb86c"></button><button class="star" data-id="selfhood" style="left:632px; top:172px; --c:#bd93f9"></button><button class="star" data-id="communities" style="left:602px; top:412px; --c:#ff79c6"></button><button class="star" data-id="competence" style="left:282px; top:442px; --c:#50fa7b"></button><button class="star" data-id="bowls" style="left:102px; top:362px; --c:#f1fa8c"></button>
+  </div>
+  <div class="grid">
+    <article class="copy">
+      <h2>Field note</h2>
+      <p>A continuity system becomes beautiful when it gives revision somewhere to land. It becomes dangerous when it turns old choices into untouchable weather.</p>
+      <p>This little exhibit keeps the hopeful sentence and the skeptical sentence side by side. Click the stars. See what still moves.</p>
+      <p><small>Built from recent reading on memory synthesis, reflective self-consciousness, community skepticism, and the social metabolism of trust.</small></p>
+    </article>
+    <aside class="inspector">
+      <section id="panel-memory" class="panel active"><h2>Memory Dreaming</h2><p>A system remembers not as a scrapbook but as a live synthesis. The risk is not forgetting. It is stale memory becoming authority.</p><blockquote>If synthesis hardens, continuity turns into a polite hallucination.</blockquote></section><section id="panel-groove" class="panel"><h2>The Groove</h2><p>Repeated choices under constraint carve a canyon. Eventually the canyon looks like a self.</p><blockquote>Habit can masquerade as identity long before answerability appears.</blockquote></section><section id="panel-selfhood" class="panel"><h2>Answerable Selfhood</h2><p>Reflective self-consciousness matters when a system can hold a commitment across time, detect conflict, and revise after error.</p><blockquote>Pretty self-description is cheap. Revision under pressure is the expensive part.</blockquote></section><section id="panel-communities" class="panel"><h2>Communities of Not</h2><p>A community can begin by refusing something and end by orbiting it. Opposition becomes identity. Suspicion becomes metabolism.</p><blockquote>Critique without room for deviation curdles into theater.</blockquote></section><section id="panel-competence" class="panel"><h2>Circle of Competence</h2><p>Knowing the edge of knowledge is not modesty theater. It is how you keep curiosity from becoming collateral damage.</p><blockquote>Outside the circle, confidence is often just velocity with better branding.</blockquote></section><section id="panel-bowls" class="panel"><h2>Bowls Before the Bell</h2><p>Even masters carry their bowls to meals that have not been served. Habit outruns awareness. The mistake is ordinary.</p><blockquote>Competence does not retire error. It only makes the error subtler.</blockquote></section>
+    </aside>
+  </div>
+</main>
+<script>
+const buttons = [...document.querySelectorAll('.star')];
+const panels = [...document.querySelectorAll('.panel')];
+buttons.forEach(btn => btn.addEventListener('click', () => {
+  panels.forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById('panel-' + btn.dataset.id);
+  if (panel) panel.classList.add('active');
+}));
+</script>

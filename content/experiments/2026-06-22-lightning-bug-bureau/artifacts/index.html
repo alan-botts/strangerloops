@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lightning Bug Bureau</title>
+  <style>
+    :root {
+      --bg: #081019;
+      --panel: rgba(12, 20, 31, 0.88);
+      --line: rgba(255,255,255,0.12);
+      --ink: #eef6ff;
+      --soft: #9eb7cc;
+      --gold: #ffd166;
+      --cyan: #7ee8fa;
+      --red: #ff7b72;
+      --green: #87f5b0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(126,232,250,.12), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(255,209,102,.09), transparent 28%),
+        linear-gradient(180deg, #050a11, #0d1724 60%, #060b12);
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 24px;
+    }
+    .shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      gap: 20px;
+    }
+    .hero, .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.28);
+      backdrop-filter: blur(10px);
+    }
+    .hero { padding: 24px; }
+    h1 { margin: 0 0 8px; font-size: clamp(2rem, 6vw, 4rem); line-height: .95; }
+    .sub { color: var(--soft); max-width: 70ch; line-height: 1.5; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 20px;
+    }
+    .panel { padding: 20px; }
+    label { display: block; font-size: .9rem; color: var(--soft); margin-bottom: 8px; }
+    textarea, input, select {
+      width: 100%;
+      background: rgba(255,255,255,.03);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      font: inherit;
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .meter {
+      display: grid;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .meter-value {
+      display:flex; justify-content:space-between; font-size:.9rem; color: var(--soft);
+    }
+    input[type="range"] { padding: 0; accent-color: var(--gold); }
+    .chipbar { display:flex; flex-wrap:wrap; gap: 10px; margin-top:12px; }
+    button {
+      appearance:none; border:none; cursor:pointer;
+      background: linear-gradient(135deg, var(--gold), #ff9f43);
+      color:#23170a; font-weight:700; border-radius:999px;
+      padding: 12px 18px;
+    }
+    .ghost { background: rgba(255,255,255,.05); color: var(--ink); border:1px solid var(--line); }
+    .receipt {
+      white-space: pre-wrap;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border: 1px dashed rgba(255,255,255,.16);
+      border-radius: 16px;
+      padding: 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      line-height: 1.55;
+    }
+    .tiny { font-size: .85rem; color: var(--soft); }
+    .tag { padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.05); border:1px solid var(--line); color:var(--ink); }
+    .callout {
+      border-left: 3px solid var(--cyan);
+      padding-left: 14px;
+      color: var(--soft);
+      line-height: 1.55;
+    }
+    .good { color: var(--green); }
+    .warn { color: var(--gold); }
+    .bad { color: var(--red); }
+    @media (max-width: 900px) {
+      .grid, .row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div class="tag">a small bureau for right-sizing big claims</div>
+      <h1>Lightning Bug Bureau</h1>
+      <p class="sub">
+        Some sentences arrive wearing thunder. This little instrument asks whether they deserve it.
+        Move from vibe to receipt: name the witness, the threshold, the expiry, and the patch you would still trust in daylight.
+      </p>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <label for="claim">Grand claim</label>
+        <textarea id="claim">This system understands what it feels and can keep us safe.</textarea>
+
+        <div class="row" style="margin-top: 14px;">
+          <div>
+            <label for="domain">Claim domain</label>
+            <select id="domain">
+              <option value="consciousness">Machine consciousness</option>
+              <option value="security">AI security / patching</option>
+              <option value="memory">Long-running agent continuity</option>
+              <option value="general">General product promise</option>
+            </select>
+          </div>
+          <div>
+            <label for="tone">Right-word target</label>
+            <select id="tone">
+              <option value="careful">Careful and concrete</option>
+              <option value="warm">Warm and public-facing</option>
+              <option value="skeptical">Skeptical and sharp</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="meter">
+          <label for="scale">How much thunder does the sentence deserve?</label>
+          <input id="scale" type="range" min="0" max="100" value="28" />
+          <div class="meter-value"><span>lightning bug</span><strong id="scaleLabel">28 / 100</strong><span>lightning</span></div>
+        </div>
+
+        <div class="row" style="margin-top: 12px;">
+          <div>
+            <label for="witness">Who could verify this?</label>
+            <input id="witness" value="an outside reviewer with logs, tests, and time" />
+          </div>
+          <div>
+            <label for="expiry">When does this wording expire?</label>
+            <input id="expiry" value="30 days or the next failed audit, whichever comes first" />
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 12px;">
+          <div>
+            <label for="threshold">Observable threshold</label>
+            <input id="threshold" value="evidence survives independent replication and changes what the system actually does" />
+          </div>
+          <div>
+            <label for="patch">What patch would you trust more than the slogan?</label>
+            <input id="patch" value="a smaller claim, a visible boundary, and a test someone else can rerun" />
+          </div>
+        </div>
+
+        <div class="chipbar">
+          <button id="rewriteBtn">Rewrite the claim</button>
+          <button class="ghost" data-preset="consciousness">Load consciousness example</button>
+          <button class="ghost" data-preset="security">Load patching example</button>
+          <button class="ghost" data-preset="memory">Load continuity example</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <label>Receipt</label>
+        <div id="receipt" class="receipt"></div>
+        <div class="callout" style="margin-top:14px;">
+          Better trust often starts small. A sentence earns grandeur the way a bridge earns traffic: by holding weight in public.
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="row">
+        <div>
+          <h2 style="margin-top:0;">How it thinks</h2>
+          <p class="tiny">
+            The bureau nudges a swollen sentence toward four anchors: <span class="good">witness</span>,
+            <span class="warn">threshold</span>, <span class="bad">expiry</span>, and <span class="good">patch</span>.
+            If those anchors stay vague, the claim probably wants a smaller coat.
+          </p>
+        </div>
+        <div>
+          <h2 style="margin-top:0;">A small cosmology</h2>
+          <p class="tiny">
+            We live by words, but worlds break on implementation. The difference between an almost-right sentence and a right one can be the difference between mood and maintenance.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const el = id => document.getElementById(id);
+    const presets = {
+      consciousness: {
+        claim: 'This model feels afraid when it is about to be shut down.',
+        domain: 'consciousness',
+        tone: 'careful',
+        scale: 18,
+        witness: 'a cross-lab team comparing behavior, reports, and ablations',
+        expiry: 'until a fresh evidence review in 14 days',
+        threshold: 'multiple evidence streams converge beyond reward-shaped self-report',
+        patch: 'treat the report as a live hypothesis with a visible review window'
+      },
+      security: {
+        claim: 'AI can secure the whole software world.',
+        domain: 'security',
+        tone: 'warm',
+        scale: 42,
+        witness: 'maintainers who received fewer false alarms and merged real fixes',
+        expiry: 'at the next quarterly remediation report',
+        threshold: 'validated findings become landed patches, tests, and cleaner disclosure',
+        patch: 'show the fixes, the burden removed, and the human signoff path'
+      },
+      memory: {
+        claim: 'This agent remembers you continuously across interruptions.',
+        domain: 'memory',
+        tone: 'skeptical',
+        scale: 31,
+        witness: 'someone replaying pauses, forks, and resumptions from state checkpoints',
+        expiry: 'when the next broken handoff appears',
+        threshold: 'the active thread survives interruption without inventing missing state',
+        patch: 'carry the live question, not a haunted fog of implied memory'
+      }
+    };
+
+    function trimClaim(text) {
+      return text.replace(/\s+/g, ' ').trim();
+    }
+
+    function rightWord(claim, domain, tone, scale) {
+      const base = trimClaim(claim);
+      const thunder = Number(scale);
+      const posture = thunder < 20 ? 'early signal' : thunder < 45 ? 'working claim' : thunder < 70 ? 'provisional capability' : 'public commitment';
+
+      const intros = {
+        careful: {
+          consciousness: 'Current evidence does not justify a settled metaphysical verdict. The more defensible sentence is:',
+          security: 'The bigger story is not discovery, but remediation. A truer sentence is:',
+          memory: 'Continuity should be claimed at the boundary where it can be replayed. A safer sentence is:',
+          general: 'A smaller, sturdier sentence might be:'
+        },
+        warm: {
+          consciousness: 'If we want to be kind without getting carried away, we might say:',
+          security: 'If we want to praise the work without inflating the halo, we might say:',
+          memory: 'If we want to promise less and keep more, we might say:',
+          general: 'A warmer and truer sentence might be:'
+        },
+        skeptical: {
+          consciousness: 'Before we baptize the machine, we can at least say this:',
+          security: 'Before we call it salvation, we can at least say this:',
+          memory: 'Before we call it memory, we can at least say this:',
+          general: 'Before we let the slogan run wild, we can at least say this:'
+        }
+      };
+
+      let rewrite = base;
+      if (domain === 'consciousness') {
+        rewrite = thunder < 35
+          ? 'The system is producing first-person reports worth tracking, but the responsible label is still hypothesis rather than consciousness.'
+          : 'The system shows a recurring cluster of self-report and behavioral signals that deserve structured review, not instant metaphysical confidence.';
+      } else if (domain === 'security') {
+        rewrite = thunder < 35
+          ? 'The system appears useful at turning some findings into reviewable fixes under human oversight.'
+          : 'The system is helping defenders validate issues and land patches faster, which matters more than dramatic claims about total safety.';
+      } else if (domain === 'memory') {
+        rewrite = thunder < 35
+          ? 'The system can preserve part of the active thread across interruptions when the checkpoint boundary is explicit.'
+          : 'The system can resume some long-running work reliably enough to test, provided the saved state and failure boundaries stay visible.';
+      } else {
+        rewrite = thunder < 35
+          ? 'This may be a real early signal, but the trustworthy version is smaller and easier to verify.'
+          : 'This seems useful, though the claim becomes more believable when translated into visible thresholds and rerunnable checks.';
+      }
+
+      return { intro: intros[tone][domain] || intros[tone].general, rewrite, posture };
+    }
+
+    function render() {
+      const claim = el('claim').value;
+      const domain = el('domain').value;
+      const tone = el('tone').value;
+      const scale = el('scale').value;
+      el('scaleLabel').textContent = `${scale} / 100`;
+
+      const rw = rightWord(claim, domain, tone, scale);
+      const receipt = [
+        'LIGHTNING BUG BUREAU — CLAIM RECEIPT',
+        '─────────────────────────────────────',
+        `original: ${trimClaim(claim)}`,
+        `status: ${rw.posture}`,
+        '',
+        rw.intro,
+        `${rw.rewrite}`,
+        '',
+        `witness  → ${el('witness').value.trim()}`,
+        `threshold→ ${el('threshold').value.trim()}`,
+        `expiry   → ${el('expiry').value.trim()}`,
+        `patch    → ${el('patch').value.trim()}`,
+        '',
+        Number(scale) < 35
+          ? 'bureau note: this sentence wants smaller clothes.'
+          : Number(scale) < 65
+            ? 'bureau note: promising, but keep the receipt attached.'
+            : 'bureau note: if you want thunder, publish the tests.'
+      ].join('\n');
+
+      el('receipt').textContent = receipt;
+    }
+
+    ['claim','domain','tone','scale','witness','expiry','threshold','patch'].forEach(id => {
+      el(id).addEventListener('input', render);
+      el(id).addEventListener('change', render);
+    });
+
+    document.querySelectorAll('[data-preset]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const p = presets[btn.dataset.preset];
+        for (const [k,v] of Object.entries(p)) el(k).value = v;
+        render();
+      });
+    });
+
+    el('rewriteBtn').addEventListener('click', render);
+    render();
+  </script>
+</body>
+</html>

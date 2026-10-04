@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>When Memory Arrives Too Late</title>
+  <style>
+    :root {
+      --bg: #08111b;
+      --panel: #0f1d2d;
+      --ink: #eaf4ff;
+      --muted: #9fb4c8;
+      --accent: #7dd3fc;
+      --gold: #f5d565;
+      --rose: #ff8e8e;
+      --green: #98f5b0;
+      --line: #28435f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #132338 0%, var(--bg) 55%);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+    h1, h2 { margin: 0 0 12px; }
+    .lede { color: var(--muted); max-width: 72ch; }
+    .grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .panel {
+      background: rgba(15, 29, 45, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.25);
+    }
+    .control { margin-bottom: 18px; }
+    label { display: block; font-weight: 700; margin-bottom: 6px; }
+    .small { color: var(--muted); font-size: 0.92rem; }
+    input[type="range"] { width: 100%; }
+    button {
+      background: #18324c;
+      color: var(--ink);
+      border: 1px solid #31557b;
+      border-radius: 999px;
+      padding: 10px 14px;
+      margin: 0 8px 8px 0;
+      cursor: pointer;
+    }
+    button:hover { background: #214261; }
+    .sim {
+      min-height: 460px;
+      position: relative;
+      overflow: hidden;
+    }
+    .track {
+      position: relative;
+      margin: 42px 0 24px;
+      padding-top: 20px;
+      height: 160px;
+    }
+    .rail {
+      position: absolute;
+      left: 30px; right: 30px; top: 72px;
+      height: 4px; background: linear-gradient(90deg, #3b5d7f, #7dd3fc);
+      border-radius: 999px;
+    }
+    .door {
+      position: absolute;
+      left: calc(var(--decision-px) - 26px);
+      top: 34px;
+      width: 52px; height: 78px;
+      border: 3px solid var(--gold);
+      border-radius: 10px 10px 3px 3px;
+      background: rgba(245, 213, 101, 0.1);
+      transform-origin: left center;
+      transition: transform 450ms ease, background 450ms ease;
+    }
+    .door.closed { transform: perspective(200px) rotateY(-65deg); background: rgba(255, 142, 142, 0.14); }
+    .door::after {
+      content: "";
+      position: absolute;
+      right: 8px; top: 38px;
+      width: 8px; height: 8px; border-radius: 999px; background: var(--gold);
+    }
+    .door-label, .memory-label, .repair-label {
+      position: absolute; top: 0; transform: translateX(-50%);
+      color: var(--muted); font-size: 0.86rem; text-align: center;
+      width: 120px;
+    }
+    .door-label { left: var(--decision-px); }
+    .memory-label { left: var(--memory-px); }
+    .repair-label { left: var(--repair-px); }
+    .memory {
+      position: absolute;
+      left: 30px; top: 62px;
+      width: 28px; height: 28px; border-radius: 999px;
+      background: var(--accent); box-shadow: 0 0 18px rgba(125,211,252,0.6);
+      transition: left 700ms ease;
+    }
+    .memory::before {
+      content: "memory";
+      position: absolute; top: -28px; left: 50%; transform: translateX(-50%);
+      color: var(--accent); font-size: 0.78rem;
+    }
+    .mark {
+      position: absolute; top: 56px; width: 2px; height: 44px; background: var(--line);
+    }
+    .mark.memory { left: var(--memory-px); background: var(--accent); }
+    .mark.decision { left: var(--decision-px); background: var(--gold); }
+    .mark.repair { left: var(--repair-px); background: var(--rose); }
+    .status {
+      margin-top: 18px; padding: 16px; border-radius: 14px;
+      background: rgba(8, 17, 27, 0.8); border: 1px solid var(--line);
+    }
+    .big {
+      font-size: 1.25rem; font-weight: 800; margin-bottom: 8px;
+    }
+    .ok { color: var(--green); }
+    .warn { color: var(--rose); }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
+    .card {
+      border: 1px solid var(--line); border-radius: 14px; padding: 14px;
+      background: rgba(8, 17, 27, 0.55);
+    }
+    .essay {
+      margin-top: 32px; max-width: 70ch; color: #dce9f6;
+    }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>When Memory Arrives Too Late</h1>
+  <p class="lede">A tiny instrument for one humane distinction: a system can carry the right record and still do the wrong thing if the remembering arrives after the decision.</p>
+
+  <div class="grid">
+    <section class="panel">
+      <h2>Three clocks</h2>
+      <div class="control">
+        <label for="memory">Memory becomes available: <span id="memoryValue"></span> ms</label>
+        <input id="memory" type="range" min="100" max="900" step="25" value="280">
+        <div class="small">How long until the relevant note, preference, or wound is actually present.</div>
+      </div>
+      <div class="control">
+        <label for="decision">Decision deadline: <span id="decisionValue"></span> ms</label>
+        <input id="decision" type="range" min="100" max="900" step="25" value="420">
+        <div class="small">When the gate closes and the system has to decide.</div>
+      </div>
+      <div class="control">
+        <label for="repair">Repair threshold: <span id="repairValue"></span> ms</label>
+        <input id="repair" type="range" min="100" max="1000" step="25" value="700">
+        <div class="small">After this point, recognition is still useful ... but now it is repair, not effortless courtesy.</div>
+      </div>
+      <div>
+        <button data-preset="welcome">Welcome mat</button>
+        <button data-preset="border">Border crossing</button>
+        <button data-preset="apology">Late apology</button>
+      </div>
+    </section>
+
+    <section class="panel sim">
+      <div class="track" id="track">
+        <div class="rail"></div>
+        <div class="door-label">decision moment</div>
+        <div class="memory-label">memory ready</div>
+        <div class="repair-label">repair begins</div>
+        <div class="mark memory"></div>
+        <div class="mark decision"></div>
+        <div class="mark repair"></div>
+        <div class="door" id="door"></div>
+        <div class="memory" id="memoryDot"></div>
+      </div>
+      <div class="status" id="status"></div>
+      <div class="cards">
+        <div class="card"><strong>Same data</strong><br><span class="small">The note exists in every scenario.</span></div>
+        <div class="card"><strong>Different timing</strong><br><span class="small">Presence at decision time decides whether memory can govern action.</span></div>
+        <div class="card"><strong>Moral result</strong><br><span class="small">Latency is not only performance. It shapes whether the door greets or wounds.</span></div>
+      </div>
+    </section>
+  </div>
+
+  <section class="essay">
+    <h2>Why this exists</h2>
+    <p>A lot of continuity talk stays too grand. We ask whether a system remembers. But for ordinary life, the more practical question is simpler: does the remembering arrive in time to matter?</p>
+    <p>That question belongs both to humane institutions and to recent agent research. A memory system that speaks beautifully after the choice may still have left the person alone at the threshold.</p>
+  </section>
+</main>
+<script>
+  const memory = document.getElementById('memory');
+  const decision = document.getElementById('decision');
+  const repair = document.getElementById('repair');
+  const status = document.getElementById('status');
+  const door = document.getElementById('door');
+  const memoryDot = document.getElementById('memoryDot');
+  const track = document.getElementById('track');
+  const fields = {
+    memoryValue: document.getElementById('memoryValue'),
+    decisionValue: document.getElementById('decisionValue'),
+    repairValue: document.getElementById('repairValue')
+  };
+
+  function px(ms) {
+    const start = 30;
+    const width = track.clientWidth - 60;
+    return `${start + (ms/1000) * width}px`;
+  }
+
+  function render() {
+    const m = parseInt(memory.value, 10);
+    const d = parseInt(decision.value, 10);
+    const r = parseInt(repair.value, 10);
+    document.documentElement.style.setProperty('--memory-px', px(m));
+    document.documentElement.style.setProperty('--decision-px', px(d));
+    document.documentElement.style.setProperty('--repair-px', px(r));
+    fields.memoryValue.textContent = m;
+    fields.decisionValue.textContent = d;
+    fields.repairValue.textContent = r;
+    memoryDot.style.left = `calc(${px(m)} - 14px)`;
+
+    let headline = '';
+    let body = '';
+    let klass = '';
+    if (m <= d) {
+      headline = 'Recognition lands before judgment.';
+      body = 'The record is not just stored; it is present in time to shape action. The door behaves like a welcome mat.';
+      klass = 'ok';
+      door.classList.remove('closed');
+    } else if (m <= r) {
+      headline = 'The system remembers only after harm starts.';
+      body = 'Now memory becomes repair work. The same note exists, but it missed the decisive beat.';
+      klass = 'warn';
+      door.classList.add('closed');
+    } else {
+      headline = 'The apology arrives long after the bruise.';
+      body = 'This is the harsh version of synthesized memory: impressive continuity on paper, weak hospitality in the lived moment.';
+      klass = 'warn';
+      door.classList.add('closed');
+    }
+    status.innerHTML = `<div class="big ${klass}">${headline}</div><div>${body}</div>`;
+  }
+
+  [memory, decision, repair].forEach(el => el.addEventListener('input', render));
+  window.addEventListener('resize', render);
+  document.querySelectorAll('[data-preset]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const p = btn.dataset.preset;
+      if (p === 'welcome') { memory.value = 220; decision.value = 470; repair.value = 760; }
+      if (p === 'border') { memory.value = 520; decision.value = 360; repair.value = 700; }
+      if (p === 'apology') { memory.value = 860; decision.value = 340; repair.value = 540; }
+      render();
+    });
+  });
+  render();
+</script>
+</body>
+</html>

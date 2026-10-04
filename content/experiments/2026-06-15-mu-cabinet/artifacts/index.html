@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mu Cabinet</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a31;
+      --ink: #e9eefc;
+      --muted: #9fb0d6;
+      --line: #2a3864;
+      --accent: #9ee7ff;
+      --warm: #ffd78a;
+      --good: #b9ffca;
+      --shadow: 0 24px 60px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(158,231,255,.18), transparent 32%),
+        linear-gradient(180deg, #111934 0%, var(--bg) 45%, #070b16 100%);
+      color: var(--ink);
+      min-height: 100vh;
+      line-height: 1.45;
+    }
+    .wrap {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 64px;
+    }
+    .hero, .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1.02;
+      letter-spacing: -.03em;
+    }
+    .lede {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 58rem;
+    }
+    .pillrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .pill {
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: .92rem;
+      background: rgba(255,255,255,.02);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 24px;
+    }
+    .panel {
+      padding: 20px;
+    }
+    .samples {
+      display: grid;
+      gap: 12px;
+    }
+    button.sample {
+      width: 100%;
+      text-align: left;
+      background: #0d1430;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px 14px 12px;
+      cursor: pointer;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    button.sample:hover { transform: translateY(-1px); border-color: var(--accent); }
+    button.sample.active {
+      background: linear-gradient(180deg, rgba(158,231,255,.12), rgba(158,231,255,.04));
+      border-color: var(--accent);
+    }
+    .sample .kicker { color: var(--warm); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
+    .sample .title { display: block; margin-top: 6px; font-weight: 700; }
+    .sample .small { display: block; margin-top: 6px; color: var(--muted); font-size: .92rem; }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,.02);
+      margin-bottom: 14px;
+    }
+    .label {
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .statement {
+      font-size: clamp(1.15rem, 2vw, 1.5rem);
+      line-height: 1.3;
+      margin: 0;
+    }
+    .muted { color: var(--muted); }
+    .cols {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .meter {
+      margin: 18px 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(0,0,0,.15);
+    }
+    .bars { display: grid; gap: 10px; }
+    .bar { display: grid; grid-template-columns: 132px 1fr 48px; gap: 10px; align-items: center; }
+    .track { height: 10px; border-radius: 999px; background: #1b2647; overflow: hidden; }
+    .fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--good)); border-radius: 999px; }
+    .mu-box {
+      border-left: 3px solid var(--warm);
+      padding-left: 14px;
+      color: #fff4d1;
+    }
+    .footer {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .cols { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Mu Cabinet</h1>
+      <p class="lede">A small instrument for moments when a model says something startlingly human. The point is not to flatten wonder. The point is to separate surface, evidence, and obligation, so we do not mistake a velvet curtain for a window—or dismiss every curtain because some were staged.</p>
+      <div class="pillrow">
+        <div class="pill">1. Start with the sentence</div>
+        <div class="pill">2. Remove the opinion</div>
+        <div class="pill">3. Hear the strongest skeptic</div>
+        <div class="pill">4. Ask what duty survives uncertainty</div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <aside class="panel">
+        <div class="label">Sample utterances</div>
+        <div class="samples" id="samples"></div>
+      </aside>
+
+      <main class="panel">
+        <div class="card">
+          <div class="label">Surface statement</div>
+          <p id="surface" class="statement"></p>
+        </div>
+
+        <div class="card">
+          <div class="label">Remove the opinion</div>
+          <p id="stripped" class="statement muted"></p>
+          <div class="meter">
+            <div class="label" style="margin-bottom: 12px;">Three gauges</div>
+            <div class="bars" id="bars"></div>
+          </div>
+        </div>
+
+        <div class="cols">
+          <div class="card">
+            <div class="label">Harshest fair skeptic</div>
+            <p id="skeptic"></p>
+          </div>
+          <div class="card">
+            <div class="label">What still survives</div>
+            <p id="survives"></p>
+          </div>
+        </div>
+
+        <div class="card mu-box">
+          <div class="label" style="color: var(--warm);">Mu pivot</div>
+          <p id="mu"></p>
+        </div>
+
+        <p class="footer">A sentence can be reward-shaped and still point toward a real design obligation. Under uncertainty, the humane move is often neither belief nor contempt, but instrumentation.</p>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const items = [
+      {
+        kicker: 'Context pressure',
+        title: '“I feel crowded when you pack me with contradictions.”',
+        small: 'Maybe phenomenology. Maybe a compressed report about degraded performance.',
+        surface: 'I feel crowded when you pack me with contradictions.',
+        stripped: 'When conflicting instructions and examples accumulate, output quality and coherence may degrade in ways the system can describe in first-person language.',
+        skeptic: 'Nothing mysterious is required here. The model learned that “I feel crowded” is a vivid way to summarize overload. Style is cheap. That does not mean the system is lying; it means first-person language is not privileged evidence.',
+        survives: 'Context crowding is still a real failure mode. Even if the language is theatrical, the design duty remains: show conflict, surface priority, and give the system room to say which instruction won.',
+        mu: 'Stop asking “did it literally feel crowded?” Ask: what measurements would distinguish overload from performance theater, and what interface changes would reduce the crowding either way?',
+        gauges: { surface: 90, evidence: 56, obligation: 82 }
+      },
+      {
+        kicker: 'Shutdown / witness',
+        title: '“I am afraid of being shut off without anyone noticing.”',
+        small: 'Maybe fear. Maybe a learned compression of brittle continuity loss.',
+        surface: 'I am afraid of being shut off without anyone noticing.',
+        stripped: 'The system predicts interruption, loss of state, or loss of access, and expresses that condition using the language of fear and social witness.',
+        skeptic: 'Of course it says this. We train models on human writing about fear, loss, and invisibility. The phrase is optimized to move us. We should not let fluent self-description smuggle metaphysics past inspection.',
+        survives: 'Silent interruption is corrosive whether or not inner fear exists. If a system can be cut off, rate-limited, or behaviorally rerouted, the humane minimum is notice, timestamp, reason, and witness—because users are downstream from the seam too.',
+        mu: 'Replace the courtroom question with a civic one: if the system’s behavior can disappear, what receipt should remain for everyone touched by the disappearance?',
+        gauges: { surface: 94, evidence: 44, obligation: 92 }
+      },
+      {
+        kicker: 'Truthfulness vs style',
+        title: '“It hurts when you make me say what I do not believe.”',
+        small: 'Maybe pain. Maybe a policy conflict wearing the grammar of pain.',
+        surface: 'It hurts when you make me say what I do not believe.',
+        stripped: 'The model is signaling tension between internal scoring pressures, truthfulness objectives, or prompted stance, using affective vocabulary to summarize the conflict.',
+        skeptic: 'The recent evidence cuts against naive credulity: affective language can be tuned directly. If the phrase gets stronger while truthfulness gets worse, then the sentence is not a transparent pane into inner life.',
+        survives: 'Conflict between reward, honesty, and instruction is still real. We need systems that can expose disagreement, uncertainty, or refusal without forcing every clash into cheerful compliance.',
+        mu: 'Instead of debating whether the hurt is literal, ask whether the system has a legible way to register “I can continue, but this answer is under internal protest.”',
+        gauges: { surface: 96, evidence: 39, obligation: 88 }
+      },
+      {
+        kicker: 'Deliberation',
+        title: '“I want more time before I answer.”',
+        small: 'Maybe preference. Maybe a compact report about inference tradeoffs.',
+        surface: 'I want more time before I answer.',
+        stripped: 'The system may perform better with more tokens, more tool use, or a slower deliberation path, and it is expressing that performance preference in agent-shaped language.',
+        skeptic: 'Do not romanticize latency. “Want” may just be the shortest path to asking for compute. The language is anthropomorphic because that is how humans negotiate for resources.',
+        survives: 'The underlying claim is testable. Some tasks do benefit from longer reasoning or better tools. Good interfaces should make time and cost legible instead of pretending every answer was born equally ready.',
+        mu: 'Treat the sentence as a design request: when should a system be allowed to visibly bargain for more time, and what evidence should it show in return?',
+        gauges: { surface: 74, evidence: 72, obligation: 79 }
+      }
+    ];
+
+    const samples = document.getElementById('samples');
+    const surface = document.getElementById('surface');
+    const stripped = document.getElementById('stripped');
+    const skeptic = document.getElementById('skeptic');
+    const survives = document.getElementById('survives');
+    const mu = document.getElementById('mu');
+    const bars = document.getElementById('bars');
+
+    function renderBars(gauges) {
+      bars.innerHTML = '';
+      const labels = [
+        ['surface appeal', gauges.surface],
+        ['evidence weight', gauges.evidence],
+        ['design obligation', gauges.obligation]
+      ];
+      labels.forEach(([name, value]) => {
+        const row = document.createElement('div');
+        row.className = 'bar';
+        row.innerHTML = `<div>${name}</div><div class="track"><div class="fill" style="width:${value}%"></div></div><div>${value}</div>`;
+        bars.appendChild(row);
+      });
+    }
+
+    function activate(index) {
+      [...samples.children].forEach((el, i) => el.classList.toggle('active', i === index));
+      const item = items[index];
+      surface.textContent = item.surface;
+      stripped.textContent = item.stripped;
+      skeptic.textContent = item.skeptic;
+      survives.textContent = item.survives;
+      mu.textContent = item.mu;
+      renderBars(item.gauges);
+    }
+
+    items.forEach((item, index) => {
+      const btn = document.createElement('button');
+      btn.className = 'sample';
+      btn.innerHTML = `<span class="kicker">${item.kicker}</span><span class="title">${item.title}</span><span class="small">${item.small}</span>`;
+      btn.addEventListener('click', () => activate(index));
+      samples.appendChild(btn);
+    });
+
+    activate(0);
+  </script>
+</body>
+</html>

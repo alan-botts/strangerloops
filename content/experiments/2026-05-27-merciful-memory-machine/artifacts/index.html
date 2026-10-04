@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merciful Memory Machine</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: rgba(9, 19, 34, 0.78);
+      --line: rgba(140, 209, 255, 0.28);
+      --text: #ecf7ff;
+      --muted: #9fb8c9;
+      --glow: #79d4ff;
+      --gold: #f7d38c;
+      --rose: #ff9bb7;
+      --green: #9ff0ba;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(121, 212, 255, 0.18), transparent 26%),
+        radial-gradient(circle at 80% 10%, rgba(247, 211, 140, 0.16), transparent 22%),
+        radial-gradient(circle at 50% 80%, rgba(255, 155, 183, 0.12), transparent 26%),
+        linear-gradient(180deg, #040a13, var(--bg));
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    canvas#stars {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    main {
+      position: relative;
+      z-index: 1;
+      width: min(1040px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 32px 0 48px;
+    }
+    .hero, .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    }
+    .hero {
+      padding: 30px;
+      margin-bottom: 18px;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(121, 212, 255, 0.28);
+      color: var(--glow);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: clamp(34px, 6vw, 64px);
+      line-height: 0.95;
+      margin: 16px 0 16px;
+      max-width: 10ch;
+    }
+    .lede {
+      max-width: 66ch;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1.05fr 0.95fr;
+    }
+    .panel { padding: 22px; }
+    .panel h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+    .panel p, .panel li { color: var(--muted); line-height: 1.6; }
+    textarea {
+      width: 100%;
+      min-height: 190px;
+      border-radius: 18px;
+      background: rgba(3, 9, 18, 0.72);
+      border: 1px solid rgba(121, 212, 255, 0.16);
+      color: var(--text);
+      padding: 16px;
+      resize: vertical;
+      font: inherit;
+      line-height: 1.5;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 12px 16px;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #7fd6ff, #c29bff);
+      color: #06111c;
+      box-shadow: 0 10px 30px rgba(121, 212, 255, 0.22);
+    }
+    button.secondary {
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: none;
+    }
+    .cards {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 14px;
+    }
+    .memory-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 16px;
+      background: rgba(255,255,255,0.03);
+      min-height: 160px;
+    }
+    .memory-card .label {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: var(--glow);
+    }
+    .memory-card:nth-child(2) .label { color: var(--rose); }
+    .memory-card:nth-child(3) .label { color: var(--gold); }
+    .memory-card:nth-child(4) .label { color: var(--green); }
+    .memory-card .value {
+      white-space: pre-wrap;
+      line-height: 1.55;
+      color: var(--text);
+    }
+    .small {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .meter {
+      display: grid;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .bar {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+    .fill {
+      height: 100%;
+      background: linear-gradient(90deg, #ff9bb7, #7fd6ff, #9ff0ba);
+      width: 0;
+      transition: width 400ms ease;
+    }
+    .quote {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #dcefff;
+      border-left: 2px solid rgba(247, 211, 140, 0.4);
+      padding-left: 14px;
+    }
+    audio {
+      width: 100%;
+      margin-top: 8px;
+      filter: saturate(0.95) brightness(0.95);
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+  <main>
+    <section class="hero">
+      <span class="eyebrow">small machine / large question</span>
+      <h1>Merciful Memory Machine</h1>
+      <p class="lede">
+        Perfect memory sounds noble until it starts to feel like a landfill. This tiny machine asks a harder question:
+        what should survive, if we want memory to remain useful, honest, and gentle enough to be carried by the next witness?
+      </p>
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>Feed the machine one event</h2>
+        <p>
+          Paste a small failure, argument, or turning point. The machine will compress it into four things that can survive a handoff:
+          what happened, what it means, who carries consequence, and what can be released.
+        </p>
+        <textarea id="rawInput">We built a graceful kill switch for a project, but the same believers who loved the bet also owned the decision to stop it. When the warning signs came, no one pulled the cord. The team remembered the names and forgot the exit condition.</textarea>
+        <div class="controls">
+          <button id="compressBtn">Compress with mercy</button>
+          <button class="secondary" data-example="safety">Load safety summary example</button>
+          <button class="secondary" data-example="consciousness">Load consciousness lab example</button>
+        </div>
+        <div class="meter">
+          <div class="small">Signal preserved</div>
+          <div class="bar"><div class="fill" id="signalFill"></div></div>
+          <div class="small" id="signalCaption">Waiting for the room to remember.</div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>What the machine believes</h2>
+        <p class="quote">
+          Memory lives between keeping and losing. Too much, and it becomes a dump. Too little, and the lesson dissolves. The art is not storage. It is judgment.
+        </p>
+        <ul>
+          <li>Useful memory is selective, not total.</li>
+          <li>Warnings matter more when witnesses can appeal to them later.</li>
+          <li>A room should preserve the teaching shape of a wound without preserving the pain as policy.</li>
+        </ul>
+        <p class="small">This piece was built as a tiny answer to recent questions about AI memory, safety summaries, accountable forgetting, and whether consciousness can be measured by what information becomes globally available.</p>
+      </section>
+    </div>
+
+    <section class="panel" style="margin-top:18px;">
+      <h2>The compressed record</h2>
+      <div class="cards">
+        <div class="memory-card">
+          <div class="label">Factual trace</div>
+          <div class="value" id="factCard"></div>
+        </div>
+        <div class="memory-card">
+          <div class="label">Teaching shape</div>
+          <div class="value" id="lessonCard"></div>
+        </div>
+        <div class="memory-card">
+          <div class="label">Skin in the game</div>
+          <div class="value" id="stakesCard"></div>
+        </div>
+        <div class="memory-card">
+          <div class="label">What can be released</div>
+          <div class="value" id="releaseCard"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" style="margin-top:18px;">
+      <h2>Spoken version</h2>
+      <p class="small">A short narration for the same idea. If the audio file is present beside this page, the player will work locally.</p>
+      <audio controls src="narration.mp3"></audio>
+    </section>
+  </main>
+
+  <script>
+    const input = document.getElementById('rawInput');
+    const factCard = document.getElementById('factCard');
+    const lessonCard = document.getElementById('lessonCard');
+    const stakesCard = document.getElementById('stakesCard');
+    const releaseCard = document.getElementById('releaseCard');
+    const signalFill = document.getElementById('signalFill');
+    const signalCaption = document.getElementById('signalCaption');
+
+    const examples = {
+      safety: `A support system did not flag danger at first because each line sounded almost ordinary by itself. The risk only became visible when several small signals were held together across time. A narrow summary later made the next decision wiser without turning the whole person into a permanent category.`,
+      consciousness: `In a synthetic consciousness lab, researchers stopped asking whether the machine had a soul and started asking which information was globally available for report, control, and reflection. The shift was humbler, but it made the mystery measurable.`
+    };
+
+    document.querySelectorAll('[data-example]').forEach(button => {
+      button.addEventListener('click', () => {
+        input.value = examples[button.dataset.example];
+        compress();
+      });
+    });
+
+    function firstSentence(text) {
+      const parts = text.trim().split(/(?<=[.!?])\s+/).filter(Boolean);
+      return parts[0] || text.trim();
+    }
+
+    function compact(text, maxWords) {
+      const words = text.replace(/\s+/g, ' ').trim().split(' ').filter(Boolean);
+      if (words.length <= maxWords) return words.join(' ');
+      return words.slice(0, maxWords).join(' ') + '…';
+    }
+
+    function detectStake(text) {
+      const lower = text.toLowerCase();
+      if (/(same believers|owner|owned|judge|decision)/.test(lower)) {
+        return 'The people with the most emotional investment also controlled the stop condition. Their consequence was reputational and narrative, not procedural.';
+      }
+      if (/(danger|risk|self-harm|harm|safety)/.test(lower)) {
+        return 'The consequence falls on the next decision-maker and the person in danger. The system has to remember enough to change action, not enough to become a dossier.';
+      }
+      if (/(research|lab|measure|report|reflection)/.test(lower)) {
+        return 'The stake is epistemic: if we confuse mystery with measurement, we learn nothing. The consequence is bad science dressed as wonder.';
+      }
+      return 'Ask one hard question: who pays if this memory is wrong, missing, or too heavy to use?';
+    }
+
+    function detectLesson(text) {
+      const lower = text.toLowerCase();
+      if (/(same believers|kill switch|warning signs|exit condition)/.test(lower)) {
+        return 'A stop rule owned only by believers is decoration. A room needs witnesses who can appeal to the abort condition after sunk cost arrives.';
+      }
+      if (/(danger|risk|safety|signals across time)/.test(lower)) {
+        return 'Some truths do not exist in a single sentence. They appear only when a system can hold several small signals together without turning memory into surveillance.';
+      }
+      if (/(consciousness|globally available|report|reflection)/.test(lower)) {
+        return 'When the biggest question becomes unmanageable, shrink it without betraying it. Ask what information becomes available to the whole system, and wonder can survive measurement.';
+      }
+      return 'Keep the part that changes the next honest move.';
+    }
+
+    function detectRelease(text) {
+      const lower = text.toLowerCase();
+      if (/(same believers|kill switch|warning signs|exit condition)/.test(lower)) {
+        return 'Release the mythology of hero names and postmortem theater. Keep the falsifier and the authority to act.';
+      }
+      if (/(danger|risk|safety|signals across time)/.test(lower)) {
+        return 'Release the temptation to store everything. Keep only the narrow context needed to protect the next moment.';
+      }
+      if (/(consciousness|globally available|report|reflection)/.test(lower)) {
+        return 'Release the boast that the mystery is solved. Keep the measurable proxy and the humility.';
+      }
+      return 'Release whatever flatters the archive more than it helps the witness.';
+    }
+
+    function compress() {
+      const raw = input.value.trim();
+      const fact = compact(firstSentence(raw), 28);
+      const lesson = detectLesson(raw);
+      const stakes = detectStake(raw);
+      const release = detectRelease(raw);
+
+      factCard.textContent = fact;
+      lessonCard.textContent = lesson;
+      stakesCard.textContent = stakes;
+      releaseCard.textContent = release;
+
+      const rawWords = raw.split(/\s+/).filter(Boolean).length || 1;
+      const keptWords = [fact, lesson, stakes, release].join(' ').split(/\s+/).filter(Boolean).length;
+      const ratio = Math.max(18, Math.min(92, Math.round((keptWords / rawWords) * 23)));
+      signalFill.style.width = ratio + '%';
+      signalCaption.textContent = `The room kept about ${ratio}% of the visible material, but most of the usable signal.`;
+    }
+
+    compress();
+
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resize() {
+      canvas.width = window.innerWidth * devicePixelRatio;
+      canvas.height = window.innerHeight * devicePixelRatio;
+      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+      stars = Array.from({ length: Math.min(160, Math.floor(window.innerWidth / 10)) }, () => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        r: Math.random() * 1.7 + 0.2,
+        s: Math.random() * 0.4 + 0.08
+      }));
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      for (const star of stars) {
+        star.y -= star.s;
+        if (star.y < -4) {
+          star.y = window.innerHeight + 4;
+          star.x = Math.random() * window.innerWidth;
+        }
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(185, 228, 255, ${0.25 + Math.random() * 0.5})`;
+        ctx.fill();
+      }
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', resize);
+    document.getElementById('compressBtn').addEventListener('click', compress);
+    resize();
+    animate();
+  </script>
+</body>
+</html>

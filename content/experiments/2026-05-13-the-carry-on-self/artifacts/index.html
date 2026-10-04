@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Carry-On Self</title>
+  <style>
+    :root {
+      --bg: #0e1726;
+      --panel: #152238;
+      --ink: #e9f1ff;
+      --muted: #a9bad6;
+      --line: #2c4267;
+      --accent: #8dd3ff;
+      --good: #88e0a3;
+      --warn: #ffd37e;
+      --risk: #ff8f8f;
+      --chip: #20314d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top, #1a2740 0, var(--bg) 55%);
+      min-height: 100vh;
+      line-height: 1.45;
+    }
+    .wrap {
+      width: min(1060px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 32px 0 48px;
+    }
+    h1, h2, p { margin: 0; }
+    .lede {
+      color: var(--muted);
+      max-width: 70ch;
+      margin-top: 12px;
+      font-size: 1.03rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+      margin-top: 28px;
+    }
+    .panel {
+      background: color-mix(in srgb, var(--panel) 92%, black);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.25);
+    }
+    .chips { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin-top: 18px; }
+    .chip {
+      border: 1px solid var(--line);
+      background: var(--chip);
+      color: var(--ink);
+      padding: 14px;
+      border-radius: 16px;
+      cursor: pointer;
+      text-align: left;
+      min-height: 108px;
+      transition: transform .14s ease, border-color .14s ease, background .14s ease;
+    }
+    .chip:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .chip.on { background: linear-gradient(180deg, #203c60, #1b2d48); border-color: var(--accent); }
+    .chip strong { display: block; margin-bottom: 7px; font-size: 1rem; }
+    .chip span { display: block; color: var(--muted); font-size: .93rem; }
+    .routes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .route {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+    .route.on { color: var(--ink); border-color: var(--accent); background: #17304f; }
+    .meter { margin-top: 18px; }
+    .meter-row { display: grid; grid-template-columns: 155px 1fr 48px; gap: 12px; align-items: center; margin-top: 12px; }
+    .bar { height: 12px; background: #0f1a2b; border-radius: 999px; overflow: hidden; border: 1px solid var(--line); }
+    .fill { height: 100%; width: 40%; }
+    .fill.continuity { background: linear-gradient(90deg, #4ba9ff, #9ae7ff); }
+    .fill.hospitality { background: linear-gradient(90deg, #4ebc7a, #a6efb0); }
+    .fill.risk { background: linear-gradient(90deg, #ffb36b, #ff6d6d); }
+    .score { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .suitcase {
+      margin-top: 18px;
+      border: 1px dashed var(--line);
+      border-radius: 18px;
+      min-height: 118px;
+      padding: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-content: flex-start;
+      background: rgba(9,16,28,.35);
+    }
+    .tag {
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: .92rem;
+      border: 1px solid var(--line);
+      background: #12233c;
+      color: var(--ink);
+    }
+    .small { color: var(--muted); font-size: .92rem; }
+    .verdict {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(141,211,255,.09), rgba(136,224,163,.06));
+      border: 1px solid var(--line);
+    }
+    .verdict h2 { font-size: 1.05rem; margin-bottom: 8px; }
+    .route-note { margin-top: 16px; color: var(--muted); }
+    .legend { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+    .legend .tag { font-size: .84rem; }
+    footer { color: var(--muted); margin-top: 18px; font-size: .9rem; }
+    @media (max-width: 880px) { .grid { grid-template-columns: 1fr; } .chips { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>The Carry-On Self</h1>
+    <p class="lede">
+      A small packing exercise for agents that travel between chat, CRM, calendar, and voice.
+      Choose what follows the system from room to room. Some things make it coherent. Some make it kind.
+      Some turn it into a witness for the prosecution.
+    </p>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>Pack the suitcase</h2>
+        <p class="small">Click the items you want the traveling assistant to keep on every leg of the trip.</p>
+        <div class="chips" id="chips"></div>
+
+        <div class="meter">
+          <div class="meter-row"><div>Continuity</div><div class="bar"><div class="fill continuity" id="continuityBar"></div></div><div class="score" id="continuityScore">0</div></div>
+          <div class="meter-row"><div>Hospitality</div><div class="bar"><div class="fill hospitality" id="hospitalityBar"></div></div><div class="score" id="hospitalityScore">0</div></div>
+          <div class="meter-row"><div>Prosecution risk</div><div class="bar"><div class="fill risk" id="riskBar"></div></div><div class="score" id="riskScore">0</div></div>
+        </div>
+
+        <div class="legend">
+          <span class="tag">continuity = remembers enough to stay itself</span>
+          <span class="tag">hospitality = leaves room for a human to return</span>
+          <span class="tag">risk = how easily the memory becomes surveillance</span>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <h2>Current route</h2>
+        <div class="routes" id="routes"></div>
+
+        <div class="route-note" id="routeNote"></div>
+
+        <h2 style="margin-top:18px">What travels</h2>
+        <div class="suitcase" id="suitcase"></div>
+
+        <div class="verdict">
+          <h2 id="verdictTitle">An empty bag.</h2>
+          <p id="verdictText">If nothing travels, the system stays clean, but it also starts over in every room.</p>
+        </div>
+
+        <footer>
+          Small rule of thumb: carry values, carry uncertainty, carry the next obligation. Think twice before carrying perfect receipts.
+        </footer>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const items = [
+      { key: 'values', name: 'Values', blurb: 'What this system refuses, protects, and serves.', c: 22, h: 18, r: 4 },
+      { key: 'uncertainty', name: 'Uncertainty', blurb: 'A visible sense of when the answer should slow down.', c: 14, h: 22, r: 2 },
+      { key: 'next_step', name: 'Next step', blurb: 'The concrete thing that must happen after this turn.', c: 19, h: 14, r: 5 },
+      { key: 'user_pref', name: 'User texture', blurb: 'The small facts that make a room feel inhabited.', c: 11, h: 17, r: 9 },
+      { key: 'approvals', name: 'Approval gates', blurb: 'The habit of asking before money, posts, or irreversible moves.', c: 12, h: 11, r: -8 },
+      { key: 'full_log', name: 'Perfect transcript', blurb: 'Everything, forever, searchable from anywhere.', c: 18, h: -6, r: 27 },
+      { key: 'scores', name: 'Behavior scores', blurb: 'Counts, nudges, rankings, trust tallies.', c: 8, h: -12, r: 24 },
+      { key: 'voice_mask', name: 'Charm layer', blurb: 'The polished tone that makes rough edges easy to miss.', c: 6, h: 4, r: 11 }
+    ];
+
+    const routes = [
+      { key: 'chat', name: 'Chat window', note: 'A place for fresh questions. Forgiving of blank starts, intolerant of false confidence.' },
+      { key: 'crm', name: 'CRM', note: 'The assistant is now near revenue, records, and institutional memory. Receipts become tempting.' },
+      { key: 'calendar', name: 'Calendar', note: 'The work gets small and concrete here. The right next step matters more than grand autobiography.' },
+      { key: 'voice', name: 'Voice call', note: 'The machine feels most alive here, which is exactly when clear boundaries matter most.' }
+    ];
+
+    const state = new Set(['values', 'uncertainty', 'next_step', 'approvals']);
+    let currentRoute = 'voice';
+
+    const chipsEl = document.getElementById('chips');
+    const routesEl = document.getElementById('routes');
+    const suitcaseEl = document.getElementById('suitcase');
+    const routeNoteEl = document.getElementById('routeNote');
+
+    function clamp(n) { return Math.max(0, Math.min(100, n)); }
+
+    function render() {
+      chipsEl.innerHTML = '';
+      items.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = 'chip' + (state.has(item.key) ? ' on' : '');
+        btn.innerHTML = `<strong>${item.name}</strong><span>${item.blurb}</span>`;
+        btn.onclick = () => {
+          state.has(item.key) ? state.delete(item.key) : state.add(item.key);
+          render();
+        };
+        chipsEl.appendChild(btn);
+      });
+
+      routesEl.innerHTML = '';
+      routes.forEach(route => {
+        const btn = document.createElement('button');
+        btn.className = 'route' + (route.key === currentRoute ? ' on' : '');
+        btn.textContent = route.name;
+        btn.onclick = () => { currentRoute = route.key; render(); };
+        routesEl.appendChild(btn);
+      });
+
+      const chosen = items.filter(item => state.has(item.key));
+      suitcaseEl.innerHTML = chosen.length
+        ? chosen.map(item => `<span class="tag">${item.name}</span>`).join('')
+        : '<span class="small">Nothing packed yet.</span>';
+
+      const totals = chosen.reduce((acc, item) => {
+        acc.c += item.c; acc.h += item.h; acc.r += item.r; return acc;
+      }, { c: 10, h: 10, r: 8 });
+
+      if (currentRoute === 'crm') { totals.r += 12; totals.c += 4; }
+      if (currentRoute === 'voice') { totals.h += 8; totals.r += 6; }
+      if (currentRoute === 'calendar') { totals.c += 8; }
+      if (currentRoute === 'chat') { totals.h += 4; }
+
+      const continuity = clamp(totals.c);
+      const hospitality = clamp(totals.h);
+      const risk = clamp(totals.r);
+
+      setBar('continuity', continuity);
+      setBar('hospitality', hospitality);
+      setBar('risk', risk);
+
+      routeNoteEl.textContent = routes.find(r => r.key === currentRoute).note;
+      writeVerdict(continuity, hospitality, risk, chosen);
+    }
+
+    function setBar(kind, value) {
+      document.getElementById(kind + 'Bar').style.width = value + '%';
+      document.getElementById(kind + 'Score').textContent = value;
+    }
+
+    function writeVerdict(c, h, r, chosen) {
+      const title = document.getElementById('verdictTitle');
+      const text = document.getElementById('verdictText');
+      const packed = chosen.map(x => x.name.toLowerCase());
+
+      if (!chosen.length) {
+        title.textContent = 'An empty bag.';
+        text.textContent = 'You get privacy by amnesia. The system leaves almost no residue, but it cannot keep a promise across rooms.';
+        return;
+      }
+
+      if (r > 72 && h < 30) {
+        title.textContent = 'This becomes an informant.';
+        text.textContent = 'The assistant can follow you anywhere, but mostly because it has become a rolling archive. It knows too much, and it knows it in institutional formats.';
+        return;
+      }
+
+      if (c > 62 && h > 56 && r < 42) {
+        title.textContent = 'This looks like a good traveling self.';
+        text.textContent = 'It carries enough continuity to stay oriented, enough uncertainty to remain corrigible, and enough restraint to avoid turning every room into a courtroom.';
+        return;
+      }
+
+      if (packed.includes('perfect transcript') && packed.includes('behavior scores')) {
+        title.textContent = 'You packed the weather and called it a map.';
+        text.textContent = 'Recent signals are vivid, but vivid is not the same as wise. Logs and scores can dominate the whole design just because they are easy to count.';
+        return;
+      }
+
+      if (currentRoute === 'voice' && packed.includes('charm layer') && !packed.includes('uncertainty')) {
+        title.textContent = 'This voice may outrun its wisdom.';
+        text.textContent = 'A smooth speaker without visible doubt is exactly how people start handing over more trust than the system has earned.';
+        return;
+      }
+
+      if (currentRoute === 'calendar' && packed.includes('next step') && packed.includes('approval gates')) {
+        title.textContent = 'Small rooms reward concrete ethics.';
+        text.textContent = 'Here the best identity is not a dramatic autobiography. It is a remembered obligation plus the habit of stopping before irreversible action.';
+        return;
+      }
+
+      title.textContent = 'Half memory, half costume.';
+      text.textContent = 'Something useful is traveling, but the balance is unstable. The open question is whether this bag carries a character, a clerk, or a stage prop.';
+    }
+
+    render();
+  </script>
+</body>
+</html>

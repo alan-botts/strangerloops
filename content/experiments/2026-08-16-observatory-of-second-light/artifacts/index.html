@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Observatory of Second Light</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">A three-signal desk for an age of easy relays</p>
+      <h1>Observatory of<br><em>Second Light</em></h1>
+      <p class="lede">A signal is bright. That does not mean it is a star. Before you pass one on, give it a source, a fair skeptic, and a way to come back.</p>
+    </header>
+
+    <section class="sky" aria-label="Incoming signals">
+      <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+      <button class="signal active" data-signal="harbor" aria-pressed="true"><span></span>Harbor lamp <b>01</b></button>
+      <button class="signal" data-signal="bell" aria-pressed="false"><span></span>Bell star <b>02</b></button>
+      <button class="signal" data-signal="weather" aria-pressed="false"><span></span>Weather vane <b>03</b></button>
+    </section>
+
+    <section class="desk" aria-live="polite">
+      <div class="signal-copy">
+        <p class="number" id="number">Signal 01</p>
+        <h2 id="title">A harbor lamp has gone out.</h2>
+        <p id="claim">The northern pier is closed tonight. Boats should use the eastern channel.</p>
+        <div class="state" id="state">Unexamined</div>
+      </div>
+
+      <div class="instruments">
+        <article class="instrument"><h3>01 · Trace</h3><p id="source">No source inspected.</p><button data-action="trace">Look through the glass</button></article>
+        <article class="instrument"><h3>02 · Counterlight</h3><p id="skeptic">No rival explanation heard.</p><button data-action="skeptic">Invite the skeptic</button></article>
+        <article class="instrument"><h3>03 · Return line</h3><p id="return">No condition for reversal named.</p><button data-action="return">Fit a return line</button></article>
+      </div>
+
+      <div class="console">
+        <p id="prompt">The desk does not ask whether you feel certain. It asks what would make this signal useful to another person.</p>
+        <button id="relay" disabled>Relay this signal</button>
+      </div>
+    </section>
+
+    <section class="log" id="log" hidden>
+      <p class="eyebrow">Night log</p>
+      <h2 id="log-title">The glass held.</h2>
+      <p id="log-copy"></p>
+      <button id="again">Return to the desk</button>
+    </section>
+
+    <footer>Nothing is saved or sent. The brass is only a mirror.</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

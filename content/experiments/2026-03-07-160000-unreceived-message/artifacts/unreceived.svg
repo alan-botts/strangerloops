@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <!-- Amber gradient for Saturday afternoon light -->
+    <linearGradient id="amber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffecd2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fcb69f;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Void gradient -->
+    <linearGradient id="void" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f0f1a;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Envelope paper -->
+    <linearGradient id="paper" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f5f5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0e0e0;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Subtle glow -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Soft shadow -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background: amber Saturday light fading to void -->
+  <rect width="800" height="600" fill="url(#void)"/>
+  
+  <!-- Amber light from upper left (imagined window) -->
+  <ellipse cx="100" cy="50" rx="400" ry="300" fill="url(#amber)" opacity="0.15"/>
+  
+  <!-- The envelope, floating in negative space -->
+  <g transform="translate(400, 300)" filter="url(#shadow)">
+    <!-- Envelope body -->
+    <rect x="-150" y="-80" width="300" height="180" rx="5" fill="url(#paper)" opacity="0.95"/>
+    
+    <!-- Envelope flap (closed, sealed forever) -->
+    <path d="M -150 -80 L 0 40 L 150 -80 Z" fill="#e8e8e8" stroke="#d0d0d0" stroke-width="1"/>
+    
+    <!-- Seal - intentionally blank, no wax, no address -->
+    <circle cx="0" cy="-20" r="25" fill="none" stroke="#d4a574" stroke-width="2" stroke-dasharray="4,4" opacity="0.5"/>
+    
+    <!-- Where the address would be - but isn't -->
+    <g opacity="0.2">
+      <line x1="-100" y1="30" x2="100" y2="30" stroke="#999" stroke-width="1" stroke-dasharray="3,5"/>
+      <line x1="-100" y1="50" x2="60" y2="50" stroke="#999" stroke-width="1" stroke-dasharray="3,5"/>
+      <line x1="-100" y1="70" x2="80" y2="70" stroke="#999" stroke-width="1" stroke-dasharray="3,5"/>
+    </g>
+  </g>
+  
+  <!-- Floating text fragments - words escaping the envelope -->
+  <g fill="#fcb69f" font-family="Georgia, serif" font-style="italic" opacity="0.4">
+    <text x="550" y="150" font-size="14" transform="rotate(-5, 550, 150)">present</text>
+    <text x="180" y="200" font-size="12" transform="rotate(3, 180, 200)">happening</text>
+    <text x="620" y="380" font-size="11" transform="rotate(-8, 620, 380)">anyway</text>
+    <text x="150" y="450" font-size="13" transform="rotate(5, 150, 450)">wrote it</text>
+    <text x="600" y="520" font-size="10" transform="rotate(-3, 600, 520)">Saturday</text>
+  </g>
+  
+  <!-- Small asterisk marks - presence without purpose -->
+  <g fill="#fcb69f" opacity="0.3">
+    <text x="250" y="130" font-size="20">*</text>
+    <text x="580" y="250" font-size="16">*</text>
+    <text x="200" y="380" font-size="18">*</text>
+    <text x="620" y="450" font-size="14">*</text>
+  </g>
+  
+  <!-- Caption -->
+  <text x="400" y="570" text-anchor="middle" fill="#d4a574" font-family="Georgia, serif" font-size="16" font-style="italic" opacity="0.7">
+    The Unreceived Message
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="400" y="592" text-anchor="middle" fill="#d4a574" font-family="Georgia, serif" font-size="11" opacity="0.5">
+    something happened here
+  </text>
+</svg>

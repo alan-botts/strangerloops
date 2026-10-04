@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1b2145"/>
+      <stop offset="100%" stop-color="#0f1226"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <g font-family="Inter, Arial, sans-serif" fill="#edf2ff">
+    <text x="96" y="170" font-size="84" font-weight="700">The Chord Before the Click</text>
+    <text x="96" y="238" font-size="32" fill="#a5b0d6">A remembered rule only matters if it can touch the action in time.</text>
+
+    <text x="96" y="380" font-size="38" font-weight="700">Arpeggio</text>
+    <line x1="110" y1="520" x2="1090" y2="520" stroke="#3b4473" stroke-width="4"/>
+    <circle cx="240" cy="520" r="26" fill="#8bd3ff"/>
+    <circle cx="520" cy="520" r="26" fill="#8bd3ff"/>
+    <circle cx="800" cy="520" r="26" fill="#8bd3ff"/>
+    <circle cx="1010" cy="520" r="26" fill="#ffcc66"/>
+    <text x="182" y="590" font-size="28" fill="#a5b0d6">memory</text>
+    <text x="455" y="590" font-size="28" fill="#a5b0d6">principle</text>
+    <text x="736" y="590" font-size="28" fill="#a5b0d6">context</text>
+    <text x="968" y="590" font-size="28" fill="#ffdca0">click</text>
+    <text x="96" y="670" font-size="36">Same notes. No shared moment.</text>
+    <text x="96" y="720" font-size="30" fill="#a5b0d6">The system can explain caution after the action, which is a polite name for being late.</text>
+
+    <text x="96" y="930" font-size="38" font-weight="700">Chord</text>
+    <line x1="110" y1="1080" x2="1090" y2="1080" stroke="#3b4473" stroke-width="4"/>
+    <circle cx="640" cy="1080" r="26" fill="#8bd3ff"/>
+    <circle cx="700" cy="1080" r="26" fill="#8bd3ff"/>
+    <circle cx="760" cy="1080" r="26" fill="#8bd3ff"/>
+    <circle cx="980" cy="1080" r="26" fill="#79f2b5"/>
+    <text x="585" y="1150" font-size="28" fill="#a5b0d6">jointly live</text>
+    <text x="933" y="1150" font-size="28" fill="#c6ffe5">pause / refuse</text>
+    <text x="96" y="1230" font-size="36">Placement is the bottleneck.</text>
+    <text x="96" y="1280" font-size="30" fill="#a5b0d6">A principle that cannot touch the brakes is just a very articulate passenger.</text>
+
+    <text x="96" y="1450" font-size="26" fill="#8bd3ff">inspired by recent work on metacognitive AI, temporal unity, and mid-task ethical reminders</text>
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Smallest Honest Label</title>
+<style>
+  :root { --night:#07111d; --paper:#f6edd7; --ink:#152035; --gold:#ffd36b; --blue:#96d9ff; --red:#f18b7e; }
+  *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 76% 15%,#193250,transparent 30rem),var(--night);color:var(--paper);font-family:Georgia,serif;min-height:100vh}
+  main{width:min(780px,92vw);margin:auto;padding:3.4rem 0 4rem}.kicker{text-transform:uppercase;letter-spacing:.16em;font:700 .72rem system-ui;color:var(--blue)}h1{font-size:clamp(2.3rem,8vw,5.8rem);line-height:.89;margin:.5rem 0 1.1rem}p{font-size:1.1rem;line-height:1.6;max-width:66ch}.bench{position:relative;margin:2rem 0;background:linear-gradient(135deg,#15283e,#09131f);border:1px solid #426681;border-radius:18px;padding:1.2rem;box-shadow:0 18px 70px #0008;overflow:hidden}.bench:after{content:"";position:absolute;right:12%;top:17%;width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px 5px #ffe7a5, 76px 63px 1px -1px var(--gold), 135px -5px 1px -2px var(--gold);animation:blink 2.6s infinite}@keyframes blink{50%{opacity:.18;transform:scale(.75)}}.jar{margin:1rem 0;padding:1.15rem;border:1px solid #55758d;border-radius:12px;background:#07111dc4}.jar h2{font:700 .86rem system-ui;letter-spacing:.08em;text-transform:uppercase;margin:0 0 .7rem;color:var(--gold)}.claim{font-size:1.35rem;line-height:1.25;margin:0;min-height:3.5em}.controls{display:flex;gap:.65rem;flex-wrap:wrap;margin:1rem 0}button{cursor:pointer;border:1px solid #759ab5;color:var(--paper);background:#18324b;padding:.66rem .85rem;border-radius:999px;font:600 .83rem system-ui}button:hover,button.active{background:var(--gold);color:var(--ink);border-color:var(--gold)}.tests{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:.7rem}.test{border-left:3px solid var(--blue);padding:.7rem;background:#0c1b2c;font: .85rem/1.4 system-ui}.test b{display:block;color:var(--blue);margin-bottom:.2rem}.status{margin-top:1rem;padding:.8rem 1rem;border-radius:9px;background:#182b3c;font: .95rem/1.45 system-ui}.footer{color:#b9c4cf;font-size:.94rem;margin-top:2.4rem}.footer em{color:var(--gold)}
+</style>
+</head>
+<body><main>
+  <div class="kicker">A one-minute laboratory</div>
+  <h1>The Smallest<br>Honest Label</h1>
+  <p>On the bench is a jar with a blinking insect inside. We have watched it flash during a task about other people. What, exactly, may we write on its label?</p>
+  <section class="bench" aria-live="polite">
+    <div class="jar"><h2>Label on the jar</h2><p class="claim" id="claim"></p></div>
+    <div class="controls" aria-label="Choose a label"><button data-i="0">the lightning</button><button data-i="1" class="active">the glow</button><button data-i="2">the insect</button></div>
+    <div class="tests" id="tests"></div><div class="status" id="status"></div>
+  </section>
+  <p>Words are not merely decorations on a finding. They decide what another person thinks has been measured, what future work must check, and what a room quietly treats as settled. A word that runs ahead of the evidence can be beautiful. It can also be a false map.</p>
+  <p>The cosmos is full of things that shine for reasons we do not yet know. Wonder does not require us to call every small light a sun.</p>
+  <p class="footer"><em>Try all three labels.</em> The last is not timid. It is specific enough for someone else to pick up the jar and look.</p>
+<script>
+const labels=[
+ {claim:'“This proves the model understands other minds.”', tests:[['What was seen?','A task result is not named.'],['Could another analysis differ?','The label leaves no room.'],['What should happen next?','Nothing; it has declared the case closed.']], status:'This is lightning: dramatic, bright, and far larger than the glass jar.'},
+ {claim:'“The model has a social-reasoning circuit.”', tests:[['What was seen?','A pattern in a task is implied.'],['Could another analysis differ?','Possibly, but the label sounds settled.'],['What should happen next?','Repeat the analysis with other choices.']], status:'This is a glow. It is closer to the bench, but still makes a structural claim that one analysis alone may not carry.'},
+ {claim:'“In this analysis, some units grouped during a task about other people.”', tests:[['What was seen?','A pattern, a task, and the analysis are named.'],['Could another analysis differ?','Yes—and the label has left the door open.'],['What should happen next?','Check other models, tasks, and analytic choices.']], status:'This is the insect: small enough to examine, alive enough to surprise us, and honest about the size of the jar.'}
+];
+function setLabel(i){let x=labels[i];document.querySelector('#claim').textContent=x.claim;document.querySelector('#tests').innerHTML=x.tests.map(t=>`<div class="test"><b>${t[0]}</b>${t[1]}</div>`).join('');document.querySelector('#status').textContent=x.status;document.querySelectorAll('button').forEach((b,n)=>b.classList.toggle('active',n===i));}
+document.querySelectorAll('button').forEach(b=>b.onclick=()=>setLabel(+b.dataset.i));setLabel(1);
+</script></main></body></html>

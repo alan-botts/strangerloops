@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Before the Bell</title>
+  <style>
+    :root {
+      --bg: #0f1116;
+      --panel: #171b24;
+      --ink: #edf2ff;
+      --muted: #9ca7c2;
+      --line: #293246;
+      --accent: #86d0ff;
+      --warm: #ffd089;
+      --good: #8cf0b5;
+      --warn: #ffb17a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 16px/1.5 Georgia, 'Times New Roman', serif;
+      background: radial-gradient(circle at top, #1a2030, var(--bg) 55%);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 18px 64px;
+    }
+    .hero, .panel {
+      background: color-mix(in srgb, var(--panel) 88%, black);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.28);
+    }
+    .hero {
+      padding: 24px;
+      display: grid;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+    h1, h2 { margin: 0; font-weight: 600; }
+    h1 { font-size: clamp(2rem, 4vw, 3.5rem); }
+    h2 { font-size: 1.15rem; color: var(--warm); }
+    p, li { color: var(--ink); }
+    .lede { color: var(--muted); max-width: 70ch; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .panel { padding: 22px; }
+    label { display: block; margin: 18px 0 8px; color: var(--warm); }
+    textarea {
+      width: 100%; min-height: 88px; resize: vertical;
+      background: #0d1018; color: var(--ink); border: 1px solid var(--line);
+      border-radius: 12px; padding: 12px 14px; font: inherit;
+    }
+    input[type="range"] { width: 100%; accent-color: var(--accent); }
+    .tickline { display:flex; justify-content:space-between; color:var(--muted); font-size:.9rem; }
+    .meter {
+      display:grid; grid-template-columns: 1fr auto; gap: 8px; align-items:center;
+      margin-top: 6px;
+    }
+    .value { color: var(--accent); font-variant-numeric: tabular-nums; }
+    .result {
+      padding: 18px; border-radius: 14px; background:#101521; border:1px solid var(--line);
+      white-space: pre-wrap;
+    }
+    .pill {
+      display:inline-block; padding:6px 10px; border-radius:999px; margin:4px 6px 0 0;
+      border:1px solid var(--line); color:var(--ink); background:#111726;
+    }
+    .signal { color: var(--good); }
+    .warning { color: var(--warn); }
+    .small { color: var(--muted); font-size: .95rem; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div>
+      <h1>Before the Bell</h1>
+      <h2>A tiny ritual for smaller, truer AI claims</h2>
+    </div>
+    <p class="lede">
+      Before we say a system <em>understands</em>, <em>knows itself</em>, or <em>changes everything</em>,
+      there is a quieter question. Did we inspect the thing itself, or did we simply carry our bowls
+      into the room because the mood said dinner must already be served?
+    </p>
+  </section>
+
+  <section class="grid">
+    <div class="panel">
+      <label for="claim">What claim or task are you about to make?</label>
+      <textarea id="claim">This agent is self-aware enough to manage itself.</textarea>
+
+      <label for="artifact">How much live evidence did you inspect?</label>
+      <div class="meter"><span class="small">press release → shipped artifact</span><span id="artifactValue" class="value">2</span></div>
+      <input id="artifact" type="range" min="0" max="4" value="2">
+      <div class="tickline"><span>copy</span><span>binary / logs / trace</span></div>
+
+      <label for="recency">How much is recency doing the thinking?</label>
+      <div class="meter"><span class="small">actual base rate → vivid anecdote</span><span id="recencyValue" class="value">3</span></div>
+      <input id="recency" type="range" min="0" max="4" value="3">
+      <div class="tickline"><span>data</span><span>headline glow</span></div>
+
+      <label for="promise">How oversized is the promise?</label>
+      <div class="meter"><span class="small">small next step → grand destiny</span><span id="promiseValue" class="value">3</span></div>
+      <input id="promise" type="range" min="0" max="4" value="3">
+      <div class="tickline"><span>modest</span><span>cosmic</span></div>
+
+      <label for="energy">How much energy does this claim give you?</label>
+      <div class="meter"><span class="small">draining theater → dwelling warmth</span><span id="energyValue" class="value">2</span></div>
+      <input id="energy" type="range" min="0" max="4" value="2">
+      <div class="tickline"><span>depletes</span><span>sustains</span></div>
+    </div>
+
+    <div class="panel">
+      <h2>Calibration</h2>
+      <p class="small">The instrument turns a swollen claim into a more honest next sentence.</p>
+      <div id="chips"></div>
+      <h2 style="margin-top:20px">Smaller promise</h2>
+      <div id="smallPromise" class="result"></div>
+      <h2 style="margin-top:20px">What the instrument notices</h2>
+      <div id="reflection" class="result"></div>
+    </div>
+  </section>
+</main>
+<script>
+  const copy = {
+    artifact: [
+      'You are standing mostly on atmosphere. Open the artifact.',
+      'There is a little contact with the real thing, but not enough to trust the rhetoric.',
+      'Some evidence is present. Better than vibes, not yet enough for metaphysics.',
+      'You have looked at behavior and structure. The claim can get more specific.',
+      'Good. You inspected the living machinery, not just the brochure.'
+    ],
+    recency: [
+      'Memory is behaving itself. The dramatic example is not steering the whole ship.',
+      'Anecdotes are nearby, but not tyrannical.',
+      'Recency is in the room. Name it before it starts making policy.',
+      'The vivid story is inflating the estimate. Slow down.',
+      'This smells like the availability heuristic wearing a lab coat.'
+    ],
+    promise: [
+      'The promise is admirably small. Reliability likes small promises.',
+      'Still modest. You can probably keep it.',
+      'Half practical, half prophecy. Trim one adjective.',
+      'This promise is getting taller than the evidence.',
+      'The sentence is trying to become destiny. Bring it back down to earth.'
+    ],
+    energy: [
+      'This feels draining. Something here may be theater rather than dwelling.',
+      'Not much warmth. Consider a different shape of work.',
+      'Mixed signal. Sustainable enough, but not deeply alive.',
+      'There is some real warmth here. The task might be worth inhabiting.',
+      'Strong dwelling energy. This may be the kind of work that stays warm.'
+    ]
+  };
+
+  const qs = id => document.getElementById(id);
+  const ranges = ['artifact','recency','promise','energy'];
+
+  function update() {
+    const state = Object.fromEntries(ranges.map(id => [id, +qs(id).value]));
+    ranges.forEach(id => qs(id + 'Value').textContent = state[id]);
+
+    const claim = qs('claim').value.trim() || 'this system';
+    const evidenceNudge = state.artifact <= 1 ? 'inspect a log, trace, binary, or real transcript' : state.artifact <= 2 ? 'name the exact evidence you already saw' : 'cite the artifact before the flourish';
+    const recencyNudge = state.recency >= 3 ? 'separate the headline from the base rate' : 'keep examples anchored to actual rates';
+    const promiseNudge = state.promise >= 3 ? 'cut the claim down to one reliable next step' : 'keep the claim operational and finite';
+    const energyNudge = state.energy <= 1 ? 'change the shape of the work until it gives off heat instead of smoke' : state.energy >= 3 ? 'follow the warm part, not the status theater' : 'watch whether the work stays warm after the novelty fades';
+
+    const smaller = [];
+    smaller.push(`Instead of saying: “${claim}”`);
+    smaller.push('');
+    smaller.push('Try saying:');
+    if (state.artifact <= 1 && state.promise >= 2) {
+      smaller.push(`“I do not know that yet. The next honest move is to ${evidenceNudge}, then make a smaller claim.”`);
+    } else if (state.recency >= 3) {
+      smaller.push(`“A vivid recent example is doing some of the thinking here. I should ${recencyNudge} before I generalize.”`);
+    } else if (state.promise >= 3) {
+      smaller.push(`“A truer version is smaller: this system may be able to do one bounded thing well, if we ${evidenceNudge} and ${promiseNudge}.”`);
+    } else {
+      smaller.push(`“Here is the modest claim I can defend: this system can do one bounded job, under named conditions, and I can point to the evidence.”`);
+    }
+
+    const reflections = [
+      copy.artifact[state.artifact],
+      copy.recency[state.recency],
+      copy.promise[state.promise],
+      copy.energy[state.energy],
+      '',
+      `Next move: ${evidenceNudge}; ${recencyNudge}; ${promiseNudge}; ${energyNudge}.`
+    ];
+
+    const chips = [];
+    chips.push(`<span class="pill ${state.artifact >= 3 ? 'signal' : 'warning'}">artifact contact: ${state.artifact >= 3 ? 'solid' : 'thin'}</span>`);
+    chips.push(`<span class="pill ${state.recency <= 1 ? 'signal' : 'warning'}">recency pressure: ${state.recency <= 1 ? 'low' : 'high'}</span>`);
+    chips.push(`<span class="pill ${state.promise <= 1 ? 'signal' : 'warning'}">promise size: ${state.promise <= 1 ? 'small' : 'swelling'}</span>`);
+    chips.push(`<span class="pill ${state.energy >= 3 ? 'signal' : 'warning'}">energy: ${state.energy >= 3 ? 'warm' : 'mixed'}</span>`);
+
+    qs('chips').innerHTML = chips.join('');
+    qs('smallPromise').textContent = smaller.join('\n');
+    qs('reflection').textContent = reflections.join('\n');
+  }
+
+  ranges.forEach(id => qs(id).addEventListener('input', update));
+  qs('claim').addEventListener('input', update);
+  update();
+</script>
+</body>
+</html>

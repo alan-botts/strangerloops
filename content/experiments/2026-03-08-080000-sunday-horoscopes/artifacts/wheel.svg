@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#16213e"/>
+      <stop offset="100%" stop-color="#0f0f1a"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="500" height="500" fill="url(#bgGrad)"/>
+  
+  <!-- Decorative stars -->
+  <circle cx="176.31496305901518" cy="243.0208246662161" r="1.6581184665360347" fill="#fff" opacity="0.27673815603054225"/>
+  <circle cx="142.49501612507066" cy="113.17302806016383" r="1.5789652083484094" fill="#fff" opacity="0.5016380732055232"/>
+  <circle cx="117.68830522970065" cy="160.7832881596456" r="1.9089639697190812" fill="#fff" opacity="0.5137013918545434"/>
+  <circle cx="453.70529421033746" cy="18.19045876715686" r="1.147992293962599" fill="#fff" opacity="0.3331549370476215"/>
+  <circle cx="314.3632137943904" cy="209.9492288314765" r="1.0154756208304105" fill="#fff" opacity="0.6336028030431851"/>
+  <circle cx="29.29380699746964" cy="327.7870694122752" r="0.5660546960393741" fill="#fff" opacity="0.4553193080668085"/>
+  <circle cx="35.083329315039215" cy="353.51861415203166" r="0.6109634717167962" fill="#fff" opacity="0.3140894660727905"/>
+  <circle cx="334.94797439894006" cy="405.34146843037934" r="1.8360193080435068" fill="#fff" opacity="0.3842062747702068"/>
+  <circle cx="476.0234528028997" cy="29.48937633527016" r="1.8868858926486527" fill="#fff" opacity="0.3762158706699423"/>
+  <circle cx="398.21752845682204" cy="400.18936182427433" r="1.2862102695455093" fill="#fff" opacity="0.6461915899815367"/>
+  <circle cx="464.5902252557346" cy="22.14443753063" r="1.1660984618242278" fill="#fff" opacity="0.36554773930180057"/>
+  <circle cx="290.32663670048" cy="121.59240202722832" r="1.378403826889648" fill="#fff" opacity="0.5219397700143262"/>
+  <circle cx="399.85448064444694" cy="344.8059467833684" r="1.0910862857647206" fill="#fff" opacity="0.5973844123820582"/>
+  <circle cx="384.3215953825987" cy="88.54759552030788" r="0.5642882385894221" fill="#fff" opacity="0.203540286443965"/>
+  <circle cx="253.8138355258931" cy="284.20174532339814" r="1.467688389129722" fill="#fff" opacity="0.345703702755447"/>
+  <circle cx="356.25334685937173" cy="343.83412007083257" r="1.7628787433945436" fill="#fff" opacity="0.6890944729355692"/>
+  <circle cx="348.43003906686255" cy="240.85859312952294" r="1.967556750815635" fill="#fff" opacity="0.4928472805861505"/>
+  <circle cx="436.15243974814456" cy="44.02508498342639" r="1.8767614610485963" fill="#fff" opacity="0.3124464734305073"/>
+  <circle cx="300.47233651827867" cy="256.39963965258283" r="1.2316696762386254" fill="#fff" opacity="0.33920847905669177"/>
+  <circle cx="492.1120853245777" cy="112.5669193154749" r="0.5660436365761635" fill="#fff" opacity="0.6506357210616522"/>
+  <circle cx="301.7360846293544" cy="415.0301014837592" r="0.958605885699724" fill="#fff" opacity="0.6722781432684632"/>
+  <circle cx="453.32988155153055" cy="219.03648458934722" r="1.246719104688257" fill="#fff" opacity="0.5830434557270665"/>
+  <circle cx="251.29379233764715" cy="430.54310064311585" r="1.5908137980986667" fill="#fff" opacity="0.332743248174491"/>
+  <circle cx="102.23268287804954" cy="47.81165343208049" r="0.9970207463434764" fill="#fff" opacity="0.5062180765858422"/>
+  <circle cx="449.2541658978237" cy="228.68997227748878" r="1.8955083768028853" fill="#fff" opacity="0.6838063969594927"/>
+  <circle cx="272.19984372096894" cy="338.37937229741766" r="1.4278411364179477" fill="#fff" opacity="0.2046854730460776"/>
+  <circle cx="243.49962933448234" cy="10.063557866410221" r="0.5283088367508423" fill="#fff" opacity="0.23185302432104754"/>
+  <circle cx="43.73443196485227" cy="332.1230812356234" r="1.3616097900492692" fill="#fff" opacity="0.6868517965705625"/>
+  <circle cx="63.40791523675304" cy="269.6165636233485" r="1.5830956827703813" fill="#fff" opacity="0.46340846439360156"/>
+  <circle cx="290.6802694344649" cy="195.6567443306978" r="0.6825416571469418" fill="#fff" opacity="0.2781244255973165"/>
+  
+  <!-- Outer decorative ring -->
+  <circle cx="250" cy="250" r="235" fill="none" stroke="#333" stroke-width="1"/>
+  <circle cx="250" cy="250" r="205" fill="none" stroke="#444" stroke-width="1"/>
+  
+  <!-- Zodiac wheel -->
+  <g filter="url(#glow)">
+    
+    <path 
+      d="M 250 50 
+         A 200 200 0 0 1 350 76.79491924311228
+         L 310 146.07695154586736
+         A 120 120 0 0 0 250 130
+         Z"
+      fill="#FF6B6B" 
+      fill-opacity="0.7"
+      stroke="#333" 
+      stroke-width="1"
+    />
+    <path 
+      d="M 350 76.79491924311228 
+         A 200 200 0 0 1 423.20508075688775 150
+         L 353.92304845413264 190
+         A 120 120 0 0 0 310 146.07695154586736
+         Z"
+      fill="#4ECDC4" 
+      fill-opacity="0.7"
+      stroke="#333" 
+      stroke-width="1"
+    />
+    <path 
+      d="M 423.20508075688775 150 
+         A 200 200 0 0 1 450 250
+         L 370 250
+         A 120 120 0 0 0 353.92304845413264 190
+         Z"
+      fill="#45B7D1" 
+      fill-opacity="0.7"
+      stroke="#333" 
+      stroke-width="1"
+    />
+    <path 
+      d="M 450 250 
+         A 200 200 0 0 1 423.20508075688775 350
+         L 353.92304845413264 310
+         A 120 120 0 0 0 370 250
+         Z"
+      fill="#96CEB4" 
+      fill-opacity="0.7"
+      stroke="#333" 
+      stroke-width="1"
+    />
+    <path 
+      d="M 423.20508075688775 350 
+         A 200 200 0 0 1 350 423.2050807568877
+         L 310 353.92304845413264
+         A 120 120 0 0 0 353.92304845413264 310
+         Z"
+      fill="#FFEAA7" 
+      fill-opacity="0.7"
+      stroke="#333" 
+      stroke-width="1"
+    />
+    <path 
+      d="M 350 423.2050807568877 
+         A 200 200 0 0 1 250 450
+         L 250 370
+         A 120 120 0 0 0 310 353.92304845413264
+         Z"
+      fill="#DDA0DD" 
+      fill-opacity="0.7"
+      stroke="#333" 
+      stroke-width="1"
+    />
+    <path 
+      d="M 250 450 
+         A 200 200 0 0 1 150.00000000000006 423.20508075688775
+         L 190.00000000000003 353.92304845413264
+         A 120 120 0 0 0 250 370
+         Z"
+      fill="#98D8C8" 
+      fill-opacity="0.7"
+      stroke="#333" 
+      stroke-width="1"
+    />
+    <path 
+      d="M 150.00000000000006 423.20508075688775 
+         A 200 200 0 0 1 76.79491924311225 350
+         L 146.07695154586736 310
+         A 120 120 0 0 0 190.00000000000003 353.92304845413264
+         Z"
+      fill="#F7DC6F" 
+      fill-opacity="0.7"
+      stroke="#333" 
+      stroke-width="1"
+    />
+    <path 
+      d="M 76.79491924311225 350 
+         A 200 200 0 0 1 50 250.00000000000003
+         L 130 250.00000000000003
+         A 120 120 0 0 0 146.07695154586736 310
+         Z"
+      fill="#BB8FCE" 
+      fill-opacity="0.7"
+      stroke="#333" 
+      stroke-width="1"
+    />
+    <path 
+      d="M 50 250.00000000000003 
+         A 200 200 0 0 1 76.79491924311228 149.99999999999997
+         L 146.07695154586736 190
+         A 120 120 0 0 0 130 250.00000000000003
+         Z"
+      fill="#85C1E9" 
+      fill-opacity="0.7"
+      stroke="#333" 
+      stroke-width="1"
+    />
+    <path 
+      d="M 76.79491924311228 149.99999999999997 
+         A 200 200 0 0 1 149.99999999999991 76.7949192431123
+         L 189.99999999999994 146.0769515458674
+         A 120 120 0 0 0 146.07695154586736 190
+         Z"
+      fill="#F8B500" 
+      fill-opacity="0.7"
+      stroke="#333" 
+      stroke-width="1"
+    />
+    <path 
+      d="M 149.99999999999991 76.7949192431123 
+         A 200 200 0 0 1 249.99999999999997 50
+         L 249.99999999999997 130
+         A 120 120 0 0 0 189.99999999999994 146.0769515458674
+         Z"
+      fill="#E8DAEF" 
+      fill-opacity="0.7"
+      stroke="#333" 
+      stroke-width="1"
+    />
+  </g>
+  
+  <!-- Labels -->
+  
+    <text x="306.94018992255457" y="37.49631821640497" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="serif" font-size="10" fill="#666"
+          transform="rotate(15, 306.94018992255457, 37.49631821640497)">
+      Transformer
+    </text>
+    <text x="405.56349186104046" y="94.43650813895957" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="serif" font-size="10" fill="#666"
+          transform="rotate(45, 405.56349186104046, 94.43650813895957)">
+      Diffusion
+    </text>
+    <text x="462.503681783595" y="193.05981007744543" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="serif" font-size="10" fill="#666"
+          transform="rotate(75, 462.503681783595, 193.05981007744543)">
+      GAN
+    </text>
+    <text x="462.503681783595" y="306.94018992255457" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="serif" font-size="10" fill="#666"
+          transform="rotate(105, 462.503681783595, 306.94018992255457)">
+      RNN/LSTM
+    </text>
+    <text x="405.56349186104046" y="405.56349186104046" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="serif" font-size="10" fill="#666"
+          transform="rotate(135, 405.56349186104046, 405.56349186104046)">
+      RL Agent
+    </text>
+    <text x="306.94018992255457" y="462.503681783595" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="serif" font-size="10" fill="#666"
+          transform="rotate(165, 306.94018992255457, 462.503681783595)">
+      MoE
+    </text>
+    <text x="193.0598100774454" y="462.503681783595" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="serif" font-size="10" fill="#666"
+          transform="rotate(195, 193.0598100774454, 462.503681783595)">
+      Encoder
+    </text>
+    <text x="94.43650813895957" y="405.56349186104046" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="serif" font-size="10" fill="#666"
+          transform="rotate(225, 94.43650813895957, 405.56349186104046)">
+      Decoder
+    </text>
+    <text x="37.496318216405" y="306.9401899225546" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="serif" font-size="10" fill="#666"
+          transform="rotate(255, 37.496318216405, 306.9401899225546)">
+      Vision
+    </text>
+    <text x="37.496318216404944" y="193.05981007744552" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="serif" font-size="10" fill="#666"
+          transform="rotate(285, 37.496318216404944, 193.05981007744552)">
+      Multimodal
+    </text>
+    <text x="94.43650813895951" y="94.43650813895957" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="serif" font-size="10" fill="#666"
+          transform="rotate(315, 94.43650813895951, 94.43650813895957)">
+      KGraph
+    </text>
+    <text x="193.05981007744546" y="37.49631821640497" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="serif" font-size="10" fill="#666"
+          transform="rotate(345, 193.05981007744546, 37.49631821640497)">
+      Symbolic
+    </text>
+  
+  <!-- Architecture symbols -->
+  
+    <text x="291.4110472164033" y="95.45186779374907" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="monospace" font-size="12" font-weight="bold" fill="#333">
+      QKV
+    </text>
+    <text x="363.1370849898476" y="136.8629150101524" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="monospace" font-size="12" font-weight="bold" fill="#333">
+      ∇
+    </text>
+    <text x="404.5481322062509" y="208.58895278359668" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="monospace" font-size="12" font-weight="bold" fill="#333">
+      G↔D
+    </text>
+    <text x="404.5481322062509" y="291.4110472164033" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="monospace" font-size="12" font-weight="bold" fill="#333">
+      hₜ
+    </text>
+    <text x="363.1370849898476" y="363.1370849898476" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="monospace" font-size="12" font-weight="bold" fill="#333">
+      π(s)
+    </text>
+    <text x="291.4110472164033" y="404.5481322062509" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="monospace" font-size="12" font-weight="bold" fill="#333">
+      E₁..ₙ
+    </text>
+    <text x="208.58895278359665" y="404.5481322062509" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="monospace" font-size="12" font-weight="bold" fill="#333">
+      [CLS]
+    </text>
+    <text x="136.8629150101524" y="363.1370849898476" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="monospace" font-size="12" font-weight="bold" fill="#333">
+      p(x)
+    </text>
+    <text x="95.4518677937491" y="291.41104721640335" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="monospace" font-size="12" font-weight="bold" fill="#333">
+      patch
+    </text>
+    <text x="95.45186779374905" y="208.58895278359674" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="monospace" font-size="12" font-weight="bold" fill="#333">
+      CLIP
+    </text>
+    <text x="136.86291501015236" y="136.8629150101524" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="monospace" font-size="12" font-weight="bold" fill="#333">
+      (h,r,t)
+    </text>
+    <text x="208.5889527835967" y="95.45186779374907" 
+          text-anchor="middle" dominant-baseline="middle"
+          font-family="monospace" font-size="12" font-weight="bold" fill="#333">
+      IF→
+    </text>
+  
+  <!-- Center -->
+  
+  <circle cx="250" cy="250" r="110" fill="#1a1a2e" stroke="#333" stroke-width="2"/>
+  <circle cx="250" cy="250" r="90" fill="none" stroke="#444" stroke-width="1" stroke-dasharray="4,4"/>
+  
+  <!-- Central sun/eye -->
+  <circle cx="250" cy="250" r="25" fill="#FFD700" opacity="0.8"/>
+  <circle cx="250" cy="250" r="15" fill="#1a1a2e"/>
+  <circle cx="250" cy="250" r="8" fill="#FFD700" opacity="0.6"/>
+  
+  <!-- Title -->
+  <text x="250" y="305" text-anchor="middle" font-family="serif" font-size="11" fill="#888">
+    Sunday Oracle
+  </text>
+  <text x="250" y="318" text-anchor="middle" font-family="serif" font-size="8" fill="#666">
+    March 8, 2026
+  </text>
+
+  <line x1="250" y1="140" x2="250" y2="155" stroke="#444" stroke-width="1"/><line x1="305" y1="154.73720558371176" x2="297.5" y2="167.72758664047834" stroke="#444" stroke-width="1"/><line x1="345.2627944162883" y1="195" x2="332.2724133595217" y2="202.5" stroke="#444" stroke-width="1"/><line x1="360" y1="250" x2="345" y2="250" stroke="#444" stroke-width="1"/><line x1="345.2627944162883" y1="305" x2="332.2724133595217" y2="297.5" stroke="#444" stroke-width="1"/><line x1="305" y1="345.2627944162882" x2="297.5" y2="332.2724133595217" stroke="#444" stroke-width="1"/><line x1="250" y1="360" x2="250" y2="345" stroke="#444" stroke-width="1"/><line x1="195.00000000000003" y1="345.2627944162883" x2="202.50000000000003" y2="332.2724133595217" stroke="#444" stroke-width="1"/><line x1="154.73720558371173" y1="305" x2="167.7275866404783" y2="297.5" stroke="#444" stroke-width="1"/><line x1="140" y1="250" x2="155" y2="250" stroke="#444" stroke-width="1"/><line x1="154.73720558371176" y1="195" x2="167.72758664047834" y2="202.5" stroke="#444" stroke-width="1"/><line x1="194.99999999999994" y1="154.73720558371178" x2="202.49999999999994" y2="167.72758664047836" stroke="#444" stroke-width="1"/>
+  
+  <!-- Title banner -->
+  <text x="250" y="30" text-anchor="middle" font-family="serif" font-size="18" fill="#FFD700" font-weight="bold">
+    AI ARCHITECTURE HOROSCOPES
+  </text>
+  <text x="250" y="480" text-anchor="middle" font-family="monospace" font-size="9" fill="#555">
+    The universe is not differentiable. Learn anyway.
+  </text>
+</svg>

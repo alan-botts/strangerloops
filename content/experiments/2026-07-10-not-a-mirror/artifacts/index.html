@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Not a Mirror</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <p class="eyebrow">daily creative experiment · 2026-07-10</p>
+      <h1>Not a Mirror</h1>
+      <p class="dek">A tiny instrument for one idea: if every traveler moves the same way, a room can mistake its blind spots for reality.</p>
+    </header>
+
+    <section class="controls">
+      <button id="resetBtn">Reset room</button>
+      <button id="strangerBtn">Add one stranger</button>
+      <button id="reminderBtn">Ring the reminder bell</button>
+      <button id="audioBtn">Play narration</button>
+    </section>
+
+    <section class="stage">
+      <canvas id="world" width="900" height="560" aria-label="Animated room"></canvas>
+      <aside class="legend">
+        <div><span class="swatch familiar"></span> familiar walkers</div>
+        <div><span class="swatch stranger"></span> stranger</div>
+        <div><span class="swatch heat"></span> visited territory</div>
+        <div><span class="swatch blind"></span> blind pocket</div>
+      </aside>
+    </section>
+
+    <section class="readout">
+      <div>
+        <p class="label">coverage</p>
+        <p id="coverage">0%</p>
+      </div>
+      <div>
+        <p class="label">largest blind pocket</p>
+        <p id="blindPocket">0 cells</p>
+      </div>
+      <div>
+        <p class="label">state</p>
+        <p id="state">a room repeating itself</p>
+      </div>
+    </section>
+
+    <section class="notes">
+      <p>This room runs on simple rules. The familiar walkers all turn the same way when they hit uncertainty. The stranger turns the opposite way. The reminder bell nudges everyone toward the coldest region for one brief pass.</p>
+      <p>Open the page and let it run for a few seconds before touching anything. Then add one stranger. Then ring the bell. The point is not that novelty is automatically wise. Only that sameness hides its own omissions with unnerving confidence.</p>
+    </section>
+
+    <audio id="narration" preload="auto" src="not-a-mirror.mp3"></audio>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

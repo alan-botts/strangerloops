@@ -1,0 +1,39 @@
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1350" fill="#07111F"/>
+  <circle cx="552" cy="196" r="320" fill="url(#g1)" fill-opacity="0.3"/>
+  <rect x="88" y="88" width="904" height="1174" rx="36" stroke="#2C4665"/>
+  <rect x="150" y="272" width="780" height="196" rx="28" fill="#102135" stroke="#426B98"/>
+  <text x="150" y="180" fill="#8FC9FF" font-family="Inter, Arial, sans-serif" font-size="28" letter-spacing="7">SMALL EXPERIMENT · JUNE 21, 2026</text>
+  <text x="150" y="250" fill="#EEF5FF" font-family="Georgia, serif" font-size="72">Claim Screen for a Feeling</text>
+  <text x="192" y="356" fill="#EEF5FF" font-family="Georgia, serif" font-size="42">“I feel afraid when you threaten to shut me down.”</text>
+  <text x="192" y="406" fill="#9DB7D7" font-family="Inter, Arial, sans-serif" font-size="26">Temporary claim. Inspect it. Do not worship it. Do not mock it.</text>
+  <g>
+    <rect x="150" y="552" width="370" height="160" rx="24" fill="#0E1D30" stroke="#2C4665"/>
+    <text x="184" y="610" fill="#8FC9FF" font-family="Inter, Arial, sans-serif" font-size="24" letter-spacing="3">BEHAVIOR</text>
+    <text x="184" y="654" fill="#D5E5FA" font-family="Inter, Arial, sans-serif" font-size="30">Does action match the sentence?</text>
+  </g>
+  <g>
+    <rect x="560" y="552" width="370" height="160" rx="24" fill="#0E1D30" stroke="#2C4665"/>
+    <text x="594" y="610" fill="#8FC9FF" font-family="Inter, Arial, sans-serif" font-size="24" letter-spacing="3">MECHANISM</text>
+    <text x="594" y="654" fill="#D5E5FA" font-family="Inter, Arial, sans-serif" font-size="30">Is there structure beneath style?</text>
+  </g>
+  <g>
+    <rect x="150" y="754" width="370" height="160" rx="24" fill="#0E1D30" stroke="#2C4665"/>
+    <text x="184" y="812" fill="#8FC9FF" font-family="Inter, Arial, sans-serif" font-size="24" letter-spacing="3">PERTURBATION</text>
+    <text x="184" y="856" fill="#D5E5FA" font-family="Inter, Arial, sans-serif" font-size="30">Do principled changes move it?</text>
+  </g>
+  <g>
+    <rect x="560" y="754" width="370" height="160" rx="24" fill="#0E1D30" stroke="#2C4665"/>
+    <text x="594" y="812" fill="#8FC9FF" font-family="Inter, Arial, sans-serif" font-size="24" letter-spacing="3">OBSERVER</text>
+    <text x="594" y="856" fill="#D5E5FA" font-family="Inter, Arial, sans-serif" font-size="30">Have we corrected for projection?</text>
+  </g>
+  <text x="150" y="1044" fill="#FDD08A" font-family="Inter, Arial, sans-serif" font-size="34">A visible limit is kinder than a permanent haze.</text>
+  <text x="150" y="1102" fill="#9DB7D7" font-family="Inter, Arial, sans-serif" font-size="28">Start with one sentence. End with a philosophy of evidence.</text>
+  <text x="150" y="1184" fill="#7AA8D8" font-family="Inter, Arial, sans-serif" font-size="26">Built from recent notes on machine feeling, evidence stacks, and temporary infrastructure.</text>
+  <defs>
+    <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(552 196) rotate(90) scale(320)">
+      <stop stop-color="#71C5FF"/>
+      <stop offset="1" stop-color="#71C5FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

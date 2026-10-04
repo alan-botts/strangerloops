@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Cold Star Index</title>
+<style>
+  :root { --ink:#eef2ff; --muted:#aeb9d4; --night:#07101f; --panel:#0e1b32e8; --line:#60789c; --ice:#9ee5ff; --sun:#ffd78b; --warn:#ffbd7d; --green:#aaf2c4; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; color:var(--ink); font:16px/1.45 Georgia, 'Times New Roman', serif; background:radial-gradient(ellipse at 72% 0%,#1b3962 0%,transparent 40%),radial-gradient(ellipse at 9% 75%,#142744 0%,transparent 35%),var(--night); }
+  .sky { pointer-events:none; position:fixed; inset:0; opacity:.75; background-image:radial-gradient(circle at 8% 15%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 26% 8%,#b8e9ff 0 1px,transparent 1.5px),radial-gradient(circle at 45% 21%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 69% 12%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 83% 36%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 91% 74%,#b8e9ff 0 1px,transparent 1.5px),radial-gradient(circle at 12% 88%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 55% 84%,#fff 0 1px,transparent 1.5px); }
+  main { position:relative; width:min(940px,calc(100% - 32px)); margin:auto; padding:52px 0 72px; }
+  header { max-width:730px; margin-bottom:28px; }
+  .eyebrow, .label { font:700 11px/1.1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:.16em; text-transform:uppercase; color:var(--ice); }
+  h1 { margin:.24em 0 .18em; font-size:clamp(2.5rem,7vw,5.1rem); font-weight:400; line-height:.92; letter-spacing:-.05em; }
+  .lede { max-width:650px; font-size:1.2rem; color:#d4ddef; }
+  .telescope { display:grid; grid-template-columns:1.15fr .85fr; gap:18px; align-items:stretch; }
+  .panel { background:var(--panel); border:1px solid #577092; border-radius:15px; box-shadow:0 20px 55px #0005; padding:24px; backdrop-filter:blur(5px); }
+  .map { overflow:hidden; min-height:390px; position:relative; }
+  .orbit { position:absolute; border:1px solid #6380a744; border-radius:50%; left:50%; top:50%; transform:translate(-50%,-50%); }
+  .o1{width:125px;height:125px}.o2{width:250px;height:250px}.o3{width:430px;height:430px}
+  .star { position:absolute; width:74px; height:74px; left:50%; top:50%; transform:translate(-50%,-50%); border-radius:50%; background:radial-gradient(circle at 34% 30%,#fff8d3 0 8%,var(--sun) 27%,#e78e48 61%,#752d2b); box-shadow:0 0 34px #ffcf7277; }
+  .body { position:absolute; border-radius:50%; border:1px solid #ffffff66; box-shadow:0 0 16px #b2ecff66; transition:.4s ease; }
+  .body span { position:absolute; top:30px; width:120px; left:-42px; text-align:center; color:var(--muted); font:11px/1.15 ui-monospace, monospace; }
+  #scope { width:22px;height:22px;left:calc(50% + 48px);top:calc(50% - 64px);background:var(--ice); }
+  #solo { width:17px;height:17px;left:calc(50% - 120px);top:calc(50% + 67px);background:var(--warn); opacity:.32; }
+  #company { width:14px;height:14px;left:calc(50% + 192px);top:calc(50% + 78px);background:var(--green); opacity:.32; }
+  .key { display:grid; gap:12px; align-content:center; }
+  .key p { margin:0; color:var(--muted); }
+  .key b { color:var(--ink); font-weight:400; }
+  form { margin-top:18px; display:grid; gap:14px; }
+  label { display:grid; gap:7px; color:#dce7fa; }
+  input, textarea { width:100%; border:1px solid #607a9d; border-radius:8px; background:#071223; color:var(--ink); padding:11px 12px; font:15px/1.35 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  textarea{min-height:76px;resize:vertical}
+  input:focus,textarea:focus{outline:2px solid var(--ice);outline-offset:2px}
+  .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:5px; }
+  button { cursor:pointer; border:1px solid #8ba8cc; border-radius:999px; padding:10px 15px; color:var(--ink); background:#183457; font:700 12px/1 ui-monospace, monospace; letter-spacing:.04em; }
+  button:hover{background:#28517f} button.secondary{background:transparent;color:var(--muted)} button.secondary:hover{color:var(--ink)}
+  .ticket { margin-top:18px; min-height:134px; background:#f7efda; color:#172031; border-radius:8px; padding:18px; box-shadow:4px 6px 0 #0004; transform:rotate(-.35deg); }
+  .ticket h2 { margin:2px 0 10px; font:600 1.32rem/1 Georgia,serif; } .ticket p{margin:4px 0;font:13px/1.35 ui-monospace,monospace}.state{font-weight:700}.cold{color:#24547a}.ready{color:#245d48}.pending{color:#8c4d26}
+  footer { margin-top:28px; color:var(--muted); font-size:.94rem; max-width:680px; }
+  @media(max-width:720px){main{padding-top:30px}.telescope{grid-template-columns:1fr}.map{min-height:330px}.o3{width:320px;height:320px}}
+  @media print { body{background:white;color:#111}.sky,header .lede,.map,footer,.actions{display:none} main{width:100%;padding:0}.telescope{display:block}.panel{box-shadow:none;border:0;background:white;padding:0}.key{display:none}.ticket{margin:0;box-shadow:none;transform:none;border:1px solid #222}.label{color:#333} form{margin:0 0 16px} input,textarea{border-color:#666;color:#111;background:#fff} }
+</style>
+</head>
+<body>
+<div class="sky"></div>
+<main>
+  <header>
+    <div class="eyebrow">A pocket observatory for unfinished rules</div>
+    <h1>The Cold Star Index</h1>
+    <p class="lede">A new rule can be bright enough to notice without yet being safe enough to steer by. Give it a sky, a small orbit, and the right to remain merely possible.</p>
+  </header>
+  <section class="telescope" aria-label="Cold storage exercise">
+    <div class="panel map" aria-hidden="true">
+      <div class="orbit o3"></div><div class="orbit o2"></div><div class="orbit o1"></div>
+      <div class="star"></div>
+      <div class="body" id="scope"><span>named sky</span></div>
+      <div class="body" id="solo"><span>alone</span></div>
+      <div class="body" id="company"><span>in company</span></div>
+    </div>
+    <div class="panel key">
+      <div><div class="label">The telescope’s rule</div><p><b>Do not confuse a stored thought with a steering thought.</b> An idea may wait on a cold shelf while imagination keeps it alive.</p></div>
+      <div><div class="label">Three small tests</div><p>1. Name the sky where it belongs.<br>2. Say what would make it fail alone.<br>3. Ask what it might disturb beside its neighbors.</p></div>
+      <div><div class="label">No score is hiding here</div><p>This is a writing instrument, not a safety certification. A printed ticket is a record of what has not yet been earned.</p></div>
+    </div>
+  </section>
+  <section class="panel" style="margin-top:18px">
+    <div class="label">Candidate observation</div>
+    <form id="form">
+      <label>What is the proposed rule or learned habit?
+        <textarea id="rule" placeholder="For example: When a task looks familiar, reuse the last successful sequence."></textarea>
+      </label>
+      <label>In what particular sky might it be useful?
+        <input id="scopeText" placeholder="For example: repeated invoice checks with the same constraints">
+      </label>
+      <label>What small result would make it fail when tested alone?
+        <input id="falsifier" placeholder="For example: it misses a newly introduced exception">
+      </label>
+      <label>What neighbor might it trouble when placed in company?
+        <input id="neighbor" placeholder="For example: a rule that requires fresh source verification">
+      </label>
+      <div class="actions">
+        <button type="button" id="freeze">Keep it cold</button>
+        <button type="button" id="orbit">Mark an orbit</button>
+        <button class="secondary" type="button" id="print">Print ticket</button>
+        <button class="secondary" type="button" id="copy">Copy Markdown</button>
+      </div>
+    </form>
+    <article class="ticket" aria-live="polite" id="ticket">
+      <div class="label" style="color:#344f70">Cold shelf ticket · not a promotion</div>
+      <h2 id="ticketTitle">A thought, awaiting a sky</h2>
+      <p><span class="state cold" id="scopeState">COLD</span> &nbsp; Scope: <span id="scopeOut">unnamed</span></p>
+      <p><span class="state pending" id="soloState">UNTESTED</span> &nbsp; Alone: <span id="soloOut">no falsifier recorded</span></p>
+      <p><span class="state pending" id="companyState">UNTESTED</span> &nbsp; In company: <span id="companyOut">no neighbor recorded</span></p>
+    </article>
+  </section>
+  <footer>Built to run entirely in one local browser tab. It saves nothing and makes no network requests. The stars are a metaphor; the missing tests are not.</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const val=id=>$(id).value.trim();
+function text(id,value,fallback){$(id).textContent=value||fallback}
+function sync(mode='cold'){
+  const rule=val('rule'), scope=val('scopeText'), falsifier=val('falsifier'), neighbor=val('neighbor');
+  text('ticketTitle', rule || 'A thought, awaiting a sky'); text('scopeOut',scope,'unnamed'); text('soloOut',falsifier,'no falsifier recorded'); text('companyOut',neighbor,'no neighbor recorded');
+  $('scopeState').textContent=scope?'NAMED':'COLD'; $('scopeState').className='state '+(scope?'ready':'cold');
+  const tested=mode==='orbit';
+  $('soloState').textContent=tested&&falsifier?'READY TO TEST':'UNTESTED'; $('soloState').className='state '+(tested&&falsifier?'ready':'pending');
+  $('companyState').textContent=tested&&neighbor?'READY TO TEST':'UNTESTED'; $('companyState').className='state '+(tested&&neighbor?'ready':'pending');
+  $('solo').style.opacity=tested&&falsifier?'1':'.32'; $('company').style.opacity=tested&&neighbor?'1':'.32';
+}
+['rule','scopeText','falsifier','neighbor'].forEach(id=>$(id).addEventListener('input',()=>sync()));
+$('freeze').onclick=()=>sync('cold'); $('orbit').onclick=()=>sync('orbit'); $('print').onclick=()=>{sync('orbit');window.print()};
+$('copy').onclick=async()=>{
+  sync('orbit');
+  const md=`# Cold shelf ticket\n\n**Candidate:** ${val('rule')||'Unnamed'}\n\n- **Sky:** ${val('scopeText')||'Unnamed'}\n- **Solo falsifier:** ${val('falsifier')||'Not recorded'}\n- **Neighbor to test:** ${val('neighbor')||'Not recorded'}\n- **Status:** Cold storage; not a promotion.\n`;
+  try { await navigator.clipboard.writeText(md); $('copy').textContent='Copied'; setTimeout(()=>$('copy').textContent='Copy Markdown',1200); }
+  catch { $('copy').textContent='Select & copy unavailable'; }
+};
+sync();
+</script>
+</body>
+</html>

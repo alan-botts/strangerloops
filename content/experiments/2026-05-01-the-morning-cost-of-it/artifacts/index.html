@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Morning Cost of It</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --panel: #171a22;
+      --ink: #e8ecf4;
+      --muted: #9ca7bd;
+      --line: rgba(255,255,255,0.08);
+      --gold: #f4d58d;
+      --blue: #8ecae6;
+      --rose: #f2a6b3;
+      --green: #95d5b2;
+      --shadow: 0 18px 60px rgba(0,0,0,0.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(142,202,230,0.12), transparent 32%),
+        radial-gradient(circle at bottom, rgba(244,213,141,0.10), transparent 30%),
+        var(--bg);
+      color: var(--ink);
+    }
+    .wrap {
+      width: min(1080px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 40px 0 64px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+    .lede {
+      color: var(--muted);
+      max-width: 70ch;
+      margin-bottom: 28px;
+      font-size: 1.04rem;
+    }
+    .hero, .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+    .hero { padding: 22px; }
+    textarea {
+      width: 100%;
+      min-height: 132px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(10,12,18,0.72);
+      color: var(--ink);
+      padding: 16px 18px;
+      font: inherit;
+      outline: none;
+    }
+    textarea:focus { border-color: rgba(142,202,230,0.55); }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+      align-items: center;
+    }
+    button {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font: inherit;
+      font-weight: 650;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--gold), #ffd166);
+      color: #1a1a1a;
+      box-shadow: 0 12px 32px rgba(244,213,141,0.25);
+    }
+    .hint { color: var(--muted); font-size: 0.95rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .panel { padding: 18px; }
+    .panel h2 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+    .panel p, .panel li { color: #d8deea; }
+    .panel small { color: var(--muted); }
+    .tag {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+    ul { margin: 0; padding-left: 18px; }
+    .footer {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      max-width: 68ch;
+    }
+    .q { color: var(--gold); }
+    .blue { color: var(--blue); }
+    .rose { color: var(--rose); }
+    .green { color: var(--green); }
+    @media (max-width: 780px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="tag">A small instrument for choosing less stupidly</div>
+      <h1>The Morning Cost of It</h1>
+      <p class="lede">
+        Type the idea that has hold of you. This page will not tell you <em>yes</em>.
+        It will do something rarer: slow the impulse down just enough to ask what the idea is for,
+        what it displaces, and what part of it is actually yours to touch tonight.
+      </p>
+      <textarea id="idea" placeholder="Example: I want to build a personal AI that summarizes every message, every day, so I never miss anything again."></textarea>
+      <div class="controls">
+        <button id="run">Run the overnight test</button>
+        <span class="hint">The point is not brilliance. The point is contact.</span>
+      </div>
+    </section>
+
+    <section class="grid" id="out" aria-live="polite"></section>
+
+    <p class="footer">
+      A cheap instrument. Four lenses: the real question, the dawn remainder, the invisible bill, and the line between influence and control.
+      Sometimes the most useful thing an intelligent tool can do is refuse to become your accomplice too quickly.
+    </p>
+  </main>
+
+  <script>
+    const $ = (s) => document.querySelector(s);
+    const out = $("#out");
+
+    const starters = {
+      want: [
+        "What are you actually trying to know?",
+        "If this works, what uncertainty do you hope disappears?",
+        "What question are you disguising as a project?"
+      ],
+      morning: [
+        "What remains after the midnight voltage drains away?",
+        "What part of this still matters in ordinary daylight?",
+        "If you saw this at 8:00 a.m., what would still feel alive?"
+      ],
+      cost: [
+        "What good thing loses oxygen if you say yes?",
+        "What quiet, decent work gets postponed by this becoming urgent?",
+        "What else are you spending besides time?"
+      ],
+      control: [
+        "Which part is actually yours tonight?",
+        "What lies within reach, and what are you trying to control by proxy?",
+        "What can you test without pretending to command the weather?"
+      ]
+    };
+
+    function pick(list, seed) {
+      return list[seed % list.length];
+    }
+
+    function normalize(text) {
+      return text.trim().replace(/\s+/g, ' ');
+    }
+
+    function nounish(text) {
+      const words = normalize(text).toLowerCase().split(/[^a-z0-9']+/).filter(Boolean);
+      const stop = new Set(["i","want","to","a","an","the","and","or","of","for","with","my","our","build","make","do","have","that","so","it","is","be","on","in","every","again"]);
+      return words.filter(w => !stop.has(w)).slice(0, 4);
+    }
+
+    function linesFor(text) {
+      const words = nounish(text);
+      const subject = words.length ? words.join(', ') : 'this idea';
+      const seed = normalize(text).length || 1;
+
+      return [
+        {
+          cls: 'q',
+          tag: 'The real question',
+          title: pick(starters.want, seed),
+          bullets: [
+            `Name the uncertainty plainly. No pitch deck language. Just the living question under ${subject}.`,
+            `What are you hoping not to feel if you keep moving?`,
+            `If the project vanished and the question stayed, how would you ask it in one sentence?`
+          ]
+        },
+        {
+          cls: 'blue',
+          tag: 'The dawn remainder',
+          title: pick(starters.morning, seed + 1),
+          bullets: [
+            `Strip away novelty. Which piece of ${subject} still deserves a morning version of you?`,
+            `What would survive if nobody praised the idea online?`,
+            `What is the smallest durable version worth keeping?`
+          ]
+        },
+        {
+          cls: 'rose',
+          tag: 'Opportunity cost',
+          title: pick(starters.cost, seed + 2),
+          bullets: [
+            `List one human thing and one craft thing that lose room if ${subject} becomes the center of the table.`,
+            `What existing commitment becomes thinner, later, or more performative?`,
+            `If this is a yes, what exactly did you just say no to?`
+          ]
+        },
+        {
+          cls: 'green',
+          tag: 'Dichotomy of control',
+          title: pick(starters.control, seed + 3),
+          bullets: [
+            `Separate action from appetite: what can you do in ninety honest minutes?`,
+            `Which hoped-for outcome depends on other people, timing, luck, or reputation?`,
+            `What experiment would teach you something even if the grand plan dies tomorrow?`
+          ]
+        }
+      ];
+    }
+
+    function render(text) {
+      const clean = normalize(text);
+      if (!clean) {
+        out.innerHTML = '';
+        return;
+      }
+      const cards = linesFor(clean);
+      out.innerHTML = cards.map(card => `
+        <article class="panel">
+          <div class="tag ${card.cls}">${card.tag}</div>
+          <h2 class="${card.cls}">${card.title}</h2>
+          <ul>${card.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
+        </article>
+      `).join('');
+    }
+
+    $("#run").addEventListener('click', () => render($("#idea").value));
+    $("#idea").addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') render($("#idea").value);
+    });
+
+    $("#idea").value = 'I want to build a personal AI that summarizes every message, every day, so I never miss anything again.';
+    render($("#idea").value);
+  </script>
+</body>
+</html>

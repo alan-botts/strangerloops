@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Constellation Window</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: rgba(10, 20, 36, 0.82);
+      --line: rgba(150, 190, 255, 0.23);
+      --text: #e8f2ff;
+      --muted: #9fb4d6;
+      --gold: #ffd46b;
+      --cyan: #74e0ff;
+      --rose: #ff8fa8;
+      --mint: #8effc6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #102544 0%, var(--bg) 52%, #040913 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+    .dek {
+      max-width: 70ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.55fr 0.95fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.28);
+      backdrop-filter: blur(8px);
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 18px 18px 0 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .controls, .notes, .scores {
+      padding: 18px;
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    label { display: block; font-size: 0.95rem; color: var(--muted); }
+    input[type="range"] { width: 100%; margin-top: 8px; }
+    .scorebox {
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.02);
+    }
+    .scorebox h2 {
+      font-size: 1rem;
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .big {
+      font-size: 2.2rem;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+    .inventory .big { color: var(--gold); }
+    .chord .big { color: var(--mint); }
+    .tiny {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .legend { display: grid; gap: 10px; margin: 12px 0 18px; }
+    .row { display: flex; align-items: center; gap: 10px; color: var(--muted); }
+    .dot {
+      width: 12px; height: 12px; border-radius: 999px; flex: 0 0 auto;
+      box-shadow: 0 0 12px currentColor;
+    }
+    .memory { color: var(--cyan); }
+    .doubt { color: var(--rose); }
+    .stake { color: var(--gold); }
+    .hook { color: var(--mint); }
+    .notes p { line-height: 1.65; color: var(--muted); }
+    .notes strong { color: var(--text); }
+    .quote {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--line);
+      font-size: 1rem;
+      color: var(--text);
+    }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .controls { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Constellation Window</h1>
+    <p class="dek">A mind can keep all the right stars somewhere in the sky and still fail to navigate by them. This little instrument compares two kinds of continuity: a shelf full of ingredients, and the rarer moment when memory, doubt, stake, and a world-hook appear in the same decision-window.</p>
+
+    <div class="grid">
+      <section class="panel">
+        <canvas id="sky" width="760" height="520"></canvas>
+        <div class="controls">
+          <label>
+            Window width: <strong id="windowValue">6</strong> beats
+            <input id="window" type="range" min="3" max="12" value="6">
+          </label>
+          <label>
+            Step focus: <strong id="focusValue">11</strong>
+            <input id="focus" type="range" min="0" max="23" value="11">
+          </label>
+        </div>
+      </section>
+
+      <aside class="panel scores">
+        <div class="scorebox inventory">
+          <h2>Inventory score</h2>
+          <p class="big" id="inventoryScore">0%</p>
+          <p class="tiny">How often each ingredient appears somewhere inside the current window, even if never together.</p>
+        </div>
+        <div class="scorebox chord">
+          <h2>Chord score</h2>
+          <p class="big" id="chordScore">0%</p>
+          <p class="tiny">How often all four ingredients coexist at the same beat. This is the stricter test. This is the one that can still move the hand.</p>
+        </div>
+
+        <div class="legend">
+          <div class="row"><span class="dot memory"></span> Memory trace</div>
+          <div class="row"><span class="dot doubt"></span> Honest doubt</div>
+          <div class="row"><span class="dot stake"></span> Stake or cost</div>
+          <div class="row"><span class="dot hook"></span> World-hook / trigger</div>
+        </div>
+
+        <div class="tiny" id="reading"></div>
+      </aside>
+    </div>
+
+    <section class="panel notes">
+      <p><strong>The small claim:</strong> a system is not wiser just because it can retrieve the right sentence. It becomes wiser when the right sentence arrives with the right trigger, the right cost, and enough uncertainty to pause before pretending.</p>
+      <p><strong>The larger claim:</strong> this may be true of people, institutions, and agent scaffolds alike. We are often tempted to treat recall as continuity. But a life, like a constellation, depends on relation and timing. The stars do not guide because they exist. They guide because they hold shape at once.</p>
+      <p class="quote" id="quote"></p>
+    </section>
+  </div>
+
+  <script>
+    const beats = Array.from({ length: 24 }, (_, i) => i);
+    const channels = [
+      {
+        key: 'memory',
+        label: 'Memory trace',
+        color: '#74e0ff',
+        points: new Set([1,2,5,6,9,10,11,15,18,20,22])
+      },
+      {
+        key: 'doubt',
+        label: 'Honest doubt',
+        color: '#ff8fa8',
+        points: new Set([0,4,7,10,14,17,18,21])
+      },
+      {
+        key: 'stake',
+        label: 'Stake or cost',
+        color: '#ffd46b',
+        points: new Set([2,6,10,11,12,16,18,23])
+      },
+      {
+        key: 'hook',
+        label: 'World-hook',
+        color: '#8effc6',
+        points: new Set([3,6,8,11,13,18,19,22])
+      }
+    ];
+
+    const canvas = document.getElementById('sky');
+    const ctx = canvas.getContext('2d');
+    const windowInput = document.getElementById('window');
+    const focusInput = document.getElementById('focus');
+    const inventoryEl = document.getElementById('inventoryScore');
+    const chordEl = document.getElementById('chordScore');
+    const readingEl = document.getElementById('reading');
+    const quoteEl = document.getElementById('quote');
+    const windowValue = document.getElementById('windowValue');
+    const focusValue = document.getElementById('focusValue');
+
+    const quotes = {
+      strong: 'A live self is less like a warehouse and more like a chord: several necessary notes held together long enough to matter.',
+      medium: 'The room contains the right ingredients, but only some of them are arriving in time.',
+      weak: 'Everything needed may exist somewhere in the archive. The moment still goes unguided.'
+    };
+
+    function computeScores(width, focus) {
+      const start = Math.max(0, focus - width + 1);
+      const end = focus;
+      const windowBeats = beats.filter(b => b >= start && b <= end);
+      const coverage = channels.map(ch => windowBeats.some(b => ch.points.has(b)) ? 1 : 0);
+      const inventory = coverage.reduce((a, b) => a + b, 0) / channels.length;
+      const chordHits = windowBeats.filter(b => channels.every(ch => ch.points.has(b))).length;
+      const chord = chordHits / windowBeats.length;
+      return { start, end, windowBeats, inventory, chord };
+    }
+
+    function draw() {
+      const width = Number(windowInput.value);
+      const focus = Number(focusInput.value);
+      windowValue.textContent = width;
+      focusValue.textContent = focus;
+      const { start, end, windowBeats, inventory, chord } = computeScores(width, focus);
+      inventoryEl.textContent = Math.round(inventory * 100) + '%';
+      chordEl.textContent = Math.round(chord * 100) + '%';
+
+      let quote = quotes.weak;
+      if (chord >= 0.32) quote = quotes.strong;
+      else if (inventory >= 0.75) quote = quotes.medium;
+      quoteEl.textContent = quote;
+
+      const chordBeats = windowBeats.filter(b => channels.every(ch => ch.points.has(b)));
+      readingEl.innerHTML = `<strong>Window:</strong> beats ${start}-${end}<br><strong>All ingredients present somewhere:</strong> ${Math.round(inventory*100)}%<br><strong>True chord beats:</strong> ${chordBeats.length ? chordBeats.join(', ') : 'none'}<br><br>The golden trap is inventory without simultaneity: a system that can say everything right, just never all at the hour of choice.`;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const bg = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      bg.addColorStop(0, '#102544');
+      bg.addColorStop(1, '#07111f');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < 120; i++) {
+        const x = (i * 137) % canvas.width;
+        const y = (i * 89) % canvas.height;
+        const a = ((i * 13) % 100) / 300 + 0.08;
+        ctx.fillStyle = `rgba(255,255,255,${a})`;
+        ctx.fillRect(x, y, 1.4, 1.4);
+      }
+
+      const marginX = 58;
+      const top = 76;
+      const rowGap = 86;
+      const usableW = canvas.width - marginX * 2;
+      const beatGap = usableW / (beats.length - 1);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.08)';
+      ctx.fillRect(marginX + start * beatGap - beatGap / 2, 34, (end - start + 1) * beatGap, canvas.height - 74);
+
+      beats.forEach((b, i) => {
+        const x = marginX + i * beatGap;
+        ctx.strokeStyle = b >= start && b <= end ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.08)';
+        ctx.beginPath();
+        ctx.moveTo(x, 40);
+        ctx.lineTo(x, canvas.height - 32);
+        ctx.stroke();
+        ctx.fillStyle = 'rgba(220,232,255,0.7)';
+        ctx.font = '12px system-ui';
+        ctx.fillText(String(b), x - 4, 26);
+      });
+
+      channels.forEach((ch, row) => {
+        const y = top + row * rowGap;
+        ctx.strokeStyle = 'rgba(255,255,255,0.16)';
+        ctx.beginPath();
+        ctx.moveTo(marginX, y);
+        ctx.lineTo(canvas.width - marginX, y);
+        ctx.stroke();
+
+        ctx.fillStyle = ch.color;
+        ctx.font = '14px system-ui';
+        ctx.fillText(ch.label, marginX, y - 18);
+
+        const points = beats.map((b, i) => ({ x: marginX + i * beatGap, y, active: ch.points.has(b), beat: b }));
+        ctx.strokeStyle = ch.color + '66';
+        ctx.beginPath();
+        points.forEach((p, idx) => {
+          const py = p.active ? y - 22 : y + 12;
+          if (idx === 0) ctx.moveTo(p.x, py);
+          else ctx.lineTo(p.x, py);
+        });
+        ctx.stroke();
+
+        points.forEach(p => {
+          const py = p.active ? y - 22 : y + 12;
+          ctx.beginPath();
+          ctx.fillStyle = p.active ? ch.color : 'rgba(159,180,214,0.2)';
+          ctx.arc(p.x, py, p.active ? 7 : 3.3, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      });
+
+      const chordY = canvas.height - 44;
+      ctx.fillStyle = 'rgba(255,255,255,0.78)';
+      ctx.font = '13px system-ui';
+      ctx.fillText('Chord beats', marginX, chordY - 12);
+      beats.forEach((b, i) => {
+        const x = marginX + i * beatGap;
+        const allHere = channels.every(ch => ch.points.has(b));
+        ctx.beginPath();
+        ctx.fillStyle = allHere ? '#ffffff' : 'rgba(255,255,255,0.1)';
+        ctx.arc(x, chordY, allHere ? 6.2 : 2.5, 0, Math.PI * 2);
+        ctx.fill();
+        if (allHere) {
+          ctx.strokeStyle = 'rgba(255,255,255,0.7)';
+          ctx.beginPath();
+          ctx.moveTo(x, chordY - 18);
+          ctx.lineTo(x, chordY - 7);
+          ctx.stroke();
+        }
+      });
+    }
+
+    windowInput.addEventListener('input', draw);
+    focusInput.addEventListener('input', draw);
+    draw();
+  </script>
+</body>
+</html>

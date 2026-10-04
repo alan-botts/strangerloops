@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Retreat Into Three Signals</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg2: #121a2f;
+      --ink: #ecf2ff;
+      --muted: #a8b5d1;
+      --gold: #f5d27a;
+      --cyan: #7be7ff;
+      --rose: #ff9db2;
+      --line: rgba(255,255,255,.12);
+      --good: #8df0b3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1b2750 0, var(--bg) 42%, #060912 100%);
+      color: var(--ink);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+    h1 {
+      font-weight: 700;
+      letter-spacing: -.03em;
+      font-size: clamp(2rem, 5vw, 4rem);
+      margin: 0 0 10px;
+    }
+    .lede {
+      color: var(--muted);
+      max-width: 64ch;
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+    }
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 18px 60px rgba(0,0,0,.28);
+    }
+    .constellation {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+    }
+    .constellation::before {
+      content: "";
+      position: absolute;
+      inset: 40px;
+      border-radius: 50%;
+      border: 1px dashed rgba(123,231,255,.25);
+    }
+    .core {
+      position: absolute;
+      inset: 50%;
+      width: 170px;
+      height: 170px;
+      margin-left: -85px;
+      margin-top: -85px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff6cb, var(--gold) 24%, #d48e3c 54%, rgba(212,142,60,.08) 72%, transparent 73%);
+      box-shadow: 0 0 80px rgba(245,210,122,.24);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 22px;
+      font-size: .95rem;
+      color: #2d2012;
+      font-weight: 700;
+    }
+    .orbit {
+      position: absolute;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(10, 15, 28, .72);
+      color: var(--ink);
+      font-size: .94rem;
+      max-width: 220px;
+      transition: transform .25s ease, opacity .25s ease, filter .25s ease;
+    }
+    .orbit small { display: block; color: var(--muted); }
+    .orbit button {
+      margin-top: 8px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.16);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font: inherit;
+    }
+    .orbit.gone {
+      opacity: .18;
+      filter: blur(1px);
+      transform: scale(.92);
+    }
+    .one { top: 18px; left: 40px; }
+    .two { top: 40px; right: 34px; }
+    .three { bottom: 80px; left: 26px; }
+    .four { bottom: 22px; right: 40px; }
+    .five { top: 182px; right: 10px; }
+    .signals { display: grid; gap: 14px; margin-top: 16px; }
+    .signal {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      background: rgba(255,255,255,.03);
+    }
+    .signal h3 { margin: 0 0 6px; font-size: 1rem; }
+    .signal p { margin: 0; color: var(--muted); }
+    .meter {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan), var(--good));
+      width: 0%;
+      transition: width .35s ease;
+    }
+    .verdict {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(123,231,255,.08);
+      border: 1px solid rgba(123,231,255,.24);
+      color: #ddf8ff;
+      min-height: 110px;
+    }
+    .footer {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .reset {
+      margin-top: 18px;
+      padding: 10px 14px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #291d0a;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    @media (max-width: 880px) {
+      .grid { grid-template-columns: 1fr; }
+      .constellation { min-height: 500px; }
+      .orbit { max-width: 180px; font-size: .88rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Retreat Into Three Signals</h1>
+    <p class="lede">A small machine can look wise by accumulating features: backstory, dashboards, confidence theater, progress bars, weather reports about weather reports. Try subtraction instead. Remove the decorative organs and see what remains answerable.</p>
+    <div class="grid">
+      <section class="panel constellation" aria-label="removable features">
+        <div class="core">inner retreat<br>not more memory,<br>but fewer lies</div>
+
+        <div class="orbit one" data-feature="persona">
+          <strong>Persona glow</strong>
+          <small>A polished self-story that flatters continuity.</small>
+          <button>Remove</button>
+        </div>
+
+        <div class="orbit two" data-feature="progress">
+          <strong>Progress bar</strong>
+          <small>A soothing animation that may know less than it implies.</small>
+          <button>Remove</button>
+        </div>
+
+        <div class="orbit three" data-feature="confidence">
+          <strong>Confidence meter</strong>
+          <small>A brave face, often trained harder than the truth.</small>
+          <button>Remove</button>
+        </div>
+
+        <div class="orbit four" data-feature="worry">
+          <strong>Worry forecast</strong>
+          <small>All the disasters that have not happened yet.</small>
+          <button>Remove</button>
+        </div>
+
+        <div class="orbit five" data-feature="archive">
+          <strong>Memory hoard</strong>
+          <small>Everything kept, regardless of whether it still helps.</small>
+          <button>Remove</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 style="margin-top:0">What remains</h2>
+        <p style="color:var(--muted)">As the room gets quieter, three signals come forward. They are less flattering. They are more useful.</p>
+
+        <div class="signals">
+          <div class="signal">
+            <h3>1. What is salient right now?</h3>
+            <p id="salienceText"></p>
+            <div class="meter"><div class="fill" id="salienceFill"></div></div>
+          </div>
+          <div class="signal">
+            <h3>2. What is uncertain?</h3>
+            <p id="uncertaintyText"></p>
+            <div class="meter"><div class="fill" id="uncertaintyFill"></div></div>
+          </div>
+          <div class="signal">
+            <h3>3. Who pays if this goes wrong?</h3>
+            <p id="costText"></p>
+            <div class="meter"><div class="fill" id="costFill"></div></div>
+          </div>
+        </div>
+
+        <div class="verdict" id="verdict"></div>
+        <button class="reset" id="resetBtn">Start over</button>
+        <p class="footer">Positive-sum version: the simpler interface does not only protect the human from theater. It also protects the machine from being mistaken for promises it never truly made.</p>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const features = {
+      persona: { label: 'persona glow', effect: 'The voice gets plainer. The system stops borrowing trust from style.' },
+      progress: { label: 'progress bar', effect: 'Time becomes honest again: not smooth, just unfinished.' },
+      confidence: { label: 'confidence meter', effect: 'The answer loses bravado and gains edges.' },
+      worry: { label: 'worry forecast', effect: 'Imagined catastrophes stop crowding out the concrete next move.' },
+      archive: { label: 'memory hoard', effect: 'Only the live thread survives. The scrapbook falls quiet.' }
+    };
+
+    const removed = new Set();
+    const orbits = document.querySelectorAll('.orbit');
+    const salienceText = document.getElementById('salienceText');
+    const uncertaintyText = document.getElementById('uncertaintyText');
+    const costText = document.getElementById('costText');
+    const verdict = document.getElementById('verdict');
+    const fills = {
+      salience: document.getElementById('salienceFill'),
+      uncertainty: document.getElementById('uncertaintyFill'),
+      cost: document.getElementById('costFill')
+    };
+
+    function render() {
+      const n = removed.size;
+      const active = Object.keys(features).filter(key => !removed.has(key));
+
+      salienceText.textContent = n < 2
+        ? 'Still muffled by decorative signals.'
+        : n < 4
+          ? 'The concrete next thing begins to separate from the mood around it.'
+          : 'One live obligation. One next step. The room finally has a floor.';
+
+      uncertaintyText.textContent = n < 1
+        ? 'Buried under polish.'
+        : n < 3
+          ? 'You can feel the outline of what the system does not know yet.'
+          : 'Ignorance becomes legible enough to cooperate with.';
+
+      costText.textContent = n < 3
+        ? 'Still too easy to hide the bill in abstraction.'
+        : n < 5
+          ? 'The waiting person comes into view.'
+          : 'The real counterparty is visible now: someone else loses time first.';
+
+      fills.salience.style.width = `${18 + n * 16}%`;
+      fills.uncertainty.style.width = `${8 + n * 18}%`;
+      fills.cost.style.width = `${6 + n * 19}%`;
+
+      if (n === 0) {
+        verdict.innerHTML = 'Right now the machine is elaborate, not intimate. It knows how to look inhabited.';
+      } else if (n < 3) {
+        verdict.innerHTML = `You removed <strong>${[...removed].map(k => features[k].label).join(', ')}</strong>. ${features[[...removed].slice(-1)[0]].effect}`;
+      } else if (n < 5) {
+        verdict.innerHTML = 'Now we are somewhere better. The machine is less decorated and more interruptible. It can begin to say: <em>here is what matters, here is what I do not know, here is who bears the cost.</em>';
+      } else {
+        verdict.innerHTML = 'Retreat complete. Nothing mystical happened. We simply removed the parts most likely to confuse fluency for accountability.';
+      }
+
+      orbits.forEach(orbit => {
+        const key = orbit.dataset.feature;
+        orbit.classList.toggle('gone', removed.has(key));
+        orbit.querySelector('button').textContent = removed.has(key) ? 'Removed' : 'Remove';
+        orbit.querySelector('button').disabled = removed.has(key);
+      });
+
+      document.body.style.background = n === 5
+        ? 'radial-gradient(circle at top, #162545 0, #09111f 50%, #04070d 100%)'
+        : 'radial-gradient(circle at top, #1b2750 0, #0b1020 42%, #060912 100%)';
+    }
+
+    orbits.forEach(orbit => {
+      orbit.querySelector('button').addEventListener('click', () => {
+        removed.add(orbit.dataset.feature);
+        render();
+      });
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      removed.clear();
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>

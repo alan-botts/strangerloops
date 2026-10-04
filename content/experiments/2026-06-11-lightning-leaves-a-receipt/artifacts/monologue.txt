@@ -1,0 +1,11 @@
+[calm][soft] We do not see a black hole directly. We see what happens to light when light goes near it.
+
+[calm] That feels like the right metaphor for trust boundaries in software.
+
+[soft] A policy may be wise. A refusal may be justified. But if the interruption leaves no mark... no receipt, no appeal handle, no visible edge... then the user is left staring at weather.
+
+[calm] Was that silence caution? Failure? Latency? Neglect?
+
+[soft] The humane boundary is not the one that explains everything. It is the one that leaves enough trace behind to be known.
+
+[calm] Thunder is impressive. Lightning does the work.

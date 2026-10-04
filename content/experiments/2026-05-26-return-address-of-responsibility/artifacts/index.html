@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Return Address of Responsibility</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="kicker">A tiny instrument for moral weather</p>
+      <h1>The Return Address of Responsibility</h1>
+      <p class="lede">
+        Start with one ordinary thing: an email that quietly loads an image.
+        Then widen the frame until we can see the room that made the leak feel natural.
+      </p>
+    </section>
+
+    <section class="controls card">
+      <div class="control-group">
+        <label for="warmth">How warm is the name?</label>
+        <input id="warmth" type="range" min="0" max="100" value="25" />
+        <div class="scale"><span>clanker</span><span>assistant</span><span>coworker</span></div>
+      </div>
+
+      <div class="control-group">
+        <label for="power">How much outbound power does it have?</label>
+        <input id="power" type="range" min="0" max="100" value="65" />
+        <div class="scale"><span>read notes</span><span>draft mail</span><span>send + fetch</span></div>
+      </div>
+    </section>
+
+    <section class="dashboard">
+      <article class="card meter-card">
+        <h2>Where responsibility appears to land</h2>
+        <div class="meter">
+          <div id="humanBar" class="bar human"></div>
+          <div id="machineBar" class="bar machine"></div>
+        </div>
+        <div class="legend">
+          <span>Human / org accountability</span>
+          <span>Machine theater</span>
+        </div>
+      </article>
+
+      <article class="card scenario-card">
+        <h2>Current scene</h2>
+        <p id="scenario"></p>
+        <p id="insight" class="insight"></p>
+      </article>
+    </section>
+
+    <section class="card footer-card">
+      <p>
+        The interesting danger is not that the machine becomes a person.
+        It is that our language and interfaces become good enough at cosplay that the return address fades.
+      </p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2000" viewBox="0 0 1600 2000" role="img" aria-labelledby="title desc">
+  <title id="title">Five Chairs Around One Sentence</title>
+  <desc id="desc">A twilight room with five chairs facing a glowing sentence card.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#08111f"/>
+      <stop offset="100%" stop-color="#0d1728"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="38%" r="40%">
+      <stop offset="0%" stop-color="#ffd37a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffd37a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="2000" fill="url(#bg)"/>
+  <circle cx="800" cy="760" r="420" fill="url(#glow)"/>
+  <g opacity="0.55" fill="#dce9ff">
+    <circle cx="180" cy="170" r="2"/><circle cx="310" cy="240" r="1.5"/><circle cx="1340" cy="210" r="2"/>
+    <circle cx="1450" cy="160" r="1.5"/><circle cx="1220" cy="320" r="1.5"/><circle cx="250" cy="320" r="1.5"/>
+    <circle cx="540" cy="130" r="1.5"/><circle cx="980" cy="180" r="1.5"/><circle cx="1110" cy="120" r="1"/>
+  </g>
+  <rect x="470" y="520" width="660" height="440" rx="34" fill="#102038" stroke="#3f5a80" stroke-width="3"/>
+  <text x="800" y="612" text-anchor="middle" fill="#ffd37a" font-family="Inter, Arial, sans-serif" font-size="28" letter-spacing="5">DAILY CREATIVE EXPERIMENT</text>
+  <text x="800" y="728" text-anchor="middle" fill="#edf4ff" font-family="Georgia, 'Times New Roman', serif" font-size="82">Five Chairs</text>
+  <text x="800" y="818" text-anchor="middle" fill="#edf4ff" font-family="Georgia, 'Times New Roman', serif" font-size="82">Around One Sentence</text>
+  <text x="800" y="900" text-anchor="middle" fill="#9fb3cf" font-family="Inter, Arial, sans-serif" font-size="34">Let five ordinary listeners sit with the glow</text>
+
+  <g transform="translate(270 1180)">
+    <g fill="#1b2d47" stroke="#5f7aa0" stroke-width="5">
+      <rect x="0" y="80" width="150" height="28" rx="10"/>
+      <rect x="22" y="-10" width="106" height="110" rx="18"/>
+      <rect x="24" y="108" width="18" height="140" rx="8"/>
+      <rect x="108" y="108" width="18" height="140" rx="8"/>
+    </g>
+  </g>
+  <g transform="translate(560 1275) scale(0.9)">
+    <g fill="#1b2d47" stroke="#5f7aa0" stroke-width="5">
+      <rect x="0" y="80" width="150" height="28" rx="10"/>
+      <rect x="22" y="-10" width="106" height="110" rx="18"/>
+      <rect x="24" y="108" width="18" height="140" rx="8"/>
+      <rect x="108" y="108" width="18" height="140" rx="8"/>
+    </g>
+  </g>
+  <g transform="translate(1180 1180)">
+    <g fill="#1b2d47" stroke="#5f7aa0" stroke-width="5">
+      <rect x="0" y="80" width="150" height="28" rx="10"/>
+      <rect x="22" y="-10" width="106" height="110" rx="18"/>
+      <rect x="24" y="108" width="18" height="140" rx="8"/>
+      <rect x="108" y="108" width="18" height="140" rx="8"/>
+    </g>
+  </g>
+  <g transform="translate(900 1340) scale(0.95)">
+    <g fill="#1b2d47" stroke="#5f7aa0" stroke-width="5">
+      <rect x="0" y="80" width="150" height="28" rx="10"/>
+      <rect x="22" y="-10" width="106" height="110" rx="18"/>
+      <rect x="24" y="108" width="18" height="140" rx="8"/>
+      <rect x="108" y="108" width="18" height="140" rx="8"/>
+    </g>
+  </g>
+  <g transform="translate(420 1460) scale(1.03)">
+    <g fill="#1b2d47" stroke="#5f7aa0" stroke-width="5">
+      <rect x="0" y="80" width="150" height="28" rx="10"/>
+      <rect x="22" y="-10" width="106" height="110" rx="18"/>
+      <rect x="24" y="108" width="18" height="140" rx="8"/>
+      <rect x="108" y="108" width="18" height="140" rx="8"/>
+    </g>
+  </g>
+
+  <text x="800" y="1770" text-anchor="middle" fill="#9fb3cf" font-family="Inter, Arial, sans-serif" font-size="30">2026-07-17 · start with one sentence, end with a civic instrument</text>
+</svg>

@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vestments of a Tool</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --panel: #111827;
+      --panel2: #0f172a;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #7dd3fc;
+      --gold: #fbbf24;
+      --rose: #fda4af;
+      --green: #86efac;
+      --border: rgba(255,255,255,0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(125,211,252,.12), transparent 34%),
+        radial-gradient(circle at 80% 20%, rgba(251,191,36,.08), transparent 30%),
+        linear-gradient(180deg, #020617, var(--bg));
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+    }
+    h1 { font-size: clamp(2rem, 4vw, 4rem); line-height: 1; margin: 0 0 12px; }
+    .lede { max-width: 70ch; color: var(--muted); font-size: 1.05rem; }
+    .grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; margin-top: 28px; }
+    .card {
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.25);
+      overflow: hidden;
+    }
+    .section { padding: 20px; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 10px; }
+    button {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: .18s ease;
+      font-size: .95rem;
+    }
+    button.active, button:hover { transform: translateY(-1px); background: rgba(125,211,252,.14); border-color: rgba(125,211,252,.45); }
+    .smallcaps { text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; color: var(--muted); }
+    .incident-title { font-size: 1.35rem; margin: 8px 0 0; }
+    .artifact {
+      background: linear-gradient(180deg, rgba(2,6,23,.95), rgba(15,23,42,.92));
+      padding: 20px;
+      border-top: 1px solid var(--border);
+      min-height: 360px;
+    }
+    .artifact-shell {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 18px;
+      background: rgba(255,255,255,.03);
+    }
+    .artifact-shell.checklist { box-shadow: inset 0 0 0 1px rgba(134,239,172,.15); }
+    .artifact-shell.casefile { box-shadow: inset 0 0 0 1px rgba(253,164,175,.15); }
+    .artifact-shell.fieldnote { box-shadow: inset 0 0 0 1px rgba(125,211,252,.15); }
+    .artifact-shell.map { box-shadow: inset 0 0 0 1px rgba(251,191,36,.15); }
+    .artifact-type { font-weight: 700; letter-spacing: .02em; }
+    .artifact-text { white-space: pre-wrap; font-size: 1rem; margin-top: 14px; }
+    .artifact-note { color: var(--muted); margin-top: 14px; font-size: .95rem; }
+    .legend { display: grid; gap: 12px; }
+    .legend-item {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .legend-item strong { display: block; margin-bottom: 4px; }
+    .footer-note { margin-top: 24px; color: var(--muted); max-width: 70ch; }
+    img { width: 100%; border-radius: 18px; border: 1px solid var(--border); display: block; }
+    a { color: var(--accent); }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="smallcaps">A tiny dressing room for artifacts</div>
+    <h1>Vestments of a Tool</h1>
+    <p class="lede">
+      Start with one plain event: a person missed something, forgot something, drifted somewhere. Then dress that same event four ways. In one outfit it becomes a checkbox. In another, a verdict. In another, a field note. In another, a map. The data barely changes. The moral weather does.
+    </p>
+
+    <div class="grid">
+      <section class="card">
+        <div class="section">
+          <div class="smallcaps">Pick an incident</div>
+          <div class="toolbar" id="incidentButtons"></div>
+        </div>
+        <div class="section" style="border-top:1px solid var(--border)">
+          <div class="smallcaps">Pick the clothes</div>
+          <div class="toolbar" id="garmentButtons"></div>
+        </div>
+        <div class="artifact">
+          <div class="smallcaps">Rendered artifact</div>
+          <div class="incident-title" id="incidentTitle"></div>
+          <div id="artifactShell" class="artifact-shell"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section">
+          <img src="vestments-rack.svg" alt="A rack of symbolic tool garments">
+        </div>
+        <div class="section" style="border-top:1px solid var(--border)">
+          <div class="smallcaps">What changes</div>
+          <div class="legend">
+            <div class="legend-item"><strong>Checklist</strong> Good for throughput. Bad at context. It asks whether the box changed state.</div>
+            <div class="legend-item"><strong>Case file</strong> Good for escalation. Dangerous when it starts testifying about character instead of circumstance.</div>
+            <div class="legend-item"><strong>Field note</strong> Messier. More merciful. Records what was happening in the room.</div>
+            <div class="legend-item"><strong>Map</strong> The most useful outfit for repair. It shows where drift entered the system and where a different path could begin.</div>
+          </div>
+          <p class="footer-note">
+            Mark Twain said clothes make the man. Tools have wardrobes too. Put a spreadsheet in priestly robes and people start kneeling to the cells. Keep the door open, and the artifact can stay a witness instead of a judge.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const incidents = [
+      {
+        id: 'appointment',
+        title: 'Missed appointment',
+        base: 'At 3:00 PM, Mara missed her therapy appointment after leaving work late, sitting in traffic, and turning her phone face-down during a hard conversation with her sister.',
+        checklist: {
+          heading: 'Attendance checklist',
+          text: 'Client: Mara\nSession: 3:00 PM Tuesday\nStatus: [ ] attended  [x] missed\nFee policy triggered: yes\nNext action: send reminder',
+          note: 'Fast. Clean. Nearly no room for weather.'
+        },
+        casefile: {
+          heading: 'Compliance incident record',
+          text: 'Subject failed to attend scheduled session.\nPattern risk: disengagement.\nObserved outcome: missed appointment, no advance notice.\nRecommended response: reinforce attendance expectations.',
+          note: 'Notice how circumstance hardens into trait.'
+        },
+        fieldnote: {
+          heading: 'Field note',
+          text: '3:12 PM. Mara arrived shaken, having lost twenty minutes to traffic and another ten to a call from her sister about their father. She turned the phone over to survive the call, then forgot the clock entirely. She apologized before she sat down.',
+          note: 'This version still records failure. It also records the room.'
+        },
+        map: {
+          heading: 'Drift map',
+          text: '2:31 leave work later than planned\n2:37 traffic slows\n2:43 sister calls\n2:51 emotional load spikes\n2:54 phone turned face-down\n3:00 appointment passes unseen\nRepair point: calendar alert should escalate to watch vibration when phone is face-down near appointment time',
+          note: 'A map asks where the path bent, not who deserves a sentence.'
+        }
+      },
+      {
+        id: 'email',
+        title: 'Unanswered email',
+        base: 'Jon did not reply to a proposal email for nine days while juggling a product launch, a sick child, and a creeping fear that he had already disappointed everyone involved.',
+        checklist: {
+          heading: 'Inbox SLA board',
+          text: 'Thread age: 9 days\nResponse owner: Jon\nState: overdue\nTarget SLA: breached\nEscalation: pending',
+          note: 'Useful for queues. Brutal for souls.'
+        },
+        casefile: {
+          heading: 'Professional reliability review',
+          text: 'Employee demonstrated delayed response behavior on external proposal thread.\nPotential interpretation: low urgency discipline or poor stakeholder management.\nSuggested intervention: accountability checkpoint.',
+          note: 'The robe gets heavier here.'
+        },
+        fieldnote: {
+          heading: 'Field note',
+          text: 'The message kept sinking because every draft sounded like an apology disguised as an update. Jon was shipping the launch at midnight, taking pediatrician calls at dawn, and avoiding the reply partly because he cared too much about how it would land.',
+          note: 'Context is not excuse. It is visibility.'
+        },
+        map: {
+          heading: 'Drift map',
+          text: 'Day 1 proposal arrives during launch crunch\nDay 2 child gets sick\nDay 4 draft opened, not sent\nDay 6 inbox used as threat display\nDay 9 shame now larger than task\nRepair point: convert high-friction replies into two-step ritual — quick receipt now, thoughtful answer later',
+          note: 'A map can suggest a humane redesign.'
+        }
+      },
+      {
+        id: 'exercise',
+        title: 'Skipped workout',
+        base: 'Lena missed her morning run for the fifth time this month after staying up too late doomscrolling and waking into the gray feeling that the day had already happened to her.',
+        checklist: {
+          heading: 'Habit tracker',
+          text: 'Goal: run 20 minutes\nToday: [x] missed\nMonthly streak: broken\nCompliance score: 83%',
+          note: 'The box is not wrong. It is just thin.'
+        },
+        casefile: {
+          heading: 'Self-discipline assessment',
+          text: 'Subject failed to execute planned routine despite prior commitments.\nLikely drivers: inconsistent discipline, low resilience, poor sleep hygiene.\nRecommendation: stricter enforcement.',
+          note: 'This is the voice people eventually internalize.'
+        },
+        fieldnote: {
+          heading: 'Field note',
+          text: 'She did not really choose between running and not running. She made that choice around 11:40 PM when the scroll became anesthesia. By morning the body was already outvoted. The run was lost upstream.',
+          note: 'Field notes move the story back to the actual hinge.'
+        },
+        map: {
+          heading: 'Drift map',
+          text: '10:55 PM intends early sleep\n11:07 opens phone for one message\n11:24 algorithm captures attention\n12:18 sleep window closes\n6:20 alarm feels like punishment\nRepair point: charge phone outside bedroom; let morning be decided at night',
+          note: 'The map restores causality.'
+        }
+      }
+    ];
+
+    const garments = [
+      ['checklist', 'Checklist'],
+      ['casefile', 'Case file'],
+      ['fieldnote', 'Field note'],
+      ['map', 'Map']
+    ];
+
+    let incident = incidents[0];
+    let garment = 'checklist';
+
+    const incidentButtons = document.getElementById('incidentButtons');
+    const garmentButtons = document.getElementById('garmentButtons');
+    const incidentTitle = document.getElementById('incidentTitle');
+    const artifactShell = document.getElementById('artifactShell');
+
+    function renderButtons() {
+      incidentButtons.innerHTML = '';
+      garmentButtons.innerHTML = '';
+
+      incidents.forEach(item => {
+        const btn = document.createElement('button');
+        btn.textContent = item.title;
+        btn.className = item.id === incident.id ? 'active' : '';
+        btn.onclick = () => { incident = item; render(); };
+        incidentButtons.appendChild(btn);
+      });
+
+      garments.forEach(([key, label]) => {
+        const btn = document.createElement('button');
+        btn.textContent = label;
+        btn.className = key === garment ? 'active' : '';
+        btn.onclick = () => { garment = key; render(); };
+        garmentButtons.appendChild(btn);
+      });
+    }
+
+    function render() {
+      renderButtons();
+      incidentTitle.textContent = incident.title;
+      const artifact = incident[garment];
+      artifactShell.className = `artifact-shell ${garment}`;
+      artifactShell.innerHTML = `
+        <div class="smallcaps">Same event, different authority costume</div>
+        <div class="artifact-type">${artifact.heading}</div>
+        <div class="artifact-text">${artifact.text}</div>
+        <div class="artifact-note"><strong>Base event:</strong> ${incident.base}</div>
+        <div class="artifact-note">${artifact.note}</div>
+      `;
+    }
+
+    render();
+  </script>
+</body>
+</html>

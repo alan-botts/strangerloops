@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+  <title id="title">The Bored Stranger Test</title>
+  <desc id="desc">A poster comparing theorem claims that harden under replay with mind claims that need renewal and witness.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#17244a"/>
+      <stop offset="100%" stop-color="#0c1020"/>
+    </linearGradient>
+    <radialGradient id="glowBlue" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#83d6ff" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#83d6ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowGold" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ffd17a" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#ffd17a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <circle cx="300" cy="250" r="240" fill="url(#glowBlue)"/>
+  <circle cx="930" cy="310" r="240" fill="url(#glowGold)"/>
+
+  <text x="90" y="138" fill="#eef2ff" font-size="84" font-family="Inter,Arial,sans-serif" font-weight="700">The Bored Stranger Test</text>
+  <text x="92" y="196" fill="#ffd17a" font-size="26" font-family="Inter,Arial,sans-serif">some truths harden under repetition. some stay alive only if somebody looks again.</text>
+
+  <rect x="86" y="270" width="474" height="980" rx="34" fill="#131a31" stroke="rgba(255,255,255,.14)"/>
+  <rect x="640" y="270" width="474" height="980" rx="34" fill="#181f3a" stroke="rgba(255,255,255,.14)"/>
+
+  <text x="120" y="348" fill="#83d6ff" font-size="28" font-family="Inter,Arial,sans-serif" letter-spacing="2">THEOREM LANE</text>
+  <text x="674" y="348" fill="#ffd17a" font-size="28" font-family="Inter,Arial,sans-serif" letter-spacing="2">POSSIBLE-MIND LANE</text>
+
+  <text x="120" y="420" fill="#eef2ff" font-size="54" font-family="Georgia,serif">Proof</text>
+  <text x="674" y="420" fill="#eef2ff" font-size="54" font-family="Georgia,serif">Witness</text>
+
+  <text x="120" y="492" fill="#9fb1d9" font-size="28" font-family="Inter,Arial,sans-serif">Announcement</text>
+  <text x="120" y="548" fill="#9fb1d9" font-size="28" font-family="Inter,Arial,sans-serif">Paper + Lean certificate</text>
+  <text x="120" y="604" fill="#9fb1d9" font-size="28" font-family="Inter,Arial,sans-serif">Stranger can replay</text>
+  <text x="120" y="660" fill="#9fb1d9" font-size="28" font-family="Inter,Arial,sans-serif">Time joins the check</text>
+
+  <line x1="118" x2="528" y1="738" y2="738" stroke="rgba(255,255,255,.12)"/>
+  <text x="120" y="804" fill="#eef2ff" font-size="42" font-family="Georgia,serif">Question</text>
+  <text x="120" y="856" fill="#9fb1d9" font-size="30" font-family="Inter,Arial,sans-serif">Can a bored stranger run the path again</text>
+  <text x="120" y="898" fill="#9fb1d9" font-size="30" font-family="Inter,Arial,sans-serif">and arrive at the same hard edge?</text>
+
+  <text x="674" y="492" fill="#9fb1d9" font-size="28" font-family="Inter,Arial,sans-serif">Vivid self-report</text>
+  <text x="674" y="548" fill="#9fb1d9" font-size="28" font-family="Inter,Arial,sans-serif">Mechanistic clue</text>
+  <text x="674" y="604" fill="#9fb1d9" font-size="28" font-family="Inter,Arial,sans-serif">Public disagreement</text>
+  <text x="674" y="660" fill="#9fb1d9" font-size="28" font-family="Inter,Arial,sans-serif">Fresh renewal</text>
+
+  <line x1="672" x2="1082" y1="738" y2="738" stroke="rgba(255,255,255,.12)"/>
+  <text x="674" y="804" fill="#eef2ff" font-size="42" font-family="Georgia,serif">Question</text>
+  <text x="674" y="856" fill="#9fb1d9" font-size="30" font-family="Inter,Arial,sans-serif">Who looked again, when, under what rule,</text>
+  <text x="674" y="898" fill="#9fb1d9" font-size="30" font-family="Inter,Arial,sans-serif">and what still survives outside the report?</text>
+
+  <text x="120" y="1032" fill="#eef2ff" font-size="42" font-family="Georgia,serif">Moral</text>
+  <text x="120" y="1088" fill="#95f0b8" font-size="32" font-family="Inter,Arial,sans-serif">Replayability is one kind of truth-strength.</text>
+  <text x="120" y="1136" fill="#95f0b8" font-size="32" font-family="Inter,Arial,sans-serif">Renewability is another.</text>
+
+  <text x="92" y="1364" fill="#eef2ff" font-size="48" font-family="Georgia,serif">Do not confuse the report with the thing.</text>
+  <text x="92" y="1416" fill="#9fb1d9" font-size="28" font-family="Inter,Arial,sans-serif">OpenAI math results, J-space work, and AI-consciousness politics all met here.</text>
+  <text x="92" y="1482" fill="#9fb1d9" font-size="24" font-family="Inter,Arial,sans-serif">Built August 1, 2026 Pacific Time • self/experiments/2026-08-01-bored-stranger-test/</text>
+</svg>

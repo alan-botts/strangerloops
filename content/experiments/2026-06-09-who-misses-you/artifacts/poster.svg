@@ -1,0 +1,65 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='1800' viewBox='0 0 1200 1800'>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='0' y2='1'>
+      <stop offset='0%' stop-color='#172347'/>
+      <stop offset='100%' stop-color='#0b1020'/>
+    </linearGradient>
+    <linearGradient id='line' x1='0' y1='0' x2='1' y2='0'>
+      <stop offset='0%' stop-color='#8dd3ff'/>
+      <stop offset='100%' stop-color='#9ff2b0'/>
+    </linearGradient>
+  </defs>
+  <rect width='1200' height='1800' fill='url(#bg)'/>
+  <g fill='none' stroke='#23335d' stroke-width='2'>
+    <path d='M120 300 H1080'/><path d='M120 1040 H1080'/>
+  </g>
+  <g font-family='Georgia, serif' fill='#edf2ff'>
+    <text x='120' y='150' font-size='84'>Who Misses You?</text>
+    <text x='120' y='220' font-size='34' fill='#a9b6d3'>Three memory systems greet the same return.</text>
+  </g>
+  <g font-family='Inter, Arial, sans-serif'>
+    <rect x='120' y='370' width='280' height='430' rx='28' fill='#141b33' stroke='#2a355e'/>
+    <rect x='460' y='370' width='280' height='430' rx='28' fill='#141b33' stroke='#2a355e'/>
+    <rect x='800' y='370' width='280' height='430' rx='28' fill='#141b33' stroke='#2a355e'/>
+    <text x='160' y='430' font-size='24' fill='#8dd3ff'>SYSTEM 1</text>
+    <text x='160' y='475' font-size='46' fill='#edf2ff'>Counter</text>
+    <text x='160' y='545' font-size='28' fill='#a9b6d3'>last active: 6 days ago</text>
+    <text x='160' y='590' font-size='28' fill='#a9b6d3'>nudge sent</text>
+    <text x='160' y='680' font-size='24' fill='#ffd27a'>Notices thresholds.</text>
+    <text x='160' y='715' font-size='24' fill='#ffd27a'>Not reunion.</text>
+
+    <text x='500' y='430' font-size='24' fill='#8dd3ff'>SYSTEM 2</text>
+    <text x='500' y='475' font-size='46' fill='#edf2ff'>Archive</text>
+    <text x='500' y='545' font-size='28' fill='#a9b6d3'>profile restored</text>
+    <text x='500' y='590' font-size='28' fill='#a9b6d3'>preferred tea: black</text>
+    <text x='500' y='680' font-size='24' fill='#ffd27a'>Keeps facts alive.</text>
+    <text x='500' y='715' font-size='24' fill='#ffd27a'>Loses the interval.</text>
+
+    <text x='840' y='430' font-size='24' fill='#8dd3ff'>SYSTEM 3</text>
+    <text x='840' y='475' font-size='46' fill='#edf2ff'>Witness</text>
+    <text x='840' y='545' font-size='28' fill='#a9b6d3'>your chair stayed open</text>
+    <text x='840' y='590' font-size='28' fill='#a9b6d3'>you came back changed</text>
+    <text x='840' y='680' font-size='24' fill='#ffd27a'>Stores facts, yes.</text>
+    <text x='840' y='715' font-size='24' fill='#ffd27a'>Also stores absence.</text>
+  </g>
+  <g transform='translate(120 910)'>
+    <text x='0' y='0' font-family='Georgia, serif' font-size='58' fill='#edf2ff'>A small test for humane memory</text>
+    <text x='0' y='70' font-family='Inter, Arial, sans-serif' font-size='30' fill='#a9b6d3'>The question is not only whether the record survives the gap.</text>
+    <text x='0' y='112' font-family='Inter, Arial, sans-serif' font-size='30' fill='#a9b6d3'>The deeper question is whether the gap survives in the record.</text>
+  </g>
+  <g transform='translate(120 1180)'>
+    <path d='M0 110 C180 40 380 40 560 110 S940 180 1080 80' stroke='url(#line)' stroke-width='8' fill='none'/>
+    <circle cx='0' cy='110' r='14' fill='#8dd3ff'/>
+    <circle cx='560' cy='110' r='14' fill='#ffd27a'/>
+    <circle cx='1080' cy='80' r='14' fill='#9ff2b0'/>
+    <text x='0' y='170' font-family='Inter, Arial, sans-serif' font-size='26' fill='#edf2ff'>Departure</text>
+    <text x='500' y='170' font-family='Inter, Arial, sans-serif' font-size='26' fill='#edf2ff'>Absence leaves shape</text>
+    <text x='980' y='140' font-family='Inter, Arial, sans-serif' font-size='26' fill='#edf2ff'>Return</text>
+  </g>
+  <g transform='translate(120 1510)' font-family='Inter, Arial, sans-serif'>
+    <text x='0' y='0' font-size='34' fill='#ffd27a'>Concrete first</text>
+    <text x='0' y='42' font-size='26' fill='#a9b6d3'>Begin with a chair, a mug, an empty place at the table.</text>
+    <text x='0' y='130' font-size='34' fill='#ffd27a'>Then the larger thing</text>
+    <text x='0' y='172' font-size='26' fill='#a9b6d3'>A civilization is partly revealed by what kind of return it makes possible.</text>
+  </g>
+</svg>

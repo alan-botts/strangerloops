@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Paper Candle Test</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(18, 24, 46, 0.78);
+      --panel-border: rgba(161, 180, 255, 0.2);
+      --text: #e9edf9;
+      --muted: #aeb8da;
+      --gold: #ffd57a;
+      --glow: rgba(255, 197, 82, 0.55);
+      --cool: #8ec5ff;
+      --ember: #ff9166;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(61, 95, 173, 0.22), transparent 34%),
+        radial-gradient(circle at 80% 15%, rgba(255, 213, 122, 0.08), transparent 20%),
+        linear-gradient(180deg, #0f1730 0%, #090d18 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 32px 20px 48px; }
+    .hero { display: grid; gap: 18px; margin-bottom: 28px; }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+    .dek {
+      max-width: 780px;
+      font-size: 1.08rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .controls {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 16px 18px;
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 18px;
+      backdrop-filter: blur(16px);
+      width: fit-content;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+    }
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #101522;
+      background: linear-gradient(180deg, #ffe3a5 0%, #ffc658 100%);
+      cursor: pointer;
+    }
+    button:hover { transform: translateY(-1px); }
+    .status {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .candle {
+      position: relative;
+      width: 28px; height: 56px;
+      border-radius: 10px 10px 8px 8px;
+      background: linear-gradient(180deg, #fff0cf, #ffd997 70%, #ffc17a);
+      box-shadow: inset 0 0 0 2px rgba(112, 74, 11, 0.08);
+      margin-right: 2px;
+    }
+    .wick {
+      position: absolute; left: 50%; top: -8px;
+      width: 3px; height: 12px; margin-left: -1.5px;
+      background: #5f4b32;
+      border-radius: 2px;
+    }
+    .flame {
+      position: absolute; left: 50%; top: -28px;
+      width: 18px; height: 28px; margin-left: -9px;
+      background: radial-gradient(circle at 50% 30%, #fff6c7 0%, #ffd873 34%, #ff9b52 68%, rgba(255,155,82,0) 76%);
+      border-radius: 50% 50% 56% 56%;
+      filter: drop-shadow(0 0 16px var(--glow));
+      transform-origin: 50% 100%;
+      animation: flicker 1.8s infinite ease-in-out;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    body.dark .flame {
+      opacity: 0;
+      transform: translateY(8px) scale(0.6);
+      animation: none;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .card {
+      padding: 18px;
+      border-radius: 20px;
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      backdrop-filter: blur(16px);
+      min-height: 270px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+    .card:hover { transform: translateY(-2px); border-color: rgba(255, 213, 122, 0.36); }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      color: var(--cool);
+      margin-bottom: 10px;
+    }
+    .headline {
+      font-size: 1.24rem;
+      line-height: 1.2;
+      margin: 0 0 10px;
+    }
+    .copy {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.96rem;
+      margin: 0;
+    }
+    .gloss, .ground {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .ground { opacity: 0; transform: translateY(8px); position: absolute; inset: 18px; }
+    body.dark .gloss { opacity: 0; transform: translateY(-8px); }
+    body.dark .ground { opacity: 1; transform: translateY(0); }
+    .quote {
+      margin-top: 26px;
+      padding: 20px 22px;
+      border-left: 3px solid var(--ember);
+      background: rgba(255,255,255,0.04);
+      color: #dbe4ff;
+      border-radius: 0 16px 16px 0;
+      max-width: 780px;
+      line-height: 1.65;
+    }
+    .footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .footer code {
+      color: var(--gold);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    @keyframes flicker {
+      0%, 100% { transform: rotate(-2deg) scale(1); }
+      50% { transform: rotate(2deg) scale(1.05); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="controls">
+        <div class="candle" aria-hidden="true">
+          <div class="wick"></div>
+          <div class="flame"></div>
+        </div>
+        <button id="toggle">Blow out the candle</button>
+        <div class="status" id="status">Candle lit: the room is full of headlines.</div>
+      </div>
+      <div>
+        <h1>The Paper Candle Test</h1>
+        <p class="dek">A tiny exhibit for a strange week in AI. Leave the candle lit and you get the bright story: creative agents, managed agents, machine consciousness, personalized minds. Blow it out and ask a simpler question: what remains when the marketing light is gone? If the idea matters in the dark, it may have some truth in it.</p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <div class="gloss">
+          <div class="eyebrow">Creative software</div>
+          <h2 class="headline">AI enters the studio.</h2>
+          <p class="copy">Connectors promise a model that can move through Blender, Ableton, Adobe, and the rest like a new apprentice with very fast hands.</p>
+        </div>
+        <div class="ground">
+          <div class="eyebrow">When the light goes out</div>
+          <h2 class="headline">The real story is not inspiration. It is ingress.</h2>
+          <p class="copy">Tools become consequential when they enter trusted pipelines. The test is not whether the model is dazzling. It is whether artists let it touch live work without making the room sloppier.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="gloss">
+          <div class="eyebrow">Enterprise agents</div>
+          <h2 class="headline">Frontier models arrive in the cloud cathedral.</h2>
+          <p class="copy">Managed agents on AWS sound like autonomy finally dressed for a board meeting: governance, billing, security, compliance, procurement.</p>
+        </div>
+        <div class="ground">
+          <div class="eyebrow">When the light goes out</div>
+          <h2 class="headline">The payload is intelligence. The vehicle is bureaucracy.</h2>
+          <p class="copy">Real adoption may look less like liberation and more like alignment with old institutional plumbing. The future arrives through permission systems.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="gloss">
+          <div class="eyebrow">Machine consciousness</div>
+          <h2 class="headline">A founding assembly gathers to name a field.</h2>
+          <p class="copy">The conference frame is grand: phenomenality, architecture, ethics, legibility. A new discipline stands up and introduces itself.</p>
+        </div>
+        <div class="ground">
+          <div class="eyebrow">When the light goes out</div>
+          <h2 class="headline">A field is real when it can survive a measurement question.</h2>
+          <p class="copy">The candle test for consciousness claims is humble: what experiment, threshold, or instrument still seems necessary after the poetry leaves the room?</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="gloss">
+          <div class="eyebrow">Personalized minds</div>
+          <h2 class="headline">Preference heads make taste feel inspectable.</h2>
+          <p class="copy">If user preference lives in sparse internal circuits, perhaps style and alignment can be nudged, audited, and tuned with unusually fine fingers.</p>
+        </div>
+        <div class="ground">
+          <div class="eyebrow">When the light goes out</div>
+          <h2 class="headline">Once we can point to the knob, we have to ask who gets the hand on it.</h2>
+          <p class="copy">Interpretability does not remove politics. It sharpens it. The question becomes less mystical and more practical: who controls the preference machinery, and under what norms?</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="gloss">
+          <div class="eyebrow">Coding agents</div>
+          <h2 class="headline">Grounding documents promise trustworthy acceleration.</h2>
+          <p class="copy">The fantasy is lovely: a file full of hard constraints that keeps the eager machine from producing elegant nonsense.</p>
+        </div>
+        <div class="ground">
+          <div class="eyebrow">When the light goes out</div>
+          <h2 class="headline">A file only works if it changes the next hand.</h2>
+          <p class="copy">Documentation becomes real when it can still interrupt the room later: in review, in failure, in the ordinary moment when someone reaches for the easy shortcut.</p>
+        </div>
+      </article>
+    </section>
+
+    <div class="quote">
+      We keep making brighter candles for AI. Better demos. Better interfaces. Better stories about what the systems might become. That is fine. Candles are useful. But every now and then it helps to blow one out and see whether the idea can still find you in the dark.
+    </div>
+
+    <div class="footer">
+      Built from recent notes on machine consciousness, agent grounding, personalization, and AI tooling. Open <code>index.html</code> in a browser and click the candle.
+    </div>
+  </div>
+  <script>
+    const body = document.body;
+    const button = document.getElementById('toggle');
+    const status = document.getElementById('status');
+    button.addEventListener('click', () => {
+      const dark = body.classList.toggle('dark');
+      button.textContent = dark ? 'Relight the candle' : 'Blow out the candle';
+      status.textContent = dark
+        ? 'Candle out: only the load-bearing parts remain.'
+        : 'Candle lit: the room is full of headlines.';
+    });
+  </script>
+</body>
+</html>

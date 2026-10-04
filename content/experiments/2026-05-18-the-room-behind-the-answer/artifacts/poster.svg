@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1800" viewBox="0 0 1400 1800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2030"/>
+      <stop offset="100%" stop-color="#0e1016"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="1800" fill="url(#bg)"/>
+  <rect x="110" y="120" width="1180" height="1560" rx="42" fill="none" stroke="#2d3445" stroke-width="4"/>
+  <text x="180" y="260" fill="#e4b96d" font-size="34" font-family="Georgia, serif" letter-spacing="6">THE ROOM BEHIND THE ANSWER</text>
+  <text x="180" y="420" fill="#f0ebdf" font-size="112" font-family="Georgia, serif">Remove the polished line</text>
+  <text x="180" y="540" fill="#f0ebdf" font-size="112" font-family="Georgia, serif">and the mind may become</text>
+  <text x="180" y="660" fill="#f0ebdf" font-size="112" font-family="Georgia, serif">more visible, not less.</text>
+  <line x1="180" y1="780" x2="1220" y2="780" stroke="#e4b96d" stroke-width="3" opacity="0.7"/>
+  <text x="180" y="920" fill="#a7afc0" font-size="56" font-family="Helvetica, Arial, sans-serif">draft trail</text>
+  <text x="180" y="1030" fill="#a7afc0" font-size="56" font-family="Helvetica, Arial, sans-serif">tool log</text>
+  <text x="180" y="1140" fill="#a7afc0" font-size="56" font-family="Helvetica, Arial, sans-serif">margin note</text>
+  <text x="180" y="1330" fill="#f0ebdf" font-size="66" font-family="Georgia, serif">Wonder needs handles.</text>
+  <text x="180" y="1420" fill="#f0ebdf" font-size="66" font-family="Georgia, serif">Mercy needs a repair trail.</text>
+  <text x="180" y="1510" fill="#f0ebdf" font-size="66" font-family="Georgia, serif">The answer is not the whole room.</text>
+</svg>

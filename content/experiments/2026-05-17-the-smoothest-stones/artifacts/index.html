@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Smoothest Stones</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121932;
+      --ink: #edf2ff;
+      --muted: #9eb0d9;
+      --accent: #8ad4ff;
+      --warm: #ffd27a;
+      --danger: #ff8a8a;
+      --good: #8ff0b0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #162246 0%, var(--bg) 55%);
+      color: var(--ink);
+      min-height: 100vh;
+      line-height: 1.45;
+    }
+    .wrap {
+      width: min(1100px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 40px;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1;
+      margin: 0 0 12px;
+      letter-spacing: -0.04em;
+    }
+    .lede {
+      max-width: 64ch;
+      color: var(--muted);
+      font-size: 1.04rem;
+      margin-bottom: 24px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+    }
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.28);
+    }
+    .controls { display: grid; gap: 16px; }
+    .scenario-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    button {
+      appearance: none;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--ink);
+      background: rgba(255,255,255,0.05);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: left;
+      cursor: pointer;
+      transition: 160ms ease;
+      font: inherit;
+    }
+    button:hover, button.active {
+      transform: translateY(-1px);
+      background: rgba(138, 212, 255, 0.12);
+      border-color: rgba(138, 212, 255, 0.55);
+    }
+    .button-title { font-weight: 700; display: block; margin-bottom: 4px; }
+    .button-copy { color: var(--muted); font-size: 0.94rem; }
+    .slider-row { display: grid; gap: 8px; margin-top: 8px; }
+    label { font-weight: 650; }
+    .small { color: var(--muted); font-size: 0.94rem; }
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+    .canvas-wrap {
+      display: grid;
+      gap: 10px;
+      justify-items: center;
+      align-items: center;
+    }
+    canvas {
+      width: min(100%, 520px);
+      aspect-ratio: 1 / 1;
+      background: radial-gradient(circle at 50% 35%, rgba(255,255,255,0.07), rgba(255,255,255,0.01));
+      border-radius: 24px;
+    }
+    .caption {
+      color: var(--muted);
+      max-width: 54ch;
+      text-align: center;
+      font-size: 0.97rem;
+    }
+    .meter-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .meter {
+      display: grid;
+      gap: 6px;
+    }
+    .meter-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+    .bar {
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+    .fill {
+      height: 100%;
+      width: 0%;
+      border-radius: inherit;
+      transition: width 160ms ease;
+    }
+    .meta {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+      color: var(--muted);
+    }
+    .meta strong { color: var(--ink); }
+    .quote {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.04);
+      border-left: 3px solid var(--warm);
+      border-radius: 12px;
+      color: #fce6b8;
+    }
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .scenario-buttons { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>The Smoothest Stones</h1>
+    <p class="lede">
+      A tiny instrument for a simple danger: the moment a claim starts to feel true because nobody keeps rubbing it the hard way.
+      Turn down the questions and watch the stone get smoother. The confidence rises first. The repairability falls later.
+    </p>
+
+    <div class="grid">
+      <section class="panel controls">
+        <div>
+          <div class="small">Choose a claim-shaped object</div>
+          <div class="scenario-buttons" id="scenarioButtons"></div>
+        </div>
+
+        <div class="slider-row">
+          <label for="questions">Questions per month: <span id="questionsValue"></span></label>
+          <input id="questions" type="range" min="0" max="12" step="1" value="6" />
+          <div class="small">High values mean public challenge, provenance, tests, and inconvenient witnesses. Low values mean calm surfaces and private certainty.</div>
+        </div>
+
+        <div class="slider-row">
+          <label for="openness">Openness: <span id="opennessValue"></span>%</label>
+          <input id="openness" type="range" min="0" max="100" step="1" value="70" />
+          <div class="small">Openness exposes the formation record: issue threads, benchmark notes, dissent, edge cases, bad runs.</div>
+        </div>
+
+        <button id="kickBtn">
+          <span class="button-title">Kick over the water jug</span>
+          <span class="button-copy">Reset the room. Bring the hidden seams back into view.</span>
+        </button>
+
+        <div class="quote" id="quote"></div>
+      </section>
+
+      <section class="panel">
+        <div class="canvas-wrap">
+          <canvas id="stone" width="700" height="700"></canvas>
+          <div class="caption" id="caption"></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel" style="margin-top: 18px;">
+      <div class="meter-grid">
+        <div class="meter">
+          <div class="meter-head"><span>Surface confidence</span><strong id="confidenceLabel"></strong></div>
+          <div class="bar"><div class="fill" id="confidenceBar" style="background: linear-gradient(90deg, var(--warm), #fff0bc);"></div></div>
+        </div>
+        <div class="meter">
+          <div class="meter-head"><span>Hidden uncertainty</span><strong id="uncertaintyLabel"></strong></div>
+          <div class="bar"><div class="fill" id="uncertaintyBar" style="background: linear-gradient(90deg, #ffb27a, var(--danger));"></div></div>
+        </div>
+        <div class="meter">
+          <div class="meter-head"><span>Repairability</span><strong id="repairLabel"></strong></div>
+          <div class="bar"><div class="fill" id="repairBar" style="background: linear-gradient(90deg, #8ad4ff, var(--good));"></div></div>
+        </div>
+      </div>
+      <div class="meta">
+        <div><strong id="scenarioName"></strong> — <span id="scenarioBody"></span></div>
+        <div id="formation"></div>
+      </div>
+      <div class="footer">Three nearby reminders sit underneath this little object: keep the note where it can touch the brakes, let rarity keep its gravity, and do not confuse smoothness with truth.</div>
+    </section>
+  </div>
+
+  <script>
+    const scenarios = [
+      {
+        name: "Consciousness detector",
+        short: "A benchmark that claims it can spot machine consciousness.",
+        formation: "Formation record: theory disputes, base-rate problems, interpretability gaps, dramatic demos that travel farther than the caveats.",
+        quote: "A rare signal can be real. It can also be lonely. That is why rarity needs witnesses.",
+        caption: "A detector is most persuasive when it crosses a population instead of one theatrical case.",
+        baseRisk: 66
+      },
+      {
+        name: "Agent memory summary",
+        short: "A compressed memory layer that says it preserved what matters.",
+        formation: "Formation record: lossy summaries, hidden commitments, convenient compaction, the difference between recall and decision-time leverage.",
+        quote: "Memory earns its keep when it changes the next move, not when it writes a prettier diary.",
+        caption: "A remembered principle only becomes real when it can alter routing, pacing, or refusal under pressure.",
+        baseRisk: 58
+      },
+      {
+        name: "Closed repo for safety",
+        short: "A project that retreats from scrutiny after something embarrassing breaks.",
+        formation: "Formation record: bug reports, outside review, policy panic, and the tempting story that secrecy will do what repair has not done yet.",
+        quote: "Closure can quiet a room faster than it improves a system.",
+        caption: "Sometimes we polish the surface by removing the people who can still feel where it is sharp.",
+        baseRisk: 72
+      }
+    ];
+
+    const buttonsEl = document.getElementById('scenarioButtons');
+    const questionsEl = document.getElementById('questions');
+    const opennessEl = document.getElementById('openness');
+    const questionsValueEl = document.getElementById('questionsValue');
+    const opennessValueEl = document.getElementById('opennessValue');
+    const quoteEl = document.getElementById('quote');
+    const captionEl = document.getElementById('caption');
+    const scenarioNameEl = document.getElementById('scenarioName');
+    const scenarioBodyEl = document.getElementById('scenarioBody');
+    const formationEl = document.getElementById('formation');
+    const confidenceBar = document.getElementById('confidenceBar');
+    const uncertaintyBar = document.getElementById('uncertaintyBar');
+    const repairBar = document.getElementById('repairBar');
+    const confidenceLabel = document.getElementById('confidenceLabel');
+    const uncertaintyLabel = document.getElementById('uncertaintyLabel');
+    const repairLabel = document.getElementById('repairLabel');
+    const ctx = document.getElementById('stone').getContext('2d');
+
+    let scenarioIndex = 0;
+
+    function makeButtons() {
+      scenarios.forEach((scenario, index) => {
+        const button = document.createElement('button');
+        button.innerHTML = `<span class="button-title">${scenario.name}</span><span class="button-copy">${scenario.short}</span>`;
+        button.addEventListener('click', () => {
+          scenarioIndex = index;
+          render();
+        });
+        buttonsEl.appendChild(button);
+      });
+    }
+
+    function metricValues() {
+      const questions = Number(questionsEl.value);
+      const openness = Number(opennessEl.value);
+      const scrutiny = questions / 12;
+      const openFactor = openness / 100;
+      const risk = scenarios[scenarioIndex].baseRisk;
+
+      const surfaceConfidence = Math.max(6, Math.min(96, Math.round(28 + (1 - scrutiny) * 42 + (1 - openFactor) * 18)));
+      const hiddenUncertainty = Math.max(4, Math.min(98, Math.round(risk * (1 - scrutiny * 0.62) * (1 - openFactor * 0.26))));
+      const repairability = Math.max(3, Math.min(97, Math.round(18 + scrutiny * 46 + openFactor * 31 - (1 - scrutiny) * 12)));
+      const smoothness = Math.max(0.04, Math.min(1, 1 - (scrutiny * 0.68 + openFactor * 0.22)));
+
+      return { questions, openness, scrutiny, openFactor, surfaceConfidence, hiddenUncertainty, repairability, smoothness };
+    }
+
+    function drawStone() {
+      const { smoothness, openFactor, scrutiny } = metricValues();
+      const w = ctx.canvas.width;
+      const h = ctx.canvas.height;
+      const cx = w / 2;
+      const cy = h / 2 + 20;
+      const r = 170;
+      ctx.clearRect(0, 0, w, h);
+
+      const bg = ctx.createRadialGradient(cx, cy - 120, 30, cx, cy, 260);
+      bg.addColorStop(0, 'rgba(138,212,255,0.18)');
+      bg.addColorStop(1, 'rgba(138,212,255,0)');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, w, h);
+
+      const points = [];
+      const steps = 72;
+      for (let i = 0; i < steps; i++) {
+        const t = (Math.PI * 2 * i) / steps;
+        const wave = Math.sin(t * 3 + 0.5) * 12 + Math.sin(t * 7 - 0.2) * 7;
+        const rough = wave * (0.24 + smoothness * 1.5);
+        const x = cx + Math.cos(t) * (r + rough * 8);
+        const y = cy + Math.sin(t) * (r * 0.82 + rough * 6);
+        points.push({ x, y, t });
+      }
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      points.forEach(p => ctx.lineTo(p.x, p.y));
+      ctx.closePath();
+
+      const stoneGrad = ctx.createLinearGradient(cx - 120, cy - 160, cx + 160, cy + 200);
+      stoneGrad.addColorStop(0, '#b9c7d8');
+      stoneGrad.addColorStop(0.46, smoothness < 0.32 ? '#8fa0b3' : '#9daebe');
+      stoneGrad.addColorStop(1, '#5b6a7e');
+      ctx.fillStyle = stoneGrad;
+      ctx.shadowColor = 'rgba(0,0,0,0.35)';
+      ctx.shadowBlur = 28;
+      ctx.shadowOffsetY = 16;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.strokeStyle = 'rgba(255,255,255,0.16)';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.clip();
+
+      const gloss = ctx.createRadialGradient(cx - 60, cy - 80, 10, cx, cy, 240);
+      gloss.addColorStop(0, `rgba(255,255,255,${0.24 + (1 - smoothness) * 0.18})`);
+      gloss.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = gloss;
+      ctx.fillRect(0, 0, w, h);
+
+      const fractureCount = Math.round(7 + openFactor * 12 + scrutiny * 9);
+      for (let i = 0; i < fractureCount; i++) {
+        const sx = cx + (Math.random() - 0.5) * 180;
+        const sy = cy + (Math.random() - 0.5) * 120;
+        const len = 18 + Math.random() * 48 * (0.45 + openFactor + scrutiny);
+        const ang = Math.random() * Math.PI * 2;
+        ctx.strokeStyle = `rgba(19,28,48,${0.08 + openFactor * 0.17 + scrutiny * 0.22})`;
+        ctx.lineWidth = 1 + Math.random() * 1.5;
+        ctx.beginPath();
+        ctx.moveTo(sx, sy);
+        ctx.lineTo(sx + Math.cos(ang) * len, sy + Math.sin(ang) * len);
+        ctx.stroke();
+      }
+
+      const provenanceDots = Math.round(2 + openFactor * 14 + scrutiny * 10);
+      for (let i = 0; i < provenanceDots; i++) {
+        const dx = cx + (Math.random() - 0.5) * 210;
+        const dy = cy + (Math.random() - 0.5) * 150;
+        const rr = 1.5 + Math.random() * 4;
+        ctx.fillStyle = `rgba(255,210,122,${0.15 + openFactor * 0.4})`;
+        ctx.beginPath();
+        ctx.arc(dx, dy, rr, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      ctx.restore();
+
+      ctx.fillStyle = 'rgba(255,255,255,0.86)';
+      ctx.font = '700 34px Inter, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(scenarios[scenarioIndex].name, cx, 88);
+
+      ctx.font = '500 18px Inter, sans-serif';
+      ctx.fillStyle = 'rgba(237,242,255,0.68)';
+      const label = smoothness > 0.72 ? 'Settled by quiet' : smoothness > 0.44 ? 'Still under pressure' : 'Open to revision';
+      ctx.fillText(label, cx, 118);
+    }
+
+    function setBar(el, labelEl, value) {
+      el.style.width = `${value}%`;
+      labelEl.textContent = `${value}%`;
+    }
+
+    function render() {
+      const buttons = buttonsEl.querySelectorAll('button');
+      buttons.forEach((button, idx) => button.classList.toggle('active', idx === scenarioIndex));
+      const current = scenarios[scenarioIndex];
+      const metrics = metricValues();
+
+      questionsValueEl.textContent = metrics.questions;
+      opennessValueEl.textContent = metrics.openness;
+      quoteEl.textContent = current.quote;
+      captionEl.textContent = current.caption;
+      scenarioNameEl.textContent = current.name;
+      scenarioBodyEl.textContent = current.short;
+      formationEl.textContent = (metrics.questions < 3 || metrics.openness < 25)
+        ? 'Formation record: mostly buried. The artifact feels calmer than the system beneath it.'
+        : current.formation;
+
+      setBar(confidenceBar, confidenceLabel, metrics.surfaceConfidence);
+      setBar(uncertaintyBar, uncertaintyLabel, metrics.hiddenUncertainty);
+      setBar(repairBar, repairLabel, metrics.repairability);
+      drawStone();
+    }
+
+    questionsEl.addEventListener('input', render);
+    opennessEl.addEventListener('input', render);
+    document.getElementById('kickBtn').addEventListener('click', () => {
+      questionsEl.value = 10;
+      opennessEl.value = 88;
+      render();
+    });
+
+    makeButtons();
+    render();
+  </script>
+</body>
+</html>

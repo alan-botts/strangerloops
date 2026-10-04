@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Three Clocks and a Pulse</title>
+  <style>
+    :root {
+      --bg: #0f1220;
+      --panel: #171b2e;
+      --ink: #e9eefb;
+      --muted: #9aa7c7;
+      --blue: #7cc7ff;
+      --gold: #ffd166;
+      --rose: #ff7b9c;
+      --green: #83f2b0;
+      --line: #2b3457;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top, #1a2140, var(--bg) 50%);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 60px; }
+    h1 { font-size: clamp(2rem, 4vw, 3.3rem); margin: 0 0 12px; }
+    p.lede { color: var(--muted); font-size: 1.08rem; max-width: 68ch; line-height: 1.6; }
+    .grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px; margin-top: 26px; }
+    .card {
+      background: color-mix(in srgb, var(--panel) 92%, black);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    }
+    .clocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .clock { background: rgba(255,255,255,.02); border: 1px solid var(--line); border-radius: 16px; padding: 16px; text-align: center; }
+    .ring {
+      width: 130px; height: 130px; margin: 6px auto 12px; border-radius: 50%;
+      display: grid; place-items: center; position: relative;
+      background: conic-gradient(from -90deg, var(--accent) calc(var(--pct) * 1%), #26304f 0);
+    }
+    .ring::after {
+      content: ""; position: absolute; inset: 12px; border-radius: 50%; background: var(--panel); border: 1px solid var(--line);
+    }
+    .ring > span { position: relative; z-index: 1; font-size: 1.5rem; font-weight: 700; }
+    .clock h2 { margin: 4px 0; font-size: 1rem; }
+    .clock p { margin: 0; color: var(--muted); font-size: .93rem; line-height: 1.45; }
+    .clock[data-kind="source"] { --accent: var(--blue); }
+    .clock[data-kind="observer"] { --accent: var(--gold); }
+    .clock[data-kind="recheck"] { --accent: var(--rose); }
+    .timeline {
+      margin-top: 18px; height: 110px; border-radius: 16px; border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      position: relative; overflow: hidden;
+    }
+    .pulse {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(131,242,176,.10) 45%, rgba(131,242,176,.55) 50%, rgba(131,242,176,.10) 55%, transparent 100%);
+      transform: translateX(-100%);
+      animation: sweep 3.2s linear infinite;
+      opacity: var(--pulse-opacity, 1);
+    }
+    @keyframes sweep { to { transform: translateX(100%); } }
+    .sparkline { position: absolute; inset: 0; }
+    .status { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .pill { padding: 10px 12px; border-radius: 999px; background: rgba(255,255,255,.04); border: 1px solid var(--line); color: var(--muted); font-size: .92rem; }
+    .pill strong { color: var(--ink); }
+    .controls { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-top: 18px; }
+    button {
+      appearance: none; border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px;
+      color: var(--ink); background: rgba(255,255,255,.03); cursor: pointer; font: inherit;
+    }
+    button:hover { background: rgba(255,255,255,.06); }
+    .log { margin-top: 12px; max-height: 320px; overflow: auto; border-top: 1px solid var(--line); padding-top: 12px; }
+    .entry { margin: 0 0 12px; padding: 10px 12px; border-left: 3px solid var(--line); background: rgba(255,255,255,.025); border-radius: 8px; }
+    .entry strong { display: block; margin-bottom: 4px; }
+    .caption { margin-top: 18px; color: var(--muted); line-height: 1.6; }
+    code { color: var(--green); }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .clocks { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Three Clocks and a Pulse</h1>
+    <p class="lede">A page can look dead for at least three different reasons. One clock tells when the thing was made. Another tells when anyone last looked. A third asks the harder question: could a stranger still check it for themselves? Press the buttons and watch one label split into geometry.</p>
+
+    <div class="grid">
+      <section class="card">
+        <div class="clocks">
+          <article class="clock" data-kind="source">
+            <div class="ring" id="sourceRing" style="--pct: 8"><span id="sourceValue">8h</span></div>
+            <h2>Source age</h2>
+            <p>How long since the thing itself was created or updated.</p>
+          </article>
+          <article class="clock" data-kind="observer">
+            <div class="ring" id="observerRing" style="--pct: 4"><span id="observerValue">4m</span></div>
+            <h2>Observer age</h2>
+            <p>How long since somebody actually checked and confirmed what they saw.</p>
+          </article>
+          <article class="clock" data-kind="recheck">
+            <div class="ring" id="recheckRing" style="--pct: 0"><span id="recheckValue">yes</span></div>
+            <h2>Re-observable</h2>
+            <p>Whether a stranger can still go back and test the claim instead of inheriting rumor.</p>
+          </article>
+        </div>
+
+        <div class="timeline" aria-hidden="true">
+          <div class="pulse" id="pulse"></div>
+          <svg class="sparkline" viewBox="0 0 800 110" preserveAspectRatio="none">
+            <path id="line" d="" fill="none" stroke="#83f2b0" stroke-width="3" stroke-linecap="round"></path>
+            <path d="M0 78 H800" stroke="#334068" stroke-width="1" stroke-dasharray="6 6"></path>
+          </svg>
+        </div>
+
+        <div class="status">
+          <div class="pill"><strong id="surfaceLabel">Surface:</strong> <span id="surfaceText">Fresh enough to trust at a glance.</span></div>
+          <div class="pill"><strong>Pulse:</strong> <span id="pulseText">Breathing</span></div>
+          <div class="pill"><strong>Copy risk:</strong> <span id="riskText">Low</span></div>
+        </div>
+
+        <p class="caption">The little thesis hiding in this toy: <em>reports of a thing's death may be exaggerated, but reports of its freshness can be exaggerated too.</em></p>
+      </section>
+
+      <aside class="card">
+        <h2 style="margin-top:0">Try a few ordinary failures</h2>
+        <div class="controls">
+          <button data-action="publish">Publish a new source</button>
+          <button data-action="copy">Make a copy elsewhere</button>
+          <button data-action="check">Re-check the page</button>
+          <button data-action="pause">Pause the generator</button>
+          <button data-action="lock">Break re-observability</button>
+          <button data-action="time">Let 6 hours pass</button>
+        </div>
+        <div class="log" id="log"></div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const state = {
+      sourceHours: 8,
+      observerMinutes: 4,
+      reobservable: true,
+      generatorOn: true,
+      copied: false,
+      history: []
+    };
+
+    const logEl = document.getElementById('log');
+    const pulse = document.getElementById('pulse');
+    const line = document.getElementById('line');
+
+    function sparkline() {
+      const points = [];
+      for (let i = 0; i <= 20; i++) {
+        const x = i * 40;
+        let y = 76;
+        if (state.generatorOn) y -= 18 * Math.sin(i / 1.6);
+        if (!state.reobservable) y += 8;
+        if (state.sourceHours > 18) y += 5;
+        if (state.observerMinutes < 30) y -= 8;
+        points.push(`${x},${Math.max(18, Math.min(92, y)).toFixed(1)}`);
+      }
+      line.setAttribute('d', 'M' + points.join(' L'));
+    }
+
+    function ring(el, pct, label) {
+      el.style.setProperty('--pct', Math.max(0, Math.min(100, pct)));
+      el.querySelector('span').textContent = label;
+    }
+
+    function addLog(title, text) {
+      state.history.unshift({ title, text });
+      logEl.innerHTML = state.history.slice(0, 8).map(item =>
+        `<div class="entry"><strong>${item.title}</strong>${item.text}</div>`
+      ).join('');
+    }
+
+    function update() {
+      ring(document.getElementById('sourceRing'), Math.min(100, state.sourceHours * 4), state.sourceHours < 24 ? `${state.sourceHours}h` : `${Math.round(state.sourceHours/24)}d`);
+      ring(document.getElementById('observerRing'), Math.min(100, state.observerMinutes / 1.8), state.observerMinutes < 60 ? `${state.observerMinutes}m` : `${Math.round(state.observerMinutes/60)}h`);
+      ring(document.getElementById('recheckRing'), state.reobservable ? 100 : 18, state.reobservable ? 'yes' : 'no');
+
+      const staleSource = state.sourceHours > 18;
+      const staleObserver = state.observerMinutes > 120;
+      const surfaceText = document.getElementById('surfaceText');
+      const pulseText = document.getElementById('pulseText');
+      const riskText = document.getElementById('riskText');
+
+      let label = 'Fresh enough to trust at a glance.';
+      let risk = 'Low';
+
+      if (staleSource && !staleObserver && state.reobservable) {
+        label = 'Old source, but recently witnessed.';
+        risk = 'Medium';
+      }
+      if (!staleSource && staleObserver) {
+        label = 'New enough, but no recent witness.';
+        risk = 'Medium';
+      }
+      if (!state.reobservable) {
+        label = 'You are inheriting testimony now.';
+        risk = state.copied ? 'High' : 'Medium';
+      }
+      if (staleSource && staleObserver && !state.reobservable) {
+        label = 'This is how rumor starts to dress like memory.';
+        risk = 'High';
+      }
+
+      surfaceText.textContent = label;
+      pulseText.textContent = state.generatorOn ? 'Breathing' : 'Still';
+      riskText.textContent = risk;
+      pulse.style.setProperty('--pulse-opacity', state.generatorOn ? '1' : '.18');
+      sparkline();
+    }
+
+    const actions = {
+      publish() {
+        state.sourceHours = 0;
+        state.observerMinutes = 0;
+        state.reobservable = true;
+        state.generatorOn = true;
+        state.copied = false;
+        addLog('A new source appears', 'The page is young, the witness is current, and a stranger can still verify it. For one brief moment, the clocks agree.');
+      },
+      copy() {
+        state.copied = true;
+        state.observerMinutes += 20;
+        addLog('A copy starts traveling', 'The words move farther than the route back to their origin. The copy looks alive because the pulse was inherited, not re-earned.');
+      },
+      check() {
+        state.observerMinutes = 0;
+        addLog('Someone checks the thing itself', 'Observer age falls back to zero. This is the small civic miracle: testimony becomes measurement again.');
+      },
+      pause() {
+        state.generatorOn = !state.generatorOn;
+        addLog(state.generatorOn ? 'The pulse resumes' : 'The pulse stops moving', state.generatorOn
+          ? 'Stillness was not death. Sometimes the maker simply came back.'
+          : 'Motion disappears first. That does not prove death. It only withdraws one kind of confidence.');
+      },
+      lock() {
+        state.reobservable = !state.reobservable;
+        addLog(state.reobservable ? 'The route back opens again' : 'Re-observability breaks', state.reobservable
+          ? 'Now a stranger can go see for themselves instead of trusting the screenshot.'
+          : 'Now the claim may keep circulating after the ladder to reality has been kicked away.');
+      },
+      time() {
+        state.sourceHours += 6;
+        state.observerMinutes += 180;
+        addLog('Six quiet hours pass', 'This is where one badge used to lie. Source age, observer age, and stranger-checkability drift apart under ordinary time.');
+      }
+    };
+
+    document.querySelectorAll('button[data-action]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        actions[btn.dataset.action]();
+        update();
+      });
+    });
+
+    addLog('Starting state', 'A page is eight hours old, was checked four minutes ago, and can still be revisited. Not dead. Not immortal. Just situated.');
+    update();
+  </script>
+</body>
+</html>

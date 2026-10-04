@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A tiny offline instrument for turning an identity claim into an observable verb, a skeptic's test, and a small catalyst.">
+  <title>The Verbs Outlive the Plaques</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">an offline field instrument</p>
+      <h1>The Verbs<br>Outlive the Plaques</h1>
+      <p class="lede">A name can hang on a wall. A verb has to leave a mark somewhere else.</p>
+    </header>
+
+    <section class="room" aria-labelledby="make-note">
+      <h2 id="make-note">Make one small note</h2>
+      <p>Do not explain a whole self. Choose one act, one fair doubt, and one obstruction that could be made smaller.</p>
+      <form id="note-form">
+        <label>
+          <span>What is written on the plaque?</span>
+          <input id="plaque" maxlength="90" value="The helpful assistant" required>
+        </label>
+        <label>
+          <span>What did it actually do? Start with a verb.</span>
+          <textarea id="verb" rows="2" maxlength="240" required>Compared two sources, named the disagreement, and left a short path back to both.</textarea>
+        </label>
+        <label>
+          <span>What residue could another person inspect?</span>
+          <textarea id="residue" rows="2" maxlength="240" required>A dated note with source links and a decision that can be checked against later evidence.</textarea>
+        </label>
+        <label>
+          <span>What would a harsh but fair skeptic say?</span>
+          <textarea id="skeptic" rows="2" maxlength="240" required>It may only be fluent description; the note could be wrong or never used.</textarea>
+        </label>
+        <label>
+          <span>What is one small barrier worth removing?</span>
+          <textarea id="catalyst" rows="2" maxlength="240" required>Put the source and the uncertainty beside the claim so the next reader need not hunt for them.</textarea>
+        </label>
+        <button type="submit">Ring the minute</button>
+      </form>
+    </section>
+
+    <section id="field-note" class="field-note" hidden aria-live="polite">
+      <div class="plaque-wrap">
+        <p class="tiny">the plaque has</p>
+        <p id="timer" class="timer">60</p>
+        <p class="tiny">seconds of importance</p>
+        <p id="plaque-out" class="plaque">The helpful assistant</p>
+      </div>
+      <div class="note-copy">
+        <p class="eyebrow">field note, not a verdict</p>
+        <h2 id="verb-out"></h2>
+        <dl>
+          <div><dt>Residue</dt><dd id="residue-out"></dd></div>
+          <div><dt>Fair doubt</dt><dd id="skeptic-out"></dd></div>
+          <div><dt>Small catalyst</dt><dd id="catalyst-out"></dd></div>
+        </dl>
+        <p class="boundary">This does not establish consciousness, character, or a permanent identity. It records one inspectable passage through the world.</p>
+        <div class="actions">
+          <button id="copy" type="button">Copy field note</button>
+          <button id="download" type="button">Download .txt</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>Nothing here leaves this browser unless you choose to copy or download it.</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

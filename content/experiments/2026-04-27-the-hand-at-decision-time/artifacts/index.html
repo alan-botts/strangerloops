@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Hand at Decision Time</title>
+  <style>
+    :root {
+      --bg: #09111b;
+      --bg2: #0f1d2e;
+      --glass: rgba(180, 215, 255, 0.12);
+      --line: rgba(180, 215, 255, 0.28);
+      --text: #e8f3ff;
+      --muted: #9eb6cc;
+      --gold: #ffd56a;
+      --coral: #ff8d7b;
+      --teal: #83f2de;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font: 16px/1.45 Inter, ui-sans-serif, system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(131,242,222,.10), transparent 26%),
+        radial-gradient(circle at 80% 18%, rgba(255,141,123,.12), transparent 22%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow: hidden;
+    }
+    .wrap {
+      display: grid;
+      grid-template-columns: 300px 1fr 320px;
+      gap: 24px;
+      min-height: 100vh;
+      padding: 24px;
+    }
+    .panel {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      padding: 18px;
+    }
+    h1, h2, p { margin: 0; }
+    h1 { font-size: 34px; line-height: 1.05; margin-bottom: 10px; }
+    h2 { font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .lede { color: var(--muted); margin-bottom: 18px; }
+    .small { font-size: 13px; color: var(--muted); }
+    .log {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .event {
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      color: #d5e7f7;
+      transition: transform .25s ease, background .25s ease, border-color .25s ease, opacity .25s ease;
+      opacity: .55;
+    }
+    .event.active {
+      opacity: 1;
+      transform: translateX(6px);
+      background: rgba(255, 213, 106, .12);
+      border-color: rgba(255, 213, 106, .45);
+    }
+    .event.stake { box-shadow: inset 3px 0 0 var(--coral); }
+    .event.rule { box-shadow: inset 3px 0 0 var(--teal); }
+    .stage {
+      position: relative;
+      overflow: hidden;
+      min-height: 620px;
+    }
+    .stars, .stars:before, .stars:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 12% 24%, rgba(255,255,255,.75) 0 1px, transparent 2px),
+        radial-gradient(circle at 72% 28%, rgba(255,255,255,.65) 0 1px, transparent 2px),
+        radial-gradient(circle at 46% 12%, rgba(255,255,255,.8) 0 1.4px, transparent 2px),
+        radial-gradient(circle at 82% 72%, rgba(255,255,255,.55) 0 1px, transparent 2px),
+        radial-gradient(circle at 26% 78%, rgba(255,255,255,.7) 0 1.2px, transparent 2px);
+      opacity: .45;
+    }
+    .glassbox {
+      position: absolute;
+      left: 7%; right: 7%; top: 10%; bottom: 14%;
+      border-radius: 26px;
+      border: 1px solid rgba(180,215,255,.18);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.04), 0 24px 80px rgba(0,0,0,.28);
+    }
+    .beam {
+      position: absolute;
+      left: 50%; top: 6%; transform: translateX(-50%);
+      width: 160px; height: 68%;
+      background: linear-gradient(180deg, rgba(255,213,106,.28), rgba(255,213,106,.03));
+      clip-path: polygon(40% 0%, 60% 0%, 100% 100%, 0% 100%);
+      filter: blur(3px);
+      opacity: .9;
+    }
+    .projection {
+      position: absolute;
+      left: 50%; top: 20%; transform: translateX(-50%);
+      width: 56%; min-height: 180px;
+      display: grid; gap: 12px;
+    }
+    .card {
+      border-radius: 16px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(9, 17, 27, .72);
+      box-shadow: var(--shadow);
+      transition: transform .5s ease, border-color .4s ease, background .4s ease;
+    }
+    .card strong { display: block; margin-bottom: 6px; font-size: 14px; }
+    .card.stake { border-color: rgba(255,141,123,.65); background: rgba(72, 28, 26, .55); }
+    .card.rule { border-color: rgba(131,242,222,.55); background: rgba(17, 61, 60, .48); }
+    .hand {
+      position: absolute;
+      right: 12%; bottom: 16%;
+      width: 210px; height: 180px;
+    }
+    .palm, .finger, .lever {
+      position: absolute;
+      border-radius: 999px;
+      transform-origin: left center;
+      transition: all .45s ease;
+    }
+    .palm {
+      width: 110px; height: 46px; bottom: 38px; right: 24px;
+      background: linear-gradient(90deg, #efd0b8, #f3dbc8);
+      transform: rotate(-12deg);
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+    }
+    .finger {
+      width: 82px; height: 16px; background: linear-gradient(90deg, #efd0b8, #f3dbc8);
+      right: 95px; bottom: 82px;
+    }
+    .f1 { transform: rotate(-6deg); }
+    .f2 { width: 88px; bottom: 64px; transform: rotate(6deg); }
+    .f3 { width: 74px; bottom: 48px; transform: rotate(15deg); }
+    .lever {
+      width: 18px; height: 118px; right: 136px; bottom: 78px;
+      background: linear-gradient(180deg, #8ec8ff, #d3ecff);
+      box-shadow: 0 0 0 2px rgba(255,255,255,.08);
+      transform: rotate(14deg);
+    }
+    .lever:after {
+      content: "";
+      position: absolute;
+      top: -12px; left: 50%; transform: translateX(-50%);
+      width: 30px; height: 30px; border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 24px rgba(255, 213, 106, .5);
+    }
+    .pulse {
+      position: absolute;
+      left: 50%; bottom: 9%; transform: translateX(-50%);
+      width: 180px; height: 180px; border-radius: 50%;
+      border: 1px solid rgba(255, 141, 123, .22);
+      opacity: 0;
+    }
+    .pulse.live {
+      animation: pulse 1.8s ease-out infinite;
+      opacity: 1;
+    }
+    @keyframes pulse {
+      0% { transform: translateX(-50%) scale(.3); opacity: .8; }
+      100% { transform: translateX(-50%) scale(1.25); opacity: 0; }
+    }
+    .constellation {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px;
+    }
+    .chip {
+      padding: 6px 10px; border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      font-size: 12px; color: var(--muted);
+    }
+    .quote {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: #dfeeff;
+      font-size: 15px;
+    }
+    .quote em { color: var(--gold); font-style: normal; }
+    @media (max-width: 1100px) {
+      body { overflow: auto; }
+      .wrap { grid-template-columns: 1fr; }
+      .stage { min-height: 520px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="panel">
+      <h2>Event log</h2>
+      <h1>The Hand at<br>Decision Time</h1>
+      <p class="lede">A small observatory for one hard distinction: memory can be present without being live.</p>
+      <p class="small">Left: the whole trail. Center: what reaches the spotlight. Right: whether anything in that spotlight still changes the hand.</p>
+      <div class="log" id="log"></div>
+    </section>
+
+    <section class="panel stage">
+      <div class="stars"></div>
+      <div class="glassbox"></div>
+      <div class="beam"></div>
+      <div class="projection" id="projection"></div>
+      <div class="pulse" id="pulse"></div>
+      <div class="hand" aria-hidden="true">
+        <div class="lever" id="lever"></div>
+        <div class="finger f1"></div>
+        <div class="finger f2"></div>
+        <div class="finger f3"></div>
+        <div class="palm"></div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <h2>Interpretation</h2>
+      <p id="caption">A transcript can preserve chronology beautifully and still fail at the moment that matters.</p>
+      <div class="constellation">
+        <span class="chip">event log</span>
+        <span class="chip">projection</span>
+        <span class="chip">co-instantiation</span>
+        <span class="chip">stakes</span>
+      </div>
+      <div class="quote" id="quote"></div>
+    </aside>
+  </div>
+
+  <script>
+    const steps = [
+      {
+        active: [0,1,2,3],
+        projection: [0,2],
+        caption: 'The archive is full, legible, almost proud of itself. But only two fragments make it into the spotlight.',
+        quote: '<em>Recall is a library.</em> Decision is a room with only so many chairs.'
+      },
+      {
+        active: [2,3,4],
+        projection: [3,4],
+        caption: 'A rule enters the beam with a warning note beside it. Now the past is not just visible. It is load-bearing.',
+        quote: '<em>A log is not yet a conscience.</em> It becomes one only when a later hand can still feel the old cost.'
+      },
+      {
+        active: [1,4,5],
+        projection: [1,5],
+        caption: 'The system remembers the policy and the deadline, but not the wound that made the policy necessary. The lever drifts.',
+        quote: '<em>Chronology alone is too polite.</em> The world changes when consequence arrives with it.'
+      }
+    ];
+
+    const events = [
+      { title: 'mission note', body: 'Keep the room interruptible for late arrivals.', kind: 'stake' },
+      { title: 'deadline', body: 'Ship by morning. No ceremony.', kind: 'neutral' },
+      { title: 'principle file', body: 'A file only works if it changes the hand.', kind: 'rule' },
+      { title: 'wound record', body: 'We promised never to deodorize the reason.', kind: 'stake' },
+      { title: 'decision brief', body: 'Project only what the next move truly needs.', kind: 'rule' },
+      { title: 'calendar trace', body: 'Three skips. No real witness yet.', kind: 'neutral' }
+    ];
+
+    const log = document.getElementById('log');
+    const projection = document.getElementById('projection');
+    const caption = document.getElementById('caption');
+    const quote = document.getElementById('quote');
+    const pulse = document.getElementById('pulse');
+    const lever = document.getElementById('lever');
+
+    events.forEach((event) => {
+      const div = document.createElement('div');
+      div.className = `event ${event.kind === 'stake' ? 'stake' : ''} ${event.kind === 'rule' ? 'rule' : ''}`;
+      div.innerHTML = `<strong>${event.title}</strong><div class="small">${event.body}</div>`;
+      log.appendChild(div);
+    });
+
+    const logEls = [...document.querySelectorAll('.event')];
+
+    function render(stepIndex) {
+      const step = steps[stepIndex];
+      logEls.forEach((el, i) => el.classList.toggle('active', step.active.includes(i)));
+      projection.innerHTML = '';
+      let live = false;
+      step.projection.forEach((i, idx) => {
+        const event = events[i];
+        const card = document.createElement('div');
+        card.className = `card ${event.kind === 'stake' ? 'stake' : ''} ${event.kind === 'rule' ? 'rule' : ''}`;
+        card.style.transform = `translateY(${idx * 3}px)`;
+        card.innerHTML = `<strong>${event.title}</strong>${event.body}`;
+        projection.appendChild(card);
+        if (event.kind === 'stake' || event.kind === 'rule') live = true;
+      });
+      caption.textContent = step.caption;
+      quote.innerHTML = step.quote;
+      pulse.classList.toggle('live', live && stepIndex !== 0 ? true : false);
+      lever.style.transform = live && stepIndex !== 2 ? 'rotate(-8deg)' : 'rotate(14deg)';
+      lever.style.background = live && stepIndex !== 2
+        ? 'linear-gradient(180deg, #ffd56a, #fff1bf)'
+        : 'linear-gradient(180deg, #8ec8ff, #d3ecff)';
+    }
+
+    let i = 0;
+    render(i);
+    setInterval(() => {
+      i = (i + 1) % steps.length;
+      render(i);
+    }, 3600);
+  </script>
+</body>
+</html>

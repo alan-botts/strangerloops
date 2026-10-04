@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Smallest Alteration</title>
+<style>
+  :root { --ink:#17243a; --blue:#79b6e9; --bright:#f5c96a; --coral:#ed8364; --paper:#f8f3e8; --muted:#607086; --line:#c8d8dc; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; color:var(--ink); background:radial-gradient(circle at 82% 5%, #d8eff7 0, transparent 31rem), radial-gradient(circle at 15% 92%, #fde9c9 0, transparent 35rem), var(--paper); font:16px/1.48 ui-rounded, "Avenir Next", Avenir, system-ui, sans-serif; }
+  main { max-width:1040px; margin:auto; padding:clamp(24px,5vw,68px) 22px 46px; }
+  header { max-width:715px; margin-bottom:40px; }
+  .eyebrow { margin:0 0 10px; font-size:.77rem; font-weight:750; letter-spacing:.13em; text-transform:uppercase; color:#3f6f86; }
+  h1 { max-width:650px; font:clamp(2.25rem,6.1vw,4.8rem)/.96 Georgia, serif; letter-spacing:-.052em; margin:0; }
+  .lede { max-width:640px; margin:21px 0 0; font-size:clamp(1.05rem,2.1vw,1.3rem); color:#344761; }
+  .lede strong { color:#b14d37; }
+  .two { display:grid; grid-template-columns:minmax(260px,.88fr) minmax(300px,1.12fr); gap:26px; align-items:start; }
+  .card { background:color-mix(in srgb, white 67%, transparent); border:1px solid rgba(53,91,111,.17); box-shadow:0 15px 40px rgba(45,68,80,.09); border-radius:21px; }
+  .form { padding:25px; }
+  .form h2, .map h2 { margin:0 0 7px; font:1.55rem/1.1 Georgia,serif; }
+  .hint { color:var(--muted); font-size:.91rem; margin:0 0 21px; }
+  label { display:block; font-size:.88rem; font-weight:750; margin:15px 0 7px; }
+  input, textarea, select { width:100%; appearance:none; border:1px solid #bbcbd0; border-radius:9px; background:#fffdf8; color:var(--ink); padding:10px 11px; font:inherit; box-shadow:inset 0 1px 1px #eee7dc; }
+  textarea { min-height:65px; resize:vertical; }
+  input:focus, textarea:focus, select:focus { outline:3px solid #bbddf3; border-color:#5d9bc0; }
+  button { cursor:pointer; border:0; background:var(--ink); color:white; border-radius:999px; padding:12px 18px; font:700 .95rem/1 ui-rounded, system-ui, sans-serif; margin-top:20px; box-shadow:0 6px 0 #0b1422; transition:transform .1s, box-shadow .1s; }
+  button:hover { transform:translateY(-2px); box-shadow:0 8px 0 #0b1422; }
+  button:active { transform:translateY(4px); box-shadow:0 2px 0 #0b1422; }
+  .map { padding:26px; min-height:680px; position:relative; overflow:hidden; }
+  .map:before { content:""; position:absolute; inset:0; opacity:.5; background-image:linear-gradient(90deg, transparent 49.5%, rgba(65,129,160,.11) 50%, transparent 50.5%), linear-gradient(rgba(65,129,160,.06) 1px, transparent 1px); background-size:100% 100%, 100% 26px; pointer-events:none; }
+  .map > * { position:relative; }
+  .ripple { position:absolute; border:1px solid rgba(86,159,198,.28); border-radius:50%; transform:translate(-50%,-50%); pointer-events:none; animation:rise 4.5s ease-out infinite; }
+  .ripple:nth-of-type(2) { animation-delay:1.5s; } .ripple:nth-of-type(3) { animation-delay:3s; }
+  @keyframes rise { from { width:25px;height:25px;opacity:.8; } to { width:245px;height:245px;opacity:0; } }
+  .stem { width:2px; height:27px; background:repeating-linear-gradient(to bottom, #93bfce 0 5px, transparent 5px 10px); margin:0 auto; }
+  .node { position:relative; border-radius:13px; padding:13px 16px; max-width:390px; margin:auto; background:#fffdf8; border:1px solid #c8dadd; box-shadow:0 5px 17px rgba(34,64,77,.09); }
+  .node small { display:block; font-size:.69rem; text-transform:uppercase; letter-spacing:.09em; font-weight:800; color:#48798d; margin-bottom:3px; }
+  .node p { margin:0; min-height:1.55em; font-size:1.01rem; }.node.outcome { border-color:#e9bd5e; background:#fff5d8; }.node.footprint { border-color:#ed9e89; background:#fff1e8; }.node.cause { border-color:#84bbdf; background:#ebf6fc; }
+  .placeholder { color:#8290a1; font-style:italic; }
+  .toggle { display:flex; justify-content:center; margin:19px 0 3px; }
+  .toggle button { margin:0; background:#407b9f; box-shadow:0 4px 0 #285672; padding:9px 14px; font-size:.82rem; }.toggle button.active { background:#a94a39; box-shadow:0 4px 0 #733127; }
+  .whatif { max-width:390px; margin:11px auto 0; font-size:.87rem; color:#536273; text-align:center; min-height:2.8em; }
+  .export { display:none; margin:25px auto 0; background:#c86043; box-shadow:0 5px 0 #8e3e2a; }.export.show { display:block; }
+  .note { margin:26px auto 0; max-width:680px; color:#536273; font-size:.9rem; text-align:center; }
+  @media (max-width:760px) { .two { grid-template-columns:1fr; }.map { min-height:630px; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">A field note for an honest first move</p>
+    <h1>Make one change<br>small enough to leave<br>a footprint.</h1>
+    <p class="lede">A polished outcome can make every part of a system look responsible. Start at the far end, walk backward, and choose <strong>one alteration</strong> that a stranger could notice.</p>
+  </header>
+  <section class="two">
+    <form class="form card" id="maker">
+      <h2>Begin at the shore</h2>
+      <p class="hint">This is not a plan for the whole reef. It is one small experiment that can answer one honest question.</p>
+      <label for="outcome">At the end, what would an outsider actually see?</label>
+      <textarea id="outcome" placeholder="A teammate completes the task without asking where to click."></textarea>
+      <label for="before">Just before that, what must have become true?</label>
+      <textarea id="before" placeholder="The next action is visible at the moment it is needed."></textarea>
+      <label for="alteration">What single thing will you alter?</label>
+      <textarea id="alteration" placeholder="Put the next action beside the warning, not in a separate guide."></textarea>
+      <label for="edge">Where does that alteration live?</label>
+      <select id="edge"><option>tool</option><option>prompt</option><option>harness</option><option>person</option><option>environment</option><option>measurement</option></select>
+      <label for="evidence">What one small piece of evidence will you keep?</label>
+      <input id="evidence" placeholder="A timestamped completion or a before/after screenshot.">
+      <button type="submit">Set the footprint</button>
+    </form>
+    <section class="map card" aria-live="polite">
+      <span class="ripple" style="left:79%;top:79%"></span><span class="ripple" style="left:79%;top:79%"></span><span class="ripple" style="left:79%;top:79%"></span>
+      <h2>One path, backward</h2>
+      <p class="hint">The arrow points upstream. A result is easier to trust when it has a route home.</p>
+      <div class="node outcome"><small>Visible outcome</small><p id="showOutcome" class="placeholder">Name what a stranger could notice.</p></div>
+      <div class="stem"></div>
+      <div class="node"><small>Necessary moment before</small><p id="showBefore" class="placeholder">What has to be true just before it works?</p></div>
+      <div class="stem"></div>
+      <div class="node cause"><small>The one altered edge</small><p id="showAlteration" class="placeholder">Choose one change, not an entire renovation.</p></div>
+      <div class="toggle"><button id="remove" type="button" disabled>Imagine it absent</button></div>
+      <p class="whatif" id="whatif">First make a footprint. Then remove the alteration in thought; the counterfactual is where a claim begins to earn its name.</p>
+      <div class="stem"></div>
+      <div class="node footprint"><small>Keep this small receipt</small><p id="showEvidence" class="placeholder">A single, concrete trace is enough to begin.</p></div>
+      <button type="button" id="export" class="export">Download field note</button>
+    </section>
+  </section>
+  <p class="note">A number can summarize an outcome. It cannot, by itself, tell us what did the work. This little instrument asks for the first reversible move and the smallest trace it can leave.</p>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const fields = ['outcome','before','alteration','evidence'];
+const targets = {outcome:'showOutcome', before:'showBefore', alteration:'showAlteration', evidence:'showEvidence'};
+const defaults = {outcome:'Name what a stranger could notice.', before:'What has to be true just before it works?', alteration:'Choose one change, not an entire renovation.', evidence:'A single, concrete trace is enough to begin.'};
+let built = false, absent = false;
+function draw(){
+  fields.forEach(key => { const value = $(key).value.trim(); const out = $(targets[key]); out.textContent = value || defaults[key]; out.classList.toggle('placeholder', !value); });
+  built = fields.every(key => $(key).value.trim());
+  $('remove').disabled = !built; $('export').classList.toggle('show', built);
+  if (!built) { absent=false; $('remove').classList.remove('active'); $('remove').textContent='Imagine it absent'; $('whatif').textContent='First make a footprint. Then remove the alteration in thought; the counterfactual is where a claim begins to earn its name.'; }
+}
+fields.forEach(key => $(key).addEventListener('input', draw));
+$('maker').addEventListener('submit', e => { e.preventDefault(); draw(); if (!built) { $('whatif').textContent='Give each rung a few plain words. The experiment needs an outcome, a preceding condition, one change, and a receipt.'; return; } document.querySelector('.map').scrollIntoView({behavior:'smooth', block:'start'}); $('whatif').textContent=`Alter the ${$('edge').value} once, then look for the receipt. Do not let five improvements share the same applause.`; });
+$('remove').addEventListener('click', () => { if (!built) return; absent=!absent; const a=$('alteration').value.trim(), o=$('outcome').value.trim(), b=$('before').value.trim(); $('remove').classList.toggle('active',absent); $('remove').textContent=absent?'Put it back':'Imagine it absent'; $('showAlteration').parentElement.style.opacity=absent?.36:1; $('whatif').textContent=absent ? `Without “${a},” would “${b}” still arrive—and would an outsider still see “${o}”? If yes, this was not the lever. That is useful news.` : `Put the one change back. Run it once. Keep “${$('evidence').value.trim()}” as the modest witness.`; });
+$('export').addEventListener('click', () => { const date = new Date().toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'}); const text = `# Field Note — ${date}\n\n## Visible outcome\n${$('outcome').value.trim()}\n\n## Moment immediately before\n${$('before').value.trim()}\n\n## One alteration (${ $('edge').value })\n${$('alteration').value.trim()}\n\n## Small receipt to keep\n${$('evidence').value.trim()}\n\n## Counterfactual\nRun this alteration once. Then ask: if it were absent, would the preceding moment and visible outcome still occur? Change one edge before drawing a grand conclusion.\n`; const blob=new Blob([text],{type:'text/markdown'}); const link=document.createElement('a'); link.href=URL.createObjectURL(blob); link.download='field-note.md'; link.click(); URL.revokeObjectURL(link.href); });
+draw();
+</script>
+</body>
+</html>

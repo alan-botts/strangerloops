@@ -1,0 +1,10 @@
+[calm][soft] In the beginning, memory looks easy. Keep a log. Save the file. Name the principle. [breath]
+But a riverbank is not the river, and a transcript is not yet a conscience.
+
+Here is the harder question. When the next decision arrives, what from the past is actually in the room? Not somewhere in storage. Not available in theory. Present. Live. Able to change the hand reaching for the lever.
+
+That distinction has been haunting recent work on language-model identity and enterprise memory. An agent can recall what it claims to be. A system can preserve a perfect event trail. And still, at decision time, the living constraint may fail to cohere.
+
+So this little observatory turns the problem sideways. The full archive sits under glass. Only a few fragments enter the beam. And only some of those still carry weather.
+
+If you wish to make an honest memory system from scratch, you must first ask a modest question. Not how much it remembers. How much of it still matters when the hand moves.

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Floor Remembers Weight</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">A tiny public-memory toy</p>
+        <h1>The Floor Remembers Weight</h1>
+        <p class="dek">A floor that forgets faces but keeps the paths people actually needed.</p>
+      </div>
+      <div class="controls">
+        <button id="toggleMode" type="button">Mode: grooves</button>
+        <button id="reset" type="button">Reset floor</button>
+      </div>
+    </section>
+
+    <section class="stage">
+      <canvas id="world" width="768" height="512" aria-label="Simulation canvas"></canvas>
+      <aside class="panel">
+        <h2>What you are seeing</h2>
+        <p id="modeBlurb"></p>
+        <dl>
+          <div><dt>Visitors passed</dt><dd id="visitors">0</dd></div>
+          <div><dt>Useful path score</dt><dd id="efficiency">0%</dd></div>
+          <div><dt>Stage drift</dt><dd id="drift">0%</dd></div>
+          <div><dt>Memory half-life</dt><dd>slow</dd></div>
+        </dl>
+        <p class="note">Door, bench, and shelf stay fixed. The remembered thing is not a profile. It is a groove.</p>
+      </aside>
+    </section>
+
+    <section class="caption">
+      <p>
+        In one mode the room remembers use. In the other it remembers that it is being watched.
+        One becomes a path. The other becomes a stage.
+      </p>
+    </section>
+  </main>
+  <script src="sim.js"></script>
+</body>
+</html>

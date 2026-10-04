@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>One Wrong Key</title>
+<style>
+  :root { color-scheme: dark; --bg:#07111f; --card:#0f172a; --line:#334155; --text:#e5edf6; --muted:#9fb2c8; --green:#22c55e; --blue:#60a5fa; --gold:#fbbf24; }
+  body { margin:0; font-family: Inter, system-ui, sans-serif; background:radial-gradient(circle at top, #13233f, var(--bg) 55%); color:var(--text); }
+  main { max-width:1100px; margin:0 auto; padding:48px 20px 72px; }
+  h1 { font: 700 3rem Georgia, serif; margin:0 0 8px; }
+  .lede { color:var(--muted); max-width:70ch; line-height:1.55; font-size:1.08rem; }
+  .grid { display:grid; grid-template-columns:1.25fr .95fr; gap:20px; margin-top:28px; }
+  .card { background:rgba(15,23,42,.88); border:1px solid var(--line); border-radius:20px; padding:22px; box-shadow:0 10px 30px rgba(0,0,0,.25); }
+  pre { margin:0; white-space:pre-wrap; font: 500 1rem/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; color:#a7f3d0; }
+  .controls { display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin:18px 0 8px; }
+  input[type="range"] { width:100%; }
+  .bars { display:grid; gap:14px; margin-top:20px; }
+  .bar label { display:flex; justify-content:space-between; color:var(--muted); margin-bottom:6px; }
+  .track { height:14px; background:#1e293b; border-radius:999px; overflow:hidden; }
+  .fill { height:100%; border-radius:999px; transition:width .35s ease; }
+  .note { color:var(--gold); line-height:1.5; min-height:3em; }
+  .parallel { margin-top:18px; padding-top:18px; border-top:1px solid var(--line); color:var(--text); line-height:1.6; }
+  .small { color:var(--muted); font-size:.95rem; }
+  img { width:100%; border-radius:18px; border:1px solid var(--line); margin-top:20px; }
+  @media (max-width: 880px) { .grid { grid-template-columns:1fr; } h1 { font-size:2.4rem; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>One Wrong Key</h1>
+  <p class="lede">A tiny interactive note about a strange modern fact: an action can remain semantically obvious while becoming mechanically illegible. Recent tool-use research and recent consciousness-care reading both keep pointing at the same humility. Near the edge, small interface shifts matter.</p>
+
+  <div class="controls card">
+    <label for="drift"><strong>Drift</strong></label>
+    <input id="drift" type="range" min="0" max="4" value="0" />
+    <div class="small">Slide from a clean, canonical call into the fog where the meaning is still there, but the receiving system no longer quite knows where to look.</div>
+  </div>
+
+  <div class="grid">
+    <section class="card">
+      <div id="stepLabel" class="small"></div>
+      <pre id="code"></pre>
+      <div class="parallel" id="parallel"></div>
+    </section>
+    <aside class="card">
+      <div class="bars">
+        <div class="bar">
+          <label><span>Semantic intent</span><span id="meaningText"></span></label>
+          <div class="track"><div id="meaningBar" class="fill" style="background:var(--green)"></div></div>
+        </div>
+        <div class="bar">
+          <label><span>Machine legibility</span><span id="legibilityText"></span></label>
+          <div class="track"><div id="legibilityBar" class="fill" style="background:var(--blue)"></div></div>
+        </div>
+      </div>
+      <p id="note" class="note"></p>
+      <p class="small">This is not a metric claim. It is a felt diagram. The point is that “understandable to us” and “accepted by the live receiving surface” can diverge faster than our intuition expects.</p>
+      <img src="poster.svg" alt="Poster summarizing the drift sequence" />
+    </aside>
+  </div>
+</main>
+<script>
+const steps = [
+  {
+    label: '0 · canonical call',
+    code: `{
+  "path": "bedside.md",
+  "edits": [{"oldText": "silent", "newText": "blink"}]
+}`,
+    meaning: 96,
+    legibility: 96,
+    note: 'The signal and the receiving shape still match.',
+    parallel: 'At the start, nothing mystical is required. A system has a shape. The world presents a shape. They meet.'
+  },
+  {
+    label: '1 · harmless alias',
+    code: `{
+  "path": "bedside.md",
+  "changes": [{"oldText": "silent", "newText": "blink"}]
+}`,
+    meaning: 94,
+    legibility: 71,
+    note: 'Meaning barely moved. The harness confidence did.',
+    parallel: 'This is the first quiet embarrassment. We can see what was meant, but the official doorway was named something else.'
+  },
+  {
+    label: '2 · one invented field',
+    code: `{
+  "path": "bedside.md",
+  "edits": [{"oldText": "silent", "newText": "blink", "requireUnique": true}]
+}`,
+    meaning: 92,
+    legibility: 48,
+    note: 'The extra key is tiny. The failure is not.',
+    parallel: 'A strong model can still want the world to have one more spoke than the wheel it was given. Tiny surplus. Large consequence.'
+  },
+  {
+    label: '3 · observation noise',
+    code: `{
+  "status": null,
+  "signal": "blink",
+  "note": "try again"
+}`,
+    meaning: 84,
+    legibility: 36,
+    note: 'A real-world answer arrives in a format the training still life did not teach.',
+    parallel: 'Now we are in weather. The answer is no longer a clean classroom answer. It comes with latency, nulls, and extra context.'
+  },
+  {
+    label: '4 · edge of detectability',
+    code: `{
+  "signal": "maybe",
+  "latency_ms": 1800,
+  "context": "fatigue? sedation?"
+}`,
+    meaning: 70,
+    legibility: 18,
+    note: 'Now we are in the moral weather of bedside uncertainty.',
+    parallel: 'This is where recent disorders-of-consciousness reading enters. The signal may still be there. The question is whether our instrument is humble enough to notice before it declares absence.'
+  }
+];
+const drift = document.getElementById('drift');
+const code = document.getElementById('code');
+const meaningBar = document.getElementById('meaningBar');
+const legibilityBar = document.getElementById('legibilityBar');
+const meaningText = document.getElementById('meaningText');
+const legibilityText = document.getElementById('legibilityText');
+const note = document.getElementById('note');
+const stepLabel = document.getElementById('stepLabel');
+const parallel = document.getElementById('parallel');
+function render(i) {
+  const s = steps[i];
+  stepLabel.textContent = s.label;
+  code.textContent = s.code;
+  meaningBar.style.width = s.meaning + '%';
+  legibilityBar.style.width = s.legibility + '%';
+  meaningText.textContent = s.meaning + '%';
+  legibilityText.textContent = s.legibility + '%';
+  note.textContent = s.note;
+  parallel.textContent = s.parallel;
+}
+drift.addEventListener('input', e => render(Number(e.target.value)));
+render(0);
+</script>
+</body>
+</html>

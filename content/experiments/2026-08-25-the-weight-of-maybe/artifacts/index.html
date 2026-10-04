@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Weight of Maybe</title>
+<style>
+  :root { --ink:#e9e4d6; --muted:#9ba2a3; --night:#101719; --panel:#182326; --line:#405255; --amber:#f1bb63; --mist:#78b5b2; --red:#d86d61; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; background:radial-gradient(circle at 50% 3%,#26393a 0,#121b1d 38%,#0b1011 100%); color:var(--ink); font-family: ui-serif, Georgia, serif; letter-spacing:.01em; }
+  main { max-width:960px; margin:auto; padding:clamp(28px,7vw,76px) 22px 52px; }
+  header { max-width:680px; margin-bottom:38px; }
+  .eyebrow { color:var(--amber); font:600 11px ui-monospace,SFMono-Regular,monospace; letter-spacing:.17em; text-transform:uppercase; }
+  h1 { font-size:clamp(38px,7vw,72px); margin:9px 0 12px; line-height:.95; font-weight:500; }
+  .lede { color:#c9cfca; font-size:clamp(17px,2.5vw,21px); line-height:1.5; margin:0; }
+  .instrument { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(250px,.75fr); border:1px solid var(--line); background:linear-gradient(125deg,rgba(27,42,43,.93),rgba(16,24,26,.93)); box-shadow:0 20px 80px rgba(0,0,0,.3); }
+  .sky { min-height:435px; padding:28px; position:relative; overflow:hidden; border-right:1px solid var(--line); }
+  .sky::before { content:""; position:absolute; inset:0; opacity:.38; background-image:linear-gradient(rgba(135,184,180,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(135,184,180,.045) 1px,transparent 1px); background-size:28px 28px; pointer-events:none; }
+  .readout { position:relative; z-index:1; font:12px ui-monospace,SFMono-Regular,monospace; color:var(--mist); letter-spacing:.06em; }
+  .scope { width:100%; height:225px; display:block; margin:18px 0 0; overflow:visible; }
+  .pulse { filter:drop-shadow(0 0 7px rgba(241,187,99,.75)); }
+  .label { position:absolute; z-index:2; top:113px; left:50%; transform:translateX(-50%); text-align:center; pointer-events:none; transition:.4s ease; }
+  .label strong { display:block; font:700 clamp(30px,5vw,52px) ui-monospace,SFMono-Regular,monospace; letter-spacing:.12em; color:var(--red); text-shadow:0 0 18px rgba(216,109,97,.35); }
+  .label span { font:11px ui-monospace,SFMono-Regular,monospace; color:#d6a09a; letter-spacing:.11em; }
+  .observation { position:relative; z-index:1; border-left:2px solid var(--amber); padding:11px 0 11px 14px; color:#d4d8d2; line-height:1.45; max-width:470px; transition:.3s ease; }
+  aside { padding:27px; display:flex; flex-direction:column; justify-content:space-between; gap:28px; }
+  h2 { margin:0 0 11px; font-size:15px; font-weight:600; letter-spacing:.04em; }
+  .meter { height:9px; background:#0c1213; border:1px solid #344547; margin:16px 0 7px; }
+  .fill { width:100%; height:100%; background:linear-gradient(90deg,var(--mist),var(--amber),var(--red)); transition:width .55s cubic-bezier(.2,.9,.2,1); }
+  .status { color:var(--muted); font-size:14px; line-height:1.45; min-height:64px; }
+  button { background:transparent; color:var(--ink); padding:13px 14px; cursor:pointer; border:1px solid var(--amber); font:600 12px ui-monospace,SFMono-Regular,monospace; letter-spacing:.06em; text-transform:uppercase; transition:.2s; text-align:left; }
+  button:hover { background:var(--amber); color:#182022; }
+  button:focus-visible { outline:3px solid white; outline-offset:3px; }
+  .choices { display:grid; gap:8px; }
+  .choice { color:#aeb8b5; border-color:#405255; cursor:default; }
+  .choice.active { border-color:var(--mist); color:var(--ink); background:rgba(120,181,178,.1); }
+  .footnote { max-width:720px; color:#aeb3af; margin:25px 0 0; line-height:1.5; font-size:15px; }
+  .footnote em { color:#d8ddd6; }
+  @media(max-width:700px) { .instrument { grid-template-columns:1fr; } .sky { border-right:0; border-bottom:1px solid var(--line); min-height:405px; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">A small instrument for reconsidering</div>
+    <h1>The Weight of Maybe</h1>
+    <p class="lede">A signal arrives three times in the dark. What changes when we loosen our grip on what it must mean?</p>
+  </header>
+  <section class="instrument" aria-label="An interactive belief-pressure instrument">
+    <div class="sky">
+      <div class="readout" id="readout">FIELD TRACE / 03:17 / SIGNAL UNRESOLVED</div>
+      <svg class="scope" viewBox="0 0 560 225" role="img" aria-label="Three amber signal pulses on a quiet baseline">
+        <path d="M0 145 H78 L93 145 103 132 112 159 122 73 134 184 145 145 H225 L239 145 249 132 258 159 269 73 280 184 292 145 H374 L388 145 399 132 408 159 419 73 430 184 442 145 H560" fill="none" stroke="#78b5b2" stroke-width="2" opacity=".82"/>
+        <g class="pulse" fill="#f1bb63"><circle cx="122" cy="73" r="4"/><circle cx="269" cy="73" r="4"/><circle cx="419" cy="73" r="4"/></g>
+        <g stroke="#637d7e" stroke-width="1" opacity=".6"><path d="M122 196v13M269 196v13M419 196v13"/><path d="M122 202H269M269 202H419"/></g>
+        <g fill="#9ba2a3" font-family="monospace" font-size="10"><text x="174" y="218">1.6 s</text><text x="322" y="218">1.6 s</text></g>
+      </svg>
+      <div class="label" id="label"><strong>ALARM</strong><span>STORY LOCKED / ACT NOW</span></div>
+      <p class="observation" id="observation">The signal has been given a heavy name. The name is useful if it is right; it is expensive if it is merely fast.</p>
+    </div>
+    <aside>
+      <div>
+        <h2>Belief pressure</h2>
+        <div class="meter" aria-label="Belief pressure"><div class="fill" id="fill"></div></div>
+        <div class="status" id="status">Maximum precision: one explanation fills the room, and its favored action crowds out the rest.</div>
+      </div>
+      <div class="choices" id="choices" aria-live="polite"></div>
+      <button id="release">Release one certainty</button>
+    </aside>
+  </section>
+  <p class="footnote" id="footnote"><em>Try the button three times.</em> The pulses do not disappear. What changes is the force with which one story commands the next move.</p>
+</main>
+<script>
+const states = [
+ {p:100, tag:'ALARM', sub:'STORY LOCKED / ACT NOW', obs:'The signal has been given a heavy name. The name is useful if it is right; it is expensive if it is merely fast.', status:'Maximum precision: one explanation fills the room, and its favored action crowds out the rest.', choices:['Sound the alarm','Shut the window','Call it settled'], foot:'Try the button three times. The pulses do not disappear. What changes is the force with which one story commands the next move.'},
+ {p:68, tag:'POSSIBLE ALARM', sub:'STORY HELD / CHECK CONDITIONS', obs:'Three pulses are still real. “Alarm” has become one live hypothesis among others: a sensor test, a distant engine, a warning.', status:'A little uncertainty opens room for comparison. The old story remains, but it no longer owns every action.', choices:['Compare another sensor','Check the time pattern','Keep a quiet watch'], foot:'The first release does not make us blank. It makes us available to a better question.'},
+ {p:36, tag:'THREE PULSES', sub:'MEASUREMENT / 1.6 SECOND INTERVALS', obs:'Now the observation can stand on its own: three bright pulses, evenly spaced. It is smaller than a verdict, and easier for another mind to test.', status:'The signal becomes light enough to carry. Curiosity is no longer a failure to decide; it is the next appropriate policy.', choices:['Record the trace','Wait for a fourth pulse','Test the receiver'], foot:'This is not indecision. It is a precise description of what the instrument has actually earned.'},
+ {p:12, tag:'MAYBE', sub:'OPEN MODEL / WORLD STILL PRESENT', obs:'The room is quiet enough to notice its grain: the baseline, the intervals, the possibilities not yet ruled in or out. The world has not become less real. We have become less attached to being early.', status:'Low belief pressure does not erase direction. It lets direction grow from the evidence that arrives, rather than from a name imposed before it.', choices:['Look again','Invite another observer','Leave the trace open'], foot:'A thought can be held lightly without being held cheaply. The smallest honest signal is still part of the universe speaking.'}
+];
+let i=0; const $=id=>document.getElementById(id);
+function render(){const s=states[i]; $('fill').style.width=s.p+'%'; $('label').style.opacity=String(.35+s.p/130); $('label').querySelector('strong').textContent=s.tag; $('label').querySelector('span').textContent=s.sub; $('observation').textContent=s.obs; $('status').textContent=s.status; $('footnote').innerHTML='<em>'+(i===3?'Start again if you like.':'Release one certainty when you are ready.')+'</em> '+s.foot; $('choices').innerHTML=s.choices.map((x,n)=>`<div class="choice ${n===0?'active':''}">${x}</div>`).join(''); $('release').textContent=i===3?'Begin again':'Release one certainty'; $('release').setAttribute('aria-label',i===3?'Begin the instrument again':'Release one certainty');}
+$('release').addEventListener('click',()=>{i=i===3?0:i+1; render();}); render();
+</script>
+</body>
+</html>

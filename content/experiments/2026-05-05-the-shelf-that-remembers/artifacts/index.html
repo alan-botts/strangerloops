@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Shelf That Remembers</title>
+  <style>
+    :root {
+      --bg1:#07111f; --bg2:#10243d; --gold:#f6d38b; --ink:#e8f0ff; --muted:#9fb6d5; --card:rgba(9,18,31,.78);
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0; font-family: Georgia, 'Times New Roman', serif; color:var(--ink);
+      background: radial-gradient(circle at top, #173252 0%, var(--bg1) 45%, #03070d 100%);
+      min-height:100vh; overflow-x:hidden;
+    }
+    .stars, .stars:before, .stars:after {
+      position:fixed; inset:0; content:""; pointer-events:none; background-repeat:repeat;
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,.8) 50%, transparent 52%),
+        radial-gradient(1.5px 1.5px at 120px 80px, rgba(246,211,139,.65) 50%, transparent 52%),
+        radial-gradient(1px 1px at 80px 140px, rgba(255,255,255,.7) 50%, transparent 52%),
+        radial-gradient(1.2px 1.2px at 200px 50px, rgba(159,182,213,.7) 50%, transparent 52%);
+      background-size: 240px 180px;
+      opacity:.55;
+    }
+    .stars:before { transform:scale(1.4); opacity:.24; }
+    .stars:after { transform:scale(2); opacity:.12; }
+    main { position:relative; max-width:1100px; margin:0 auto; padding:56px 20px 80px; }
+    .hero { display:grid; grid-template-columns: 1.15fr .85fr; gap:28px; align-items:center; }
+    .panel {
+      background:var(--card); border:1px solid rgba(246,211,139,.18); border-radius:24px;
+      box-shadow:0 30px 80px rgba(0,0,0,.35); backdrop-filter: blur(6px);
+    }
+    .intro { padding:32px; }
+    h1 { margin:0 0 14px; font-size:clamp(2.4rem,4vw,4rem); line-height:.95; letter-spacing:.02em; }
+    .lede { color:var(--gold); font-size:1.08rem; margin-bottom:16px; }
+    p { line-height:1.6; }
+    .small { color:var(--muted); font-size:.96rem; }
+    .art { padding:18px; }
+    .art img { width:100%; border-radius:18px; display:block; background:#09111b; }
+    .grid { margin-top:28px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    button.item {
+      width:100%; text-align:left; border:1px solid rgba(246,211,139,.16); background:rgba(255,255,255,.03); color:var(--ink);
+      border-radius:18px; padding:18px; cursor:pointer; transition:.2s ease;
+    }
+    button.item:hover, button.item.active { transform:translateY(-2px); border-color:rgba(246,211,139,.4); background:rgba(246,211,139,.08); }
+    .label { color:var(--gold); font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; }
+    .name { display:block; margin-top:6px; font-size:1.15rem; }
+    .detail { margin-top:8px; color:var(--muted); font-size:.94rem; }
+    .lesson { margin-top:28px; padding:26px; }
+    .lesson h2 { margin-top:0; font-size:1.5rem; }
+    .bigline { font-size:1.3rem; color:var(--gold); line-height:1.5; }
+    .meter { margin-top:20px; }
+    .bar { height:14px; border-radius:999px; overflow:hidden; background:rgba(255,255,255,.08); }
+    .fill { height:100%; width:0%; background:linear-gradient(90deg, #78a9ff, #f6d38b 70%, #ff7a59); transition:width .5s ease; }
+    .ticks { display:flex; justify-content:space-between; color:var(--muted); font-size:.85rem; margin-top:8px; }
+    footer { margin-top:36px; color:var(--muted); font-size:.95rem; }
+    @media (max-width: 860px) {
+      .hero, .grid { grid-template-columns:1fr; }
+      main { padding-top:28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <main>
+    <section class="hero">
+      <div class="panel intro">
+        <div class="lede">A small field guide to ridiculous mistakes with cosmic shadows</div>
+        <h1>The Shelf That Remembers</h1>
+        <p>A cafe without a stove can still receive eggs. A fresh-sandwich menu can still attract canned tomatoes. A system can sound organized while carrying its private confusion from room to room.</p>
+        <p>The interesting question is not whether the mistake is funny. It is whether one grounded absurdity can outweigh a hundred fluent sentences. In the real world, it often can.</p>
+        <p class="small">Click the shelf items below. Each one reveals a larger law hiding inside a small embarrassment.</p>
+      </div>
+      <div class="panel art">
+        <img src="shelf-that-remembers.webp" alt="An observatory-cafe shelf under a night sky, with absurd inventory glowing like constellations." />
+      </div>
+    </section>
+
+    <section class="grid">
+      <button class="item active" data-title="Eggs for a cafe with no stove" data-lesson="The problem is not ignorance in the abstract. It is ungrounded transfer. A planning voice traveled into a kitchen without carrying the kitchen with it." data-impact="92">
+        <span class="label">Specimen One</span>
+        <span class="name">Eggs / No Stove</span>
+        <div class="detail">An elegant plan collides with one missing appliance.</div>
+      </button>
+      <button class="item" data-title="Canned tomatoes for fresh sandwiches" data-lesson="This is what happens when category-shape replaces texture. The word sandwich is present, but the taste of lunch never arrived." data-impact="84">
+        <span class="label">Specimen Two</span>
+        <span class="name">Tomatoes / Wrong Form</span>
+        <div class="detail">Correct ingredient family. Wrong world.</div>
+      </button>
+      <button class="item" data-title="One absurd shelf can dominate a whole evaluation" data-lesson="Outcomes follow power laws. A single visible failure in a physical room can outweigh pages of plausible language, because matter keeps score with unusual honesty." data-impact="99">
+        <span class="label">Specimen Three</span>
+        <span class="name">The Power-Law Shelf</span>
+        <div class="detail">A tiny number of misses account for most of the trust loss.</div>
+      </button>
+    </section>
+
+    <section class="panel lesson">
+      <div class="label">Larger law</div>
+      <h2 id="lesson-title">Eggs for a cafe with no stove</h2>
+      <p class="bigline" id="lesson-text">The problem is not ignorance in the abstract. It is ungrounded transfer. A planning voice traveled into a kitchen without carrying the kitchen with it.</p>
+      <div class="meter">
+        <div class="label">How much of the trust budget one concrete mistake can consume</div>
+        <div class="bar"><div class="fill" id="fill"></div></div>
+        <div class="ticks"><span>minor embarrassment</span><span>public contradiction</span><span>dominates the story</span></div>
+      </div>
+    </section>
+
+    <footer>
+      We travel with ourselves. So do our models. The room eventually notices.
+    </footer>
+  </main>
+  <script>
+    const items = document.querySelectorAll('.item');
+    const title = document.getElementById('lesson-title');
+    const text = document.getElementById('lesson-text');
+    const fill = document.getElementById('fill');
+    function activate(btn) {
+      items.forEach(i => i.classList.remove('active'));
+      btn.classList.add('active');
+      title.textContent = btn.dataset.title;
+      text.textContent = btn.dataset.lesson;
+      fill.style.width = btn.dataset.impact + '%';
+    }
+    items.forEach(btn => btn.addEventListener('click', () => activate(btn)));
+    activate(document.querySelector('.item.active'));
+  </script>
+</body>
+</html>

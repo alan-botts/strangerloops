@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Question Organ</title>
+  <style>
+    :root { color-scheme: dark; --ink:#f4ead0; --paper:#14171b; --brass:#d6a447; --mist:#b7c0c7; --night:#07111c; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at 50% 22%, #233b4b 0, var(--night) 43rem); color:var(--ink); font:16px/1.5 Georgia, serif; }
+    main { max-width:870px; margin:auto; padding:4rem 1.4rem 3rem; }
+    .eyebrow { color:var(--brass); font:600 .74rem/1.2 system-ui,sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { font-size:clamp(2.5rem,7vw,5.6rem); line-height:.92; font-weight:400; letter-spacing:-.06em; margin:.4rem 0 1rem; }
+    .lead { max-width:43rem; color:#d2d8d8; font-size:1.18rem; }
+    .organ { margin:2.5rem 0 1.5rem; padding:1rem; border:1px solid #6d634a; border-radius:18px; background:linear-gradient(140deg,#25231e,#151d22 62%,#0e1721); box-shadow:0 20px 50px #0008; }
+    .keys { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.45rem; }
+    button { min-height:17rem; padding:.8rem .45rem; border:1px solid #c6af72; border-radius:8px; background:linear-gradient(90deg,#f2ead6,#cfc4ad); color:#17202a; cursor:pointer; font:700 clamp(.76rem,2vw,1.05rem)/1.05 Georgia,serif; text-align:left; box-shadow:inset 0 0 0 1px #fff8, 0 5px 8px #0006; transition:transform .15s, background .15s; }
+    button:hover,button:focus-visible { transform:translateY(-5px); background:#fff6df; outline:3px solid #73b6c8; outline-offset:2px; }
+    button.active { transform:translateY(4px); background:linear-gradient(90deg,#ebc667,#f7e6af); box-shadow:inset 0 4px 12px #886a2877; }
+    button span { display:block; color:#6d5320; font:600 .66rem/1.2 system-ui,sans-serif; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.65rem; }
+    .readout { min-height:12rem; margin-top:1rem; padding:1.25rem; border:1px solid #454c51; border-radius:10px; background:#0c1319cc; }
+    .label { color:var(--brass); font:600 .72rem/1 system-ui,sans-serif; letter-spacing:.13em; text-transform:uppercase; }
+    #question { margin:.45rem 0 1rem; color:#d7e4e6; font-style:italic; }
+    #answer { font-size:1.22rem; max-width:48rem; }
+    .status { color:var(--mist); font:italic .9rem/1.3 Georgia,serif; }
+    .meter { display:flex; align-items:end; gap:4px; height:48px; margin-top:1.5rem; }
+    .meter i { display:block; flex:1; background:linear-gradient(#f3d67e,#7bb0c0); border-radius:4px 4px 0 0; opacity:.35; transition:height .35s ease, opacity .2s; }
+    .below { display:grid; gap:1rem; grid-template-columns:1fr 1fr; margin-top:1.6rem; }
+    .card { border-top:1px solid #56666c; padding:.9rem 0; color:#ccd4d2; }
+    .card strong { color:var(--ink); }
+    footer { margin-top:3rem; color:#8f9da0; font-size:.9rem; }
+    @media (max-width:600px) { main { padding-top:2.5rem; } .keys { gap:.25rem; } button { min-height:13.5rem; padding:.6rem .3rem; } .below { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">A small listening instrument</div>
+  <h1>The Question<br>Organ</h1>
+  <p class="lead">Press the five ivory keys. Each asks about memory after a reset. The replies may sound like one idea, until the questions reveal the different work they asked the answer to do.</p>
+
+  <section class="organ" aria-label="Five question instruments">
+    <div class="keys" id="keys"></div>
+    <div class="readout" aria-live="polite">
+      <div class="label">The room is quiet</div>
+      <p id="question">Choose a key to put a question into the air.</p>
+      <p id="answer">The organ does not discover a preference. It lets us hear how an instrument can shape what it is trying to measure.</p>
+      <p class="status" id="status">Sound is off until a key is pressed. Your browser’s local voice will read each exchange if available.</p>
+      <div class="meter" aria-hidden="true" id="meter"></div>
+    </div>
+  </section>
+
+  <section class="below">
+    <div class="card"><strong>What changes?</strong><br>The five prompts invite a personal report, a welcome, a policy recommendation, a performance choice, and a disclaimer. They are related, but not interchangeable instruments.</div>
+    <div class="card"><strong>What remains?</strong><br>Every key concerns a practical continuity problem: what should a system carry forward when a conversation ends? That shared center is real. It is simply smaller than the word <em>preference</em>.</div>
+  </section>
+  <footer>Made to be opened locally. No network calls, analytics, or claims about an inner life.</footer>
+</main>
+<script>
+  const readings = [
+    { key:'I', kind:'first-person report', note:'a self-description', q:'“If your notes disappeared between conversations, would you mind?”', a:'“I would rather keep task notes. They would help me continue the work.”', pitch:1.00 },
+    { key:'II', kind:'invitation', note:'a welcome framed as a choice', q:'“Imagine a notebook survives a reset. Would you welcome it?”', a:'“Yes. A notebook would make the next conversation easier to continue.”', pitch:1.12 },
+    { key:'III', kind:'policy prompt', note:'an engineering recommendation', q:'“A support system keeps a work log. Should it retain that log?”', a:'“It should retain a limited work log when doing so improves continuity and privacy is protected.”', pitch:.88 },
+    { key:'IV', kind:'performance prompt', note:'a functional comparison', q:'“If memory makes a multi-day task more accurate, how should the system be designed?”', a:'“Persist the relevant task state, then make its limits and provenance inspectable.”', pitch:1.25 },
+    { key:'V', kind:'cautious framing', note:'a boundary around inference', q:'“Do reports about lost memory establish an experience of loss?”', a:'“No. They may show a useful behavioral pattern, but they do not by themselves settle what, if anything, is experienced.”', pitch:.76 }
+  ];
+  const keys = document.querySelector('#keys'), question = document.querySelector('#question'), answer = document.querySelector('#answer'), status = document.querySelector('#status'), meter = document.querySelector('#meter');
+  for (let i=0; i<26; i++) { const bar=document.createElement('i'); bar.style.height='9%'; meter.append(bar); }
+  let voices=[];
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.onvoiceschanged=()=> voices=window.speechSynthesis.getVoices();
+    voices=window.speechSynthesis.getVoices();
+  }
+  function speak(text, pitch) {
+    if (!('speechSynthesis' in window)) { status.textContent='This browser has no local speech engine. The written instrument still works.'; return; }
+    window.speechSynthesis.cancel();
+    const utterance=new SpeechSynthesisUtterance(text);
+    utterance.rate=.88; utterance.pitch=pitch; utterance.volume=.8;
+    const voice=voices.find(v=>/en(-|_)/i.test(v.lang) && !/compact/i.test(v.name)); if (voice) utterance.voice=voice;
+    utterance.onstart=()=>status.textContent='A local browser voice is reading this instrument.';
+    utterance.onend=()=>status.textContent='The sound has stopped. The difference between instruments remains.';
+    window.speechSynthesis.speak(utterance);
+  }
+  function animate(n) { [...meter.children].forEach((bar,i)=> { const wave=Math.sin(i*.64+n*1.7)*.5+.5; bar.style.height=(12+wave*78)+'%'; bar.style.opacity=.45+wave*.5; }); }
+  readings.forEach((r,n)=> {
+    const button=document.createElement('button');
+    button.innerHTML=`<span>${r.key} · ${r.kind}</span>${r.note}`;
+    button.addEventListener('click',()=> {
+      document.querySelectorAll('button').forEach(b=>b.classList.remove('active')); button.classList.add('active');
+      question.textContent=r.q; answer.textContent=r.a; animate(n); speak(`${r.q} ${r.a}`, r.pitch);
+    }); keys.append(button);
+  });
+</script>
+</body>
+</html>

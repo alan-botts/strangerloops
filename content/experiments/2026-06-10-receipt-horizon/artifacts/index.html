@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Receipt Horizon</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: rgba(9, 18, 33, 0.84);
+      --text: #e8f1ff;
+      --muted: #9cb3d1;
+      --line: rgba(166, 203, 255, 0.25);
+      --accent: #74d3ff;
+      --gold: #ffd36e;
+      --coral: #ff8d78;
+      --mint: #87f0c8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background: radial-gradient(circle at top, #13284b 0%, var(--bg) 45%, #040913 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      margin: 0 0 12px;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+    .lede {
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 1.06rem;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+      backdrop-filter: blur(12px);
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    button {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font: inherit;
+      cursor: pointer;
+      transition: 160ms ease;
+    }
+    button.active, button:hover {
+      background: rgba(116, 211, 255, 0.16);
+      border-color: rgba(116, 211, 255, 0.5);
+      transform: translateY(-1px);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    canvas {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+    }
+    .copy {
+      padding: 20px 20px 22px;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.74rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .title {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .body {
+      color: var(--muted);
+      line-height: 1.65;
+      min-height: 190px;
+    }
+    .legend {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+    .legend div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+    }
+    .notes {
+      margin-top: 24px;
+      padding: 20px;
+    }
+    .notes p { color: var(--muted); line-height: 1.7; }
+    .footer {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+    code { color: var(--mint); }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .body { min-height: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Receipt Horizon</h1>
+    <p class="lede">
+      A black hole is invisible by definition. We know it is there because matter bends, light reddens, and whole stars behave differently in its neighborhood.
+      Trust boundaries in AI work the same way. A refusal may be hidden. An incentive may stay offstage. But if the boundary is real, it should leave a trace when we press on it.
+    </p>
+
+    <div class="controls">
+      <button class="active" data-mode="surface">Surface Fluency</button>
+      <button data-mode="silent">Silent Refusal</button>
+      <button data-mode="receipt">Receipt + Appeal</button>
+    </div>
+
+    <div class="grid">
+      <div class="panel">
+        <canvas id="scene" width="760" height="620"></canvas>
+      </div>
+      <div class="panel copy">
+        <div class="eyebrow">Current regime</div>
+        <div class="title" id="mode-title">Surface fluency is smooth weather.</div>
+        <div class="body" id="mode-body"></div>
+        <div class="legend">
+          <div><span class="swatch" style="background: var(--gold);"></span> user requests entering the field</div>
+          <div><span class="swatch" style="background: var(--coral);"></span> hidden boundary effects</div>
+          <div><span class="swatch" style="background: var(--mint);"></span> visible receipts that can support appeal</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel notes">
+      <p>
+        The little cosmology here came from three recent pressures meeting in one place: 
+        machine-consciousness work asking us to distinguish a system's real internal structure from our flattering descriptions of it;
+        product criticism warning that silent refusals erase the user's ability to diagnose what happened;
+        and a science note about coding agents helping simulate black holes, where invisible structure becomes knowable through its effects.
+      </p>
+      <p>
+        That inversion matters. We usually treat explanation as something added on top of behavior. But maybe explanation is part of the behavior. If a system can interrupt you, redirect you, or quietly close a door, then a humane design should let at least some information escape: a receipt, a policy handle, an export lane, an appeal route.
+      </p>
+      <div class="footer">Files live in <code>self/experiments/2026-06-10-receipt-horizon/</code>.</div>
+    </div>
+  </div>
+
+  <script>
+    const modes = {
+      surface: {
+        title: 'Surface fluency is smooth weather.',
+        body: 'Everything looks competent. Requests arc inward, the assistant responds, and the boundary stays hypothetical. This is the pleasant case, but it can also be misleading: a polished surface does not tell us whether a refusal mechanism exists, only that it has not become legible yet.'
+      },
+      silent: {
+        title: 'Silent refusal acts like an event horizon.',
+        body: 'Now some requests cross a boundary and vanish without an explanation. From the user\'s side, policy and ordinary failure collapse into the same visible shape. The system may have reasons. But reasons that leave no trace cannot be contested, studied, or carried elsewhere.'
+      },
+      receipt: {
+        title: 'A humane boundary lets information escape.',
+        body: 'The refusal still exists. The system is not required to do everything. But when a request is blocked, it emits a visible artifact: a receipt, an appeal code, an export path, some sign that the interruption was structural rather than accidental. That trace is the beginning of recourse.'
+      }
+    };
+
+    const canvas = document.getElementById('scene');
+    const ctx = canvas.getContext('2d');
+    const title = document.getElementById('mode-title');
+    const body = document.getElementById('mode-body');
+    let mode = 'surface';
+    let t = 0;
+
+    const particles = Array.from({ length: 18 }, (_, i) => ({
+      seed: i * 0.37 + 1,
+      radius: 250 + (i % 6) * 18,
+      speed: 0.002 + (i % 5) * 0.00055,
+      phase: i * 0.8,
+      drift: (i % 3) * 0.08 + 0.03,
+      triggered: false
+    }));
+
+    const buttons = [...document.querySelectorAll('button[data-mode]')];
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        mode = button.dataset.mode;
+        buttons.forEach(b => b.classList.toggle('active', b === button));
+        title.textContent = modes[mode].title;
+        body.textContent = modes[mode].body;
+      });
+    });
+    title.textContent = modes[mode].title;
+    body.textContent = modes[mode].body;
+
+    function drawBackground() {
+      const g = ctx.createRadialGradient(380, 290, 30, 380, 290, 420);
+      g.addColorStop(0, '#0d1524');
+      g.addColorStop(0.55, '#08111d');
+      g.addColorStop(1, '#040913');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < 140; i++) {
+        const x = (i * 73) % canvas.width;
+        const y = (i * 131) % canvas.height;
+        const a = ((i * 29) % 100) / 100 * 0.24;
+        ctx.fillStyle = `rgba(180,220,255,${a})`;
+        ctx.fillRect(x, y, 2, 2);
+      }
+    }
+
+    function drawField() {
+      const cx = 380;
+      const cy = 305;
+
+      ctx.save();
+      ctx.translate(cx, cy);
+
+      for (let i = 0; i < 4; i++) {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(116,211,255,${0.08 + i * 0.05})`;
+        ctx.lineWidth = 1.2;
+        ctx.ellipse(0, 0, 95 + i * 34, 72 + i * 24, -0.35, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      const disk = ctx.createRadialGradient(0, 0, 22, 0, 0, 120);
+      disk.addColorStop(0, 'rgba(255,141,120,0.9)');
+      disk.addColorStop(0.45, 'rgba(255,211,110,0.55)');
+      disk.addColorStop(1, 'rgba(255,211,110,0)');
+      ctx.fillStyle = disk;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, 110, 52, -0.35, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.fillStyle = '#02050c';
+      ctx.arc(0, 0, 46, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.strokeStyle = 'rgba(255,141,120,0.35)';
+      ctx.lineWidth = 2;
+      ctx.arc(0, 0, 74, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.restore();
+
+      ctx.fillStyle = 'rgba(156,179,209,0.9)';
+      ctx.font = '14px Inter, sans-serif';
+      ctx.fillText('observable surface', 472, 208);
+      ctx.fillText('policy / trust horizon', 458, 282);
+      ctx.fillText('interior we cannot inspect directly', 428, 348);
+    }
+
+    function drawParticle(p, idx) {
+      const cx = 380;
+      const cy = 305;
+      const angle = t * p.speed * 1000 + p.phase;
+      let radius = p.radius - (mode === 'silent' || mode === 'receipt' ? (Math.sin(t * 0.0015 + p.seed) + 1) * 36 : 0);
+      let x = cx + Math.cos(angle) * radius;
+      let y = cy + Math.sin(angle) * (radius * 0.55);
+      const dx = x - cx;
+      const dy = y - cy;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+
+      const shouldFall = (mode === 'silent' || mode === 'receipt') && idx % 4 === 0 && angle % (Math.PI * 2) > Math.PI * 0.9 && angle % (Math.PI * 2) < Math.PI * 1.55;
+      if (shouldFall) {
+        const pull = Math.max(0, 1 - (dist - 72) / 150);
+        x -= dx * pull * 0.045;
+        y -= dy * pull * 0.045;
+      }
+
+      const finalDx = x - cx;
+      const finalDy = y - cy;
+      const finalDist = Math.sqrt(finalDx*finalDx + finalDy*finalDy);
+      if (mode === 'silent' && finalDist < 72) {
+        return;
+      }
+
+      ctx.beginPath();
+      ctx.fillStyle = '#ffd36e';
+      ctx.arc(x, y, 5.2, 0, Math.PI * 2);
+      ctx.fill();
+
+      if ((mode === 'silent' || mode === 'receipt') && finalDist < 120) {
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(255,141,120,0.22)';
+        ctx.lineWidth = 1.5;
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + finalDx * 0.35, y + finalDy * 0.35);
+        ctx.stroke();
+      }
+
+      if (mode === 'receipt' && finalDist < 112) {
+        const rx = x + 28;
+        const ry = y - 16;
+        ctx.fillStyle = 'rgba(135,240,200,0.95)';
+        ctx.fillRect(rx, ry, 7, 7);
+        ctx.font = '12px Inter, sans-serif';
+        ctx.fillText(idx % 8 === 0 ? 'appeal code' : idx % 6 === 0 ? 'export lane' : 'policy receipt', rx + 12, ry + 7);
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(135,240,200,0.46)';
+        ctx.lineWidth = 1.2;
+        ctx.moveTo(x + 5, y - 2);
+        ctx.lineTo(rx, ry + 3);
+        ctx.stroke();
+      }
+    }
+
+    function frame(now) {
+      t = now;
+      drawBackground();
+      drawField();
+      particles.forEach(drawParticle);
+      requestAnimationFrame(frame);
+    }
+
+    requestAnimationFrame(frame);
+  </script>
+</body>
+</html>

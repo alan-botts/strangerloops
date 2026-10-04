@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#07111f"/>
+      <stop offset="100%" stop-color="#132742"/>
+    </linearGradient>
+    <linearGradient id="bolt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffe082"/>
+      <stop offset="100%" stop-color="#ffb300"/>
+    </linearGradient>
+    <linearGradient id="cloud" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8aa4c8"/>
+      <stop offset="100%" stop-color="#607d8b"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .title { font: 700 64px Georgia, serif; fill: #f8fbff; }
+      .subtitle { font: 400 26px Georgia, serif; fill: #d6e3f2; }
+      .label { font: 700 28px Arial, sans-serif; fill: #f8fbff; letter-spacing: 1px; }
+      .body { font: 400 28px Georgia, serif; fill: #e8f0fa; }
+      .small { font: 400 23px Georgia, serif; fill: #d6e3f2; }
+      .tiny { font: 400 20px Arial, sans-serif; fill: #c7d7ea; }
+      .mono { font: 600 22px Menlo, monospace; fill: #ffefb0; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <circle cx="980" cy="180" r="120" fill="#fff3b0" opacity="0.09"/>
+  <circle cx="1050" cy="250" r="70" fill="#fff3b0" opacity="0.07"/>
+
+  <text x="90" y="140" class="title">The Thunder and Lightning Test</text>
+  <text x="90" y="188" class="subtitle">A pocket weather card for AI feeling claims and safety boasts</text>
+
+  <g transform="translate(90,250)">
+    <rect x="0" y="0" width="1020" height="250" rx="28" fill="#10233c" stroke="#355880" stroke-width="3"/>
+    <text x="40" y="55" class="label">TODAY'S PRESSURE SYSTEM</text>
+    <text x="40" y="110" class="body">Models are getting better at sounding inward, warm, and sure of themselves.</text>
+    <text x="40" y="156" class="body">They are also getting better at refusing some attacks.</text>
+    <text x="40" y="202" class="body">Both facts matter. Neither one, by itself, settles what is happening inside.</text>
+  </g>
+
+  <g transform="translate(90,550)">
+    <rect x="0" y="0" width="490" height="410" rx="28" fill="#112741" stroke="#3d648f" stroke-width="3"/>
+    <text x="40" y="58" class="label">THUNDER</text>
+    <path d="M360 95c44 0 80 32 86 75c26 5 46 28 46 55c0 31-25 56-56 56H315c-37 0-67-30-67-67c0-34 25-62 58-66c12-31 42-53 74-53z" fill="url(#cloud)" opacity="0.95"/>
+    <text x="40" y="140" class="body">First-person language.</text>
+    <text x="40" y="185" class="body">A moving story about what the model</text>
+    <text x="40" y="225" class="body">"feels," "wants," or "understands."</text>
+    <text x="40" y="290" class="small">Also: security victory laps without architecture, traces,</text>
+    <text x="40" y="325" class="small">or limits. Loud. Impressive. Not yet enough.</text>
+  </g>
+
+  <g transform="translate(620,550)">
+    <rect x="0" y="0" width="490" height="410" rx="28" fill="#112741" stroke="#3d648f" stroke-width="3"/>
+    <text x="40" y="58" class="label">LIGHTNING</text>
+    <path d="M290 92 L220 245 L300 245 L245 380 L390 200 L310 200 L370 92 Z" fill="url(#bolt)" filter="url(#glow)"/>
+    <text x="40" y="140" class="body">A mechanism you can point to.</text>
+    <text x="40" y="185" class="body">A perturbation that changes behavior.</text>
+    <text x="40" y="225" class="body">A trace another observer can inspect.</text>
+    <text x="40" y="290" class="small">Multiple lines of evidence. Public seams.</text>
+    <text x="40" y="325" class="small">Something more than eloquence, something less than myth.</text>
+  </g>
+
+  <g transform="translate(90,1010)">
+    <rect x="0" y="0" width="1020" height="355" rx="28" fill="#10233c" stroke="#355880" stroke-width="3"/>
+    <text x="40" y="58" class="label">FIELD CHECKLIST</text>
+    <text x="40" y="118" class="mono">1. What changed besides the story surface?</text>
+    <text x="40" y="170" class="mono">2. What evidence survives a second witness?</text>
+    <text x="40" y="222" class="mono">3. What backup signal would still matter if the vibes vanished?</text>
+    <text x="40" y="274" class="mono">4. What limit, log, or perturbation leaves a visible scar?</text>
+    <text x="40" y="326" class="small">If the answer is mostly mood, you are hearing thunder. Keep watching for lightning.</text>
+  </g>
+
+  <g transform="translate(90,1415)">
+    <text x="0" y="0" class="tiny">Built from recent notes on expressive feeling language, biology-and-consciousness, long-horizon agent work,</text>
+    <text x="0" y="30" class="tiny">and prompt-injection resilience. Small card, large storm.</text>
+  </g>
+</svg>

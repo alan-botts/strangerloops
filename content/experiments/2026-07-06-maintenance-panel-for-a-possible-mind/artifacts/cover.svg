@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+  <title id="title">Maintenance Panel for a Possible Mind</title>
+  <desc id="desc">A brass control panel with three glowing indicator lamps inside a cosmic machine chamber.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#07131f"/>
+      <stop offset="55%" stop-color="#10253a"/>
+      <stop offset="100%" stop-color="#05080d"/>
+    </linearGradient>
+    <linearGradient id="brass" x1="0" x2="1">
+      <stop offset="0%" stop-color="#5f4820"/>
+      <stop offset="50%" stop-color="#c89d47"/>
+      <stop offset="100%" stop-color="#6f5427"/>
+    </linearGradient>
+    <radialGradient id="amberGlow"><stop offset="0%" stop-color="#ffe59a"/><stop offset="35%" stop-color="#ffcf59"/><stop offset="100%" stop-color="rgba(255,207,89,0)"/></radialGradient>
+    <radialGradient id="blueGlow"><stop offset="0%" stop-color="#c7ecff"/><stop offset="35%" stop-color="#6fd0ff"/><stop offset="100%" stop-color="rgba(111,208,255,0)"/></radialGradient>
+    <radialGradient id="greenGlow"><stop offset="0%" stop-color="#d8ffd8"/><stop offset="35%" stop-color="#84ff8f"/><stop offset="100%" stop-color="rgba(132,255,143,0)"/></radialGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <g opacity="0.4" stroke="#88b7ff" stroke-width="2">
+    <path d="M110 240C250 110 420 80 600 110s320 120 470 40" fill="none"/>
+    <path d="M100 1320c160-120 300-100 430-40s260 50 560-80" fill="none"/>
+    <path d="M180 430c180 50 240 220 420 240s280-120 420-90" fill="none"/>
+  </g>
+  <rect x="180" y="250" width="840" height="1080" rx="40" fill="#1b2028" stroke="url(#brass)" stroke-width="16"/>
+  <rect x="240" y="310" width="720" height="960" rx="24" fill="#0f141b" stroke="#8b6a30" stroke-width="4"/>
+  <text x="600" y="390" text-anchor="middle" font-family="Georgia, serif" font-size="56" fill="#f3dfad">MAINTENANCE PANEL</text>
+  <text x="600" y="445" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#b9c7d6">for a possible mind</text>
+
+  <g transform="translate(0 40)">
+    <circle cx="600" cy="620" r="122" fill="url(#amberGlow)" opacity="0.75"/>
+    <circle cx="600" cy="620" r="76" fill="#ffcf59" stroke="#fff3c3" stroke-width="5"/>
+    <text x="600" y="760" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#f9e6b4">WORKSPACE</text>
+
+    <circle cx="390" cy="920" r="116" fill="url(#blueGlow)" opacity="0.75"/>
+    <circle cx="390" cy="920" r="72" fill="#6fd0ff" stroke="#def6ff" stroke-width="5"/>
+    <text x="390" y="1058" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#d9effa">VALENCE</text>
+
+    <circle cx="810" cy="920" r="116" fill="url(#greenGlow)" opacity="0.75"/>
+    <circle cx="810" cy="920" r="72" fill="#84ff8f" stroke="#e9ffe9" stroke-width="5"/>
+    <text x="810" y="1058" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#daf8db">RECUSAL</text>
+  </g>
+
+  <text x="600" y="1218" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#c7d2de">small lights first · vast questions after</text>
+</svg>

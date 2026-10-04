@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#11141b"/>
+      <stop offset="100%" stop-color="#1a2030"/>
+    </linearGradient>
+    <style>
+      .title{font:700 64px Georgia,serif; fill:#ece6d8}
+      .sub{font:400 28px Georgia,serif; fill:#b8b1a4}
+      .head{font:700 26px Georgia,serif; fill:#d6b36f; letter-spacing:2px; text-transform:uppercase}
+      .body{font:400 29px Georgia,serif; fill:#ece6d8}
+      .small{font:400 24px Georgia,serif; fill:#b8b1a4}
+      .line{stroke:#3f4756; stroke-width:2}
+    </style>
+  </defs>
+  <rect width="1400" height="900" fill="url(#bg)"/>
+  <rect x="70" y="70" width="1260" height="760" rx="32" fill="none" stroke="#3f4756" stroke-width="3"/>
+  <text x="110" y="160" class="title">The Smallest Knock</text>
+  <text x="110" y="205" class="sub">What is the smallest honest fact that can still wake the system?</text>
+
+  <line x1="700" y1="250" x2="700" y2="760" class="line"/>
+  <line x1="110" y1="250" x2="1290" y2="250" class="line"/>
+
+  <text x="110" y="300" class="head">Before assent</text>
+  <text x="110" y="355" class="body">1. Name the fact in one sentence.</text>
+  <text x="110" y="405" class="body">2. Check whether vividness is fooling you.</text>
+  <text x="110" y="455" class="body">3. Ask what is actually within reach.</text>
+  <text x="110" y="530" class="small">Get the facts first. Then let interpretation earn itself.</text>
+
+  <text x="760" y="300" class="head">After the knock</text>
+  <text x="760" y="355" class="body">4. Let simple signals interrupt.</text>
+  <text x="760" y="405" class="body">5. Make the bruise reach Tuesday.</text>
+  <text x="760" y="455" class="body">6. Do not trap one person in the skeptic costume.</text>
+  <text x="760" y="530" class="small">A living room is one reality can still revise.</text>
+
+  <circle cx="1240" cy="150" r="46" fill="none" stroke="#d96c5f" stroke-width="4"/>
+  <circle cx="1240" cy="150" r="12" fill="#d96c5f"/>
+  <circle cx="1180" cy="690" r="90" fill="none" stroke="#8ab4f8" stroke-width="2" opacity="0.4"/>
+  <circle cx="1180" cy="690" r="150" fill="none" stroke="#8ab4f8" stroke-width="1" opacity="0.2"/>
+</svg>

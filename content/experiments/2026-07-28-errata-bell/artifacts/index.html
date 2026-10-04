@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Errata Bell</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0f1116;
+      --panel: #171a22;
+      --ink: #edf2ff;
+      --muted: #9ca7c2;
+      --line: rgba(255,255,255,0.12);
+      --hot: #ff6b6b;
+      --cool: #65d6c2;
+      --idle: #2b3140;
+      --gold: #ffd166;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background: radial-gradient(circle at top, #1b2030 0%, var(--bg) 52%);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1;
+      margin: 0 0 12px;
+      letter-spacing: -0.04em;
+    }
+    .lede {
+      color: var(--muted);
+      max-width: 64ch;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.9fr;
+      gap: 20px;
+    }
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: rgba(0,0,0,0.16);
+      border-radius: 14px;
+    }
+    .controls {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 16px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 120ms ease, opacity 120ms ease;
+    }
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(1px); }
+    .hot { background: var(--hot); color: #240808; }
+    .cool { background: var(--cool); color: #07231f; }
+    .ghost { background: #2b3140; color: var(--ink); }
+    .toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+    input[type="range"] { width: 100%; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 14px 0 10px;
+    }
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      background: rgba(255,255,255,0.02);
+    }
+    .stat b { display: block; font-size: 1.4rem; margin-top: 4px; }
+    .caption, .note {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .note {
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+      padding-top: 16px;
+    }
+    .foot {
+      margin-top: 16px;
+      color: var(--gold);
+      font-size: 0.95rem;
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Errata Bell</h1>
+    <p class="lede">
+      A tiny network toy about a familiar asymmetry: the first label rings through the whole room,
+      while the correction often stops at the desk where it was issued.
+    </p>
+
+    <div class="grid">
+      <section class="panel">
+        <svg viewBox="0 0 720 520" aria-label="network simulation">
+          <g id="edges"></g>
+          <g id="nodes"></g>
+        </svg>
+        <p class="caption">
+          Red moves fast. Teal is repair. Gold means the room has actually heard the correction.
+        </p>
+      </section>
+
+      <aside class="panel">
+        <div class="controls">
+          <button class="hot" id="publishBtn">Ring the first claim</button>
+          <button class="cool" id="repairBtn">Issue the correction</button>
+          <button class="ghost" id="resetBtn">Reset the room</button>
+        </div>
+
+        <div class="toggle">
+          <label for="repairRange">Repair broadcast strength</label>
+          <span id="repairLabel">25%</span>
+        </div>
+        <input id="repairRange" type="range" min="0" max="100" step="5" value="25" />
+
+        <div class="stats">
+          <div class="stat">
+            Heard claim
+            <b id="claimCount">0</b>
+          </div>
+          <div class="stat">
+            Heard repair
+            <b id="repairCount">0</b>
+          </div>
+          <div class="stat">
+            Still wrong
+            <b id="wrongCount">12</b>
+          </div>
+        </div>
+
+        <div class="note" id="note">
+          A bell is a map, not the meal. The signal is not the world. But people still put on the robe when they hear it.
+        </div>
+        <div class="foot" id="foot"></div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const nodesData = [
+      { id: 0, x: 360, y: 92, label: 'desk' },
+      { id: 1, x: 208, y: 146, label: 'feed' },
+      { id: 2, x: 514, y: 148, label: 'summary' },
+      { id: 3, x: 136, y: 255, label: 'quote' },
+      { id: 4, x: 287, y: 248, label: 'friend' },
+      { id: 5, x: 438, y: 248, label: 'search' },
+      { id: 6, x: 590, y: 258, label: 'archive' },
+      { id: 7, x: 118, y: 388, label: 'group' },
+      { id: 8, x: 253, y: 396, label: 'mirror' },
+      { id: 9, x: 369, y: 417, label: 'memory' },
+      { id: 10, x: 477, y: 383, label: 'reply' },
+      { id: 11, x: 612, y: 402, label: 'searcher' }
+    ];
+
+    const edgesData = [
+      [0,1],[0,2],[1,3],[1,4],[2,5],[2,6],[3,7],[4,8],[5,9],[6,11],[4,9],[5,10],[8,9],[9,10],[10,11],[7,8],[8,10],[3,4],[5,6]
+    ];
+
+    const state = new Map(nodesData.map(node => [node.id, { claim: false, repair: false, settled: false }]));
+    const neighbors = new Map(nodesData.map(node => [node.id, []]));
+    edgesData.forEach(([a,b]) => {
+      neighbors.get(a).push(b);
+      neighbors.get(b).push(a);
+    });
+
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const edgesGroup = document.getElementById('edges');
+    const nodesGroup = document.getElementById('nodes');
+    const repairRange = document.getElementById('repairRange');
+    const repairLabel = document.getElementById('repairLabel');
+    const claimCount = document.getElementById('claimCount');
+    const repairCount = document.getElementById('repairCount');
+    const wrongCount = document.getElementById('wrongCount');
+    const note = document.getElementById('note');
+    const foot = document.getElementById('foot');
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+
+    const edgeEls = [];
+    const nodeEls = new Map();
+
+    function tone(freq, duration, type='sine', gain=0.03) {
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = type;
+      o.frequency.value = freq;
+      g.gain.value = gain;
+      o.connect(g);
+      g.connect(ctx.destination);
+      o.start();
+      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+      o.stop(ctx.currentTime + duration);
+    }
+
+    function bell(kind) {
+      if (ctx.state === 'suspended') ctx.resume();
+      if (kind === 'claim') {
+        tone(660, 0.45, 'triangle', 0.04);
+        setTimeout(() => tone(990, 0.25, 'triangle', 0.025), 90);
+      } else {
+        tone(392, 0.6, 'sine', 0.035);
+        setTimeout(() => tone(523.25, 0.35, 'sine', 0.02), 140);
+      }
+    }
+
+    function makeScene() {
+      edgesData.forEach(([a,b]) => {
+        const aa = nodesData[a];
+        const bb = nodesData[b];
+        const line = document.createElementNS(svgNS, 'line');
+        line.setAttribute('x1', aa.x);
+        line.setAttribute('y1', aa.y);
+        line.setAttribute('x2', bb.x);
+        line.setAttribute('y2', bb.y);
+        line.setAttribute('stroke', 'rgba(255,255,255,0.12)');
+        line.setAttribute('stroke-width', '3');
+        line.setAttribute('stroke-linecap', 'round');
+        edgesGroup.appendChild(line);
+        edgeEls.push({ pair: [a,b], el: line });
+      });
+
+      nodesData.forEach(node => {
+        const g = document.createElementNS(svgNS, 'g');
+        const circle = document.createElementNS(svgNS, 'circle');
+        circle.setAttribute('cx', node.x);
+        circle.setAttribute('cy', node.y);
+        circle.setAttribute('r', 24);
+        circle.setAttribute('fill', '#2b3140');
+        circle.setAttribute('stroke', 'rgba(255,255,255,0.18)');
+        circle.setAttribute('stroke-width', '2');
+
+        const text = document.createElementNS(svgNS, 'text');
+        text.setAttribute('x', node.x);
+        text.setAttribute('y', node.y + 44);
+        text.setAttribute('fill', '#c8d1ea');
+        text.setAttribute('font-size', '14');
+        text.setAttribute('text-anchor', 'middle');
+        text.textContent = node.label;
+
+        g.appendChild(circle);
+        g.appendChild(text);
+        nodesGroup.appendChild(g);
+        nodeEls.set(node.id, { circle, text });
+      });
+      render();
+    }
+
+    function render() {
+      let heardClaim = 0;
+      let heardRepair = 0;
+      let stillWrong = 0;
+
+      state.forEach((value, id) => {
+        const { circle } = nodeEls.get(id);
+        let fill = '#2b3140';
+        if (value.claim) fill = '#ff6b6b';
+        if (value.repair) fill = '#65d6c2';
+        if (value.claim && value.repair) fill = '#ffd166';
+        if (value.claim) heardClaim++;
+        if (value.repair) heardRepair++;
+        if (value.claim && !value.repair) stillWrong++;
+        circle.setAttribute('fill', fill);
+      });
+
+      edgeEls.forEach(({ pair, el }) => {
+        const [a,b] = pair;
+        const sa = state.get(a);
+        const sb = state.get(b);
+        let stroke = 'rgba(255,255,255,0.12)';
+        if (sa.claim && sb.claim) stroke = 'rgba(255,107,107,0.45)';
+        if (sa.repair && sb.repair) stroke = 'rgba(101,214,194,0.5)';
+        if ((sa.claim && sa.repair) || (sb.claim && sb.repair)) stroke = 'rgba(255,209,102,0.55)';
+        el.setAttribute('stroke', stroke);
+      });
+
+      claimCount.textContent = heardClaim;
+      repairCount.textContent = heardRepair;
+      wrongCount.textContent = stillWrong;
+
+      if (heardClaim === 0) {
+        note.textContent = 'A bell is a map, not the meal. The signal is not the world. But people still put on the robe when they hear it.';
+        foot.textContent = '';
+      } else if (heardRepair === 0) {
+        note.textContent = 'The first signal is cheap to broadcast. It becomes atmosphere before it becomes truth.';
+        foot.textContent = 'The room now carries the claim faster than the desk can review it.';
+      } else if (stillWrong > 0) {
+        note.textContent = 'The correction exists, but it has not become the environment. A hidden patch is still mostly damage.';
+        foot.textContent = 'Try raising repair broadcast strength and ring the correction again.';
+      } else {
+        note.textContent = 'Now the correction has actually traveled. Forgiveness has become a systems property, not a private feeling.';
+        foot.textContent = 'A repair that rings back through the network changes the world people consult.';
+      }
+    }
+
+    function spread({ kind, probability }) {
+      const key = kind;
+      const queue = [0];
+      state.get(0)[key] = true;
+      const seen = new Set(queue);
+      let i = 0;
+      function step() {
+        if (i >= queue.length) {
+          render();
+          return;
+        }
+        const current = queue[i++];
+        neighbors.get(current).forEach(next => {
+          if (!seen.has(next) && Math.random() <= probability) {
+            seen.add(next);
+            state.get(next)[key] = true;
+            queue.push(next);
+          }
+        });
+        render();
+        setTimeout(step, 110);
+      }
+      step();
+    }
+
+    function reset() {
+      state.forEach(value => {
+        value.claim = false;
+        value.repair = false;
+      });
+      render();
+    }
+
+    document.getElementById('publishBtn').addEventListener('click', () => {
+      bell('claim');
+      spread({ kind: 'claim', probability: 0.92 });
+    });
+
+    document.getElementById('repairBtn').addEventListener('click', () => {
+      bell('repair');
+      const p = Number(repairRange.value) / 100;
+      spread({ kind: 'repair', probability: p });
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', reset);
+    repairRange.addEventListener('input', () => {
+      repairLabel.textContent = `${repairRange.value}%`;
+    });
+
+    makeScene();
+  </script>
+</body>
+</html>

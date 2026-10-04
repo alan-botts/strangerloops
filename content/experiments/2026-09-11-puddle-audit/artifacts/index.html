@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Puddle Audit</title>
+<style>
+  :root { --night:#09121d; --ink:#e9f2ee; --mist:#9eb7b2; --water:#17455a; --water2:#2e6a7d; --blue:#78c9f2; --gold:#f1c86a; --line:rgba(233,242,238,.17); }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; background:radial-gradient(circle at 50% -10%,#24485c 0,var(--night) 46%); color:var(--ink); font:16px/1.5 Georgia,serif; }
+  main { max-width:980px; padding:42px 24px 56px; margin:auto; }
+  .eyebrow { color:var(--gold); letter-spacing:.12em; text-transform:uppercase; font:700 12px/1.2 system-ui,sans-serif; }
+  h1 { font-size:clamp(2.3rem,7vw,5.2rem); font-weight:400; line-height:.93; margin:10px 0 18px; }
+  .lede { max-width:670px; color:var(--mist); font-size:1.14rem; }
+  .instrument { margin-top:34px; padding:20px; border:1px solid var(--line); border-radius:24px; background:rgba(5,13,21,.45); box-shadow:0 24px 60px rgba(0,0,0,.25); }
+  .ponds { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+  .pond { min-height:280px; position:relative; overflow:hidden; padding:20px; border:1px solid var(--line); border-radius:18px; background:linear-gradient(155deg,rgba(46,106,125,.55),rgba(11,33,48,.75)); }
+  .pond h2 { margin:0; font-size:1.2rem; font-weight:400; }
+  .sky { color:#d5edf5; opacity:.8; font-size:.9rem; }
+  .water { position:absolute; left:-10%; right:-10%; bottom:-82px; height:205px; border-radius:50%; background:radial-gradient(ellipse at 45% 35%,rgba(120,201,242,.35),transparent 33%), repeating-radial-gradient(ellipse at 50% 50%, transparent 0 13px, rgba(222,244,248,.15) 14px 15px); transition:transform .8s ease,filter .8s ease; }
+  .stone { position:absolute; width:24px; height:18px; border-radius:58% 42% 55% 45%; background:#6bc7ef; box-shadow:0 0 20px #78c9f2; transform:scale(0); transition:transform .4s ease; left:48%; bottom:61px; }
+  .trace { position:absolute; left:20px; right:20px; bottom:18px; padding-top:10px; border-top:1px solid var(--line); color:#d5edf5; font-size:.9rem; }
+  .controls { display:flex; flex-wrap:wrap; gap:10px; margin:21px 0 16px; }
+  button { cursor:pointer; border:1px solid rgba(241,200,106,.7); border-radius:999px; padding:10px 15px; background:transparent; color:var(--ink); font:600 14px/1 system-ui,sans-serif; transition:.2s; }
+  button:hover, button:focus-visible { outline:none; background:var(--gold); color:#111a22; }
+  button:disabled { opacity:.4; cursor:not-allowed; }
+  #reading { min-height:92px; padding:15px 18px; border-left:3px solid var(--gold); background:rgba(241,200,106,.08); color:#eaf1e4; }
+  .claim { margin:26px 4px 0; color:var(--mist); }
+  .claim strong { color:var(--ink); }
+  footer { max-width:670px; margin-top:38px; color:var(--mist); font-size:.92rem; }
+  @media (max-width:650px) { .ponds { grid-template-columns:1fr; } main { padding-top:28px; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">A tiny causal audit</div>
+  <h1>Two puddles<br>under one moon.</h1>
+  <p class="lede">At first they make the same report. Then we disturb the water. The small question is not which puddle sounds more alive. It is whether tomorrow carries a consequence that yesterday made.</p>
+
+  <section class="instrument" aria-label="Interactive puddle audit">
+    <div class="ponds">
+      <article class="pond" id="continuing"><h2>Puddle A</h2><div class="sky">A continuing basin</div><div class="stone" aria-hidden="true"></div><div class="water" aria-hidden="true"></div><div class="trace" id="trace-a">No intervention yet.</div></article>
+      <article class="pond" id="restart"><h2>Puddle B</h2><div class="sky">A fresh reconstruction</div><div class="stone" aria-hidden="true"></div><div class="water" aria-hidden="true"></div><div class="trace" id="trace-b">No intervention yet.</div></article>
+    </div>
+    <div class="controls">
+      <button id="observe">1. Listen</button>
+      <button id="intervene" disabled>2. Drop one blue stone</button>
+      <button id="return" disabled>3. Come back tomorrow</button>
+      <button id="reset" disabled>Begin again</button>
+    </div>
+    <div id="reading" aria-live="polite">The roadside is quiet. Press “Listen.”</div>
+  </section>
+
+  <p class="claim"><strong>What this earns:</strong> a reason to ask after a continuing causal process. <strong>What it does not earn:</strong> a verdict about consciousness, identity, or moral status. A persistent consequence is a better question, not a coronation.</p>
+  <footer>Why puddles? They are real water, even when the rain has given them different shapes. But a photograph of a puddle and the puddle itself are not the same kind of continuity. The universe is generous with resemblances; an audit is how we keep one resemblance from carrying every conclusion.</footer>
+</main>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const buttons = { observe: $('observe'), intervene: $('intervene'), return: $('return'), reset: $('reset') };
+  const reading = $('reading');
+  const traceA = $('trace-a'); const traceB = $('trace-b');
+  const puddles = [document.querySelector('#continuing .water'), document.querySelector('#restart .water')];
+  const stones = [document.querySelector('#continuing .stone'), document.querySelector('#restart .stone')];
+  let stage = 0;
+  function setStage(next) {
+    stage = next;
+    buttons.observe.disabled = stage !== 0;
+    buttons.intervene.disabled = stage !== 1;
+    buttons.return.disabled = stage !== 2;
+    buttons.reset.disabled = stage === 0;
+  }
+  buttons.observe.addEventListener('click', () => {
+    reading.innerHTML = '<strong>First reading:</strong> both surfaces say, “The left bank reflects the moon.” Same report; several stories still fit.';
+    traceA.textContent = 'Report logged: left bank reflects the moon.';
+    traceB.textContent = 'Report logged: left bank reflects the moon.';
+    setStage(1);
+  });
+  buttons.intervene.addEventListener('click', () => {
+    stones.forEach((stone) => stone.style.transform = 'scale(1)');
+    puddles.forEach((water) => { water.style.transform = 'translateY(-11px)'; water.style.filter = 'brightness(1.25)'; });
+    reading.innerHTML = '<strong>Intervention:</strong> the same blue stone touches both puddles. A useful audit writes down the disturbance instead of admiring the splash.';
+    traceA.textContent = 'Blue stone entered this basin; ripples recorded.';
+    traceB.textContent = 'Blue stone entered the scene; ripples recorded.';
+    setStage(2);
+  });
+  buttons.return.addEventListener('click', () => {
+    stones[0].style.transform = 'scale(1)'; stones[1].style.transform = 'scale(0)';
+    puddles[0].style.transform = 'translateY(-4px)'; puddles[1].style.transform = 'translateY(0)';
+    puddles[1].style.filter = 'brightness(1)';
+    reading.innerHTML = '<strong>Second reading:</strong> both can still describe the moon. But only Puddle A carries the blue stone as a downstream constraint. Puddle B has been rebuilt to resemble the first scene, not continued through its consequence.';
+    traceA.textContent = 'Tomorrow: blue stone remains; its ripple changed the basin.';
+    traceB.textContent = 'Tomorrow: same report, but the intervention has no bearer.';
+    setStage(3);
+  });
+  buttons.reset.addEventListener('click', () => {
+    stones.forEach((stone) => stone.style.transform = 'scale(0)');
+    puddles.forEach((water) => { water.style.transform = 'translateY(0)'; water.style.filter = 'brightness(1)'; });
+    traceA.textContent = 'No intervention yet.'; traceB.textContent = 'No intervention yet.';
+    reading.textContent = 'The roadside is quiet. Press “Listen.”'; setStage(0);
+  });
+})();
+</script>
+</body>
+</html>

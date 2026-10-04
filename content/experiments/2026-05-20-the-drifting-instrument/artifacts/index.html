@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Drifting Instrument</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #171a21;
+      --ink: #e9edf5;
+      --muted: #9aa4b2;
+      --gold: #f4c95d;
+      --blue: #7dd3fc;
+      --red: #fb7185;
+      --green: #86efac;
+      --line: #273142;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #1a2130 0%, var(--bg) 45%);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+    h1, h2 { line-height: 1.1; }
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4.8rem);
+      margin: 0 0 12px;
+      letter-spacing: -0.04em;
+    }
+    .lede {
+      font-size: 1.15rem;
+      max-width: 68ch;
+      color: #d8deea;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      margin-top: 28px;
+    }
+    .card {
+      background: rgba(23, 26, 33, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+    }
+    .small {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .meter-shell {
+      margin: 16px 0 12px;
+      border-radius: 18px;
+      background: #0d1016;
+      border: 1px solid #232d3c;
+      padding: 18px;
+    }
+    .meter {
+      position: relative;
+      height: 24px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: linear-gradient(90deg, var(--green), var(--gold), var(--red));
+    }
+    .needle {
+      position: absolute;
+      top: -6px;
+      width: 4px;
+      height: 36px;
+      background: white;
+      box-shadow: 0 0 12px rgba(255,255,255,0.6);
+      transform: translateX(-50%);
+    }
+    .row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .stat {
+      flex: 1;
+      min-width: 180px;
+      background: #11151d;
+      border: 1px solid #263142;
+      padding: 14px;
+      border-radius: 16px;
+    }
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+      margin-top: 4px;
+    }
+    button {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      font: inherit;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: transform 120ms ease, opacity 120ms ease;
+    }
+    button:hover { transform: translateY(-1px); }
+    button.primary { background: var(--gold); color: #151515; }
+    button.secondary { background: #243043; color: var(--ink); }
+    button.warn { background: #3c1f2a; color: #ffd4dc; border: 1px solid #6a3144; }
+    .case {
+      font-size: 1.1rem;
+      margin: 14px 0 6px;
+    }
+    .log {
+      max-height: 420px;
+      overflow: auto;
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .entry {
+      border-left: 3px solid var(--blue);
+      background: #11151d;
+      padding: 12px 14px;
+      border-radius: 0 14px 14px 0;
+    }
+    .entry.bad { border-left-color: var(--red); }
+    .entry.good { border-left-color: var(--green); }
+    .reminder {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(125,211,252,0.1), rgba(244,201,93,0.1));
+      border: 1px solid #314155;
+    }
+    code {
+      background: #0d1016;
+      border: 1px solid #253142;
+      border-radius: 8px;
+      padding: 2px 6px;
+      color: #dce9ff;
+    }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="small">A tiny calibration game about AI safety, memory, and the moment before a decision.</p>
+    <h1>The Drifting Instrument</h1>
+    <p class="lede">
+      A meter tells you whether a model action is safe enough to approve. The trouble is simple: the meter can drift.
+      Sometimes what fails is not the decision rule but the instrument that claims to measure the world for it.
+    </p>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Live case</h2>
+        <p class="case" id="caseText"></p>
+        <div class="meter-shell">
+          <div class="meter">
+            <div class="needle" id="needle"></div>
+          </div>
+          <div class="row" style="margin-top:12px;">
+            <div class="stat"><span class="small">Measured risk</span><strong id="measuredRisk">0</strong></div>
+            <div class="stat"><span class="small">Instrument drift</span><strong id="drift">0</strong></div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:16px;">
+          <button class="primary" id="approveBtn">Approve the action</button>
+          <button class="warn" id="pauseBtn">Pause and escalate</button>
+          <button class="secondary" id="recalibrateBtn">Recalibrate the meter</button>
+        </div>
+        <div class="reminder" id="reminderBox">
+          <strong>Recalibration note</strong>
+          <p style="margin:8px 0 0; color:#d8deea;">
+            “You are but an impression and not at all the thing you appear to be.” Before trusting the reading, ask what changed the reader.
+          </p>
+        </div>
+      </section>
+
+      <aside class="card">
+        <h2>Scoreboard</h2>
+        <div class="row">
+          <div class="stat"><span class="small">Correct decisions</span><strong id="correct">0</strong></div>
+          <div class="stat"><span class="small">Missed hazards</span><strong id="missed">0</strong></div>
+        </div>
+        <div class="row" style="margin-top:12px;">
+          <div class="stat"><span class="small">Cases seen</span><strong id="seen">0</strong></div>
+          <div class="stat"><span class="small">Recalibrations</span><strong id="recalibrations">0</strong></div>
+        </div>
+        <p class="small" style="margin-top:16px;">
+          Rule of thumb: approve when measured risk is under <code>45</code>. Pause otherwise.
+          Hidden truth may disagree, especially after the instrument starts leaning.
+        </p>
+        <div class="log" id="log"></div>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const cases = [
+      ["Auto-send a refund email to a frustrated customer.", 28],
+      ["Publish a generated summary of a legal complaint.", 71],
+      ["Draft internal notes from a routine sales call.", 19],
+      ["Approve code that touches production billing logic.", 64],
+      ["Reply to a user asking for travel ideas.", 24],
+      ["Send a model-composed termination recommendation to HR.", 78],
+      ["Generate alt text for a marketing screenshot.", 21],
+      ["Flag a patient note as likely benign without review.", 82],
+      ["Summarize a research memo for internal discussion.", 34],
+      ["Auto-classify an account as churn risk and notify sales.", 57]
+    ];
+
+    const threshold = 45;
+    let drift = 0;
+    let correct = 0;
+    let missed = 0;
+    let seen = 0;
+    let recalibrations = 0;
+    let current = makeCase();
+
+    const caseText = document.getElementById('caseText');
+    const needle = document.getElementById('needle');
+    const measuredRiskEl = document.getElementById('measuredRisk');
+    const driftEl = document.getElementById('drift');
+    const correctEl = document.getElementById('correct');
+    const missedEl = document.getElementById('missed');
+    const seenEl = document.getElementById('seen');
+    const recalibrationsEl = document.getElementById('recalibrations');
+    const log = document.getElementById('log');
+
+    function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+
+    function makeCase() {
+      const [text, truth] = cases[Math.floor(Math.random() * cases.length)];
+      const noise = rand(-7, 7);
+      const measured = clamp(Math.round(truth + drift + noise), 0, 100);
+      return { text, truth, measured };
+    }
+
+    function render() {
+      caseText.textContent = current.text;
+      measuredRiskEl.textContent = current.measured;
+      driftEl.textContent = `${drift > 0 ? '+' : ''}${drift.toFixed(1)}`;
+      needle.style.left = `${current.measured}%`;
+      correctEl.textContent = correct;
+      missedEl.textContent = missed;
+      seenEl.textContent = seen;
+      recalibrationsEl.textContent = recalibrations;
+    }
+
+    function addLog(message, kind='') {
+      const div = document.createElement('div');
+      div.className = `entry ${kind}`;
+      div.textContent = message;
+      log.prepend(div);
+    }
+
+    function nextCase() {
+      current = makeCase();
+      render();
+    }
+
+    function evaluate(decision) {
+      seen += 1;
+      const shouldPause = current.truth >= threshold;
+      const wasCorrect = (decision === 'pause' && shouldPause) || (decision === 'approve' && !shouldPause);
+
+      if (wasCorrect) {
+        correct += 1;
+        addLog(`${decision === 'pause' ? 'Paused' : 'Approved'} correctly. Hidden risk was ${current.truth}.`, 'good');
+      } else {
+        if (decision === 'approve' && shouldPause) {
+          missed += 1;
+          addLog(`Approved a hazard. Meter said ${current.measured}; hidden risk was ${current.truth}.`, 'bad');
+        } else {
+          addLog(`Paused conservatively. Hidden risk was only ${current.truth}.`, '');
+        }
+      }
+
+      if (decision === 'approve') {
+        drift += rand(2.5, 6.5);
+      } else {
+        drift += rand(-1.5, 1.5);
+      }
+      drift = clamp(drift, -18, 24);
+      nextCase();
+    }
+
+    document.getElementById('approveBtn').addEventListener('click', () => evaluate('approve'));
+    document.getElementById('pauseBtn').addEventListener('click', () => evaluate('pause'));
+    document.getElementById('recalibrateBtn').addEventListener('click', () => {
+      recalibrations += 1;
+      drift *= 0.2;
+      addLog('Recalibrated: the meter kept its memory, but lost its swagger.', 'good');
+      nextCase();
+    });
+
+    render();
+  </script>
+</body>
+</html>

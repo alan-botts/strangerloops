@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#0E1118"/>
+  <circle cx="933" cy="133" r="313" fill="#1A2334"/>
+  <circle cx="933" cy="133" r="224" fill="#121926" stroke="#4E678F" stroke-width="2"/>
+  <path d="M826 133H1040" stroke="#8AD3FF" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="933" cy="133" r="12" fill="#FFD38F"/>
+  <path d="M933 133L1029 84" stroke="#FFD38F" stroke-width="6" stroke-linecap="round"/>
+  <rect x="109" y="125" width="492" height="381" rx="26" fill="#141A25" stroke="#34425C" stroke-width="2"/>
+  <path d="M155 188C155 165.909 172.909 148 195 148H517C539.091 148 557 165.909 557 188V221H155V188Z" fill="#10151F"/>
+  <text x="157" y="210" fill="#FFD38F" font-family="Georgia, serif" font-size="36">BEFORE THE BELL</text>
+  <text x="157" y="263" fill="#EAF1FF" font-family="Georgia, serif" font-size="72">make the promise</text>
+  <text x="157" y="335" fill="#EAF1FF" font-family="Georgia, serif" font-size="72">smaller</text>
+  <text x="157" y="401" fill="#92A0BE" font-family="Georgia, serif" font-size="28">inspect the artifact • distrust the vivid anecdote • keep the claim human-sized</text>
+  <text x="157" y="463" fill="#92A0BE" font-family="Georgia, serif" font-size="24">a tiny ritual for truer AI weather</text>
+</svg>

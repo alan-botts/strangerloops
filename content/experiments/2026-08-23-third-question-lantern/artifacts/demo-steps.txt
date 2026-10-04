@@ -1,0 +1,7 @@
+Manual acceptance checks
+========================
+1. Open index.html.
+2. Verify initial state: "The model says it is scared" and all three panels are populated.
+3. Select "A test changes its report"; verify all text fields change and the selected chip gains the gold state.
+4. Select "Observers disagree"; verify the action panel says to preserve both accounts and choose low-regret care.
+5. At a narrow viewport, verify the three panels stack in a single readable column.

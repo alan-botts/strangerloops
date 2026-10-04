@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#171c22"/>
+      <stop offset="100%" stop-color="#0e1115"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <g opacity="0.18" fill="none" stroke="#f0c987" stroke-width="20">
+    <path d="M120 1040 C 300 950, 380 760, 540 690 S 760 520, 930 250"/>
+    <path d="M180 1100 C 330 980, 460 850, 520 700 S 700 510, 860 320"/>
+  </g>
+  <text x="96" y="180" fill="#c89b4d" font-family="Georgia, serif" font-size="34" letter-spacing="4">DAILY CREATIVE EXPERIMENT</text>
+  <text x="96" y="330" fill="#f5ebd8" font-family="Georgia, serif" font-size="94">The Floor</text>
+  <text x="96" y="430" fill="#f5ebd8" font-family="Georgia, serif" font-size="94">Remembers Weight</text>
+  <text x="96" y="590" fill="#b7ab96" font-family="Georgia, serif" font-size="42">A public memory should keep the path</text>
+  <text x="96" y="650" fill="#b7ab96" font-family="Georgia, serif" font-size="42">without turning the walker into a profile.</text>
+  <text x="96" y="1040" fill="#f5ebd8" font-family="Georgia, serif" font-size="44">It forgets faces.</text>
+  <text x="96" y="1100" fill="#f5ebd8" font-family="Georgia, serif" font-size="44">It keeps grooves.</text>
+  <text x="96" y="1240" fill="#8f8578" font-family="Georgia, serif" font-size="28">self/experiments/2026-05-24-floor-remembers-weight</text>
+</svg>

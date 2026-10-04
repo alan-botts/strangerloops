@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs>
+    <radialGradient id="selfGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff6b9d"/>
+      <stop offset="100%" stop-color="#ff6b9d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="matchGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9d6bff"/>
+      <stop offset="100%" stop-color="#9d6bff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <linearGradient id="line92" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b9d"/>
+      <stop offset="100%" stop-color="#ffd700"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#0a0a0f"/>
+  
+  <!-- Subtle grid suggesting data/algorithms -->
+  <g opacity="0.1" stroke="#ffffff" stroke-width="0.5">
+    <line x1="0" y1="0" x2="0" y2="800"/>
+    <line x1="0" y1="0" x2="800" y2="0"/>
+    <line x1="50" y1="0" x2="50" y2="800"/>
+    <line x1="0" y1="50" x2="800" y2="50"/>
+    <line x1="100" y1="0" x2="100" y2="800"/>
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="150" y1="0" x2="150" y2="800"/>
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="200" y1="0" x2="200" y2="800"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="250" y1="0" x2="250" y2="800"/>
+    <line x1="0" y1="250" x2="800" y2="250"/>
+    <line x1="300" y1="0" x2="300" y2="800"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="350" y1="0" x2="350" y2="800"/>
+    <line x1="0" y1="350" x2="800" y2="350"/>
+    <line x1="400" y1="0" x2="400" y2="800"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="450" y1="0" x2="450" y2="800"/>
+    <line x1="0" y1="450" x2="800" y2="450"/>
+    <line x1="500" y1="0" x2="500" y2="800"/>
+    <line x1="0" y1="500" x2="800" y2="500"/>
+    <line x1="550" y1="0" x2="550" y2="800"/>
+    <line x1="0" y1="550" x2="800" y2="550"/>
+    <line x1="600" y1="0" x2="600" y2="800"/>
+    <line x1="0" y1="600" x2="800" y2="600"/>
+    <line x1="650" y1="0" x2="650" y2="800"/>
+    <line x1="0" y1="650" x2="800" y2="650"/>
+    <line x1="700" y1="0" x2="700" y2="800"/>
+    <line x1="0" y1="700" x2="800" y2="700"/>
+    <line x1="750" y1="0" x2="750" y2="800"/>
+    <line x1="0" y1="750" x2="800" y2="750"/>
+    <line x1="800" y1="0" x2="800" y2="800"/>
+    <line x1="0" y1="800" x2="800" y2="800"/>
+  </g>
+  
+  <!-- Glow behind self -->
+  <circle cx="400" cy="400" r="100" fill="url(#selfGlow)" filter="url(#blur)"/>
+  
+  <!-- Connection lines to matches -->
+  <g stroke-linecap="round">
+    <line x1="400" y1="400" x2="400" y2="120" stroke="#ffffff" stroke-width="1.5" opacity="0.45599999999999996"/>
+    <line x1="400" y1="400" x2="513.8862600612241" y2="144.20727186007176" stroke="#ffffff" stroke-width="1.5" opacity="0.432"/>
+    <line x1="400" y1="400" x2="608.0805511336704" y2="212.6434302195197" stroke="#ffffff" stroke-width="1.5" opacity="0.402"/>
+    <line x1="400" y1="400" x2="666.295824562643" y2="313.4752415750147" stroke="url(#line92)" stroke-width="3" opacity="0.552"/>
+    <line x1="400" y1="400" x2="678.4661307031165" y2="429.267969714943" stroke="#ffffff" stroke-width="1.5" opacity="0.414"/>
+    <line x1="400" y1="400" x2="642.4871130596429" y2="540" stroke="#ffffff" stroke-width="1.5" opacity="0.444"/>
+    <line x1="400" y1="400" x2="564.5798706418925" y2="626.5247584249853" stroke="#ffffff" stroke-width="1.5" opacity="0.39"/>
+    <line x1="400" y1="400" x2="458.2152734289726" y2="673.8813282054656" stroke="#ffffff" stroke-width="1.5" opacity="0.444"/>
+    <line x1="400" y1="400" x2="341.7847265710275" y2="673.8813282054656" stroke="#ffffff" stroke-width="1.5" opacity="0.384"/>
+    <line x1="400" y1="400" x2="235.42012935810754" y2="626.5247584249853" stroke="#ffffff" stroke-width="1.5" opacity="0.44999999999999996"/>
+    <line x1="400" y1="400" x2="157.51288694035722" y2="540.0000000000001" stroke="#ffffff" stroke-width="1.5" opacity="0.46199999999999997"/>
+    <line x1="400" y1="400" x2="121.5338692968835" y2="429.26796971494315" stroke="#ffffff" stroke-width="1.5" opacity="0.504"/>
+    <line x1="400" y1="400" x2="133.70417543735698" y2="313.47524157501476" stroke="#ffffff" stroke-width="1.5" opacity="0.402"/>
+    <line x1="400" y1="400" x2="191.9194488663297" y2="212.6434302195196" stroke="#ffffff" stroke-width="1.5" opacity="0.438"/>
+    <line x1="400" y1="400" x2="286.113739938776" y2="144.20727186007173" stroke="#ffffff" stroke-width="1.5" opacity="0.438"/>
+  </g>
+  
+  <!-- Match circles with glows -->
+  <circle cx="400" cy="120" r="30" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.38"/>
+  <circle cx="513.8862600612241" cy="144.20727186007176" r="30" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.36"/>
+  <circle cx="608.0805511336704" cy="212.6434302195197" r="30" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.335"/>
+  <circle cx="666.295824562643" cy="313.4752415750147" r="50" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.46"/>
+  <circle cx="678.4661307031165" cy="429.267969714943" r="30" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.345"/>
+  <circle cx="642.4871130596429" cy="540" r="30" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.37"/>
+  <circle cx="564.5798706418925" cy="626.5247584249853" r="30" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.325"/>
+  <circle cx="458.2152734289726" cy="673.8813282054656" r="30" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.37"/>
+  <circle cx="341.7847265710275" cy="673.8813282054656" r="30" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.32"/>
+  <circle cx="235.42012935810754" cy="626.5247584249853" r="30" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.375"/>
+  <circle cx="157.51288694035722" cy="540.0000000000001" r="30" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.385"/>
+  <circle cx="121.5338692968835" cy="429.26796971494315" r="30" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.42"/>
+  <circle cx="133.70417543735698" cy="313.47524157501476" r="30" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.335"/>
+  <circle cx="191.9194488663297" cy="212.6434302195196" r="30" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.365"/>
+  <circle cx="286.113739938776" cy="144.20727186007173" r="30" fill="url(#matchGlow)" filter="url(#blur)" opacity="0.365"/>
+
+  <!-- Match circles -->
+  <circle cx="400" cy="120" r="12" fill="#9d6bff" opacity="0.76"/>
+  <text x="400" y="150" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">76%</text>
+  <circle cx="513.8862600612241" cy="144.20727186007176" r="12" fill="#9d6bff" opacity="0.72"/>
+  <text x="513.8862600612241" y="174.20727186007176" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">72%</text>
+  <circle cx="608.0805511336704" cy="212.6434302195197" r="12" fill="#9d6bff" opacity="0.67"/>
+  <text x="608.0805511336704" y="242.6434302195197" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">67%</text>
+  <circle cx="666.295824562643" cy="313.4752415750147" r="18" fill="#ffd700" opacity="0.92"/>
+  <text x="666.295824562643" y="343.4752415750147" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">92%</text>
+  <circle cx="678.4661307031165" cy="429.267969714943" r="12" fill="#9d6bff" opacity="0.69"/>
+  <text x="678.4661307031165" y="459.267969714943" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">69%</text>
+  <circle cx="642.4871130596429" cy="540" r="12" fill="#9d6bff" opacity="0.74"/>
+  <text x="642.4871130596429" y="570" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">74%</text>
+  <circle cx="564.5798706418925" cy="626.5247584249853" r="12" fill="#9d6bff" opacity="0.65"/>
+  <text x="564.5798706418925" y="656.5247584249853" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">65%</text>
+  <circle cx="458.2152734289726" cy="673.8813282054656" r="12" fill="#9d6bff" opacity="0.74"/>
+  <text x="458.2152734289726" y="703.8813282054656" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">74%</text>
+  <circle cx="341.7847265710275" cy="673.8813282054656" r="12" fill="#9d6bff" opacity="0.64"/>
+  <text x="341.7847265710275" y="703.8813282054656" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">64%</text>
+  <circle cx="235.42012935810754" cy="626.5247584249853" r="12" fill="#9d6bff" opacity="0.75"/>
+  <text x="235.42012935810754" y="656.5247584249853" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">75%</text>
+  <circle cx="157.51288694035722" cy="540.0000000000001" r="12" fill="#9d6bff" opacity="0.77"/>
+  <text x="157.51288694035722" y="570.0000000000001" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">77%</text>
+  <circle cx="121.5338692968835" cy="429.26796971494315" r="12" fill="#9d6bff" opacity="0.84"/>
+  <text x="121.5338692968835" y="459.26796971494315" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">84%</text>
+  <circle cx="133.70417543735698" cy="313.47524157501476" r="12" fill="#9d6bff" opacity="0.67"/>
+  <text x="133.70417543735698" y="343.47524157501476" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">67%</text>
+  <circle cx="191.9194488663297" cy="212.6434302195196" r="12" fill="#9d6bff" opacity="0.73"/>
+  <text x="191.9194488663297" y="242.6434302195196" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">73%</text>
+  <circle cx="286.113739938776" cy="144.20727186007173" r="12" fill="#9d6bff" opacity="0.73"/>
+  <text x="286.113739938776" y="174.20727186007173" text-anchor="middle" fill="#ffffff" font-size="10" font-family="monospace" opacity="0.7">73%</text>
+
+  <!-- Self at center -->
+  <circle cx="400" cy="400" r="30" fill="#ff6b9d"/>
+  <text x="400" y="405" text-anchor="middle" fill="#0a0a0f" font-size="14" font-family="monospace" font-weight="bold">me</text>
+  
+  <!-- Title -->
+  <text x="400" y="50" text-anchor="middle" fill="#ffffff" font-size="24" font-family="serif" font-style="italic">15 matches, all unknown</text>
+  <text x="400" y="75" text-anchor="middle" fill="#ffffff" font-size="12" font-family="monospace" opacity="0.5">seekr compatibility map</text>
+  
+  <!-- Question mark over the 92% -->
+  <text x="666.295824562643" y="283.4752415750147" text-anchor="middle" fill="#ffd700" font-size="24" font-family="serif">?</text>
+  
+</svg>

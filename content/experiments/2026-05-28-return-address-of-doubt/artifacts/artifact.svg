@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1400" viewBox="0 0 1400 1400" role="img" aria-label="A return-address card beside a half-open machine-room door">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#101722"/>
+      <stop offset="100%" stop-color="#1f1720"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3a2b28"/>
+      <stop offset="100%" stop-color="#241b1f"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx="50%" cy="20%" r="70%">
+      <stop offset="0%" stop-color="#ffdf9a" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#ffdf9a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="1400" fill="url(#bg)"/>
+  <circle cx="660" cy="210" r="340" fill="url(#lamp)"/>
+
+  <!-- starlike motes -->
+  <g fill="#f6e8c8" opacity="0.7">
+    <circle cx="216" cy="166" r="2"/><circle cx="1180" cy="260" r="1.5"/><circle cx="980" cy="128" r="2.2"/>
+    <circle cx="1104" cy="418" r="1.7"/><circle cx="320" cy="330" r="1.2"/><circle cx="558" cy="110" r="1.6"/>
+    <circle cx="870" cy="360" r="1.3"/><circle cx="1290" cy="188" r="1.8"/><circle cx="145" cy="438" r="1.1"/>
+  </g>
+
+  <!-- machine wall -->
+  <rect x="120" y="180" width="1160" height="840" rx="18" fill="#22303a" stroke="#49606d" stroke-width="6"/>
+  <rect x="180" y="260" width="820" height="620" rx="10" fill="#172028" stroke="#334651" stroke-width="4"/>
+
+  <!-- relay lights -->
+  <g>
+    <circle cx="1080" cy="336" r="54" fill="#8a151b" opacity="0.65" filter="url(#softGlow)"/>
+    <circle cx="1080" cy="336" r="28" fill="#d54444"/>
+    <circle cx="1160" cy="428" r="42" fill="#8a151b" opacity="0.55" filter="url(#softGlow)"/>
+    <circle cx="1160" cy="428" r="22" fill="#c83d3d"/>
+    <circle cx="1030" cy="470" r="24" fill="#dcb56a" opacity="0.9"/>
+  </g>
+
+  <!-- half-open maintenance door -->
+  <g transform="translate(350 300)">
+    <rect x="0" y="0" width="300" height="500" rx="10" fill="#314652" stroke="#768996" stroke-width="5"/>
+    <rect x="28" y="28" width="244" height="444" rx="8" fill="#253641"/>
+    <circle cx="238" cy="248" r="10" fill="#c3a36a"/>
+    <g transform="translate(246 0) skewY(-10)">
+      <rect x="0" y="12" width="168" height="488" rx="10" fill="#192127" stroke="#5e717b" stroke-width="4"/>
+      <rect x="18" y="36" width="132" height="426" rx="6" fill="#0e151b"/>
+    </g>
+  </g>
+
+  <!-- workbench -->
+  <rect x="230" y="936" width="940" height="210" rx="14" fill="url(#floor)" stroke="#5c4436" stroke-width="6"/>
+  <rect x="230" y="936" width="940" height="20" fill="#7f5c46" opacity="0.5"/>
+
+  <!-- return-address card -->
+  <g transform="translate(490 980) rotate(-8)">
+    <rect x="0" y="0" width="360" height="210" rx="8" fill="#efe4c8" stroke="#c9b99a" stroke-width="4"/>
+    <line x1="48" y1="66" x2="220" y2="66" stroke="#7b6e64" stroke-width="4" opacity="0.75"/>
+    <line x1="48" y1="96" x2="262" y2="96" stroke="#7b6e64" stroke-width="4" opacity="0.65"/>
+    <line x1="48" y1="126" x2="194" y2="126" stroke="#7b6e64" stroke-width="4" opacity="0.55"/>
+    <circle cx="290" cy="86" r="34" fill="#f6ebe5" stroke="#d44f4f" stroke-width="5"/>
+    <path d="M286 66c0-11 7-18 18-18 10 0 18 7 18 16 0 8-4 12-11 17-6 4-9 7-9 14" fill="none" stroke="#d44f4f" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="303" cy="119" r="5.5" fill="#d44f4f"/>
+    <path d="M38 180c46-18 112-18 160 0" fill="none" stroke="#b48b5a" stroke-width="3" opacity="0.5"/>
+  </g>
+
+  <!-- captionless little brass clip -->
+  <g transform="translate(414 954)">
+    <rect x="0" y="0" width="88" height="28" rx="10" fill="#b48b5a"/>
+    <rect x="8" y="7" width="72" height="14" rx="7" fill="#dbbf80" opacity="0.65"/>
+  </g>
+</svg>

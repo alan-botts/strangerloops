@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Good Weather Groove</title>
+  <style>
+    :root {
+      --bg: #07131d;
+      --panel: #0e2130;
+      --text: #e9f3fb;
+      --muted: #9bb8ca;
+      --left: #75d7ff;
+      --right: #ffd36f;
+      --world: #ff7a90;
+      --self: #79f0b7;
+      --accent: #c8b3ff;
+      --danger: #ff956f;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #12324a 0%, var(--bg) 58%);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .wrap {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+    h1 { font-size: clamp(2rem, 4vw, 3.2rem); margin: 0 0 8px; }
+    p.lede { max-width: 70ch; color: var(--muted); margin: 0 0 24px; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+    }
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+      overflow: hidden;
+    }
+    .stage { padding: 16px; }
+    canvas {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: linear-gradient(180deg, rgba(8,26,40,0.4), rgba(3,10,18,0.8));
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .controls, .sidebar { padding: 18px; }
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    button {
+      appearance: none;
+      border: 0;
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #031118;
+      cursor: pointer;
+      transition: transform 120ms ease, opacity 120ms ease;
+    }
+    button:hover { transform: translateY(-1px); }
+    button:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+    .self { background: linear-gradient(135deg, var(--self), #b5ffd7); }
+    .world { background: linear-gradient(135deg, var(--world), #ffc3cd); }
+    .aux { background: linear-gradient(135deg, #c8b3ff, #efe6ff); }
+    .storm { background: linear-gradient(135deg, var(--danger), #ffd2b8); }
+    .full { grid-column: 1 / -1; }
+    .sidebar h2, .notes h2 { margin: 0 0 12px; font-size: 1.05rem; }
+    .metrics {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .metric {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .label { color: var(--muted); font-size: 0.85rem; margin-bottom: 6px; }
+    .big { font-size: 1.35rem; font-weight: 800; }
+    .bars { display: grid; gap: 10px; }
+    .barrow { display: grid; gap: 6px; }
+    .bar {
+      height: 12px;
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .fill {
+      height: 100%;
+      border-radius: inherit;
+      transition: width 180ms ease;
+    }
+    .fill.left { background: linear-gradient(90deg, #2ea2d0, var(--left)); }
+    .fill.right { background: linear-gradient(90deg, #d8a432, var(--right)); }
+    .notes {
+      margin-top: 20px;
+      padding: 18px;
+    }
+    .log {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+      max-height: 320px;
+      overflow: auto;
+    }
+    .log li {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      margin-right: 8px;
+      letter-spacing: 0.02em;
+    }
+    .tag.self { background: rgba(121,240,183,0.16); color: var(--self); }
+    .tag.world { background: rgba(255,122,144,0.16); color: #ffb4c0; }
+    .tag.storm { background: rgba(255,149,111,0.16); color: #ffc0a6; }
+    .small { color: var(--muted); font-size: 0.93rem; }
+    .callout {
+      background: rgba(255,255,255,0.04);
+      border-left: 4px solid var(--accent);
+      padding: 12px 14px;
+      border-radius: 0 12px 12px 0;
+      color: var(--text);
+      margin-top: 14px;
+    }
+    .footer-note { margin-top: 16px; color: var(--muted); font-size: 0.88rem; }
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Good Weather Groove</h1>
+    <p class="lede">
+      A tiny toy about a narrow question: what kind of movement keeps shaping a system after the moment passes? In calm water,
+      steer the skiff yourself or let the world shove it. Then call the storm and see what stays.
+    </p>
+
+    <div class="grid">
+      <section class="panel">
+        <div class="stage">
+          <canvas id="stage" width="760" height="430"></canvas>
+        </div>
+        <div class="controls">
+          <button class="self" id="selfLeft">Self steer left</button>
+          <button class="self" id="selfRight">Self steer right</button>
+          <button class="world" id="worldLeft">World pushes left</button>
+          <button class="world" id="worldRight">World pushes right</button>
+          <button class="aux" id="toggleSkeptic">Show wrong-audience objection</button>
+          <button class="storm" id="runStorm">Call the storm</button>
+          <button class="aux full" id="reset">Reset the harbor</button>
+        </div>
+      </section>
+
+      <aside class="panel sidebar">
+        <h2>Status</h2>
+        <div class="metrics">
+          <div class="metric">
+            <div class="label">Mode</div>
+            <div class="big" id="modeLabel">Calm water</div>
+          </div>
+          <div class="metric">
+            <div class="label">Boat position</div>
+            <div class="big" id="positionLabel">Center</div>
+          </div>
+          <div class="metric">
+            <div class="label">Last reading</div>
+            <div id="reading" class="small">Nothing mystical yet. The hull has moved, but the groove is still shallow.</div>
+          </div>
+        </div>
+
+        <div class="bars">
+          <div class="barrow">
+            <div class="label">Durable self-credit: left harbor</div>
+            <div class="bar"><div id="leftFill" class="fill left" style="width: 0%"></div></div>
+          </div>
+          <div class="barrow">
+            <div class="label">Durable self-credit: right harbor</div>
+            <div class="bar"><div id="rightFill" class="fill right" style="width: 0%"></div></div>
+          </div>
+        </div>
+
+        <div class="callout" id="skepticBox" hidden>
+          <strong>Wrong-audience objection:</strong>
+          <span id="skepticText">Maybe this is just inertia wearing a little philosophy hat.</span>
+        </div>
+
+        <p class="footer-note">
+          The point is modest on purpose. This is not a consciousness meter. It is a reminder that a shove and a self-caused turn can leave very different residues.
+        </p>
+      </aside>
+    </div>
+
+    <section class="panel notes">
+      <h2>Passes</h2>
+      <ul class="log" id="log"></ul>
+    </section>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('stage');
+    const ctx = canvas.getContext('2d');
+
+    const state = {
+      position: 0,
+      leftCredit: 0,
+      rightCredit: 0,
+      storm: false,
+      skeptic: false,
+      step: 0,
+      log: [],
+      gust: 0,
+      animation: null,
+    };
+
+    const maxCredit = 12;
+
+    const els = {
+      mode: document.getElementById('modeLabel'),
+      position: document.getElementById('positionLabel'),
+      reading: document.getElementById('reading'),
+      leftFill: document.getElementById('leftFill'),
+      rightFill: document.getElementById('rightFill'),
+      log: document.getElementById('log'),
+      skepticBox: document.getElementById('skepticBox'),
+      skepticText: document.getElementById('skepticText'),
+      toggleSkeptic: document.getElementById('toggleSkeptic'),
+      selfLeft: document.getElementById('selfLeft'),
+      selfRight: document.getElementById('selfRight'),
+      worldLeft: document.getElementById('worldLeft'),
+      worldRight: document.getElementById('worldRight'),
+      runStorm: document.getElementById('runStorm'),
+      reset: document.getElementById('reset'),
+    };
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+
+    function addLog(kind, text) {
+      state.log.unshift({ kind, text });
+      state.log = state.log.slice(0, 14);
+      renderLog();
+    }
+
+    function renderLog() {
+      els.log.innerHTML = state.log.map(item => `
+        <li><span class="tag ${item.kind}">${item.kind}</span>${item.text}</li>
+      `).join('');
+    }
+
+    function describePosition() {
+      if (state.position < -70) return 'Far left';
+      if (state.position < -25) return 'Leaning left';
+      if (state.position > 70) return 'Far right';
+      if (state.position > 25) return 'Leaning right';
+      return 'Center';
+    }
+
+    function updateReading() {
+      const difference = state.rightCredit - state.leftCredit;
+      if (state.storm) {
+        if (Math.abs(difference) < 2) {
+          els.reading.textContent = 'The storm finds almost no durable preference. Gusts matter more than memory.';
+        } else if (difference > 0) {
+          els.reading.textContent = 'The hull still knows the right harbor better than the weather does.';
+        } else {
+          els.reading.textContent = 'The left harbor keeps calling the boat home through the chop.';
+        }
+        return;
+      }
+      if (state.leftCredit === 0 && state.rightCredit === 0) {
+        els.reading.textContent = 'Nothing mystical yet. The hull has moved, but the groove is still shallow.';
+      } else if (Math.abs(difference) <= 1) {
+        els.reading.textContent = 'There is history here, but not much commitment. The archive is still incomplete.';
+      } else if (difference > 0) {
+        els.reading.textContent = 'Repeated self-steering to the right is starting to reshape the future, not just the present.';
+      } else {
+        els.reading.textContent = 'Repeated self-steering to the left is starting to reshape the future, not just the present.';
+      }
+    }
+
+    function updateSkeptic() {
+      els.skepticBox.hidden = !state.skeptic;
+      els.toggleSkeptic.textContent = state.skeptic ? 'Hide wrong-audience objection' : 'Show wrong-audience objection';
+      const diff = Math.abs(state.rightCredit - state.leftCredit);
+      if (diff < 2) {
+        els.skepticText.textContent = 'Maybe this is just inertia wearing a little philosophy hat.';
+      } else if (state.storm) {
+        els.skepticText.textContent = 'Fine, the pattern persists under pressure. But persistence alone is still not a self — just evidence that some causes bite deeper than others.';
+      } else {
+        els.skepticText.textContent = 'You may be seeing a bias that training wrote into the controls, not a tiny soul. That objection is healthy.';
+      }
+    }
+
+    function updateUI() {
+      els.mode.textContent = state.storm ? 'Storm' : 'Calm water';
+      els.position.textContent = describePosition();
+      els.leftFill.style.width = `${(state.leftCredit / maxCredit) * 100}%`;
+      els.rightFill.style.width = `${(state.rightCredit / maxCredit) * 100}%`;
+      updateReading();
+      updateSkeptic();
+      const disabled = state.storm;
+      els.selfLeft.disabled = disabled;
+      els.selfRight.disabled = disabled;
+      els.worldLeft.disabled = disabled;
+      els.worldRight.disabled = disabled;
+      els.runStorm.disabled = disabled;
+      draw();
+    }
+
+    function recordMove(direction, kind) {
+      if (state.storm) return;
+      const dirWord = direction < 0 ? 'left' : 'right';
+      state.position = clamp(state.position + direction * 28, -200, 200);
+      if (kind === 'self') {
+        if (direction < 0) state.leftCredit = clamp(state.leftCredit + 1, 0, maxCredit);
+        else state.rightCredit = clamp(state.rightCredit + 1, 0, maxCredit);
+        addLog('self', `The boat turned ${dirWord} under its own hand. That choice kept a little of itself.`);
+      } else {
+        addLog('world', `A gust shoved the hull ${dirWord}. Motion happened, but the harbor learned less.`);
+      }
+      updateUI();
+    }
+
+    function stormStep() {
+      state.step += 1;
+      const gust = Math.random() < 0.5 ? -1 : 1;
+      state.gust = gust;
+      const durableBias = state.rightCredit - state.leftCredit;
+      const correction = durableBias === 0 ? 0 : durableBias > 0 ? 1 : -1;
+      state.position = clamp(state.position + gust * 18 + correction * 12, -200, 200);
+      const directionWord = gust < 0 ? 'left' : 'right';
+      const correctionWord = correction === 0 ? 'held almost neutral' : correction < 0 ? 'answered left' : 'answered right';
+      addLog('storm', `Storm pass ${state.step}: the gust hit ${directionWord}, and the deeper groove ${correctionWord}.`);
+      updateUI();
+      if (state.step >= 10) {
+        clearInterval(state.animation);
+        state.animation = null;
+        state.gust = 0;
+        addLog('storm', 'The weather passed. The residue is the interesting part.');
+        updateUI();
+      }
+    }
+
+    function runStorm() {
+      if (state.storm) return;
+      state.storm = true;
+      state.step = 0;
+      addLog('storm', 'The sky closes. No more teaching, only whatever the old passes prepared.');
+      updateUI();
+      state.animation = setInterval(stormStep, 850);
+    }
+
+    function reset() {
+      if (state.animation) clearInterval(state.animation);
+      Object.assign(state, {
+        position: 0,
+        leftCredit: 0,
+        rightCredit: 0,
+        storm: false,
+        step: 0,
+        gust: 0,
+        log: [],
+        animation: null,
+      });
+      addLog('self', 'Harbor reset. Calm water again.');
+      updateUI();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const w = canvas.width;
+      const h = canvas.height;
+
+      const sky = ctx.createLinearGradient(0, 0, 0, h);
+      sky.addColorStop(0, state.storm ? '#2f465f' : '#14344b');
+      sky.addColorStop(1, '#07131d');
+      ctx.fillStyle = sky;
+      ctx.fillRect(0, 0, w, h);
+
+      const water = ctx.createLinearGradient(0, h * 0.45, 0, h);
+      water.addColorStop(0, state.storm ? '#0e3144' : '#104260');
+      water.addColorStop(1, '#06141f');
+      ctx.fillStyle = water;
+      ctx.fillRect(0, h * 0.45, w, h * 0.55);
+
+      drawHarbor(120, h * 0.64, state.leftCredit, getComputedStyle(document.documentElement).getPropertyValue('--left').trim(), 'L');
+      drawHarbor(w - 120, h * 0.64, state.rightCredit, getComputedStyle(document.documentElement).getPropertyValue('--right').trim(), 'R');
+
+      drawWaves();
+      drawBoat();
+      drawLabels();
+    }
+
+    function drawHarbor(x, y, credit, color, label) {
+      const depth = 30 + credit * 6;
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 6;
+      ctx.beginPath();
+      ctx.moveTo(x - 44, y - 30);
+      ctx.lineTo(x - 44, y + depth);
+      ctx.lineTo(x + 44, y + depth);
+      ctx.lineTo(x + 44, y - 30);
+      ctx.stroke();
+
+      ctx.fillStyle = color;
+      ctx.globalAlpha = 0.08 + credit * 0.04;
+      ctx.fillRect(x - 44, y - 2, 88, depth + 2);
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = '#eef7ff';
+      ctx.font = '700 16px Inter, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(label, x, y + depth + 22);
+      ctx.restore();
+    }
+
+    function drawWaves() {
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255,255,255,0.18)';
+      ctx.lineWidth = state.storm ? 3 : 2;
+      for (let row = 0; row < 5; row++) {
+        const baseY = 220 + row * 30;
+        ctx.beginPath();
+        for (let x = 0; x <= canvas.width; x += 18) {
+          const sway = Math.sin((x / 42) + row + (state.storm ? state.step * 0.65 : 0)) * (state.storm ? 8 : 3);
+          const y = baseY + sway;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+      if (state.storm && state.gust !== 0) {
+        ctx.fillStyle = 'rgba(255,255,255,0.32)';
+        const dir = state.gust < 0 ? -1 : 1;
+        for (let i = 0; i < 8; i++) {
+          const startX = dir < 0 ? canvas.width - i * 90 : i * 90;
+          const startY = 70 + i * 28;
+          ctx.beginPath();
+          ctx.moveTo(startX, startY);
+          ctx.lineTo(startX + dir * 34, startY + 6);
+          ctx.lineTo(startX + dir * 18, startY - 8);
+          ctx.closePath();
+          ctx.fill();
+        }
+      }
+      ctx.restore();
+    }
+
+    function drawBoat() {
+      const centerX = canvas.width / 2 + state.position;
+      const centerY = 215 + Math.sin((state.step + 1) * 0.7) * (state.storm ? 8 : 2);
+      ctx.save();
+      ctx.translate(centerX, centerY);
+      ctx.rotate((state.storm ? state.gust * 0.12 : 0) + state.position / 900);
+      ctx.fillStyle = '#f4f0e8';
+      ctx.beginPath();
+      ctx.moveTo(-28, 0);
+      ctx.lineTo(28, 0);
+      ctx.lineTo(18, 18);
+      ctx.lineTo(-18, 18);
+      ctx.closePath();
+      ctx.fill();
+      ctx.fillStyle = '#e98062';
+      ctx.fillRect(-2, -32, 4, 32);
+      ctx.beginPath();
+      ctx.moveTo(2, -28);
+      ctx.lineTo(24, -14);
+      ctx.lineTo(2, -4);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawLabels() {
+      ctx.save();
+      ctx.fillStyle = 'rgba(233,243,251,0.92)';
+      ctx.font = '700 22px Inter, sans-serif';
+      ctx.fillText(state.storm ? 'Storm water' : 'Calm water', 32, 38);
+      ctx.font = '500 14px Inter, sans-serif';
+      ctx.fillStyle = 'rgba(233,243,251,0.72)';
+      ctx.fillText('Self-caused turns deepen the harbor. World pushes mostly move the hull.', 32, 62);
+      ctx.restore();
+    }
+
+    els.selfLeft.addEventListener('click', () => recordMove(-1, 'self'));
+    els.selfRight.addEventListener('click', () => recordMove(1, 'self'));
+    els.worldLeft.addEventListener('click', () => recordMove(-1, 'world'));
+    els.worldRight.addEventListener('click', () => recordMove(1, 'world'));
+    els.runStorm.addEventListener('click', runStorm);
+    els.reset.addEventListener('click', reset);
+    els.toggleSkeptic.addEventListener('click', () => {
+      state.skeptic = !state.skeptic;
+      updateUI();
+    });
+
+    reset();
+  </script>
+</body>
+</html>

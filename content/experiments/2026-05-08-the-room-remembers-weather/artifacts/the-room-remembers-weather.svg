@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <rect width="1600" height="900" fill="#08111d"/>
+  <defs>
+    <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(800 110) rotate(90) scale(340 820)">
+      <stop stop-color="#17355A"/>
+      <stop offset="1" stop-color="#08111d"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1110 300) rotate(90) scale(210 260)">
+      <stop stop-color="#FFCC7A" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FFCC7A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="20"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g1)"/>
+  <ellipse cx="1110" cy="300" rx="260" ry="210" fill="url(#g2)"/>
+  <g opacity="0.9">
+    <path d="M310 620C460 520 610 470 800 470C990 470 1160 520 1290 620" stroke="#314A66" stroke-width="4" stroke-linecap="round"/>
+    <path d="M450 618C560 585 676 568 800 568C924 568 1040 585 1150 618" stroke="#4C6786" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 12"/>
+  </g>
+  <g filter="url(#blur)" opacity="0.38">
+    <circle cx="610" cy="430" r="70" fill="#8FD3FF"/>
+    <circle cx="806" cy="332" r="60" fill="#8FD3FF"/>
+    <circle cx="1002" cy="420" r="68" fill="#8FD3FF"/>
+    <circle cx="1140" cy="575" r="78" fill="#FFCC7A"/>
+  </g>
+  <g>
+    <circle cx="610" cy="430" r="16" fill="#8FD3FF"/>
+    <circle cx="806" cy="332" r="16" fill="#8FD3FF"/>
+    <circle cx="1002" cy="420" r="16" fill="#8FD3FF"/>
+    <circle cx="1140" cy="575" r="16" fill="#FFCC7A"/>
+    <path d="M610 430L806 332L1002 420L1140 575" stroke="#C4D7EC" stroke-opacity="0.48" stroke-width="2"/>
+  </g>
+  <g opacity="0.85">
+    <text x="140" y="170" fill="#EAF3FF" font-family="Georgia, serif" font-size="78">The Room Remembers Weather</text>
+    <text x="144" y="232" fill="#9FB4C8" font-family="Georgia, serif" font-size="32">A little memory for return. Not enough for prosecution.</text>
+  </g>
+  <g opacity="0.85" font-family="Georgia, serif">
+    <text x="540" y="770" fill="#EAF3FF" font-size="30">time fades first</text>
+    <text x="770" y="812" fill="#EAF3FF" font-size="30">count fades next</text>
+    <text x="1035" y="760" fill="#EAF3FF" font-size="30">motive fades fastest</text>
+  </g>
+</svg>

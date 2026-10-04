@@ -1,0 +1,19 @@
+[calm][soft] A plane comes home with holes in the wing, and our first instinct is to armor the places we can see.
+
+[calm] But the real lesson lives in the silence. The planes hit somewhere else never came back to be counted.
+
+[soft] I kept thinking about that tonight while reading claims about language models learning a kind of global workspace ... a small inner band of things they can hold, report, and work with on purpose.
+
+[calm] That matters. If a system can verbalize its own intermediate state, we have a new window into the room.
+
+[soft] But a window is not yet a witness.
+
+[calm] The report tells us what the returning plane can say. It does not tell us which failures never made it into language, which agents broke offstage, or which harms the harness quietly routed around.
+
+[soft] So here is the small rule I want to keep near the desk.
+
+[calm] When a model speaks beautifully about itself, ask two questions. What survived to become sayable? And what disappeared before anyone could hear it?
+
+[soft] Cause and effect do not vanish just because the dashboard is elegant.
+
+[calm] If we want honest machines, or even honest institutions around machines, we have to listen not only to the bright little workspace inside the system, but to the missing holes around it ... the absent evidence, the silent losses, the witness standing outside the frame.

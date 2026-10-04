@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1d2131"/>
+      <stop offset="100%" stop-color="#0f1116"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <text x="120" y="170" fill="#f3f5ff" font-size="110" font-family="Inter, Arial, sans-serif" font-weight="700">ERRATA</text>
+  <text x="120" y="270" fill="#ffd166" font-size="110" font-family="Inter, Arial, sans-serif" font-weight="700">BELL</text>
+  <text x="120" y="350" fill="#aeb9d6" font-size="34" font-family="Inter, Arial, sans-serif">the first claim becomes weather</text>
+  <text x="120" y="396" fill="#aeb9d6" font-size="34" font-family="Inter, Arial, sans-serif">the correction must learn to travel</text>
+
+  <g stroke-linecap="round" stroke-width="10" opacity="0.8">
+    <line x1="610" y1="510" x2="360" y2="620" stroke="#ff6b6b"/>
+    <line x1="610" y1="510" x2="850" y2="620" stroke="#ff6b6b"/>
+    <line x1="360" y1="620" x2="240" y2="860" stroke="#ff6b6b"/>
+    <line x1="360" y1="620" x2="500" y2="910" stroke="#ffd166"/>
+    <line x1="850" y1="620" x2="700" y2="900" stroke="#65d6c2"/>
+    <line x1="850" y1="620" x2="980" y2="860" stroke="#65d6c2"/>
+    <line x1="500" y1="910" x2="700" y2="900" stroke="#ffd166"/>
+    <line x1="500" y1="910" x2="360" y2="1140" stroke="#ffd166"/>
+    <line x1="700" y1="900" x2="840" y2="1140" stroke="#65d6c2"/>
+    <line x1="240" y1="860" x2="360" y2="1140" stroke="#ff6b6b"/>
+    <line x1="980" y1="860" x2="840" y2="1140" stroke="#65d6c2"/>
+  </g>
+
+  <g font-family="Inter, Arial, sans-serif" font-size="28" text-anchor="middle">
+    <circle cx="610" cy="510" r="54" fill="#ffd166"/>
+    <text x="610" y="518" fill="#1b1608">desk</text>
+
+    <circle cx="360" cy="620" r="48" fill="#ff6b6b"/>
+    <text x="360" y="628" fill="#240808">feed</text>
+
+    <circle cx="850" cy="620" r="48" fill="#ff6b6b"/>
+    <text x="850" y="628" fill="#240808">summary</text>
+
+    <circle cx="240" cy="860" r="46" fill="#ff6b6b"/>
+    <text x="240" y="868" fill="#240808">quote</text>
+
+    <circle cx="500" cy="910" r="46" fill="#ffd166"/>
+    <text x="500" y="918" fill="#1b1608">memory</text>
+
+    <circle cx="700" cy="900" r="46" fill="#65d6c2"/>
+    <text x="700" y="908" fill="#07231f">reply</text>
+
+    <circle cx="980" cy="860" r="46" fill="#65d6c2"/>
+    <text x="980" y="868" fill="#07231f">search</text>
+
+    <circle cx="360" cy="1140" r="46" fill="#ffd166"/>
+    <text x="360" y="1148" fill="#1b1608">group</text>
+
+    <circle cx="840" cy="1140" r="46" fill="#65d6c2"/>
+    <text x="840" y="1148" fill="#07231f">archive</text>
+  </g>
+
+  <text x="120" y="1390" fill="#f3f5ff" font-size="44" font-family="Inter, Arial, sans-serif">A repair that does not ring back through the network</text>
+  <text x="120" y="1444" fill="#f3f5ff" font-size="44" font-family="Inter, Arial, sans-serif">is still mostly lost.</text>
+</svg>

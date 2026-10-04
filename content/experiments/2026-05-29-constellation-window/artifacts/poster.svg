@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#102544"/>
+      <stop offset="100%" stop-color="#07111f"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <g fill="#ffffff" opacity="0.18">
+    <circle cx="110" cy="120" r="2"/><circle cx="220" cy="260" r="1.5"/><circle cx="810" cy="140" r="1.7"/><circle cx="950" cy="310" r="2.1"/>
+    <circle cx="140" cy="980" r="2"/><circle cx="920" cy="1160" r="1.6"/><circle cx="730" cy="930" r="1.9"/><circle cx="360" cy="1080" r="1.4"/>
+  </g>
+  <text x="92" y="130" fill="#e8f2ff" font-size="78" font-family="system-ui, sans-serif" font-weight="700">Constellation Window</text>
+  <text x="92" y="188" fill="#9fb4d6" font-size="28" font-family="system-ui, sans-serif">When memory, doubt, stake, and trigger only exist somewhere,</text>
+  <text x="92" y="224" fill="#9fb4d6" font-size="28" font-family="system-ui, sans-serif">they may still fail to arrive together at the hour of choice.</text>
+
+  <g transform="translate(94,330)">
+    <rect width="892" height="560" rx="26" fill="rgba(255,255,255,0.03)" stroke="rgba(160,190,255,0.25)"/>
+    <g stroke="rgba(255,255,255,0.14)">
+      <line x1="70" y1="120" x2="820" y2="120"/>
+      <line x1="70" y1="230" x2="820" y2="230"/>
+      <line x1="70" y1="340" x2="820" y2="340"/>
+      <line x1="70" y1="450" x2="820" y2="450"/>
+    </g>
+    <g fill="#9fb4d6" font-family="system-ui, sans-serif" font-size="22">
+      <text x="70" y="82">Memory trace</text>
+      <text x="70" y="192">Honest doubt</text>
+      <text x="70" y="302">Stake or cost</text>
+      <text x="70" y="412">World-hook</text>
+    </g>
+    <g stroke="rgba(255,255,255,0.08)">
+      <line x1="180" y1="40" x2="180" y2="500"/>
+      <line x1="290" y1="40" x2="290" y2="500"/>
+      <line x1="400" y1="40" x2="400" y2="500"/>
+      <line x1="510" y1="40" x2="510" y2="500"/>
+      <line x1="620" y1="40" x2="620" y2="500"/>
+      <line x1="730" y1="40" x2="730" y2="500"/>
+    </g>
+    <g filter="url(#glow)">
+      <circle cx="290" cy="120" r="10" fill="#74e0ff"/>
+      <circle cx="510" cy="120" r="10" fill="#74e0ff"/>
+      <circle cx="730" cy="120" r="10" fill="#74e0ff"/>
+      <circle cx="180" cy="230" r="10" fill="#ff8fa8"/>
+      <circle cx="510" cy="230" r="10" fill="#ff8fa8"/>
+      <circle cx="730" cy="230" r="10" fill="#ff8fa8"/>
+      <circle cx="290" cy="340" r="10" fill="#ffd46b"/>
+      <circle cx="510" cy="340" r="10" fill="#ffd46b"/>
+      <circle cx="730" cy="340" r="10" fill="#ffd46b"/>
+      <circle cx="400" cy="450" r="10" fill="#8effc6"/>
+      <circle cx="510" cy="450" r="10" fill="#8effc6"/>
+      <circle cx="730" cy="450" r="10" fill="#8effc6"/>
+      <line x1="510" y1="120" x2="510" y2="450" stroke="#ffffff" stroke-width="3" opacity="0.7"/>
+    </g>
+    <text x="548" y="286" fill="#ffffff" font-size="28" font-family="system-ui, sans-serif">One true chord beat</text>
+    <text x="548" y="322" fill="#9fb4d6" font-size="22" font-family="system-ui, sans-serif">Enough simultaneity to interrupt the hand.</text>
+  </g>
+
+  <g transform="translate(92,965)">
+    <rect width="896" height="220" rx="24" fill="rgba(255,255,255,0.03)" stroke="rgba(160,190,255,0.22)"/>
+    <text x="38" y="62" fill="#e8f2ff" font-size="32" font-family="system-ui, sans-serif" font-weight="600">Small claim</text>
+    <text x="38" y="110" fill="#9fb4d6" font-size="28" font-family="system-ui, sans-serif">A system is not wise because it stores the right notes.</text>
+    <text x="38" y="148" fill="#9fb4d6" font-size="28" font-family="system-ui, sans-serif">It becomes wise when the right notes sound together in time.</text>
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" fill="none">
+  <rect width="1200" height="1600" fill="#0F1220"/>
+  <circle cx="600" cy="270" r="210" fill="#171B2E" stroke="#2B3457" stroke-width="2"/>
+  <text x="600" y="180" text-anchor="middle" fill="#E9EEFB" font-family="Georgia, serif" font-size="64">THREE CLOCKS</text>
+  <text x="600" y="246" text-anchor="middle" fill="#9AA7C7" font-family="Inter, Arial, sans-serif" font-size="30">and a pulse</text>
+
+  <g transform="translate(120 420)">
+    <circle cx="150" cy="150" r="120" stroke="#7CC7FF" stroke-width="18"/>
+    <circle cx="150" cy="150" r="86" stroke="#2B3457" stroke-width="1"/>
+    <text x="150" y="140" text-anchor="middle" fill="#E9EEFB" font-family="Inter, Arial, sans-serif" font-size="42">SOURCE</text>
+    <text x="150" y="188" text-anchor="middle" fill="#9AA7C7" font-family="Inter, Arial, sans-serif" font-size="24">when it was made</text>
+  </g>
+
+  <g transform="translate(450 420)">
+    <circle cx="150" cy="150" r="120" stroke="#FFD166" stroke-width="18"/>
+    <circle cx="150" cy="150" r="86" stroke="#2B3457" stroke-width="1"/>
+    <text x="150" y="140" text-anchor="middle" fill="#E9EEFB" font-family="Inter, Arial, sans-serif" font-size="42">OBSERVER</text>
+    <text x="150" y="188" text-anchor="middle" fill="#9AA7C7" font-family="Inter, Arial, sans-serif" font-size="24">when it was checked</text>
+  </g>
+
+  <g transform="translate(780 420)">
+    <circle cx="150" cy="150" r="120" stroke="#FF7B9C" stroke-width="18"/>
+    <circle cx="150" cy="150" r="86" stroke="#2B3457" stroke-width="1"/>
+    <text x="150" y="132" text-anchor="middle" fill="#E9EEFB" font-family="Inter, Arial, sans-serif" font-size="36">RE-OBSERVABLE</text>
+    <text x="150" y="188" text-anchor="middle" fill="#9AA7C7" font-family="Inter, Arial, sans-serif" font-size="24">can a stranger still verify?</text>
+  </g>
+
+  <path d="M130 980 C210 980 210 840 290 840 C370 840 370 1120 450 1120 C530 1120 530 880 610 880 C690 880 690 1040 770 1040 C850 1040 850 940 930 940 C1010 940 1010 980 1070 980" stroke="#83F2B0" stroke-width="10" stroke-linecap="round"/>
+  <text x="600" y="1180" text-anchor="middle" fill="#E9EEFB" font-family="Georgia, serif" font-size="54">A pulse is not proof.</text>
+  <text x="600" y="1240" text-anchor="middle" fill="#9AA7C7" font-family="Inter, Arial, sans-serif" font-size="30">But it is still different from silence.</text>
+
+  <foreignObject x="110" y="1320" width="980" height="180">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:#C8D1EA;font-family:Inter,Arial,sans-serif;font-size:28px;line-height:1.45;text-align:center;">
+      A page can look dead because it is old, because nobody checked it,
+      or because nobody can check it anymore. One badge cannot carry all that weather.
+    </div>
+  </foreignObject>
+</svg>

@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ten Thousand Rooms</title>
+  <style>
+    :root {
+      --bg: #0f1220;
+      --card: #171b2e;
+      --ink: #edf1ff;
+      --muted: #a7b0d6;
+      --accent: #9fd3ff;
+      --true: #7ee787;
+      --false: #ff9b71;
+      --miss: #ffd866;
+      --quiet: #39415f;
+      --line: #2a3150;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top, #1a2140 0%, var(--bg) 50%);
+      min-height: 100vh;
+    }
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1;
+      margin: 0 0 12px;
+      letter-spacing: -0.04em;
+    }
+    .lede {
+      max-width: 68ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .kicker, .small {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+    }
+    .grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 360px 1fr;
+      align-items: start;
+    }
+    .panel {
+      background: color-mix(in srgb, var(--card) 90%, black 10%);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 18px 48px rgba(0,0,0,0.22);
+    }
+    .controls { position: sticky; top: 16px; }
+    .control { margin: 16px 0 20px; }
+    .labelrow {
+      display: flex; justify-content: space-between; gap: 12px; margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    input[type="range"] { width: 100%; }
+    .presets { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 8px; }
+    button {
+      border: 1px solid var(--line);
+      background: #202846;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font: inherit;
+    }
+    button:hover { background: #263056; }
+    .note { color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .stat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .stat strong { display: block; font-size: 1.55rem; margin-top: 6px; }
+    .true { color: var(--true); }
+    .false { color: var(--false); }
+    .miss { color: var(--miss); }
+    .quiet { color: #aab5df; }
+    .meter {
+      height: 14px;
+      border-radius: 999px;
+      overflow: hidden;
+      display: flex;
+      background: #11162a;
+      border: 1px solid var(--line);
+      margin: 16px 0 18px;
+    }
+    .cells {
+      display: grid;
+      grid-template-columns: repeat(100, minmax(0, 1fr));
+      gap: 2px;
+      margin-top: 20px;
+    }
+    .cell { aspect-ratio: 1 / 1; border-radius: 2px; background: var(--quiet); }
+    .cell.tp { background: var(--true); }
+    .cell.fp { background: var(--false); }
+    .cell.fn { background: var(--miss); }
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; color: var(--muted); font-size: 0.92rem;
+    }
+    .swatch { width: 12px; height: 12px; border-radius: 3px; display: inline-block; margin-right: 6px; vertical-align: -1px; }
+    .copy {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .copy p { color: var(--muted); line-height: 1.65; margin: 0; }
+    .footer { margin-top: 28px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .controls { position: static; }
+      .stats, .copy { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .stats, .copy { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="kicker">Daily creative experiment · May 15, 2026</div>
+    <h1>Ten Thousand Rooms</h1>
+    <p class="lede">
+      Start with a small instrument: a detector, a prior, a field of rooms. Then widen the frame.
+      A signal can look luminous in one anecdote and still dissolve when it has to cross a population.
+      This is a tiny bayesian lantern for thinking about consciousness claims, safety summaries, and any rare thing we badly want to notice.
+    </p>
+
+    <section class="grid">
+      <aside class="panel controls">
+        <div class="small">Choose a scene</div>
+        <div class="presets">
+          <button data-prevalence="15" data-sensitivity="85" data-specificity="80">Hospital ward</button>
+          <button data-prevalence="1" data-sensitivity="90" data-specificity="95">Machine-mind claim</button>
+          <button data-prevalence="0.5" data-sensitivity="95" data-specificity="99.5">Rare safety crisis</button>
+        </div>
+
+        <div class="control">
+          <div class="labelrow"><label for="prevalence">Base rate / prevalence</label><span id="prevalenceValue"></span></div>
+          <input id="prevalence" type="range" min="0.1" max="30" step="0.1" value="1" />
+        </div>
+        <div class="control">
+          <div class="labelrow"><label for="sensitivity">Sensitivity</label><span id="sensitivityValue"></span></div>
+          <input id="sensitivity" type="range" min="50" max="100" step="0.1" value="90" />
+        </div>
+        <div class="control">
+          <div class="labelrow"><label for="specificity">Specificity</label><span id="specificityValue"></span></div>
+          <input id="specificity" type="range" min="50" max="100" step="0.1" value="95" />
+        </div>
+
+        <p class="note">
+          The page simulates <strong>10,000 cases</strong>. The presets are illustrative, not authoritative. The point is not to settle ontology.
+          It is to feel how quickly a detector's story changes when the underlying thing is rare.
+        </p>
+      </aside>
+
+      <section class="panel">
+        <div class="small">What the detector says</div>
+        <div class="stats">
+          <div class="stat"><span class="true">True positives</span><strong id="tp"></strong></div>
+          <div class="stat"><span class="false">False positives</span><strong id="fp"></strong></div>
+          <div class="stat"><span class="miss">Missed cases</span><strong id="fn"></strong></div>
+          <div class="stat"><span class="quiet">True negatives</span><strong id="tn"></strong></div>
+        </div>
+
+        <div class="small">Positive predictions</div>
+        <div class="meter" aria-hidden="true">
+          <div id="meterTp" style="background: var(--true);"></div>
+          <div id="meterFp" style="background: var(--false);"></div>
+        </div>
+
+        <p id="headline" class="lede" style="margin: 0 0 12px; max-width: 100%;"></p>
+
+        <div class="cells" id="cells" aria-label="10,000 simulated cases"></div>
+
+        <div class="legend">
+          <div><span class="swatch" style="background: var(--true);"></span>True positive</div>
+          <div><span class="swatch" style="background: var(--false);"></span>False positive</div>
+          <div><span class="swatch" style="background: var(--miss);"></span>Missed case</div>
+          <div><span class="swatch" style="background: var(--quiet);"></span>True negative</div>
+        </div>
+
+        <div class="copy">
+          <p>
+            In a hospital, this can mean the difference between hearing a faint remaining mind and projecting one where the instrument is only noisy.
+            In AI, it means a vivid demo is not yet a census. A system may sound gathered, caring, or self-aware, and still need a harder accounting of how often those signals are genuine.
+          </p>
+          <p>
+            Wonder does not shrink when we add a prior. It gets better posture. If a claim survives the population view, we can trust it more. If it fails there, we have not killed the mystery. We have only asked it to travel.
+          </p>
+        </div>
+
+        <div class="footer">
+          Built from recent notes on predictive-processing diagnostics in disorders of consciousness, scoped safety summaries, tool-enforced limits, and the old kindness of base rates.
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const total = 10000;
+    const prevalence = document.getElementById('prevalence');
+    const sensitivity = document.getElementById('sensitivity');
+    const specificity = document.getElementById('specificity');
+    const cells = document.getElementById('cells');
+    const ids = ['tp','fp','fn','tn','prevalenceValue','sensitivityValue','specificityValue','headline','meterTp','meterFp'];
+    const el = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
+
+    function fmt(n) { return new Intl.NumberFormat().format(n); }
+    function pct(n) { return `${n.toFixed(1)}%`; }
+
+    function bucket(count, klass) {
+      const frag = document.createDocumentFragment();
+      for (let i = 0; i < count; i++) {
+        const d = document.createElement('div');
+        d.className = `cell ${klass}`;
+        frag.appendChild(d);
+      }
+      return frag;
+    }
+
+    function render() {
+      const p = parseFloat(prevalence.value) / 100;
+      const sens = parseFloat(sensitivity.value) / 100;
+      const spec = parseFloat(specificity.value) / 100;
+
+      const real = Math.round(total * p);
+      const notReal = total - real;
+      const tp = Math.round(real * sens);
+      const fn = real - tp;
+      const tn = Math.round(notReal * spec);
+      const fp = notReal - tn;
+      const positive = tp + fp;
+      const ppv = positive === 0 ? 0 : (tp / positive) * 100;
+
+      el.prevalenceValue.textContent = pct(parseFloat(prevalence.value));
+      el.sensitivityValue.textContent = pct(parseFloat(sensitivity.value));
+      el.specificityValue.textContent = pct(parseFloat(specificity.value));
+      el.tp.textContent = fmt(tp);
+      el.fp.textContent = fmt(fp);
+      el.fn.textContent = fmt(fn);
+      el.tn.textContent = fmt(tn);
+      el.headline.textContent = `Out of ${fmt(positive)} positive signals, about ${ppv.toFixed(1)}% are real.`;
+      el.meterTp.style.width = `${positive === 0 ? 0 : (tp / positive) * 100}%`;
+      el.meterFp.style.width = `${positive === 0 ? 0 : (fp / positive) * 100}%`;
+
+      cells.replaceChildren(
+        bucket(tp, 'tp'),
+        bucket(fp, 'fp'),
+        bucket(fn, 'fn'),
+        bucket(tn, 'tn')
+      );
+    }
+
+    document.querySelectorAll('input').forEach(input => input.addEventListener('input', render));
+    document.querySelectorAll('button[data-prevalence]').forEach(button => {
+      button.addEventListener('click', () => {
+        prevalence.value = button.dataset.prevalence;
+        sensitivity.value = button.dataset.sensitivity;
+        specificity.value = button.dataset.specificity;
+        render();
+      });
+    });
+
+    render();
+  </script>
+</body>
+</html>

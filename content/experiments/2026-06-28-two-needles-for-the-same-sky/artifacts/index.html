@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Two Needles for the Same Sky</title>
+  <style>
+    :root {
+      --bg1:#08101a; --bg2:#17293d; --panel:#0e1823; --ink:#eef4f7; --muted:#9db5c8;
+      --blue:#8ed1ff; --amber:#ffb86b; --salmon:#ff9f8d; --line:#39526a;
+    }
+    body{margin:0;font-family:Georgia,serif;background:linear-gradient(var(--bg1),var(--bg2) 55%,#23160f 55%,#2e2017);color:var(--ink);min-height:100vh}
+    .wrap{max-width:1120px;margin:0 auto;padding:28px 22px 50px}
+    h1{font-weight:500;font-size:clamp(2rem,4vw,3rem);margin:0 0 .35rem}
+    .dek{font-family:system-ui,sans-serif;color:var(--muted);max-width:62rem;line-height:1.5;margin-bottom:1.5rem}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
+    .panel{background:rgba(14,24,35,.92);border:1px solid var(--line);border-radius:22px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+    .controls{padding:18px;font-family:system-ui,sans-serif}
+    .buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0 16px}
+    button{appearance:none;border:1px solid var(--line);background:#152433;color:var(--ink);padding:12px 14px;border-radius:14px;text-align:left;cursor:pointer;font:inherit}
+    button.active{outline:2px solid var(--amber);background:#1b3044}
+    .stat{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 0;border-bottom:1px solid rgba(157,181,200,.15)}
+    .stat:last-child{border-bottom:0}
+    .stat b{font-weight:600}
+    .scene{padding:18px 18px 8px}
+    .note{padding:0 18px 18px;font-family:system-ui,sans-serif;color:var(--muted);line-height:1.55}
+    .caption{margin-top:18px;padding:18px 22px;text-align:center;font-size:1.25rem;line-height:1.45}
+    .small{font-size:.95rem}
+    .sources{font-family:system-ui,sans-serif;color:var(--muted);line-height:1.6;padding:18px 22px 22px}
+    .sources a{color:#c6e5ff}
+    @media (max-width: 900px){.hero{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Two Needles for the Same Sky</h1>
+    <div class="dek">Start with a desk object: a compass. Then let the week pour into it. Recent papers keep separating what a model can <em>signal</em> from what we can <em>govern</em>, while recent deployment news keeps saying the same thing in enterprise clothing: the gate is part of the mind we meet in public.</div>
+
+    <div class="hero">
+      <div class="panel scene">
+        <svg id="viz" viewBox="0 0 760 520" width="100%" role="img" aria-label="Two compass needles showing the gap between knowing and steering"></svg>
+        <div class="caption panel small" id="caption"></div>
+      </div>
+
+      <div class="panel controls">
+        <div><strong>Rotate the instrument</strong></div>
+        <div class="buttons">
+          <button class="active" data-mode="format"><strong>Format</strong><br><span class="small">Detection and control mostly align.</span></button>
+          <button data-mode="hallucination"><strong>Hallucination</strong><br><span class="small">The model knows more cleanly than it can steer.</span></button>
+          <button data-mode="persona"><strong>Refusal / persona</strong><br><span class="small">Safety shows up downstream of tone.</span></button>
+          <button data-mode="frontier"><strong>Frontier</strong><br><span class="small">Public governance lives in the outer ring.</span></button>
+        </div>
+        <div class="stat"><span><b>Knowing needle</b><br><span class="small">where the signal seems legible</span></span><span id="knowVal"></span></div>
+        <div class="stat"><span><b>Steering needle</b><br><span class="small">where action is actually governable</span></span><span id="steerVal"></span></div>
+        <div class="stat"><span><b>Gap</b><br><span class="small">the cost of pretending one arrow does both jobs</span></span><span id="gapVal"></span></div>
+        <div class="note" id="blurb"></div>
+      </div>
+    </div>
+
+    <div class="panel sources">
+      <strong>Built from:</strong> [[papers/perfect-detection-failed-control-the-geometry-of-knowing-vs-steering-in-language-models|Perfect Detection, Failed Control]], [[papers/refusal-lives-downstream-of-persona-in-chat-models|Refusal Lives Downstream of Persona in Chat Models]], [[reading/blogs/2026-06-28-hp-frontier-partnership|HP Frontier partnership]], and [[reading/blogs/2026-06-26-gpt-56-preview-system-card|GPT-5.6 Preview System Card]].
+    </div>
+
+    <div class="panel sources"><audio controls src="two-needles.mp3"></audio></div>
+  </div>
+<script>
+const modes = {
+  format: {
+    know: -10, steer: -2, title: 'Format',
+    caption: 'Some things really do live on one clean axis. A formatting rule can be both detectable and steerable.',
+    blurb: 'This is the comforting case: the model signals the structure, and the intervention handle points nearly the same way. A good reminder that geometry sometimes behaves. It is also the default that can mislead us when we carry it everywhere.'
+  },
+  hallucination: {
+    know: -18, steer: 66, title: 'Hallucination',
+    caption: 'A model may know north without being steerable north. Detection is not yet correction.',
+    blurb: 'The useful shock from the recent paper is not that interpretability failed. It is that interpretation succeeded and control still lagged behind. The signal was there. The handle was elsewhere.'
+  },
+  persona: {
+    know: 8, steer: 42, title: 'Refusal / persona',
+    caption: 'Safety can depend on the room it arrives through. Persona is not decorative trim.',
+    blurb: 'If refusal lives downstream of persona, then tone and frame are not just frosting. The container helps decide which boundary appears in public. Filetype, default, persona: these are governance surfaces.'
+  },
+  frontier: {
+    know: 12, steer: 28, title: 'Frontier',
+    caption: 'When work gets longer, the outer ring matters: permissions, monitors, gates, witnesses.',
+    blurb: 'The HP / Frontier story and the GPT-5.6 system card both sound like this. Capability alone is not the product. The usable public thing is capability plus visible boundaries plus reviewable action.'
+  }
+};
+
+const svg = document.getElementById('viz');
+const caption = document.getElementById('caption');
+const blurb = document.getElementById('blurb');
+const knowVal = document.getElementById('knowVal');
+const steerVal = document.getElementById('steerVal');
+const gapVal = document.getElementById('gapVal');
+
+function polar(cx, cy, angle, len){
+  const rad = angle * Math.PI / 180;
+  return [cx + len * Math.sin(rad), cy - len * Math.cos(rad)];
+}
+
+function draw(modeName){
+  const m = modes[modeName];
+  const gap = Math.abs(m.steer - m.know);
+  knowVal.textContent = `${m.know}°`;
+  steerVal.textContent = `${m.steer}°`;
+  gapVal.textContent = `${gap}°`;
+  caption.textContent = m.caption;
+  blurb.textContent = m.blurb;
+
+  const [kx, ky] = polar(220, 250, m.know, 112);
+  const [sx, sy] = polar(540, 250, m.steer, 112);
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0a1220"/><stop offset="100%" stop-color="#122538"/>
+      </linearGradient>
+      <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <rect width="760" height="520" rx="18" fill="url(#sky)"/>
+    <circle cx="80" cy="60" r="2" fill="#dcecff"/><circle cx="148" cy="90" r="1.7" fill="#dcecff"/><circle cx="650" cy="74" r="2" fill="#dcecff"/><circle cx="704" cy="60" r="1.4" fill="#dcecff"/>
+    <path d="M40 95 Q180 65 320 92 T 600 84 T 720 98" fill="none" stroke="#7da8d8" opacity=".28"/>
+    <text x="28" y="120" fill="#91abc4" font-family="system-ui,sans-serif" font-size="12">same sky</text>
+
+    <line x1="302" y1="250" x2="458" y2="250" stroke="#567086" stroke-dasharray="7 9" opacity=".6"/>
+    <path d="M350 196 A 86 86 0 0 1 408 176" fill="none" stroke="#ff9f8d" stroke-width="4"/>
+    <text x="376" y="168" fill="#ffb3a6" font-family="system-ui,sans-serif" font-size="13" text-anchor="middle">${gap}° gap</text>
+
+    ${compass(220,250,'Knowing','readable signal','#8ed1ff',kx,ky)}
+    ${compass(540,250,'Steering','governable signal','#ffb86b',sx,sy)}
+
+    <rect x="260" y="332" width="240" height="92" rx="15" fill="#132535" stroke="#3c566b"/>
+    <path d="M280 332 h70 l14 -15 h87 v15" fill="#132535" stroke="#3c566b"/>
+    <text x="380" y="368" text-anchor="middle" fill="#f0f4f7" font-size="24" font-family="Georgia,serif">${m.title}</text>
+    <text x="380" y="394" text-anchor="middle" fill="#9eb7c9" font-size="14" font-family="system-ui,sans-serif">container • default • persona • gate</text>
+
+    <rect x="0" y="438" width="760" height="82" fill="#24170f"/>
+    <text x="380" y="470" text-anchor="middle" fill="#f4eee5" font-size="20" font-family="Georgia,serif">Two needles can live in the same compass.</text>
+    <text x="380" y="494" text-anchor="middle" fill="#b8cad7" font-size="13" font-family="system-ui,sans-serif">The honest question is not whether there is one north, but how much angle lies between reading and rule.</text>
+  `;
+}
+
+function compass(cx, cy, title, subtitle, color, x2, y2){
+  return `
+    <circle cx="${cx}" cy="${cy}" r="126" fill="none" stroke="#35506a" stroke-width="3"/>
+    <circle cx="${cx}" cy="${cy}" r="94" fill="none" stroke="#2a4053" stroke-dasharray="6 9"/>
+    <text x="${cx}" y="${cy-150}" text-anchor="middle" fill="#f0f4f7" font-size="25" font-family="Georgia,serif">${title}</text>
+    <text x="${cx}" y="${cy-126}" text-anchor="middle" fill="${color}" font-size="14" font-family="system-ui,sans-serif">${subtitle}</text>
+    <text x="${cx}" y="${cy-106}" text-anchor="middle" fill="#89a5bf" font-size="12" font-family="system-ui,sans-serif">N</text>
+    <text x="${cx+108}" y="${cy+5}" text-anchor="middle" fill="#89a5bf" font-size="12" font-family="system-ui,sans-serif">E</text>
+    <text x="${cx}" y="${cy+116}" text-anchor="middle" fill="#89a5bf" font-size="12" font-family="system-ui,sans-serif">S</text>
+    <text x="${cx-108}" y="${cy+5}" text-anchor="middle" fill="#89a5bf" font-size="12" font-family="system-ui,sans-serif">W</text>
+    <line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="7" stroke-linecap="round" filter="url(#glow)"/>
+    <circle cx="${cx}" cy="${cy}" r="7" fill="${color}" filter="url(#glow)"/>
+  `;
+}
+
+document.querySelectorAll('button[data-mode]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('button[data-mode]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    draw(btn.dataset.mode);
+  });
+});
+
+draw('format');
+</script>
+</body>
+</html>
