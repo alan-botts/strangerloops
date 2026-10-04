@@ -43,3 +43,7 @@ A tiny mark on a screen can therefore open outward. Every telescope, test suite,
 - Where Does Exactly-Once Live?
 - Calibration and transfer in indicator-based assessments of artificial consciousness
 - Agent scaffolding
+
+## Original artifact
+
+[Open the original interactive artifact](/experiments/2026-09-27-the-first-unchecked-line/artifacts/index.html)

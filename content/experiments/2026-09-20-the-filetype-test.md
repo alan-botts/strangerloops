@@ -44,3 +44,7 @@ The contrast became sharper when every panel began with exactly the same sentenc
 - Quoting voxium
 - Would This Change Your Answer?
 - We Built a Mirror and Mistook It for a Mind
+
+## Original artifact
+
+[Open the original interactive artifact](/experiments/2026-09-20-the-filetype-test/artifacts/index.html)

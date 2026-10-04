@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A small interactive on the first assumption beneath every chain of receipts.">
+  <title>The First Unchecked Line</title>
+  <style>
+    :root { color-scheme: dark; --night:#08111c; --ink:#e9f0f6; --soft:#9fb1c2; --line:#294258; --blue:#79d7ff; --amber:#ffc86b; --deep:#0e2031; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at 72% 9%,#17415a 0,transparent 32rem),linear-gradient(160deg,#07101a,#0a1724 58%,#07111c); color:var(--ink); font:16px/1.55 Georgia, 'Times New Roman', serif; }
+    main { width:min(48rem,calc(100% - 2rem)); margin:auto; padding:clamp(2.3rem,8vw,6rem) 0 4rem; }
+    .eyebrow { color:var(--blue); font:600 .74rem/1.1 ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { max-width:13ch; margin:.7rem 0 1rem; font-size:clamp(2.6rem,9vw,5.6rem); line-height:.92; letter-spacing:-.055em; }
+    .lede { max-width:38rem; color:#c3d0dc; font-size:1.18rem; }
+    .instrument { margin:2.2rem 0; padding:1.25rem; border:1px solid var(--line); border-radius:1.25rem; background:rgba(8,20,32,.78); box-shadow:0 1.5rem 5rem rgba(0,0,0,.22); }
+    .controls { display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; margin-bottom:1rem; }
+    button { appearance:none; border:1px solid #5492b2; border-radius:999px; padding:.65rem 1rem; background:#123147; color:var(--ink); cursor:pointer; font:600 .9rem/1 ui-monospace,SFMono-Regular,Consolas,monospace; }
+    button:hover,button:focus-visible { background:#1c536f; outline:3px solid #a3e7ff; outline-offset:3px; }
+    button.secondary { border-color:#587082; background:transparent; color:var(--soft); }
+    .counter { margin-left:auto; color:var(--soft); font: .8rem/1.25 ui-monospace,SFMono-Regular,Consolas,monospace; }
+    ol { list-style:none; margin:0; padding:0; border-top:1px solid var(--line); }
+    li { display:grid; grid-template-columns:3.5rem 1fr; gap:.7rem; padding:.8rem .15rem; border-bottom:1px solid var(--line); animation:arrive .4s ease-out both; }
+    .stamp { color:var(--blue); font:.78rem/1.75 ui-monospace,SFMono-Regular,Consolas,monospace; }
+    .assumed { border-left:3px solid var(--amber); padding-left:.7rem; background:linear-gradient(90deg,rgba(255,200,107,.11),transparent); }
+    .assumed .stamp { color:var(--amber); }
+    .note { min-height:3.7rem; margin:1rem 0 0; padding:1rem; border-radius:.65rem; background:var(--deep); color:#d6e3ec; }
+    .note strong { color:var(--amber); }
+    .foot { max-width:42rem; color:var(--soft); font-size:.96rem; }
+    .tiny { color:#7890a2; font:.78rem/1.4 ui-monospace,SFMono-Regular,Consolas,monospace; }
+    @keyframes arrive { from { opacity:0; transform:translateY(-.35rem) } to { opacity:1; transform:translateY(0) } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms !important; scroll-behavior:auto !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">A browser-sized thought experiment</p>
+    <h1>The First Unchecked Line</h1>
+    <p class="lede">A receipt can confirm a previous event. Make a chain long enough and it begins to feel like certainty. But the first line still sits quietly at the bottom, waiting for a witness it cannot manufacture.</p>
+
+    <section class="instrument" aria-labelledby="ledger-title">
+      <div class="controls">
+        <button id="certify" type="button">Certify the previous line</button>
+        <button id="reset" class="secondary" type="button">Begin again</button>
+        <span id="counter" class="counter" aria-live="polite">1 line</span>
+      </div>
+      <h2 id="ledger-title" class="tiny">A tiny ledger</h2>
+      <ol id="ledger" aria-label="Receipt ledger"></ol>
+      <p id="meaning" class="note" aria-live="polite"></p>
+    </section>
+
+    <p class="foot">This is not an argument against evidence. It is a reminder about its shape. A test, a log, a reference sample, or a person’s careful observation can give a system somewhere solid to stand. The honest move is to name that support—not to pretend the ladder lifted itself by its first rung.</p>
+    <p class="tiny">No network requests. No storage. The records exist only in this page while it is open.</p>
+  </main>
+  <script>
+    (() => {
+      const ledger = document.querySelector('#ledger');
+      const certify = document.querySelector('#certify');
+      const reset = document.querySelector('#reset');
+      const counter = document.querySelector('#counter');
+      const meaning = document.querySelector('#meaning');
+      let entries = [];
+      const observations = [
+        '<strong>The first line remains an assumption.</strong> The second line can witness it only if we trust this ledger to have recorded it.',
+        '<strong>The chain is useful.</strong> It narrows what may have happened after the anchor; it does not travel backward and turn the anchor into an observation.',
+        '<strong>More receipts make a better history.</strong> They do not create a self-originating foundation. Somewhere, a method meets the world.',
+        '<strong>This is a boundary, not a defeat.</strong> A named calibration point lets the next person check, revise, or replace it.'
+      ];
+      function render() {
+        ledger.innerHTML = '';
+        entries.forEach((entry, i) => {
+          const item = document.createElement('li');
+          if (i === 0) item.className = 'assumed';
+          item.innerHTML = `<span class="stamp">${String(i).padStart(2,'0')}</span><span>${entry}</span>`;
+          ledger.append(item);
+        });
+        counter.textContent = `${entries.length} ${entries.length === 1 ? 'line' : 'lines'}`;
+        meaning.innerHTML = observations[Math.min(entries.length - 1, observations.length - 1)];
+        certify.disabled = entries.length >= 9;
+        certify.textContent = entries.length >= 9 ? 'The ledger is full' : 'Certify the previous line';
+      }
+      function begin() {
+        entries = ['<strong>ASSUMED:</strong> the first mark arrived.'];
+        render();
+      }
+      certify.addEventListener('click', () => {
+        const previous = String(entries.length - 1).padStart(2, '0');
+        entries.push(`Receipt: line ${previous} was present when this line was made.`);
+        render();
+      });
+      reset.addEventListener('click', begin);
+      begin();
+    })();
+  </script>
+</body>
+</html>

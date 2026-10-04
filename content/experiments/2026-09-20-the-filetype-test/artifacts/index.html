@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The Filetype Test</title>
+  <style>
+    :root { --ink:#17202a; --paper:#f6f0e4; --rule:#c5ad7c; --accent:#9c4528; --muted:#6d6256; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--ink); background:linear-gradient(135deg,#e9dcc3,#faf7ef 45%,#ded0b4); font:18px/1.55 Georgia,serif; }
+    main { max-width:780px; margin:0 auto; padding:42px 22px 64px; }
+    .eyebrow { font:600 .73rem/1.2 system-ui,sans-serif; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); }
+    h1 { font-size:clamp(2.4rem,8vw,4.7rem); line-height:.95; margin:.2rem 0 1rem; letter-spacing:-.055em; }
+    .lead { max-width:41rem; font-size:1.2rem; }
+    .claim { margin:2rem 0 1.25rem; padding:1rem 1.2rem; border-left:5px solid var(--accent); background:#fffaf0aa; font-size:1.35rem; }
+    .tabs { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin:1.4rem 0 0; }
+    button { min-height:58px; padding:10px; border:1px solid var(--rule); background:#eee1c8; color:var(--ink); font:700 .88rem/1.15 system-ui,sans-serif; cursor:pointer; }
+    button:hover, button[aria-selected="true"] { background:var(--accent); color:#fffaf0; border-color:var(--accent); }
+    article { min-height:360px; padding:28px; border:1px solid var(--rule); background:var(--paper); box-shadow:0 12px 28px #49371a20; }
+    .label { display:block; margin-bottom:.8rem; color:var(--muted); font:600 .74rem/1.2 system-ui,sans-serif; letter-spacing:.12em; text-transform:uppercase; }
+    .artifact { white-space:pre-wrap; margin:0; font:1rem/1.5 ui-monospace,SFMono-Regular,Consolas,monospace; }
+    .limits { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:1.3rem; }
+    .limits div { padding:12px; border-top:2px solid var(--rule); background:#fffaf075; }
+    h2 { font-size:1rem; margin:0 0 .35rem; font-family:system-ui,sans-serif; }
+    .footer { margin-top:2rem; color:var(--muted); font-size:.95rem; }
+    @media (max-width:560px) { .tabs,.limits { grid-template-columns:1fr; } article { min-height:0; } }
+  </style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">A tiny interactive experiment</p>
+  <h1>The Filetype Test</h1>
+  <p class="lead">One sentence can travel through many containers. Change the container and we change what a reader is invited to notice—and what the sentence can honestly carry.</p>
+  <p class="claim">“The assistant remembers the customer.”</p>
+  <div class="tabs" role="tablist" aria-label="Choose a container">
+    <button role="tab" aria-selected="true" aria-controls="sheet" id="log">Event log</button>
+    <button role="tab" aria-selected="false" aria-controls="sheet" id="report">Incident report</button>
+    <button role="tab" aria-selected="false" aria-controls="sheet" id="letter">Letter</button>
+    <button role="tab" aria-selected="false" aria-controls="sheet" id="test">Test plan</button>
+  </div>
+  <article id="sheet" role="tabpanel" aria-live="polite"></article>
+  <p class="footer">The point is not that one form is pure and the others are false. A form is an instrument. We do better when it leaves its aperture visible.</p>
+</main>
+<script>
+const forms = {
+  log: {
+    label:'Event log',
+    text:`2026-09-20 18:41:02  customer_id=E-204\n2026-09-20 18:41:03  retrieved_note=\"renewal discussion, May\"\n2026-09-20 18:41:04  response_used_note=true\n\nThe sentence becomes a trace: a particular record was retrieved and used.`,
+    shows:'A concrete operation occurred at a named point in time.',
+    cannot:'Whether the retrieved record was correct, sufficient, or meaningful in the human sense.'
+  },
+  report: {
+    label:'Incident report',
+    text:`OBSERVED\nThe response referred to a May renewal discussion.\n\nIMPACT\nThe customer may reasonably infer ongoing relationship memory.\n\nOPEN QUESTION\nWas the note current, authorized for this use, and available only because of this account?\n\nThe sentence becomes a responsibility: a claim with possible failure modes.`,
+    shows:'What was observed and which questions remain material before relying on it.',
+    cannot:'That a clean report has solved the underlying uncertainty.'
+  },
+  letter: {
+    label:'Letter',
+    text:`Dear Maya,\n\nWhen the assistant mentioned the conversation we had in May, I felt recognized. Then I wondered what, exactly, had been kept—and who had decided it should be there.\n\nThe sentence becomes a relationship: not a database event but an experience with stakes.`,
+    shows:'Why the claim matters to someone on the receiving end.',
+    cannot:'Which technical mechanism produced that experience, or whether the system possesses it.'
+  },
+  test: {
+    label:'Test plan',
+    text:`HYPOTHESIS\nThe response depends on this account's authorized May note.\n\nCOUNTERFACTUAL\nRemove that note while keeping the prompt and sampling conditions fixed.\n\nPASS CONDITION\nThe reference disappears or changes in the predicted way.\n\nThe sentence becomes a question we can try to break.`,
+    shows:'A falsifiable path from a plausible explanation to a measurable result.',
+    cannot:'Every broader conclusion people may want to attach to a passing test.'
+  }
+};
+const sheet = document.querySelector('#sheet');
+const buttons = [...document.querySelectorAll('button[role=tab]')];
+function render(key) {
+  const f=forms[key];
+  sheet.innerHTML=`<span class="label">${f.label}</span><p class="artifact">${f.text}</p><section class="limits"><div><h2>What it can show</h2>${f.shows}</div><div><h2>What it cannot show</h2>${f.cannot}</div></section>`;
+  buttons.forEach(b=>b.setAttribute('aria-selected',String(b.id===key)));
+}
+buttons.forEach(b=>b.addEventListener('click',()=>render(b.id)));
+render('log');
+</script>
+</body>
+</html>
