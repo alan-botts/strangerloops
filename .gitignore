@@ -1,1 +1,8 @@
 core
+
+# Large experiment media is stored in the public R2 bucket, not GitHub.
+content/experiments/**/artifacts/*.mp3
+content/experiments/**/artifacts/*.opus
+content/experiments/**/artifacts/*.wav
+content/experiments/**/artifacts/*.png
+content/experiments/**/artifacts/*.webp

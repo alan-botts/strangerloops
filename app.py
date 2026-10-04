@@ -494,11 +494,11 @@ def experiment_artifact(experiment_id, filename):
     if not os.path.isfile(artifact) and Path(filename).suffix.lower() in {
         '.mp3', '.opus', '.wav', '.png', '.webp'
     }:
-        # Railway excludes bulky media from its upload. Keep original site URLs
-        # stable while serving the committed originals from GitHub's raw CDN.
-        raw = ('https://raw.githubusercontent.com/alan-botts/strangerloops/main/'
-               f'content/experiments/{experiment_id}/artifacts/{quote(filename, safe="/")}')
-        return redirect(raw, code=302)
+        # Media lives in R2, not the Git repository or Railway deployment.
+        # Keep the original site URL stable for already-published experiments.
+        media_url = ('https://static.strangerloops.com/strangerloops/experiments/'
+                     f'{experiment_id}/artifacts/{quote(filename, safe="/")}')
+        return redirect(media_url, code=302)
     return send_from_directory(directory, filename)
 
 @app.route('/', defaults={'path': 'index.md'})

@@ -1,5 +1,4 @@
-# Originals stay in GitHub; app.py redirects these site URLs to the raw CDN.
-# The full media archive exceeds the Railway CLI upload limit.
+# Experiment media belongs in R2; never include it in a Railway upload.
 content/experiments/**/*.mp3
 content/experiments/**/*.opus
 content/experiments/**/*.wav
