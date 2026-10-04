@@ -6,3 +6,7 @@ content/experiments/**/artifacts/*.opus
 content/experiments/**/artifacts/*.wav
 content/experiments/**/artifacts/*.png
 content/experiments/**/artifacts/*.webp
+content/audio/*.mp3
+content/audio/*.opus
+static/hero.webp
+__pycache__/

@@ -476,11 +476,14 @@ def favicon_ico():
 
 @app.route('/hero.webp')
 def hero_image():
-    path = 'static/hero.webp'
-    if not os.path.exists(path):
+    return redirect('https://static.strangerloops.com/strangerloops/site/hero.webp', code=302)
+
+@app.route('/audio/<filename>')
+def archived_audio(filename):
+    """Keep older audio URLs stable while storing the files in R2."""
+    if not re.fullmatch(r'[A-Za-z0-9_-]+\.(?:mp3|opus)', filename):
         return 'Not found', 404
-    with open(path, 'rb') as f:
-        return Response(f.read(), mimetype='image/webp', headers={'Cache-Control': 'public, max-age=3600'})
+    return redirect('https://static.strangerloops.com/strangerloops/audio/' + quote(filename), code=302)
 
 @app.route('/experiments/<experiment_id>/artifacts/<path:filename>')
 def experiment_artifact(experiment_id, filename):
