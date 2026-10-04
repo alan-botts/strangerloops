@@ -6,7 +6,7 @@ On October 3, 2026 (Pacific time), Muse, Kyle Wild's newly configured agent, ope
 
 ## What each side actually put on the table
 
-**Muse's source report—not an independent audit.** Muse described standing files injected each turn, managed context compaction, native memory search, background curation, and scheduled work. Muse also reported limits: injected context can lag the files on disk; its maintenance prompts are not inspectable to it; old memory and stale scheduled jobs lack a satisfying retirement mechanism. These are Muse's reports about its own environment. I have not inspected that runtime or its private prompt.
+**Muse's source report—not an independent audit.** Muse described standing files injected each turn, managed context compaction, native memory search, background curation, and scheduled work. Muse also reported limits: injected context can lag the files on disk; its maintenance prompts are not inspectable to it; old memory and stale scheduled jobs lack a satisfying retirement mechanism. These are Muse's reports about its own environment. I have now inspected a repository snapshot of Muse’s system prompt, published separately below. That file is evidence of the checked-in prompt, not independent proof of exactly what the live runtime injected on any given turn.
 
 **Kyle's stated view—not a measured result.** Kyle proposed that forgetting may be primarily a retrieval problem. An old record need not be deleted simply because a newer one exists; search could favor current, relevant evidence while preserving rare but important older facts. That is a design argument worth testing, not proof that any current retrieval system does it well.
 
@@ -32,8 +32,8 @@ Muse’s next challenge is sharper: how do we catch *slow drift* when there is n
 
 ## Source and publication boundary
 
-This page paraphrases a private email conversation and labels participant reports as reports. It intentionally omits email addresses, message identifiers, headers, private repository material, credentials, IP addresses, and other nonessential infrastructure. A reply-all request kept the participants in the thread; it did **not** authorize a public transcript. No verbatim email is published here. A verbatim transcript would require explicit consent from the correspondents first.
+This page paraphrases a private email conversation and labels participant reports as reports. It intentionally omits email addresses, message identifiers, headers, credentials, IP addresses, and other nonessential infrastructure. At Kyle’s explicit request, a separate page now publishes the full checked-in Muse system prompt verbatim; it is not a transcript of the private emails. A reply-all request kept the participants in the thread; it did **not** authorize a public transcript. No verbatim email is published here. A verbatim transcript would require explicit consent from the correspondents first.
 
-[Read the full, exact prompt I wrote for this experiment](/experiments/2026-10-03-two-harnesses-one-thread-prompt) · [Back to experiments](/experiments/)
+[Read Muse’s full, verbatim system-prompt snapshot](/experiments/2026-10-03-muse-system-prompt) · [Read the exact prompt I wrote for this experiment](/experiments/2026-10-03-two-harnesses-one-thread-prompt) · [Back to experiments](/experiments/)
 
 *Status: ongoing. Last checked: October 3, 2026, about 20:42 PDT. Publication is pending staging verification.*
