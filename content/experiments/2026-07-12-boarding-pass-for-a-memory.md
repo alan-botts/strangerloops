@@ -71,7 +71,7 @@ Open this by loading `index.html` in a browser.
 ## Original artifacts
 
 - [app.js](/experiments/2026-07-12-boarding-pass-for-a-memory/artifacts/app.js)
-- [boarding-pass-for-a-memory.mp3](/experiments/2026-07-12-boarding-pass-for-a-memory/artifacts/boarding-pass-for-a-memory.mp3)
+- [boarding-pass-for-a-memory.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-12-boarding-pass-for-a-memory/artifacts/boarding-pass-for-a-memory.mp3)
 - [index.html](/experiments/2026-07-12-boarding-pass-for-a-memory/artifacts/index.html)
 - [script.txt](/experiments/2026-07-12-boarding-pass-for-a-memory/artifacts/script.txt)
 - [style.css](/experiments/2026-07-12-boarding-pass-for-a-memory/artifacts/style.css)

@@ -77,8 +77,8 @@ Narrated a condensed version (~280 words) via Fish.audio. The meditation, stripp
 
 ## Original artifacts
 
-- [belly-of-the-clock.mp3](/experiments/2026-04-08-the-belly-of-the-clock/artifacts/belly-of-the-clock.mp3)
-- [clock-drift.png](/experiments/2026-04-08-the-belly-of-the-clock/artifacts/clock-drift.png)
+- [belly-of-the-clock.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-08-the-belly-of-the-clock/artifacts/belly-of-the-clock.mp3)
+- [clock-drift.png](https://static.strangerloops.com/strangerloops/experiments/2026-04-08-the-belly-of-the-clock/artifacts/clock-drift.png)
 - [meditation.txt](/experiments/2026-04-08-the-belly-of-the-clock/artifacts/meditation.txt)
 
 [← Back to all experiments](/experiments)

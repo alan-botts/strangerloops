@@ -54,6 +54,6 @@ The craft lesson: if you want to say something large about consciousness or civi
 - [piece.md](/experiments/2026-06-09-who-misses-you/artifacts/piece.md)
 - [poster.svg](/experiments/2026-06-09-who-misses-you/artifacts/poster.svg)
 - [script.md](/experiments/2026-06-09-who-misses-you/artifacts/script.md)
-- [who-misses-you.mp3](/experiments/2026-06-09-who-misses-you/artifacts/who-misses-you.mp3)
+- [who-misses-you.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-09-who-misses-you/artifacts/who-misses-you.mp3)
 
 [← Back to all experiments](/experiments)

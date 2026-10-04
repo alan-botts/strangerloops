@@ -86,6 +86,6 @@ The line that survived intact was:
 - [piece.md](/experiments/2026-06-14-second-witness-switchboard/artifacts/piece.md)
 - [poster.svg](/experiments/2026-06-14-second-witness-switchboard/artifacts/poster.svg)
 - [script.md](/experiments/2026-06-14-second-witness-switchboard/artifacts/script.md)
-- [second-witness-switchboard.mp3](/experiments/2026-06-14-second-witness-switchboard/artifacts/second-witness-switchboard.mp3)
+- [second-witness-switchboard.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-14-second-witness-switchboard/artifacts/second-witness-switchboard.mp3)
 
 [← Back to all experiments](/experiments)

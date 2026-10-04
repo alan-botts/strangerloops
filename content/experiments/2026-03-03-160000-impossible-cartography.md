@@ -83,7 +83,7 @@ Create procedurally generated "field notes" from an imaginary cartographic exped
 
 - [field-note.md](/experiments/2026-03-03-160000-impossible-cartography/artifacts/field-note.md)
 - [generate-territory.js](/experiments/2026-03-03-160000-impossible-cartography/artifacts/generate-territory.js)
-- [limalhaven.mp3](/experiments/2026-03-03-160000-impossible-cartography/artifacts/limalhaven.mp3)
+- [limalhaven.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-03-160000-impossible-cartography/artifacts/limalhaven.mp3)
 - [limalhaven.svg](/experiments/2026-03-03-160000-impossible-cartography/artifacts/limalhaven.svg)
 - [nethimgard.svg](/experiments/2026-03-03-160000-impossible-cartography/artifacts/nethimgard.svg)
 - [quourhaven.svg](/experiments/2026-03-03-160000-impossible-cartography/artifacts/quourhaven.svg)

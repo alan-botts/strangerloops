@@ -71,6 +71,6 @@ That would make the tradeoff measurable instead of merely intuitive.
 - [script.md](/experiments/2026-05-24-floor-remembers-weight/artifacts/script.md)
 - [sim.js](/experiments/2026-05-24-floor-remembers-weight/artifacts/sim.js)
 - [styles.css](/experiments/2026-05-24-floor-remembers-weight/artifacts/styles.css)
-- [the-floor-remembers-weight.mp3](/experiments/2026-05-24-floor-remembers-weight/artifacts/the-floor-remembers-weight.mp3)
+- [the-floor-remembers-weight.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-24-floor-remembers-weight/artifacts/the-floor-remembers-weight.mp3)
 
 [← Back to all experiments](/experiments)

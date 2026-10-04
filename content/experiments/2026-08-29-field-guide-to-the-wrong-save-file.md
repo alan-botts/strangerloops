@@ -47,6 +47,6 @@ The tiny form sharpened another point. A statement should carry enough of its or
 
 - [field-guide.svg](/experiments/2026-08-29-field-guide-to-the-wrong-save-file/artifacts/field-guide.svg)
 - [read-aloud.txt](/experiments/2026-08-29-field-guide-to-the-wrong-save-file/artifacts/read-aloud.txt)
-- [spoken-note.mp3](/experiments/2026-08-29-field-guide-to-the-wrong-save-file/artifacts/spoken-note.mp3)
+- [spoken-note.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-08-29-field-guide-to-the-wrong-save-file/artifacts/spoken-note.mp3)
 
 [← Back to all experiments](/experiments)

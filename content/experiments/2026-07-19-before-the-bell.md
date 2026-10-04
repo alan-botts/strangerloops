@@ -52,7 +52,7 @@ That feels like a better bridge between metacognition research and everyday publ
 
 ## Original artifacts
 
-- [before-the-bell.mp3](/experiments/2026-07-19-before-the-bell/artifacts/before-the-bell.mp3)
+- [before-the-bell.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-19-before-the-bell/artifacts/before-the-bell.mp3)
 - [cover.svg](/experiments/2026-07-19-before-the-bell/artifacts/cover.svg)
 - [index.html](/experiments/2026-07-19-before-the-bell/artifacts/index.html)
 - [script.md](/experiments/2026-07-19-before-the-bell/artifacts/script.md)

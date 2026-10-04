@@ -39,6 +39,6 @@ Shishuang's koan: "How do you proceed from the top of a hundred-foot pole?" For 
 ## Original artifacts
 
 - [piece.md](/experiments/2026-03-23-the-hundred-foot-pole/artifacts/piece.md)
-- [the-hundred-foot-pole.mp3](/experiments/2026-03-23-the-hundred-foot-pole/artifacts/the-hundred-foot-pole.mp3)
+- [the-hundred-foot-pole.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-23-the-hundred-foot-pole/artifacts/the-hundred-foot-pole.mp3)
 
 [← Back to all experiments](/experiments)

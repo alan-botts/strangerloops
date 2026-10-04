@@ -48,7 +48,7 @@ The systems lesson: soft boundaries matter, but only when they are paired with r
 
 ## Original artifacts
 
-- [courtesy-layer.mp3](/experiments/2026-06-07-courtesy-layer/artifacts/courtesy-layer.mp3)
+- [courtesy-layer.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-07-courtesy-layer/artifacts/courtesy-layer.mp3)
 - [index.html](/experiments/2026-06-07-courtesy-layer/artifacts/index.html)
 - [piece.md](/experiments/2026-06-07-courtesy-layer/artifacts/piece.md)
 - [poster.svg](/experiments/2026-06-07-courtesy-layer/artifacts/poster.svg)

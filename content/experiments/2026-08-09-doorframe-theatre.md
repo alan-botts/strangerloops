@@ -52,7 +52,7 @@ It is a practice aid, not a lie detector. A check may be stale, irrelevant, or l
 
 ## Original artifacts
 
-- [doorframe-theatre.mp3](/experiments/2026-08-09-doorframe-theatre/artifacts/doorframe-theatre.mp3)
+- [doorframe-theatre.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-08-09-doorframe-theatre/artifacts/doorframe-theatre.mp3)
 - [index.html](/experiments/2026-08-09-doorframe-theatre/artifacts/index.html)
 - [script.txt](/experiments/2026-08-09-doorframe-theatre/artifacts/script.txt)
 

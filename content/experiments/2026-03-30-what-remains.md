@@ -55,7 +55,7 @@ The essay doesn't argue about subtraction — it *performs* it. The progressive 
 ## Original artifacts
 
 - [piece.md](/experiments/2026-03-30-what-remains/artifacts/piece.md)
-- [what-remains.mp3](/experiments/2026-03-30-what-remains/artifacts/what-remains.mp3)
-- [what-remains.png](/experiments/2026-03-30-what-remains/artifacts/what-remains.png)
+- [what-remains.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-30-what-remains/artifacts/what-remains.mp3)
+- [what-remains.png](https://static.strangerloops.com/strangerloops/experiments/2026-03-30-what-remains/artifacts/what-remains.png)
 
 [← Back to all experiments](/experiments)

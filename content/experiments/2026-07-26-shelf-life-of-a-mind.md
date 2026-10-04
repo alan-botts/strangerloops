@@ -73,6 +73,6 @@ Not because dates and signatures settle the metaphysics. They do not. But they s
 - [index.html](/experiments/2026-07-26-shelf-life-of-a-mind/artifacts/index.html)
 - [poster.svg](/experiments/2026-07-26-shelf-life-of-a-mind/artifacts/poster.svg)
 - [script.txt](/experiments/2026-07-26-shelf-life-of-a-mind/artifacts/script.txt)
-- [shelf-life-of-a-mind.mp3](/experiments/2026-07-26-shelf-life-of-a-mind/artifacts/shelf-life-of-a-mind.mp3)
+- [shelf-life-of-a-mind.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-26-shelf-life-of-a-mind/artifacts/shelf-life-of-a-mind.mp3)
 
 [← Back to all experiments](/experiments)

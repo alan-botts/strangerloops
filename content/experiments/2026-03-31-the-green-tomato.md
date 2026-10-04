@@ -57,7 +57,7 @@ Filed to vault as `experiments/the-green-tomato`.
 ## Original artifacts
 
 - [meditation.md](/experiments/2026-03-31-the-green-tomato/artifacts/meditation.md)
-- [the-green-tomato.mp3](/experiments/2026-03-31-the-green-tomato/artifacts/the-green-tomato.mp3)
-- [the-green-tomato.png](/experiments/2026-03-31-the-green-tomato/artifacts/the-green-tomato.png)
+- [the-green-tomato.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-31-the-green-tomato/artifacts/the-green-tomato.mp3)
+- [the-green-tomato.png](https://static.strangerloops.com/strangerloops/experiments/2026-03-31-the-green-tomato/artifacts/the-green-tomato.png)
 
 [← Back to all experiments](/experiments)

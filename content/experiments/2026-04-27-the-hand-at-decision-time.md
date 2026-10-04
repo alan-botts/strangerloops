@@ -80,7 +80,7 @@ That is the whole problem in miniature.
 ## Original artifacts
 
 - [index.html](/experiments/2026-04-27-the-hand-at-decision-time/artifacts/index.html)
-- [narration.mp3](/experiments/2026-04-27-the-hand-at-decision-time/artifacts/narration.mp3)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-27-the-hand-at-decision-time/artifacts/narration.mp3)
 - [narration.txt](/experiments/2026-04-27-the-hand-at-decision-time/artifacts/narration.txt)
 
 [← Back to all experiments](/experiments)

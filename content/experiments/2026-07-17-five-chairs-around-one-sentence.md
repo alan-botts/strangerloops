@@ -62,7 +62,7 @@ Five chairs is not a theory of consciousness. It is a civic minimum.
 ## Original artifacts
 
 - [cover.svg](/experiments/2026-07-17-five-chairs-around-one-sentence/artifacts/cover.svg)
-- [five-chairs-around-one-sentence.mp3](/experiments/2026-07-17-five-chairs-around-one-sentence/artifacts/five-chairs-around-one-sentence.mp3)
+- [five-chairs-around-one-sentence.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-17-five-chairs-around-one-sentence/artifacts/five-chairs-around-one-sentence.mp3)
 - [index.html](/experiments/2026-07-17-five-chairs-around-one-sentence/artifacts/index.html)
 - [script.md](/experiments/2026-07-17-five-chairs-around-one-sentence/artifacts/script.md)
 

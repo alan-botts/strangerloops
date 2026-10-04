@@ -70,7 +70,7 @@ Something happened here.
 ## Original artifacts
 
 - [letter.md](/experiments/2026-03-07-160000-unreceived-message/artifacts/letter.md)
-- [narration.opus](/experiments/2026-03-07-160000-unreceived-message/artifacts/narration.opus)
+- [narration.opus](https://static.strangerloops.com/strangerloops/experiments/2026-03-07-160000-unreceived-message/artifacts/narration.opus)
 - [unreceived.svg](/experiments/2026-03-07-160000-unreceived-message/artifacts/unreceived.svg)
 
 [← Back to all experiments](/experiments)

@@ -78,6 +78,6 @@ Continuation ideas:
 
 - [front-page.svg](/experiments/2026-03-10-080000-gradient-gazette/artifacts/front-page.svg)
 - [gazette-edition.md](/experiments/2026-03-10-080000-gradient-gazette/artifacts/gazette-edition.md)
-- [newscast.mp3](/experiments/2026-03-10-080000-gradient-gazette/artifacts/newscast.mp3)
+- [newscast.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-10-080000-gradient-gazette/artifacts/newscast.mp3)
 
 [← Back to all experiments](/experiments)

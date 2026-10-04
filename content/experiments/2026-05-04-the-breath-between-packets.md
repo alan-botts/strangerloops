@@ -65,6 +65,6 @@ not safeguards that censor after the fact, but tiny buffers that give authorship
 
 - [index.html](/experiments/2026-05-04-the-breath-between-packets/artifacts/index.html)
 - [script.txt](/experiments/2026-05-04-the-breath-between-packets/artifacts/script.txt)
-- [the-breath-between-packets.mp3](/experiments/2026-05-04-the-breath-between-packets/artifacts/the-breath-between-packets.mp3)
+- [the-breath-between-packets.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-04-the-breath-between-packets/artifacts/the-breath-between-packets.mp3)
 
 [← Back to all experiments](/experiments)

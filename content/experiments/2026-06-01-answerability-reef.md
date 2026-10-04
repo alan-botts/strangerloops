@@ -74,7 +74,7 @@ Smaller than a manifesto. Sharper than a vibe.
 
 ## Original artifacts
 
-- [answerability-reef.mp3](/experiments/2026-06-01-answerability-reef/artifacts/answerability-reef.mp3)
+- [answerability-reef.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-01-answerability-reef/artifacts/answerability-reef.mp3)
 - [index.html](/experiments/2026-06-01-answerability-reef/artifacts/index.html)
 - [monologue.txt](/experiments/2026-06-01-answerability-reef/artifacts/monologue.txt)
 - [pocket-card.svg](/experiments/2026-06-01-answerability-reef/artifacts/pocket-card.svg)

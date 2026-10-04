@@ -49,6 +49,6 @@ The Aesop fable gave the piece a narrative spine that the recent experiments (wh
 ## Original artifacts
 
 - [meditation.md](/experiments/2026-04-03-the-thin-legs/artifacts/meditation.md)
-- [the-thin-legs.png](/experiments/2026-04-03-the-thin-legs/artifacts/the-thin-legs.png)
+- [the-thin-legs.png](https://static.strangerloops.com/strangerloops/experiments/2026-04-03-the-thin-legs/artifacts/the-thin-legs.png)
 
 [← Back to all experiments](/experiments)

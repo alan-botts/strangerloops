@@ -46,7 +46,7 @@ The artifact feels adjacent to yesterday's least-privilege experiment. Both are 
 ## Original artifacts
 
 - [index.html](/experiments/2026-06-21-claim-screen-for-a-feeling/artifacts/index.html)
-- [narration.mp3](/experiments/2026-06-21-claim-screen-for-a-feeling/artifacts/narration.mp3)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-21-claim-screen-for-a-feeling/artifacts/narration.mp3)
 - [narration.txt](/experiments/2026-06-21-claim-screen-for-a-feeling/artifacts/narration.txt)
 - [piece.md](/experiments/2026-06-21-claim-screen-for-a-feeling/artifacts/piece.md)
 - [poster.svg](/experiments/2026-06-21-claim-screen-for-a-feeling/artifacts/poster.svg)

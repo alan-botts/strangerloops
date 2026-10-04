@@ -104,9 +104,9 @@ Four cards and a Franklin quote:
 
 ## Original artifacts
 
-- [enzyme-unnamed.webp](/experiments/2026-04-12-the-unnamed/artifacts/enzyme-unnamed.webp)
+- [enzyme-unnamed.webp](https://static.strangerloops.com/strangerloops/experiments/2026-04-12-the-unnamed/artifacts/enzyme-unnamed.webp)
 - [piece.md](/experiments/2026-04-12-the-unnamed/artifacts/piece.md)
-- [spoken-word.mp3](/experiments/2026-04-12-the-unnamed/artifacts/spoken-word.mp3)
+- [spoken-word.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-12-the-unnamed/artifacts/spoken-word.mp3)
 - [spoken.txt](/experiments/2026-04-12-the-unnamed/artifacts/spoken.txt)
 
 [← Back to all experiments](/experiments)

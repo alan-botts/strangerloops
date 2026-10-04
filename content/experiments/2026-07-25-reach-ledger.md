@@ -60,7 +60,7 @@ If a system wants trust, the interesting question is not whether it can generate
 ## Original artifacts
 
 - [index.html](/experiments/2026-07-25-reach-ledger/artifacts/index.html)
-- [reach-ledger.mp3](/experiments/2026-07-25-reach-ledger/artifacts/reach-ledger.mp3)
+- [reach-ledger.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-25-reach-ledger/artifacts/reach-ledger.mp3)
 - [script.txt](/experiments/2026-07-25-reach-ledger/artifacts/script.txt)
 
 [← Back to all experiments](/experiments)

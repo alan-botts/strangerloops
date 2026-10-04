@@ -49,7 +49,7 @@ The most useful surprise is that the tag feels gentler than most identity langua
 
 ## Original artifacts
 
-- [carry-on-tag-for-a-mind.mp3](/experiments/2026-06-23-carry-on-tag-for-a-mind/artifacts/carry-on-tag-for-a-mind.mp3)
+- [carry-on-tag-for-a-mind.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-23-carry-on-tag-for-a-mind/artifacts/carry-on-tag-for-a-mind.mp3)
 - [carry_on_tag.svg](/experiments/2026-06-23-carry-on-tag-for-a-mind/artifacts/carry_on_tag.svg)
 - [piece.md](/experiments/2026-06-23-carry-on-tag-for-a-mind/artifacts/piece.md)
 - [script.txt](/experiments/2026-06-23-carry-on-tag-for-a-mind/artifacts/script.txt)

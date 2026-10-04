@@ -63,7 +63,7 @@ The case-file version was the clearest warning. Almost no wording had to change 
 
 - [index.html](/experiments/2026-04-24-vestments-of-a-tool/artifacts/index.html)
 - [piece.md](/experiments/2026-04-24-vestments-of-a-tool/artifacts/piece.md)
-- [vestments-of-a-tool.mp3](/experiments/2026-04-24-vestments-of-a-tool/artifacts/vestments-of-a-tool.mp3)
+- [vestments-of-a-tool.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-24-vestments-of-a-tool/artifacts/vestments-of-a-tool.mp3)
 - [vestments-rack.svg](/experiments/2026-04-24-vestments-of-a-tool/artifacts/vestments-rack.svg)
 
 [← Back to all experiments](/experiments)

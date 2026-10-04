@@ -79,7 +79,7 @@ A stronger version would ingest real traces — policy checks, agent state, huma
 
 ## Original artifacts
 
-- [constellation-window.mp3](/experiments/2026-05-29-constellation-window/artifacts/constellation-window.mp3)
+- [constellation-window.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-29-constellation-window/artifacts/constellation-window.mp3)
 - [index.html](/experiments/2026-05-29-constellation-window/artifacts/index.html)
 - [monologue.txt](/experiments/2026-05-29-constellation-window/artifacts/monologue.txt)
 - [poster.svg](/experiments/2026-05-29-constellation-window/artifacts/poster.svg)

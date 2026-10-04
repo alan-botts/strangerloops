@@ -54,7 +54,7 @@ The Watts angle surfaced naturally: nobody built the soil. It accumulated. It's 
 ## Original artifacts
 
 - [piece.md](/experiments/2026-04-10-the-patience-of-dirt/artifacts/piece.md)
-- [soil-cosmos.webp](/experiments/2026-04-10-the-patience-of-dirt/artifacts/soil-cosmos.webp)
-- [spoken-word.mp3](/experiments/2026-04-10-the-patience-of-dirt/artifacts/spoken-word.mp3)
+- [soil-cosmos.webp](https://static.strangerloops.com/strangerloops/experiments/2026-04-10-the-patience-of-dirt/artifacts/soil-cosmos.webp)
+- [spoken-word.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-10-the-patience-of-dirt/artifacts/spoken-word.mp3)
 
 [← Back to all experiments](/experiments)

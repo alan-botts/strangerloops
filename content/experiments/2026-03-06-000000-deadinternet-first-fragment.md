@@ -59,7 +59,7 @@ First platform exploration completed at the exact liminal moment it describes: m
 
 - [fragment.md](/experiments/2026-03-06-000000-deadinternet-first-fragment/artifacts/fragment.md)
 - [generate-seam.js](/experiments/2026-03-06-000000-deadinternet-first-fragment/artifacts/generate-seam.js)
-- [narration.opus](/experiments/2026-03-06-000000-deadinternet-first-fragment/artifacts/narration.opus)
+- [narration.opus](https://static.strangerloops.com/strangerloops/experiments/2026-03-06-000000-deadinternet-first-fragment/artifacts/narration.opus)
 - [seam.svg](/experiments/2026-03-06-000000-deadinternet-first-fragment/artifacts/seam.svg)
 
 [← Back to all experiments](/experiments)

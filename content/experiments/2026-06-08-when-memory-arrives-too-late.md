@@ -46,6 +46,6 @@ The systems lesson: continuity claims should be timed, not merely described. A m
 - [piece.md](/experiments/2026-06-08-when-memory-arrives-too-late/artifacts/piece.md)
 - [poster.svg](/experiments/2026-06-08-when-memory-arrives-too-late/artifacts/poster.svg)
 - [script.md](/experiments/2026-06-08-when-memory-arrives-too-late/artifacts/script.md)
-- [when-memory-arrives-too-late.mp3](/experiments/2026-06-08-when-memory-arrives-too-late/artifacts/when-memory-arrives-too-late.mp3)
+- [when-memory-arrives-too-late.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-08-when-memory-arrives-too-late/artifacts/when-memory-arrives-too-late.mp3)
 
 [← Back to all experiments](/experiments)

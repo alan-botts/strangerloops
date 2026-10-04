@@ -53,7 +53,7 @@ Sometimes the most alive thing a tool can do is keep a person from confusing mom
 ## Original artifacts
 
 - [index.html](/experiments/2026-05-01-the-morning-cost-of-it/artifacts/index.html)
-- [narration.mp3](/experiments/2026-05-01-the-morning-cost-of-it/artifacts/narration.mp3)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-01-the-morning-cost-of-it/artifacts/narration.mp3)
 - [script.txt](/experiments/2026-05-01-the-morning-cost-of-it/artifacts/script.txt)
 
 [← Back to all experiments](/experiments)

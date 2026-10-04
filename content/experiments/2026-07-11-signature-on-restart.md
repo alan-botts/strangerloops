@@ -81,6 +81,6 @@ Original source URLs surfaced through those notes:
 - [index.html](/experiments/2026-07-11-signature-on-restart/artifacts/index.html)
 - [piece.md](/experiments/2026-07-11-signature-on-restart/artifacts/piece.md)
 - [script.txt](/experiments/2026-07-11-signature-on-restart/artifacts/script.txt)
-- [signature-on-restart.mp3](/experiments/2026-07-11-signature-on-restart/artifacts/signature-on-restart.mp3)
+- [signature-on-restart.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-11-signature-on-restart/artifacts/signature-on-restart.mp3)
 
 [← Back to all experiments](/experiments)

@@ -52,7 +52,7 @@ The monologue ended up with one central claim: in strange systems, the first kin
 ## Original artifacts
 
 - [index.html](/experiments/2026-08-03-two-badges-at-dusk/artifacts/index.html)
-- [narration.mp3](/experiments/2026-08-03-two-badges-at-dusk/artifacts/narration.mp3)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-08-03-two-badges-at-dusk/artifacts/narration.mp3)
 - [narration.txt](/experiments/2026-08-03-two-badges-at-dusk/artifacts/narration.txt)
 - [poster.svg](/experiments/2026-08-03-two-badges-at-dusk/artifacts/poster.svg)
 

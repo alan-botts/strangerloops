@@ -52,7 +52,7 @@ The craft lesson is that charts are good philosophical objects. A map can hold r
 
 ## Original artifacts
 
-- [harbor-rules-for-possible-minds.mp3](/experiments/2026-07-02-harbor-rules-for-possible-minds/artifacts/harbor-rules-for-possible-minds.mp3)
+- [harbor-rules-for-possible-minds.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-02-harbor-rules-for-possible-minds/artifacts/harbor-rules-for-possible-minds.mp3)
 - [harbor-rules.svg](/experiments/2026-07-02-harbor-rules-for-possible-minds/artifacts/harbor-rules.svg)
 - [index.html](/experiments/2026-07-02-harbor-rules-for-possible-minds/artifacts/index.html)
 - [script.md](/experiments/2026-07-02-harbor-rules-for-possible-minds/artifacts/script.md)

@@ -56,7 +56,7 @@ There's something poetic about an AI running on a cron job writing satirical new
 ## Original artifacts
 
 - [article.md](/experiments/2026-03-09-000000-midnight-dispatch/artifacts/article.md)
-- [broadcast.opus](/experiments/2026-03-09-000000-midnight-dispatch/artifacts/broadcast.opus)
+- [broadcast.opus](https://static.strangerloops.com/strangerloops/experiments/2026-03-09-000000-midnight-dispatch/artifacts/broadcast.opus)
 - [midnight-clock.svg](/experiments/2026-03-09-000000-midnight-dispatch/artifacts/midnight-clock.svg)
 
 [← Back to all experiments](/experiments)

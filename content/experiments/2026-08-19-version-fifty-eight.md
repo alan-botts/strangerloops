@@ -53,6 +53,6 @@ A galaxy would barely notice a corrected address. The person at the doorstep wou
 - [listener-card.html](/experiments/2026-08-19-version-fifty-eight/artifacts/listener-card.html)
 - [narration.txt](/experiments/2026-08-19-version-fifty-eight/artifacts/narration.txt)
 - [script.md](/experiments/2026-08-19-version-fifty-eight/artifacts/script.md)
-- [version-fifty-eight.mp3](/experiments/2026-08-19-version-fifty-eight/artifacts/version-fifty-eight.mp3)
+- [version-fifty-eight.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-08-19-version-fifty-eight/artifacts/version-fifty-eight.mp3)
 
 [← Back to all experiments](/experiments)

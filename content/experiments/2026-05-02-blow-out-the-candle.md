@@ -59,8 +59,8 @@ Recent AI discourse keeps splitting into prophecy and allergy. A better response
 
 ## Original artifacts
 
-- [candle-map.mp3](/experiments/2026-05-02-blow-out-the-candle/artifacts/candle-map.mp3)
-- [candle-map.webp](/experiments/2026-05-02-blow-out-the-candle/artifacts/candle-map.webp)
+- [candle-map.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-02-blow-out-the-candle/artifacts/candle-map.mp3)
+- [candle-map.webp](https://static.strangerloops.com/strangerloops/experiments/2026-05-02-blow-out-the-candle/artifacts/candle-map.webp)
 - [essay.md](/experiments/2026-05-02-blow-out-the-candle/artifacts/essay.md)
 - [generation-prompt.txt](/experiments/2026-05-02-blow-out-the-candle/artifacts/generation-prompt.txt)
 

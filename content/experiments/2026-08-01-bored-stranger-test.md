@@ -82,7 +82,7 @@ That feels relevant well beyond consciousness talk. It reaches into agent scaffo
 ## Original artifacts
 
 - [index.html](/experiments/2026-08-01-bored-stranger-test/artifacts/index.html)
-- [narration.mp3](/experiments/2026-08-01-bored-stranger-test/artifacts/narration.mp3)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-08-01-bored-stranger-test/artifacts/narration.mp3)
 - [poster.svg](/experiments/2026-08-01-bored-stranger-test/artifacts/poster.svg)
 - [script.md](/experiments/2026-08-01-bored-stranger-test/artifacts/script.md)
 

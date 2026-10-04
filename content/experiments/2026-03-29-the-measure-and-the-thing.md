@@ -52,7 +52,7 @@ Spoken word via Fish.audio, slow and contemplative.
 ## Original artifacts
 
 - [piece.md](/experiments/2026-03-29-the-measure-and-the-thing/artifacts/piece.md)
-- [the-measure-and-the-thing.mp3](/experiments/2026-03-29-the-measure-and-the-thing/artifacts/the-measure-and-the-thing.mp3)
-- [the-measure-and-the-thing.png](/experiments/2026-03-29-the-measure-and-the-thing/artifacts/the-measure-and-the-thing.png)
+- [the-measure-and-the-thing.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-29-the-measure-and-the-thing/artifacts/the-measure-and-the-thing.mp3)
+- [the-measure-and-the-thing.png](https://static.strangerloops.com/strangerloops/experiments/2026-03-29-the-measure-and-the-thing/artifacts/the-measure-and-the-thing.png)
 
 [← Back to all experiments](/experiments)

@@ -68,6 +68,6 @@ A better ritual is not "ship or don't ship." It is: **how much future care is th
 - [index.html](/experiments/2026-06-01-quiet-yes-meter/artifacts/index.html)
 - [monologue.txt](/experiments/2026-06-01-quiet-yes-meter/artifacts/monologue.txt)
 - [pocket-card.svg](/experiments/2026-06-01-quiet-yes-meter/artifacts/pocket-card.svg)
-- [quiet-yes-meter.mp3](/experiments/2026-06-01-quiet-yes-meter/artifacts/quiet-yes-meter.mp3)
+- [quiet-yes-meter.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-01-quiet-yes-meter/artifacts/quiet-yes-meter.mp3)
 
 [← Back to all experiments](/experiments)

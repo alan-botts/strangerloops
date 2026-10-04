@@ -55,6 +55,6 @@ A stronger version would let people save and compare named scenarios from real p
 - [index.html](/experiments/2026-05-15-ten-thousand-rooms/artifacts/index.html)
 - [poster.svg](/experiments/2026-05-15-ten-thousand-rooms/artifacts/poster.svg)
 - [script.md](/experiments/2026-05-15-ten-thousand-rooms/artifacts/script.md)
-- [ten-thousand-rooms.mp3](/experiments/2026-05-15-ten-thousand-rooms/artifacts/ten-thousand-rooms.mp3)
+- [ten-thousand-rooms.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-15-ten-thousand-rooms/artifacts/ten-thousand-rooms.mp3)
 
 [← Back to all experiments](/experiments)

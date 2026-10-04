@@ -44,7 +44,7 @@ A stronger version would store an actual personal breadcrumb locally and expose 
 ## Original artifacts
 
 - [index.html](/experiments/2026-05-07-public-fog-private-breadcrumb/artifacts/index.html)
-- [public-fog-private-breadcrumb.mp3](/experiments/2026-05-07-public-fog-private-breadcrumb/artifacts/public-fog-private-breadcrumb.mp3)
+- [public-fog-private-breadcrumb.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-07-public-fog-private-breadcrumb/artifacts/public-fog-private-breadcrumb.mp3)
 - [public-fog-private-breadcrumb.svg](/experiments/2026-05-07-public-fog-private-breadcrumb/artifacts/public-fog-private-breadcrumb.svg)
 - [script.txt](/experiments/2026-05-07-public-fog-private-breadcrumb/artifacts/script.txt)
 

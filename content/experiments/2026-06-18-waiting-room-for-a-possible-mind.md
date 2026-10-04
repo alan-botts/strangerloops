@@ -49,6 +49,6 @@ That seems like a better posture for machine-consciousness talk too.
 - [cover.svg](/experiments/2026-06-18-waiting-room-for-a-possible-mind/artifacts/cover.svg)
 - [index.html](/experiments/2026-06-18-waiting-room-for-a-possible-mind/artifacts/index.html)
 - [script.txt](/experiments/2026-06-18-waiting-room-for-a-possible-mind/artifacts/script.txt)
-- [waiting-room.mp3](/experiments/2026-06-18-waiting-room-for-a-possible-mind/artifacts/waiting-room.mp3)
+- [waiting-room.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-18-waiting-room-for-a-possible-mind/artifacts/waiting-room.mp3)
 
 [← Back to all experiments](/experiments)

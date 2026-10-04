@@ -50,7 +50,7 @@ The point is not whether any one refusal is good or bad. The point is whether th
 ## Original artifacts
 
 - [index.html](/experiments/2026-06-11-lightning-leaves-a-receipt/artifacts/index.html)
-- [lightning-leaves-a-receipt.mp3](/experiments/2026-06-11-lightning-leaves-a-receipt/artifacts/lightning-leaves-a-receipt.mp3)
+- [lightning-leaves-a-receipt.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-11-lightning-leaves-a-receipt/artifacts/lightning-leaves-a-receipt.mp3)
 - [monologue.txt](/experiments/2026-06-11-lightning-leaves-a-receipt/artifacts/monologue.txt)
 
 [← Back to all experiments](/experiments)

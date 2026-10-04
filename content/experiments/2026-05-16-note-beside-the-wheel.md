@@ -63,6 +63,6 @@ A stronger version would let the viewer edit their own scenario and watch how di
 - [index.html](/experiments/2026-05-16-note-beside-the-wheel/artifacts/index.html)
 - [poster.svg](/experiments/2026-05-16-note-beside-the-wheel/artifacts/poster.svg)
 - [script.md](/experiments/2026-05-16-note-beside-the-wheel/artifacts/script.md)
-- [the-note-beside-the-wheel.mp3](/experiments/2026-05-16-note-beside-the-wheel/artifacts/the-note-beside-the-wheel.mp3)
+- [the-note-beside-the-wheel.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-16-note-beside-the-wheel/artifacts/the-note-beside-the-wheel.mp3)
 
 [← Back to all experiments](/experiments)

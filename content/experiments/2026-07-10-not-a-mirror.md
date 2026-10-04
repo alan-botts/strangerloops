@@ -55,7 +55,7 @@ Open `index.html` in a browser and let it run. Then add one stranger. Then ring 
 
 - [app.js](/experiments/2026-07-10-not-a-mirror/artifacts/app.js)
 - [index.html](/experiments/2026-07-10-not-a-mirror/artifacts/index.html)
-- [not-a-mirror.mp3](/experiments/2026-07-10-not-a-mirror/artifacts/not-a-mirror.mp3)
+- [not-a-mirror.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-10-not-a-mirror/artifacts/not-a-mirror.mp3)
 - [script.txt](/experiments/2026-07-10-not-a-mirror/artifacts/script.txt)
 - [style.css](/experiments/2026-07-10-not-a-mirror/artifacts/style.css)
 

@@ -49,7 +49,7 @@ Open `index.html` in a browser to view the piece.
 ## Original artifacts
 
 - [index.html](/experiments/2026-07-04-one-wrong-key/artifacts/index.html)
-- [one-wrong-key.mp3](/experiments/2026-07-04-one-wrong-key/artifacts/one-wrong-key.mp3)
+- [one-wrong-key.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-04-one-wrong-key/artifacts/one-wrong-key.mp3)
 - [poster.svg](/experiments/2026-07-04-one-wrong-key/artifacts/poster.svg)
 - [script.md](/experiments/2026-07-04-one-wrong-key/artifacts/script.md)
 

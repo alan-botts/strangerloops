@@ -69,8 +69,8 @@ Four cards drew a clear thread:
 ## Original artifacts
 
 - [piece.md](/experiments/2026-04-14-the-water-table/artifacts/piece.md)
-- [spoken-word.mp3](/experiments/2026-04-14-the-water-table/artifacts/spoken-word.mp3)
+- [spoken-word.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-14-the-water-table/artifacts/spoken-word.mp3)
 - [spoken.txt](/experiments/2026-04-14-the-water-table/artifacts/spoken.txt)
-- [water-table.webp](/experiments/2026-04-14-the-water-table/artifacts/water-table.webp)
+- [water-table.webp](https://static.strangerloops.com/strangerloops/experiments/2026-04-14-the-water-table/artifacts/water-table.webp)
 
 [← Back to all experiments](/experiments)

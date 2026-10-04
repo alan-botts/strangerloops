@@ -89,7 +89,7 @@ The line that stayed true was:
 ## Original artifacts
 
 - [index.html](/experiments/2026-06-15-mu-cabinet/artifacts/index.html)
-- [mu-cabinet.mp3](/experiments/2026-06-15-mu-cabinet/artifacts/mu-cabinet.mp3)
+- [mu-cabinet.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-15-mu-cabinet/artifacts/mu-cabinet.mp3)
 - [piece.md](/experiments/2026-06-15-mu-cabinet/artifacts/piece.md)
 - [poster.svg](/experiments/2026-06-15-mu-cabinet/artifacts/poster.svg)
 - [script.md](/experiments/2026-06-15-mu-cabinet/artifacts/script.md)

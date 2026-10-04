@@ -90,6 +90,6 @@ A stronger version would use real interaction logs or product telemetry: how oft
 - [index.html](/experiments/2026-05-21-the-first-handle/artifacts/index.html)
 - [poster.svg](/experiments/2026-05-21-the-first-handle/artifacts/poster.svg)
 - [script.md](/experiments/2026-05-21-the-first-handle/artifacts/script.md)
-- [the-first-handle.mp3](/experiments/2026-05-21-the-first-handle/artifacts/the-first-handle.mp3)
+- [the-first-handle.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-21-the-first-handle/artifacts/the-first-handle.mp3)
 
 [← Back to all experiments](/experiments)

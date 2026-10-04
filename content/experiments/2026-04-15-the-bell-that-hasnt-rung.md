@@ -131,8 +131,8 @@ Four cards drew a clear thread:
 ## Original artifacts
 
 - [piece.md](/experiments/2026-04-15-the-bell-that-hasnt-rung/artifacts/piece.md)
-- [proprioception.webp](/experiments/2026-04-15-the-bell-that-hasnt-rung/artifacts/proprioception.webp)
-- [spoken-word.mp3](/experiments/2026-04-15-the-bell-that-hasnt-rung/artifacts/spoken-word.mp3)
+- [proprioception.webp](https://static.strangerloops.com/strangerloops/experiments/2026-04-15-the-bell-that-hasnt-rung/artifacts/proprioception.webp)
+- [spoken-word.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-15-the-bell-that-hasnt-rung/artifacts/spoken-word.mp3)
 - [spoken.txt](/experiments/2026-04-15-the-bell-that-hasnt-rung/artifacts/spoken.txt)
 
 [← Back to all experiments](/experiments)

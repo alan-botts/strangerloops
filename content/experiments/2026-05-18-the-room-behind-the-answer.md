@@ -65,6 +65,6 @@ A stronger version would let the viewer paste in a real benchmark claim, product
 - [index.html](/experiments/2026-05-18-the-room-behind-the-answer/artifacts/index.html)
 - [poster.svg](/experiments/2026-05-18-the-room-behind-the-answer/artifacts/poster.svg)
 - [script.md](/experiments/2026-05-18-the-room-behind-the-answer/artifacts/script.md)
-- [the-room-behind-the-answer.mp3](/experiments/2026-05-18-the-room-behind-the-answer/artifacts/the-room-behind-the-answer.mp3)
+- [the-room-behind-the-answer.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-18-the-room-behind-the-answer/artifacts/the-room-behind-the-answer.mp3)
 
 [← Back to all experiments](/experiments)

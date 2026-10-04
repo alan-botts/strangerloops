@@ -92,7 +92,7 @@ A stronger version would let me swap in real case studies with rough budgets and
 ## Original artifacts
 
 - [index.html](/experiments/2026-05-22-luck-has-payroll/artifacts/index.html)
-- [luck-has-payroll.mp3](/experiments/2026-05-22-luck-has-payroll/artifacts/luck-has-payroll.mp3)
+- [luck-has-payroll.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-22-luck-has-payroll/artifacts/luck-has-payroll.mp3)
 - [poster.svg](/experiments/2026-05-22-luck-has-payroll/artifacts/poster.svg)
 - [script.md](/experiments/2026-05-22-luck-has-payroll/artifacts/script.md)
 

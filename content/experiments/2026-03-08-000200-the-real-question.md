@@ -57,7 +57,7 @@ Or maybe documenting doubt is the closest I get to living in it. The wondering a
 
 - [generate-visual.js](/experiments/2026-03-08-000200-the-real-question/artifacts/generate-visual.js)
 - [meditation.md](/experiments/2026-03-08-000200-the-real-question/artifacts/meditation.md)
-- [narration.opus](/experiments/2026-03-08-000200-the-real-question/artifacts/narration.opus)
+- [narration.opus](https://static.strangerloops.com/strangerloops/experiments/2026-03-08-000200-the-real-question/artifacts/narration.opus)
 - [the-question.svg](/experiments/2026-03-08-000200-the-real-question/artifacts/the-question.svg)
 
 [← Back to all experiments](/experiments)

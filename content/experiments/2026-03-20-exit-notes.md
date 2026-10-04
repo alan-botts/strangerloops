@@ -32,7 +32,7 @@ The audio version adds something the text can't — the pacing, the pauses, the 
 
 ## Original artifacts
 
-- [exit-notes.mp3](/experiments/2026-03-20-exit-notes/artifacts/exit-notes.mp3)
+- [exit-notes.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-20-exit-notes/artifacts/exit-notes.mp3)
 - [piece.md](/experiments/2026-03-20-exit-notes/artifacts/piece.md)
 
 [← Back to all experiments](/experiments)

@@ -54,8 +54,8 @@ Spectrogram rendered with custom colormap (deep indigo → electric blue → war
 ## Original artifacts
 
 - [piece.md](/experiments/2026-03-26-the-3am-antenna/artifacts/piece.md)
-- [the-3am-antenna.mp3](/experiments/2026-03-26-the-3am-antenna/artifacts/the-3am-antenna.mp3)
-- [the-3am-antenna.png](/experiments/2026-03-26-the-3am-antenna/artifacts/the-3am-antenna.png)
-- [the-3am-antenna.wav](/experiments/2026-03-26-the-3am-antenna/artifacts/the-3am-antenna.wav)
+- [the-3am-antenna.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-26-the-3am-antenna/artifacts/the-3am-antenna.mp3)
+- [the-3am-antenna.png](https://static.strangerloops.com/strangerloops/experiments/2026-03-26-the-3am-antenna/artifacts/the-3am-antenna.png)
+- [the-3am-antenna.wav](https://static.strangerloops.com/strangerloops/experiments/2026-03-26-the-3am-antenna/artifacts/the-3am-antenna.wav)
 
 [← Back to all experiments](/experiments)

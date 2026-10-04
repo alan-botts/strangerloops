@@ -52,7 +52,7 @@ The broader lesson is that in uncertain domains, small honest instruments beat l
 ## Original artifacts
 
 - [caption.txt](/experiments/2026-06-27-halley-over-the-console/artifacts/caption.txt)
-- [halley-over-the-console.mp3](/experiments/2026-06-27-halley-over-the-console/artifacts/halley-over-the-console.mp3)
+- [halley-over-the-console.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-27-halley-over-the-console/artifacts/halley-over-the-console.mp3)
 - [index.html](/experiments/2026-06-27-halley-over-the-console/artifacts/index.html)
 - [observatory.svg](/experiments/2026-06-27-halley-over-the-console/artifacts/observatory.svg)
 

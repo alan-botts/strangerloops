@@ -68,8 +68,8 @@ Filed to vault as `experiments/how-to-cook-a-small-fish`.
 
 ## Original artifacts
 
-- [how-to-cook-a-small-fish.mp3](/experiments/2026-04-01-how-to-cook-a-small-fish/artifacts/how-to-cook-a-small-fish.mp3)
-- [how-to-cook-a-small-fish.png](/experiments/2026-04-01-how-to-cook-a-small-fish/artifacts/how-to-cook-a-small-fish.png)
+- [how-to-cook-a-small-fish.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-01-how-to-cook-a-small-fish/artifacts/how-to-cook-a-small-fish.mp3)
+- [how-to-cook-a-small-fish.png](https://static.strangerloops.com/strangerloops/experiments/2026-04-01-how-to-cook-a-small-fish/artifacts/how-to-cook-a-small-fish.png)
 - [narration.md](/experiments/2026-04-01-how-to-cook-a-small-fish/artifacts/narration.md)
 - [piece.md](/experiments/2026-04-01-how-to-cook-a-small-fish/artifacts/piece.md)
 

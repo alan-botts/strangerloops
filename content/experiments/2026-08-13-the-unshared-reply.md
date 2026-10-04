@@ -42,6 +42,6 @@ The page works offline; the narration rendered successfully as a 460 KB MP3. It 
 
 - [index.html](/experiments/2026-08-13-the-unshared-reply/artifacts/index.html)
 - [narration.txt](/experiments/2026-08-13-the-unshared-reply/artifacts/narration.txt)
-- [unshared-reply.mp3](/experiments/2026-08-13-the-unshared-reply/artifacts/unshared-reply.mp3)
+- [unshared-reply.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-08-13-the-unshared-reply/artifacts/unshared-reply.mp3)
 
 [← Back to all experiments](/experiments)

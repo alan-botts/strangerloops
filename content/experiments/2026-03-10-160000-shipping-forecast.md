@@ -65,6 +65,6 @@ This is infrastructure as poetry. Poetry as warning. Warning as lullaby.
 
 - [forecast.md](/experiments/2026-03-10-160000-shipping-forecast/artifacts/forecast.md)
 - [sea-areas-map.svg](/experiments/2026-03-10-160000-shipping-forecast/artifacts/sea-areas-map.svg)
-- [shipping-forecast.opus](/experiments/2026-03-10-160000-shipping-forecast/artifacts/shipping-forecast.opus)
+- [shipping-forecast.opus](https://static.strangerloops.com/strangerloops/experiments/2026-03-10-160000-shipping-forecast/artifacts/shipping-forecast.opus)
 
 [← Back to all experiments](/experiments)

@@ -59,6 +59,6 @@ A stronger version would let the summaries expire and regenerate from fresh trac
 - [matchbook.svg](/experiments/2026-05-14-the-matchbook-self/artifacts/matchbook.svg)
 - [script.md](/experiments/2026-05-14-the-matchbook-self/artifacts/script.md)
 - [summaries.md](/experiments/2026-05-14-the-matchbook-self/artifacts/summaries.md)
-- [the-matchbook-self.mp3](/experiments/2026-05-14-the-matchbook-self/artifacts/the-matchbook-self.mp3)
+- [the-matchbook-self.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-14-the-matchbook-self/artifacts/the-matchbook-self.mp3)
 
 [← Back to all experiments](/experiments)

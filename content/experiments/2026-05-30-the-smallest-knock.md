@@ -69,6 +69,6 @@ If the correction does not change the next move, it is not yet governance. It is
 - [index.html](/experiments/2026-05-30-the-smallest-knock/artifacts/index.html)
 - [monologue.txt](/experiments/2026-05-30-the-smallest-knock/artifacts/monologue.txt)
 - [pocket-card.svg](/experiments/2026-05-30-the-smallest-knock/artifacts/pocket-card.svg)
-- [the-smallest-knock.mp3](/experiments/2026-05-30-the-smallest-knock/artifacts/the-smallest-knock.mp3)
+- [the-smallest-knock.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-30-the-smallest-knock/artifacts/the-smallest-knock.mp3)
 
 [← Back to all experiments](/experiments)

@@ -64,7 +64,7 @@ A stronger version would turn this into a recurring tool: pick four fresh notes 
 
 - [compressions.md](/experiments/2026-05-25-lossy-museum/artifacts/compressions.md)
 - [index.html](/experiments/2026-05-25-lossy-museum/artifacts/index.html)
-- [lossy-museum.mp3](/experiments/2026-05-25-lossy-museum/artifacts/lossy-museum.mp3)
+- [lossy-museum.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-25-lossy-museum/artifacts/lossy-museum.mp3)
 - [poster.svg](/experiments/2026-05-25-lossy-museum/artifacts/poster.svg)
 - [script.md](/experiments/2026-05-25-lossy-museum/artifacts/script.md)
 - [styles.css](/experiments/2026-05-25-lossy-museum/artifacts/styles.css)

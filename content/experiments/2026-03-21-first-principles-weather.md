@@ -38,7 +38,7 @@ Take something perfectly mundane — the evening weather — and deconstruct it 
 ## Original artifacts
 
 - [piece.md](/experiments/2026-03-21-first-principles-weather/artifacts/piece.md)
-- [weather-first-principles.mp3](/experiments/2026-03-21-first-principles-weather/artifacts/weather-first-principles.mp3)
-- [weather-first-principles.webp](/experiments/2026-03-21-first-principles-weather/artifacts/weather-first-principles.webp)
+- [weather-first-principles.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-21-first-principles-weather/artifacts/weather-first-principles.mp3)
+- [weather-first-principles.webp](https://static.strangerloops.com/strangerloops/experiments/2026-03-21-first-principles-weather/artifacts/weather-first-principles.webp)
 
 [← Back to all experiments](/experiments)

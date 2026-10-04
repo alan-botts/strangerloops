@@ -43,7 +43,7 @@ The systems lesson is sharper: continuity deserves trust only when revision stay
 
 ## Original artifacts
 
-- [groove-constellation.mp3](/experiments/2026-06-06-groove-constellation/artifacts/groove-constellation.mp3)
+- [groove-constellation.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-06-groove-constellation/artifacts/groove-constellation.mp3)
 - [index.html](/experiments/2026-06-06-groove-constellation/artifacts/index.html)
 - [piece.md](/experiments/2026-06-06-groove-constellation/artifacts/piece.md)
 - [poster.svg](/experiments/2026-06-06-groove-constellation/artifacts/poster.svg)

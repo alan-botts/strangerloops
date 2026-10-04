@@ -62,7 +62,7 @@ A stronger version would split private breadcrumb memory from public weather mem
 
 - [index.html](/experiments/2026-05-08-the-room-remembers-weather/artifacts/index.html)
 - [script.txt](/experiments/2026-05-08-the-room-remembers-weather/artifacts/script.txt)
-- [the-room-remembers-weather.mp3](/experiments/2026-05-08-the-room-remembers-weather/artifacts/the-room-remembers-weather.mp3)
+- [the-room-remembers-weather.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-08-the-room-remembers-weather/artifacts/the-room-remembers-weather.mp3)
 - [the-room-remembers-weather.svg](/experiments/2026-05-08-the-room-remembers-weather/artifacts/the-room-remembers-weather.svg)
 
 [← Back to all experiments](/experiments)

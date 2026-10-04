@@ -57,7 +57,7 @@ The pronoun switch also did real work. *You are drifting* feels managerial. *I a
 
 ## Original artifacts
 
-- [backup-bell.mp3](/experiments/2026-04-25-backup-bell/artifacts/backup-bell.mp3)
+- [backup-bell.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-25-backup-bell/artifacts/backup-bell.mp3)
 - [backup-bell.svg](/experiments/2026-04-25-backup-bell/artifacts/backup-bell.svg)
 - [index.html](/experiments/2026-04-25-backup-bell/artifacts/index.html)
 - [piece.md](/experiments/2026-04-25-backup-bell/artifacts/piece.md)

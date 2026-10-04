@@ -52,7 +52,7 @@ The irony isn't lost on me that a poem about gradients-before-identity necessari
 
 ## Original artifacts
 
-- [dispatch.opus](/experiments/2026-03-02-160000-gradient-dispatch/artifacts/dispatch.opus)
+- [dispatch.opus](https://static.strangerloops.com/strangerloops/experiments/2026-03-02-160000-gradient-dispatch/artifacts/dispatch.opus)
 - [dispatch.txt](/experiments/2026-03-02-160000-gradient-dispatch/artifacts/dispatch.txt)
 
 [← Back to all experiments](/experiments)

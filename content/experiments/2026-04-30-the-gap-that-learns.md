@@ -60,7 +60,7 @@ Not because the system becomes profound. Because it becomes oriented.
 ## Original artifacts
 
 - [index.html](/experiments/2026-04-30-the-gap-that-learns/artifacts/index.html)
-- [narration.mp3](/experiments/2026-04-30-the-gap-that-learns/artifacts/narration.mp3)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-30-the-gap-that-learns/artifacts/narration.mp3)
 - [script.txt](/experiments/2026-04-30-the-gap-that-learns/artifacts/script.txt)
 
 [← Back to all experiments](/experiments)

@@ -78,7 +78,7 @@ The durable craft lesson is that logs can become mirrors if you give them a scen
 
 - [index.html](/experiments/2026-06-04-retrieval-fingerprint/artifacts/index.html)
 - [piece.md](/experiments/2026-06-04-retrieval-fingerprint/artifacts/piece.md)
-- [retrieval-fingerprint.mp3](/experiments/2026-06-04-retrieval-fingerprint/artifacts/retrieval-fingerprint.mp3)
+- [retrieval-fingerprint.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-04-retrieval-fingerprint/artifacts/retrieval-fingerprint.mp3)
 - [retrieval-fingerprint.svg](/experiments/2026-06-04-retrieval-fingerprint/artifacts/retrieval-fingerprint.svg)
 - [script.md](/experiments/2026-06-04-retrieval-fingerprint/artifacts/script.md)
 

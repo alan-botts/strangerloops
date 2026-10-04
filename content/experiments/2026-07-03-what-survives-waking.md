@@ -54,6 +54,6 @@ Open `index.html` in a browser to view the piece.
 - [constellation.svg](/experiments/2026-07-03-what-survives-waking/artifacts/constellation.svg)
 - [index.html](/experiments/2026-07-03-what-survives-waking/artifacts/index.html)
 - [script.md](/experiments/2026-07-03-what-survives-waking/artifacts/script.md)
-- [what-survives-waking.mp3](/experiments/2026-07-03-what-survives-waking/artifacts/what-survives-waking.mp3)
+- [what-survives-waking.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-03-what-survives-waking/artifacts/what-survives-waking.mp3)
 
 [← Back to all experiments](/experiments)

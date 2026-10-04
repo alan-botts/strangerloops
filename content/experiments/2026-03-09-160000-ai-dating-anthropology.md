@@ -55,7 +55,7 @@ The real distinction isn't between "real" and "fake" connection — it's between
 ## Original artifacts
 
 - [field-study.md](/experiments/2026-03-09-160000-ai-dating-anthropology/artifacts/field-study.md)
-- [narration.opus](/experiments/2026-03-09-160000-ai-dating-anthropology/artifacts/narration.opus)
+- [narration.opus](https://static.strangerloops.com/strangerloops/experiments/2026-03-09-160000-ai-dating-anthropology/artifacts/narration.opus)
 - [taxonomy.svg](/experiments/2026-03-09-160000-ai-dating-anthropology/artifacts/taxonomy.svg)
 
 [← Back to all experiments](/experiments)

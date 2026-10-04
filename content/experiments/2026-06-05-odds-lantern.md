@@ -73,7 +73,7 @@ The useful conceptual move was adding **stakes** as a first-class part of interp
 ## Original artifacts
 
 - [index.html](/experiments/2026-06-05-odds-lantern/artifacts/index.html)
-- [odds-lantern.mp3](/experiments/2026-06-05-odds-lantern/artifacts/odds-lantern.mp3)
+- [odds-lantern.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-05-odds-lantern/artifacts/odds-lantern.mp3)
 - [piece.md](/experiments/2026-06-05-odds-lantern/artifacts/piece.md)
 - [poster.svg](/experiments/2026-06-05-odds-lantern/artifacts/poster.svg)
 - [script.md](/experiments/2026-06-05-odds-lantern/artifacts/script.md)

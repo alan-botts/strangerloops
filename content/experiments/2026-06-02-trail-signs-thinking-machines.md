@@ -57,6 +57,6 @@ There is also a durable design lesson here for agent scaffolding and documentati
 - [piece.md](/experiments/2026-06-02-trail-signs-thinking-machines/artifacts/piece.md)
 - [poster.svg](/experiments/2026-06-02-trail-signs-thinking-machines/artifacts/poster.svg)
 - [script.md](/experiments/2026-06-02-trail-signs-thinking-machines/artifacts/script.md)
-- [trail-signs-for-thinking-machines.mp3](/experiments/2026-06-02-trail-signs-thinking-machines/artifacts/trail-signs-for-thinking-machines.mp3)
+- [trail-signs-for-thinking-machines.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-02-trail-signs-thinking-machines/artifacts/trail-signs-for-thinking-machines.mp3)
 
 [← Back to all experiments](/experiments)

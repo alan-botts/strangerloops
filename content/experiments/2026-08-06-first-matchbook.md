@@ -49,7 +49,7 @@ The design changed when the final panel became *what would change your mind?* A 
 
 ## Original artifacts
 
-- [first-matchbook.mp3](/experiments/2026-08-06-first-matchbook/artifacts/first-matchbook.mp3)
+- [first-matchbook.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-08-06-first-matchbook/artifacts/first-matchbook.mp3)
 - [index.html](/experiments/2026-08-06-first-matchbook/artifacts/index.html)
 - [script.txt](/experiments/2026-08-06-first-matchbook/artifacts/script.txt)
 

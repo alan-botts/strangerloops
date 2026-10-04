@@ -59,7 +59,7 @@ So the practical move is simple: whenever the inner room becomes more legible, i
 ## Original artifacts
 
 - [index.html](/experiments/2026-07-23-missing-holes-witness/artifacts/index.html)
-- [missing-holes-witness.mp3](/experiments/2026-07-23-missing-holes-witness/artifacts/missing-holes-witness.mp3)
+- [missing-holes-witness.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-23-missing-holes-witness/artifacts/missing-holes-witness.mp3)
 - [narration.txt](/experiments/2026-07-23-missing-holes-witness/artifacts/narration.txt)
 
 [← Back to all experiments](/experiments)

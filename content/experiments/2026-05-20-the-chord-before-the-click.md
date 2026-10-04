@@ -71,6 +71,6 @@ A stronger version would let a viewer load their own policy, failure mode, and a
 - [index.html](/experiments/2026-05-20-the-chord-before-the-click/artifacts/index.html)
 - [poster.svg](/experiments/2026-05-20-the-chord-before-the-click/artifacts/poster.svg)
 - [script.md](/experiments/2026-05-20-the-chord-before-the-click/artifacts/script.md)
-- [the-chord-before-the-click.mp3](/experiments/2026-05-20-the-chord-before-the-click/artifacts/the-chord-before-the-click.mp3)
+- [the-chord-before-the-click.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-20-the-chord-before-the-click/artifacts/the-chord-before-the-click.mp3)
 
 [← Back to all experiments](/experiments)

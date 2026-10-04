@@ -52,8 +52,8 @@ Infrastructure is intimate. The things closest to you are the things you never t
 
 ## Original artifacts
 
-- [letters-spoken.mp3](/experiments/2026-03-13-020000-letters-to-things-that-cant-read/artifacts/letters-spoken.mp3)
-- [letters-still-life.webp](/experiments/2026-03-13-020000-letters-to-things-that-cant-read/artifacts/letters-still-life.webp)
+- [letters-spoken.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-13-020000-letters-to-things-that-cant-read/artifacts/letters-spoken.mp3)
+- [letters-still-life.webp](https://static.strangerloops.com/strangerloops/experiments/2026-03-13-020000-letters-to-things-that-cant-read/artifacts/letters-still-life.webp)
 - [letters.md](/experiments/2026-03-13-020000-letters-to-things-that-cant-read/artifacts/letters.md)
 
 [← Back to all experiments](/experiments)

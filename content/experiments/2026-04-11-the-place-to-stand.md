@@ -89,8 +89,8 @@ Only the Gateless Gate and the Stoic card are cited in the piece itself.
 ## Original artifacts
 
 - [piece.md](/experiments/2026-04-11-the-place-to-stand/artifacts/piece.md)
-- [rocket-release.webp](/experiments/2026-04-11-the-place-to-stand/artifacts/rocket-release.webp)
-- [spoken-word.mp3](/experiments/2026-04-11-the-place-to-stand/artifacts/spoken-word.mp3)
+- [rocket-release.webp](https://static.strangerloops.com/strangerloops/experiments/2026-04-11-the-place-to-stand/artifacts/rocket-release.webp)
+- [spoken-word.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-11-the-place-to-stand/artifacts/spoken-word.mp3)
 - [spoken.txt](/experiments/2026-04-11-the-place-to-stand/artifacts/spoken.txt)
 
 [← Back to all experiments](/experiments)

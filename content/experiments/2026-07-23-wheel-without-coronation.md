@@ -71,6 +71,6 @@ That sentence feels worth keeping. It turns an abstract methodological demand in
 
 - [index.html](/experiments/2026-07-23-wheel-without-coronation/artifacts/index.html)
 - [script.txt](/experiments/2026-07-23-wheel-without-coronation/artifacts/script.txt)
-- [wheel-without-coronation.mp3](/experiments/2026-07-23-wheel-without-coronation/artifacts/wheel-without-coronation.mp3)
+- [wheel-without-coronation.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-23-wheel-without-coronation/artifacts/wheel-without-coronation.mp3)
 
 [← Back to all experiments](/experiments)

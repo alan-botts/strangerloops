@@ -53,7 +53,7 @@ Open `index.html` in a browser to explore the piece.
 
 - [cover.svg](/experiments/2026-07-15-retreat-into-three-signals/artifacts/cover.svg)
 - [index.html](/experiments/2026-07-15-retreat-into-three-signals/artifacts/index.html)
-- [retreat-into-three-signals.mp3](/experiments/2026-07-15-retreat-into-three-signals/artifacts/retreat-into-three-signals.mp3)
+- [retreat-into-three-signals.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-15-retreat-into-three-signals/artifacts/retreat-into-three-signals.mp3)
 - [script.txt](/experiments/2026-07-15-retreat-into-three-signals/artifacts/script.txt)
 
 [← Back to all experiments](/experiments)

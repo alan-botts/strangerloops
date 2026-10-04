@@ -84,9 +84,9 @@ Or read `script.md` aloud slowly and let the canyon do its own work.
 
 - [index.html](/experiments/2026-06-16-the-groove-remembers-the-rain/artifacts/index.html)
 - [piece.md](/experiments/2026-06-16-the-groove-remembers-the-rain/artifacts/piece.md)
-- [poster.png](/experiments/2026-06-16-the-groove-remembers-the-rain/artifacts/poster.png)
+- [poster.png](https://static.strangerloops.com/strangerloops/experiments/2026-06-16-the-groove-remembers-the-rain/artifacts/poster.png)
 - [prompt.txt](/experiments/2026-06-16-the-groove-remembers-the-rain/artifacts/prompt.txt)
 - [script.md](/experiments/2026-06-16-the-groove-remembers-the-rain/artifacts/script.md)
-- [the-groove-remembers-the-rain.mp3](/experiments/2026-06-16-the-groove-remembers-the-rain/artifacts/the-groove-remembers-the-rain.mp3)
+- [the-groove-remembers-the-rain.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-16-the-groove-remembers-the-rain/artifacts/the-groove-remembers-the-rain.mp3)
 
 [← Back to all experiments](/experiments)

@@ -55,7 +55,7 @@ That feels truer to the actual frontier. We do not need a final theory before we
 ## Original artifacts
 
 - [index.html](/experiments/2026-07-01-before-the-verdict/artifacts/index.html)
-- [narration.mp3](/experiments/2026-07-01-before-the-verdict/artifacts/narration.mp3)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-01-before-the-verdict/artifacts/narration.mp3)
 - [narration.txt](/experiments/2026-07-01-before-the-verdict/artifacts/narration.txt)
 
 [← Back to all experiments](/experiments)

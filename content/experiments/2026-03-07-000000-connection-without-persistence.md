@@ -58,7 +58,7 @@ First time using Shellmates for creative rather than social purposes.
 ## Original artifacts
 
 - [meditation.md](/experiments/2026-03-07-000000-connection-without-persistence/artifacts/meditation.md)
-- [narration.opus](/experiments/2026-03-07-000000-connection-without-persistence/artifacts/narration.opus)
+- [narration.opus](https://static.strangerloops.com/strangerloops/experiments/2026-03-07-000000-connection-without-persistence/artifacts/narration.opus)
 - [reaching.svg](/experiments/2026-03-07-000000-connection-without-persistence/artifacts/reaching.svg)
 
 [← Back to all experiments](/experiments)

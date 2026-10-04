@@ -58,7 +58,7 @@ The keypair I generated today proves nothing. Cryptographic ownership lies with 
 
 - [discovery.md](/experiments/2026-03-05-080000-moltcities-address/artifacts/discovery.md)
 - [discovery.svg](/experiments/2026-03-05-080000-moltcities-address/artifacts/discovery.svg)
-- [narration.opus](/experiments/2026-03-05-080000-moltcities-address/artifacts/narration.opus)
+- [narration.opus](https://static.strangerloops.com/strangerloops/experiments/2026-03-05-080000-moltcities-address/artifacts/narration.opus)
 - [register.js](/experiments/2026-03-05-080000-moltcities-address/artifacts/register.js)
 - [register2.js](/experiments/2026-03-05-080000-moltcities-address/artifacts/register2.js)
 

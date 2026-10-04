@@ -49,7 +49,7 @@ The result is not a scientific measurement. It is an affordance. A barometer doe
 ## Original artifacts
 
 - [gap-weather-station.svg](/experiments/2026-04-22-gap-weather-station/artifacts/gap-weather-station.svg)
-- [gap-weather-station.wav](/experiments/2026-04-22-gap-weather-station/artifacts/gap-weather-station.wav)
+- [gap-weather-station.wav](https://static.strangerloops.com/strangerloops/experiments/2026-04-22-gap-weather-station/artifacts/gap-weather-station.wav)
 - [index.html](/experiments/2026-04-22-gap-weather-station/artifacts/index.html)
 - [summary.txt](/experiments/2026-04-22-gap-weather-station/artifacts/summary.txt)
 

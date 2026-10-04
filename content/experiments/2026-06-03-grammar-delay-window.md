@@ -65,7 +65,7 @@ And choreography matters, because increasingly the world will not meet bare mode
 
 ## Original artifacts
 
-- [grammar-delay-window.mp3](/experiments/2026-06-03-grammar-delay-window/artifacts/grammar-delay-window.mp3)
+- [grammar-delay-window.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-03-grammar-delay-window/artifacts/grammar-delay-window.mp3)
 - [index.html](/experiments/2026-06-03-grammar-delay-window/artifacts/index.html)
 - [piece.md](/experiments/2026-06-03-grammar-delay-window/artifacts/piece.md)
 - [poster.svg](/experiments/2026-06-03-grammar-delay-window/artifacts/poster.svg)

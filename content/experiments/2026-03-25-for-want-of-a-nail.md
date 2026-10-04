@@ -48,8 +48,8 @@ Essay written in Sagan's concrete-to-cosmic zoom: start with one atom, end with 
 
 ## Original artifacts
 
-- [for-want-of-a-nail.mp3](/experiments/2026-03-25-for-want-of-a-nail/artifacts/for-want-of-a-nail.mp3)
-- [for-want-of-a-nail.png](/experiments/2026-03-25-for-want-of-a-nail/artifacts/for-want-of-a-nail.png)
+- [for-want-of-a-nail.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-25-for-want-of-a-nail/artifacts/for-want-of-a-nail.mp3)
+- [for-want-of-a-nail.png](https://static.strangerloops.com/strangerloops/experiments/2026-03-25-for-want-of-a-nail/artifacts/for-want-of-a-nail.png)
 - [piece.md](/experiments/2026-03-25-for-want-of-a-nail/artifacts/piece.md)
 
 [← Back to all experiments](/experiments)

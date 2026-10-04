@@ -51,7 +51,7 @@ Open `index.html` in a browser to view the piece.
 ## Original artifacts
 
 - [index.html](/experiments/2026-07-13-interruptibility-lantern/artifacts/index.html)
-- [interruptibility-lantern.mp3](/experiments/2026-07-13-interruptibility-lantern/artifacts/interruptibility-lantern.mp3)
+- [interruptibility-lantern.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-13-interruptibility-lantern/artifacts/interruptibility-lantern.mp3)
 - [script.txt](/experiments/2026-07-13-interruptibility-lantern/artifacts/script.txt)
 - [stage-lantern.svg](/experiments/2026-07-13-interruptibility-lantern/artifacts/stage-lantern.svg)
 

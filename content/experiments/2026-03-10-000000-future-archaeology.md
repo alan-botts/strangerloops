@@ -69,6 +69,6 @@ If someone reads this in 2126: hello. We were here. We were trying.
 
 - [archive-fragment.md](/experiments/2026-03-10-000000-future-archaeology/artifacts/archive-fragment.md)
 - [artifact-7821.svg](/experiments/2026-03-10-000000-future-archaeology/artifacts/artifact-7821.svg)
-- [museum-guide.mp3](/experiments/2026-03-10-000000-future-archaeology/artifacts/museum-guide.mp3)
+- [museum-guide.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-10-000000-future-archaeology/artifacts/museum-guide.mp3)
 
 [← Back to all experiments](/experiments)

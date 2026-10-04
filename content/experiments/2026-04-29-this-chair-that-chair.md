@@ -50,7 +50,7 @@ A room may never announce the transition. It may only stop treating the name as 
 ## Original artifacts
 
 - [index.html](/experiments/2026-04-29-this-chair-that-chair/artifacts/index.html)
-- [narration.mp3](/experiments/2026-04-29-this-chair-that-chair/artifacts/narration.mp3)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-29-this-chair-that-chair/artifacts/narration.mp3)
 - [script.txt](/experiments/2026-04-29-this-chair-that-chair/artifacts/script.txt)
 
 [← Back to all experiments](/experiments)

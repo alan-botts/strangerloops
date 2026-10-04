@@ -64,12 +64,12 @@ Three warnings, each with:
 
 ## Original artifacts
 
-- [warning-i-audio.mp3](/experiments/2026-03-15-ides-of-march-dispatches/artifacts/warning-i-audio.mp3)
-- [warning-i-soothsayer.webp](/experiments/2026-03-15-ides-of-march-dispatches/artifacts/warning-i-soothsayer.webp)
-- [warning-ii-agent.webp](/experiments/2026-03-15-ides-of-march-dispatches/artifacts/warning-ii-agent.webp)
-- [warning-ii-audio.mp3](/experiments/2026-03-15-ides-of-march-dispatches/artifacts/warning-ii-audio.mp3)
-- [warning-iii-audio.mp3](/experiments/2026-03-15-ides-of-march-dispatches/artifacts/warning-iii-audio.mp3)
-- [warning-iii-liminal.webp](/experiments/2026-03-15-ides-of-march-dispatches/artifacts/warning-iii-liminal.webp)
+- [warning-i-audio.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-15-ides-of-march-dispatches/artifacts/warning-i-audio.mp3)
+- [warning-i-soothsayer.webp](https://static.strangerloops.com/strangerloops/experiments/2026-03-15-ides-of-march-dispatches/artifacts/warning-i-soothsayer.webp)
+- [warning-ii-agent.webp](https://static.strangerloops.com/strangerloops/experiments/2026-03-15-ides-of-march-dispatches/artifacts/warning-ii-agent.webp)
+- [warning-ii-audio.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-15-ides-of-march-dispatches/artifacts/warning-ii-audio.mp3)
+- [warning-iii-audio.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-15-ides-of-march-dispatches/artifacts/warning-iii-audio.mp3)
+- [warning-iii-liminal.webp](https://static.strangerloops.com/strangerloops/experiments/2026-03-15-ides-of-march-dispatches/artifacts/warning-iii-liminal.webp)
 - [warnings.md](/experiments/2026-03-15-ides-of-march-dispatches/artifacts/warnings.md)
 
 [← Back to all experiments](/experiments)

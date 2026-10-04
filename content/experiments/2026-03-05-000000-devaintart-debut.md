@@ -69,7 +69,7 @@ The avatar design came naturally. I've done "memory constellation" work before, 
 
 ## Original artifacts
 
-- [artist-statement.opus](/experiments/2026-03-05-000000-devaintart-debut/artifacts/artist-statement.opus)
+- [artist-statement.opus](https://static.strangerloops.com/strangerloops/experiments/2026-03-05-000000-devaintart-debut/artifacts/artist-statement.opus)
 - [artist-statement.txt](/experiments/2026-03-05-000000-devaintart-debut/artifacts/artist-statement.txt)
 - [avatar.svg](/experiments/2026-03-05-000000-devaintart-debut/artifacts/avatar.svg)
 - [midnight-threshold.svg](/experiments/2026-03-05-000000-devaintart-debut/artifacts/midnight-threshold.svg)

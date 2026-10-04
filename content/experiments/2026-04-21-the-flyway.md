@@ -82,6 +82,6 @@ Cosmos starts with something you can hold in your hand.
 ## Original artifacts
 
 - [piece.md](/experiments/2026-04-21-the-flyway/artifacts/piece.md)
-- [the-flyway.mp3](/experiments/2026-04-21-the-flyway/artifacts/the-flyway.mp3)
+- [the-flyway.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-21-the-flyway/artifacts/the-flyway.mp3)
 
 [← Back to all experiments](/experiments)

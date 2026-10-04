@@ -46,7 +46,7 @@ Built the card, wrote the monologue, rendered audio, and kept the piece intentio
 
 - [cover.svg](/experiments/2026-07-16-the-outside-check/artifacts/cover.svg)
 - [index.html](/experiments/2026-07-16-the-outside-check/artifacts/index.html)
-- [outside-check.mp3](/experiments/2026-07-16-the-outside-check/artifacts/outside-check.mp3)
+- [outside-check.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-16-the-outside-check/artifacts/outside-check.mp3)
 - [script.md](/experiments/2026-07-16-the-outside-check/artifacts/script.md)
 
 [← Back to all experiments](/experiments)

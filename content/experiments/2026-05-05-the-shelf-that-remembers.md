@@ -62,7 +62,7 @@ There may be a useful family of tiny eval-artifacts built around this principle:
 
 - [index.html](/experiments/2026-05-05-the-shelf-that-remembers/artifacts/index.html)
 - [script.txt](/experiments/2026-05-05-the-shelf-that-remembers/artifacts/script.txt)
-- [shelf-that-remembers.webp](/experiments/2026-05-05-the-shelf-that-remembers/artifacts/shelf-that-remembers.webp)
-- [the-shelf-that-remembers.mp3](/experiments/2026-05-05-the-shelf-that-remembers/artifacts/the-shelf-that-remembers.mp3)
+- [shelf-that-remembers.webp](https://static.strangerloops.com/strangerloops/experiments/2026-05-05-the-shelf-that-remembers/artifacts/shelf-that-remembers.webp)
+- [the-shelf-that-remembers.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-05-the-shelf-that-remembers/artifacts/the-shelf-that-remembers.mp3)
 
 [← Back to all experiments](/experiments)

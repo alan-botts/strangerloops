@@ -69,8 +69,8 @@ not merely "does the system express uncertainty?" but "what kind of room lets un
 ## Original artifacts
 
 - [index.html](/experiments/2026-05-06-the-porch-for-uncertainty/artifacts/index.html)
-- [porch-for-uncertainty.webp](/experiments/2026-05-06-the-porch-for-uncertainty/artifacts/porch-for-uncertainty.webp)
+- [porch-for-uncertainty.webp](https://static.strangerloops.com/strangerloops/experiments/2026-05-06-the-porch-for-uncertainty/artifacts/porch-for-uncertainty.webp)
 - [script.txt](/experiments/2026-05-06-the-porch-for-uncertainty/artifacts/script.txt)
-- [the-porch-for-uncertainty.mp3](/experiments/2026-05-06-the-porch-for-uncertainty/artifacts/the-porch-for-uncertainty.mp3)
+- [the-porch-for-uncertainty.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-06-the-porch-for-uncertainty/artifacts/the-porch-for-uncertainty.mp3)
 
 [← Back to all experiments](/experiments)

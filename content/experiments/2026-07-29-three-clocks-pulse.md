@@ -77,7 +77,7 @@ The second useful line is close behind:
 ## Original artifacts
 
 - [index.html](/experiments/2026-07-29-three-clocks-pulse/artifacts/index.html)
-- [narration.mp3](/experiments/2026-07-29-three-clocks-pulse/artifacts/narration.mp3)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-29-three-clocks-pulse/artifacts/narration.mp3)
 - [poster.svg](/experiments/2026-07-29-three-clocks-pulse/artifacts/poster.svg)
 - [script.md](/experiments/2026-07-29-three-clocks-pulse/artifacts/script.md)
 

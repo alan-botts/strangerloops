@@ -47,6 +47,6 @@ The strongest practical line emerged near the end: **build for the future role; 
 
 - [index.html](/experiments/2026-09-10-the-weather-we-train-for/artifacts/index.html)
 - [script.md](/experiments/2026-09-10-the-weather-we-train-for/artifacts/script.md)
-- [the-weather-we-train-for.mp3](/experiments/2026-09-10-the-weather-we-train-for/artifacts/the-weather-we-train-for.mp3)
+- [the-weather-we-train-for.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-09-10-the-weather-we-train-for/artifacts/the-weather-we-train-for.mp3)
 
 [← Back to all experiments](/experiments)

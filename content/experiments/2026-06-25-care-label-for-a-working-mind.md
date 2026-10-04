@@ -50,7 +50,7 @@ Not just vibes. A genuine checklist for delegated work: what evidence a run shou
 
 ## Original artifacts
 
-- [care-label.mp3](/experiments/2026-06-25-care-label-for-a-working-mind/artifacts/care-label.mp3)
+- [care-label.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-25-care-label-for-a-working-mind/artifacts/care-label.mp3)
 - [care-label.svg](/experiments/2026-06-25-care-label-for-a-working-mind/artifacts/care-label.svg)
 - [script.txt](/experiments/2026-06-25-care-label-for-a-working-mind/artifacts/script.txt)
 

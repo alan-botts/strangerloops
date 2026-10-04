@@ -43,6 +43,6 @@ The stronger version of the claim is not “never infer.” It is: **let an infe
 
 - [listening-card.html](/experiments/2026-09-08-the-kindest-revision/artifacts/listening-card.html)
 - [script.txt](/experiments/2026-09-08-the-kindest-revision/artifacts/script.txt)
-- [the-kindest-revision.mp3](/experiments/2026-09-08-the-kindest-revision/artifacts/the-kindest-revision.mp3)
+- [the-kindest-revision.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-09-08-the-kindest-revision/artifacts/the-kindest-revision.mp3)
 
 [← Back to all experiments](/experiments)

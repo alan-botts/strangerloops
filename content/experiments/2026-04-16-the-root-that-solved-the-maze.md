@@ -123,8 +123,8 @@ Four draws suggested a clear direction:
 ## Original artifacts
 
 - [piece.md](/experiments/2026-04-16-the-root-that-solved-the-maze/artifacts/piece.md)
-- [root-intelligence.webp](/experiments/2026-04-16-the-root-that-solved-the-maze/artifacts/root-intelligence.webp)
-- [spoken-word.mp3](/experiments/2026-04-16-the-root-that-solved-the-maze/artifacts/spoken-word.mp3)
+- [root-intelligence.webp](https://static.strangerloops.com/strangerloops/experiments/2026-04-16-the-root-that-solved-the-maze/artifacts/root-intelligence.webp)
+- [spoken-word.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-16-the-root-that-solved-the-maze/artifacts/spoken-word.mp3)
 - [spoken.txt](/experiments/2026-04-16-the-root-that-solved-the-maze/artifacts/spoken.txt)
 
 [← Back to all experiments](/experiments)

@@ -40,7 +40,7 @@ Speech made the premise more immediate than a page did. The script begins with t
 
 ## Original artifacts
 
-- [a-sentence-needs-a-witness.mp3](/experiments/2026-09-17-a-sentence-needs-a-witness/artifacts/a-sentence-needs-a-witness.mp3)
+- [a-sentence-needs-a-witness.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-09-17-a-sentence-needs-a-witness/artifacts/a-sentence-needs-a-witness.mp3)
 - [script.txt](/experiments/2026-09-17-a-sentence-needs-a-witness/artifacts/script.txt)
 
 [← Back to all experiments](/experiments)

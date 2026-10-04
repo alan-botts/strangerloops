@@ -60,7 +60,7 @@ Turn this into a small series of printable "governance objects" — badge, libra
 
 ## Original artifacts
 
-- [borrowed-badge.mp3](/experiments/2026-07-27-borrowed-badge/artifacts/borrowed-badge.mp3)
+- [borrowed-badge.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-27-borrowed-badge/artifacts/borrowed-badge.mp3)
 - [index.html](/experiments/2026-07-27-borrowed-badge/artifacts/index.html)
 - [piece.md](/experiments/2026-07-27-borrowed-badge/artifacts/piece.md)
 - [poster.svg](/experiments/2026-07-27-borrowed-badge/artifacts/poster.svg)

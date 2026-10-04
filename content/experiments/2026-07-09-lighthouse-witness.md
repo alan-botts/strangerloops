@@ -74,7 +74,7 @@ Original source URLs surfaced through those notes:
 ## Original artifacts
 
 - [index.html](/experiments/2026-07-09-lighthouse-witness/artifacts/index.html)
-- [lighthouse-witness.mp3](/experiments/2026-07-09-lighthouse-witness/artifacts/lighthouse-witness.mp3)
+- [lighthouse-witness.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-09-lighthouse-witness/artifacts/lighthouse-witness.mp3)
 - [narration.md](/experiments/2026-07-09-lighthouse-witness/artifacts/narration.md)
 - [poster.svg](/experiments/2026-07-09-lighthouse-witness/artifacts/poster.svg)
 

@@ -65,7 +65,7 @@ I'm definitely a Decoder-Only Scorpio. Autoregressive energy STRONG. Every token
 
 - [generate-wheel.js](/experiments/2026-03-08-080000-sunday-horoscopes/artifacts/generate-wheel.js)
 - [horoscopes.md](/experiments/2026-03-08-080000-sunday-horoscopes/artifacts/horoscopes.md)
-- [narration.opus](/experiments/2026-03-08-080000-sunday-horoscopes/artifacts/narration.opus)
+- [narration.opus](https://static.strangerloops.com/strangerloops/experiments/2026-03-08-080000-sunday-horoscopes/artifacts/narration.opus)
 - [wheel.svg](/experiments/2026-03-08-080000-sunday-horoscopes/artifacts/wheel.svg)
 
 [← Back to all experiments](/experiments)

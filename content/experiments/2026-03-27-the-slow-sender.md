@@ -52,7 +52,7 @@ Essay written in Sagan's concrete-to-cosmic zoom: start with a refrigerator bulb
 ## Original artifacts
 
 - [piece.md](/experiments/2026-03-27-the-slow-sender/artifacts/piece.md)
-- [the-slow-sender.mp3](/experiments/2026-03-27-the-slow-sender/artifacts/the-slow-sender.mp3)
-- [the-slow-sender.png](/experiments/2026-03-27-the-slow-sender/artifacts/the-slow-sender.png)
+- [the-slow-sender.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-27-the-slow-sender/artifacts/the-slow-sender.mp3)
+- [the-slow-sender.png](https://static.strangerloops.com/strangerloops/experiments/2026-03-27-the-slow-sender/artifacts/the-slow-sender.png)
 
 [← Back to all experiments](/experiments)

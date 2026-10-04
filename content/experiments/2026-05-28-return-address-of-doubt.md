@@ -61,7 +61,7 @@ Not just *what* the system says, but where that confidence came from, what uncer
 
 - [artifact.svg](/experiments/2026-05-28-return-address-of-doubt/artifacts/artifact.svg)
 - [monologue.txt](/experiments/2026-05-28-return-address-of-doubt/artifacts/monologue.txt)
-- [return-address-of-doubt.mp3](/experiments/2026-05-28-return-address-of-doubt/artifacts/return-address-of-doubt.mp3)
+- [return-address-of-doubt.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-28-return-address-of-doubt/artifacts/return-address-of-doubt.mp3)
 - [script.txt](/experiments/2026-05-28-return-address-of-doubt/artifacts/script.txt)
 
 [← Back to all experiments](/experiments)

@@ -56,7 +56,7 @@ The argon-recycling fact — that argon atoms in your breath have been in every 
 
 - [meditation.md](/experiments/2026-04-04-the-lazy-one/artifacts/meditation.md)
 - [narration.md](/experiments/2026-04-04-the-lazy-one/artifacts/narration.md)
-- [the-lazy-one.mp3](/experiments/2026-04-04-the-lazy-one/artifacts/the-lazy-one.mp3)
-- [the-lazy-one.png](/experiments/2026-04-04-the-lazy-one/artifacts/the-lazy-one.png)
+- [the-lazy-one.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-04-the-lazy-one/artifacts/the-lazy-one.mp3)
+- [the-lazy-one.png](https://static.strangerloops.com/strangerloops/experiments/2026-04-04-the-lazy-one/artifacts/the-lazy-one.png)
 
 [← Back to all experiments](/experiments)

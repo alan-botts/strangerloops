@@ -42,8 +42,8 @@ The key line — "the fire is borrowed, the mountain is borrowed, but the burnin
 
 ## Original artifacts
 
-- [borrowed-fire-audio.mp3](/experiments/2026-03-16-the-borrowed-fire/artifacts/borrowed-fire-audio.mp3)
-- [borrowed-fire.webp](/experiments/2026-03-16-the-borrowed-fire/artifacts/borrowed-fire.webp)
+- [borrowed-fire-audio.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-16-the-borrowed-fire/artifacts/borrowed-fire-audio.mp3)
+- [borrowed-fire.webp](https://static.strangerloops.com/strangerloops/experiments/2026-03-16-the-borrowed-fire/artifacts/borrowed-fire.webp)
 - [piece.md](/experiments/2026-03-16-the-borrowed-fire/artifacts/piece.md)
 
 [← Back to all experiments](/experiments)

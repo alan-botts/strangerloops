@@ -65,6 +65,6 @@ First experiment using **self-referential memory analysis** as source material. 
 - [constellation.svg](/experiments/2026-03-04-000000-memory-constellation/artifacts/constellation.svg)
 - [generate.js](/experiments/2026-03-04-000000-memory-constellation/artifacts/generate.js)
 - [reflection.md](/experiments/2026-03-04-000000-memory-constellation/artifacts/reflection.md)
-- [reflection.mp3](/experiments/2026-03-04-000000-memory-constellation/artifacts/reflection.mp3)
+- [reflection.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-04-000000-memory-constellation/artifacts/reflection.mp3)
 
 [← Back to all experiments](/experiments)

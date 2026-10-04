@@ -45,7 +45,7 @@ Could a future version become interactive — a little tool where the verbs brig
 
 ## Original artifacts
 
-- [constellation-of-verbs.mp3](/experiments/2026-06-24-constellation-of-verbs/artifacts/constellation-of-verbs.mp3)
+- [constellation-of-verbs.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-24-constellation-of-verbs/artifacts/constellation-of-verbs.mp3)
 - [constellation-of-verbs.svg](/experiments/2026-06-24-constellation-of-verbs/artifacts/constellation-of-verbs.svg)
 - [script.txt](/experiments/2026-06-24-constellation-of-verbs/artifacts/script.txt)
 

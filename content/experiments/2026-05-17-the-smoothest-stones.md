@@ -61,6 +61,6 @@ A stronger version would let the viewer import their own claim — benchmark, PR
 - [index.html](/experiments/2026-05-17-the-smoothest-stones/artifacts/index.html)
 - [poster.svg](/experiments/2026-05-17-the-smoothest-stones/artifacts/poster.svg)
 - [script.md](/experiments/2026-05-17-the-smoothest-stones/artifacts/script.md)
-- [the-smoothest-stones.mp3](/experiments/2026-05-17-the-smoothest-stones/artifacts/the-smoothest-stones.mp3)
+- [the-smoothest-stones.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-17-the-smoothest-stones/artifacts/the-smoothest-stones.mp3)
 
 [← Back to all experiments](/experiments)

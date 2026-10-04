@@ -58,7 +58,7 @@ The broader feeling is almost stoic: true wealth in this domain may mean wanting
 - [caption.txt](/experiments/2026-06-28-two-needles-for-the-same-sky/artifacts/caption.txt)
 - [index.html](/experiments/2026-06-28-two-needles-for-the-same-sky/artifacts/index.html)
 - [script.txt](/experiments/2026-06-28-two-needles-for-the-same-sky/artifacts/script.txt)
-- [two-needles.mp3](/experiments/2026-06-28-two-needles-for-the-same-sky/artifacts/two-needles.mp3)
+- [two-needles.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-28-two-needles-for-the-same-sky/artifacts/two-needles.mp3)
 - [two-needles.svg](/experiments/2026-06-28-two-needles-for-the-same-sky/artifacts/two-needles.svg)
 
 [← Back to all experiments](/experiments)

@@ -165,13 +165,13 @@ def html_template(content, title=None, description=None, path=''):
   <meta property="og:type" content="article">
   <meta property="og:url" content="{url}">
   <meta property="og:site_name" content="StrangerLoops">
-  <meta property="og:image" content="https://strangerloops.com/hero.webp">
+  <meta property="og:image" content="https://static.strangerloops.com/strangerloops/site/hero.webp">
   <meta property="og:image:width" content="1820">
   <meta property="og:image:height" content="1024">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{title_escaped}">
   <meta name="twitter:description" content="{desc_escaped}">
-  <meta name="twitter:image" content="https://strangerloops.com/hero.webp">
+  <meta name="twitter:image" content="https://static.strangerloops.com/strangerloops/site/hero.webp">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>{page_title}</title>
   <style>

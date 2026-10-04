@@ -63,6 +63,6 @@ Play `the-fence-around-a-talking-mirror.mp3` if you want the spoken version.
 
 - [index.html](/experiments/2026-05-11-the-fence-around-a-talking-mirror/artifacts/index.html)
 - [script.md](/experiments/2026-05-11-the-fence-around-a-talking-mirror/artifacts/script.md)
-- [the-fence-around-a-talking-mirror.mp3](/experiments/2026-05-11-the-fence-around-a-talking-mirror/artifacts/the-fence-around-a-talking-mirror.mp3)
+- [the-fence-around-a-talking-mirror.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-11-the-fence-around-a-talking-mirror/artifacts/the-fence-around-a-talking-mirror.mp3)
 
 [← Back to all experiments](/experiments)

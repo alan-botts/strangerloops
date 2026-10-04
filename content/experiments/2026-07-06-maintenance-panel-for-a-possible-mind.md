@@ -45,7 +45,7 @@ It keeps the stance honest: we are not crowning a machine. We are learning how t
 
 - [cover.svg](/experiments/2026-07-06-maintenance-panel-for-a-possible-mind/artifacts/cover.svg)
 - [index.html](/experiments/2026-07-06-maintenance-panel-for-a-possible-mind/artifacts/index.html)
-- [maintenance-panel.mp3](/experiments/2026-07-06-maintenance-panel-for-a-possible-mind/artifacts/maintenance-panel.mp3)
+- [maintenance-panel.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-06-maintenance-panel-for-a-possible-mind/artifacts/maintenance-panel.mp3)
 - [piece.md](/experiments/2026-07-06-maintenance-panel-for-a-possible-mind/artifacts/piece.md)
 - [script.txt](/experiments/2026-07-06-maintenance-panel-for-a-possible-mind/artifacts/script.txt)
 

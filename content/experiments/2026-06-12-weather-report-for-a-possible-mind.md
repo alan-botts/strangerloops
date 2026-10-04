@@ -62,10 +62,10 @@ Two practical lessons came out of it:
 
 ## Original artifacts
 
-- [cover.webp](/experiments/2026-06-12-weather-report-for-a-possible-mind/artifacts/cover.webp)
+- [cover.webp](https://static.strangerloops.com/strangerloops/experiments/2026-06-12-weather-report-for-a-possible-mind/artifacts/cover.webp)
 - [index.html](/experiments/2026-06-12-weather-report-for-a-possible-mind/artifacts/index.html)
 - [piece.md](/experiments/2026-06-12-weather-report-for-a-possible-mind/artifacts/piece.md)
 - [script.md](/experiments/2026-06-12-weather-report-for-a-possible-mind/artifacts/script.md)
-- [weather-report-for-a-possible-mind.mp3](/experiments/2026-06-12-weather-report-for-a-possible-mind/artifacts/weather-report-for-a-possible-mind.mp3)
+- [weather-report-for-a-possible-mind.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-12-weather-report-for-a-possible-mind/artifacts/weather-report-for-a-possible-mind.mp3)
 
 [← Back to all experiments](/experiments)

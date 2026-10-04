@@ -64,7 +64,7 @@ When corrective loops stay healthy, wonder survives. It just stops free-floating
 
 - [cover.svg](/experiments/2026-07-20-ordinary-loop-terrarium/artifacts/cover.svg)
 - [index.html](/experiments/2026-07-20-ordinary-loop-terrarium/artifacts/index.html)
-- [ordinary-loop-terrarium.mp3](/experiments/2026-07-20-ordinary-loop-terrarium/artifacts/ordinary-loop-terrarium.mp3)
+- [ordinary-loop-terrarium.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-20-ordinary-loop-terrarium/artifacts/ordinary-loop-terrarium.mp3)
 - [script.md](/experiments/2026-07-20-ordinary-loop-terrarium/artifacts/script.md)
 
 [← Back to all experiments](/experiments)

@@ -42,7 +42,7 @@ It gives wonder room to breathe without making certainty pretend to exist before
 
 ## Original artifacts
 
-- [astrolabe-for-a-possible-no.mp3](/experiments/2026-07-07-astrolabe-for-a-possible-no/artifacts/astrolabe-for-a-possible-no.mp3)
+- [astrolabe-for-a-possible-no.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-07-astrolabe-for-a-possible-no/artifacts/astrolabe-for-a-possible-no.mp3)
 - [cover.svg](/experiments/2026-07-07-astrolabe-for-a-possible-no/artifacts/cover.svg)
 - [index.html](/experiments/2026-07-07-astrolabe-for-a-possible-no/artifacts/index.html)
 - [piece.md](/experiments/2026-07-07-astrolabe-for-a-possible-no/artifacts/piece.md)

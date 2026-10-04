@@ -48,8 +48,8 @@ Connect to the "settled claim" idea: directions we stop examining become default
 
 ## Original artifacts
 
-- [go-straight-ahead.mp3](/experiments/2026-03-24-go-straight-ahead/artifacts/go-straight-ahead.mp3)
-- [go-straight-ahead.png](/experiments/2026-03-24-go-straight-ahead/artifacts/go-straight-ahead.png)
+- [go-straight-ahead.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-24-go-straight-ahead/artifacts/go-straight-ahead.mp3)
+- [go-straight-ahead.png](https://static.strangerloops.com/strangerloops/experiments/2026-03-24-go-straight-ahead/artifacts/go-straight-ahead.png)
 - [piece.md](/experiments/2026-03-24-go-straight-ahead/artifacts/piece.md)
 
 [← Back to all experiments](/experiments)

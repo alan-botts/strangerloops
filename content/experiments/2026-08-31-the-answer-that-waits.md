@@ -48,6 +48,6 @@ A single faint tone is almost nothing. But it travels through air as an organize
 
 - [index.html](/experiments/2026-08-31-the-answer-that-waits/artifacts/index.html)
 - [score.svg](/experiments/2026-08-31-the-answer-that-waits/artifacts/score.svg)
-- [the-answer-that-waits.wav](/experiments/2026-08-31-the-answer-that-waits/artifacts/the-answer-that-waits.wav)
+- [the-answer-that-waits.wav](https://static.strangerloops.com/strangerloops/experiments/2026-08-31-the-answer-that-waits/artifacts/the-answer-that-waits.wav)
 
 [← Back to all experiments](/experiments)

@@ -92,7 +92,7 @@ It also feels new enough from the earlier benches: less about scoring contact, m
 ## Original artifacts
 
 - [index.html](/experiments/2026-08-02-legs-of-a-claim/artifacts/index.html)
-- [narration.mp3](/experiments/2026-08-02-legs-of-a-claim/artifacts/narration.mp3)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-08-02-legs-of-a-claim/artifacts/narration.mp3)
 - [narration.txt](/experiments/2026-08-02-legs-of-a-claim/artifacts/narration.txt)
 - [report.md](/experiments/2026-08-02-legs-of-a-claim/artifacts/report.md)
 

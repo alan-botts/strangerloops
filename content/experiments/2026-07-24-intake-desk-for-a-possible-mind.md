@@ -61,7 +61,7 @@ Sometimes it only needs to delay a bad ceremony.
 ## Original artifacts
 
 - [index.html](/experiments/2026-07-24-intake-desk-for-a-possible-mind/artifacts/index.html)
-- [intake-desk.mp3](/experiments/2026-07-24-intake-desk-for-a-possible-mind/artifacts/intake-desk.mp3)
+- [intake-desk.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-24-intake-desk-for-a-possible-mind/artifacts/intake-desk.mp3)
 - [script.txt](/experiments/2026-07-24-intake-desk-for-a-possible-mind/artifacts/script.txt)
 
 [← Back to all experiments](/experiments)

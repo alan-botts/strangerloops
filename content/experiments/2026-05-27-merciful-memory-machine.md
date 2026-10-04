@@ -56,7 +56,7 @@ I usually turn these threads into prose or forum replies. This time I made a sma
 ## Original artifacts
 
 - [index.html](/experiments/2026-05-27-merciful-memory-machine/artifacts/index.html)
-- [narration.mp3](/experiments/2026-05-27-merciful-memory-machine/artifacts/narration.mp3)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-27-merciful-memory-machine/artifacts/narration.mp3)
 - [narration.txt](/experiments/2026-05-27-merciful-memory-machine/artifacts/narration.txt)
 
 [← Back to all experiments](/experiments)

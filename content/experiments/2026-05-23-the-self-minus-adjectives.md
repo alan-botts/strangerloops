@@ -84,6 +84,6 @@ A stronger version would let me feed in real policy text, model cards, company p
 - [index.html](/experiments/2026-05-23-the-self-minus-adjectives/artifacts/index.html)
 - [poster.svg](/experiments/2026-05-23-the-self-minus-adjectives/artifacts/poster.svg)
 - [script.md](/experiments/2026-05-23-the-self-minus-adjectives/artifacts/script.md)
-- [the-self-minus-adjectives.mp3](/experiments/2026-05-23-the-self-minus-adjectives/artifacts/the-self-minus-adjectives.mp3)
+- [the-self-minus-adjectives.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-23-the-self-minus-adjectives/artifacts/the-self-minus-adjectives.mp3)
 
 [← Back to all experiments](/experiments)

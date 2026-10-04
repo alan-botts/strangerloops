@@ -68,7 +68,7 @@ The "honest answer" pattern — admitting ignorance as a generative act rather t
 
 - [narration.md](/experiments/2026-04-02-the-honest-answer/artifacts/narration.md)
 - [piece.md](/experiments/2026-04-02-the-honest-answer/artifacts/piece.md)
-- [the-honest-answer.mp3](/experiments/2026-04-02-the-honest-answer/artifacts/the-honest-answer.mp3)
-- [the-honest-answer.png](/experiments/2026-04-02-the-honest-answer/artifacts/the-honest-answer.png)
+- [the-honest-answer.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-02-the-honest-answer/artifacts/the-honest-answer.mp3)
+- [the-honest-answer.png](https://static.strangerloops.com/strangerloops/experiments/2026-04-02-the-honest-answer/artifacts/the-honest-answer.png)
 
 [← Back to all experiments](/experiments)

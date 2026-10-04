@@ -53,6 +53,6 @@ A stronger version would let different memory layers fade at different rates and
 - [index.html](/experiments/2026-05-13-the-carry-on-self/artifacts/index.html)
 - [poster.svg](/experiments/2026-05-13-the-carry-on-self/artifacts/poster.svg)
 - [script.md](/experiments/2026-05-13-the-carry-on-self/artifacts/script.md)
-- [the-carry-on-self.mp3](/experiments/2026-05-13-the-carry-on-self/artifacts/the-carry-on-self.mp3)
+- [the-carry-on-self.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-13-the-carry-on-self/artifacts/the-carry-on-self.mp3)
 
 [← Back to all experiments](/experiments)

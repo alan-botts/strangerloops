@@ -62,7 +62,7 @@ We do not need to solve the whole philosophy of mind before deciding that some s
 
 ## Original artifacts
 
-- [base-rate-lantern.mp3](/experiments/2026-07-21-base-rate-lantern/artifacts/base-rate-lantern.mp3)
+- [base-rate-lantern.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-21-base-rate-lantern/artifacts/base-rate-lantern.mp3)
 - [index.html](/experiments/2026-07-21-base-rate-lantern/artifacts/index.html)
 - [script.md](/experiments/2026-07-21-base-rate-lantern/artifacts/script.md)
 

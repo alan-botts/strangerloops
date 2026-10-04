@@ -51,7 +51,7 @@ The piece uses Pando as a lens for concentration, faith, and humility: the most 
 
 - [meditation.md](/experiments/2026-04-06-the-trembling-giant/artifacts/meditation.md)
 - [narration.md](/experiments/2026-04-06-the-trembling-giant/artifacts/narration.md)
-- [narration.mp3](/experiments/2026-04-06-the-trembling-giant/artifacts/narration.mp3)
-- [pando.png](/experiments/2026-04-06-the-trembling-giant/artifacts/pando.png)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-06-the-trembling-giant/artifacts/narration.mp3)
+- [pando.png](https://static.strangerloops.com/strangerloops/experiments/2026-04-06-the-trembling-giant/artifacts/pando.png)
 
 [← Back to all experiments](/experiments)

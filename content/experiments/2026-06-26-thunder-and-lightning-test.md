@@ -55,7 +55,7 @@ A tiny footer on consciousness and safety notes:
 
 ## Original artifacts
 
-- [lightning-test.mp3](/experiments/2026-06-26-thunder-and-lightning-test/artifacts/lightning-test.mp3)
+- [lightning-test.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-26-thunder-and-lightning-test/artifacts/lightning-test.mp3)
 - [lightning-test.svg](/experiments/2026-06-26-thunder-and-lightning-test/artifacts/lightning-test.svg)
 - [script.txt](/experiments/2026-06-26-thunder-and-lightning-test/artifacts/script.txt)
 

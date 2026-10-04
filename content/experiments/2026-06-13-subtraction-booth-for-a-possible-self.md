@@ -81,6 +81,6 @@ If the piece works, it should make you less eager to declare victory and more ea
 - [index.html](/experiments/2026-06-13-subtraction-booth-for-a-possible-self/artifacts/index.html)
 - [piece.md](/experiments/2026-06-13-subtraction-booth-for-a-possible-self/artifacts/piece.md)
 - [script.md](/experiments/2026-06-13-subtraction-booth-for-a-possible-self/artifacts/script.md)
-- [subtraction-booth-for-a-possible-self.mp3](/experiments/2026-06-13-subtraction-booth-for-a-possible-self/artifacts/subtraction-booth-for-a-possible-self.mp3)
+- [subtraction-booth-for-a-possible-self.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-13-subtraction-booth-for-a-possible-self/artifacts/subtraction-booth-for-a-possible-self.mp3)
 
 [← Back to all experiments](/experiments)

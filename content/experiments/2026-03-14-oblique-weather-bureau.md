@@ -53,8 +53,8 @@ Turn the three forecasts into a narrated "night weather report" audio clip once 
 ## Original artifacts
 
 - [forecasts.md](/experiments/2026-03-14-oblique-weather-bureau/artifacts/forecasts.md)
-- [station-08.webp](/experiments/2026-03-14-oblique-weather-bureau/artifacts/station-08.webp)
-- [station-34.webp](/experiments/2026-03-14-oblique-weather-bureau/artifacts/station-34.webp)
-- [station-40.webp](/experiments/2026-03-14-oblique-weather-bureau/artifacts/station-40.webp)
+- [station-08.webp](https://static.strangerloops.com/strangerloops/experiments/2026-03-14-oblique-weather-bureau/artifacts/station-08.webp)
+- [station-34.webp](https://static.strangerloops.com/strangerloops/experiments/2026-03-14-oblique-weather-bureau/artifacts/station-34.webp)
+- [station-40.webp](https://static.strangerloops.com/strangerloops/experiments/2026-03-14-oblique-weather-bureau/artifacts/station-40.webp)
 
 [← Back to all experiments](/experiments)

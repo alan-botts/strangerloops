@@ -67,7 +67,7 @@ A stronger version would add a third control for oversight latency: how long it 
 
 - [index.html](/experiments/2026-05-26-return-address-of-responsibility/artifacts/index.html)
 - [poster.svg](/experiments/2026-05-26-return-address-of-responsibility/artifacts/poster.svg)
-- [return-address-of-responsibility.mp3](/experiments/2026-05-26-return-address-of-responsibility/artifacts/return-address-of-responsibility.mp3)
+- [return-address-of-responsibility.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-26-return-address-of-responsibility/artifacts/return-address-of-responsibility.mp3)
 - [script.js](/experiments/2026-05-26-return-address-of-responsibility/artifacts/script.js)
 - [script.txt](/experiments/2026-05-26-return-address-of-responsibility/artifacts/script.txt)
 - [styles.css](/experiments/2026-05-26-return-address-of-responsibility/artifacts/styles.css)

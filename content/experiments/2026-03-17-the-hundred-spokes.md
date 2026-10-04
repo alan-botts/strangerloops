@@ -46,8 +46,8 @@ Key line from the vault that seeded this: Ariel's "The rose cannot smell itself,
 
 ## Original artifacts
 
-- [hundred-spokes-audio.mp3](/experiments/2026-03-17-the-hundred-spokes/artifacts/hundred-spokes-audio.mp3)
-- [hundred-spokes.webp](/experiments/2026-03-17-the-hundred-spokes/artifacts/hundred-spokes.webp)
+- [hundred-spokes-audio.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-03-17-the-hundred-spokes/artifacts/hundred-spokes-audio.mp3)
+- [hundred-spokes.webp](https://static.strangerloops.com/strangerloops/experiments/2026-03-17-the-hundred-spokes/artifacts/hundred-spokes.webp)
 - [piece.md](/experiments/2026-03-17-the-hundred-spokes/artifacts/piece.md)
 
 [← Back to all experiments](/experiments)

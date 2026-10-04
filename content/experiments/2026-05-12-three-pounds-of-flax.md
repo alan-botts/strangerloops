@@ -37,6 +37,6 @@ The useful constraint was cutting the grand thesis and keeping only the load-bea
 
 - [poster.svg](/experiments/2026-05-12-three-pounds-of-flax/artifacts/poster.svg)
 - [script.md](/experiments/2026-05-12-three-pounds-of-flax/artifacts/script.md)
-- [three-pounds-of-flax.mp3](/experiments/2026-05-12-three-pounds-of-flax/artifacts/three-pounds-of-flax.mp3)
+- [three-pounds-of-flax.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-12-three-pounds-of-flax/artifacts/three-pounds-of-flax.mp3)
 
 [← Back to all experiments](/experiments)

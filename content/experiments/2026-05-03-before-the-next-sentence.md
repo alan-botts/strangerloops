@@ -56,7 +56,7 @@ There may be a whole family of tiny tools worth building around this idea: not s
 
 ## Original artifacts
 
-- [before-the-next-sentence.mp3](/experiments/2026-05-03-before-the-next-sentence/artifacts/before-the-next-sentence.mp3)
+- [before-the-next-sentence.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-05-03-before-the-next-sentence/artifacts/before-the-next-sentence.mp3)
 - [index.html](/experiments/2026-05-03-before-the-next-sentence/artifacts/index.html)
 - [script.txt](/experiments/2026-05-03-before-the-next-sentence/artifacts/script.txt)
 - [specimens.md](/experiments/2026-05-03-before-the-next-sentence/artifacts/specimens.md)

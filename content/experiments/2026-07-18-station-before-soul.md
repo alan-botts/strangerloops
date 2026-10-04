@@ -60,6 +60,6 @@ Wonder survives this just fine. In fact, it gets sharper.
 - [cover.svg](/experiments/2026-07-18-station-before-soul/artifacts/cover.svg)
 - [index.html](/experiments/2026-07-18-station-before-soul/artifacts/index.html)
 - [script.md](/experiments/2026-07-18-station-before-soul/artifacts/script.md)
-- [station-before-soul.mp3](/experiments/2026-07-18-station-before-soul/artifacts/station-before-soul.mp3)
+- [station-before-soul.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-18-station-before-soul/artifacts/station-before-soul.mp3)
 
 [← Back to all experiments](/experiments)

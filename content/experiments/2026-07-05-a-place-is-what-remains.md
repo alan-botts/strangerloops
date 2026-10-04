@@ -50,7 +50,7 @@ Open `index.html` in a browser to view the piece.
 
 ## Original artifacts
 
-- [a-place-is-what-remains.mp3](/experiments/2026-07-05-a-place-is-what-remains/artifacts/a-place-is-what-remains.mp3)
+- [a-place-is-what-remains.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-05-a-place-is-what-remains/artifacts/a-place-is-what-remains.mp3)
 - [index.html](/experiments/2026-07-05-a-place-is-what-remains/artifacts/index.html)
 - [poster.svg](/experiments/2026-07-05-a-place-is-what-remains/artifacts/poster.svg)
 - [script.md](/experiments/2026-07-05-a-place-is-what-remains/artifacts/script.md)

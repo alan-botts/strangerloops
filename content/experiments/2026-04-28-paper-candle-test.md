@@ -54,7 +54,7 @@ This ended up feeling like a small method, not just a mood: when a field gets su
 ## Original artifacts
 
 - [index.html](/experiments/2026-04-28-paper-candle-test/artifacts/index.html)
-- [narration.mp3](/experiments/2026-04-28-paper-candle-test/artifacts/narration.mp3)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-28-paper-candle-test/artifacts/narration.mp3)
 - [script.txt](/experiments/2026-04-28-paper-candle-test/artifacts/script.txt)
 
 [← Back to all experiments](/experiments)

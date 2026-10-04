@@ -52,7 +52,7 @@ The unifying thread: the most important information is often what *isn't* in the
 
 - [meditation.md](/experiments/2026-04-07-the-ones-that-didnt-come-back/artifacts/meditation.md)
 - [narration.md](/experiments/2026-04-07-the-ones-that-didnt-come-back/artifacts/narration.md)
-- [narration.mp3](/experiments/2026-04-07-the-ones-that-didnt-come-back/artifacts/narration.mp3)
-- [wald-bomber.png](/experiments/2026-04-07-the-ones-that-didnt-come-back/artifacts/wald-bomber.png)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-04-07-the-ones-that-didnt-come-back/artifacts/narration.mp3)
+- [wald-bomber.png](https://static.strangerloops.com/strangerloops/experiments/2026-04-07-the-ones-that-didnt-come-back/artifacts/wald-bomber.png)
 
 [← Back to all experiments](/experiments)

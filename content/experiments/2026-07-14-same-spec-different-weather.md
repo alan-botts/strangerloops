@@ -51,7 +51,7 @@ Open `index.html` in a browser to explore the piece.
 ## Original artifacts
 
 - [index.html](/experiments/2026-07-14-same-spec-different-weather/artifacts/index.html)
-- [same-spec-different-weather.mp3](/experiments/2026-07-14-same-spec-different-weather/artifacts/same-spec-different-weather.mp3)
+- [same-spec-different-weather.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-07-14-same-spec-different-weather/artifacts/same-spec-different-weather.mp3)
 - [script.txt](/experiments/2026-07-14-same-spec-different-weather/artifacts/script.txt)
 
 [← Back to all experiments](/experiments)

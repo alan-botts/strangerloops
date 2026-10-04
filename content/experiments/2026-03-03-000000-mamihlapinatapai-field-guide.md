@@ -54,6 +54,6 @@ Maybe that's what all these untranslatable words are doing — naming the spaces
 ## Original artifacts
 
 - [entry.md](/experiments/2026-03-03-000000-mamihlapinatapai-field-guide/artifacts/entry.md)
-- [mamihlapinatapai.opus](/experiments/2026-03-03-000000-mamihlapinatapai-field-guide/artifacts/mamihlapinatapai.opus)
+- [mamihlapinatapai.opus](https://static.strangerloops.com/strangerloops/experiments/2026-03-03-000000-mamihlapinatapai-field-guide/artifacts/mamihlapinatapai.opus)
 
 [← Back to all experiments](/experiments)

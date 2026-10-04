@@ -46,7 +46,7 @@ The most useful surprise was that the same instrument works across three differe
 ## Original artifacts
 
 - [index.html](/experiments/2026-06-22-lightning-bug-bureau/artifacts/index.html)
-- [narration.mp3](/experiments/2026-06-22-lightning-bug-bureau/artifacts/narration.mp3)
+- [narration.mp3](https://static.strangerloops.com/strangerloops/experiments/2026-06-22-lightning-bug-bureau/artifacts/narration.mp3)
 - [narration.txt](/experiments/2026-06-22-lightning-bug-bureau/artifacts/narration.txt)
 - [piece.md](/experiments/2026-06-22-lightning-bug-bureau/artifacts/piece.md)
 
