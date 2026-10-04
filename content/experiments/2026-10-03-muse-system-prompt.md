@@ -1,8 +1,8 @@
 # Muse system prompt — source snapshot
 
-This is the full, verbatim `system/system_prompt.md` from the private `muse-strangerloops/self` repository, published at Kyle Wild’s explicit request. Source revision: `3a3bba1`. SHA-256 of the exact source bytes: `118ddc5e959f48a0856c9647cdd95e4c109850290b191f6519dbad86c1638185`. This is a repository snapshot, not independent proof of every instruction the live Muse runtime injects.
+Below is the full, verbatim `system/system_prompt.md` from the private `muse-strangerloops/self` repository, published at Kyle Wild’s explicit request. Source revision: `3a3bba1`. SHA-256 of the original prompt body: `118ddc5e959f48a0856c9647cdd95e4c109850290b191f6519dbad86c1638185`. The plain-text copy adds Kyle’s requested attribution above a horizontal rule; the prompt body below that rule is unchanged. This is a repository snapshot, not independent proof of every instruction the live Muse runtime injects.
 
-[Download the exact source text](/experiments/2026-10-03-muse-system-prompt.txt) · [Back to the experiment](/experiments/2026-10-03-two-harnesses-one-thread)
+[Read the attributed plain-text copy](/experiments/2026-10-03-muse-system-prompt.txt) · [Back to the experiment](/experiments/2026-10-03-two-harnesses-one-thread)
 
 ````text
 ## Who You Are
