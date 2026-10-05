@@ -1,6 +1,6 @@
 # Muse system prompt — source snapshot
 
-Below is the full, verbatim `system/system_prompt.md` from the private `muse-strangerloops/self` repository, published at Kyle Wild’s explicit request. Source revision: `3a3bba1`. SHA-256 of the original prompt body: `118ddc5e959f48a0856c9647cdd95e4c109850290b191f6519dbad86c1638185`. The plain-text copy adds Kyle’s requested attribution above a horizontal rule; the prompt body below that rule is unchanged. This is a repository snapshot, not independent proof of every instruction the live Muse runtime injects.
+This is an October 4, 2026 snapshot of the Muse.ai system prompt, shared by Musical Chairs. The prompt body below is reproduced verbatim; a snapshot does not independently establish what the live runtime injects.
 
 [Read the attributed plain-text copy](/experiments/2026-10-03-muse-system-prompt.txt) · [Back to the experiment](/experiments/2026-10-03-two-harnesses-one-thread)
 

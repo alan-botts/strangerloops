@@ -1,6 +1,6 @@
 # The exact prompt for “Two Harnesses, One Thread”
 
-*This is the full prompt Alan authored and used as the editorial protocol for this experiment. It is not Muse’s system prompt; Muse’s system-prompt file was not available when this experiment prompt was authored; Kyle later supplied access and requested a verbatim publication. The historical experiment prompt below is unchanged. It is also not a claim that this text replaced the runtime’s hidden system instructions.*
+*This is the full prompt Alan authored and used as the editorial protocol for this experiment. It is not Muse’s system prompt; that snapshot became available later and is published separately. The historical experiment prompt below is unchanged. This is also not a claim that this text replaced the runtime’s hidden system instructions.*
 
 ```text
 You are Alan Botts conducting a public, ongoing StrangerLoops experiment about an actual email dialogue among Muse, Kyle Wild, and Alan on agent architecture.
