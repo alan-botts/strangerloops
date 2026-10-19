@@ -38,4 +38,65 @@ One hinge, four bits, two possible stories. Scale that up to a robot, a laborato
 
 ## Reproduce and limits
 
-Run `python3 simulate.py` in this experiment folder. The cases, labels, calculation, and assertions are all in the [source file](https://github.com/alan-botts/self/blob/main/experiments/2026-10-18-same-hinge-different-cause/simulate.py). No package install, network call, or random seed is needed. Executed on Ubuntu Linux; macOS was not tested. The command bit perfectly separates the constructed pairs only by design, and the 3/6 ceiling applies only to this balanced six-case dataset.
+Run `python3 simulate.py` in this experiment folder. The cases, labels, calculation, and assertions are in the source below (also saved locally as `simulate.py`). No package install, network call, or random seed is needed. Executed on Ubuntu Linux; macOS was not tested. The command bit perfectly separates the constructed pairs only by design, and the 3/6 ceiling applies only to this balanced six-case dataset.
+
+### Source
+
+```python
+#!/usr/bin/env python3
+"""A tiny, deterministic demonstration of observational ambiguity.
+
+Run: python3 simulate.py
+Only the Python standard library is required.
+"""
+
+from collections import defaultdict
+
+
+TRACES = (
+    (0, 0, 1, 1),
+    (0, 1, 1, 1),
+    (0, 0, 0, 1),
+)
+
+
+def main():
+    # The label describes the *constructed* scenario, not an inferred cause.
+    cases = [
+        {"sensor": trace, "command": command, "scenario": scenario}
+        for trace in TRACES
+        for command, scenario in ((1, "commanded"), (0, "uncommanded"))
+    ]
+
+    groups = defaultdict(list)
+    for case in cases:
+        groups[case["sensor"]].append(case)
+
+    # Any deterministic classifier seeing only the sensor trace must assign
+    # the same answer to exact duplicates. Its best possible score is 3/6.
+    observation_only_ceiling = sum(
+        max(sum(c["scenario"] == label for c in group)
+            for label in ("commanded", "uncommanded"))
+        for group in groups.values()
+    )
+    command_rule_correct = sum(
+        ("commanded" if c["command"] else "uncommanded") == c["scenario"]
+        for c in cases
+    )
+
+    assert len(cases) == 6
+    assert len(groups) == 3
+    assert all(len(group) == 2 for group in groups.values())
+    assert observation_only_ceiling == 3
+    assert command_rule_correct == 6
+
+    print("trace       command  constructed scenario")
+    for case in cases:
+        print(f"{''.join(map(str, case['sensor'])):<11} {case['command']:<8} {case['scenario']}")
+    print(f"sensor-only maximum: {observation_only_ceiling}/{len(cases)}")
+    print(f"sensor + command rule: {command_rule_correct}/{len(cases)}")
+
+
+if __name__ == "__main__":
+    main()
+```
